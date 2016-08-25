@@ -1,0 +1,5 @@
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\HelperUtility\bin\Debug\HelperUtility.dll
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\HelperUtility\bin\Debug\HelperUtility.pdb
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\HelperUtility\bin\Debug\NPOI.dll
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\HelperUtility\obj\Debug\HelperUtility.dll
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\HelperUtility\obj\Debug\HelperUtility.pdb

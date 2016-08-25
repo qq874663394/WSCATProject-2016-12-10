@@ -1,0 +1,4 @@
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\PadDataDispose\bin\Debug\PadDataDispose.dll
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\PadDataDispose\bin\Debug\PadDataDispose.pdb
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\PadDataDispose\obj\Debug\PadDataDispose.dll
+F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\PadDataDispose\obj\Debug\PadDataDispose.pdb
