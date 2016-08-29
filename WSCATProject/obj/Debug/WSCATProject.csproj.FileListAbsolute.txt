@@ -96,3 +96,6 @@ E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHous
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHuseStorageRack.resources
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHouseOut.resources
+E:\619项目\2016年8月29日094544\WSCATProject\bin\Debug\WSCATProject.exe.config
+E:\619项目\2016年8月29日094544\WSCATProject\obj\Debug\WSCATProject.exe
+E:\619项目\2016年8月29日094544\WSCATProject\obj\Debug\WSCATProject.pdb
