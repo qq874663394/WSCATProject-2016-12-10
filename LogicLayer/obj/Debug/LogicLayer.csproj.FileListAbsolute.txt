@@ -24,3 +24,17 @@ D:\项目\2016年8月23重建后\WSCATProject\LogicLayer\obj\Debug\LogicLayer.dl
 D:\项目\2016年8月23重建后\WSCATProject\LogicLayer\obj\Debug\LogicLayer.pdb
 F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\LogicLayer\bin\Debug\ManagerLayer.dll
 F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\LogicLayer\bin\Debug\ManagerLayer.pdb
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\LogicLayer.dll
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\LogicLayer.pdb
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\BaseLayer.dll
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\HelperUtility.dll
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\ManagerLayer.dll
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\Model.dll
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\NPOI.dll
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\BaseLayer.pdb
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\HelperUtility.pdb
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\ManagerLayer.pdb
+E:\619项目\WSCATProject\LogicLayer\bin\Debug\Model.pdb
+E:\619项目\WSCATProject\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
+E:\619项目\WSCATProject\LogicLayer\obj\Debug\LogicLayer.dll
+E:\619项目\WSCATProject\LogicLayer\obj\Debug\LogicLayer.pdb
