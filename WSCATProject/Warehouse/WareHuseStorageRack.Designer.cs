@@ -59,7 +59,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(172, 26);
+            this.labelX2.Location = new System.Drawing.Point(190, 25);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(47, 23);
             this.labelX2.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(31, 73);
+            this.labelX3.Location = new System.Drawing.Point(27, 155);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(32, 23);
             this.labelX3.TabIndex = 2;
@@ -83,7 +83,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(176, 75);
+            this.labelX4.Location = new System.Drawing.Point(204, 154);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(33, 23);
             this.labelX4.TabIndex = 3;
@@ -94,23 +94,26 @@
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
             this.comboBoxEx1.Location = new System.Drawing.Point(65, 26);
             this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(85, 21);
+            this.comboBoxEx1.Size = new System.Drawing.Size(107, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 4;
+            this.comboBoxEx1.SelectedValueChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged);
             // 
             // comboBoxEx2
             // 
             this.comboBoxEx2.DisplayMember = "Text";
             this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx2.FormattingEnabled = true;
             this.comboBoxEx2.ItemHeight = 15;
-            this.comboBoxEx2.Location = new System.Drawing.Point(215, 26);
+            this.comboBoxEx2.Location = new System.Drawing.Point(243, 25);
             this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(85, 21);
+            this.comboBoxEx2.Size = new System.Drawing.Size(122, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx2.TabIndex = 5;
             // 
@@ -118,11 +121,12 @@
             // 
             this.comboBoxEx3.DisplayMember = "Text";
             this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx3.FormattingEnabled = true;
             this.comboBoxEx3.ItemHeight = 15;
-            this.comboBoxEx3.Location = new System.Drawing.Point(65, 75);
+            this.comboBoxEx3.Location = new System.Drawing.Point(65, 155);
             this.comboBoxEx3.Name = "comboBoxEx3";
-            this.comboBoxEx3.Size = new System.Drawing.Size(85, 21);
+            this.comboBoxEx3.Size = new System.Drawing.Size(107, 21);
             this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx3.TabIndex = 6;
             // 
@@ -130,11 +134,12 @@
             // 
             this.comboBoxEx4.DisplayMember = "Text";
             this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx4.FormattingEnabled = true;
             this.comboBoxEx4.ItemHeight = 15;
-            this.comboBoxEx4.Location = new System.Drawing.Point(215, 75);
+            this.comboBoxEx4.Location = new System.Drawing.Point(243, 155);
             this.comboBoxEx4.Name = "comboBoxEx4";
-            this.comboBoxEx4.Size = new System.Drawing.Size(85, 21);
+            this.comboBoxEx4.Size = new System.Drawing.Size(122, 21);
             this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx4.TabIndex = 7;
             // 
@@ -142,7 +147,7 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(81, 170);
+            this.buttonX1.Location = new System.Drawing.Point(73, 262);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -153,7 +158,7 @@
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(186, 170);
+            this.buttonX2.Location = new System.Drawing.Point(178, 262);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(75, 23);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -166,7 +171,7 @@
             // 
             // 
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(35, 118);
+            this.checkBoxX1.Location = new System.Drawing.Point(27, 210);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(100, 23);
             this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -177,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 220);
+            this.ClientSize = new System.Drawing.Size(391, 307);
             this.Controls.Add(this.checkBoxX1);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
@@ -191,6 +196,7 @@
             this.Controls.Add(this.labelX1);
             this.Name = "WareHuseStorageRack";
             this.Text = "仓库";
+            this.Load += new System.EventHandler(this.WareHuseStorageRack_Load);
             this.ResumeLayout(false);
 
         }

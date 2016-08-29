@@ -43,6 +43,7 @@
     <Compile Include="Base\Areas.cs" />
     <Compile Include="Base\BankAccount.cs" />
     <Compile Include="Base\Borrow.cs" />
+    <Compile Include="Base\BaseStorageRack.cs" />
     <Compile Include="Base\City.cs" />
     <Compile Include="Base\Client.cs" />
     <Compile Include="Base\ClientType.cs" />
