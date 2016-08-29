@@ -51,7 +51,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(28, 26);
+            this.labelX1.Location = new System.Drawing.Point(11, 12);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(42, 23);
             this.labelX1.TabIndex = 0;
@@ -63,7 +63,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(190, 25);
+            this.labelX2.Location = new System.Drawing.Point(173, 11);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(47, 23);
             this.labelX2.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(27, 155);
+            this.labelX3.Location = new System.Drawing.Point(11, 52);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(32, 23);
             this.labelX3.TabIndex = 2;
@@ -87,7 +87,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(204, 154);
+            this.labelX4.Location = new System.Drawing.Point(187, 50);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(33, 23);
             this.labelX4.TabIndex = 3;
@@ -98,12 +98,11 @@
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
             this.comboBoxEx1.Items.AddRange(new object[] {
             this.comboItem1});
-            this.comboBoxEx1.Location = new System.Drawing.Point(65, 26);
+            this.comboBoxEx1.Location = new System.Drawing.Point(48, 12);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(107, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -119,7 +118,7 @@
             this.comboBoxEx2.ItemHeight = 15;
             this.comboBoxEx2.Items.AddRange(new object[] {
             this.comboItem2});
-            this.comboBoxEx2.Location = new System.Drawing.Point(243, 25);
+            this.comboBoxEx2.Location = new System.Drawing.Point(226, 11);
             this.comboBoxEx2.Name = "comboBoxEx2";
             this.comboBoxEx2.Size = new System.Drawing.Size(122, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -135,7 +134,7 @@
             this.comboBoxEx3.ItemHeight = 15;
             this.comboBoxEx3.Items.AddRange(new object[] {
             this.comboItem3});
-            this.comboBoxEx3.Location = new System.Drawing.Point(65, 155);
+            this.comboBoxEx3.Location = new System.Drawing.Point(48, 52);
             this.comboBoxEx3.Name = "comboBoxEx3";
             this.comboBoxEx3.Size = new System.Drawing.Size(107, 21);
             this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -151,7 +150,7 @@
             this.comboBoxEx4.ItemHeight = 15;
             this.comboBoxEx4.Items.AddRange(new object[] {
             this.comboItem4});
-            this.comboBoxEx4.Location = new System.Drawing.Point(243, 155);
+            this.comboBoxEx4.Location = new System.Drawing.Point(226, 52);
             this.comboBoxEx4.Name = "comboBoxEx4";
             this.comboBoxEx4.Size = new System.Drawing.Size(122, 21);
             this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -161,7 +160,7 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(73, 262);
+            this.buttonX1.Location = new System.Drawing.Point(83, 134);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -172,7 +171,7 @@
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(178, 262);
+            this.buttonX2.Location = new System.Drawing.Point(188, 134);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(75, 23);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -185,7 +184,7 @@
             // 
             // 
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(27, 210);
+            this.checkBoxX1.Location = new System.Drawing.Point(48, 90);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(100, 23);
             this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -212,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 307);
+            this.ClientSize = new System.Drawing.Size(366, 177);
             this.Controls.Add(this.checkBoxX1);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
