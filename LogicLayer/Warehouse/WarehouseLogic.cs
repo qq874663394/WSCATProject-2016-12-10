@@ -24,15 +24,15 @@ namespace LogicLayer
             )
         {
             LogBase lb = new LogBase();
-            Log log = new Log()
+            log log = new log()
             {
-                Code = BuildCode.ModuleCode("log"),
-                OperationCode = "操作人code",
-                OperationName = "操作人名",
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
                 //OperationTable = "操作表名",
-                OperationTime = DateTime.Now,
+                operationTime = DateTime.Now,
                 //OperationContent = "",
-                Objective = "增加入库信息"
+                objective = "增加入库信息"
             };
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
@@ -44,9 +44,9 @@ namespace LogicLayer
                 //当正确新增时开始新增详情表
                 if (addWarehouseInResult > 0)
                 {
-                    log.OperationTable = "T_WarehouseIn";
-                    log.Result = addWarehouseInResult;
-                    log.OperationContent = wi.code;
+                    log.operationTable = "T_WarehouseIn";
+                    log.result = addWarehouseInResult;
+                    log.operationContent = wi.code;
                     lb.Add(log);
 
                     int addcount = 0;
@@ -62,10 +62,10 @@ namespace LogicLayer
                             addErr = true;
                             break;
                         }
-                        log.Objective = "新增入库商品详情";
-                        log.OperationTable = "T_WarehouseInDetail";
-                        log.Result = addWarehouseInDetailResult;
-                        log.OperationContent = widList[i].code;
+                        log.objective = "新增入库商品详情";
+                        log.operationTable = "T_WarehouseInDetail";
+                        log.result = addWarehouseInDetailResult;
+                        log.operationContent = widList[i].code;
                         lb.Add(log);
                     }
                     //如果加入过程中出错,倒过来删除之前加入的
@@ -74,10 +74,10 @@ namespace LogicLayer
                         for (int i = addcount; i < 0; i--)
                         {
                             //调用删除方法删掉加入的详情单
-                            log.Objective = "回滚入库商品详情";
-                            log.OperationTable = "T_WarehouseInDetail";
-                            log.Result = addWarehouseInResult;
-                            log.OperationContent = widList[i].code;
+                            log.objective = "回滚入库商品详情";
+                            log.operationTable = "T_WarehouseInDetail";
+                            log.result = addWarehouseInResult;
+                            log.operationContent = widList[i].code;
                             lb.Add(log);
                         }
                         //调用删除方法删掉入库单
@@ -98,10 +98,10 @@ namespace LogicLayer
                         Warehousep.warehouseInDetailCode = wi.code;
                         warehouseInProcessBase.Add(Warehousep);
 
-                        log.OperationContent = Warehousep.code;
-                        log.Objective = "新增入库流程数据";
-                        log.OperationTable = "T_WarehouseInProcess";
-                        log.Result = addWarehouseInResult;
+                        log.operationContent = Warehousep.code;
+                        log.objective = "新增入库流程数据";
+                        log.operationTable = "T_WarehouseInProcess";
+                        log.result = addWarehouseInResult;
                         lb.Add(log);
                     }
                     //调用管理层
@@ -112,10 +112,10 @@ namespace LogicLayer
                         updateManager.addWarehouseIn(updateManagerCode, wi.code,
                             "T_WarehouseIn", addWarehouseInResult, "", "", DateTime.Now);
 
-                        log.OperationContent = updateManagerCode;
-                        log.Objective = "新增入库表的更新管理";
-                        log.OperationTable = "T_Warehouse";
-                        log.Result = addWarehouseInResult;
+                        log.operationContent = updateManagerCode;
+                        log.objective = "新增入库表的更新管理";
+                        log.operationTable = "T_Warehouse";
+                        log.result = addWarehouseInResult;
                         lb.Add(log);
                     }
                     if(!addErr)
@@ -129,9 +129,9 @@ namespace LogicLayer
                 }
                 else
                 {
-                    log.Objective = "新增入库商品详情错误";
-                    log.OperationTable = "T_WarehouseInDetail";
-                    log.Result = addWarehouseInResult;
+                    log.objective = "新增入库商品详情错误";
+                    log.operationTable = "T_WarehouseInDetail";
+                    log.result = addWarehouseInResult;
                     lb.Add(log);
                     return addWarehouseInResult;
                 }

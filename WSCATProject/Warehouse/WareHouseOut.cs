@@ -1,4 +1,5 @@
-﻿using HelperUtility;
+﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,6 +133,26 @@ namespace WSCATProject.WareHouse
                 resizablePanel1.Location = new Point(480, 115);
                 dataGridViewFujia.DataSource = _AllClient;
             }
+        }
+        /// <summary>
+        /// 初始化GridView
+        /// </summary>
+        private void InitDataGridView()
+        {
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["gridColumnStock"].Value = "合计";
+            gr.Cells["gridColumnStock"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnNumber"].Value = 0;
+            gr.Cells["gridColumnNumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnNumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumnMoney"].Value = 0;
+            gr.Cells["gridColumnMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
         #endregion
 

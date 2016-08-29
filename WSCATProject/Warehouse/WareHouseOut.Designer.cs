@@ -309,6 +309,7 @@
             // 
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.superGridControl1.Size = new System.Drawing.Size(1185, 248);
+            this.superGridControl1.Text = "  ";
             // 
             // resizablePanelData
             // 
