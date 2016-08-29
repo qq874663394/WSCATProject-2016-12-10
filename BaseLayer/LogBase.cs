@@ -11,7 +11,7 @@ namespace BaseLayer
 {
     public class LogBase
     {
-        public int Add(Log log)
+        public int Add(log log)
         {
             string sql = "";
             try
@@ -34,14 +34,14 @@ namespace BaseLayer
                        ,'{5}'
                        ,'{6}'
                        ,{7})",
-                        XYEEncoding.strCodeHex(log.Code),
-                        XYEEncoding.strCodeHex(log.OperationCode),
-                        XYEEncoding.strCodeHex(log.OperationName),
-                        XYEEncoding.strCodeHex(log.OperationTable),
-                        log.OperationTime,
-                        XYEEncoding.strCodeHex(log.Objective),
-                        log.OperationContent,
-                        log.Result);
+                        XYEEncoding.strCodeHex(log.code),
+                        XYEEncoding.strCodeHex(log.operationCode),
+                        XYEEncoding.strCodeHex(log.operationName),
+                        XYEEncoding.strCodeHex(log.operationTable),
+                        log.operationTime,
+                        XYEEncoding.strCodeHex(log.objective),
+                        log.operationContent,
+                        log.result);
             }
             catch
             {

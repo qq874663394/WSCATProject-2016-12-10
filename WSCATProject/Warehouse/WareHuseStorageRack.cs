@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,13 +21,23 @@ namespace WSCATProject.Warehouse
 
         private void WareHuseStorageRack_Load(object sender, EventArgs e)
         {
-            comboBoxEx1.ValueMember = "";
-            comboBoxEx1.DisplayMember = "";
+            StorageInterface sif = new StorageInterface();
+            comboBoxEx1.DisplayMember = "name";
+            comboBoxEx1.ValueMember = "code";
+            comboBoxEx1.DataSource = sif.SelStorage();
         }
 
-        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
         {
-            
+            if (comboBoxEx1.SelectedValue==null)
+            {
+                MessageBox.Show("请选择仓库。");
+                return;
+            }
+            StorageRackInterface srif = new StorageRackInterface();
+            comboBoxEx2.DisplayMember = "name";
+            comboBoxEx2.ValueMember = "code";
+            comboBoxEx2.DataSource = srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString()));
         }
     }
 }
