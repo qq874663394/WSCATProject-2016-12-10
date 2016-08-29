@@ -95,3 +95,4 @@ E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.TemplateForm.resou
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHouseIn.resources
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHuseStorageRack.resources
+E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHouseOut.resources

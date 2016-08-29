@@ -93,6 +93,12 @@
     <Compile Include="Warehouse\WareHouseIn.Designer.cs">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseOut.Designer.cs">
+      <DependentUpon>WareHouseOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHuseStorageRack.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseOut.resx">
+      <DependentUpon>WareHouseOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHuseStorageRack.resx">
       <DependentUpon>WareHuseStorageRack.cs</DependentUpon>
