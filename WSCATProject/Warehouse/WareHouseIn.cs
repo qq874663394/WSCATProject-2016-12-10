@@ -86,11 +86,7 @@ namespace WSCATProject.WareHouse
         protected void panel6_Click(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
-        }
-        private void label3_Click(object sender, EventArgs e)
-        {
-            resizablePanel1.Visible = false;
-        }
+        }       
 
         #region 初始化数据
         /// <summary>
