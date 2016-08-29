@@ -16,7 +16,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WareHouse.WareHouseIn());
+            Application.Run(new WareHouse.WareHouseOut());
         }
     }
 }

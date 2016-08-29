@@ -70,6 +70,8 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            InitDataGridView();
         }
         /// <summary>
         /// 点击panel隐藏扩展panel
@@ -140,19 +142,20 @@ namespace WSCATProject.WareHouse
         private void InitDataGridView()
         {
             //最后一行做统计行
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+            //    Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["gridColumnStock"].Value = "合计";
-            gr.Cells["gridColumnStock"].CellStyles.Default.Alignment =
+            gr.Cells["gridColumn1"].Value = "合计";
+            gr.Cells["gridColumn1"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumnNumber"].Value = 0;
-            gr.Cells["gridColumnNumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumnNumber"].CellStyles.Default.Background.Color1 = Color.Orange;
-            gr.Cells["gridColumnMoney"].Value = 0;
-            gr.Cells["gridColumnMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumnMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumn5"].Value = 0;
+            gr.Cells["gridColumn5"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn5"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumn6"].Value = 0;
+            gr.Cells["gridColumn6"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn6"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
         #endregion
 
