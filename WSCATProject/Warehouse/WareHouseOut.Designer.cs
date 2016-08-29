@@ -28,6 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -308,6 +318,19 @@
             // superGridControl1
             // 
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            // 
+            // 
+            // 
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn3);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn4);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn5);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
             this.superGridControl1.Size = new System.Drawing.Size(1185, 248);
             this.superGridControl1.Text = "  ";
             // 
@@ -331,6 +354,56 @@
             // panel5
             // 
             this.panel5.Size = new System.Drawing.Size(1189, 71);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.HeaderText = "商品Code";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.HeaderText = "商品名称";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.HeaderText = "规格型号";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.HeaderText = "单位";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.HeaderText = "数量";
+            this.gridColumn5.Name = "gridColumn5";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.HeaderText = "金额";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.HeaderText = "备注";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.HeaderText = "仓库名称";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.HeaderText = "货架";
+            this.gridColumn9.Name = "gridColumn9";
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.HeaderText = "是否出库";
+            this.gridColumn10.Name = "gridColumn10";
             // 
             // WareHouseOut
             // 
@@ -365,5 +438,16 @@
         }
 
         #endregion
+
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
     }
 }

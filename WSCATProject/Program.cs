@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WSCATProject.Warehouse;
 
 namespace WSCATProject
 {
@@ -16,7 +17,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WareHouse.WareHouseIn());
+            Application.Run(new WareHuseStorageRack());
         }
     }
 }

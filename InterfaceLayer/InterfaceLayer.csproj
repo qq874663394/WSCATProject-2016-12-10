@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\StorageInterface.cs" />
+    <Compile Include="Base\StorageRackInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warehouse\WarehouseDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInterface.cs" />
