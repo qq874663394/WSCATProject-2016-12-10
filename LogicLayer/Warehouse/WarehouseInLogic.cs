@@ -12,7 +12,7 @@ using UpdateManagerLayer;
 
 namespace LogicLayer
 {
-    public class WarehouseLogic
+    public class WarehouseInLogic
     {
 
         /// <summary>
@@ -73,6 +73,8 @@ namespace LogicLayer
                     {
                         for (int i = addcount; i < 0; i--)
                         {
+                            warehouseInDetailBase.deleteByCode(widList[i].code);
+
                             //调用删除方法删掉加入的详情单
                             log.Objective = "回滚入库商品详情";
                             log.OperationTable = "T_WarehouseInDetail";
@@ -81,6 +83,7 @@ namespace LogicLayer
                             lb.Add(log);
                         }
                         //调用删除方法删掉入库单
+                        warehouseInBase.deleteByCode(wi.code);
                     }
                     //调用流程表
                     if (!addErr)

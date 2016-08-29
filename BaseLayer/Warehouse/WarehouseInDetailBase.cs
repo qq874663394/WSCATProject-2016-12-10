@@ -84,6 +84,18 @@ namespace BaseLayer
 
             return result;
         }
+        /// <summary>
+        /// 根据code删除数据
+        /// </summary>
+        /// <param name="code">编号</param>
+        /// <returns></returns>
+        public int deleteByCode(string code)
+        {
+            string deleteStr = "delete T_WarehouseInDetail where code = '" + code + "'";
+            int result = DbHelperSQL.ExecuteSql(deleteStr);
+            return result;
+        }
+
 	}
 }
 
