@@ -11,6 +11,34 @@ namespace BaseLayer
     /// </summary>
     public partial class WarehouseInBase
     {
+        public DataSet GetList(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            try
+            {
+                strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
+                strSql.Append(" FROM T_WarehouseIn ");
+                if (strWhere.Trim() != "")
+                {
+                    strSql.Append(" where " + strWhere);
+                }
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            DataSet ds = null;
+            try
+            {
+                ds = DbHelperSQL.Query(strSql.ToString());
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
+            return ds;
+        }
+
         /// <summary>
         /// 增加一条数据
         /// </summary>
@@ -80,11 +108,54 @@ namespace BaseLayer
 
             return result;
         }
-
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public int deleteByCode(string code)
         {
             string deleteStr = "delete T_WarehouseIn where code = '" + code + "'";
             int result = DbHelperSQL.ExecuteSql(deleteStr);
+            return result;
+        }
+        /// <summary>
+        /// 根据code更新某一条数据
+        /// </summary>
+        /// <param name="wi"></param>
+        /// <returns></returns>
+        public int updateByCode(WarehouseIn wi)
+        {
+            string strSql = "";
+            try
+            {
+                strSql = string.Format("update T_WarehouseIn set type='{1}',goodsCode='{2}'," +
+                    "defaultType='{3}',stock='{4}',operation='{5}',examine='{6}',state={7},date='{8}'" +
+                    "purchaseCode='{9}',checkState={10},isClear={11},updateDate='{12}',reserved1='{13}'" +
+                    "reserved2='{14}',remark='{15}' where code='{16}'",
+                    wi.type,
+                    wi.GoodsCode,
+                    wi.DefaultType,
+                    wi.stock,
+                    wi.operation,
+                    wi.examine,
+                    wi.state,
+                    wi.date,
+                    wi.purchaseCode,
+                    wi.checkState,
+                    wi.isClear,
+                    wi.updateDate,
+                    wi.reserved1,
+                    wi.reserved2,
+                    wi.remark,
+                    wi.code);
+            }
+            catch
+            {
+                return -1;
+            }
+            int result = DbHelperSQL.ExecuteSql(strSql);
+
             return result;
         }
 	}

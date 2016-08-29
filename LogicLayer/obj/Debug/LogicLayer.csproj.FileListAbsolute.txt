@@ -52,3 +52,17 @@ E:\619项目\2016年8月29日094544\LogicLayer\bin\Debug\Model.pdb
 E:\619项目\2016年8月29日094544\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\2016年8月29日094544\LogicLayer\obj\Debug\LogicLayer.dll
 E:\619项目\2016年8月29日094544\LogicLayer\obj\Debug\LogicLayer.pdb
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\LogicLayer.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\LogicLayer.pdb
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\BaseLayer.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\HelperUtility.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\ManagerLayer.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\Model.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\NPOI.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\BaseLayer.pdb
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\HelperUtility.pdb
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\ManagerLayer.pdb
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\bin\Debug\Model.pdb
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\obj\Debug\LogicLayer.dll
+F:\项目\WSCAT\2016-8-26新结构\LogicLayer\obj\Debug\LogicLayer.pdb
