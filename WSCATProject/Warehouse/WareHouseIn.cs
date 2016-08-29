@@ -41,6 +41,10 @@ namespace WSCATProject.WareHouse
 
         private void StockIn_Load(object sender, EventArgs e)
         {
+           // GridDoubleInputEditControl gdiecdanjia = superGridControl1.PrimaryGrid.Columns["gridColumn3"].EditControl as GridDoubleInputEditControl;
+            //gdiecdanjia.ButtonCustom.Visible = true;
+            //gdiecdanjia.ButtonCustomClick += Gdiec_ButtonCustomClick;
+
             //StorageManager sm = new StorageManager();//仓库
             //SupplierManager supply = new SupplierManager();//供应商
             //_AllStorage = sm.GetList("");
@@ -72,6 +76,7 @@ namespace WSCATProject.WareHouse
                 Close();
             }
         }
+        
 
         /// <summary>
         /// 点击panel隐藏扩展panel

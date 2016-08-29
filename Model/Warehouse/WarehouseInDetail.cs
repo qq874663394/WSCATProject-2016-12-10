@@ -27,10 +27,13 @@ namespace Model
 		private string _remark;
 		private string _reserved1;
 		private string _reserved2;
-		/// <summary>
-		/// 栏号(自增)
-		/// </summary>
-		public int id
+        private string _storageRackName;
+        private string _storageRackCode;
+        private int? _isArrive;
+        /// <summary>
+        /// 栏号(自增)
+        /// </summary>
+        public int id
 		{
 			set{ _id=value;}
 			get{return _id;}
@@ -163,8 +166,53 @@ namespace Model
 			set{ _reserved2=value;}
 			get{return _reserved2;}
 		}
-		#endregion Model
+        /// <summary>
+        /// 货架名称
+        /// </summary>
+        public string StorageRackName
+        {
+            get
+            {
+                return _storageRackName;
+            }
 
-	}
+            set
+            {
+                _storageRackName = value;
+            }
+        }
+        /// <summary>
+        /// 货架code
+        /// </summary>
+        public string StorageRackCode
+        {
+            get
+            {
+                return _storageRackCode;
+            }
+
+            set
+            {
+                _storageRackCode = value;
+            }
+        }
+        /// <summary>
+        /// 货物是否抵达
+        /// </summary>
+        public int? IsArrive
+        {
+            get
+            {
+                return _isArrive;
+            }
+
+            set
+            {
+                _isArrive = value;
+            }
+        }
+        #endregion Model
+
+    }
 }
 

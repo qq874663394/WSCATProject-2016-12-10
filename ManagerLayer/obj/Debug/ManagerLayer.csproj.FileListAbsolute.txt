@@ -1,4 +1,0 @@
-F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\ManagerLayer\bin\Debug\ManagerLayer.dll
-F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\ManagerLayer\bin\Debug\ManagerLayer.pdb
-F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\ManagerLayer\obj\Debug\ManagerLayer.dll
-F:\项目\WSCAT\2016-8-22更改结构\WSCATProject\ManagerLayer\obj\Debug\ManagerLayer.pdb
