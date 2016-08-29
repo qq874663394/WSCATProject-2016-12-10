@@ -16,5 +16,16 @@ namespace WSCATProject.Warehouse
         {
             InitializeComponent();
         }
+
+        private void WareHuseStorageRack_Load(object sender, EventArgs e)
+        {
+            comboBoxEx1.ValueMember = "";
+            comboBoxEx1.DisplayMember = "";
+        }
+
+        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
