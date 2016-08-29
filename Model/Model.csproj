@@ -40,33 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Areas.cs" />
-    <Compile Include="Base\BankAccount.cs" />
-    <Compile Include="Base\Borrow.cs" />
-    <Compile Include="Base\BaseStorageRack.cs" />
-    <Compile Include="Base\City.cs" />
-    <Compile Include="Base\Client.cs" />
-    <Compile Include="Base\ClientType.cs" />
-    <Compile Include="Base\Collection.cs" />
-    <Compile Include="Base\CollectionWait.cs" />
-    <Compile Include="Base\Department.cs" />
-    <Compile Include="Base\Discount.cs" />
-    <Compile Include="Base\Embezzle.cs" />
-    <Compile Include="Base\EmbezzleDetail.cs" />
-    <Compile Include="Base\Empolyee.cs" />
-    <Compile Include="Base\Log.cs" />
-    <Compile Include="Base\Material.cs" />
-    <Compile Include="Base\MaterialType.cs" />
-    <Compile Include="Base\OrderType.cs" />
-    <Compile Include="Base\OtherCost.cs" />
-    <Compile Include="Base\OtherInCost.cs" />
-    <Compile Include="Base\OtherInCostDetail.cs" />
-    <Compile Include="Base\PaymentWait.cs" />
-    <Compile Include="Base\Permission.cs" />
-    <Compile Include="Base\Profession.cs" />
-    <Compile Include="Base\ProjectCost.cs" />
-    <Compile Include="Base\ProjectInCost.cs" />
-    <Compile Include="Base\Serialization.cs" />
     <Compile Include="Base\BaseArea.cs" />
     <Compile Include="Base\BaseBankAccount.cs" />
     <Compile Include="Base\BaseBorrow.cs" />

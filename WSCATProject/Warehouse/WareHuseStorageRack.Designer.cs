@@ -39,6 +39,10 @@
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.SuspendLayout();
             // 
             // labelX1
@@ -97,6 +101,8 @@
             this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
+            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.comboItem1});
             this.comboBoxEx1.Location = new System.Drawing.Point(65, 26);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(107, 21);
@@ -111,11 +117,14 @@
             this.comboBoxEx2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx2.FormattingEnabled = true;
             this.comboBoxEx2.ItemHeight = 15;
+            this.comboBoxEx2.Items.AddRange(new object[] {
+            this.comboItem2});
             this.comboBoxEx2.Location = new System.Drawing.Point(243, 25);
             this.comboBoxEx2.Name = "comboBoxEx2";
             this.comboBoxEx2.Size = new System.Drawing.Size(122, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx2.TabIndex = 5;
+            this.comboBoxEx2.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx2_SelectedIndexChanged);
             // 
             // comboBoxEx3
             // 
@@ -124,11 +133,14 @@
             this.comboBoxEx3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx3.FormattingEnabled = true;
             this.comboBoxEx3.ItemHeight = 15;
+            this.comboBoxEx3.Items.AddRange(new object[] {
+            this.comboItem3});
             this.comboBoxEx3.Location = new System.Drawing.Point(65, 155);
             this.comboBoxEx3.Name = "comboBoxEx3";
             this.comboBoxEx3.Size = new System.Drawing.Size(107, 21);
             this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx3.TabIndex = 6;
+            this.comboBoxEx3.SelectedValueChanged += new System.EventHandler(this.comboBoxEx3_SelectedValueChanged);
             // 
             // comboBoxEx4
             // 
@@ -137,6 +149,8 @@
             this.comboBoxEx4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx4.FormattingEnabled = true;
             this.comboBoxEx4.ItemHeight = 15;
+            this.comboBoxEx4.Items.AddRange(new object[] {
+            this.comboItem4});
             this.comboBoxEx4.Location = new System.Drawing.Point(243, 155);
             this.comboBoxEx4.Name = "comboBoxEx4";
             this.comboBoxEx4.Size = new System.Drawing.Size(122, 21);
@@ -178,6 +192,22 @@
             this.checkBoxX1.TabIndex = 10;
             this.checkBoxX1.Text = "临时存放地";
             // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "请选择";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "请选择";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "请选择";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "请选择";
+            // 
             // WareHuseStorageRack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -214,5 +244,9 @@
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
     }
 }
