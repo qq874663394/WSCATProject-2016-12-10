@@ -25,10 +25,12 @@ namespace Model
 		private string _reserved1;
 		private string _reserved2;
 		private string _remark;
-		/// <summary>
-		/// 自增ID
-		/// </summary>
-		public int id
+        private string _goodsCode;
+        private string _defaultType;
+        /// <summary>
+        /// 自增ID 
+        /// </summary>
+        public int id
 		{
 			set{ _id=value;}
 			get{return _id;}
