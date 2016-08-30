@@ -1,0 +1,168 @@
+﻿using System;
+using System.Data;
+using System.Text;
+using System.Data.SqlClient;
+using Model;
+
+namespace BaseLayer
+{
+    /// <summary>
+    /// 数据访问类:T_WarehouseIn
+    /// </summary>
+    public partial class WarehouseInBase
+    {
+        /// <summary>
+        /// 获取数据列表
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
+        public DataSet GetList(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            try
+            {
+                strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
+                strSql.Append(" FROM T_WarehouseIn ");
+                if (strWhere.Trim() != "")
+                {
+                    strSql.Append(" where " + strWhere);
+                }
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            DataSet ds = null;
+            try
+            {
+                ds = DbHelperSQL.Query(strSql.ToString());
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
+            return ds;
+        }
+
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public int Add(WarehouseIn model)
+        {
+            StringBuilder strSql = new StringBuilder();
+            try
+            {
+                strSql.Append("insert into T_WarehouseIn(");
+                strSql.Append("code,goodsCode,defaultType,type,stock,operation,examine,remark,reserved1,reserved2,isClear,updateDate,state,date,purchaseCode,checkState)");
+                strSql.Append(" values (");
+                strSql.Append("@code,@goodsCode,@defaultType,@type,@stock,@operation,@examine,@remark,@reserved1,@reserved2,@isClear,@updateDate,@state,@date,@purchaseCode,@checkState)");
+                strSql.Append(";select @@IDENTITY");
+            }
+            catch
+            {
+                return -1;
+            }
+            SqlParameter[] parameters = new SqlParameter[14];
+            try
+            {
+                parameters[0] = new SqlParameter("@code", SqlDbType.NVarChar, 45);
+                parameters[1] = new SqlParameter("@goodsCode", SqlDbType.NVarChar, 80);
+                parameters[2] = new SqlParameter("@defaultType", SqlDbType.NVarChar, 30);
+                parameters[3] = new SqlParameter("@type", SqlDbType.NVarChar, 30);
+                parameters[4] = new SqlParameter("@stock", SqlDbType.NVarChar, 40);
+                parameters[5] = new SqlParameter("@operation", SqlDbType.NVarChar, 40);
+                parameters[6] = new SqlParameter("@examine", SqlDbType.NVarChar, 40);
+                parameters[7] = new SqlParameter("@remark", SqlDbType.NVarChar, 400);
+                parameters[8] = new SqlParameter("@reserved1", SqlDbType.NVarChar, 50);
+                parameters[9] = new SqlParameter("@reserved2", SqlDbType.NVarChar, 50);
+                parameters[10] = new SqlParameter("@isClear", SqlDbType.Int, 4);
+                parameters[11] = new SqlParameter("@updateDate", SqlDbType.DateTime);
+                parameters[12] = new SqlParameter("@state", SqlDbType.Int, 4);
+                parameters[13] = new SqlParameter("@date", SqlDbType.DateTime);
+                parameters[14] = new SqlParameter("@purchaseCode", SqlDbType.NVarChar, 45);
+                parameters[15] = new SqlParameter("@checkState", SqlDbType.Int, 4);
+            }
+            catch
+            {
+                return -2;
+            }
+            try
+            {
+                parameters[0].Value = model.code;
+                parameters[1].Value = model.GoodsCode;
+                parameters[2].Value = model.DefaultType;
+                parameters[3].Value = model.type;
+                parameters[4].Value = model.stock;
+                parameters[5].Value = model.operation;
+                parameters[6].Value = model.examine;
+                parameters[7].Value = model.remark;
+                parameters[8].Value = model.reserved1;
+                parameters[9].Value = model.reserved2;
+                parameters[10].Value = model.isClear;
+                parameters[11].Value = model.updateDate;
+                parameters[12].Value = model.state;
+                parameters[13].Value = model.date;
+                parameters[14].Value = model.purchaseCode;
+                parameters[15].Value = model.checkState;
+            }
+            catch
+            {
+                return -3;
+            }
+            int result = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
+
+            return result;
+        }
+        /// <summary>
+        /// 删除一条数据
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int deleteByCode(string code)
+        {
+            string deleteStr = "delete T_WarehouseIn where code = '" + code + "'";
+            int result = DbHelperSQL.ExecuteSql(deleteStr);
+            return result;
+        }
+        /// <summary>
+        /// 根据code更新某一条数据
+        /// </summary>
+        /// <param name="wi"></param>
+        /// <returns></returns>
+        public int update(WarehouseIn wi)
+        {
+            string strSql = "";
+            try
+            {
+                strSql = string.Format("update T_WarehouseIn set type='{1}',goodsCode='{2}'," +
+                    "defaultType='{3}',stock='{4}',operation='{5}',examine='{6}',state={7},date='{8}'" +
+                    "purchaseCode='{9}',checkState={10},isClear={11},updateDate='{12}',reserved1='{13}'" +
+                    "reserved2='{14}',remark='{15}' where code='{16}'",
+                    wi.type,
+                    wi.GoodsCode,
+                    wi.DefaultType,
+                    wi.stock,
+                    wi.operation,
+                    wi.examine,
+                    wi.state,
+                    wi.date,
+                    wi.purchaseCode,
+                    wi.checkState,
+                    wi.isClear,
+                    wi.updateDate,
+                    wi.reserved1,
+                    wi.reserved2,
+                    wi.remark,
+                    wi.code);
+            }
+            catch
+            {
+                return -1;
+            }
+            int result = DbHelperSQL.ExecuteSql(strSql);
+
+            return result;
+        }
+	}
+}
+
