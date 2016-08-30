@@ -23,16 +23,16 @@ namespace BaseLayer
             try
             {
                 strSql.Append("insert into T_WarehouseInDetail(");
-                strSql.Append("code,materiaName,materiaModel,materiaUnit,number,price,money,remark,reserved1,reserved2,isClear,barcode,rfid,updateDate,state,date)");
+                strSql.Append("code,materiaName,materiaModel,materiaUnit,number,price,money,remark,reserved1,reserved2,isClear,barcode,rfid,updateDate,state,date,warehouseCode,warehouseName,mainCode)");
                 strSql.Append(" values (");
-                strSql.Append("@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@state,@date)");
+                strSql.Append("@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@state,@date,@warehouseCode,@warehouseName,@mainCode)");
                 strSql.Append(";select @@IDENTITY");
             }
             catch
             {
                 return -1;
             }
-            SqlParameter[] parameters = new SqlParameter[16];
+            SqlParameter[] parameters = new SqlParameter[18];
             try
             {
                 parameters[0] = new SqlParameter("@code", SqlDbType.NVarChar, 45);
@@ -51,9 +51,11 @@ namespace BaseLayer
                 parameters[13] = new SqlParameter("@updateDate", SqlDbType.DateTime);
                 parameters[14] = new SqlParameter("@state", SqlDbType.Int, 4);
                 parameters[15] = new SqlParameter("@date", SqlDbType.DateTime);
-
+                parameters[16] = new SqlParameter("@warehouseCode", SqlDbType.NVarChar,45);
+                parameters[17] = new SqlParameter("@warehouseName", SqlDbType.NVarChar,40);
+                parameters[18] = new SqlParameter("@mainCode", SqlDbType.NVarChar, 45);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return -2;
             }
@@ -75,6 +77,9 @@ namespace BaseLayer
                 parameters[13].Value = model.updateDate;
                 parameters[14].Value = model.state;
                 parameters[15].Value = model.date;
+                parameters[16].Value = model.WarehouseCode;
+                parameters[17].Value = model.WarehouseName;
+                parameters[18].Value = model.MainCode;
             }
             catch
             {
@@ -106,11 +111,11 @@ namespace BaseLayer
             string updateStr = "";
             try
             {
-                updateStr = string.Format("update T_WarehouseInDetail set materiaName={0},"
-                    + "materiaModel={1},materiaUnit={2},number={3},price={4},money={5},barcode={6},"
-                    + "rfid={7},updateDate={8},state={9},date={10},isClear={11},remark={12},"
-                    + "reserved1={13},reserved2={14},storageRackName={15},storageRackCode={16},"
-                    + "isArrive={17} where code={18}",
+                updateStr = string.Format("update T_WarehouseInDetail set materiaName='{0}',"
+                    + "materiaModel='{1}',materiaUnit='{2}',number={3},price={4},money={5},barcode='{6}',"
+                    + "rfid='{7}',updateDate='{8}',state={9},date='{10}',isClear={11},remark='{12}',"
+                    + "reserved1='{13}',reserved2='{14}',storageRackName='{15}',storageRackCode='{16}',"
+                    + "isArrive={17},warehouseCode='{18}',warehouseName='{19}',mainCode='{20}' where code='{21}'",
                     wid.materiaName,
                     wid.materiaModel,
                     wid.materiaUnit,
@@ -129,6 +134,9 @@ namespace BaseLayer
                     wid.StorageRackName,
                     wid.StorageRackName,
                     wid.IsArrive,
+                    wid.WarehouseCode,
+                    wid.WarehouseName,
+                    wid.MainCode,
                     wid.code);
             }
             catch
@@ -137,6 +145,59 @@ namespace BaseLayer
             }
             int result = DbHelperSQL.ExecuteSql(updateStr);
             return result;
+        }
+
+        public DataSet getList(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            try
+            {
+                strSql.Append("select id,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
+                strSql.Append(" FROM T_WarehouseInDetail ");
+                if (strWhere.Trim() != "")
+                {
+                    strSql.Append(" where " + strWhere);
+                }
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            DataSet ds = null;
+            try
+            {
+                ds = DbHelperSQL.Query(strSql.ToString());
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
+            return ds;
+        }
+
+        public DataSet getListByMainCode(string mainCode)
+        {
+            StringBuilder strSql = new StringBuilder();
+            try
+            {
+                strSql.Append("select id,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
+                strSql.Append(" FROM T_WarehouseInDetail ");
+                strSql.Append(" where mainCode = '" + mainCode + "'");
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            DataSet ds = null;
+            try
+            {
+                ds = DbHelperSQL.Query(strSql.ToString());
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
+            return ds;
         }
 	}
 }
