@@ -6,28 +6,31 @@ namespace Model
 	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
-	public partial class WarehouseBreakageDetail
+	public partial class WarehouseAllotDetailDetail
 	{
-		public WarehouseBreakageDetail()
+		public WarehouseAllotDetailDetail()
 		{}
 		#region Model
-		private int _id;
 		private string _code;
+		private int _id;
 		private string _materialcode;
 		private string _materianame;
 		private string _materiamodel;
 		private string _materiaunit;
 		private decimal? _curnumber;
-		private decimal? _checknumber;
-		private decimal? _lostnumber;
-		private decimal? _price;
-		private decimal? _lostmoney;
-		private string _cause;
 		private int? _isclear;
-		private DateTime? _updatedate;
 		private string _reserved1;
 		private string _reserved2;
 		private string _remark;
+		private DateTime? _updatedate;
+		/// <summary>
+		/// 调拨编号
+		/// </summary>
+		public string code
+		{
+			set{ _code=value;}
+			get{return _code;}
+		}
 		/// <summary>
 		/// 栏号(自增)
 		/// </summary>
@@ -35,14 +38,6 @@ namespace Model
 		{
 			set{ _id=value;}
 			get{return _id;}
-		}
-		/// <summary>
-		/// 报损编号
-		/// </summary>
-		public string code
-		{
-			set{ _code=value;}
-			get{return _code;}
 		}
 		/// <summary>
 		/// 物料编号
@@ -63,7 +58,7 @@ namespace Model
 		/// <summary>
 		/// 规格型号
 		/// </summary>
-		public string materiamodel
+		public string materiaModel
 		{
 			set{ _materiamodel=value;}
 			get{return _materiamodel;}
@@ -71,58 +66,18 @@ namespace Model
 		/// <summary>
 		/// 单位
 		/// </summary>
-		public string materiaunit
+		public string materiaUnit
 		{
 			set{ _materiaunit=value;}
 			get{return _materiaunit;}
 		}
 		/// <summary>
-		/// 现有数量
+		/// 数量
 		/// </summary>
 		public decimal? curNumber
 		{
 			set{ _curnumber=value;}
 			get{return _curnumber;}
-		}
-		/// <summary>
-		/// 损坏数量
-		/// </summary>
-		public decimal? checkNumber
-		{
-			set{ _checknumber=value;}
-			get{return _checknumber;}
-		}
-		/// <summary>
-		/// 剩余数量
-		/// </summary>
-		public decimal? lostNumber
-		{
-			set{ _lostnumber=value;}
-			get{return _lostnumber;}
-		}
-		/// <summary>
-		/// 单价
-		/// </summary>
-		public decimal? price
-		{
-			set{ _price=value;}
-			get{return _price;}
-		}
-		/// <summary>
-		/// 盈亏金额
-		/// </summary>
-		public decimal? lostMoney
-		{
-			set{ _lostmoney=value;}
-			get{return _lostmoney;}
-		}
-		/// <summary>
-		/// 原因
-		/// </summary>
-		public string cause
-		{
-			set{ _cause=value;}
-			get{return _cause;}
 		}
 		/// <summary>
 		/// 是否删除
@@ -133,15 +88,7 @@ namespace Model
 			get{return _isclear;}
 		}
 		/// <summary>
-		/// 更改时间
-		/// </summary>
-		public DateTime? updateDate
-		{
-			set{ _updatedate=value;}
-			get{return _updatedate;}
-		}
-		/// <summary>
-		/// 预留字段
+		/// 预留字段1
 		/// </summary>
 		public string reserved1
 		{
@@ -149,7 +96,7 @@ namespace Model
 			get{return _reserved1;}
 		}
 		/// <summary>
-		/// 预留字段
+		/// 预留字段2
 		/// </summary>
 		public string reserved2
 		{
@@ -163,6 +110,14 @@ namespace Model
 		{
 			set{ _remark=value;}
 			get{return _remark;}
+		}
+		/// <summary>
+		/// 更改时间
+		/// </summary>
+		public DateTime? updateDate
+		{
+			set{ _updatedate=value;}
+			get{return _updatedate;}
 		}
 		#endregion Model
 

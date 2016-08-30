@@ -6,9 +6,9 @@ namespace Model
 	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
-	public partial class WarehouseAdjustPrice
+	public partial class WarehouseInventory
 	{
-		public WarehouseAdjustPrice()
+		public WarehouseInventory()
 		{}
 		#region Model
 		private int _id;
@@ -18,9 +18,9 @@ namespace Model
 		private DateTime? _date;
 		private string _operationman;
 		private string _checkman;
-		private int? _isclear=1;
-		private DateTime? _updatedata;
 		private string _remark;
+		private int? _isclear;
+		private DateTime? _updatedate;
 		private string _reserved1;
 		private string _reserved2;
 		/// <summary>
@@ -32,7 +32,7 @@ namespace Model
 			get{return _id;}
 		}
 		/// <summary>
-		/// 调价单号（生成）
+		/// 盘点单号（生成）
 		/// </summary>
 		public string code
 		{
@@ -56,7 +56,7 @@ namespace Model
 			get{return _stockname;}
 		}
 		/// <summary>
-		/// 调价日期
+		/// 盘点日期
 		/// </summary>
 		public DateTime? date
 		{
@@ -64,7 +64,7 @@ namespace Model
 			get{return _date;}
 		}
 		/// <summary>
-		/// 操作人
+		/// 盘点人
 		/// </summary>
 		public string operationMan
 		{
@@ -80,6 +80,14 @@ namespace Model
 			get{return _checkman;}
 		}
 		/// <summary>
+		/// 备注
+		/// </summary>
+		public string remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
+		}
+		/// <summary>
 		/// 是否删除
 		/// </summary>
 		public int? isClear
@@ -90,18 +98,10 @@ namespace Model
 		/// <summary>
 		/// 更改时间
 		/// </summary>
-		public DateTime? updateData
+		public DateTime? updateDate
 		{
-			set{ _updatedata=value;}
-			get{return _updatedata;}
-		}
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string remark
-		{
-			set{ _remark=value;}
-			get{return _remark;}
+			set{ _updatedate=value;}
+			get{return _updatedate;}
 		}
 		/// <summary>
 		/// 保留字段1

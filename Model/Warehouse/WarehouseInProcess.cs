@@ -1,8 +1,9 @@
+ï»¿
 using System;
 namespace Model
 {
 	/// <summary>
-	/// T_WarehouseProcess:ÊµÌåÀà(ÊôĞÔËµÃ÷×Ô¶¯ÌáÈ¡Êı¾İ¿â×Ö¶ÎµÄÃèÊöĞÅÏ¢)
+	/// é”€å”®è®¢å•æ˜ç»†è¡¨
 	/// </summary>
 	[Serializable]
 	public partial class WarehouseInProcess
@@ -20,7 +21,7 @@ namespace Model
 		private string _remark;
 		private DateTime? _updatedate;
 		/// <summary>
-		/// ×ÔÔöID
+		/// è‡ªå¢ID
 		/// </summary>
 		public int id
 		{
@@ -28,7 +29,7 @@ namespace Model
 			get{return _id;}
 		}
 		/// <summary>
-		/// ÊÇ·ñÉ¾³ı
+		/// æ˜¯å¦åˆ é™¤
 		/// </summary>
 		public int? isClear
 		{
@@ -36,7 +37,7 @@ namespace Model
 			get{return _isclear;}
 		}
 		/// <summary>
-		/// ±àºÅCode
+		/// ç¼–å·Code
 		/// </summary>
 		public string code
 		{
@@ -44,7 +45,7 @@ namespace Model
 			get{return _code;}
 		}
 		/// <summary>
-		/// Èë¿âÃ÷Ï¸Code
+		/// å…¥åº“æ˜ç»†Code
 		/// </summary>
 		public string warehouseInDetailCode
 		{
@@ -52,7 +53,7 @@ namespace Model
 			get{return _warehouseindetailcode;}
 		}
 		/// <summary>
-		/// ´´½¨Ê±¼ä
+		/// åˆ›å»ºæ—¶é—´
 		/// </summary>
 		public DateTime? createDatetime
 		{
@@ -60,7 +61,7 @@ namespace Model
 			get{return _createdatetime;}
 		}
 		/// <summary>
-		/// Ëù×ö²Ù×÷
+		/// æ‰€åšæ“ä½œ
 		/// </summary>
 		public string Operator
 		{
@@ -68,7 +69,7 @@ namespace Model
 			get{return _operator;}
 		}
 		/// <summary>
-		/// ²Ù×÷ÈË
+		/// æ“ä½œäºº
 		/// </summary>
 		public string operatorMan
 		{
@@ -76,7 +77,7 @@ namespace Model
 			get{return _operatorman;}
 		}
 		/// <summary>
-		/// ±¸×¢
+		/// å¤‡æ³¨
 		/// </summary>
 		public string remark
 		{
@@ -84,7 +85,7 @@ namespace Model
 			get{return _remark;}
 		}
 		/// <summary>
-		/// ¸üĞÂÊ±¼ä
+		/// æ›´æ–°æ—¶é—´
 		/// </summary>
 		public DateTime? updateDate
 		{

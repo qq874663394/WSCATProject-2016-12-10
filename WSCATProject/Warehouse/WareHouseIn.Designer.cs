@@ -31,13 +31,13 @@
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.cangku = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.griCoulumcangku = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.griCoulumhuojia = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -364,8 +364,8 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.cangku);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.superGridControl1.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControl1.Size = new System.Drawing.Size(1137, 292);
@@ -417,11 +417,11 @@
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
             // 
-            // cangku
+            // griCoulumcangku
             // 
-            this.cangku.DataPropertyName = "";
-            this.cangku.HeaderText = "仓库名称";
-            this.cangku.Name = "";
+            this.griCoulumcangku.DataPropertyName = "";
+            this.griCoulumcangku.HeaderText = "仓库名称";
+            this.griCoulumcangku.Name = "griCoulumcangku";
             // 
             // gridColumn5
             // 
@@ -453,10 +453,11 @@
             this.gridColumn9.HeaderText = "备注";
             this.gridColumn9.Name = "gridColumn9";
             // 
-            // gridColumn10
+            // griCoulumhuojia
             // 
-            this.gridColumn10.HeaderText = "货架";
-            this.gridColumn10.Name = "gridColumn10";
+            this.griCoulumhuojia.HeaderText = "货架/排/格";
+            this.griCoulumhuojia.Name = "griCoulumhuojia";
+            this.griCoulumhuojia.Width = 200;
             // 
             // gridColumn11
             // 
@@ -501,13 +502,13 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn cangku;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumcangku;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumhuojia;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
     }
 }

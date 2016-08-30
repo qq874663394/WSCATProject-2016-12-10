@@ -6,14 +6,14 @@ namespace Model
 	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
-	public partial class WarehouseBreakageDetail
+	public partial class WarehouseInventoryDetail
 	{
-		public WarehouseBreakageDetail()
+		public WarehouseInventoryDetail()
 		{}
 		#region Model
-		private int _id;
 		private string _code;
-		private string _materialcode;
+		private int _id;
+		private int? _materialcode;
 		private string _materianame;
 		private string _materiamodel;
 		private string _materiaunit;
@@ -23,11 +23,19 @@ namespace Model
 		private decimal? _price;
 		private decimal? _lostmoney;
 		private string _cause;
-		private int? _isclear;
+		private int? _isclear=1;
 		private DateTime? _updatedate;
 		private string _reserved1;
 		private string _reserved2;
 		private string _remark;
+		/// <summary>
+		/// 盘点编号
+		/// </summary>
+		public string code
+		{
+			set{ _code=value;}
+			get{return _code;}
+		}
 		/// <summary>
 		/// 栏号(自增)
 		/// </summary>
@@ -37,17 +45,9 @@ namespace Model
 			get{return _id;}
 		}
 		/// <summary>
-		/// 报损编号
+		/// 物料ID
 		/// </summary>
-		public string code
-		{
-			set{ _code=value;}
-			get{return _code;}
-		}
-		/// <summary>
-		/// 物料编号
-		/// </summary>
-		public string materialCode
+		public int? materialCode
 		{
 			set{ _materialcode=value;}
 			get{return _materialcode;}
@@ -63,7 +63,7 @@ namespace Model
 		/// <summary>
 		/// 规格型号
 		/// </summary>
-		public string materiamodel
+		public string materiaModel
 		{
 			set{ _materiamodel=value;}
 			get{return _materiamodel;}
@@ -71,13 +71,13 @@ namespace Model
 		/// <summary>
 		/// 单位
 		/// </summary>
-		public string materiaunit
+		public string materiaUnit
 		{
 			set{ _materiaunit=value;}
 			get{return _materiaunit;}
 		}
 		/// <summary>
-		/// 现有数量
+		/// 账面数量
 		/// </summary>
 		public decimal? curNumber
 		{
@@ -85,7 +85,7 @@ namespace Model
 			get{return _curnumber;}
 		}
 		/// <summary>
-		/// 损坏数量
+		/// 盘点数量
 		/// </summary>
 		public decimal? checkNumber
 		{
@@ -93,7 +93,7 @@ namespace Model
 			get{return _checknumber;}
 		}
 		/// <summary>
-		/// 剩余数量
+		/// 盈亏数量
 		/// </summary>
 		public decimal? lostNumber
 		{
@@ -141,7 +141,7 @@ namespace Model
 			get{return _updatedate;}
 		}
 		/// <summary>
-		/// 预留字段
+		/// 预留字段1
 		/// </summary>
 		public string reserved1
 		{
@@ -149,7 +149,7 @@ namespace Model
 			get{return _reserved1;}
 		}
 		/// <summary>
-		/// 预留字段
+		/// 预留字段2
 		/// </summary>
 		public string reserved2
 		{
