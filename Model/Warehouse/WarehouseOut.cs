@@ -19,17 +19,24 @@ namespace Model
 		private string _examine;
 		private int? _isclear;
 		private DateTime? _updatedate;
-		private int? _warehouseoutstate;
+		private int? _state;
 		private string _salescode;
 		private DateTime? _date;
 		private int? _checkstate;
 		private string _remark;
 		private string _reserved1;
 		private string _reserved2;
-		/// <summary>
-		/// 自增ID
-		/// </summary>
-		public int id
+        private string _delivery;
+        private string _clientCode;
+        private string _expressOdd;
+        private string _expressMan;
+        private string _expressPhone;
+        private string _defaultType;
+
+        /// <summary>
+        /// 自增ID
+        /// </summary>
+        public int id
 		{
 			set{ _id=value;}
 			get{return _id;}
@@ -93,10 +100,10 @@ namespace Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? warehouseOutState
+		public int? state
 		{
-			set{ _warehouseoutstate=value;}
-			get{return _warehouseoutstate;}
+			set{ _state=value;}
+			get{return _state;}
 		}
 		/// <summary>
 		/// 销售单Code
@@ -146,8 +153,98 @@ namespace Model
 			set{ _reserved2=value;}
 			get{return _reserved2;}
 		}
-		#endregion Model
+        /// <summary>
+        /// 配送方式
+        /// </summary>
+        public string Delivery
+        {
+            get
+            {
+                return _delivery;
+            }
 
-	}
+            set
+            {
+                _delivery = value;
+            }
+        }
+        /// <summary>
+        /// 客户code
+        /// </summary>
+        public string ClientCode
+        {
+            get
+            {
+                return _clientCode;
+            }
+
+            set
+            {
+                _clientCode = value;
+            }
+        }
+        /// <summary>
+        /// 快递单号
+        /// </summary>
+        public string ExpressOdd
+        {
+            get
+            {
+                return _expressOdd;
+            }
+
+            set
+            {
+                _expressOdd = value;
+            }
+        }
+        /// <summary>
+        /// 快递员
+        /// </summary>
+        public string ExpressMan
+        {
+            get
+            {
+                return _expressMan;
+            }
+
+            set
+            {
+                _expressMan = value;
+            }
+        }
+        /// <summary>
+        /// 快递电话
+        /// </summary>
+        public string ExpressPhone
+        {
+            get
+            {
+                return _expressPhone;
+            }
+
+            set
+            {
+                _expressPhone = value;
+            }
+        }
+        /// <summary>
+        /// 默认类型
+        /// </summary>
+        public string DefaultType
+        {
+            get
+            {
+                return _defaultType;
+            }
+
+            set
+            {
+                _defaultType = value;
+            }
+        }
+        #endregion Model
+
+    }
 }
 
