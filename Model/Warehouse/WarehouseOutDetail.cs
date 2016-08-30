@@ -23,16 +23,19 @@ namespace Model
 		private string _barcode;
 		private string _rfid;
 		private DateTime? _updatedate;
-		private int? _warehouseoutdetailstate;
+		private int? _state;
 		private DateTime? _date;
 		private int? _isclear;
 		private string _reserved1;
 		private string _reserved2;
 		private string _remark;
-		/// <summary>
-		/// 出库编号
-		/// </summary>
-		public string code
+        private string _storageRackName;
+        private string _storageRackCode;
+        private string _mainCode;
+        /// <summary>
+        /// 出库编号
+        /// </summary>
+        public string code
 		{
 			set{ _code=value;}
 			get{return _code;}
@@ -46,7 +49,7 @@ namespace Model
 			get{return _id;}
 		}
 		/// <summary>
-		/// 
+		/// 物料code
 		/// </summary>
 		public string materialCode
 		{
@@ -54,7 +57,7 @@ namespace Model
 			get{return _materialcode;}
 		}
 		/// <summary>
-		/// 
+		/// 物料名称
 		/// </summary>
 		public string materiaName
 		{
@@ -62,7 +65,7 @@ namespace Model
 			get{return _materianame;}
 		}
 		/// <summary>
-		/// 
+		/// 物料类型
 		/// </summary>
 		public string materiaModel
 		{
@@ -70,7 +73,7 @@ namespace Model
 			get{return _materiamodel;}
 		}
 		/// <summary>
-		/// 
+		/// 物料单位
 		/// </summary>
 		public string materiaUnit
 		{
@@ -78,7 +81,7 @@ namespace Model
 			get{return _materiaunit;}
 		}
 		/// <summary>
-		/// 
+		/// 数量
 		/// </summary>
 		public decimal? number
 		{
@@ -86,7 +89,7 @@ namespace Model
 			get{return _number;}
 		}
 		/// <summary>
-		/// 
+		/// 单价
 		/// </summary>
 		public decimal? price
 		{
@@ -94,7 +97,7 @@ namespace Model
 			get{return _price;}
 		}
 		/// <summary>
-		/// 
+		/// 金额
 		/// </summary>
 		public decimal? money
 		{
@@ -102,7 +105,7 @@ namespace Model
 			get{return _money;}
 		}
 		/// <summary>
-		/// 
+		/// 条码
 		/// </summary>
 		public string barcode
 		{
@@ -110,7 +113,7 @@ namespace Model
 			get{return _barcode;}
 		}
 		/// <summary>
-		/// 
+		/// rfid
 		/// </summary>
 		public string rfid
 		{
@@ -126,12 +129,12 @@ namespace Model
 			get{return _updatedate;}
 		}
 		/// <summary>
-		/// 
+		/// 状态
 		/// </summary>
-		public int? warehouseOutDetailState
+		public int? state
 		{
-			set{ _warehouseoutdetailstate=value;}
-			get{return _warehouseoutdetailstate;}
+			set{ _state=value;}
+			get{return _state;}
 		}
 		/// <summary>
 		/// 出库时间
@@ -142,7 +145,7 @@ namespace Model
 			get{return _date;}
 		}
 		/// <summary>
-		/// 
+		/// 是否清除
 		/// </summary>
 		public int? isClear
 		{
@@ -150,7 +153,7 @@ namespace Model
 			get{return _isclear;}
 		}
 		/// <summary>
-		/// 
+		/// 备用字段1
 		/// </summary>
 		public string reserved1
 		{
@@ -158,7 +161,7 @@ namespace Model
 			get{return _reserved1;}
 		}
 		/// <summary>
-		/// 
+		/// 备用字段2
 		/// </summary>
 		public string reserved2
 		{
@@ -166,15 +169,60 @@ namespace Model
 			get{return _reserved2;}
 		}
 		/// <summary>
-		/// 
+		/// 备注
 		/// </summary>
 		public string remark
 		{
 			set{ _remark=value;}
 			get{return _remark;}
 		}
-		#endregion Model
+        /// <summary>
+        /// 货架名称
+        /// </summary>
+        public string StorageRackName
+        {
+            get
+            {
+                return _storageRackName;
+            }
 
-	}
+            set
+            {
+                _storageRackName = value;
+            }
+        }
+        /// <summary>
+        /// 货架code
+        /// </summary>
+        public string StorageRackCode
+        {
+            get
+            {
+                return _storageRackCode;
+            }
+
+            set
+            {
+                _storageRackCode = value;
+            }
+        }
+        /// <summary>
+        /// 主表code
+        /// </summary>
+        public string MainCode
+        {
+            get
+            {
+                return _mainCode;
+            }
+
+            set
+            {
+                _mainCode = value;
+            }
+        }
+        #endregion Model
+
+    }
 }
 
