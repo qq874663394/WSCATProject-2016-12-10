@@ -407,7 +407,7 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.DataPropertyName = "materialName";
+            this.gridColumn2.DataPropertyName = "materiaName";
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
             // 

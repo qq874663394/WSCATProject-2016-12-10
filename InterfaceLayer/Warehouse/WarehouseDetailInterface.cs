@@ -9,7 +9,7 @@ using Model;
 
 namespace InterfaceLayer.Warehouse
 {
-    class WarehouseDetailInterface
+   public  class WarehouseDetailInterface
     {
         WarehouseDetailLogic wdl = new WarehouseDetailLogic();
         /// <summary>

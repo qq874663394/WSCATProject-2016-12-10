@@ -589,6 +589,7 @@ namespace WSCATProject.Buys
             this.商品入库ToolStripMenuItem.Name = "商品入库ToolStripMenuItem";
             this.商品入库ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.商品入库ToolStripMenuItem.Text = "商品入库";
+            this.商品入库ToolStripMenuItem.Click += new System.EventHandler(this.商品入库ToolStripMenuItem_Click);
             // 
             // PayBuySelect
             // 

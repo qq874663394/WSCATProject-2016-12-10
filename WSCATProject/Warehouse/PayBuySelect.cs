@@ -21,7 +21,7 @@ namespace WSCATProject.Buys
         //SellManager sm = new SellManager();
         //ConllectionWaitManager cwm = new ConllectionWaitManager();
         WarehouseInterface ware = new WarehouseInterface();
-            DataTable dt = null;
+        DataTable dt = null;
 
         public string whereField;
         public string orderField;
@@ -173,7 +173,7 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.ActiveRowIndicatorStyle = ActiveRowIndicatorStyle.None;
             toolStripComboBox1.SelectedIndex = 0;
             toolStripComboBox2.SelectedIndex = 0;
-           
+
         }
         /// <summary>
         /// 快捷搜索下拉框功能实现
@@ -531,67 +531,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    toolStripComboBox4.SelectedIndex = 0;
-                    superGridControl1.PrimaryGrid.DataSource = null;
-                    superGridControl1.PrimaryGrid.Columns.Clear();
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "id";
-                    gc.Name = "id";
-                    gc.HeaderText = "ID";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "code";
-                    gc.Name = "code";
-                    gc.HeaderText = "入货单号";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "type";
-                    gc.Name = "type";
-                    gc.HeaderText = "单据类型";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "stock";
-                    gc.Name = "stock";
-                    gc.HeaderText = "仓库";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "purchaseCode";
-                    gc.Name = "purchaseCode";
-                    gc.HeaderText = "采购单号";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "date";
-                    gc.Name = "date";
-                    gc.HeaderText = "开单时间";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "warehouseInState";
-                    gc.Name = "warehouseInState";
-                    gc.HeaderText = "单据状态";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "operation";
-                    gc.Name = "operation";
-                    gc.HeaderText = "入库员";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "examine";
-                    gc.Name = "examine";
-                    gc.HeaderText = "审核人";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    dt = ware.getWarehouseInList("").Tables[0];
-                    superGridControl1.PrimaryGrid.DataSource = dt;
-                    whereField = "单据日期";
-                    orderField = "ID";
+                    BanDWareHoues("");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -1345,6 +1285,7 @@ namespace WSCATProject.Buys
             新增物料信息ToolStripMenuItem.Visible = false;
             销售审核ToolStripMenuItem.Visible = false;
             欠货补货销售ToolStripMenuItem.Visible = false;
+            商品入库ToolStripMenuItem.Visible = false;
             string cb2 = toolStripComboBox2.Text;
             switch (cb2)
             {
@@ -1400,6 +1341,43 @@ namespace WSCATProject.Buys
                     break;
                 case "其他收货单":
                     break;
+                case "入库开单":
+                    if (superGridControl1.PrimaryGrid.GetSelectedRows() != null)
+                    {
+                        SelectedElementCollection cols = superGridControl1.PrimaryGrid.GetSelectedRows();
+                        if (cols.Count > 0)
+                        {
+                            GridRow rows = cols[0] as GridRow;
+                            string shengh = rows.Cells["state"].Value.ToString();
+                            //待入库查看
+                            if (shengh == "0")
+                            {
+                                商品入库ToolStripMenuItem.Visible = true;
+                            }
+                            //部分入库查看
+                            if (shengh == "1")
+                            {
+                                商品入库ToolStripMenuItem.Visible = true;
+                            }
+                            //已完成查看
+                            if (shengh == "2")
+                            {
+                                商品入库ToolStripMenuItem.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("请选择要审核的数据行！");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("请选择要审核的数据行！");
+                    }
+                    break;
+                case "出库开单":
+                    break;
+
                 case "其他发货单":
                     break;
                 case "领料单":
@@ -1623,8 +1601,8 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "warehouseInState";
-            gc.Name = "warehouseInState";
+            gc.DataPropertyName = "state";
+            gc.Name = "state";
             gc.HeaderText = "单据状态";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
@@ -1650,6 +1628,60 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.DataSource = dt;
             whereField = "单据日期";
             orderField = "ID";
+        }
+
+        private void 商品入库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (superGridControl1.PrimaryGrid.GetSelectedRows() != null)
+                {
+
+                    SelectedElementCollection cols = superGridControl1.PrimaryGrid.GetSelectedRows();
+                    if (cols.Count > 0)
+                    {
+                        GridRow rows = cols[0] as GridRow;
+                        string shengh = rows.Cells["state"].Value.ToString();
+                        //待入库查看
+                        if (shengh == "0")
+                        {
+                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            ware.WareHouseModel = rows;
+                            ware.State = 0;
+                            ware.Show();
+                        }
+                        //部分入库查看
+                        if (shengh == "1")
+                        {
+                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            ware.WareHouseModel = rows;
+                            ware.State = 1;
+                            ware.Show();
+                        }
+                        //已完成查看
+                        if (shengh == "2")
+                        {
+                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            ware.WareHouseModel = rows;
+                            ware.State = 2;
+                            ware.Show();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("请选择要审核的数据行！");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择要审核的数据行！");
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

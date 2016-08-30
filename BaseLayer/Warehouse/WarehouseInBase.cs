@@ -21,7 +21,7 @@ namespace BaseLayer
             StringBuilder strSql = new StringBuilder();
             try
             {
-                strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,warehouseInState,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
+                strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
                 strSql.Append(" FROM T_WarehouseIn ");
                 if (strWhere.Trim() != "")
                 {

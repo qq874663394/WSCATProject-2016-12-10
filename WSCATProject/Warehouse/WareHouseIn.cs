@@ -49,7 +49,26 @@ namespace WSCATProject.WareHouse
             get { return _ge; }
             set { _ge = value; }
         }
+        /// <summary>
+        /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
+        /// </summary>
+        public int State
+        {
+            get { return _state;}
+            set {_state = value;}
+        }
+        /// <summary>
+        /// 保存仓库商品明细
+        /// </summary>
+        public GridRow WareHouseModel
+        {
+            get{ return _wareHouseModel;}
+            set{ _wareHouseModel = value;}
+        }
         #endregion
+
+        CodingHelper ch = new CodingHelper();
+        InterfaceLayer.Warehouse.WarehouseDetailInterface waredeta = new WarehouseDetailInterface();
 
         #region 数据字段
         /// <summary>
@@ -64,7 +83,14 @@ namespace WSCATProject.WareHouse
         /// 点击的项,1为仓库,2供应商
         /// </summary>
         private int _Click = 0;
-
+        /// <summary>
+        /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
+        /// </summary>
+        private int _state;
+        /// <summary>
+        /// 保存仓库商品明细
+        /// </summary>
+        private GridRow _wareHouseModel;
         #endregion
 
         private void StockIn_Load(object sender, EventArgs e)
@@ -77,7 +103,6 @@ namespace WSCATProject.WareHouse
             gdiehuojia.ButtonCustom.Visible = true;
             gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
-           
             //StorageManager sm = new StorageManager();//仓库
             //SupplierManager supply = new SupplierManager();//供应商
             //_AllStorage = sm.GetList("");
@@ -95,23 +120,60 @@ namespace WSCATProject.WareHouse
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            CodingHelper ch = new CodingHelper();
-            try
+            //try
+            //{
+            //    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+            //    DataTable dt = new DataTable();
+            //  // DataTable dt = ch.DataTableReCoding(p.selectInMaterial());
+            //    this.superGridControl1.PrimaryGrid.DataSource = dt;
+            //    labtextboxTop5.Text = dt.Rows[0]["code"].ToString();
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("错误代码:4011;销售单数据为空,无法绑定数据,请检查");
+            //    Close();
+            //}
+
+            //未入库进行查看的时候
+            if (_state == 1)
             {
-                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-                DataTable dt = ch.DataTableReCoding(p.selectInMaterial());
-                this.superGridControl1.PrimaryGrid.DataSource = dt;
-                labtextboxTop5.Text = dt.Rows[0]["code"].ToString();
-            }
-            catch
-            {
-                MessageBox.Show("错误代码:4011;销售单数据为空,无法绑定数据,请检查");
-                Close();
+                if (_wareHouseModel != null)
+                {
+                    try
+                    {
+                        //textBoxOddNumbers.Text = _wareHouseModel["Sell_Code"].Value.ToString();
+                        //this.dateTimePicker1.Value = Convert.ToDateTime(_wareHouseModel["Sell_Date"].Value);
+                        //this.comboBoxEx.Text = _wareHouseModel["Sell_TransportType"].Value.ToString();
+                        //this.labtextboxBotton3.Text = _wareHouseModel["Sell_Operation"].Value.ToString();
+                        //this.labtextboxBotton4.Text = _wareHouseModel["Sell_Auditman"].Value.ToString();
+                        //this.labtextboxBotton2.Text = _wareHouseModel["Sell_Remark"].Value.ToString();
+                        //this.textBoxX2.Text = _wareHouseModel["Sell_PayMathod"].Value.ToString();
+                        //this.textBoxX3.Text = _wareHouseModel["Sell_OddMoney"].Value.ToString();
+                        //labtextboxTop4.Text = _wareHouseModel["Sell_AccountCode"].Value.ToString();
+                        //this.labtextboxTop3.Text = _wareHouseModel["Sell_InMoney"].Value.ToString();
+                        //this.labtextboxTop5.Text = _wareHouseModel["Sell_LastMoney"].Value.ToString();
+                        //this.labtextboxTop7.Text = _wareHouseModel["Sell_Address"].Value.ToString();
+                        //this.comboBoxEx1.Text = _wareHouseModel["Sell_fukuanfangshi"].Value.ToString();
+                        //this.labtextboxTop8.Text = _wareHouseModel["Sell_LinkMan"].Value.ToString();
+                        //this.labtextboxBotton1.Text = _wareHouseModel["Sell_Salesman"].Value.ToString();
+                        //this.labtextboxTop2.Text = _wareHouseModel["Sell_ClientName"].Value.ToString();
+                        //this.labtextboxTop9.Text = _wareHouseModel["Sell_CliPhone"].Value.ToString();
+                        superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                        superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
+                        superGridControl1.PrimaryGrid.EnsureVisible();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
+
             }
 
 
         }
-
 
         /// <summary>
         /// 点击panel隐藏扩展panel
