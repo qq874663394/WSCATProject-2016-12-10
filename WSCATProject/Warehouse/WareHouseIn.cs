@@ -25,24 +25,70 @@ namespace WSCATProject.WareHouse
             InitializeComponent();
         }
         #region 仓库、货架、排、格所需的参数
+        /// <summary>
+        /// 仓库code
+        /// </summary>
+        private string _cangkucode;
+        public string StorageCode
+        {
+            get { return _cangkucode; }
+            set { _cangkucode = value; }
+        }
+       /// <summary>
+       /// 仓库名称
+       /// </summary>
         private string _cangku;
         public string Storage
         {
             get { return _cangku; }
             set { _cangku = value; }
         }
+        /// <summary>
+        /// 货架code
+        /// </summary>
+        private string _huojiacode;
+        public string StorageRackCode
+        {
+            get { return _huojiacode; }
+            set { _huojiacode = value; }
+        }
+        //货架名称
         private string _huojia;
         public string StorageRack
         {
             get { return _huojia; }
             set { _huojia = value; }
         }
+        /// <summary>
+        /// 排code
+        /// </summary>
+        private string _paicode;
+        public string StoragePaiCode
+        {
+            get { return _paicode; }
+            set { _paicode = value; }
+        }
+        /// <summary>
+        /// 排名称
+        /// </summary>
         private string _pai;
         public string StoragePai
         {
             get { return _pai; }
             set { _pai = value; }
         }
+        /// <summary>
+        /// 格子code
+        /// </summary>
+        private string _gecode;
+        public string StorageGeCode
+        {
+            get { return _gecode; }
+            set { _gecode = value; }
+        }
+        /// <summary>
+        /// 格子名称
+        /// </summary>
         private string _ge;
         public string StorageGe
         {
@@ -52,16 +98,13 @@ namespace WSCATProject.WareHouse
         #endregion
 
         #region 数据字段
-        /// <summary>
-        /// 所有仓库列表
-        /// </summary>
-        private DataSet _AllStorage = null;
+
         /// <summary>
         /// 所有供应商
         /// </summary>
         private DataTable _AllSupply = null;
         /// <summary>
-        /// 点击的项,1为仓库,2供应商
+        /// 点击的项,1供应商
         /// </summary>
         private int _Click = 0;
 
@@ -79,11 +122,9 @@ namespace WSCATProject.WareHouse
             gdiehuojia.ButtonCustom.Visible = true;
             gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
-           
-            //StorageManager sm = new StorageManager();//仓库
-            //SupplierManager supply = new SupplierManager();//供应商
-            //_AllStorage = sm.GetList("");
-            //_AllSupply = supply.SelSupplierTable();
+            // SupplierManager supply = new SupplierManager();
+            //_AllSupply = supply.SelSupplierTable();//供应商
+
             PurchaseBase p = new PurchaseBase();
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
@@ -110,8 +151,6 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("错误代码:4011;销售单数据为空,无法绑定数据,请检查");
                 Close();
             }
-
-
         }
 
 
@@ -127,39 +166,13 @@ namespace WSCATProject.WareHouse
 
         #region 初始化数据
         /// <summary>
-        /// 初始化仓库列和数据
-        /// </summary>
-        private void InitStorageList()
-        {
-            if (_Click != 1)
-            {
-                _Click = 1;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "St_Code";
-                dgvc.HeaderText = "编码";
-                dgvc.DataPropertyName = "St_Code";
-                dataGridViewFujia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "St_Name";
-                dgvc.HeaderText = "仓库名称";
-                dgvc.DataPropertyName = "St_Name";
-                dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(672, 115);//仓库的位置
-                //dataGridViewFujia.DataSource = _AllStorage.Tables[0];
-            }
-        }
-        /// <summary>
         /// 初始化供应商
         /// </summary>
         private void InitSupply()
         {
-            if (_Click != 2)
+            if (_Click != 1)
             {
-                _Click = 2;
+                _Click = 1;
                 dataGridViewFujia.DataSource = null;
                 dataGridViewFujia.Columns.Clear();
 
@@ -185,19 +198,10 @@ namespace WSCATProject.WareHouse
         //供应商图标的点击事件
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (_Click != 2)
-            {
-                InitSupply();
-                _Click = 3;
-            }
-        }
-        //仓库图标的点击事件
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
             if (_Click != 1)
             {
-                InitStorageList();
-                _Click = 3;
+                InitSupply();
+                _Click = 2;
             }
         }
         #endregion
@@ -210,20 +214,12 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //仓库信息
-            if (_Click == 1)
-            {
-                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["St_Name"].Value.ToString();
-                labtextboxTop3.Text = name;
-                resizablePanel1.Visible = false;
-            }
-
             //供应商
-            if (_Click == 2)
+            if (_Click == 1)
             {
                 // string code = dataGridViewFujia.Rows[e.RowIndex].Cells["Su_Code"].Value.ToString();
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["Su_Name"].Value.ToString();
-                labtextboxTop2.Text = name;
+                labtextboxTop3.Text = name;
                 resizablePanel1.Visible = false;
             }
         }
@@ -249,11 +245,11 @@ namespace WSCATProject.WareHouse
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);
                 warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton3.Text);
                 warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
-                warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
+               // warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
                 warehouseIn.state = 1;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
-                warehouseIn.type = XYEEncoding.strCodeHex(labtextboxTop1.Text);
+                warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx1.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
             }
             catch (Exception ex)
@@ -287,8 +283,10 @@ namespace WSCATProject.WareHouse
                     WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumn7"].Value);
                     WarehouseIndetail.remark = gr["gridColumn9"].Value == null ?
                      "" : XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString());
-                    WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(gr["griCoulumhuojia"].Value.ToString());
-
+                    WarehouseIndetail.WarehouseCode =XYEEncoding.strCodeHex( StorageCode);//仓库code
+                    WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
+                    WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
+                    WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
                     WarehouseIndetail.reserved1 = "";
                     WarehouseIndetail.reserved2 = "";
                     WarehouseIndetail.rfid = "";
@@ -356,7 +354,7 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         protected void Gdiec_ButtonCustomClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(labtextboxTop2.Text))
+            if (string.IsNullOrWhiteSpace(labtextboxTop3.Text))
             {
                 MessageBox.Show("请先选择供应商:");
                 return;
@@ -372,6 +370,5 @@ namespace WSCATProject.WareHouse
             }
 
         }
-
     }
 }

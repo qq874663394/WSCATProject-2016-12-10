@@ -15,10 +15,13 @@ namespace WSCATProject.Warehouse
 {
     public partial class WareHuseStorageRack : Form
     {
+
         public WareHuseStorageRack()
         {
             InitializeComponent();
         }
+
+        #region  绑定数据到下拉框
 
         private void WareHuseStorageRack_Load(object sender, EventArgs e)
         {
@@ -93,6 +96,7 @@ namespace WSCATProject.Warehouse
             comboBoxEx4.ValueMember = "code";
             comboBoxEx4.DataSource = dt;
         }
+        #endregion
 
         /// <summary>
         /// 确定
@@ -102,9 +106,13 @@ namespace WSCATProject.Warehouse
         private void buttonX1_Click(object sender, EventArgs e)
         {
             WareHouseIn whi = (WareHouseIn)this.Owner;
+            whi.StorageCode = comboBoxEx1.SelectedValue.ToString();
             whi.Storage = comboBoxEx1.Text;
+            whi.StorageRackCode = comboBoxEx2.SelectedValue.ToString();
             whi.StorageRack = comboBoxEx2.Text;
+            whi.StoragePaiCode = comboBoxEx3.SelectedValue.ToString();
             whi.StoragePai = comboBoxEx3.Text;
+            whi.StorageGeCode = comboBoxEx4.SelectedValue.ToString();
             whi.StorageGe = comboBoxEx4.Text;
             Close();
             Dispose();
