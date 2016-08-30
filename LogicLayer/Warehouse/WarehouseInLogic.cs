@@ -252,5 +252,39 @@ namespace LogicLayer
                 return result;
             }
         }
+
+        public int update(WarehouseIn wi)
+        {
+            if(wi == null)
+            {
+                return -7;
+            }
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            int result = warehouseInBase.update(wi);
+
+            //添加日志
+            LogBase lb = new LogBase();
+            log log = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "更新入库表信息",
+                result = result,
+            };
+            if (result > 0)
+            {
+                log.operationContent = "更新T_WarehouseIn表的数据,code为:" + wi.code;
+                lb.Add(log);
+            }
+            else
+            {
+                log.operationContent = "更新T_WarehouseIn表数据失败,code为:" + wi.code;
+                lb.Add(log);
+            }
+            return result;
+        }
     }
 }

@@ -18,9 +18,31 @@ namespace InterfaceLayer.Warehouse
         /// </summary>
         /// <param name="wi">入库单实体</param>
         /// <returns></returns>
-        public int add(WarehouseIn wi,List<WarehouseInDetail> widList)
+        public int addWarehouseIn(WarehouseIn wi,List<WarehouseInDetail> widList)
         {
             return warehouseInLogic.InsertWarehouseInTable(wi, widList);
         }
+
+        /// <summary>
+        /// 获取入库数据列表
+        /// </summary>
+        /// <param name="strWhere">where条件</param>
+        /// <returns></returns>
+        public DataSet getWarehouseInList(string strWhere)
+        {
+            return warehouseInLogic.GetList(strWhere);
+        }
+
+        /// <summary>
+        /// 根据code删除一条数据
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int deleteWarehouseInByCode(string code)
+        {
+            return warehouseInLogic.deleteByCode(code);
+        }
+
+
     }
 }
