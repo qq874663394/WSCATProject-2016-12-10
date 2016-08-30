@@ -13,7 +13,7 @@ namespace BaseLayer.Base
     {
         public DataTable SelStorageRackByCode(string parentId)
         {
-            string sql = string.Format("SELECT * FROM T_BaseStorageRack where  isClear=0 and isEnable=0 and parentId='{0}' order by id", parentId);
+            string sql = string.Format("SELECT * FROM T_BaseStorageRack where  isClear=1 and isEnable=1 and parentId='{0}' order by id", parentId);
             SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
             DataSet ds = new DataSet();
             dapter.Fill(ds, "T_StorageRack");
@@ -21,7 +21,7 @@ namespace BaseLayer.Base
         }
         public DataTable SelStorageRack()
         {
-            string sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=0 and isEnable=0 order by id");
+            string sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 and isEnable=1 order by id");
             SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
             DataSet ds = new DataSet();
             dapter.Fill(ds, "T_StorageRack");

@@ -36,7 +36,6 @@
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.griCoulumhuojia = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -58,6 +57,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -131,28 +131,28 @@
             // 
             // labTop5
             // 
-            this.labTop5.Location = new System.Drawing.Point(564, 26);
+            this.labTop5.Location = new System.Drawing.Point(688, 26);
             this.labTop5.Size = new System.Drawing.Size(77, 12);
             this.labTop5.Text = "采购单单号：";
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(77, 26);
+            this.labTop4.Location = new System.Drawing.Point(201, 26);
             this.labTop4.Text = "入货类别：";
             // 
             // labTop3
             // 
-            this.labTop3.Location = new System.Drawing.Point(564, 28);
+            this.labTop3.Location = new System.Drawing.Point(688, 28);
             this.labTop3.Text = "仓    库：";
             this.labTop3.Visible = false;
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(320, 25);
+            this.labTop2.Location = new System.Drawing.Point(444, 25);
             // 
             // labTop1
             // 
-            this.labTop1.Location = new System.Drawing.Point(76, 27);
+            this.labTop1.Location = new System.Drawing.Point(200, 27);
             this.labTop1.Visible = false;
             // 
             // labTop9
@@ -169,12 +169,12 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.Location = new System.Drawing.Point(676, 26);
+            this.checkBox1.Location = new System.Drawing.Point(800, 26);
             this.checkBox1.Visible = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(238, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(362, 23);
             this.pictureBox1.Size = new System.Drawing.Size(17, 18);
             this.pictureBox1.Visible = false;
             // 
@@ -185,12 +185,12 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(672, 21);
+            this.pictureBox3.Location = new System.Drawing.Point(796, 21);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(482, 17);
+            this.pictureBox2.Location = new System.Drawing.Point(606, 17);
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // buttonExamine
@@ -231,7 +231,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.Location = new System.Drawing.Point(377, 21);
+            this.labtextboxTop3.Location = new System.Drawing.Point(501, 21);
             this.labtextboxTop3.Size = new System.Drawing.Size(123, 16);
             this.labtextboxTop3.Visible = false;
             // 
@@ -259,7 +259,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(646, 23);
+            this.labtextboxTop4.Location = new System.Drawing.Point(770, 23);
             this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
@@ -273,7 +273,7 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop2.Location = new System.Drawing.Point(377, 21);
+            this.labtextboxTop2.Location = new System.Drawing.Point(501, 21);
             // 
             // labtextboxTop1
             // 
@@ -288,7 +288,7 @@
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop1.ForeColor = System.Drawing.Color.Gray;
-            this.labtextboxTop1.Location = new System.Drawing.Point(133, 25);
+            this.labtextboxTop1.Location = new System.Drawing.Point(257, 25);
             this.labtextboxTop1.ReadOnly = true;
             this.labtextboxTop1.Visible = false;
             // 
@@ -318,7 +318,7 @@
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop5.ForeColor = System.Drawing.Color.Gray;
-            this.labtextboxTop5.Location = new System.Drawing.Point(646, 23);
+            this.labtextboxTop5.Location = new System.Drawing.Point(770, 23);
             this.labtextboxTop5.ReadOnly = true;
             // 
             // labtextboxTop9
@@ -395,7 +395,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
@@ -482,12 +481,6 @@
             this.gridColumn8.HeaderText = "金额";
             this.gridColumn8.Name = "gridColumn8";
             // 
-            // gridColumn9
-            // 
-            this.gridColumn9.DataPropertyName = "remark";
-            this.gridColumn9.HeaderText = "备注";
-            this.gridColumn9.Name = "gridColumn9";
-            // 
             // griCoulumhuojia
             // 
             this.griCoulumhuojia.HeaderText = "货架/排/格";
@@ -512,7 +505,7 @@
             this.comboItem3,
             this.comboItem4,
             this.comboItem5});
-            this.comboBoxEx1.Location = new System.Drawing.Point(133, 21);
+            this.comboBoxEx1.Location = new System.Drawing.Point(257, 21);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -566,6 +559,7 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,7 +574,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumhuojia;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;

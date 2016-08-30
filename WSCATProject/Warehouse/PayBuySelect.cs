@@ -1678,9 +1678,9 @@ namespace WSCATProject.Buys
                     MessageBox.Show("请选择要审核的数据行！");
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show("错误"+ex.Message);
             }
         }
     }

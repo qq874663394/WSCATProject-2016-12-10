@@ -134,6 +134,8 @@ namespace WSCATProject.WareHouse
         /// 保存仓库商品明细
         /// </summary>
         private GridRow _wareHouseModel;
+        private decimal _MaterialMoney;
+        private decimal _MaterialNumber;
         #endregion
 
         private void StockIn_Load(object sender, EventArgs e)
@@ -152,7 +154,7 @@ namespace WSCATProject.WareHouse
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
-
+          
             //入库单单号
             textBoxOddNumbers.Text = BuildCode.ModuleCode("OI");
 
@@ -160,21 +162,6 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            //try
-            //{
-            //    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-            //    DataTable dt = new DataTable();
-            //  // DataTable dt = ch.DataTableReCoding(p.selectInMaterial());
-            //    this.superGridControl1.PrimaryGrid.DataSource = dt;
-            //    labtextboxTop5.Text = dt.Rows[0]["code"].ToString();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("错误代码:4011;销售单数据为空,无法绑定数据,请检查");
-            //    Close();
-            //}
-
             //未入库进行查看的时候
             if (_state == 1)
             {
@@ -182,28 +169,12 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        //textBoxOddNumbers.Text = _wareHouseModel["Sell_Code"].Value.ToString();
-                        //this.dateTimePicker1.Value = Convert.ToDateTime(_wareHouseModel["Sell_Date"].Value);
-                        //this.comboBoxEx.Text = _wareHouseModel["Sell_TransportType"].Value.ToString();
-                        //this.labtextboxBotton3.Text = _wareHouseModel["Sell_Operation"].Value.ToString();
-                        //this.labtextboxBotton4.Text = _wareHouseModel["Sell_Auditman"].Value.ToString();
-                        //this.labtextboxBotton2.Text = _wareHouseModel["Sell_Remark"].Value.ToString();
-                        //this.textBoxX2.Text = _wareHouseModel["Sell_PayMathod"].Value.ToString();
-                        //this.textBoxX3.Text = _wareHouseModel["Sell_OddMoney"].Value.ToString();
-                        //labtextboxTop4.Text = _wareHouseModel["Sell_AccountCode"].Value.ToString();
-                        //this.labtextboxTop3.Text = _wareHouseModel["Sell_InMoney"].Value.ToString();
-                        //this.labtextboxTop5.Text = _wareHouseModel["Sell_LastMoney"].Value.ToString();
-                        //this.labtextboxTop7.Text = _wareHouseModel["Sell_Address"].Value.ToString();
-                        //this.comboBoxEx1.Text = _wareHouseModel["Sell_fukuanfangshi"].Value.ToString();
-                        //this.labtextboxTop8.Text = _wareHouseModel["Sell_LinkMan"].Value.ToString();
-                        //this.labtextboxBotton1.Text = _wareHouseModel["Sell_Salesman"].Value.ToString();
-                        //this.labtextboxTop2.Text = _wareHouseModel["Sell_ClientName"].Value.ToString();
-                        //this.labtextboxTop9.Text = _wareHouseModel["Sell_CliPhone"].Value.ToString();
+                        this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
+                        comboBoxEx1.SelectedIndex = 0;
                         superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
                         superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
                         superGridControl1.PrimaryGrid.EnsureVisible();
-
-
+                        InitDataGridView();
                     }
                     catch (Exception ex)
                     {
@@ -429,6 +400,49 @@ namespace WSCATProject.WareHouse
                 gc.GridRow.Cells[9].Value = StorageRack+"/"+StoragePai+"/"+StorageGe;
             }
 
+        }
+
+        /// <summary>
+        /// 统计行数据
+        /// </summary>
+        private void InitDataGridView()
+        {
+            //新增一行 用于给客户操作
+            superGridControl1.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["gridColumn1"].Value = "合计";
+            gr.Cells["gridColumn1"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn6"].Value = 0;
+            gr.Cells["gridColumn6"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn6"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumn8"].Value = 0;
+            gr.Cells["gridColumn8"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn8"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            //计算金额
+            decimal number = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
+            decimal price = Convert.ToDecimal(gr.Cells["gridColumn8"].FormattedValue);
+            decimal allPrice = number * price;
+            gr.Cells["gridColumn8"].Value = allPrice;
+            //逐行统计数据总数
+            decimal tempAllNumber = 0;
+            decimal tempAllMoney = 0;
+            for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                tempAllNumber += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
+                tempAllMoney += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+            }
+            _MaterialMoney = tempAllMoney;
+            _MaterialNumber = tempAllNumber;
+            gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+            gr["gridColumn6"].Value = _MaterialNumber.ToString();
+            gr["gridColumn8"].Value = _MaterialMoney.ToString();
         }
     }
 }
