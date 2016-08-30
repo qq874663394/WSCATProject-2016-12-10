@@ -1,4 +1,5 @@
 ﻿using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,14 +50,14 @@ namespace WSCATProject.Base.Shelves
             {
                 ParentID = "D4";
             }
-            string ParentId = "PIC_ParentId";
-            string Code = "PIC_Code";
-            string Name = "PIC_Name";
+            string ParentId = "parentId";
+            string Code = "code";
+            string Name = "name";
             if (tableName == "C")
             {
-                ParentId = "City_ParentId";
-                Code = "City_Code";
-                Name = "City_Name";
+                ParentId = "parentId";
+                Code = "code";
+                Name = "name";
             }
 
             DataTable dt = dts;
@@ -90,5 +91,23 @@ namespace WSCATProject.Base.Shelves
             }
         }
         #endregion
+        /// <summary>
+        /// 窗体加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShelvesListForm_Load(object sender, EventArgs e)
+        {
+            comboBoxck.SelectedItem = 0;
+            StorageInterface sif = new StorageInterface();
+            DataTable dt = sif.SelStorage();
+            DataRow dr = dt.NewRow();
+            dr["name"] = "请选择";
+            dt.Rows.InsertAt(dr, 0);
+
+            comboBoxck.DisplayMember = "name";
+            comboBoxck.ValueMember = "code";
+            comboBoxck.DataSource = dt;
+        }
     }
 }
