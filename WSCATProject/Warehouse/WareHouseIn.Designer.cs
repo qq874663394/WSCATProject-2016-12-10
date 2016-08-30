@@ -436,7 +436,7 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.DataPropertyName = "materialCode";
+            this.gridColumn1.DataPropertyName = "code";
             this.gridColumn1.HeaderText = "商品Code";
             this.gridColumn1.Name = "gridColumn1";
             // 
@@ -448,7 +448,7 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.DataPropertyName = "materialModel";
+            this.gridColumn3.DataPropertyName = "materiaModel";
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
             // 
@@ -460,7 +460,7 @@
             // 
             // gridColumn5
             // 
-            this.gridColumn5.DataPropertyName = "unit";
+            this.gridColumn5.DataPropertyName = "materiaUnit";
             this.gridColumn5.HeaderText = "单位";
             this.gridColumn5.Name = "gridColumn5";
             // 
@@ -472,7 +472,7 @@
             // 
             // gridColumn7
             // 
-            this.gridColumn7.DataPropertyName = "discountAfterPrice";
+            this.gridColumn7.DataPropertyName = "price";
             this.gridColumn7.HeaderText = "单价";
             this.gridColumn7.Name = "gridColumn7";
             // 
