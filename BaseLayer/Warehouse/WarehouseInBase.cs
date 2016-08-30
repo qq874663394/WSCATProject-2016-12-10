@@ -11,6 +11,11 @@ namespace BaseLayer
     /// </summary>
     public partial class WarehouseInBase
     {
+        /// <summary>
+        /// 获取数据列表
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
@@ -124,7 +129,7 @@ namespace BaseLayer
         /// </summary>
         /// <param name="wi"></param>
         /// <returns></returns>
-        public int updateByCode(WarehouseIn wi)
+        public int update(WarehouseIn wi)
         {
             string strSql = "";
             try

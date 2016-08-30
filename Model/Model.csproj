@@ -99,7 +99,7 @@
     <Compile Include="Warehouse\WarehouseInDetail.cs" />
     <Compile Include="Warehouse\WarehouseMove.cs" />
     <Compile Include="Warehouse\WarehouseMoveDetailDetail.cs" />
-    <Compile Include="Warehouse\WarehouseOutLayer.cs" />
+    <Compile Include="Warehouse\WarehouseOut.cs" />
     <Compile Include="Warehouse\WarehouseOutDetail.cs" />
     <Compile Include="Warehouse\WarehouseInProcess.cs" />
   </ItemGroup>
