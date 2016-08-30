@@ -1,5 +1,6 @@
 ﻿using BaseLayer.Base;
 using HelperUtility.Encrypt;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +23,22 @@ namespace LogicLayer.Base
         public DataTable SelStorageRackByCode(string parentId)
         {
             return ch.DataTableReCoding(sr.SelStorageRackByCode(parentId));
+        }
+        public DataTable SelStorageRack()
+        {
+            return sr.SelStorageRack();
+        }
+        public int DelStorageRackByCode(string code)
+        {
+            return sr.DelStorageRackByCode(code);
+        }
+        public int UpdateStorageRackByCode(string code)
+        {
+            return sr.UpdateStorageRackByCode(code);
+        }
+        public int InsStorageRack(BaseStorageRack srb)
+        {
+            return sr.InsStorageRack(srb);
         }
     }
 }
