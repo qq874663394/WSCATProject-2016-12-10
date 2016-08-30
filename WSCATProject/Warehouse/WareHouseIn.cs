@@ -69,10 +69,12 @@ namespace WSCATProject.WareHouse
 
         private void StockIn_Load(object sender, EventArgs e)
         {
+            //仓库
             GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
             gdieccangku.ButtonCustom.Visible = true;
             gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
+            //货架
             GridTextBoxXEditControl gdiehuojia = superGridControl1.PrimaryGrid.Columns["griCoulumhuojia"].EditControl as GridTextBoxXEditControl;
             gdiehuojia.ButtonCustom.Visible = true;
             gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
@@ -284,7 +286,9 @@ namespace WSCATProject.WareHouse
                     WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumn6"].Value);
                     WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumn7"].Value);
                     WarehouseIndetail.remark = gr["gridColumn9"].Value == null ?
-                     "" : XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString()); ;
+                     "" : XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString());
+                    WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(gr["griCoulumhuojia"].Value.ToString());
+
                     WarehouseIndetail.reserved1 = "";
                     WarehouseIndetail.reserved2 = "";
                     WarehouseIndetail.rfid = "";
@@ -298,20 +302,9 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message);
                 return;
             }
-            try
-            {
-                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.add(warehouseIn, wareHouseInList);
+            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
 
             switch (warehouseInResult)
             {
