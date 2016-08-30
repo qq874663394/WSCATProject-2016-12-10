@@ -256,7 +256,7 @@ namespace WSCATProject.WareHouse
                     WarehouseIndetail.reserved2 = "";
                     WarehouseIndetail.rfid = "";
                     WarehouseIndetail.updateDate = nowDataTime;
-                    WarehouseIndetail.warehouseInDetailState = 1;
+                    WarehouseIndetail.state = 1;
                     wareHouseInList.Add(WarehouseIndetail);
                 }
             }

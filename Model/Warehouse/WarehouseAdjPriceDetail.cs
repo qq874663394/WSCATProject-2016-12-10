@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 namespace Model
 {
 	/// <summary>
-	/// 仓库表
+	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
 	public partial class WarehouseAdjPriceDetail
@@ -10,149 +11,149 @@ namespace Model
 		public WarehouseAdjPriceDetail()
 		{}
 		#region Model
-		private string _adjpricedetail_id;
-		private int _adjpricedetail_lineno;
-		private string _adjpricedetail_maid;
-		private string _adjpricedetail_maname;
-		private string _adjpricedetail_model;
-		private string _adjpricedetail_unit;
-		private string _adjpricedetail_curprice;
-		private string _adjpricedetail_scale;
-		private string _adjpricedetail_price;
-		private string _adjpricedetail_lostmoney;
-		private string _adjpricedetail_cause;
-		private int? _adjpricedetail_clear;
-		private string _adjpricedetail_safetyone;
-		private string _adjpricedetail_safetytwo;
-		private string _adjpricedetail_remark;
-		private DateTime? _adjpricedetail_updatedata;
-		/// <summary>
-		/// 调价编号
-		/// </summary>
-		public string adjPriceDetail_ID
-		{
-			set{ _adjpricedetail_id=value;}
-			get{return _adjpricedetail_id;}
-		}
+		private int _id;
+		private string _code;
+		private string _materialcode;
+		private string _materianame;
+		private string _materiaunitmodel;
+		private string _materiaunitunit;
+		private decimal? _curprice;
+		private int? _scale;
+		private decimal? _price;
+		private decimal? _lostmoney;
+		private string _cause;
+		private int? _isclear;
+		private DateTime? _updatedata;
+		private string _reserved1;
+		private string _reserved2;
+		private string _remark;
 		/// <summary>
 		/// 自增ID
 		/// </summary>
-		public int adjPriceDetail_Lineno
+		public int id
 		{
-			set{ _adjpricedetail_lineno=value;}
-			get{return _adjpricedetail_lineno;}
+			set{ _id=value;}
+			get{return _id;}
+		}
+		/// <summary>
+		/// 调价编号
+		/// </summary>
+		public string code
+		{
+			set{ _code=value;}
+			get{return _code;}
 		}
 		/// <summary>
 		/// 物料编号
 		/// </summary>
-		public string adjPriceDetail_MaID
+		public string materialCode
 		{
-			set{ _adjpricedetail_maid=value;}
-			get{return _adjpricedetail_maid;}
+			set{ _materialcode=value;}
+			get{return _materialcode;}
 		}
 		/// <summary>
 		/// 物料名称
 		/// </summary>
-		public string adjPriceDetail_MaName
+		public string materiaName
 		{
-			set{ _adjpricedetail_maname=value;}
-			get{return _adjpricedetail_maname;}
+			set{ _materianame=value;}
+			get{return _materianame;}
 		}
 		/// <summary>
 		/// 规格型号
 		/// </summary>
-		public string adjPriceDetail_Model
+		public string materiaunitmodel
 		{
-			set{ _adjpricedetail_model=value;}
-			get{return _adjpricedetail_model;}
+			set{ _materiaunitmodel=value;}
+			get{return _materiaunitmodel;}
 		}
 		/// <summary>
 		/// 单位
 		/// </summary>
-		public string adjPriceDetail_Unit
+		public string materiaunitunit
 		{
-			set{ _adjpricedetail_unit=value;}
-			get{return _adjpricedetail_unit;}
+			set{ _materiaunitunit=value;}
+			get{return _materiaunitunit;}
 		}
 		/// <summary>
 		/// 调前单价
 		/// </summary>
-		public string adjPriceDetail_CurPrice
+		public decimal? curPrice
 		{
-			set{ _adjpricedetail_curprice=value;}
-			get{return _adjpricedetail_curprice;}
+			set{ _curprice=value;}
+			get{return _curprice;}
 		}
 		/// <summary>
 		/// 调价比例
 		/// </summary>
-		public string adjPriceDetail_Scale
+		public int? scale
 		{
-			set{ _adjpricedetail_scale=value;}
-			get{return _adjpricedetail_scale;}
+			set{ _scale=value;}
+			get{return _scale;}
 		}
 		/// <summary>
 		/// 调后单价
 		/// </summary>
-		public string adjPriceDetail_Price
+		public decimal? price
 		{
-			set{ _adjpricedetail_price=value;}
-			get{return _adjpricedetail_price;}
+			set{ _price=value;}
+			get{return _price;}
 		}
 		/// <summary>
 		/// 差额
 		/// </summary>
-		public string adjPriceDetail_LostMoney
+		public decimal? lostMoney
 		{
-			set{ _adjpricedetail_lostmoney=value;}
-			get{return _adjpricedetail_lostmoney;}
+			set{ _lostmoney=value;}
+			get{return _lostmoney;}
 		}
 		/// <summary>
 		/// 原因
 		/// </summary>
-		public string adjPriceDetail_Cause
+		public string cause
 		{
-			set{ _adjpricedetail_cause=value;}
-			get{return _adjpricedetail_cause;}
+			set{ _cause=value;}
+			get{return _cause;}
 		}
 		/// <summary>
 		/// 是否删除
 		/// </summary>
-		public int? adjPriceDetail_Clear
+		public int? isClear
 		{
-			set{ _adjpricedetail_clear=value;}
-			get{return _adjpricedetail_clear;}
-		}
-		/// <summary>
-		/// 预留字段
-		/// </summary>
-		public string adjPriceDetail_Safetyone
-		{
-			set{ _adjpricedetail_safetyone=value;}
-			get{return _adjpricedetail_safetyone;}
-		}
-		/// <summary>
-		/// 预留字段
-		/// </summary>
-		public string adjPriceDetail_Safetytwo
-		{
-			set{ _adjpricedetail_safetytwo=value;}
-			get{return _adjpricedetail_safetytwo;}
-		}
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string adjPriceDetail_Remark
-		{
-			set{ _adjpricedetail_remark=value;}
-			get{return _adjpricedetail_remark;}
+			set{ _isclear=value;}
+			get{return _isclear;}
 		}
 		/// <summary>
 		/// 更改时间
 		/// </summary>
-		public DateTime? adjPriceDetail_UpdateData
+		public DateTime? updateData
 		{
-			set{ _adjpricedetail_updatedata=value;}
-			get{return _adjpricedetail_updatedata;}
+			set{ _updatedata=value;}
+			get{return _updatedata;}
+		}
+		/// <summary>
+		/// 预留字段
+		/// </summary>
+		public string reserved1
+		{
+			set{ _reserved1=value;}
+			get{return _reserved1;}
+		}
+		/// <summary>
+		/// 预留字段
+		/// </summary>
+		public string reserved2
+		{
+			set{ _reserved2=value;}
+			get{return _reserved2;}
+		}
+		/// <summary>
+		/// 备注
+		/// </summary>
+		public string remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
 		}
 		#endregion Model
 

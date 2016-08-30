@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 namespace Model
 {
 	/// <summary>
-	/// 仓库表
+	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
 	public partial class WarehouseDetail
@@ -10,104 +11,104 @@ namespace Model
 		public WarehouseDetail()
 		{}
 		#region Model
-		private int _detail_lineno;
-		private string _detail_code;
-		private string _detail_linecode;
-		private string _detail_number;
-		private DateTime? _detail_date;
-		private string _detail_location;
-		private int? _detail_clear;
-		private string _detail_remark;
-		private string _detail_safetyone;
-		private string _detail_safetytwo;
-		private DateTime? _detail_updatedate;
+		private int _id;
+		private string _warehouseordercode;
+		private string _code;
+		private decimal? _number;
+		private DateTime? _date;
+		private string _location;
+		private int? _isclear;
+		private DateTime? _updatedate;
+		private string _reserved1;
+		private string _reserved2;
+		private string _remark;
 		/// <summary>
 		/// 栏号(自增)
 		/// </summary>
-		public int detail_Lineno
+		public int id
 		{
-			set{ _detail_lineno=value;}
-			get{return _detail_lineno;}
+			set{ _id=value;}
+			get{return _id;}
 		}
 		/// <summary>
 		/// 主表code
 		/// </summary>
-		public string detail_Code
+		public string warehouseOrdercode
 		{
-			set{ _detail_code=value;}
-			get{return _detail_code;}
+			set{ _warehouseordercode=value;}
+			get{return _warehouseordercode;}
 		}
 		/// <summary>
 		/// 物料编码
 		/// </summary>
-		public string detail_LineCode
+		public string code
 		{
-			set{ _detail_linecode=value;}
-			get{return _detail_linecode;}
+			set{ _code=value;}
+			get{return _code;}
 		}
 		/// <summary>
 		/// 物料规格型号
 		/// </summary>
-		public string detail_Number
+		public decimal? number
 		{
-			set{ _detail_number=value;}
-			get{return _detail_number;}
+			set{ _number=value;}
+			get{return _number;}
 		}
 		/// <summary>
 		/// 时间
 		/// </summary>
-		public DateTime? detail_Date
+		public DateTime? date
 		{
-			set{ _detail_date=value;}
-			get{return _detail_date;}
+			set{ _date=value;}
+			get{return _date;}
 		}
 		/// <summary>
 		/// 货架位置
 		/// </summary>
-		public string detail_Location
+		public string location
 		{
-			set{ _detail_location=value;}
-			get{return _detail_location;}
+			set{ _location=value;}
+			get{return _location;}
 		}
 		/// <summary>
 		/// 是否删除
 		/// </summary>
-		public int? detail_Clear
+		public int? isClear
 		{
-			set{ _detail_clear=value;}
-			get{return _detail_clear;}
-		}
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string detail_Remark
-		{
-			set{ _detail_remark=value;}
-			get{return _detail_remark;}
-		}
-		/// <summary>
-		/// 保留字段1
-		/// </summary>
-		public string detail_Safetyone
-		{
-			set{ _detail_safetyone=value;}
-			get{return _detail_safetyone;}
-		}
-		/// <summary>
-		/// 保留字段2
-		/// </summary>
-		public string detail_Safetytwo
-		{
-			set{ _detail_safetytwo=value;}
-			get{return _detail_safetytwo;}
+			set{ _isclear=value;}
+			get{return _isclear;}
 		}
 		/// <summary>
 		/// 更改时间
 		/// </summary>
-		public DateTime? detail_UpdateDate
+		public DateTime? updateDate
 		{
-			set{ _detail_updatedate=value;}
-			get{return _detail_updatedate;}
+			set{ _updatedate=value;}
+			get{return _updatedate;}
+		}
+		/// <summary>
+		/// 保留字段1
+		/// </summary>
+		public string Reserved1
+		{
+			set{ _reserved1=value;}
+			get{return _reserved1;}
+		}
+		/// <summary>
+		/// 保留字段2
+		/// </summary>
+		public string Reserved2
+		{
+			set{ _reserved2=value;}
+			get{return _reserved2;}
+		}
+		/// <summary>
+		/// 备注
+		/// </summary>
+		public string remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
 		}
 		#endregion Model
 
