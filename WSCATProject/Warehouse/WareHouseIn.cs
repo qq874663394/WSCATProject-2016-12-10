@@ -267,7 +267,7 @@ namespace WSCATProject.WareHouse
             }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.add(warehouseIn, wareHouseInList);
+            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
 
             switch (warehouseInResult)
             {
