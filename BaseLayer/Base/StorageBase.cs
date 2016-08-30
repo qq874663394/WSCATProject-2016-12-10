@@ -12,10 +12,26 @@ namespace BaseLayer.Base
     {
         public DataTable SelStorage()
         {
-            string sql = string.Format("SELECT * FROM T_BaseStorage order by id");
-            SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-            DataSet ds = new DataSet();
-            dapter.Fill(ds, "T_Storage");
+            string sql = "";
+            try
+            {
+                sql = string.Format("SELECT * FROM T_BaseStorage order by id");
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            DataSet ds = null;
+            try
+            {
+                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
+                ds = new DataSet();
+                dapter.Fill(ds, "T_Storage");
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
             return ds.Tables[0];
         }
     }
