@@ -44,7 +44,6 @@ namespace LogicLayer.Base
             }
             catch (Exception ex)
             {
-                dt = ch.DataTableReCoding(sr.SelStorageRackByCode(parentId));
                 LogBase lb = new LogBase();
                 log log = new log()
                 {
