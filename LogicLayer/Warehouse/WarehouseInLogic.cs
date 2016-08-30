@@ -12,8 +12,55 @@ using UpdateManagerLayer;
 
 namespace LogicLayer
 {
-    public class WarehouseLogic
+    public class WarehouseInLogic
     {
+        /// <summary>
+        /// 根据where条件获取数据列表
+        /// </summary>
+        /// <param name="strWhere">where条件</param>
+        /// <returns></returns>
+        public DataSet GetList(string strWhere)
+        {
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            DataSet ds = null;
+            try
+            {
+                ds = warehouseInBase.GetList(strWhere);
+
+                LogBase lb = new LogBase();
+                log log = new log()
+                {
+                    code = BuildCode.ModuleCode("log"),
+                    operationCode = "操作人code",
+                    operationName = "操作人名",
+                    operationTable = "T_WarehouseIn",
+                    operationTime = DateTime.Now,
+                    objective = "查询入库信息",
+                    result = 1,
+                    operationContent = "查询T_WarehouseIn表的数据,条件为:" + strWhere
+                };
+                lb.Add(log);
+            }
+            catch(Exception ex)
+            {
+                LogBase lb = new LogBase();
+                log log = new log()
+                {
+                    code = BuildCode.ModuleCode("log"),
+                    operationCode = "操作人code",
+                    operationName = "操作人名",
+                    operationTable = "T_WarehouseIn",
+                    operationTime = DateTime.Now,
+                    objective = "查询入库信息失败",
+                    result = -1,
+                    operationContent = "查询失败。数据表：T_WarehouseIn表；条件为：" + strWhere
+                };
+                lb.Add(log);
+
+                throw ex;
+            }
+            return ds;
+        }
 
         /// <summary>
         /// 增加一条数据
@@ -23,6 +70,7 @@ namespace LogicLayer
             List<WarehouseInDetail> widList
             )
         {
+            DateTime nowDateTime = DateTime.Now;
             LogBase lb = new LogBase();
             log log = new log()
             {
@@ -30,7 +78,7 @@ namespace LogicLayer
                 operationCode = "操作人code",
                 operationName = "操作人名",
                 //OperationTable = "操作表名",
-                operationTime = DateTime.Now,
+                operationTime = nowDateTime,
                 //OperationContent = "",
                 objective = "增加入库信息"
             };
@@ -53,6 +101,7 @@ namespace LogicLayer
                     //判断新增过程中有没有失败
                     bool addErr = false;
                     //循环加入多条数据到详情表
+                    WarehouseInDetailUpdataManager detailUpdateManager = new WarehouseInDetailUpdataManager();
                     for (int i = 0; i < widList.Count; i++)
                     {
                         addWarehouseInDetailResult = warehouseInDetailBase.Add(widList[i]);
@@ -62,6 +111,12 @@ namespace LogicLayer
                             addErr = true;
                             break;
                         }
+                        //调用管理层 循环添加管理的数据
+                        string detailUpdateManagerCode = BuildCode.ModuleCode("WDU") + i.ToString();
+                        detailUpdateManager.addWarehouseInDetail(detailUpdateManagerCode, wi.code,
+                            "T_WarehouseInDetail", addWarehouseInDetailResult, 
+                            "", "", (DateTime)widList[i].updateDate);
+
                         log.objective = "新增入库商品详情";
                         log.operationTable = "T_WarehouseInDetail";
                         log.result = addWarehouseInDetailResult;
@@ -73,6 +128,11 @@ namespace LogicLayer
                     {
                         for (int i = addcount; i < 0; i--)
                         {
+                            warehouseInDetailBase.deleteByCode(widList[i].code);
+
+                            //调用删除删掉入库的更新管理数据
+                            warehouseInDetailBase.deleteByCode(widList[i].code);
+
                             //调用删除方法删掉加入的详情单
                             log.objective = "回滚入库商品详情";
                             log.operationTable = "T_WarehouseInDetail";
@@ -81,6 +141,7 @@ namespace LogicLayer
                             lb.Add(log);
                         }
                         //调用删除方法删掉入库单
+                        warehouseInBase.deleteByCode(wi.code);
                     }
                     //调用流程表
                     if (!addErr)
@@ -88,7 +149,7 @@ namespace LogicLayer
                         WarehouseInProcessBase warehouseInProcessBase = new WarehouseInProcessBase();
                         WarehouseInProcess Warehousep = new WarehouseInProcess();//操作流程
                         Warehousep.code = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WP"));
-                        DateTime dt = DateTime.Now;
+                        DateTime dt = nowDateTime;
                         Warehousep.createDatetime = dt;
                         Warehousep.isClear = 1;
                         Warehousep.Operator = XYEEncoding.strCodeHex("保存入库单");
@@ -108,9 +169,9 @@ namespace LogicLayer
                     if (!addErr)
                     {
                         WarehouseUpdataManager updateManager = new WarehouseUpdataManager();
-                        string updateManagerCode = BuildCode.ModuleCode("WU");
+                        string updateManagerCode = BuildCode.ModuleCode("WIU");
                         updateManager.addWarehouseIn(updateManagerCode, wi.code,
-                            "T_WarehouseIn", addWarehouseInResult, "", "", DateTime.Now);
+                            "T_WarehouseIn", addWarehouseInResult, "", "", (DateTime)wi.updateDate);
 
                         log.operationContent = updateManagerCode;
                         log.objective = "新增入库表的更新管理";
@@ -139,6 +200,56 @@ namespace LogicLayer
             else
             {
                 return -7;
+            }
+        }
+        /// <summary>
+        /// 根据code删除一条数据
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int deleteByCode(string code)
+        {
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return -7;
+            }
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            int result = warehouseInBase.deleteByCode(code);
+            if(result > 0)
+            {
+                LogBase lb = new LogBase();
+                log log = new log()
+                {
+                    code = BuildCode.ModuleCode("log"),
+                    operationCode = "操作人code",
+                    operationName = "操作人名",
+                    operationTable = "T_WarehouseIn",
+                    operationTime = DateTime.Now,
+                    objective = "删除入库信息",
+                    result = result,
+                    operationContent = "删除T_WarehouseIn表的数据,code为:" + code
+                };
+                lb.Add(log);
+
+                return result;
+            }
+            else
+            {
+                LogBase lb = new LogBase();
+                log log = new log()
+                {
+                    code = BuildCode.ModuleCode("log"),
+                    operationCode = "操作人code",
+                    operationName = "操作人名",
+                    operationTable = "T_WarehouseIn",
+                    operationTime = DateTime.Now,
+                    objective = "删除入库信息失败",
+                    result = result,
+                    operationContent = "删除T_WarehouseIn数据失败,code为:" + code
+                };
+                lb.Add(log);
+
+                return result;
             }
         }
     }

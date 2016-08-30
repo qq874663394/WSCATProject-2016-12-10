@@ -11,7 +11,7 @@ namespace InterfaceLayer.Warehouse
 {
     public class WarehouseInterface
     {
-        WarehouseLogic warehouseLogic = new WarehouseLogic();
+        WarehouseInLogic warehouseInLogic = new WarehouseInLogic();
 
         /// <summary>
         /// 新增一条入库单
@@ -20,7 +20,7 @@ namespace InterfaceLayer.Warehouse
         /// <returns></returns>
         public int add(WarehouseIn wi,List<WarehouseInDetail> widList)
         {
-            return warehouseLogic.InsertWarehouseInTable(wi, widList);
+            return warehouseInLogic.InsertWarehouseInTable(wi, widList);
         }
     }
 }

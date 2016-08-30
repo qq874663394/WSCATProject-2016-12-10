@@ -21,7 +21,7 @@ namespace Model
 		private string _barcode;
 		private string _rfid;
 		private DateTime? _updatedate;
-		private int? _warehouseindetailstate;
+		private int? _state;
 		private DateTime? _date;
 		private int? _isclear;
 		private string _remark;
@@ -121,10 +121,10 @@ namespace Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? warehouseInDetailState
+		public int? state
 		{
-			set{ _warehouseindetailstate=value;}
-			get{return _warehouseindetailstate;}
+			set{ _state=value;}
+			get{return _state;}
 		}
 		/// <summary>
 		/// Èë¿âÊ±¼ä
