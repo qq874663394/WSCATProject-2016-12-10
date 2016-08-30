@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 namespace Model
 {
 	/// <summary>
-	/// 仓库表
+	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
 	public partial class WarehouseBreakageDetail
@@ -10,158 +11,158 @@ namespace Model
 		public WarehouseBreakageDetail()
 		{}
 		#region Model
-		private string _breakagedetail_id;
-		private int _breakagedetail_lineno;
-		private string _breakagedetail_maid;
-		private string _breakagedetail_maname;
-		private string _breakagedetail_model;
-		private string _breakagedetail_unit;
-		private string _breakagedetail_curqty;
-		private string _breakagedetail_checkqty;
-		private string _breakagedetail_lostqty;
-		private string _breakagedetail_price;
-		private string _breakagedetail_lostmoney;
-		private string _breakagedetail_cause;
-		private int? _breakagedetail_clear;
-		private string _breakagedetail_safetyone;
-		private string _breakagedetail_safetytwo;
-		private string _breakagedetail_remark;
-		private DateTime? _breakagedetail_updatedate;
-		/// <summary>
-		/// 报损编号
-		/// </summary>
-		public string breakageDetail_ID
-		{
-			set{ _breakagedetail_id=value;}
-			get{return _breakagedetail_id;}
-		}
+		private int _id;
+		private string _code;
+		private string _materialcode;
+		private string _materianame;
+		private string _materiamodel;
+		private string _materiaunit;
+		private decimal? _curnumber;
+		private decimal? _checknumber;
+		private decimal? _lostnumber;
+		private decimal? _price;
+		private decimal? _lostmoney;
+		private string _cause;
+		private int? _isclear;
+		private DateTime? _updatedate;
+		private string _reserved1;
+		private string _reserved2;
+		private string _remark;
 		/// <summary>
 		/// 栏号(自增)
 		/// </summary>
-		public int breakageDetail_Lineno
+		public int id
 		{
-			set{ _breakagedetail_lineno=value;}
-			get{return _breakagedetail_lineno;}
+			set{ _id=value;}
+			get{return _id;}
+		}
+		/// <summary>
+		/// 报损编号
+		/// </summary>
+		public string code
+		{
+			set{ _code=value;}
+			get{return _code;}
 		}
 		/// <summary>
 		/// 物料编号
 		/// </summary>
-		public string breakageDetail_MaID
+		public string materialCode
 		{
-			set{ _breakagedetail_maid=value;}
-			get{return _breakagedetail_maid;}
+			set{ _materialcode=value;}
+			get{return _materialcode;}
 		}
 		/// <summary>
 		/// 物料名称
 		/// </summary>
-		public string breakageDetail_MaName
+		public string materiaName
 		{
-			set{ _breakagedetail_maname=value;}
-			get{return _breakagedetail_maname;}
+			set{ _materianame=value;}
+			get{return _materianame;}
 		}
 		/// <summary>
 		/// 规格型号
 		/// </summary>
-		public string breakageDetail_Model
+		public string materiamodel
 		{
-			set{ _breakagedetail_model=value;}
-			get{return _breakagedetail_model;}
+			set{ _materiamodel=value;}
+			get{return _materiamodel;}
 		}
 		/// <summary>
 		/// 单位
 		/// </summary>
-		public string breakageDetail_Unit
+		public string materiaunit
 		{
-			set{ _breakagedetail_unit=value;}
-			get{return _breakagedetail_unit;}
+			set{ _materiaunit=value;}
+			get{return _materiaunit;}
 		}
 		/// <summary>
 		/// 现有数量
 		/// </summary>
-		public string breakageDetail_CurQty
+		public decimal? curNumber
 		{
-			set{ _breakagedetail_curqty=value;}
-			get{return _breakagedetail_curqty;}
+			set{ _curnumber=value;}
+			get{return _curnumber;}
 		}
 		/// <summary>
 		/// 损坏数量
 		/// </summary>
-		public string breakageDetail_CheckQty
+		public decimal? checkNumber
 		{
-			set{ _breakagedetail_checkqty=value;}
-			get{return _breakagedetail_checkqty;}
+			set{ _checknumber=value;}
+			get{return _checknumber;}
 		}
 		/// <summary>
 		/// 剩余数量
 		/// </summary>
-		public string breakageDetail_LostQty
+		public decimal? lostNumber
 		{
-			set{ _breakagedetail_lostqty=value;}
-			get{return _breakagedetail_lostqty;}
+			set{ _lostnumber=value;}
+			get{return _lostnumber;}
 		}
 		/// <summary>
 		/// 单价
 		/// </summary>
-		public string breakageDetail_Price
+		public decimal? price
 		{
-			set{ _breakagedetail_price=value;}
-			get{return _breakagedetail_price;}
+			set{ _price=value;}
+			get{return _price;}
 		}
 		/// <summary>
 		/// 盈亏金额
 		/// </summary>
-		public string breakageDetail_LostMoney
+		public decimal? lostMoney
 		{
-			set{ _breakagedetail_lostmoney=value;}
-			get{return _breakagedetail_lostmoney;}
+			set{ _lostmoney=value;}
+			get{return _lostmoney;}
 		}
 		/// <summary>
 		/// 原因
 		/// </summary>
-		public string breakageDetail_Cause
+		public string cause
 		{
-			set{ _breakagedetail_cause=value;}
-			get{return _breakagedetail_cause;}
+			set{ _cause=value;}
+			get{return _cause;}
 		}
 		/// <summary>
 		/// 是否删除
 		/// </summary>
-		public int? breakageDetail_Clear
+		public int? isClear
 		{
-			set{ _breakagedetail_clear=value;}
-			get{return _breakagedetail_clear;}
-		}
-		/// <summary>
-		/// 预留字段
-		/// </summary>
-		public string breakageDetail_Safetyone
-		{
-			set{ _breakagedetail_safetyone=value;}
-			get{return _breakagedetail_safetyone;}
-		}
-		/// <summary>
-		/// 预留字段
-		/// </summary>
-		public string breakageDetail_Safetytwo
-		{
-			set{ _breakagedetail_safetytwo=value;}
-			get{return _breakagedetail_safetytwo;}
-		}
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string breakageDetail_Remark
-		{
-			set{ _breakagedetail_remark=value;}
-			get{return _breakagedetail_remark;}
+			set{ _isclear=value;}
+			get{return _isclear;}
 		}
 		/// <summary>
 		/// 更改时间
 		/// </summary>
-		public DateTime? breakageDetail_UpdateDate
+		public DateTime? updateDate
 		{
-			set{ _breakagedetail_updatedate=value;}
-			get{return _breakagedetail_updatedate;}
+			set{ _updatedate=value;}
+			get{return _updatedate;}
+		}
+		/// <summary>
+		/// 预留字段
+		/// </summary>
+		public string reserved1
+		{
+			set{ _reserved1=value;}
+			get{return _reserved1;}
+		}
+		/// <summary>
+		/// 预留字段
+		/// </summary>
+		public string reserved2
+		{
+			set{ _reserved2=value;}
+			get{return _reserved2;}
+		}
+		/// <summary>
+		/// 备注
+		/// </summary>
+		public string remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
 		}
 		#endregion Model
 

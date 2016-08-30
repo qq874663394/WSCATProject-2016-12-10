@@ -410,9 +410,9 @@ namespace BaseLayer
                     SqlDataAdapter command = new SqlDataAdapter(SQLString, connection);
                     command.Fill(ds, "ds");
                 }
-                catch (SqlException ex)
+                catch(Exception ex)
                 {
-                     throw new Exception(ex.Message);
+                    throw new Exception(ex.Message);
                 }
                 return ds;
             }

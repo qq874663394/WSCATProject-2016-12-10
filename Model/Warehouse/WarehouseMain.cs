@@ -1,12 +1,13 @@
-﻿using System;
+﻿
+using System;
 namespace Model
 {
 	/// <summary>
-	/// 仓库表
+	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
 	public partial class WarehouseMain
-    {
+	{
 		public WarehouseMain()
 		{}
 		#region Model
@@ -23,11 +24,11 @@ namespace Model
 		private decimal? _allprice;
 		private decimal? _enanumber;
 		private decimal? _floornumber;
-		private int? _clear;
-		private string _remark;
-		private string _safetyone;
-		private string _safetytwo;
+		private int? _isclear;
 		private DateTime? _updatedate;
+		private string _reserved1;
+		private string _reserved2;
+		private string _remark;
 		/// <summary>
 		/// 自增ID
 		/// </summary>
@@ -135,34 +136,10 @@ namespace Model
 		/// <summary>
 		/// 是否删除
 		/// </summary>
-		public int? clear
+		public int? isClear
 		{
-			set{ _clear=value;}
-			get{return _clear;}
-		}
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string remark
-		{
-			set{ _remark=value;}
-			get{return _remark;}
-		}
-		/// <summary>
-		/// 保留字段1
-		/// </summary>
-		public string safetyone
-		{
-			set{ _safetyone=value;}
-			get{return _safetyone;}
-		}
-		/// <summary>
-		/// 保留字段2
-		/// </summary>
-		public string safetytwo
-		{
-			set{ _safetytwo=value;}
-			get{return _safetytwo;}
+			set{ _isclear=value;}
+			get{return _isclear;}
 		}
 		/// <summary>
 		/// 更改时间
@@ -171,6 +148,30 @@ namespace Model
 		{
 			set{ _updatedate=value;}
 			get{return _updatedate;}
+		}
+		/// <summary>
+		/// 保留字段1
+		/// </summary>
+		public string reserved1
+		{
+			set{ _reserved1=value;}
+			get{return _reserved1;}
+		}
+		/// <summary>
+		/// 保留字段2
+		/// </summary>
+		public string reserved2
+		{
+			set{ _reserved2=value;}
+			get{return _reserved2;}
+		}
+		/// <summary>
+		/// 备注
+		/// </summary>
+		public string remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
 		}
 		#endregion Model
 

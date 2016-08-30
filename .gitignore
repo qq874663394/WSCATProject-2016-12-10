@@ -1,2 +1,11 @@
 obj
 bin
+/.vs
+/LogicLayer/bin
+/LogicLayer/obj
+/ManagerLayer/bin
+/ManagerLayer/obj
+/Model/bin
+/Model/obj
+/WSCATProject/bin
+/WSCATProject/obj

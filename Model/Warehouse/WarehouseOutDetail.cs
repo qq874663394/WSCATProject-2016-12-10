@@ -1,184 +1,180 @@
-﻿using System;
+﻿
+using System;
 namespace Model
 {
 	/// <summary>
-	/// 仓库表
+	/// 销售订单明细表
 	/// </summary>
 	[Serializable]
 	public partial class WarehouseOutDetail
-    {
+	{
 		public WarehouseOutDetail()
 		{}
 		#region Model
-		private string _outdetail_id;
-		private int _outdetail_lineno;
-		private string _outdetail_maid;
-		private string _outdetail_maname;
-		private string _outdetail_model;
-		private string _outdetail_unit;
-		private string _outdetail_number;
-		private string _outdetail_price;
-		private string _outdetail_money;
-		private string _outdetail_satetyone;
-		private string _outdetail_satetytwo;
-		private int? _outdetail_clear;
-		private string _outdetail_barcode;
-		private string _outdetail_rfid;
-		private DateTime? _outdetail_updatedate;
-        private int? _outDetail_State;
-        private DateTime? _outDetail_Date;
-        /// <summary>
-        /// 出库编号
-        /// </summary>
-        public string outDetail_ID
+		private string _code;
+		private int _id;
+		private string _materialcode;
+		private string _materianame;
+		private string _materiamodel;
+		private string _materiaunit;
+		private decimal? _number;
+		private decimal? _price;
+		private decimal? _money;
+		private string _barcode;
+		private string _rfid;
+		private DateTime? _updatedate;
+		private int? _warehouseoutdetailstate;
+		private DateTime? _date;
+		private int? _isclear;
+		private string _reserved1;
+		private string _reserved2;
+		private string _remark;
+		/// <summary>
+		/// 出库编号
+		/// </summary>
+		public string code
 		{
-			set{ _outdetail_id=value;}
-			get{return _outdetail_id;}
+			set{ _code=value;}
+			get{return _code;}
 		}
 		/// <summary>
 		/// 自增ID
 		/// </summary>
-		public int outDetail_Lineno
+		public int id
 		{
-			set{ _outdetail_lineno=value;}
-			get{return _outdetail_lineno;}
+			set{ _id=value;}
+			get{return _id;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_MaID
+		public string materialCode
 		{
-			set{ _outdetail_maid=value;}
-			get{return _outdetail_maid;}
+			set{ _materialcode=value;}
+			get{return _materialcode;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_MaName
+		public string materiaName
 		{
-			set{ _outdetail_maname=value;}
-			get{return _outdetail_maname;}
+			set{ _materianame=value;}
+			get{return _materianame;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Model
+		public string materiaModel
 		{
-			set{ _outdetail_model=value;}
-			get{return _outdetail_model;}
+			set{ _materiamodel=value;}
+			get{return _materiamodel;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Unit
+		public string materiaUnit
 		{
-			set{ _outdetail_unit=value;}
-			get{return _outdetail_unit;}
+			set{ _materiaunit=value;}
+			get{return _materiaunit;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Number
+		public decimal? number
 		{
-			set{ _outdetail_number=value;}
-			get{return _outdetail_number;}
+			set{ _number=value;}
+			get{return _number;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Price
+		public decimal? price
 		{
-			set{ _outdetail_price=value;}
-			get{return _outdetail_price;}
+			set{ _price=value;}
+			get{return _price;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Money
+		public decimal? money
 		{
-			set{ _outdetail_money=value;}
-			get{return _outdetail_money;}
+			set{ _money=value;}
+			get{return _money;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Satetyone
+		public string barcode
 		{
-			set{ _outdetail_satetyone=value;}
-			get{return _outdetail_satetyone;}
+			set{ _barcode=value;}
+			get{return _barcode;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string outDetail_Satetytwo
+		public string rfid
 		{
-			set{ _outdetail_satetytwo=value;}
-			get{return _outdetail_satetytwo;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public int? outDetail_Clear
-		{
-			set{ _outdetail_clear=value;}
-			get{return _outdetail_clear;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string outDetail_barcode
-		{
-			set{ _outdetail_barcode=value;}
-			get{return _outdetail_barcode;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string outDetail_rfid
-		{
-			set{ _outdetail_rfid=value;}
-			get{return _outdetail_rfid;}
+			set{ _rfid=value;}
+			get{return _rfid;}
 		}
 		/// <summary>
 		/// 更改时间
 		/// </summary>
-		public DateTime? outDetail_UpdateDate
+		public DateTime? updateDate
 		{
-			set{ _outdetail_updatedate=value;}
-			get{return _outdetail_updatedate;}
+			set{ _updatedate=value;}
+			get{return _updatedate;}
 		}
-        /// <summary>
-        /// 单据状态
-        /// </summary>
-        public int? outDetail_State
-        {
-            get
-            {
-                return _outDetail_State;
-            }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? warehouseOutDetailState
+		{
+			set{ _warehouseoutdetailstate=value;}
+			get{return _warehouseoutdetailstate;}
+		}
+		/// <summary>
+		/// 出库时间
+		/// </summary>
+		public DateTime? date
+		{
+			set{ _date=value;}
+			get{return _date;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? isClear
+		{
+			set{ _isclear=value;}
+			get{return _isclear;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string reserved1
+		{
+			set{ _reserved1=value;}
+			get{return _reserved1;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string reserved2
+		{
+			set{ _reserved2=value;}
+			get{return _reserved2;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string remark
+		{
+			set{ _remark=value;}
+			get{return _remark;}
+		}
+		#endregion Model
 
-            set
-            {
-                _outDetail_State = value;
-            }
-        }
-        /// <summary>
-        /// 开单时间
-        /// </summary>
-        public DateTime? outDetail_Date
-        {
-            get
-            {
-                return _outDetail_Date;
-            }
-
-            set
-            {
-                _outDetail_Date = value;
-            }
-        }
-        #endregion Model
-
-    }
+	}
 }
 

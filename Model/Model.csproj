@@ -87,19 +87,18 @@
     <Compile Include="Sales\SalesDetail.cs" />
     <Compile Include="Sales\SalesMain.cs" />
     <Compile Include="Sales\SalesProcess.cs" />
+    <Compile Include="Warehouse\WarehouseAllot.cs" />
+    <Compile Include="Warehouse\WarehouseAllotDetailDetail.cs" />
+    <Compile Include="Warehouse\WarehouseInventory.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryDetail.cs" />
     <Compile Include="Warehouse\WarehouseMain.cs" />
     <Compile Include="Warehouse\WarehouseAdjPriceDetail.cs" />
     <Compile Include="Warehouse\WarehouseAdjustPrice.cs" />
-    <Compile Include="Warehouse\WarehouseBreakage.cs" />
     <Compile Include="Warehouse\WarehouseBreakageDetail.cs" />
-    <Compile Include="Warehouse\WarehouseCheck.cs" />
-    <Compile Include="Warehouse\WarehouseCheckDetail.cs" />
     <Compile Include="Warehouse\WarehouseDetail.cs" />
     <Compile Include="Warehouse\WarehouseIn.cs" />
     <Compile Include="Warehouse\WarehouseInDetail.cs" />
-    <Compile Include="Warehouse\WarehouseMove.cs" />
-    <Compile Include="Warehouse\WarehouseMoveDetailDetail.cs" />
-    <Compile Include="Warehouse\WarehouseOutLayer.cs" />
+    <Compile Include="Warehouse\WarehouseOut.cs" />
     <Compile Include="Warehouse\WarehouseOutDetail.cs" />
     <Compile Include="Warehouse\WarehouseInProcess.cs" />
   </ItemGroup>
