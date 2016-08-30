@@ -23,9 +23,9 @@ namespace BaseLayer
             try
             {
                 strSql.Append("insert into T_WarehouseInDetail(");
-                strSql.Append("code,materiaName,materiaModel,materiaUnit,number,price,money,remark,reserved1,reserved2,isClear,barcode,rfid,updateDate,warehouseInDetailState,date)");
+                strSql.Append("code,materiaName,materiaModel,materiaUnit,number,price,money,remark,reserved1,reserved2,isClear,barcode,rfid,updateDate,state,date)");
                 strSql.Append(" values (");
-                strSql.Append("@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@warehouseInDetailState,@date)");
+                strSql.Append("@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@state,@date)");
                 strSql.Append(";select @@IDENTITY");
             }
             catch
@@ -49,7 +49,7 @@ namespace BaseLayer
                 parameters[11] = new SqlParameter("@barcode", SqlDbType.NVarChar, 100);
                 parameters[12] = new SqlParameter("@rfid", SqlDbType.NVarChar, 100);
                 parameters[13] = new SqlParameter("@updateDate", SqlDbType.DateTime);
-                parameters[14] = new SqlParameter("@warehouseInDetailState", SqlDbType.Int, 4);
+                parameters[14] = new SqlParameter("@state", SqlDbType.Int, 4);
                 parameters[15] = new SqlParameter("@date", SqlDbType.DateTime);
 
             }
@@ -73,7 +73,7 @@ namespace BaseLayer
                 parameters[11].Value = model.barcode;
                 parameters[12].Value = model.rfid;
                 parameters[13].Value = model.updateDate;
-                parameters[14].Value = model.warehouseInDetailState;
+                parameters[14].Value = model.state;
                 parameters[15].Value = model.date;
             }
             catch
@@ -82,6 +82,60 @@ namespace BaseLayer
             }
 			int result = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 
+            return result;
+        }
+        /// <summary>
+        /// 根据code删除数据
+        /// </summary>
+        /// <param name="code">编号</param>
+        /// <returns></returns>
+        public int deleteByCode(string code)
+        {
+            string deleteStr = "delete T_WarehouseInDetail where code = '" + code + "'";
+            int result = DbHelperSQL.ExecuteSql(deleteStr);
+            return result;
+        }
+
+        /// <summary>
+        /// 根据code更新数据
+        /// </summary>
+        /// <param name="wid">入库详细列表</param>
+        /// <returns></returns>
+        public int updateByCode(WarehouseInDetail wid)
+        {
+            string updateStr = "";
+            try
+            {
+                updateStr = string.Format("update T_WarehouseInDetail set materiaName={0},"
+                    + "materiaModel={1},materiaUnit={2},number={3},price={4},money={5},barcode={6},"
+                    + "rfid={7},updateDate={8},state={9},date={10},isClear={11},remark={12},"
+                    + "reserved1={13},reserved2={14},storageRackName={15},storageRackCode={16},"
+                    + "isArrive={17} where code={18}",
+                    wid.materiaName,
+                    wid.materiaModel,
+                    wid.materiaUnit,
+                    wid.number,
+                    wid.price,
+                    wid.money,
+                    wid.barcode,
+                    wid.rfid,
+                    wid.updateDate,
+                    wid.state,
+                    wid.date,
+                    wid.isClear,
+                    wid.remark,
+                    wid.reserved1,
+                    wid.reserved2,
+                    wid.StorageRackName,
+                    wid.StorageRackName,
+                    wid.IsArrive,
+                    wid.code);
+            }
+            catch
+            {
+                return -1;
+            }
+            int result = DbHelperSQL.ExecuteSql(updateStr);
             return result;
         }
 	}

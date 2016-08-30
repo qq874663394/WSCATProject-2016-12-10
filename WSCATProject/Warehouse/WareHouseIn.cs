@@ -75,6 +75,8 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("错误代码:4011;销售单数据为空,无法绑定数据,请检查");
                 Close();
             }
+
+
         }
         
 
@@ -213,7 +215,7 @@ namespace WSCATProject.WareHouse
                 warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton3.Text);
                 warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
                 warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
-                warehouseIn.warehouseInState = 1;
+                warehouseIn.state = 1;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
                 warehouseIn.type = XYEEncoding.strCodeHex(labtextboxTop1.Text);

@@ -16,7 +16,7 @@ namespace Model
 		private string _stock;
 		private string _operation;
 		private string _examine;
-		private int? _warehouseinstate;
+		private int? _state;
 		private DateTime? _date;
 		private string _purchasecode;
 		private int? _checkstate;
@@ -78,10 +78,10 @@ namespace Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? warehouseInState
+		public int? state
 		{
-			set{ _warehouseinstate=value;}
-			get{return _warehouseinstate;}
+			set{ _state=value;}
+			get{return _state;}
 		}
 		/// <summary>
 		/// 开单时间
@@ -147,8 +147,38 @@ namespace Model
 			set{ _remark=value;}
 			get{return _remark;}
 		}
-		#endregion Model
+        /// <summary>
+        /// 供应商单据code
+        /// </summary>
+        public string GoodsCode
+        {
+            get
+            {
+                return _goodsCode;
+            }
 
-	}
+            set
+            {
+                _goodsCode = value;
+            }
+        }
+        /// <summary>
+        /// 默认单据类型
+        /// </summary>
+        public string DefaultType
+        {
+            get
+            {
+                return _defaultType;
+            }
+
+            set
+            {
+                _defaultType = value;
+            }
+        }
+        #endregion Model
+
+    }
 }
 

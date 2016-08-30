@@ -7,8 +7,8 @@
     <ProjectGuid>{FD1A022A-A9A9-4F80-8579-C232888CA642}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ManagerLayer</RootNamespace>
-    <AssemblyName>ManagerLayer</AssemblyName>
+    <RootNamespace>UpdateManagerLayer</RootNamespace>
+    <AssemblyName>UpdateManagerLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WarehouseInDetailUpdataManager.cs" />
     <Compile Include="WarehouseUpdataManager.cs" />
   </ItemGroup>
   <ItemGroup>
