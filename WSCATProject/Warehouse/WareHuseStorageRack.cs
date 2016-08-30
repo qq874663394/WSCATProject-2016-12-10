@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WSCATProject.WareHouse;
 
 namespace WSCATProject.Warehouse
 {
@@ -24,6 +25,7 @@ namespace WSCATProject.Warehouse
             comboBoxEx2.SelectedIndex = 0;
             comboBoxEx3.SelectedIndex = 0;
             comboBoxEx4.SelectedIndex = 0;
+            //绑定仓库下拉框
             StorageInterface sif = new StorageInterface();
             DataTable dt = sif.SelStorage();
             DataRow dr = dt.NewRow();
@@ -42,6 +44,7 @@ namespace WSCATProject.Warehouse
                 comboBoxEx2.DataSource = null;
                 return;
             }
+            //根据仓库code绑定货架下拉框
             StorageRackInterface srif = new StorageRackInterface();
             DataTable dt = srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString()));
             DataRow dr = dt.NewRow();
@@ -60,6 +63,7 @@ namespace WSCATProject.Warehouse
                 comboBoxEx3.DataSource = null;
                 return;
             }
+            //根据货架code绑定排的下拉框
             StorageRackInterface srif = new StorageRackInterface();
             DataTable dt = srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx2.SelectedValue.ToString()));
             DataRow dr = dt.NewRow();
@@ -78,6 +82,7 @@ namespace WSCATProject.Warehouse
                 comboBoxEx4.DataSource = null;
                 return;
             }
+            //根据排的code绑定格的下拉框
             StorageRackInterface srif = new StorageRackInterface();
             DataTable dt = srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx3.SelectedValue.ToString()));
             DataRow dr = dt.NewRow();
@@ -87,6 +92,32 @@ namespace WSCATProject.Warehouse
             comboBoxEx4.DisplayMember = "name";
             comboBoxEx4.ValueMember = "code";
             comboBoxEx4.DataSource = dt;
+        }
+
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            WareHouseIn whi = (WareHouseIn)this.Owner;
+            whi.Storage = comboBoxEx1.Text;
+            whi.StorageRack = comboBoxEx2.Text;
+            whi.StoragePai = comboBoxEx3.Text;
+            whi.StorageGe = comboBoxEx4.Text;
+            Close();
+            Dispose();
+        }
+
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

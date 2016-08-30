@@ -1,4 +1,4 @@
-﻿using DevComponents.DotNetBar.SuperGrid;
+﻿using DevComponents.DotNetBar.SuperGrid; 
 using HelperUtility;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ using Model;
 using HelperUtility.Encrypt;
 using BaseLayer;
 using InterfaceLayer;
+using WSCATProject.Warehouse;
 
 namespace WSCATProject.WareHouse
 {
@@ -23,6 +24,33 @@ namespace WSCATProject.WareHouse
         {
             InitializeComponent();
         }
+        #region 仓库、货架、排、格所需的参数
+        private string _cangku;
+        public string Storage
+        {
+            get { return _cangku; }
+            set { _cangku = value; }
+        }
+        private string _huojia;
+        public string StorageRack
+        {
+            get { return _huojia; }
+            set { _huojia = value; }
+        }
+        private string _pai;
+        public string StoragePai
+        {
+            get { return _pai; }
+            set { _pai = value; }
+        }
+        private string _ge;
+        public string StorageGe
+        {
+            get { return _ge; }
+            set { _ge = value; }
+        }
+        #endregion
+
         #region 数据字段
         /// <summary>
         /// 所有仓库列表
@@ -41,10 +69,15 @@ namespace WSCATProject.WareHouse
 
         private void StockIn_Load(object sender, EventArgs e)
         {
-           // GridDoubleInputEditControl gdiecdanjia = superGridControl1.PrimaryGrid.Columns["gridColumn3"].EditControl as GridDoubleInputEditControl;
-            //gdiecdanjia.ButtonCustom.Visible = true;
-            //gdiecdanjia.ButtonCustomClick += Gdiec_ButtonCustomClick;
+            GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
+            gdieccangku.ButtonCustom.Visible = true;
+            gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
+            GridTextBoxXEditControl gdiehuojia = superGridControl1.PrimaryGrid.Columns["griCoulumhuojia"].EditControl as GridTextBoxXEditControl;
+            gdiehuojia.ButtonCustom.Visible = true;
+            gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
+
+           
             //StorageManager sm = new StorageManager();//仓库
             //SupplierManager supply = new SupplierManager();//供应商
             //_AllStorage = sm.GetList("");
@@ -76,7 +109,7 @@ namespace WSCATProject.WareHouse
                 Close();
             }
         }
-        
+
 
         /// <summary>
         /// 点击panel隐藏扩展panel
@@ -86,7 +119,7 @@ namespace WSCATProject.WareHouse
         protected void panel6_Click(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
-        }       
+        }
 
         #region 初始化数据
         /// <summary>
@@ -263,6 +296,17 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message);
                 return;
             }
+            try
+            {
+                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
             //增加一条入库单和入库单详细数据
             int warehouseInResult = warehouseInterface.add(warehouseIn, wareHouseInList);
@@ -291,7 +335,7 @@ namespace WSCATProject.WareHouse
                     MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
                     break;
             }
-            if(warehouseInResult > 0)
+            if (warehouseInResult > 0)
             {
                 MessageBox.Show("新增入库数据成功");
             }
@@ -309,5 +353,30 @@ namespace WSCATProject.WareHouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
+        /// <summary>
+        /// 点击仓库和货架的扩展按钮弹出窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Gdiec_ButtonCustomClick(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(labtextboxTop2.Text))
+            {
+                MessageBox.Show("请先选择供应商:");
+                return;
+            }
+            SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+            if (ge.Count > 0)
+            {
+                GridCell gc = ge[0] as GridCell;
+                WareHuseStorageRack whsr = new WareHuseStorageRack();
+                whsr.ShowDialog(this);
+                gc.GridRow.Cells[8].Value = Storage;
+                gc.GridRow.Cells[9].Value = StorageRack+"/"+StoragePai+"/"+StorageGe;
+            }
+
+        }
+
     }
 }
