@@ -55,6 +55,7 @@
     <Compile Include="Warehouse\WarehouseInDetailBase.cs" />
     <Compile Include="Warehouse\WarehouseInProcessBase.cs" />
     <Compile Include="Warehouse\WarehouseOutBase.cs" />
+    <Compile Include="Warehouse\WarehouseOutDetailBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelperUtility\HelperUtility.csproj">
