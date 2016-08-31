@@ -9,9 +9,9 @@ using Model;
 
 namespace InterfaceLayer.Warehouse
 {
-   public  class WarehouseDetailInterface
+   public  class WarehouseInDetailInterface
     {
-        WarehouseDetailLogic wdl = new WarehouseDetailLogic();
+        WarehouseInDetailLogic wdl = new WarehouseInDetailLogic();
         /// <summary>
         /// 新增一条数据
         /// </summary>

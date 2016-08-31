@@ -114,7 +114,7 @@ namespace WSCATProject.WareHouse
         #endregion
 
         CodingHelper ch = new CodingHelper();
-        InterfaceLayer.Warehouse.WarehouseDetailInterface waredeta = new WarehouseDetailInterface();
+        InterfaceLayer.Warehouse.WarehouseInDetailInterface waredeta = new WarehouseInDetailInterface();
 
         #region 数据字段
 

@@ -288,5 +288,16 @@ namespace LogicLayer
             }
             return result;
         }
+
+        /// <summary>
+        /// 修改审核状态
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int updateByCode(string code)
+        {
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            return warehouseInBase.updateByCode(code);
+        }
     }
 }

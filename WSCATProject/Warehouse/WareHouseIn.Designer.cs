@@ -432,10 +432,6 @@
             // 
             this.label1.Location = new System.Drawing.Point(0, 131);
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-            // 
             // gridColumn1
             // 
             this.gridColumn1.DataPropertyName = "code";
