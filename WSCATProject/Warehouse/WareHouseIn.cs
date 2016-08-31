@@ -1,4 +1,4 @@
-﻿using DevComponents.DotNetBar.SuperGrid; 
+﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using System;
 using System.Collections.Generic;
@@ -34,9 +34,9 @@ namespace WSCATProject.WareHouse
             get { return _cangkucode; }
             set { _cangkucode = value; }
         }
-       /// <summary>
-       /// 仓库名称
-       /// </summary>
+        /// <summary>
+        /// 仓库名称
+        /// </summary>
         private string _cangku;
         public string Storage
         {
@@ -100,16 +100,16 @@ namespace WSCATProject.WareHouse
         /// </summary>
         public int State
         {
-            get { return _state;}
-            set {_state = value;}
+            get { return _state; }
+            set { _state = value; }
         }
         /// <summary>
         /// 保存仓库商品明细
         /// </summary>
         public GridRow WareHouseModel
         {
-            get{ return _wareHouseModel;}
-            set{ _wareHouseModel = value;}
+            get { return _wareHouseModel; }
+            set { _wareHouseModel = value; }
         }
         #endregion
 
@@ -154,7 +154,7 @@ namespace WSCATProject.WareHouse
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
-          
+
             //入库单单号
             textBoxOddNumbers.Text = BuildCode.ModuleCode("OI");
 
@@ -276,7 +276,7 @@ namespace WSCATProject.WareHouse
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);
                 warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton3.Text);
                 warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
-               // warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
+                // warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
                 warehouseIn.state = 1;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
@@ -314,7 +314,7 @@ namespace WSCATProject.WareHouse
                     WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumn7"].Value);
                     WarehouseIndetail.remark = gr["gridColumn9"].Value == null ?
                      "" : XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString());
-                    WarehouseIndetail.WarehouseCode =XYEEncoding.strCodeHex( StorageCode);//仓库code
+                    WarehouseIndetail.WarehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code
                     WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
                     WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
                     WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
@@ -397,7 +397,7 @@ namespace WSCATProject.WareHouse
                 WareHuseStorageRack whsr = new WareHuseStorageRack();
                 whsr.ShowDialog(this);
                 gc.GridRow.Cells[8].Value = Storage;
-                gc.GridRow.Cells[9].Value = StorageRack+"/"+StoragePai+"/"+StorageGe;
+                gc.GridRow.Cells[9].Value = StorageRack + "/" + StoragePai + "/" + StorageGe;
             }
 
         }
@@ -447,10 +447,51 @@ namespace WSCATProject.WareHouse
 
         private void buttonExamine_Click(object sender, EventArgs e)
         {
-            //WarehouseInInterface
-            WarehouseInDetailInterface widi = new WarehouseInDetailInterface();
-            DataTable dt =widi.getList("state<>1").Tables[0];
-            MessageBox.Show(dt.Rows.Count.ToString());
+            int checkResult = 0;
+            string wherecode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim());
+            WarehouseInterface warehouseInterface = new WarehouseInterface();
+            int result = warehouseInterface.getWarehouseInList("code='"+ wherecode + "' and state=0").Tables[0].Rows.Count;
+            if (result > 0)
+            {
+                if (MessageBox.Show("还有商品未入库，是否继续审核？", "审核确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    try
+                    {
+                        checkResult = warehouseInterface.updateByCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()));
+                        if (checkResult > 0)
+                        {
+                            MessageBox.Show("审核成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("审核失败");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误代码：4103 - 尝试审核入库单出错, 请检查数据是否正常" + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    checkResult = warehouseInterface.updateByCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()));
+                    if (checkResult > 0)
+                    {
+                        MessageBox.Show("审核成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("审核失败");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：4103 - 尝试审核入库单出错, 请检查数据是否正常" + ex.Message);
+                }
+            }
         }
     }
 }

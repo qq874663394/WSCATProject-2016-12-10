@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\EmpolyeeBase.cs" />
     <Compile Include="Base\StorageBase.cs" />
     <Compile Include="Base\StorageRackBase.cs" />
     <Compile Include="Base\SupplierBase.cs" />

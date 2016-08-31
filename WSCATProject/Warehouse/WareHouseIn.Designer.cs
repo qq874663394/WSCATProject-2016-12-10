@@ -204,6 +204,7 @@
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(897, 8);
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6
             // 
