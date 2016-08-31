@@ -114,7 +114,7 @@ namespace WSCATProject.WareHouse
         #endregion
 
         CodingHelper ch = new CodingHelper();
-        InterfaceLayer.Warehouse.WarehouseDetailInterface waredeta = new WarehouseDetailInterface();
+        InterfaceLayer.Warehouse.WarehouseInDetailInterface waredeta = new WarehouseInDetailInterface();
 
         #region 数据字段
 
@@ -140,7 +140,6 @@ namespace WSCATProject.WareHouse
 
         private void StockIn_Load(object sender, EventArgs e)
         {
-
             //仓库
             GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
             gdieccangku.ButtonCustom.Visible = true;
@@ -157,20 +156,19 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.AutoGenerateColumns = false;
           
             //入库单单号
-            //textBoxOddNumbers.Text = BuildCode.ModuleCode("OI");
+            textBoxOddNumbers.Text = BuildCode.ModuleCode("OI");
 
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //未入库进行查看的时候
+            //待入库进行查看的时候
             if (_state == 0)
             {
                 if (_wareHouseModel != null)
                 {
                     try
                     {
-                        this.textBoxOddNumbers.Text = _wareHouseModel["code"].Value.ToString();
                         this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
                         comboBoxEx1.SelectedIndex = 0;
                         superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
@@ -184,6 +182,36 @@ namespace WSCATProject.WareHouse
                     }
                 }
 
+            }
+            //部分入库查看
+            if (_state==1)
+            {
+                if (_wareHouseModel!=null)
+                {
+                    try
+                    {
+                         
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误"+ex.Message);
+                    }
+                }
+            }
+            //以入库的状态查看
+            if (_state==2)
+            {
+                if (_wareHouseModel != null)
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
             }
         }
 

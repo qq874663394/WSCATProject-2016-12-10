@@ -78,67 +78,73 @@
             // 
             // labTop6
             // 
-            this.labTop6.Location = new System.Drawing.Point(703, 22);
+            this.labTop6.Location = new System.Drawing.Point(269, 28);
             // 
             // labTop5
             // 
-            this.labTop5.Location = new System.Drawing.Point(450, 25);
+            this.labTop5.Location = new System.Drawing.Point(541, 28);
             this.labTop5.Text = "仓    库：";
             this.labTop5.Visible = false;
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(695, 21);
+            this.labTop4.Location = new System.Drawing.Point(261, 27);
             this.labTop4.Visible = false;
             // 
             // labTop3
             // 
-            this.labTop3.Location = new System.Drawing.Point(481, 25);
+            this.labTop3.Location = new System.Drawing.Point(572, 28);
             this.labTop3.Size = new System.Drawing.Size(47, 12);
             this.labTop3.Text = "仓   库";
             this.labTop3.Visible = false;
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(234, 23);
+            this.labTop2.Location = new System.Drawing.Point(445, 31);
             this.labTop2.Text = "客    户：";
+            // 
+            // labTop1
+            // 
+            this.labTop1.Location = new System.Drawing.Point(240, 28);
+            this.labTop1.Visible = false;
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(882, 22);
+            this.labTop9.Location = new System.Drawing.Point(685, 31);
             this.labTop9.Text = "销售单号：";
             // 
             // labTop8
             // 
-            this.labTop8.Location = new System.Drawing.Point(663, 22);
+            this.labTop8.Location = new System.Drawing.Point(229, 28);
             this.labTop8.Text = "出货类型：";
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(909, 22);
+            this.labTop7.Location = new System.Drawing.Point(712, 31);
             // 
             // checkBox1
             // 
-            this.checkBox1.Location = new System.Drawing.Point(193, 25);
+            this.checkBox1.Location = new System.Drawing.Point(389, 30);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(614, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(42, 26);
+            this.pictureBox1.Visible = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(839, 14);
+            this.pictureBox4.Location = new System.Drawing.Point(74, 20);
             this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(842, 17);
+            this.pictureBox3.Location = new System.Drawing.Point(100, 26);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(396, 19);
+            this.pictureBox2.Location = new System.Drawing.Point(607, 27);
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // labtextboxTop6
@@ -152,7 +158,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(731, 20);
+            this.labtextboxTop6.Location = new System.Drawing.Point(297, 26);
             // 
             // labtextboxTop3
             // 
@@ -165,7 +171,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.Location = new System.Drawing.Point(509, 25);
+            this.labtextboxTop3.Location = new System.Drawing.Point(68, 30);
             this.labtextboxTop3.Visible = false;
             // 
             // labtextboxTop7
@@ -180,7 +186,7 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(937, 20);
+            this.labtextboxTop7.Location = new System.Drawing.Point(740, 29);
             this.labtextboxTop7.ReadOnly = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(160, 16);
             // 
@@ -195,7 +201,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(752, 19);
+            this.labtextboxTop4.Location = new System.Drawing.Point(68, 21);
             this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
@@ -209,7 +215,7 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop2.Location = new System.Drawing.Point(291, 21);
+            this.labtextboxTop2.Location = new System.Drawing.Point(502, 29);
             // 
             // labtextboxTop1
             // 
@@ -224,8 +230,10 @@
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop1.ForeColor = System.Drawing.Color.Gray;
+            this.labtextboxTop1.Location = new System.Drawing.Point(297, 26);
             this.labtextboxTop1.ReadOnly = true;
             this.labtextboxTop1.Text = "出库开单";
+            this.labtextboxTop1.Visible = false;
             // 
             // labtextboxTop8
             // 
@@ -238,7 +246,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop8.Location = new System.Drawing.Point(751, 20);
+            this.labtextboxTop8.Location = new System.Drawing.Point(100, 21);
             this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
@@ -252,7 +260,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop5.Location = new System.Drawing.Point(538, 21);
+            this.labtextboxTop5.Location = new System.Drawing.Point(68, 21);
             this.labtextboxTop5.Visible = false;
             // 
             // labtextboxTop9
@@ -266,7 +274,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(970, 20);
+            this.labtextboxTop9.Location = new System.Drawing.Point(773, 29);
             // 
             // labtextboxBotton4
             // 
@@ -358,7 +366,7 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.HeaderText = "商品Code";
+            this.gridColumn1.HeaderText = "编号";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
@@ -415,6 +423,7 @@
             this.Name = "WareHouseOut";
             this.Text = "出库单";
             this.Load += new System.EventHandler(this.StockOut_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseOut_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);

@@ -1666,7 +1666,6 @@ namespace WSCATProject.Buys
                             ware.State = 2;
                             ware.Show();
                         }
-
                     }
                     else
                     {
