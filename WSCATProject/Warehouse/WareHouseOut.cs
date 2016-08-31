@@ -31,6 +31,8 @@ namespace WSCATProject.WareHouse
         /// 点击的项,1为仓库,2客户
         /// </summary>
         private int _Click = 0;
+        private decimal _MaterialMoney;
+        private decimal _MaterialNumber;
 
         #endregion
 
@@ -42,12 +44,8 @@ namespace WSCATProject.WareHouse
             labTop5.Visible = false;
             labTop6.Visible = false;
             labTop7.Visible = false;
-            labTop8.Visible = false;
-            labTop9.Visible = false;
             labtextboxTop4.Visible = false;
             labtextboxTop5.Visible = false;
-            labtextboxTop6.Visible = false;
-            labtextboxTop7.Visible = false;
             labtextboxTop8.Visible = false;
             labtextboxTop9.Visible = false;
             pictureBox3.Visible = false;
@@ -71,7 +69,7 @@ namespace WSCATProject.WareHouse
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            InitDataGridView();
+            //InitDataGridView();
         }
         /// <summary>
         /// 点击panel隐藏扩展panel
@@ -84,32 +82,6 @@ namespace WSCATProject.WareHouse
         }
 
         #region 初始化数据
-        /// <summary>
-        /// 初始化仓库列和数据
-        /// </summary>
-        private void InitStorageList()
-        {
-            if (_Click != 1)
-            {
-                _Click = 1;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "St_Code";
-                dgvc.HeaderText = "编码";
-                dgvc.DataPropertyName = "St_Code";
-                dataGridViewFujia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "St_Name";
-                dgvc.HeaderText = "仓库名称";
-                dgvc.DataPropertyName = "St_Name";
-                dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(190, 145);
-                dataGridViewFujia.DataSource = _AllStorage.Tables[0];
-            }
-        }
         /// <summary>
         /// 初始化客户
         /// </summary>
@@ -132,30 +104,52 @@ namespace WSCATProject.WareHouse
                 dgvc.HeaderText = "客户名称";
                 dgvc.DataPropertyName = "Cli_Name";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(480, 115);
-                dataGridViewFujia.DataSource = _AllClient;
+                resizablePanel1.Location = new Point(607, 115);
+                //dataGridViewFujia.DataSource = _AllClient;
             }
         }
+
         /// <summary>
-        /// 初始化GridView
+        /// 统计行数据
         /// </summary>
         private void InitDataGridView()
         {
+            //新增一行 用于给客户操作
+            superGridControl1.PrimaryGrid.NewRow(true);
             //最后一行做统计行
-            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-            //    Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count];
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
             gr.Cells["gridColumn1"].Value = "合计";
             gr.Cells["gridColumn1"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumn5"].Value = 0;
-            gr.Cells["gridColumn5"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumn5"].CellStyles.Default.Background.Color1 = Color.Orange;
             gr.Cells["gridColumn6"].Value = 0;
             gr.Cells["gridColumn6"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumn6"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumn8"].Value = 0;
+            gr.Cells["gridColumn8"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn8"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            //计算金额
+            decimal number = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
+            decimal price = Convert.ToDecimal(gr.Cells["gridColumn8"].FormattedValue);
+            decimal allPrice = number * price;
+            gr.Cells["gridColumn8"].Value = allPrice;
+            //逐行统计数据总数
+            decimal tempAllNumber = 0;
+            decimal tempAllMoney = 0;
+            for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                tempAllNumber += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
+                tempAllMoney += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+            }
+            _MaterialMoney = tempAllMoney;
+            _MaterialNumber = tempAllNumber;
+            gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+            gr["gridColumn6"].Value = _MaterialNumber.ToString();
+            gr["gridColumn8"].Value = _MaterialMoney.ToString();
         }
         #endregion
 
@@ -164,10 +158,6 @@ namespace WSCATProject.WareHouse
         //仓库图标的点击事件
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (_Click != 1)
-            {
-                InitStorageList();
-            }
         }
 
         //客户图标的点击事件
@@ -176,6 +166,7 @@ namespace WSCATProject.WareHouse
             if (_Click != 2)
             {
                 InitClient();
+                _Click = 1;
             }
         }
       
@@ -208,5 +199,17 @@ namespace WSCATProject.WareHouse
         }
         #endregion
 
+        /// <summary>
+        /// 按下ESC按钮关闭子窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseOut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.resizablePanel1.Visible = false;
+            }
+        }
     }
 }

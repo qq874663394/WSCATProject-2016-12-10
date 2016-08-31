@@ -162,13 +162,14 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //未入库进行查看的时候
-            if (_state == 1)
+            //待入库进行查看的时候
+            if (_state == 0)
             {
                 if (_wareHouseModel != null)
                 {
                     try
                     {
+                        textBoxOddNumbers.Text = _wareHouseModel["code"].Value.ToString();
                         this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
                         comboBoxEx1.SelectedIndex = 0;
                         superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
@@ -182,6 +183,36 @@ namespace WSCATProject.WareHouse
                     }
                 }
 
+            }
+            //部分入库查看
+            if (_state==1)
+            {
+                if (_wareHouseModel!=null)
+                {
+                    try
+                    {
+                         
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误"+ex.Message);
+                    }
+                }
+            }
+            //以入库的状态查看
+            if (_state==2)
+            {
+                if (_wareHouseModel != null)
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
             }
         }
 
@@ -258,6 +289,25 @@ namespace WSCATProject.WareHouse
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            WarehouseInDetailInterface wdif = new WarehouseInDetailInterface();
+            int result = 0;
+            string ss = "";
+            ss += ss;
+            GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+            //MessageBox.Show(dr.Cells["gridColumn11"].Value.ToString());
+            List<string> list = new List<string>();
+            for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count; i++) //根据DGV的行数循环
+            {
+                if (Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn11"].Value) == true)  //判断当前行是否选中
+                {
+                    list.Add((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn1"].Value.ToString());  //将code添加到list中
+                }
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                result = wdif.updateStateByCode(XYEEncoding.strCodeHex(list[i]));
+            }
+
             //获得界面上的数据,准备传给base层新增数据
             string warehouseIncode = "";
             WarehouseInterface warehouseInterface = new WarehouseInterface();
@@ -385,7 +435,7 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         protected void Gdiec_ButtonCustomClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(labtextboxTop3.Text))
+            if (labtextboxTop3.Text==null)
             {
                 MessageBox.Show("请先选择供应商:");
                 return;
