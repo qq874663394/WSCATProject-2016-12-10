@@ -16,7 +16,11 @@ namespace BaseLayer.Base
         /// <returns>所有数据以DataTable的形式返回</returns>
         public DataTable SelSupplierTable()
         {
-            string sql = @"select 
+            string sql = "";
+            DataSet ds = null;
+            try
+            {
+                sql = @"select 
                         Su_Code as 编码,
                         Su_Name as 单位名称,
                         Su_Address as 通讯地址,
@@ -32,9 +36,21 @@ namespace BaseLayer.Base
                         Su_Remark as 备注,
                         Su_Enable
                         from T_Supplier where Su_Clear=1 and Su_Enable=1";
-            SqlDataAdapter adapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds, "T_Supplier");
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
+                ds = new DataSet();
+                adapter.Fill(ds, "T_Supplier");
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
             return ds.Tables[0];
         }
     }

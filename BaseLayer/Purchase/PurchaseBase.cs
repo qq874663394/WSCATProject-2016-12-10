@@ -16,18 +16,27 @@ namespace BaseLayer
         /// <returns></returns>
         public DataTable selectInMaterial()
         {
+            string sql = "";
+            DataSet ds = null;
             try
             {
-                string sql = "select * from T_PurchaseMain po,T_PurchaseDetail pd where po.code=pd.PurchaseCode";
-                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                DataSet ds = new DataSet();
-                dapter.Fill(ds, "T_PurchaseOrder");
-                return ds.Tables[0];
+                sql = "select * from T_PurchaseMain po,T_PurchaseDetail pd where po.code=pd.PurchaseCode";
             }
-            catch(Exception ex)
+            catch
             {
-                throw ex;
+                throw new Exception("-1");
             }
+            try
+            {
+                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
+                ds = new DataSet();
+                dapter.Fill(ds, "T_PurchaseOrder");
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
+            return ds.Tables[0];
         }
     }
 }

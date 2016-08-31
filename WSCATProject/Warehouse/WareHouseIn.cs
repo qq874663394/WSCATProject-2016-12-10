@@ -444,5 +444,13 @@ namespace WSCATProject.WareHouse
             gr["gridColumn6"].Value = _MaterialNumber.ToString();
             gr["gridColumn8"].Value = _MaterialMoney.ToString();
         }
+
+        private void buttonExamine_Click(object sender, EventArgs e)
+        {
+            //WarehouseInInterface
+            WarehouseInDetailInterface widi = new WarehouseInDetailInterface();
+            DataTable dt =widi.getList("state<>1").Tables[0];
+            MessageBox.Show(dt.Rows.Count.ToString());
+        }
     }
 }

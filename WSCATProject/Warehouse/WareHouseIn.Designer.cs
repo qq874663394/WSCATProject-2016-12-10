@@ -196,6 +196,7 @@
             // buttonExamine
             // 
             this.buttonExamine.Location = new System.Drawing.Point(788, 8);
+            this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonClose
             // 

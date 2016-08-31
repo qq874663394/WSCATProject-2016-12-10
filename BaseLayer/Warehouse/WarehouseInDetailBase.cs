@@ -96,8 +96,24 @@ namespace BaseLayer
         /// <returns></returns>
         public int deleteByCode(string code)
         {
-            string deleteStr = "delete T_WarehouseInDetail where code = '" + code + "'";
-            int result = DbHelperSQL.ExecuteSql(deleteStr);
+            string deleteStr = "";
+            int result = 0;
+            try
+            {
+                deleteStr = "delete T_WarehouseInDetail where code = '" + code + "'";
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            try
+            {
+                result = DbHelperSQL.ExecuteSql(deleteStr);
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
             return result;
         }
 
