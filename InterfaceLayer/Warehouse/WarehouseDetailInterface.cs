@@ -9,9 +9,9 @@ using Model;
 
 namespace InterfaceLayer.Warehouse
 {
-   public  class WarehouseDetailInterface
+   public  class WarehouseInDetailInterface
     {
-        WarehouseDetailLogic wdl = new WarehouseDetailLogic();
+        WarehouseInDetailLogic wdl = new WarehouseInDetailLogic();
         /// <summary>
         /// 新增一条数据
         /// </summary>
@@ -47,6 +47,16 @@ namespace InterfaceLayer.Warehouse
         public DataSet getListByMainCode(string mainCode)
         {
             return wdl.getListByMainCode(mainCode);
+        }
+
+        /// <summary>
+        /// 根据code来更新入库状态
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int updateStateByCode(string code)
+        {
+            return wdl.updateByCode(code);
         }
     }
 }

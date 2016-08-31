@@ -114,7 +114,7 @@ namespace WSCATProject.WareHouse
         #endregion
 
         CodingHelper ch = new CodingHelper();
-        InterfaceLayer.Warehouse.WarehouseDetailInterface waredeta = new WarehouseDetailInterface();
+        InterfaceLayer.Warehouse.WarehouseInDetailInterface waredeta = new WarehouseInDetailInterface();
 
         #region 数据字段
 
@@ -473,6 +473,14 @@ namespace WSCATProject.WareHouse
             gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
             gr["gridColumn6"].Value = _MaterialNumber.ToString();
             gr["gridColumn8"].Value = _MaterialMoney.ToString();
+        }
+
+        private void buttonExamine_Click(object sender, EventArgs e)
+        {
+            //WarehouseInInterface
+            WarehouseInDetailInterface widi = new WarehouseInDetailInterface();
+            DataTable dt =widi.getList("state<>1").Tables[0];
+            MessageBox.Show(dt.Rows.Count.ToString());
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WSCATProject.Buys;
 using WSCATProject.Warehouse;
 using WSCATProject.WareHouse;
 
@@ -18,7 +19,6 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WareHouseOut());
-        }
+            Application.Run(new Base.Shelves.ShelvesListForm());        }
     }
 }

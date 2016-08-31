@@ -11,7 +11,7 @@ using HelperUtility;
 
 namespace LogicLayer
 {
-    public class WarehouseDetailLogic
+    public class WarehouseInDetailLogic
     {
         private WarehouseInDetailBase wdb = new WarehouseInDetailBase();
         CodingHelper ch = new CodingHelper();
@@ -108,7 +108,6 @@ namespace LogicLayer
 
                 throw ex;
             }
-
             return ds;
         }
         /// <summary>
@@ -147,6 +146,15 @@ namespace LogicLayer
             }
             
             return ch.DataSetReCoding(ds);
+        }
+        /// <summary>
+        /// 根据code来更新入库状态
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int updateByCode(string code)
+        {
+            return wdb.updateByCode(code);
         }
     }
 }

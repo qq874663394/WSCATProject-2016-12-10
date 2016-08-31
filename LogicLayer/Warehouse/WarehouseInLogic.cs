@@ -87,7 +87,7 @@ namespace LogicLayer
             WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
             if (wi != null)
             {
-                int addWarehouseInResult = warehouseInBase.Add(wi);
+                int addWarehouseInResult = warehouseInBase.update(wi);
                 int addWarehouseInDetailResult = 0;
                 
                 //当正确新增时开始新增详情表
@@ -105,7 +105,7 @@ namespace LogicLayer
                     WarehouseInDetailUpdataManager detailUpdateManager = new WarehouseInDetailUpdataManager();
                     for (int i = 0; i < widList.Count; i++)
                     {
-                        addWarehouseInDetailResult = warehouseInDetailBase.Add(widList[i]);
+                        addWarehouseInDetailResult = warehouseInDetailBase.updateByCode(widList[i]);
                         if (addWarehouseInDetailResult < 1)
                         {
                             addcount = i;
@@ -203,6 +203,7 @@ namespace LogicLayer
                 return -7;
             }
         }
+
         /// <summary>
         /// 根据code删除一条数据
         /// </summary>
@@ -286,6 +287,17 @@ namespace LogicLayer
                 lb.Add(log);
             }
             return result;
+        }
+
+        /// <summary>
+        /// 修改审核状态
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int updateByCode(string code)
+        {
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            return warehouseInBase.updateByCode(code);
         }
     }
 }
