@@ -31,6 +31,8 @@ namespace WSCATProject.WareHouse
         /// 点击的项,1为仓库,2客户
         /// </summary>
         private int _Click = 0;
+        private decimal _MaterialMoney;
+        private decimal _MaterialNumber;
 
         #endregion
 
