@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Base\StorageBase.cs" />
     <Compile Include="Base\StorageRackBase.cs" />
+    <Compile Include="Base\SupplierBase.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="LogBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

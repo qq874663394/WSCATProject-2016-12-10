@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Model;
 using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility.Encrypt;
+using InterfaceLayer;
+using InterfaceLayer.Warehouse;
 
 namespace WSCATProject.Buys
 {
@@ -18,6 +20,7 @@ namespace WSCATProject.Buys
         //BuyManager bm = new BuyManager();
         //SellManager sm = new SellManager();
         //ConllectionWaitManager cwm = new ConllectionWaitManager();
+        WarehouseInterface ware = new WarehouseInterface();
         DataTable dt = null;
 
         public string whereField;
@@ -170,7 +173,7 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.ActiveRowIndicatorStyle = ActiveRowIndicatorStyle.None;
             toolStripComboBox1.SelectedIndex = 0;
             toolStripComboBox2.SelectedIndex = 0;
-           
+
         }
         /// <summary>
         /// 快捷搜索下拉框功能实现
@@ -528,68 +531,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    toolStripComboBox4.SelectedIndex = 0;
-                    superGridControl1.PrimaryGrid.DataSource = null;
-                    superGridControl1.PrimaryGrid.Columns.Clear();
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "ID";
-                    gc.Name = "ColumnsID";
-                    gc.HeaderText = "ID";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "编号";
-                    gc.Name = "ColumnsCode";
-                    gc.HeaderText = "入货单号";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "单据日期";
-                    gc.Name = "ColumnsDate";
-                    gc.HeaderText = "单据类型";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "审核状态";
-                    gc.Name = "ColumnsAuditStatus";
-                    gc.HeaderText = "仓库";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "单据状态";
-                    gc.Name = "ColumnsPurchaseStatus";
-                    gc.HeaderText = "采购单号";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "供应商";
-                    gc.Name = "ColumnsSuName";
-                    gc.HeaderText = "开单时间";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "结算账户";
-                    gc.Name = "ColumnsBank";
-                    gc.HeaderText = "单据状态";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "总金额";
-                    gc.Name = "ColumnsAmountMone";
-                    gc.HeaderText = "入库员";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    gc = new GridColumn();
-                    gc.DataPropertyName = "业务员";
-                    gc.Name = "ColumnsSalesMan";
-                    gc.HeaderText = "审核人";
-                    superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                    //dt = bm.SelBuyDataTableToCheck();
-                    //superGridControl1.PrimaryGrid.DataSource = dt;
-                    //whereField = "单据日期";
-                    //orderField = "ID";
+                    BanDWareHoues("");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -986,6 +928,29 @@ namespace WSCATProject.Buys
                     break;
                 case "其他收货单":
                     break;
+                case "入库开单":
+                    this.toolStripLabel8.Visible = true;
+                    this.toolStripComboBox4.Visible = true;
+                    this.toolStripComboBox4.Items.Clear();
+                    this.toolStripComboBox4.Items.Add("采购申请单");
+                    this.toolStripComboBox4.Items.Add("采购退货单");
+                    this.toolStripComboBox4.Items.Add("赠商品入库");
+                    this.toolStripComboBox4.Items.Add("获赔商品入库");
+                    this.toolStripComboBox4.Items.Add("以货抵债");
+                    BanDWareHoues("");
+                    break;
+                case "出库开单":
+                    this.toolStripLabel8.Visible = true;
+                    this.toolStripComboBox4.Visible = true;
+                    this.toolStripComboBox4.Items.Clear();
+                    this.toolStripComboBox4.Items.Add("销售申请单");
+                    this.toolStripComboBox4.Items.Add("销售退货单");
+                    this.toolStripComboBox4.Items.Add("销售补货单");
+                    this.toolStripComboBox4.Items.Add("赠商品出库");
+                    this.toolStripComboBox4.Items.Add("获赔商品出库");
+                    toolStripComboBox4.SelectedIndex = 0;
+
+                    break;
                 case "其他发货单":
                     break;
                 case "领料单":
@@ -1107,6 +1072,10 @@ namespace WSCATProject.Buys
                     }
                     break;
                 case "其他收货单":
+                    break;
+                case "入库开单":
+                    break;
+                case "出库开单":
                     break;
                 case "其他发货单":
                     break;
@@ -1316,6 +1285,7 @@ namespace WSCATProject.Buys
             新增物料信息ToolStripMenuItem.Visible = false;
             销售审核ToolStripMenuItem.Visible = false;
             欠货补货销售ToolStripMenuItem.Visible = false;
+            商品入库ToolStripMenuItem.Visible = false;
             string cb2 = toolStripComboBox2.Text;
             switch (cb2)
             {
@@ -1371,6 +1341,43 @@ namespace WSCATProject.Buys
                     break;
                 case "其他收货单":
                     break;
+                case "入库开单":
+                    if (superGridControl1.PrimaryGrid.GetSelectedRows() != null)
+                    {
+                        SelectedElementCollection cols = superGridControl1.PrimaryGrid.GetSelectedRows();
+                        if (cols.Count > 0)
+                        {
+                            GridRow rows = cols[0] as GridRow;
+                            string shengh = rows.Cells["state"].Value.ToString();
+                            //待入库查看
+                            if (shengh == "0")
+                            {
+                                商品入库ToolStripMenuItem.Visible = true;
+                            }
+                            //部分入库查看
+                            if (shengh == "1")
+                            {
+                                商品入库ToolStripMenuItem.Visible = true;
+                            }
+                            //已完成查看
+                            if (shengh == "2")
+                            {
+                                商品入库ToolStripMenuItem.Visible = false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("请选择要审核的数据行！");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("请选择要审核的数据行！");
+                    }
+                    break;
+                case "出库开单":
+                    break;
+
                 case "其他发货单":
                     break;
                 case "领料单":
@@ -1510,6 +1517,170 @@ namespace WSCATProject.Buys
             catch (Exception ex)
             {
                 MessageBox.Show("错误" + ex.Message);
+            }
+        }
+        /// <summary>
+        /// 入库和出库下拉框发生变化的时候
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string cb4 = toolStripComboBox4.Text;
+            switch (cb4)
+            {
+                case "采购申请单":
+                    BanDWareHoues(" type='562D5D5E2D0E230F5141'");
+                    break;
+                case "采购退货单":
+                    BanDWareHoues(" type='562D5D5E292F5F115141'");
+                    break;
+                case "赠商品入库":
+                    BanDWareHoues(" type='301D2D2822532C0F5B06'");
+                    break;
+                case "获赔商品入库":
+                    BanDWareHoues(" type='5F1521062D2822532C0F5B06'");
+                    break;
+                case "以货抵债":
+                    BanDWareHoues(" type='36305F115132314A'");
+                    break;
+                case "销售申请单":
+                    break;
+                case "销售退货单":
+                    break;
+                case "销售补货单":
+                    break;
+                case "赠商品出库":
+                    break;
+                case "获赔商品出库":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 初始化入库的列表
+        /// </summary>
+        /// <param name="where"></param>
+        private void BanDWareHoues(string where)
+        {
+            GridColumn gc = null;
+            toolStripComboBox4.SelectedIndex = 0;
+            superGridControl1.PrimaryGrid.DataSource = null;
+            superGridControl1.PrimaryGrid.Columns.Clear();
+            gc = new GridColumn();
+            gc.DataPropertyName = "id";
+            gc.Name = "id";
+            gc.HeaderText = "ID";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "code";
+            gc.Name = "code";
+            gc.HeaderText = "入货单号";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "type";
+            gc.Name = "type";
+            gc.HeaderText = "单据类型";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "purchaseCode";
+            gc.Name = "purchaseCode";
+            gc.HeaderText = "采购单号";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "date";
+            gc.Name = "date";
+            gc.HeaderText = "开单时间";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "state";
+            gc.Name = "state";
+            gc.HeaderText = "单据状态";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "operation";
+            gc.Name = "operation";
+            gc.HeaderText = "入库员";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "examine";
+            gc.Name = "examine";
+            gc.HeaderText = "审核人";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "备注";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            dt = ware.getWarehouseInList(where).Tables[0];
+            superGridControl1.PrimaryGrid.DataSource = dt;
+            whereField = "单据日期";
+            orderField = "ID";
+        }
+
+        private void 商品入库ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (superGridControl1.PrimaryGrid.GetSelectedRows() != null)
+                {
+
+                    SelectedElementCollection cols = superGridControl1.PrimaryGrid.GetSelectedRows();
+                    if (cols.Count > 0)
+                    {
+                        GridRow rows = cols[0] as GridRow;
+                        string shengh = rows.Cells["state"].Value.ToString();
+                        //待入库查看
+                        if (shengh == "0")
+                        {
+                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            ware.WareHouseModel = rows;
+                            ware.State = 0;
+                            ware.Show();
+                        }
+                        //部分入库查看
+                        if (shengh == "1")
+                        {
+                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            ware.WareHouseModel = rows;
+                            ware.State = 1;
+                            ware.Show();
+                        }
+                        //已完成查看
+                        if (shengh == "2")
+                        {
+                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            ware.WareHouseModel = rows;
+                            ware.State = 2;
+                            ware.Show();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("请选择要审核的数据行！");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择要审核的数据行！");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("错误"+ex.Message);
             }
         }
     }

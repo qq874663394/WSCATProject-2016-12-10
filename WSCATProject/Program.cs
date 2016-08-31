@@ -18,7 +18,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WareHouseIn());
+            Application.Run(new Base.Shelves.ShelvesListForm());
         }
     }
 }

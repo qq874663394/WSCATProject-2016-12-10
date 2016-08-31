@@ -40,9 +40,9 @@
             this.全部展开AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.刷新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxck = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -133,12 +133,18 @@
             this.panel1.Size = new System.Drawing.Size(274, 414);
             this.panel1.TabIndex = 1;
             // 
-            // treeView1
+            // comboBoxck
             // 
-            this.treeView1.Location = new System.Drawing.Point(0, 34);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(274, 380);
-            this.treeView1.TabIndex = 0;
+            this.comboBoxck.DisplayMember = "Text";
+            this.comboBoxck.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxck.FormattingEnabled = true;
+            this.comboBoxck.ItemHeight = 15;
+            this.comboBoxck.Location = new System.Drawing.Point(107, 6);
+            this.comboBoxck.Name = "comboBoxck";
+            this.comboBoxck.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxck.TabIndex = 2;
+            this.comboBoxck.SelectedIndexChanged += new System.EventHandler(this.comboBoxck_SelectedIndexChanged);
             // 
             // labelX1
             // 
@@ -152,17 +158,12 @@
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "请选择仓库：";
             // 
-            // comboBoxck
+            // treeView1
             // 
-            this.comboBoxck.DisplayMember = "Text";
-            this.comboBoxck.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxck.FormattingEnabled = true;
-            this.comboBoxck.ItemHeight = 15;
-            this.comboBoxck.Location = new System.Drawing.Point(107, 6);
-            this.comboBoxck.Name = "comboBoxck";
-            this.comboBoxck.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxck.TabIndex = 2;
+            this.treeView1.Location = new System.Drawing.Point(0, 34);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(274, 380);
+            this.treeView1.TabIndex = 0;
             // 
             // ShelvesListForm
             // 
