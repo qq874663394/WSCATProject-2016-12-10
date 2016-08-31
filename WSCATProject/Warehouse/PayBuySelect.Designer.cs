@@ -94,6 +94,7 @@ namespace WSCATProject.Buys
             this.销售审核ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.欠货补货销售ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.资金收款单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.商品入库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -170,6 +171,7 @@ namespace WSCATProject.Buys
             this.toolStripComboBox4.Name = "toolStripComboBox4";
             this.toolStripComboBox4.Size = new System.Drawing.Size(100, 35);
             this.toolStripComboBox4.Visible = false;
+            this.toolStripComboBox4.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox4_SelectedIndexChanged);
             // 
             // toolStripDropDownButton1
             // 
@@ -520,9 +522,10 @@ namespace WSCATProject.Buys
             this.新增物料信息ToolStripMenuItem,
             this.销售审核ToolStripMenuItem,
             this.欠货补货销售ToolStripMenuItem,
-            this.资金收款单ToolStripMenuItem});
+            this.资金收款单ToolStripMenuItem,
+            this.商品入库ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 180);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 202);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 审核过账ToolStripMenuItem
@@ -580,6 +583,13 @@ namespace WSCATProject.Buys
             this.资金收款单ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.资金收款单ToolStripMenuItem.Text = "资金收款单";
             this.资金收款单ToolStripMenuItem.Click += new System.EventHandler(this.资金收款单ToolStripMenuItem_Click_1);
+            // 
+            // 商品入库ToolStripMenuItem
+            // 
+            this.商品入库ToolStripMenuItem.Name = "商品入库ToolStripMenuItem";
+            this.商品入库ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.商品入库ToolStripMenuItem.Text = "商品入库";
+            this.商品入库ToolStripMenuItem.Click += new System.EventHandler(this.商品入库ToolStripMenuItem_Click);
             // 
             // PayBuySelect
             // 
@@ -663,5 +673,6 @@ namespace WSCATProject.Buys
         private ToolStripMenuItem 欠货补货销售ToolStripMenuItem;
         private ToolStripMenuItem 资金收款单ToolStripMenuItem;
         private ToolStripComboBox toolStripComboBox4;
+        private ToolStripMenuItem 商品入库ToolStripMenuItem;
     }
 }

@@ -159,9 +159,15 @@ namespace BaseLayer
             {
                 return -1;
             }
-            int result = DbHelperSQL.ExecuteSql(strSql);
-
-            return result;
+            try
+            {
+                int result = DbHelperSQL.ExecuteSql(strSql);
+                return result;
+            }
+            catch
+            {
+                return -2;
+            }
         }
 	}
 }

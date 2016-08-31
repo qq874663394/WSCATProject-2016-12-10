@@ -14,6 +14,7 @@ namespace LogicLayer
     public class WarehouseDetailLogic
     {
         private WarehouseInDetailBase wdb = new WarehouseInDetailBase();
+        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 新增一条数据 
         /// </summary>
@@ -142,11 +143,10 @@ namespace LogicLayer
             {
                 log.operationContent = "T_WarehouseInDetail表的数据列表查询失败,code为:" + mainCode;
                 lb.Add(log);
-
                 throw ex;
             }
             
-            return ds;
+            return ch.DataSetReCoding(ds);
         }
         /// <summary>
         /// 根据code来更新入库状态

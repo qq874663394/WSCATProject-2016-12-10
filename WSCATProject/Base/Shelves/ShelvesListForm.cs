@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InterfaceLayer;
 
 namespace WSCATProject.Base.Shelves
 {
@@ -18,6 +19,7 @@ namespace WSCATProject.Base.Shelves
         {
             InitializeComponent();
         }
+        StorageRackInterface storage = new StorageRackInterface();
         #region 绑定TreeView
         /// <summary>
         /// 绑定TreeView
@@ -26,9 +28,8 @@ namespace WSCATProject.Base.Shelves
         {
             try
             {
-                DataTable dts = new DataTable();
-                //DataTable dts = cm.SelCityTable();
-                AddTree("D4", null, dts, "C");
+                DataTable dts = storage.SelStorageRack();
+                AddTree("A7AFC9D5D6D5D6D0D1D0D3D1D1D1D1", null, dts, "C");
             }
             catch (Exception ex)
             {
@@ -48,20 +49,14 @@ namespace WSCATProject.Base.Shelves
         {
             if (ParentID == "")
             {
-                ParentID = "D4";
+                ParentID = "A7AFC9D5D6D5D6D0D1D0D3D1D1D1D1";
             }
             string ParentId = "parentId";
             string Code = "code";
             string Name = "name";
-            if (tableName == "C")
-            {
-                ParentId = "parentId";
-                Code = "code";
-                Name = "name";
-            }
 
-            DataTable dt = dts;
-            DataView dvTree = new DataView(dt);
+            //DataTable dt = dts;
+            DataView dvTree = new DataView(dts);
 
             //过滤ParentID,得到当前的所有子节点
             dvTree.RowFilter = string.Format("{0} = '{1}'", ParentId, ParentID);
@@ -108,6 +103,27 @@ namespace WSCATProject.Base.Shelves
             comboBoxck.DisplayMember = "name";
             comboBoxck.ValueMember = "code";
             comboBoxck.DataSource = dt;
+
+            BindTreeViewList();
+        }
+        /// <summary>
+        /// 选择仓库显示不同货架
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBoxck_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ck = this.comboBoxck.SelectedValue.ToString();
+            try
+            {
+                string jiamck = XYEEncoding.strCodeHex(ck);
+                DataTable dts = storage.SelStorageRackByCode(jiamck);
+                AddTree(jiamck, null, dts, "C");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("加载数据失败,请检查服务器连接并尝试刷新.错误:" + ex.Message);
+            }
         }
     }
 }
