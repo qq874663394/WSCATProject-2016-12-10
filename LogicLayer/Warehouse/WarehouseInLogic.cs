@@ -156,7 +156,7 @@ namespace LogicLayer
                         Warehousep.Operator = XYEEncoding.strCodeHex("保存入库单");
                         Warehousep.operatorMan = "";
                         Warehousep.remark = "";
-                        Warehousep.updateDate = dt;
+                        Warehousep.updateDate = dt; 
                         Warehousep.warehouseInDetailCode = wi.code;
                         warehouseInProcessBase.Add(Warehousep);
 

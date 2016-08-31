@@ -9,9 +9,9 @@ namespace BaseLayer
 {
     public class WarehouseOutDetailBase
     {
-        public DataSet GetList(string strWhere)
-        {
+        //public DataSet GetList(string strWhere)
+        //{
 
-        }
+        //}
     }
 }

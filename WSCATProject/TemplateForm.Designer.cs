@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -43,6 +43,7 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labtextboxBotton4 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labtextboxBotton3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labtextboxBotton2 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -101,11 +102,11 @@
             this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -119,7 +120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -250,6 +250,16 @@
             this.panel5.Size = new System.Drawing.Size(1186, 71);
             this.panel5.TabIndex = 1;
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.checkMore;
+            this.pictureBox5.Location = new System.Drawing.Point(184, 7);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox5.TabIndex = 31;
+            this.pictureBox5.TabStop = false;
             // 
             // labtextboxBotton4
             // 
@@ -803,14 +813,14 @@
             this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -875,16 +885,6 @@
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 3;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.checkMore;
-            this.pictureBox5.Location = new System.Drawing.Point(184, 7);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox5.TabIndex = 31;
-            this.pictureBox5.TabStop = false;
-            // 
             // TemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -907,6 +907,7 @@
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -923,7 +924,6 @@
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

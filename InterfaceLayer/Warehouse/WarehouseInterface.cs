@@ -42,7 +42,5 @@ namespace InterfaceLayer.Warehouse
         {
             return warehouseInLogic.deleteByCode(code);
         }
-
-
     }
 }

@@ -162,8 +162,8 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //未入库进行查看的时候
-            if (_state == 1)
+            //待入库进行查看的时候
+            if (_state == 0)
             {
                 if (_wareHouseModel != null)
                 {
@@ -182,6 +182,36 @@ namespace WSCATProject.WareHouse
                     }
                 }
 
+            }
+            //部分入库查看
+            if (_state==1)
+            {
+                if (_wareHouseModel!=null)
+                {
+                    try
+                    {
+                         
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误"+ex.Message);
+                    }
+                }
+            }
+            //以入库的状态查看
+            if (_state==2)
+            {
+                if (_wareHouseModel != null)
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
             }
         }
 
