@@ -4,6 +4,8 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Model;
+using System.Collections.Generic;
+
 namespace BaseLayer
 {
 	/// <summary>
@@ -182,7 +184,7 @@ namespace BaseLayer
             {
                 strSql.Append("select id,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
                 strSql.Append(" FROM T_WarehouseInDetail ");
-                strSql.Append(" where mainCode = '" + mainCode + "'");
+                strSql.Append(" where mainCode = '" + mainCode + "' and state=0");
             }
             catch
             {
@@ -198,6 +200,29 @@ namespace BaseLayer
                 throw new Exception("-2");
             }
             return ds;
+        }
+
+        public int updateByCode(string code)
+        {
+            string updateStr = "";
+            int result = 0;
+            try
+            {
+                updateStr = string.Format("update T_WarehouseInDetail set state=1 where code='{0}'",code);
+            }
+            catch
+            {
+                return -1;
+            }
+            try
+            {
+                result = DbHelperSQL.ExecuteSql(updateStr);
+            }
+            catch
+            {
+                return -2;
+            }
+            return result;
         }
 	}
 }

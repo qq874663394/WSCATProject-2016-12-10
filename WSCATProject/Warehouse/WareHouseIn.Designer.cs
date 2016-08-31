@@ -36,7 +36,6 @@
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.griCoulumhuojia = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -45,6 +44,7 @@
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -58,6 +58,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -137,7 +138,7 @@
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(77, 26);
+            this.labTop4.Location = new System.Drawing.Point(77, 27);
             this.labTop4.Text = "入货类别：";
             // 
             // labTop3
@@ -185,17 +186,18 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(672, 21);
+            this.pictureBox3.Location = new System.Drawing.Point(725, 19);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(482, 17);
+            this.pictureBox2.Location = new System.Drawing.Point(503, 17);
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // buttonExamine
             // 
             this.buttonExamine.Location = new System.Drawing.Point(788, 8);
+            this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonClose
             // 
@@ -395,7 +397,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
@@ -427,8 +428,18 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.pictureBox5);
             this.panel5.Size = new System.Drawing.Size(1141, 71);
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
+            this.panel5.Controls.SetChildIndex(this.labBotton1, 0);
+            this.panel5.Controls.SetChildIndex(this.labBotton3, 0);
+            this.panel5.Controls.SetChildIndex(this.labBotton2, 0);
+            this.panel5.Controls.SetChildIndex(this.labBotton4, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton1, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton2, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton3, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton4, 0);
+            this.panel5.Controls.SetChildIndex(this.pictureBox5, 0);
             // 
             // label1
             // 
@@ -437,12 +448,12 @@
             // gridColumn1
             // 
             this.gridColumn1.DataPropertyName = "code";
-            this.gridColumn1.HeaderText = "商品Code";
+            this.gridColumn1.HeaderText = "入库单号";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
             // 
-            this.gridColumn2.DataPropertyName = "materialName";
+            this.gridColumn2.DataPropertyName = "materiaName";
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
             // 
@@ -481,12 +492,6 @@
             this.gridColumn8.DataPropertyName = "money";
             this.gridColumn8.HeaderText = "金额";
             this.gridColumn8.Name = "gridColumn8";
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.DataPropertyName = "remark";
-            this.gridColumn9.HeaderText = "备注";
-            this.gridColumn9.Name = "gridColumn9";
             // 
             // griCoulumhuojia
             // 
@@ -538,6 +543,16 @@
             // 
             this.comboItem5.Text = "以货抵债";
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.checkMore;
+            this.pictureBox5.Location = new System.Drawing.Point(196, 8);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(23, 20);
+            this.pictureBox5.TabIndex = 31;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
             // WareHouseIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -566,6 +581,7 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,7 +596,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumhuojia;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
@@ -589,5 +604,6 @@
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.Editors.ComboItem comboItem5;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
