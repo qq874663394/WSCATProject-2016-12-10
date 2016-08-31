@@ -190,12 +190,12 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(606, 17);
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.Location = new System.Drawing.Point(627, 17);
             // 
             // buttonExamine
             // 
             this.buttonExamine.Location = new System.Drawing.Point(788, 8);
+            this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonClose
             // 
@@ -204,7 +204,6 @@
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(897, 8);
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6
             // 
@@ -433,6 +432,10 @@
             // 
             this.label1.Location = new System.Drawing.Point(0, 131);
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
             // gridColumn1
             // 
             this.gridColumn1.DataPropertyName = "code";
@@ -540,7 +543,6 @@
             this.Name = "WareHouseIn";
             this.Text = "入库单";
             this.Load += new System.EventHandler(this.StockIn_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseIn_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);

@@ -31,15 +31,15 @@ namespace WSCATProject
         }
         private void InputGoodsForm_Load(object sender, EventArgs e)
         {
-            InitDataGridViewHeaderColumn();
-            InitTopLab();
-            InitTopLabText();
-            InitBottomLab();
-            InitBottonLabText();
-            InitButton();
-            dataGridViewFujia.ReadOnly = true;
-            dataGridViewFujia.AllowUserToResizeColumns = false;
-            dataGridViewFujia.AllowUserToResizeRows = false;
+            //InitDataGridViewHeaderColumn();
+            //InitTopLab();
+            //InitTopLabText();
+            //InitBottomLab();
+            //InitBottonLabText();
+            //InitButton();
+            //dataGridViewFujia.ReadOnly = true;
+            //dataGridViewFujia.AllowUserToResizeColumns = false;
+            //dataGridViewFujia.AllowUserToResizeRows = false;
         }
 
         //对view添加列标题 

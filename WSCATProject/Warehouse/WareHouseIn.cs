@@ -100,16 +100,16 @@ namespace WSCATProject.WareHouse
         /// </summary>
         public int State
         {
-            get { return _state;}
-            set {_state = value;}
+            get { return _state; }
+            set { _state = value; }
         }
         /// <summary>
         /// 保存仓库商品明细
         /// </summary>
         public GridRow WareHouseModel
         {
-            get{ return _wareHouseModel;}
-            set{ _wareHouseModel = value;}
+            get { return _wareHouseModel; }
+            set { _wareHouseModel = value; }
         }
         #endregion
 
@@ -161,7 +161,7 @@ namespace WSCATProject.WareHouse
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
-          
+
             //入库单单号
             textBoxOddNumbers.Text = "OI-2016082516410922";
 
@@ -169,6 +169,7 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 
             CodingHelper ch = new CodingHelper();
             try
@@ -178,13 +179,13 @@ namespace WSCATProject.WareHouse
                 DataSet ds = ch.DataSetReCoding(whdi.getListByMainCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim())));
                 this.superGridControl1.PrimaryGrid.DataSource = ds;
 
-                WarehouseInterface whi = new WarehouseInterface();
-                DataSet DS = ch.DataSetReCoding(whi.getWarehouseInList("code='" + XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()) + "'"));
-                if (ds.Tables[0].Rows.Count == 0)
-                {
-                    return;
-                }
-                labtextboxTop5.Text = DS.Tables[0].Rows[0].ItemArray[10].ToString();
+                //WarehouseInterface whi = new WarehouseInterface();
+                //DataSet DS = ch.DataSetReCoding(whi.getWarehouseInList("code='" + XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()) + "'"));
+                //if (ds.Tables[0].Rows.Count == 0)
+                //{
+                //    return;
+                //}
+                //labtextboxTop5.Text = DS.Tables[0].Rows[0].ItemArray[10].ToString();
                 //DataTable dt = ch.DataTableReCoding(whdi.getListByMainCode(textBoxOddNumbers.Text.ToString()));
                 //this.superGridControl1.PrimaryGrid.DataSource = ds.Tables[0];
                 //labtextboxTop5.Text = dt.Rows[0]["code"].ToString();
@@ -194,7 +195,6 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("错误代码:4011;销售单数据为空,无法绑定数据,请检查");
                 Close();
             }
-        }
             //未入库进行查看的时候
             if (_state == 1)
             {
@@ -214,8 +214,8 @@ namespace WSCATProject.WareHouse
                         MessageBox.Show("错误" + ex.Message);
                     }
                 }
-
             }
+
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace WSCATProject.WareHouse
             List<string> list = new List<string>();
             for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count; i++) //根据DGV的行数循环
             {
-                if (Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn11"].Value) ==true)  //判断当前行是否选中
+                if (Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn11"].Value) == true)  //判断当前行是否选中
                 {
                     list.Add((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn1"].Value.ToString());  //将code添加到list中
                 }
@@ -343,112 +343,112 @@ namespace WSCATProject.WareHouse
             {
                 result = wdif.updateStateByCode(XYEEncoding.strCodeHex(list[i]));
             }
-            ////获得界面上的数据,准备传给base层新增数据
-            //string warehouseIncode = "";
-            //WarehouseInterface warehouseInterface = new WarehouseInterface();
-            ////入库单
-            //WarehouseIn warehouseIn = new WarehouseIn();
-            ////入库商品列表
-            //List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
-            //try
-            //{
-            //    warehouseIncode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);
-            //    warehouseIn.code = warehouseIncode;
-            //    warehouseIn.isClear = 1;
-            //    warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.labtextboxTop5.Text);
-            //    warehouseIn.date = this.dateTimePicker1.Value;
-            //    warehouseIn.checkState = 0;
-            //    warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);
-            //    warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton3.Text);
-            //    warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
-            //   // warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
+            //获得界面上的数据,准备传给base层新增数据
+            string warehouseIncode = "";
+            WarehouseInterface warehouseInterface = new WarehouseInterface();
+            //入库单
+            WarehouseIn warehouseIn = new WarehouseIn();
+            //入库商品列表
+            List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
+            try
+            {
+                warehouseIncode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);
+                warehouseIn.code = warehouseIncode;
+                warehouseIn.isClear = 1;
+                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.labtextboxTop5.Text);
+                warehouseIn.date = this.dateTimePicker1.Value;
+                warehouseIn.checkState = 0;
+                warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);
+                warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton3.Text);
+                warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
+                // warehouseIn.stock = XYEEncoding.strCodeHex(labtextboxTop3.Text);
 
-            //    warehouseIn.state = 1;
-            //    warehouseIn.reserved1 = "";
-            //    warehouseIn.reserved2 = "";
-            //    warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx1.Text);//入货类别
-            //    warehouseIn.updateDate = DateTime.Now;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message);
-            //    return;
-            //}
+                warehouseIn.state = 1;
+                warehouseIn.reserved1 = "";
+                warehouseIn.reserved2 = "";
+                warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx1.Text);//入货类别
+                warehouseIn.updateDate = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message);
+                return;
+            }
 
-            //try
-            //{
-            //    //获得商品列表数据,准备传给base层新增数据
-            //    GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            //    GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
 
-            //    int i = 0;
-            //    string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
-            //    DateTime nowDataTime = DateTime.Now;
-            //    foreach (GridRow gr in grs)
-            //    {
-            //        i++;
-            //        WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
-            //        WarehouseIndetail.barcode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);
-            //        WarehouseIndetail.code = _wareHouesDetailCode + i.ToString();
-            //        WarehouseIndetail.date = this.dateTimePicker1.Value;
-            //        WarehouseIndetail.isClear = 1;
-            //        WarehouseIndetail.materiaModel = XYEEncoding.strCodeHex(gr["gridColumn3"].Value.ToString());
-            //        WarehouseIndetail.materiaName = XYEEncoding.strCodeHex(gr["gridColumn2"].Value.ToString()); ;
-            //        WarehouseIndetail.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumn5"].Value.ToString()); ;
-            //        WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumn8"].Value);
-            //        WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumn6"].Value);
-            //        WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumn7"].Value);
-            //        //WarehouseIndetail.remark = gr["gridColumn9"].Value == null ?
-            //        // "" : XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString());
-            //        WarehouseIndetail.WarehouseCode =XYEEncoding.strCodeHex( StorageCode);//仓库code
-            //        WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
-            //        WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
-            //        WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
-            //        WarehouseIndetail.reserved1 = "";
-            //        WarehouseIndetail.reserved2 = "";
-            //        WarehouseIndetail.rfid = "";
-            //        WarehouseIndetail.updateDate = nowDataTime;
-            //        WarehouseIndetail.state = 1;
-            //        wareHouseInList.Add(WarehouseIndetail);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message);
-            //    return;
-            //}
+                int i = 0;
+                string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    i++;
+                    WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
+                    WarehouseIndetail.barcode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);
+                    WarehouseIndetail.code = _wareHouesDetailCode + i.ToString();
+                    WarehouseIndetail.date = this.dateTimePicker1.Value;
+                    WarehouseIndetail.isClear = 1;
+                    WarehouseIndetail.materiaModel = XYEEncoding.strCodeHex(gr["gridColumn3"].Value.ToString());
+                    WarehouseIndetail.materiaName = XYEEncoding.strCodeHex(gr["gridColumn2"].Value.ToString()); ;
+                    WarehouseIndetail.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumn5"].Value.ToString()); ;
+                    WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumn8"].Value);
+                    WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumn6"].Value);
+                    WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumn7"].Value);
+                    //WarehouseIndetail.remark = gr["gridColumn9"].Value == null ?
+                    // "" : XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString());
+                    WarehouseIndetail.WarehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code
+                    WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
+                    WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
+                    WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
+                    WarehouseIndetail.reserved1 = "";
+                    WarehouseIndetail.reserved2 = "";
+                    WarehouseIndetail.rfid = "";
+                    WarehouseIndetail.updateDate = nowDataTime;
+                    WarehouseIndetail.state = 1;
+                    wareHouseInList.Add(WarehouseIndetail);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message);
+                return;
+            }
 
-            ////增加一条入库单和入库单详细数据
-            //int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
+            //增加一条入库单和入库单详细数据
+            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
 
-            //switch (warehouseInResult)
-            //{
-            //    case -1:
-            //        MessageBox.Show("错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据.");
-            //        break;
-            //    case -2:
-            //        MessageBox.Show("错误代码:4002;建立查询字符串参数时出现异常");
-            //        break;
-            //    case -3:
-            //        MessageBox.Show("错误代码:4003;对参数赋值时出现异常,请检查输入");
-            //        break;
-            //    case -4:
-            //        MessageBox.Show("错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接");
-            //        break;
-            //    case -5:
-            //        MessageBox.Show("错误代码:4005;对数据库新增数据时未能增加任何数据");
-            //        break;
-            //    case -6:
-            //        MessageBox.Show("错误代码:4006;对数据库新增数据的方法失效,未能增加任何行");
-            //        break;
-            //    case -7:
-            //        MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
-            //        break;
-            //}
-            //if (warehouseInResult > 0)
-            //{
-            //    MessageBox.Show("新增入库数据成功");
-            //}
+            switch (warehouseInResult)
+            {
+                case -1:
+                    MessageBox.Show("错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据.");
+                    break;
+                case -2:
+                    MessageBox.Show("错误代码:4002;建立查询字符串参数时出现异常");
+                    break;
+                case -3:
+                    MessageBox.Show("错误代码:4003;对参数赋值时出现异常,请检查输入");
+                    break;
+                case -4:
+                    MessageBox.Show("错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接");
+                    break;
+                case -5:
+                    MessageBox.Show("错误代码:4005;对数据库新增数据时未能增加任何数据");
+                    break;
+                case -6:
+                    MessageBox.Show("错误代码:4006;对数据库新增数据的方法失效,未能增加任何行");
+                    break;
+                case -7:
+                    MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
+                    break;
+            }
+            if (warehouseInResult > 0)
+            {
+                MessageBox.Show("新增入库数据成功");
+            }
         }
 
         /// <summary>
@@ -483,9 +483,9 @@ namespace WSCATProject.WareHouse
                 WareHuseStorageRack whsr = new WareHuseStorageRack();
                 whsr.ShowDialog(this);
                 gc.GridRow.Cells[8].Value = Storage;
-                gc.GridRow.Cells[9].Value = StorageRack+"/"+StoragePai+"/"+StorageGe;
+                gc.GridRow.Cells[9].Value = StorageRack + "/" + StoragePai + "/" + StorageGe;
             }
-
+        }
         /// <summary>
         /// 统计行数据
         /// </summary>
@@ -527,6 +527,11 @@ namespace WSCATProject.WareHouse
             gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
             gr["gridColumn6"].Value = _MaterialNumber.ToString();
             gr["gridColumn8"].Value = _MaterialMoney.ToString();
+        }
+
+        private void buttonExamine_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
