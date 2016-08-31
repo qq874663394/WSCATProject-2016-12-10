@@ -204,6 +204,7 @@
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(897, 8);
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6
             // 
@@ -432,14 +433,10 @@
             // 
             this.label1.Location = new System.Drawing.Point(0, 131);
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-            // 
             // gridColumn1
             // 
-            this.gridColumn1.DataPropertyName = "code";
-            this.gridColumn1.HeaderText = "商品Code";
+            this.gridColumn1.DataPropertyName = "mainCode";
+            this.gridColumn1.HeaderText = "单号";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
