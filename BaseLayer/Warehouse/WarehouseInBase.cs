@@ -120,8 +120,24 @@ namespace BaseLayer
         /// <returns></returns>
         public int deleteByCode(string code)
         {
-            string deleteStr = "delete T_WarehouseIn where code = '" + code + "'";
-            int result = DbHelperSQL.ExecuteSql(deleteStr);
+            string deleteStr = "";
+            int result = 0;
+            try
+            {
+                deleteStr = "delete T_WarehouseIn where code = '" + code + "'";
+            }
+            catch
+            {
+                throw new Exception("-1");
+            }
+            try
+            {
+                result = DbHelperSQL.ExecuteSql(deleteStr);
+            }
+            catch
+            {
+                throw new Exception("-2");
+            }
             return result;
         }
         /// <summary>
@@ -169,6 +185,33 @@ namespace BaseLayer
                 return -2;
             }
         }
-	}
+        /// <summary>
+        /// 修改审核状态
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int updateByCode(string code)
+        {
+            string sql = "";
+            int result = 0;
+            try
+            {
+                sql = string.Format("update from T_WarehouseIn set checkState=1 where code='{0}'", code);
+            }
+            catch
+            {
+                return -1;
+            }
+            try
+            {
+                result = DbHelperSQL.ExecuteSql(sql);
+                return result;
+            }
+            catch
+            {
+                return -2;
+            }
+        }
+    }
 }
 

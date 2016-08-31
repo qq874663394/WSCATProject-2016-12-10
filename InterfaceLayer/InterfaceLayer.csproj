@@ -44,6 +44,8 @@
     <Compile Include="Base\StorageRackInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warehouse\WarehouseDetailInterface.cs" />
+    <Compile Include="Warehouse\WarehouseInDetailInterface.cs" />
+    <Compile Include="Warehouse\WarehouseInInterface.cs" />
     <Compile Include="Warehouse\WarehouseInterface.cs" />
   </ItemGroup>
   <ItemGroup>
