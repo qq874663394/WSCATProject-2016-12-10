@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
 using System;
 using System.Collections.Generic;
@@ -101,7 +102,7 @@ namespace WSCATProject.WareHouse
                         //根据条件查询表格里面的数据
                         string code = XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString());
                         superGridControl1.PrimaryGrid.DataSource = warehouseout.GetList(" mainCode='"+code+"'");
-                       // superGridControl1.PrimaryGrid.EnsureVisible();
+                        superGridControl1.PrimaryGrid.EnsureVisible();
                         //调用统计的方法
                         InitDataGridView();
                     }
