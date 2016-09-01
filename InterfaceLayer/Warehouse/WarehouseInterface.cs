@@ -42,5 +42,10 @@ namespace InterfaceLayer.Warehouse
         {
             return warehouseInLogic.deleteByCode(code);
         }
+        public int updateByCode(string code)
+        {
+            return warehouseInLogic.updateByCode(code);
+        }
+
     }
 }

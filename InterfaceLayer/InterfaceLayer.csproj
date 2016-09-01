@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\EmpolyeeInterface.cs" />
     <Compile Include="Base\StorageInterface.cs" />
     <Compile Include="Base\StorageRackInterface.cs" />
+    <Compile Include="Base\SupplierInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warehouse\WarehouseDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInterface.cs" />
+    <Compile Include="Warehouse\WarehouseOrderInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelperUtility\HelperUtility.csproj">
