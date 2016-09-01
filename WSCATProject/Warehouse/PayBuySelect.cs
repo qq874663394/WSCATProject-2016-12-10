@@ -532,8 +532,8 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    
-                    BanDWareHouesIn("");
+
+                    BindWareHouesIn("");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -1628,11 +1628,11 @@ namespace WSCATProject.Buys
                     break;
                 case "获赔商品入库":
                 
-                    BanDWareHouesIn(" type='5F1521062D2822532C0F5B06'");
+                    BindWareHouesIn(" type='5F1521062D2822532C0F5B06'");
                     break;
                 case "以货抵债":
-                  
-                    BanDWareHouesIn(" type='36305F115132314A'");
+
+                    BindWareHouesIn(" type='36305F115132314A'");
                     break;
                 case "销售申请单":
                     break;

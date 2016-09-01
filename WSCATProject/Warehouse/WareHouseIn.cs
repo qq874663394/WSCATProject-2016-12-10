@@ -201,7 +201,6 @@ namespace WSCATProject.WareHouse
 
             }
             //部分入库查看
-
             if (_state == 1)
             {
                 if (_wareHouseModel != null)
@@ -217,7 +216,6 @@ namespace WSCATProject.WareHouse
                 }
             }
             //以入库的状态查看
-
             if (_state == 2)
             {
                 if (_wareHouseModel != null)
@@ -232,6 +230,10 @@ namespace WSCATProject.WareHouse
                     }
                 }
             }
+            OrderTypeInterface oti = new OrderTypeInterface();
+            comboBoxEx1.ValueMember = "code";
+            comboBoxEx1.DisplayMember = "name";
+            comboBoxEx1.DataSource = oti.GetList("");
         }
 
         /// <summary>
