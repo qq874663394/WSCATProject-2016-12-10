@@ -308,7 +308,6 @@ namespace WSCATProject.WareHouse
             if (_Click != 1)
             {
                 InitSupply();
-                _Click = 3;
             }
         }
         //业务员图标点击事件
@@ -317,7 +316,6 @@ namespace WSCATProject.WareHouse
             if (_Click != 2)
             {
                 InitEmployee();
-                _Click = 3;
             }
         }
         #endregion
@@ -547,6 +545,11 @@ namespace WSCATProject.WareHouse
             gr["gridColumn8"].Value = _MaterialMoney.ToString();
         }
 
+        /// <summary>
+        /// 审核按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonExamine_Click(object sender, EventArgs e)
         {
             int checkResult = 0;
