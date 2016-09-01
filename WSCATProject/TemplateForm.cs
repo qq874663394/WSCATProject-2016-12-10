@@ -116,6 +116,9 @@ namespace WSCATProject
                 case "pictureBox4":
                     resizablePanel1.Location = new Point(120, 160);
                     break;
+                case "pictureBox5":
+                    resizablePanel1.Location = new Point(120, 200);
+                    break;
             }
             if (!_btnAdd)
             {
@@ -168,10 +171,6 @@ namespace WSCATProject
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel7.Location.Y + 65);
             }
-        }
-
-        protected virtual void dataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
     }
 }

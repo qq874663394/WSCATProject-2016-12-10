@@ -832,7 +832,6 @@
             this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
             this.dataGridViewFujia.TabIndex = 0;
-            this.dataGridViewFujia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFujia_CellDoubleClick);
             this.dataGridViewFujia.VisibleChanged += new System.EventHandler(this.dataGridViewFujia_VisibleChanged);
             // 
             // label1
