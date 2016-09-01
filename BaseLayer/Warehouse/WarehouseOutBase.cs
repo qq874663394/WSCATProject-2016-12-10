@@ -5,11 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data.SqlClient;
 
 namespace BaseLayer
 {
     public class WarehouseOutBase
     {
+        public List<WarehouseOut> GetWarehouseOutToList()
+        {
+            string sql = "";
+            List<WarehouseOut> list = new List<WarehouseOut>();
+            sql = "select * from T_WarehouseOut";
+            SqlDataReader read = DbHelperSQL.ExecuteReader(sql);
+            while (read.Read())
+            {
+                WarehouseOut warehouseOut = new WarehouseOut { };
+            }
+            return list;
+        }
         /// <summary>
         /// 根据where条件获取出库单列表
         /// </summary>
@@ -21,7 +34,7 @@ namespace BaseLayer
             try
             {
                 strSql.Append("select id,code,type,stock,operation,examine,isClear,updateDate,");
-                strSql.Append("state,salesCode,date,checkState,remark,reserved1,reserved2,delivery,clientCode,");
+                strSql.Append("state,salesCode,date,checkState,remark,reserved1,reserved2,delivey,clientCode,");
                 strSql.Append("expressOdd,expressMan,expressPhone,defaultType ");
                 strSql.Append(" FROM T_WarehouseOut ");
                 if (strWhere.Trim() != "")
@@ -41,7 +54,6 @@ namespace BaseLayer
             {
                 throw new Exception("-4");
             }
-            
         }
 
         /// <summary>

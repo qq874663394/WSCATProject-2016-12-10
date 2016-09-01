@@ -12,6 +12,7 @@ using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility.Encrypt;
 using InterfaceLayer;
 using InterfaceLayer.Warehouse;
+using BaseLayer;
 
 namespace WSCATProject.Buys
 {
@@ -531,6 +532,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
+                    
                     BanDWareHouesIn("");
                     break;
                 case "出库开单":
@@ -543,7 +545,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
                     toolStripComboBox4.SelectedIndex = 0;
-
+                    superGridControl1.PrimaryGrid.DataSource = new WarehouseOutBase().GetList("");
                     break;
                 case "领料单":
                     break;
@@ -937,7 +939,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    BanDWareHoues("");
+                    BindWareHouesIn("");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -949,7 +951,6 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
                     toolStripComboBox4.SelectedIndex = 0;
-
                     break;
                 case "其他发货单":
                     break;
@@ -1614,18 +1615,23 @@ namespace WSCATProject.Buys
             switch (cb4)
             {
                 case "采购申请单":
-                    BanDWareHouesIn(" type='562D5D5E2D0E230F5141'");
+       
+                    BindWareHouesIn(" type='562D5D5E2D0E230F5141'");
                     break;
                 case "采购退货单":
-                    BanDWareHouesIn(" type='562D5D5E292F5F115141'");
+                   
+                    BindWareHouesIn(" type='562D5D5E292F5F115141'");
                     break;
                 case "赠商品入库":
-                    BanDWareHouesIn(" type='301D2D2822532C0F5B06'");
+                    
+                    BindWareHouesIn(" type='301D2D2822532C0F5B06'");
                     break;
                 case "获赔商品入库":
+                
                     BanDWareHouesIn(" type='5F1521062D2822532C0F5B06'");
                     break;
                 case "以货抵债":
+                  
                     BanDWareHouesIn(" type='36305F115132314A'");
                     break;
                 case "销售申请单":
@@ -1647,7 +1653,8 @@ namespace WSCATProject.Buys
         /// 初始化入库的列表
         /// </summary>
         /// <param name="where"></param>
-        private void BanDWareHouesIn(string where)
+    
+        private void BindWareHouesIn(string where)
         {
             GridColumn gc = null;
             toolStripComboBox4.SelectedIndex = 0;
@@ -1713,7 +1720,6 @@ namespace WSCATProject.Buys
             whereField = "单据日期";
             orderField = "ID";
         }
-
         /// <summary>
         /// 初始化出库的列表
         /// </summary>

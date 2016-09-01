@@ -21,7 +21,7 @@ namespace BaseLayer.Base
             string sql = "";
             try
             {
-                sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 and isEnable=1 and parentId='{0}' order by id", parentId);
+                sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 and parentId='{0}' order by id", parentId);
             }
             catch
             {
@@ -49,7 +49,7 @@ namespace BaseLayer.Base
             string sql = "";
             try
             {
-                sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 and isEnable=1 order by id");
+                sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 order by id");
             }
             catch
             {
@@ -100,12 +100,12 @@ namespace BaseLayer.Base
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public int UpdateStorageRackByCode(string code)
+        public int UpdateStorageRackByCode(string fieldName, string fieldValue, string code)
         {
             string sql = "";
             try
             {
-                sql = string.Format("update from T_BaseStorageRack set name='{0}' where code='{1}'", code);
+                sql = string.Format("update from T_BaseStorageRack set {0}='{1}' where code='{2}'",fieldName, fieldValue, code);
             }
             catch
             {
