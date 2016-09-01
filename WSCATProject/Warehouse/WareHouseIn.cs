@@ -444,8 +444,8 @@ namespace WSCATProject.WareHouse
                 GridCell gc = ge[0] as GridCell;
                 WareHuseStorageRack whsr = new WareHuseStorageRack();
                 whsr.ShowDialog(this);
-                gc.GridRow.Cells[8].Value = Storage;
-                gc.GridRow.Cells[9].Value = StorageRack+"/"+StoragePai+"/"+StorageGe;
+                gc.GridRow.Cells[7].Value = Storage;
+                gc.GridRow.Cells[8].Value = StorageRack+"/"+StoragePai+"/"+StorageGe;
             }
 
         }

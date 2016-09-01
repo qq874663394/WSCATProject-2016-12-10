@@ -41,7 +41,6 @@ namespace WSCATProject.WareHouse
             #region 隐藏控件
             checkBox1.Visible = false;
             labTop4.Visible = false;
-            labTop5.Visible = false;
             labTop6.Visible = false;
             labTop7.Visible = false;
             labtextboxTop4.Visible = false;
