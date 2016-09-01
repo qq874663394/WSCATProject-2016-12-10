@@ -29,18 +29,18 @@ namespace WSCATProject
             get { return _clickStorage; }
             set { _clickStorage = value; }
         }
-        private void InputGoodsForm_Load(object sender, EventArgs e)
-        {
-            //InitDataGridViewHeaderColumn();
-            //InitTopLab();
-            //InitTopLabText();
-            //InitBottomLab();
-            //InitBottonLabText();
-            //InitButton();
-            //dataGridViewFujia.ReadOnly = true;
-            //dataGridViewFujia.AllowUserToResizeColumns = false;
-            //dataGridViewFujia.AllowUserToResizeRows = false;
-        }
+        //private void InputGoodsForm_Load(object sender, EventArgs e)
+        //{
+        //    //InitDataGridViewHeaderColumn();
+        //    //InitTopLab();
+        //    //InitTopLabText();
+        //    //InitBottomLab();
+        //    //InitBottonLabText();
+        //    //InitButton();
+        //    //dataGridViewFujia.ReadOnly = true;
+        //    //dataGridViewFujia.AllowUserToResizeColumns = false;
+        //    //dataGridViewFujia.AllowUserToResizeRows = false;
+        //}
 
         //对view添加列标题 
         protected virtual void InitDataGridViewHeaderColumn()
@@ -117,7 +117,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                    resizablePanel1.Location = new Point(120, 200);
+                    resizablePanel1.Location = new Point(204, 310);
                     break;
             }
             if (!_btnAdd)

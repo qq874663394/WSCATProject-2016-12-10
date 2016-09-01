@@ -185,10 +185,6 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        textBoxOddNumbers.Text = _wareHouseModel["code"].Value.ToString();
-                        this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
-                        comboBoxEx1.SelectedIndex = 0;
-                        superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
                         superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
                         superGridControl1.PrimaryGrid.EnsureVisible();
                         InitDataGridView();
@@ -201,7 +197,6 @@ namespace WSCATProject.WareHouse
 
             }
             //部分入库查看
-
             if (_state == 1)
             {
                 if (_wareHouseModel != null)
@@ -217,7 +212,6 @@ namespace WSCATProject.WareHouse
                 }
             }
             //以入库的状态查看
-
             if (_state == 2)
             {
                 if (_wareHouseModel != null)
@@ -232,6 +226,10 @@ namespace WSCATProject.WareHouse
                     }
                 }
             }
+            OrderTypeInterface oti = new OrderTypeInterface();
+            comboBoxEx1.ValueMember = "code";
+            comboBoxEx1.DisplayMember = "name";
+            comboBoxEx1.DataSource = oti.GetList("");
         }
 
         /// <summary>
@@ -267,7 +265,7 @@ namespace WSCATProject.WareHouse
                 dgvc.HeaderText = "单位名称";
                 dgvc.DataPropertyName = "单位名称";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(640, 115);
+                resizablePanel1.Location = new Point(640, 110);
                 dataGridViewFujia.DataSource = _AllSupply;
             }
         }
@@ -294,7 +292,8 @@ namespace WSCATProject.WareHouse
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(204, 410);
+              
+                resizablePanel1.Location = new Point(204, 300);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
         }
@@ -331,22 +330,25 @@ namespace WSCATProject.WareHouse
             //供应商
             if (_Click == 1)
             {
-                // string code = dataGridViewFujia.Rows[e.RowIndex].Cells["Su_Code"].Value.ToString();
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                 labtextboxTop3.Text = name;
-                resizablePanel1.Visible = false;
+                resizablePanel1.Visible = false;              
             }
             //业务员
             if (_Click == 2)
             {
-                // string code = dataGridViewFujia.Rows[e.RowIndex].Cells["Su_Code"].Value.ToString();
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                 labtextboxBotton1.Text = name;
-                resizablePanel1.Visible = false;
+                resizablePanel1.Visible = false;           
             }
         }
         #endregion
 
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSave_Click(object sender, EventArgs e)
         {
             //获得界面上的数据,准备传给base层新增数据

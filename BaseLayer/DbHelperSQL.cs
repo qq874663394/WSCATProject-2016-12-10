@@ -150,7 +150,7 @@ namespace BaseLayer
                         connection.Close();
                         return rows;
                     }
-                    catch(Exception ex)
+                    catch
                     {
                         return -5;
                     }
@@ -630,7 +630,7 @@ namespace BaseLayer
                             return Convert.ToInt32(obj);
                         }
                     }
-                    catch(Exception ex)
+                    catch
                     {
                         return -6;
                     }

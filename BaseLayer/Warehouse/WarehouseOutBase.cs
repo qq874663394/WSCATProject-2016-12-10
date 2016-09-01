@@ -22,7 +22,7 @@ namespace BaseLayer
             try
             {
                 strSql.Append("select id,code,type,stock,operation,examine,isClear,updateDate,");
-                strSql.Append("state,salesCode,date,checkState,remark,reserved1,reserved2,delivey,clientCode,");
+                strSql.Append("state,salesCode,date,checkState,remark,reserved1,reserved2,delivery,clientCode,");
                 strSql.Append("expressOdd,expressMan,expressPhone,defaultType ");
                 strSql.Append(" FROM T_WarehouseOut ");
                 if (strWhere.Trim() != "")

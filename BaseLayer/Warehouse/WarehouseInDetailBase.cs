@@ -57,7 +57,7 @@ namespace BaseLayer
                 parameters[17] = new SqlParameter("@warehouseName", SqlDbType.NVarChar,40);
                 parameters[18] = new SqlParameter("@mainCode", SqlDbType.NVarChar, 45);
             }
-            catch (Exception ex)
+            catch
             {
                 return -2;
             }

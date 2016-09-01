@@ -532,8 +532,8 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    
-                    BanDWareHouesIn("");
+
+                    BindWareHouesIn("");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -545,7 +545,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
                     toolStripComboBox4.SelectedIndex = 0;
-                    superGridControl1.PrimaryGrid.DataSource = new WarehouseOutBase().GetList("");
+                    BanDWareHouesOut("");
                     break;
                 case "领料单":
                     break;
@@ -1628,11 +1628,11 @@ namespace WSCATProject.Buys
                     break;
                 case "获赔商品入库":
                 
-                    BanDWareHouesIn(" type='5F1521062D2822532C0F5B06'");
+                    BindWareHouesIn(" type='5F1521062D2822532C0F5B06'");
                     break;
                 case "以货抵债":
-                  
-                    BanDWareHouesIn(" type='36305F115132314A'");
+
+                    BindWareHouesIn(" type='36305F115132314A'");
                     break;
                 case "销售申请单":
                     break;
@@ -1784,7 +1784,7 @@ namespace WSCATProject.Buys
             gc.HeaderText = "备注";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = ware.getWarehouseInList(where).Tables[0];
+            dt = new WarehouseOutInterface().GetList(where).Tables[0];
             superGridControl1.PrimaryGrid.DataSource = dt;
             whereField = "单据日期";
             orderField = "ID";
@@ -1808,7 +1808,7 @@ namespace WSCATProject.Buys
                             WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
                             ware.WareHouseoutModel = rows;
                             ware.State = 0;
-                            ware.Show();
+                            ware.ShowDialog(this);
                         }
                         //部分出库查看
                         if (shengh == "1")
