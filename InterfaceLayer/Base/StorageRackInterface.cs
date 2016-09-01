@@ -40,13 +40,15 @@ namespace InterfaceLayer.Base
             return srl.DelStorageRackByCode(code);
         }
         /// <summary>
-        /// 修改名字
+        /// 根据条件修改
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="fieldName">字段名</param>
+        /// <param name="fieldValue">修改后的值</param>
+        /// <param name="code">编码</param>
         /// <returns></returns>
-        public int UpdateStorageRackByCode(string code)
+        public int UpdateStorageRackByCode(string fieldName, string fieldValue, string code)
         {
-            return srl.UpdateStorageRackByCode(code);
+            return srl.UpdateStorageRackByCode(fieldName, fieldValue, code);
         }
         /// <summary>
         /// 新增货架信息
