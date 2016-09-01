@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data.SqlClient;
 
 namespace BaseLayer
 {
@@ -41,7 +42,6 @@ namespace BaseLayer
             {
                 throw new Exception("-4");
             }
-            
         }
 
         /// <summary>

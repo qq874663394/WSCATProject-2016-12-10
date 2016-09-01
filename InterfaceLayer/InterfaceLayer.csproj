@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Base\ClientInterface.cs" />
     <Compile Include="Base\EmpolyeeInterface.cs" />
+    <Compile Include="Base\OrderTypeInterface.cs" />
     <Compile Include="Base\StorageInterface.cs" />
     <Compile Include="Base\StorageRackInterface.cs" />
     <Compile Include="Base\SupplierInterface.cs" />
@@ -49,6 +50,8 @@
     <Compile Include="Warehouse\WarehouseDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInterface.cs" />
     <Compile Include="Warehouse\WarehouseOrderInterface.cs" />
+    <Compile Include="Warehouse\WarehouseOutDetailInterface.cs" />
+    <Compile Include="Warehouse\WarehouseOutInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelperUtility\HelperUtility.csproj">

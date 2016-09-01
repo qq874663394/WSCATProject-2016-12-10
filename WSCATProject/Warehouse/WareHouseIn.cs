@@ -185,10 +185,6 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        textBoxOddNumbers.Text = _wareHouseModel["code"].Value.ToString();
-                        this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
-                        comboBoxEx1.SelectedIndex = 0;
-                        superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
                         superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
                         superGridControl1.PrimaryGrid.EnsureVisible();
                         InitDataGridView();
@@ -201,7 +197,6 @@ namespace WSCATProject.WareHouse
 
             }
             //部分入库查看
-           
             if (_state == 1)
             {
                 if (_wareHouseModel != null)
@@ -217,7 +212,6 @@ namespace WSCATProject.WareHouse
                 }
             }
             //以入库的状态查看
-          
             if (_state == 2)
             {
                 if (_wareHouseModel != null)
@@ -232,6 +226,10 @@ namespace WSCATProject.WareHouse
                     }
                 }
             }
+            OrderTypeInterface oti = new OrderTypeInterface();
+            comboBoxEx1.ValueMember = "code";
+            comboBoxEx1.DisplayMember = "name";
+            comboBoxEx1.DataSource = oti.GetList("");
         }
 
         /// <summary>
@@ -294,6 +292,7 @@ namespace WSCATProject.WareHouse
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
+              
                 resizablePanel1.Location = new Point(204, 300);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
@@ -370,7 +369,6 @@ namespace WSCATProject.WareHouse
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);
                 warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton3.Text);
                 warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
-           
                 warehouseIn.state = 0;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
@@ -408,17 +406,17 @@ namespace WSCATProject.WareHouse
                         WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumn6"].Value);
                         WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumn7"].Value);
                         WarehouseIndetail.remark = "";
-                    WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
-                    WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
+                        WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
+                        WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
                         WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
                         WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
-                    WarehouseIndetail.reserved2 = "";
-                    WarehouseIndetail.rfid = "";
+                        WarehouseIndetail.reserved2 = "";
+                        WarehouseIndetail.rfid = "";
                         WarehouseIndetail.rfid = "";
                         WarehouseIndetail.updateDate = nowDataTime;
                         WarehouseIndetail.state = 1;
                         int isarrive = Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn11"].Value) == true ? 1 : 0;
-                        if (isarrive==1)
+                        if (isarrive == 1)
                         {
                             _rukushu++;
                         }
@@ -487,8 +485,8 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         protected void Gdiec_ButtonCustomClick(object sender, EventArgs e)
         {
-           
-            if (labtextboxTop3.Text==null)
+
+            if (labtextboxTop3.Text == null)
             {
                 MessageBox.Show("请先选择供应商:");
                 return;
@@ -499,7 +497,7 @@ namespace WSCATProject.WareHouse
                 GridCell gc = ge[0] as GridCell;
                 WareHuseStorageRack whsr = new WareHuseStorageRack();
                 whsr.ShowDialog(this);
-         
+
                 gc.GridRow.Cells[8].Value = Storage;
                 gc.GridRow.Cells[9].Value = StorageRack + "/" + StoragePai + "/" + StorageGe;
             }
@@ -550,7 +548,7 @@ namespace WSCATProject.WareHouse
         }
 
         /// <summary>
-        /// 审核
+        /// 审核按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -559,7 +557,7 @@ namespace WSCATProject.WareHouse
             int checkResult = 0;
             string wherecode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim());
             WarehouseInterface warehouseInterface = new WarehouseInterface();
-            int result = warehouseInterface.getWarehouseInList("code='"+ wherecode + "' and state=0").Tables[0].Rows.Count;
+            int result = warehouseInterface.getWarehouseInList("code='" + wherecode + "' and state=0").Tables[0].Rows.Count;
             if (result > 0)
             {
                 if (MessageBox.Show("还有商品未入库，是否继续审核？", "审核确认", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)

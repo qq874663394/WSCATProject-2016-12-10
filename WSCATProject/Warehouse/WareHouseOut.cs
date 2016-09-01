@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
-using InterfaceLayer.Base;
+using HelperUtility.Encrypt;
+using InterfaceLayer.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace WSCATProject.WareHouse
         {
             InitializeComponent();
         }
+
+        WarehouseOutDetailInterface warehouseout = new WarehouseOutDetailInterface();
         #region  数据字段    
         /// <summary>
         /// 所有客户
@@ -34,6 +37,19 @@ namespace WSCATProject.WareHouse
         private int _Click = 0;
         private decimal _MaterialMoney;
         private decimal _MaterialNumber;
+        private int _state;//判断状态 0、未出库，1、部分出库，2已出库
+        private GridRow _wareHouseoutModel;//出库数据的Model
+        public int State
+        {
+            get {  return _state;}
+            set {_state = value; }
+        }
+        //出库数据的Model
+        public GridRow WareHouseoutModel 
+        {
+            get{return _wareHouseoutModel;}
+            set { _wareHouseoutModel = value;}
+        }
 
         #endregion
 
@@ -64,15 +80,70 @@ namespace WSCATProject.WareHouse
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
 
-            //出库单单号
-            textBoxOddNumbers.Text = BuildCode.ModuleCode("OO");
 
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            //InitDataGridView();
+
+            textBoxOddNumbers.Text = _wareHouseoutModel["code"].Value.ToString();
+            this.labtextboxTop5.Text = _wareHouseoutModel["salesCode"].Value.ToString();
+            comboBoxEx1.SelectedIndex = 0;
+            superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+            //待入库进行查看的时候
+            if (_state == 0)
+            {
+                if (_wareHouseoutModel != null)
+                {
+                    try
+                    {
+                        //根据条件查询表格里面的数据
+                        string code = XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString());
+                        superGridControl1.PrimaryGrid.DataSource = warehouseout.GetList(" mainCode='"+code+"'");
+                       // superGridControl1.PrimaryGrid.EnsureVisible();
+                        //调用统计的方法
+                        InitDataGridView();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
+
+            }
+            //部分入库查看
+
+            if (_state == 1)
+            {
+                if (_wareHouseoutModel != null)
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
+            }
+            //以入库的状态查看
+
+            if (_state == 2)
+            {
+                if (_wareHouseoutModel != null)
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("错误" + ex.Message);
+                    }
+                }
+            }
         }
         /// <summary>
         /// 点击panel隐藏扩展panel
@@ -154,32 +225,32 @@ namespace WSCATProject.WareHouse
             gr.Cells["gridColumn1"].Value = "合计";
             gr.Cells["gridColumn1"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn5"].Value = 0;
+            gr.Cells["gridColumn5"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumn5"].CellStyles.Default.Background.Color1 = Color.Orange;
             gr.Cells["gridColumn6"].Value = 0;
             gr.Cells["gridColumn6"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumn6"].CellStyles.Default.Background.Color1 = Color.Orange;
-            gr.Cells["gridColumn8"].Value = 0;
-            gr.Cells["gridColumn8"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumn8"].CellStyles.Default.Background.Color1 = Color.Orange;
 
             //计算金额
-            decimal number = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
-            decimal price = Convert.ToDecimal(gr.Cells["gridColumn8"].FormattedValue);
+            decimal number = Convert.ToDecimal(gr.Cells["gridColumn5"].FormattedValue);
+            decimal price = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
             decimal allPrice = number * price;
-            gr.Cells["gridColumn8"].Value = allPrice;
+            gr.Cells["gridColumn6"].Value = allPrice;
             //逐行统计数据总数
             decimal tempAllNumber = 0;
             decimal tempAllMoney = 0;
             for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
             {
                 GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
-                tempAllNumber += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
-                tempAllMoney += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+                tempAllNumber += Convert.ToDecimal(tempGR["gridColumn5"].FormattedValue);
+                tempAllMoney += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
             }
             _MaterialMoney = tempAllMoney;
             _MaterialNumber = tempAllNumber;
             gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-            gr["gridColumn6"].Value = _MaterialNumber.ToString();
-            gr["gridColumn8"].Value = _MaterialMoney.ToString();
+            gr["gridColumn5"].Value = _MaterialNumber.ToString();
+            gr["gridColumn6"].Value = _MaterialMoney.ToString();
         }
         #endregion
 
@@ -249,6 +320,9 @@ namespace WSCATProject.WareHouse
             }
         }
 
-        
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

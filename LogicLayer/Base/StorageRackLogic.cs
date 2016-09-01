@@ -153,12 +153,12 @@ namespace LogicLayer.Base
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public int UpdateStorageRackByCode(string code)
+        public int UpdateStorageRackByCode(string fieldName, string fieldValue, string code)
         {
             int result = 0;
             try
             {
-                result = sr.UpdateStorageRackByCode(code);
+                result = sr.UpdateStorageRackByCode(fieldName, fieldValue,code);
                 LogBase lb = new LogBase();
                 log log = new log()
                 {

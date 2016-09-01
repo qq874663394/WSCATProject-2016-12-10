@@ -150,7 +150,7 @@ namespace UpdateManagerLayer
                         connection.Close();
                         return rows;
                     }
-                    catch(Exception ex)
+                    catch
                     {
                         return -6;
                     }

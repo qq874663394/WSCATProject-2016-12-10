@@ -29,18 +29,18 @@ namespace WSCATProject
             get { return _clickStorage; }
             set { _clickStorage = value; }
         }
-        private void InputGoodsForm_Load(object sender, EventArgs e)
-        {
-            //InitDataGridViewHeaderColumn();
-            //InitTopLab();
-            //InitTopLabText();
-            //InitBottomLab();
-            //InitBottonLabText();
-            //InitButton();
-            //dataGridViewFujia.ReadOnly = true;
-            //dataGridViewFujia.AllowUserToResizeColumns = false;
-            //dataGridViewFujia.AllowUserToResizeRows = false;
-        }
+        //private void InputGoodsForm_Load(object sender, EventArgs e)
+        //{
+        //    //InitDataGridViewHeaderColumn();
+        //    //InitTopLab();
+        //    //InitTopLabText();
+        //    //InitBottomLab();
+        //    //InitBottonLabText();
+        //    //InitButton();
+        //    //dataGridViewFujia.ReadOnly = true;
+        //    //dataGridViewFujia.AllowUserToResizeColumns = false;
+        //    //dataGridViewFujia.AllowUserToResizeRows = false;
+        //}
 
         //对view添加列标题 
         protected virtual void InitDataGridViewHeaderColumn()
