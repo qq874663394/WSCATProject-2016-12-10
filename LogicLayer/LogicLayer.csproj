@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\EmpolyeeLogic.cs" />
     <Compile Include="Base\StorageLogic.cs" />
     <Compile Include="Base\StorageRackLogic.cs" />
+    <Compile Include="Base\SupplierLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warehouse\WarehouseInDetailLogic.cs" />
     <Compile Include="Warehouse\WarehouseInLogic.cs" />
+    <Compile Include="Warehouse\WarehouseOrderLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">
