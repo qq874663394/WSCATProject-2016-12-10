@@ -435,7 +435,7 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.DataPropertyName = "mainCode";
+            this.gridColumn1.DataPropertyName = "code";
             this.gridColumn1.HeaderText = "单号";
             this.gridColumn1.Name = "gridColumn1";
             // 
