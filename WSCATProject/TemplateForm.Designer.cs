@@ -260,6 +260,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(20, 20);
             this.pictureBox5.TabIndex = 31;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.ClickPicBox);
             // 
             // labtextboxBotton4
             // 
