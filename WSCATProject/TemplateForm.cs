@@ -117,7 +117,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                    resizablePanel1.Location = new Point(120, 200);
+                    resizablePanel1.Location = new Point(204, 310);
                     break;
             }
             if (!_btnAdd)

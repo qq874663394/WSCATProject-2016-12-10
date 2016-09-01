@@ -478,7 +478,7 @@ namespace WSCATProject.Buys
             // 
             this.toolStripComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox3.Name = "toolStripComboBox3";
-            this.toolStripComboBox3.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox3.Size = new System.Drawing.Size(121, 35);
             // 
             // dateTimePicker1
             // 
