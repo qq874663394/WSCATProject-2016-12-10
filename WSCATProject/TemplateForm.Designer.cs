@@ -899,7 +899,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "TemplateForm";
             this.Text = "InputGoods";
-            this.Load += new System.EventHandler(this.InputGoodsForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

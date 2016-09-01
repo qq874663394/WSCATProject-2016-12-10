@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace WSCATProject.WareHouse
         {
             InitializeComponent();
         }
+
+        WarehouseOutDetailInterface warehouseout = new WarehouseOutDetailInterface();
         #region  数据字段    
         /// <summary>
         /// 所有客户
@@ -74,8 +77,6 @@ namespace WSCATProject.WareHouse
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
 
-            //出库单单号
-            textBoxOddNumbers.Text = BuildCode.ModuleCode("OO");
 
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
@@ -84,7 +85,7 @@ namespace WSCATProject.WareHouse
 
 
             textBoxOddNumbers.Text = _wareHouseoutModel["code"].Value.ToString();
-            this.labtextboxTop5.Text = _wareHouseoutModel["purchaseCode"].Value.ToString();
+            this.labtextboxTop5.Text = _wareHouseoutModel["salesCode"].Value.ToString();
             comboBoxEx1.SelectedIndex = 0;
             superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
             //待入库进行查看的时候
@@ -94,13 +95,10 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        textBoxOddNumbers.Text = _wareHouseoutModel["code"].Value.ToString();
-                        this.labtextboxTop5.Text = _wareHouseoutModel["purchaseCode"].Value.ToString();
-                        comboBoxEx1.SelectedIndex = 0;
-                        superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
                         //根据条件查询表格里面的数据
-                       // superGridControl1.PrimaryGrid.DataSource = _wareHouseoutModel.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString()));
-                        superGridControl1.PrimaryGrid.EnsureVisible();
+                        string code = XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString());
+                        superGridControl1.PrimaryGrid.DataSource = warehouseout.GetList(" mainCode='"+code+"'");
+                       // superGridControl1.PrimaryGrid.EnsureVisible();
                         //调用统计的方法
                         InitDataGridView();
                     }

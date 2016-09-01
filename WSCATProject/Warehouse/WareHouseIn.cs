@@ -185,10 +185,6 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        textBoxOddNumbers.Text = _wareHouseModel["code"].Value.ToString();
-                        this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
-                        comboBoxEx1.SelectedIndex = 0;
-                        superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
                         superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
                         superGridControl1.PrimaryGrid.EnsureVisible();
                         InitDataGridView();

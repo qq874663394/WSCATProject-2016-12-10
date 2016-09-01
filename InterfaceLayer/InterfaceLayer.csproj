@@ -51,6 +51,7 @@
     <Compile Include="Warehouse\WarehouseInterface.cs" />
     <Compile Include="Warehouse\WarehouseOrderInterface.cs" />
     <Compile Include="Warehouse\WarehouseOutDetailInterface.cs" />
+    <Compile Include="Warehouse\WarehouseOutInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelperUtility\HelperUtility.csproj">

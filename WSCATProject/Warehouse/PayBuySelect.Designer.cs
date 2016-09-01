@@ -527,7 +527,7 @@ namespace WSCATProject.Buys
             this.商品入库ToolStripMenuItem,
             this.商品出库ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 246);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 224);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 审核过账ToolStripMenuItem
@@ -596,7 +596,7 @@ namespace WSCATProject.Buys
             // 商品出库ToolStripMenuItem
             // 
             this.商品出库ToolStripMenuItem.Name = "商品出库ToolStripMenuItem";
-            this.商品出库ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.商品出库ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.商品出库ToolStripMenuItem.Text = "商品出库";
             this.商品出库ToolStripMenuItem.Click += new System.EventHandler(this.商品出库ToolStripMenuItem_Click);
             // 

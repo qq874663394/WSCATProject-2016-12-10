@@ -51,6 +51,7 @@
     <Compile Include="Warehouse\WarehouseInLogic.cs" />
     <Compile Include="Warehouse\WarehouseOrderLogic.cs" />
     <Compile Include="Warehouse\WarehouseOutDetailLogic.cs" />
+    <Compile Include="Warehouse\WarehouseOutLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">

@@ -545,7 +545,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
                     toolStripComboBox4.SelectedIndex = 0;
-                    superGridControl1.PrimaryGrid.DataSource = new WarehouseOutBase().GetList("");
+                    BanDWareHouesOut("");
                     break;
                 case "领料单":
                     break;
@@ -1784,7 +1784,7 @@ namespace WSCATProject.Buys
             gc.HeaderText = "备注";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = ware.getWarehouseInList(where).Tables[0];
+            dt = new WarehouseOutInterface().GetList(where).Tables[0];
             superGridControl1.PrimaryGrid.DataSource = dt;
             whereField = "单据日期";
             orderField = "ID";
@@ -1808,7 +1808,7 @@ namespace WSCATProject.Buys
                             WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
                             ware.WareHouseoutModel = rows;
                             ware.State = 0;
-                            ware.Show();
+                            ware.ShowDialog(this);
                         }
                         //部分出库查看
                         if (shengh == "1")
