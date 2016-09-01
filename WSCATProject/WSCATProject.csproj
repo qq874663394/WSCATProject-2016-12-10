@@ -105,6 +105,12 @@
     <Compile Include="Warehouse\PayBuySelect.Designer.cs">
       <DependentUpon>PayBuySelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseAllotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseAllotForm.Designer.cs">
+      <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\PayBuySelect.resx">
       <DependentUpon>PayBuySelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
+      <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>

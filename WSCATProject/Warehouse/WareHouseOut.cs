@@ -26,11 +26,11 @@ namespace WSCATProject.WareHouse
         /// <summary>
         /// 所有客户
         /// </summary>
-        private DataSet _AllClient = null;
+        private DataTable _AllClient = null;
         /// <summary>
         /// 所有业务员
         /// </summary>
-        private DataSet _AllEmployee = null;
+        private DataTable _AllEmployee = null;
         /// <summary>
         /// 点击的项,1为客户,2业务员
         /// </summary>
@@ -68,10 +68,13 @@ namespace WSCATProject.WareHouse
             pictureBox4.Visible = false;
             #endregion
 
-            //StorageManager sm = new StorageManager();//仓库
-            //ClientManager cm = new ClientManager();//客户
-            //_AllStorage = sm.GetList("");
-            //_AllClient = cm.GetList("");
+            //客户
+            ClientInterface client = new ClientInterface();
+            _AllClient = client.SelClient(false);
+
+            //业务员
+            EmpolyeeInterface employee = new EmpolyeeInterface();
+            _AllEmployee = employee.SelSupplierTable(false);
 
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
@@ -158,6 +161,33 @@ namespace WSCATProject.WareHouse
         /// </summary>
         private void InitClient()
         {
+            if (_Click != 1)
+            {
+                _Click = 1;
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "客户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "客户名称";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
+                resizablePanel1.Location = new Point(530, 110);
+                dataGridViewFujia.DataSource = _AllClient;
+            }
+        }
+
+        /// <summary>
+        /// 初始化业务员
+        /// </summary>
+        private void InitEmployee()
+        {
             if (_Click != 2)
             {
                 _Click = 2;
@@ -165,18 +195,18 @@ namespace WSCATProject.WareHouse
                 dataGridViewFujia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "Cli_Code";
-                dgvc.HeaderText = "编码";
-                dgvc.DataPropertyName = "Cli_Code";
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "员工工号";
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "Cli_Name";
-                dgvc.HeaderText = "客户名称";
-                dgvc.DataPropertyName = "Cli_Name";
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(607, 115);
-                //dataGridViewFujia.DataSource = _AllClient;
+                resizablePanel1.Location = new Point(208, 270);
+                dataGridViewFujia.DataSource = _AllEmployee;
             }
         }
 
@@ -235,7 +265,6 @@ namespace WSCATProject.WareHouse
             if (_Click != 1)
             {
                 InitClient();
-                _Click = 2;
             }
         }
         /// <summary>
@@ -247,8 +276,7 @@ namespace WSCATProject.WareHouse
         {
             if (_Click != 2)
             {
-                InitClient();
-                _Click = 1;
+                InitEmployee();
             }
         }
         #endregion
@@ -261,20 +289,19 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //仓库信息
+            //客户
             if (_Click == 1)
             {
-                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["St_Name"].Value.ToString();
-                labtextboxTop3.Text = name;
+                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                labtextboxTop2.Text = name;
                 resizablePanel1.Visible = false;
             }
 
-            //客户
+            //业务员
             if (_Click == 2)
             {
-                // string code = dataGridViewFujia.Rows[e.RowIndex].Cells["Su_Code"].Value.ToString();
-                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["Cli_Name"].Value.ToString();
-                labtextboxTop2.Text = name;
+                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                labtextboxBotton1.Text = name;
                 resizablePanel1.Visible = false;
             }
         }
