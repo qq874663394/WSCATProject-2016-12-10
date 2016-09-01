@@ -191,6 +191,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(627, 17);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // buttonExamine
             // 
@@ -233,7 +234,6 @@
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop3.Location = new System.Drawing.Point(501, 21);
             this.labtextboxTop3.Size = new System.Drawing.Size(123, 16);
-            this.labtextboxTop3.Visible = false;
             // 
             // labtextboxTop7
             // 
@@ -432,6 +432,10 @@
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(0, 131);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // gridColumn1
             // 
