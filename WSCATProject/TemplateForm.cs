@@ -172,9 +172,5 @@ namespace WSCATProject
                     e.GridCell.UnMergedBounds.Bottom + panel7.Location.Y + 65);
             }
         }
-
-        protected virtual void dataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
     }
 }

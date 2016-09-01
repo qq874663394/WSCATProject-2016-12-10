@@ -22,8 +22,8 @@ namespace BaseLayer.Base
             DataSet ds = null;
             try
             {
-                sql = @"select code as 员工工号,
-            name as 姓名,
+                sql = @"select emp.code as 员工工号,
+            emp.name as 姓名,
             r.name as 角色,
             cityName as 地址,
             cardCode as 卡号,
@@ -43,7 +43,7 @@ namespace BaseLayer.Base
             from T_BaseEmpolyee emp,
             T_BaseRole r,
             T_BaseDepartment dep 
-            where isClear=1 
+            where emp.isClear=1 
             and emp.departmentCode=dep.code 
             and emp.roleCode=r.code";
                 if (isflag == false)

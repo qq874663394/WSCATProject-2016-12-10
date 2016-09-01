@@ -97,7 +97,7 @@ namespace LogicLayer
             };
             try
             {
-                ds = warehouseInDetailBase.getList(strWhere);
+                ds = ch.DataSetReCoding(warehouseInDetailBase.getList(strWhere));
                 log.operationContent = "查询T_WarehouseInDetail表的数据列表,条件为:" + strWhere;
                 lb.Add(log);
             }
@@ -108,7 +108,7 @@ namespace LogicLayer
 
                 throw ex;
             }
-            return ds;
+            return ch.DataSetReCoding(ds);
         }
         /// <summary>
         /// 根据主单code获取数据列表
