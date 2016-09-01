@@ -1,6 +1,8 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Warehouse;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,21 +34,30 @@ namespace WSCATProject.WareHouse
         /// 点击的项,1为客户,2业务员
         /// </summary>
         private int _Click = 0;
+        /// <summary>
+        /// 客户编码
+        /// </summary>
+        private string _ClientCode = "";
+        /// <summary>
+        /// 业务员
+        /// </summary>
+        private string _Operation = "";
         private decimal _MaterialMoney;
         private decimal _MaterialNumber;
         private int _state;//判断状态 0、未出库，1、部分出库，2已出库
         private GridRow _wareHouseoutModel;//出库数据的Model
         public int State
         {
-            get {  return _state;}
-            set {_state = value; }
+            get { return _state; }
+            set { _state = value; }
         }
         //出库数据的Model
-        public GridRow WareHouseoutModel 
+        public GridRow WareHouseoutModel
         {
-            get{return _wareHouseoutModel;}
-            set { _wareHouseoutModel = value;}
+            get { return _wareHouseoutModel; }
+            set { _wareHouseoutModel = value; }
         }
+        private int _chukushu { get; set; }//入库数量
 
         #endregion
 
@@ -99,7 +110,7 @@ namespace WSCATProject.WareHouse
                         comboBoxEx1.SelectedIndex = 0;
                         superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
                         //根据条件查询表格里面的数据
-                       // superGridControl1.PrimaryGrid.DataSource = _wareHouseoutModel.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString()));
+                        // superGridControl1.PrimaryGrid.DataSource = _wareHouseoutModel.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString()));
                         superGridControl1.PrimaryGrid.EnsureVisible();
                         //调用统计的方法
                         InitDataGridView();
@@ -297,7 +308,82 @@ namespace WSCATProject.WareHouse
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            WarehouseOut warehouseOut = new WarehouseOut();
+            WarehouseOutInterface woi = new WarehouseOutInterface();
+            warehouseOut.type = comboBoxEx1.SelectedValue.ToString();
+            warehouseOut.ClientCode = _ClientCode;
+            warehouseOut.salesCode = labtextboxTop7.Text.Trim();
+            warehouseOut.operation = _Operation;
+            warehouseOut.remark = labtextboxBotton2.Text.Trim();
+            warehouseOut.examine = labtextboxBotton4.Text.Trim();
+            warehouseOut.date = dateTimePicker1.Value;
+            int result = woi.Add(warehouseOut);
 
+
+
+            List<WarehouseOutDetail> wareHouseOutList = new List<WarehouseOutDetail>();
+            //获得商品列表数据,准备传给base层新增数据
+            GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+            int i = 0;
+            string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
+            DateTime nowDataTime = DateTime.Now;
+            foreach (GridRow gr in grs)
+            {
+                if (gr["gridColumn2"].Value.ToString() != "")
+                {
+                    i++;
+                    WarehouseOutDetail WarehouseOutdetail = new WarehouseOutDetail()
+                    {
+                        barcode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text),
+                        date = this.dateTimePicker1.Value,
+                        isClear = 1,
+                        code = XYEEncoding.strCodeHex(gr["gridColumn1"].Value.ToString()),
+                        materiaName = XYEEncoding.strCodeHex(gr["gridColumn2"].Value.ToString()),
+                        materiaModel = XYEEncoding.strCodeHex(gr["gridColumn3"].Value.ToString()),
+                        materiaUnit = XYEEncoding.strCodeHex(gr["gridColumn4"].Value.ToString()),
+                        number = Convert.ToDecimal(gr["gridColumn5"].Value),
+                        money = Convert.ToDecimal(gr["gridColumn6"].Value),
+                        price = Convert.ToDecimal(gr["gridColumn11"].Value),
+                        remark = XYEEncoding.strCodeHex(gr["gridColumn7"].Value.ToString()),
+                        StorageRackName = XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString()),  //货架名称、排、格
+                        updateDate = nowDataTime,
+                        state = 1,
+                        MainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text),
+                        materialCode = ""
+                    };
+                    int isarrive = Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn12"].Value) == true ? 1 : 0;
+                    if (isarrive == 1)
+                    {
+                        _chukushu++;
+                    }
+                    WarehouseOutdetail.IsArrive = isarrive;
+                    GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                    wareHouseOutList.Add(WarehouseOutdetail);
+                }
+            }
+        }
+        public string ExSwitch(int ExValue)
+        {
+            switch (ExValue)
+            {
+                case -1:
+                    return "错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据";
+                case -2:
+                    return "错误代码:4002;建立查询字符串参数时出现异常";
+                case -3:
+                    return "错误代码:4003;对参数赋值时出现异常,请检查输入";
+                case -4:
+                    return "错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接";
+                case -5:
+                    return "错误代码:4005;对数据库新增数据时未能增加任何数据";
+                case -6:
+                    return "错误代码:4006;对数据库新增数据的方法失效,未能增加任何行";
+                case -7:
+                    return "错误代码:4007;检查到传入的参数为空,无法进行新增操作";
+                default:
+                    return "未知错误.";
+            }
         }
     }
 }

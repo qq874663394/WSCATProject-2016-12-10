@@ -406,7 +406,6 @@ namespace WSCATProject.WareHouse
                         WarehouseIndetail.remark = "";
                         WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
                         WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
-                        WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
                         WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
                         WarehouseIndetail.reserved2 = "";
                         WarehouseIndetail.rfid = "";
