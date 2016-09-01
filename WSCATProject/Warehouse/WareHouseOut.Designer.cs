@@ -177,7 +177,6 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(278, 21);
             this.pictureBox1.Visible = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox4
             // 
@@ -423,6 +422,10 @@
             // panel5
             // 
             this.panel5.Size = new System.Drawing.Size(1142, 71);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // gridColumn1
             // 
