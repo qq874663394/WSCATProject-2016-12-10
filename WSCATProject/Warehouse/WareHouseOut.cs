@@ -18,17 +18,17 @@ namespace WSCATProject.WareHouse
         {
             InitializeComponent();
         }
-        #region  数据字段
-        /// <summary>
-        /// 所有仓库列表
-        /// </summary>
-        private DataSet _AllStorage = null;
+        #region  数据字段    
         /// <summary>
         /// 所有客户
         /// </summary>
         private DataSet _AllClient = null;
         /// <summary>
-        /// 点击的项,1为仓库,2客户
+        /// 所有业务员
+        /// </summary>
+        private DataSet _AllEmployee = null;
+        /// <summary>
+        /// 点击的项,1为客户,2业务员
         /// </summary>
         private int _Click = 0;
         private decimal _MaterialMoney;
@@ -153,14 +153,25 @@ namespace WSCATProject.WareHouse
         #endregion
 
         #region picture  图标点击事件
-
-        //仓库图标的点击事件
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        }
-
-        //客户图标的点击事件
+        /// <summary>
+        /// 客户图标的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                InitClient();
+                _Click = 2;
+            }
+        }
+        /// <summary>
+        /// 业务员图标的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
             if (_Click != 2)
             {
@@ -168,7 +179,6 @@ namespace WSCATProject.WareHouse
                 _Click = 1;
             }
         }
-      
         #endregion
 
         #region  绑定pictureBox表格的数据
@@ -210,5 +220,7 @@ namespace WSCATProject.WareHouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
+        
     }
 }
