@@ -150,10 +150,10 @@ namespace BaseLayer
             string strSql = "";
             try
             {
-                strSql = string.Format("update T_WarehouseIn set type='{1}',goodsCode='{2}'," +
-                    "defaultType='{3}',stock='{4}',operation='{5}',examine='{6}',state={7},date='{8}'" +
-                    "purchaseCode='{9}',checkState={10},isClear={11},updateDate='{12}',reserved1='{13}'" +
-                    "reserved2='{14}',remark='{15}' where code='{16}'",
+                strSql = string.Format("update T_WarehouseIn set type='{0}',goodsCode='{1}'," +
+                    "defaultType='{2}',stock='{3}',operation='{4}',examine='{5}',state={6},date='{7}'," +
+                    "purchaseCode='{8}',checkState={9},isClear={10},updateDate='{11}',reserved1='{12}'," +
+                    "reserved2='{13}',remark='{14}' where code='{15}'",
                     wi.type,
                     wi.GoodsCode,
                     wi.DefaultType,
