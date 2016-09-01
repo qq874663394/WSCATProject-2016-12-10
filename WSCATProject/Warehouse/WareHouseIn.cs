@@ -294,7 +294,7 @@ namespace WSCATProject.WareHouse
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(200, -200);
+                resizablePanel1.Location = new Point(204, 410);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
         }
@@ -308,6 +308,7 @@ namespace WSCATProject.WareHouse
             if (_Click != 1)
             {
                 InitSupply();
+                _Click = 3;
             }
         }
         //业务员图标点击事件
@@ -316,6 +317,7 @@ namespace WSCATProject.WareHouse
             if (_Click != 2)
             {
                 InitEmployee();
+                _Click = 3;
             }
         }
         #endregion
