@@ -294,5 +294,10 @@ namespace WSCATProject.WareHouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

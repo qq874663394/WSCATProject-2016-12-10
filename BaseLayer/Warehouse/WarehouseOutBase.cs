@@ -11,18 +11,6 @@ namespace BaseLayer
 {
     public class WarehouseOutBase
     {
-        public List<WarehouseOut> GetWarehouseOutToList()
-        {
-            string sql = "";
-            List<WarehouseOut> list = new List<WarehouseOut>();
-            sql = "select * from T_WarehouseOut";
-            SqlDataReader read = DbHelperSQL.ExecuteReader(sql);
-            while (read.Read())
-            {
-                WarehouseOut warehouseOut = new WarehouseOut { };
-            }
-            return list;
-        }
         /// <summary>
         /// 根据where条件获取出库单列表
         /// </summary>
