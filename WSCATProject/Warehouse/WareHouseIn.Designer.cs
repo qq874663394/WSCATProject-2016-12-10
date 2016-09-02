@@ -551,6 +551,7 @@
             this.Name = "WareHouseIn";
             this.Text = "入库单";
             this.Load += new System.EventHandler(this.StockIn_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseIn_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);

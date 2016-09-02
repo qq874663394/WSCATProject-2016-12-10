@@ -539,6 +539,7 @@
             // 
             // gridColumn11
             // 
+            this.gridColumn11.DataPropertyName = "price";
             this.gridColumn11.HeaderText = "单价";
             this.gridColumn11.Name = "gridColumn11";
             // 
