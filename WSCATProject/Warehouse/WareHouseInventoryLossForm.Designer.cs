@@ -1,6 +1,6 @@
 ﻿namespace WSCATProject.Warehouse
 {
-    partial class WareHouseAllotForm
+    partial class WareHouseInventoryLossForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -42,7 +39,7 @@
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -61,21 +58,23 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1188, 39);
+            this.panel1.Size = new System.Drawing.Size(1193, 39);
+            this.panel1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
             // 
-            this.labelTitle.Text = "调拨单";
+            this.labelTitle.Text = "盘亏单";
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(0, 50);
-            this.panel7.Size = new System.Drawing.Size(1186, 293);
+            this.panel7.Location = new System.Drawing.Point(0, 55);
+            this.panel7.Size = new System.Drawing.Size(1191, 327);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.comboBoxEx1);
-            this.panel6.Size = new System.Drawing.Size(1186, 50);
+            this.panel6.Size = new System.Drawing.Size(1191, 55);
+            this.panel6.Click += new System.EventHandler(this.panel6_Click);
             this.panel6.Controls.SetChildIndex(this.labTop1, 0);
             this.panel6.Controls.SetChildIndex(this.labTop2, 0);
             this.panel6.Controls.SetChildIndex(this.labTop3, 0);
@@ -103,73 +102,73 @@
             // 
             // labTop6
             // 
-            this.labTop6.Location = new System.Drawing.Point(86, 19);
-            this.labTop6.Text = "调拨类型：";
+            this.labTop6.Location = new System.Drawing.Point(82, 23);
+            this.labTop6.Size = new System.Drawing.Size(53, 12);
+            this.labTop6.Text = "出库类别";
             // 
             // labTop5
             // 
-            this.labTop5.Location = new System.Drawing.Point(643, 20);
+            this.labTop5.Location = new System.Drawing.Point(639, 23);
             this.labTop5.Visible = false;
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(323, 17);
+            this.labTop4.Location = new System.Drawing.Point(365, 23);
             this.labTop4.Visible = false;
             // 
             // labTop3
             // 
-            this.labTop3.Location = new System.Drawing.Point(86, 19);
+            this.labTop3.Location = new System.Drawing.Point(82, 23);
             this.labTop3.Visible = false;
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(323, 17);
+            this.labTop2.Location = new System.Drawing.Point(365, 23);
             this.labTop2.Visible = false;
             // 
             // labTop1
             // 
-            this.labTop1.Location = new System.Drawing.Point(86, 19);
+            this.labTop1.Location = new System.Drawing.Point(82, 23);
             this.labTop1.Visible = false;
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(629, 20);
+            this.labTop9.Location = new System.Drawing.Point(898, 23);
             this.labTop9.Visible = false;
             // 
             // labTop8
             // 
-            this.labTop8.Location = new System.Drawing.Point(643, 20);
+            this.labTop8.Location = new System.Drawing.Point(639, 23);
             this.labTop8.Visible = false;
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(323, 17);
-            this.labTop7.Text = "调拨原因：";
+            this.labTop7.Location = new System.Drawing.Point(365, 23);
+            this.labTop7.Visible = false;
             // 
             // checkBox1
             // 
-            this.checkBox1.Location = new System.Drawing.Point(251, 19);
+            this.checkBox1.Location = new System.Drawing.Point(247, 24);
             this.checkBox1.Visible = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(248, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(244, 19);
             this.pictureBox1.Visible = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(248, 12);
-            this.pictureBox4.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox4.Location = new System.Drawing.Point(244, 19);
             this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(485, 16);
+            this.pictureBox3.Location = new System.Drawing.Point(527, 19);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(485, 13);
+            this.pictureBox2.Location = new System.Drawing.Point(527, 19);
             this.pictureBox2.Visible = false;
             // 
             // labtextboxTop6
@@ -183,7 +182,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(143, 17);
+            this.labtextboxTop6.Location = new System.Drawing.Point(139, 21);
             this.labtextboxTop6.Visible = false;
             // 
             // labtextboxTop3
@@ -197,7 +196,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.Location = new System.Drawing.Point(143, 17);
+            this.labtextboxTop3.Location = new System.Drawing.Point(139, 21);
             this.labtextboxTop3.Visible = false;
             // 
             // labtextboxTop7
@@ -211,8 +210,8 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(380, 18);
-            this.labtextboxTop7.Size = new System.Drawing.Size(427, 16);
+            this.labtextboxTop7.Location = new System.Drawing.Point(422, 21);
+            this.labtextboxTop7.Visible = false;
             // 
             // labtextboxTop4
             // 
@@ -225,7 +224,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(380, 15);
+            this.labtextboxTop4.Location = new System.Drawing.Point(422, 21);
             this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
@@ -239,7 +238,7 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop2.Location = new System.Drawing.Point(380, 15);
+            this.labtextboxTop2.Location = new System.Drawing.Point(422, 21);
             this.labtextboxTop2.Visible = false;
             // 
             // labtextboxTop1
@@ -253,7 +252,7 @@
             this.labtextboxTop1.Border.BorderGradientAngle = 0;
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop1.Location = new System.Drawing.Point(143, 17);
+            this.labtextboxTop1.Location = new System.Drawing.Point(139, 21);
             this.labtextboxTop1.Visible = false;
             // 
             // labtextboxTop8
@@ -267,7 +266,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop8.Location = new System.Drawing.Point(702, 18);
+            this.labtextboxTop8.Location = new System.Drawing.Point(698, 21);
             this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
@@ -281,7 +280,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop5.Location = new System.Drawing.Point(702, 18);
+            this.labtextboxTop5.Location = new System.Drawing.Point(698, 21);
             this.labtextboxTop5.Visible = false;
             // 
             // labtextboxTop9
@@ -295,7 +294,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(697, 18);
+            this.labtextboxTop9.Location = new System.Drawing.Point(957, 21);
             this.labtextboxTop9.Visible = false;
             // 
             // labtextboxBotton4
@@ -362,25 +361,28 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn12);
-            this.superGridControl1.Size = new System.Drawing.Size(1184, 291);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
+            this.superGridControl1.Size = new System.Drawing.Size(1189, 325);
+            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(0, 409);
-            this.panel2.Size = new System.Drawing.Size(1188, 118);
+            this.panel2.Location = new System.Drawing.Point(0, 448);
+            this.panel2.Size = new System.Drawing.Size(1193, 118);
             // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1188, 345);
+            this.panel3.Size = new System.Drawing.Size(1193, 384);
             // 
             // panel4
             // 
-            this.panel4.Size = new System.Drawing.Size(1188, 47);
+            this.panel4.Size = new System.Drawing.Size(1193, 47);
+            this.panel4.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel5
             // 
-            this.panel5.Size = new System.Drawing.Size(1188, 71);
+            this.panel5.Size = new System.Drawing.Size(1193, 71);
+            this.panel5.Click += new System.EventHandler(this.panel6_Click);
             // 
             // pictureBox5
             // 
@@ -392,31 +394,15 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Items.AddRange(new object[] {
-            this.comboItem1,
-            this.comboItem2,
-            this.comboItem3});
-            this.comboBoxEx1.Location = new System.Drawing.Point(143, 13);
+            this.comboBoxEx1.Location = new System.Drawing.Point(139, 19);
             this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(125, 21);
+            this.comboBoxEx1.Size = new System.Drawing.Size(146, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 30;
             // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "同价调拨";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "异价调拨";
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "赠品正品转换";
-            // 
             // gridColumn1
             // 
-            this.gridColumn1.HeaderText = "编号";
+            this.gridColumn1.HeaderText = "商品编号";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
@@ -431,52 +417,52 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.HeaderText = "单位";
+            this.gridColumn4.HeaderText = "仓库";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // gridColumn5
             // 
-            this.gridColumn5.HeaderText = "调出仓库";
+            this.gridColumn5.HeaderText = "单位";
             this.gridColumn5.Name = "gridColumn5";
             // 
             // gridColumn6
             // 
-            this.gridColumn6.HeaderText = "调入仓库";
+            this.gridColumn6.HeaderText = "贮存数量";
             this.gridColumn6.Name = "gridColumn6";
             // 
             // gridColumn7
             // 
-            this.gridColumn7.HeaderText = "单位";
+            this.gridColumn7.HeaderText = "盘点数量";
             this.gridColumn7.Name = "gridColumn7";
             // 
             // gridColumn8
             // 
-            this.gridColumn8.HeaderText = "数量";
+            this.gridColumn8.HeaderText = "盘亏数量";
             this.gridColumn8.Name = "gridColumn8";
             // 
             // gridColumn9
             // 
-            this.gridColumn9.HeaderText = "调出单价";
+            this.gridColumn9.HeaderText = "单价";
             this.gridColumn9.Name = "gridColumn9";
             // 
             // gridColumn10
             // 
-            this.gridColumn10.HeaderText = "调出金额";
+            this.gridColumn10.HeaderText = "盘库金额";
             this.gridColumn10.Name = "gridColumn10";
             // 
-            // gridColumn12
+            // gridColumn11
             // 
-            this.gridColumn12.HeaderText = "备注";
-            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn11.HeaderText = "备注";
+            this.gridColumn11.Name = "gridColumn11";
             // 
-            // WareHouseAllotForm
+            // WareHouseInventoryLossForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 527);
-            this.Name = "WareHouseAllotForm";
-            this.Text = "调拨单";
-            this.Load += new System.EventHandler(this.WareHouseAllotForm_Load);
+            this.ClientSize = new System.Drawing.Size(1193, 566);
+            this.Name = "WareHouseInventoryLossForm";
+            this.Text = "盘亏单";
+            this.Load += new System.EventHandler(this.WareHouseInventoryProfitForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseAllotForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -505,9 +491,6 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.Editors.ComboItem comboItem1;
-        private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
@@ -518,6 +501,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
     }
 }

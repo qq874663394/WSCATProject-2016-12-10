@@ -117,6 +117,18 @@
     <Compile Include="Warehouse\WareHouseIn.Designer.cs">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryLossForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryLossForm.Designer.cs">
+      <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryProfitForm.Designer.cs">
+      <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseOut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +171,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInventoryLossForm.resx">
+      <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInventoryProfitForm.resx">
+      <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseOut.resx">
       <DependentUpon>WareHouseOut.cs</DependentUpon>
