@@ -15,7 +15,6 @@ namespace LogicLayer.Base
     public class EmpolyeeLogic
     {
         EmpolyeeBase eb = new EmpolyeeBase();
-        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 查询所有信息
         /// </summary>
@@ -23,39 +22,28 @@ namespace LogicLayer.Base
         public DataTable SelEmpolyeeTable(bool isflag)
         {
             DataTable dt = null;
+            LogBase lb = new LogBase();
+            log model = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseEmpolyee",
+                operationTime = DateTime.Now,
+                objective = "查询员工信息"
+            };
             try
             {
-                dt = ch.DataTableReCoding(eb.SelEmpolyee(isflag));
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_BaseEmpolyee",
-                    operationTime = DateTime.Now,
-                    objective = "查询员工信息",
-                    result = 1,
-                    operationContent = "查询T_BaseEmpolyee表的数据成功"
-                };
-                lb.Add(log);
+                dt = eb.SelEmpolyee(isflag);
+                model.result = 1;
+                model.operationContent = "查询T_BaseEmpolyee表的数据成功";
+                lb.Add(model);
             }
-            catch (Exception ex)
+            catch
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_BaseEmpolyee",
-                    operationTime = DateTime.Now,
-                    objective = "查询员工信息",
-                    result = 1,
-                    operationContent = "查询T_BaseEmpolyee表的数据失败"
-                };
-                lb.Add(log);
-                throw ex;
+                model.result = 0;
+                model.operationContent = "查询T_BaseEmpolyee表的数据失败";
+                lb.Add(model);
             }
             return dt;
         }

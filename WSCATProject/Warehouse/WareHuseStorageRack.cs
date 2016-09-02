@@ -127,5 +127,24 @@ namespace WSCATProject.Warehouse
         {
             this.Close();
         }
+
+        private void comboBoxEx5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxEx4.SelectedValue == null)
+            {
+                comboBoxEx5.DataSource = null;
+                return;
+            }
+            //根据排的code绑定格的下拉框
+            StorageRackInterface srif = new StorageRackInterface();
+            DataTable dt = srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx4.SelectedValue.ToString()));
+            DataRow dr = dt.NewRow();
+            dr["name"] = "请选择";
+            dt.Rows.InsertAt(dr, 0);
+
+            comboBoxEx5.DisplayMember = "name";
+            comboBoxEx5.ValueMember = "code";
+            comboBoxEx5.DataSource = dt;
+        }
     }
 }

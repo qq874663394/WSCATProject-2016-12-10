@@ -442,18 +442,21 @@
             this.gridColumn1.DataPropertyName = "code";
             this.gridColumn1.HeaderText = "单号";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ReadOnly = true;
             // 
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "materiaName";
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "materiaModel";
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             // 
             // griCoulumcangku
             // 
@@ -466,24 +469,28 @@
             this.gridColumn5.DataPropertyName = "materiaUnit";
             this.gridColumn5.HeaderText = "单位";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.ReadOnly = true;
             // 
             // gridColumn6
             // 
             this.gridColumn6.DataPropertyName = "number";
             this.gridColumn6.HeaderText = "数量";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.ReadOnly = true;
             // 
             // gridColumn7
             // 
             this.gridColumn7.DataPropertyName = "price";
             this.gridColumn7.HeaderText = "单价";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.ReadOnly = true;
             // 
             // gridColumn8
             // 
             this.gridColumn8.DataPropertyName = "money";
             this.gridColumn8.HeaderText = "金额";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.ReadOnly = true;
             // 
             // griCoulumhuojia
             // 
@@ -544,6 +551,7 @@
             this.Name = "WareHouseIn";
             this.Text = "入库单";
             this.Load += new System.EventHandler(this.StockIn_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseIn_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);

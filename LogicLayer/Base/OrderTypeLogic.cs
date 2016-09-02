@@ -12,10 +12,9 @@ namespace LogicLayer.Base
     public class OrderTypeLogic
     {
         OrderTypeBase otb = new OrderTypeBase();
-        CodingHelper ch = new CodingHelper();
         public DataTable GetList(string strWhere)
         {
-            return ch.DataTableReCoding(otb.GetList(strWhere));
+            return otb.GetList(strWhere);
         }
     }
 }

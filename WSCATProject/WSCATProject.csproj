@@ -105,6 +105,12 @@
     <Compile Include="Warehouse\PayBuySelect.Designer.cs">
       <DependentUpon>PayBuySelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\TestVoidForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\TestVoidForm.Designer.cs">
+      <DependentUpon>TestVoidForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseAllotForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     <EmbeddedResource Include="Warehouse\PayBuySelect.resx">
       <DependentUpon>PayBuySelect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\TestVoidForm.resx">
+      <DependentUpon>TestVoidForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +219,10 @@
       <Project>{18987349-7ab6-4d38-b722-6d229b63a3ec}</Project>
       <Name>InterfaceLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
+      <Project>{7A293828-E2A4-4049-A209-8CAF1D6412AF}</Project>
+      <Name>LogicLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ManagerLayer\UpdateManagerLayer.csproj">
       <Project>{fd1a022a-a9a9-4f80-8579-c232888ca642}</Project>
       <Name>UpdateManagerLayer</Name>
@@ -238,6 +251,7 @@
     <Content Include="Resources\caiwuxitong.png" />
     <Content Include="Resources\cangkuxinxi.png" />
     <Content Include="Resources\cangkuxitong.png" />
+    <None Include="Resources\caozuo.png" />
     <Content Include="Resources\changePassword.png" />
     <Content Include="Resources\checkMore.png" />
     <Content Include="Resources\clientData.png" />
@@ -263,6 +277,7 @@
     <Content Include="Resources\goodsData.png" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
+    <None Include="Resources\houdan.png" />
     <Content Include="Resources\huopinziliao.png" />
     <Content Include="Resources\inInsert.png" />
     <Content Include="Resources\inSelect.png" />
@@ -290,6 +305,7 @@
     <Content Include="Resources\outUpdate.png" />
     <Content Include="Resources\pandian.PNG" />
     <Content Include="Resources\payment.png" />
+    <None Include="Resources\qiandan.PNG" />
     <Content Include="Resources\Redocn_2012040703034492.png" />
     <Content Include="Resources\regionData.png" />
     <Content Include="Resources\renshi.PNG" />

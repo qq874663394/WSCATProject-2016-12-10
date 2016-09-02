@@ -14,7 +14,6 @@ namespace LogicLayer
     public class WarehouseInDetailLogic
     {
         private WarehouseInDetailBase wdb = new WarehouseInDetailBase();
-        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 新增一条数据 
         /// </summary>
@@ -97,7 +96,7 @@ namespace LogicLayer
             };
             try
             {
-                ds = ch.DataSetReCoding(warehouseInDetailBase.getList(strWhere));
+                ds = warehouseInDetailBase.getList(strWhere);
                 log.operationContent = "查询T_WarehouseInDetail表的数据列表,条件为:" + strWhere;
                 lb.Add(log);
             }
@@ -108,7 +107,7 @@ namespace LogicLayer
 
                 throw ex;
             }
-            return ch.DataSetReCoding(ds);
+            return ds;
         }
         /// <summary>
         /// 根据主单code获取数据列表
@@ -145,7 +144,7 @@ namespace LogicLayer
                 throw ex;
             }
             
-            return ch.DataSetReCoding(ds);
+            return ds;
         }
         /// <summary>
         /// 根据code来更新入库状态
