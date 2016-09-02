@@ -45,7 +45,6 @@
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -404,8 +403,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn12);
-            this.superGridControl1.Size = new System.Drawing.Size(1138, 248);
+            this.superGridControl1.Size = new System.Drawing.Size(1127, 248);
             this.superGridControl1.Text = "  ";
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
@@ -439,54 +437,63 @@
             this.gridColumn1.DataPropertyName = "code";
             this.gridColumn1.HeaderText = "编号";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ReadOnly = true;
             // 
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "materiaName";
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "materiaModel";
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             // 
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "materiaUnit";
             this.gridColumn4.HeaderText = "单位";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
             // 
             // gridColumn5
             // 
             this.gridColumn5.DataPropertyName = "number";
             this.gridColumn5.HeaderText = "数量";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.ReadOnly = true;
             // 
             // gridColumn6
             // 
             this.gridColumn6.DataPropertyName = "money";
             this.gridColumn6.HeaderText = "金额";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.ReadOnly = true;
             // 
             // gridColumn7
             // 
             this.gridColumn7.DataPropertyName = "remark";
             this.gridColumn7.HeaderText = "备注";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.ReadOnly = true;
             // 
             // gridColumn8
             // 
             this.gridColumn8.DataPropertyName = "warehouseName";
             this.gridColumn8.HeaderText = "仓库名称";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.ReadOnly = true;
             // 
             // gridColumn9
             // 
             this.gridColumn9.DataPropertyName = "storageRackName";
             this.gridColumn9.HeaderText = "货架/排/格";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.ReadOnly = true;
             this.gridColumn9.Width = 200;
             // 
             // gridColumn10
@@ -537,12 +544,7 @@
             // 
             this.gridColumn11.HeaderText = "单价";
             this.gridColumn11.Name = "gridColumn11";
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridCheckBoxXEditControl);
-            this.gridColumn12.HeaderText = "是否出库";
-            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn11.ReadOnly = true;
             // 
             // WareHouseOut
             // 
@@ -597,6 +599,5 @@
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
     }
 }
