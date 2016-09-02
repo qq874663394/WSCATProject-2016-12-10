@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
 using Model;
 using System;
@@ -160,7 +161,7 @@ namespace WSCATProject.WareHouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void panel6_Click(object sender, EventArgs e)
+        protected override void panel6_Click(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
         }

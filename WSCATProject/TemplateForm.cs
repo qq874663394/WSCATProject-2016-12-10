@@ -93,7 +93,7 @@ namespace WSCATProject
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void panel6_Click(object sender, EventArgs e)
+        protected virtual void panel6_Click(object sender, EventArgs e)
         {
             if (resizablePanel1.Visible)
                 resizablePanel1.Visible = false;
