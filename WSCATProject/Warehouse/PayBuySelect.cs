@@ -26,6 +26,14 @@ namespace WSCATProject.Buys
 
         public string whereField;
         public string orderField;
+        private string _selectForm;//判断窗体选中的列表
+        //判断窗体选中的列表
+        public string SelectForm
+        {
+            get{return _selectForm; }
+            set{ _selectForm = value;}
+        }
+
         public PayBuySelect()
         {
             InitializeComponent();
@@ -1731,57 +1739,85 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.DataSource = null;
             superGridControl1.PrimaryGrid.Columns.Clear();
             gc = new GridColumn();
-            gc.DataPropertyName = "id";
+            gc.DataPropertyName = "ID";
             gc.Name = "id";
             gc.HeaderText = "ID";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "code";
+            gc.DataPropertyName = "出库单号";
             gc.Name = "code";
             gc.HeaderText = "出库单号";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "type";
+            gc.DataPropertyName = "单据类型";
             gc.Name = "type";
             gc.HeaderText = "单据类型";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "salesCode";
+            gc.DataPropertyName = "销售单号";
             gc.Name = "salesCode";
             gc.HeaderText = "销售单号";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "date";
+            gc.DataPropertyName = "开单时间";
             gc.Name = "date";
             gc.HeaderText = "开单时间";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "state";
+            gc.DataPropertyName = "单据状态";
             gc.Name = "state";
             gc.HeaderText = "单据状态";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "operation";
+            gc.DataPropertyName = "出库员";
             gc.Name = "operation";
             gc.HeaderText = "出库员";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "examine";
+            gc.DataPropertyName = "审核人";
             gc.Name = "examine";
             gc.HeaderText = "审核人";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "remark";
+            gc.DataPropertyName = "备注";
             gc.Name = "remark";
             gc.HeaderText = "备注";
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "运送方式";
+            gc.Name = "transportMathod";
+            gc.HeaderText = "运送方式";
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "快递名称";
+            gc.Name = "logistics";
+            gc.HeaderText = "快递名称";
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "快递单号";
+            gc.Name = "logisticsOddCode";
+            gc.HeaderText = "快递单号";
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "快递名称";
+            gc.Name = "logisticsPhone";
+            gc.HeaderText = "快递名称";
+            gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             dt = new WarehouseOutInterface().GetList(where).Tables[0];
@@ -1802,13 +1838,15 @@ namespace WSCATProject.Buys
                     {
                         GridRow rows = cols[0] as GridRow;
                         string shengh = rows.Cells["state"].Value.ToString();
+                       
                         //待出库查看
                         if (shengh == "0")
                         {
+
                             WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
                             ware.WareHouseoutModel = rows;
                             ware.State = 0;
-                            ware.ShowDialog(this);
+                            ware.ShowDialog();
                         }
                         //部分出库查看
                         if (shengh == "1")

@@ -123,6 +123,18 @@
     <Compile Include="Warehouse\WareHouseIn.Designer.cs">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryLossForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryLossForm.Designer.cs">
+      <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryProfitForm.Designer.cs">
+      <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseOut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInventoryLossForm.resx">
+      <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInventoryProfitForm.resx">
+      <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseOut.resx">
       <DependentUpon>WareHouseOut.cs</DependentUpon>
@@ -233,6 +251,7 @@
     <Content Include="Resources\caiwuxitong.png" />
     <Content Include="Resources\cangkuxinxi.png" />
     <Content Include="Resources\cangkuxitong.png" />
+    <None Include="Resources\caozuo.png" />
     <Content Include="Resources\changePassword.png" />
     <Content Include="Resources\checkMore.png" />
     <Content Include="Resources\clientData.png" />
@@ -258,6 +277,7 @@
     <Content Include="Resources\goodsData.png" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
+    <None Include="Resources\houdan.png" />
     <Content Include="Resources\huopinziliao.png" />
     <Content Include="Resources\inInsert.png" />
     <Content Include="Resources\inSelect.png" />
@@ -285,6 +305,7 @@
     <Content Include="Resources\outUpdate.png" />
     <Content Include="Resources\pandian.PNG" />
     <Content Include="Resources\payment.png" />
+    <None Include="Resources\qiandan.PNG" />
     <Content Include="Resources\Redocn_2012040703034492.png" />
     <Content Include="Resources\regionData.png" />
     <Content Include="Resources\renshi.PNG" />

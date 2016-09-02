@@ -42,7 +42,6 @@
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -134,7 +133,7 @@
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(638, 20);
+            this.labTop9.Location = new System.Drawing.Point(629, 20);
             this.labTop9.Visible = false;
             // 
             // labTop8
@@ -145,7 +144,7 @@
             // labTop7
             // 
             this.labTop7.Location = new System.Drawing.Point(323, 17);
-            this.labTop7.Text = "调拨差额：";
+            this.labTop7.Text = "调拨原因：";
             // 
             // checkBox1
             // 
@@ -159,12 +158,13 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(248, 10);
+            this.pictureBox4.Location = new System.Drawing.Point(248, 12);
+            this.pictureBox4.Size = new System.Drawing.Size(20, 21);
             this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(485, 13);
+            this.pictureBox3.Location = new System.Drawing.Point(485, 16);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2
@@ -211,7 +211,8 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(380, 14);
+            this.labtextboxTop7.Location = new System.Drawing.Point(380, 18);
+            this.labtextboxTop7.Size = new System.Drawing.Size(427, 16);
             // 
             // labtextboxTop4
             // 
@@ -361,7 +362,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn12);
             this.superGridControl1.Size = new System.Drawing.Size(1184, 291);
             // 
@@ -396,7 +396,7 @@
             this.comboItem1,
             this.comboItem2,
             this.comboItem3});
-            this.comboBoxEx1.Location = new System.Drawing.Point(143, 12);
+            this.comboBoxEx1.Location = new System.Drawing.Point(143, 13);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(125, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -464,11 +464,6 @@
             this.gridColumn10.HeaderText = "调出金额";
             this.gridColumn10.Name = "gridColumn10";
             // 
-            // gridColumn11
-            // 
-            this.gridColumn11.HeaderText = "调拨原因";
-            this.gridColumn11.Name = "gridColumn11";
-            // 
             // gridColumn12
             // 
             this.gridColumn12.HeaderText = "备注";
@@ -523,7 +518,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
     }
 }
