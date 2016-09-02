@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
 using System;
 using System.Collections.Generic;
