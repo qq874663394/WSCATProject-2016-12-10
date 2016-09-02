@@ -259,17 +259,22 @@
             this.superTabItemRe = new DevComponents.DotNetBar.SuperTabItem();
             this.listViewEPend = new DevComponents.DotNetBar.Controls.ListViewEx();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
-            this.sideBarPanelItem1 = new DevComponents.DotNetBar.SideBarPanelItem();
             this.sideBarPanelItemRe = new DevComponents.DotNetBar.SideBarPanelItem();
             this.buttonItem14 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem15 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem17 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem18 = new DevComponents.DotNetBar.ButtonItem();
+            this.sideBarPanelItem1 = new DevComponents.DotNetBar.SideBarPanelItem();
             this.sideBarPanelItemIn = new DevComponents.DotNetBar.SideBarPanelItem();
             this.buttonItem19 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem20 = new DevComponents.DotNetBar.ButtonItem();
@@ -332,11 +337,6 @@
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
@@ -420,10 +420,10 @@
             this.superTabControlPanel1.SuspendLayout();
             this.maintainControlBottomPanel.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // 菜单1ToolStripMenuItem
@@ -1364,13 +1364,13 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1633,7 +1633,7 @@
             this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel4.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel4.Name = "superTabControlPanel4";
-            this.superTabControlPanel4.Size = new System.Drawing.Size(870, 470);
+            this.superTabControlPanel4.Size = new System.Drawing.Size(870, 468);
             this.superTabControlPanel4.TabIndex = 0;
             this.superTabControlPanel4.TabItem = this.superTabItemStock;
             // 
@@ -1650,7 +1650,7 @@
             this.storageControlAllPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.storageControlAllPanel.Location = new System.Drawing.Point(0, 0);
             this.storageControlAllPanel.Name = "storageControlAllPanel";
-            this.storageControlAllPanel.Size = new System.Drawing.Size(745, 383);
+            this.storageControlAllPanel.Size = new System.Drawing.Size(745, 381);
             this.storageControlAllPanel.TabIndex = 17;
             // 
             // pbWarehomeIn
@@ -1662,6 +1662,7 @@
             this.pbWarehomeIn.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeIn.TabIndex = 17;
             this.pbWarehomeIn.TabStop = false;
+            this.pbWarehomeIn.Click += new System.EventHandler(this.pbWarehomeIn_Click_1);
             // 
             // pbWarehomeOut
             // 
@@ -1672,6 +1673,7 @@
             this.pbWarehomeOut.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeOut.TabIndex = 16;
             this.pbWarehomeOut.TabStop = false;
+            this.pbWarehomeOut.Click += new System.EventHandler(this.pbWarehomeOut_Click_1);
             // 
             // pbWarehomeDamage
             // 
@@ -1682,16 +1684,18 @@
             this.pbWarehomeDamage.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeDamage.TabIndex = 15;
             this.pbWarehomeDamage.TabStop = false;
+            this.pbWarehomeDamage.Click += new System.EventHandler(this.pbWarehomeDamage_Click_1);
             // 
             // pbWarehomeAdjust
             // 
             this.pbWarehomeAdjust.BackgroundImage = global::WSCATProject.Properties.Resources.warehomeAdjust;
             this.pbWarehomeAdjust.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbWarehomeAdjust.Location = new System.Drawing.Point(365, 322);
+            this.pbWarehomeAdjust.Location = new System.Drawing.Point(367, 312);
             this.pbWarehomeAdjust.Name = "pbWarehomeAdjust";
             this.pbWarehomeAdjust.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeAdjust.TabIndex = 14;
             this.pbWarehomeAdjust.TabStop = false;
+            this.pbWarehomeAdjust.Click += new System.EventHandler(this.pbWarehomeAdjust_Click_1);
             // 
             // pbWarehomeGetMaterial
             // 
@@ -1702,6 +1706,7 @@
             this.pbWarehomeGetMaterial.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeGetMaterial.TabIndex = 9;
             this.pbWarehomeGetMaterial.TabStop = false;
+            this.pbWarehomeGetMaterial.Click += new System.EventHandler(this.pbWarehomeGetMaterial_Click_1);
             // 
             // pbWarehomeClearing
             // 
@@ -1712,6 +1717,7 @@
             this.pbWarehomeClearing.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeClearing.TabIndex = 13;
             this.pbWarehomeClearing.TabStop = false;
+            this.pbWarehomeClearing.Click += new System.EventHandler(this.pbWarehomeClearing_Click_1);
             // 
             // pbWarehomeChange
             // 
@@ -1722,6 +1728,7 @@
             this.pbWarehomeChange.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeChange.TabIndex = 12;
             this.pbWarehomeChange.TabStop = false;
+            this.pbWarehomeChange.Click += new System.EventHandler(this.pbWarehomeChange_Click_1);
             // 
             // storageContorlBottomPannel
             // 
@@ -1730,7 +1737,7 @@
             this.storageContorlBottomPannel.Controls.Add(this.btnWarehomeGoodsData);
             this.storageContorlBottomPannel.Controls.Add(this.btnWarehomeData);
             this.storageContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.storageContorlBottomPannel.Location = new System.Drawing.Point(0, 383);
+            this.storageContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
             this.storageContorlBottomPannel.Name = "storageContorlBottomPannel";
             this.storageContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.storageContorlBottomPannel.TabIndex = 17;
@@ -1789,7 +1796,7 @@
             this.storageContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.storageContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.storageContorlRightPannel.Name = "storageContorlRightPannel";
-            this.storageContorlRightPannel.Size = new System.Drawing.Size(125, 470);
+            this.storageContorlRightPannel.Size = new System.Drawing.Size(125, 468);
             this.storageContorlRightPannel.TabIndex = 15;
             this.storageContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -2606,7 +2613,7 @@
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel3.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(870, 470);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(870, 468);
             this.superTabControlPanel3.TabIndex = 0;
             this.superTabControlPanel3.TabItem = this.superTabItemOut;
             // 
@@ -2623,7 +2630,7 @@
             this.outContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outContorlAllPannel.Location = new System.Drawing.Point(0, 0);
             this.outContorlAllPannel.Name = "outContorlAllPannel";
-            this.outContorlAllPannel.Size = new System.Drawing.Size(745, 383);
+            this.outContorlAllPannel.Size = new System.Drawing.Size(745, 381);
             this.outContorlAllPannel.TabIndex = 16;
             // 
             // pbMarketWarehome
@@ -2704,7 +2711,7 @@
             this.outContorlBottomPannel.Controls.Add(this.buttonMarketClient);
             this.outContorlBottomPannel.Controls.Add(this.buttonMarketRegion);
             this.outContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.outContorlBottomPannel.Location = new System.Drawing.Point(0, 383);
+            this.outContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
             this.outContorlBottomPannel.Name = "outContorlBottomPannel";
             this.outContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.outContorlBottomPannel.TabIndex = 16;
@@ -2774,7 +2781,7 @@
             this.outContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.outContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.outContorlRightPannel.Name = "outContorlRightPannel";
-            this.outContorlRightPannel.Size = new System.Drawing.Size(125, 470);
+            this.outContorlRightPannel.Size = new System.Drawing.Size(125, 468);
             this.outContorlRightPannel.TabIndex = 14;
             this.outContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -2870,7 +2877,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(870, 470);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(870, 468);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItemIn;
             // 
@@ -2887,7 +2894,7 @@
             this.inContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inContorlAllPannel.Location = new System.Drawing.Point(0, 0);
             this.inContorlAllPannel.Name = "inContorlAllPannel";
-            this.inContorlAllPannel.Size = new System.Drawing.Size(745, 383);
+            this.inContorlAllPannel.Size = new System.Drawing.Size(745, 381);
             this.inContorlAllPannel.TabIndex = 14;
             // 
             // pictureBox23
@@ -2970,7 +2977,7 @@
             this.inContorlBottomPannel.Controls.Add(this.buttonInDistributo);
             this.inContorlBottomPannel.Controls.Add(this.buttonInRegion);
             this.inContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inContorlBottomPannel.Location = new System.Drawing.Point(0, 383);
+            this.inContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
             this.inContorlBottomPannel.Name = "inContorlBottomPannel";
             this.inContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.inContorlBottomPannel.TabIndex = 14;
@@ -3039,7 +3046,7 @@
             this.inContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.inContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.inContorlRightPannel.Name = "inContorlRightPannel";
-            this.inContorlRightPannel.Size = new System.Drawing.Size(125, 470);
+            this.inContorlRightPannel.Size = new System.Drawing.Size(125, 468);
             this.inContorlRightPannel.TabIndex = 12;
             this.inContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -3216,12 +3223,69 @@
             this.panel4.Controls.Add(this.pictureBox7);
             this.panel4.Controls.Add(this.pictureBox6);
             this.panel4.Controls.Add(this.labelX1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.ForeColor = System.Drawing.Color.Red;
-            this.panel4.Location = new System.Drawing.Point(129, 250);
+            this.panel4.Location = new System.Drawing.Point(129, 218);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(870, 26);
             this.panel4.TabIndex = 17;
+            // 
+            // labelX4
+            // 
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(573, 2);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(69, 23);
+            this.labelX4.TabIndex = 6;
+            this.labelX4.Text = "选择模块：";
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DisplayMember = "Text";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.ItemHeight = 15;
+            this.comboBoxEx1.Location = new System.Drawing.Point(648, 3);
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx1.TabIndex = 5;
+            this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(802, 2);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(75, 23);
+            this.labelX3.TabIndex = 4;
+            this.labelX3.Text = "显示登陆名";
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX2.Location = new System.Drawing.Point(305, 0);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(226, 25);
+            this.labelX2.TabIndex = 3;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::WSCATProject.Properties.Resources.Redocn_2012040703034492;
+            this.pictureBox7.Location = new System.Drawing.Point(266, 0);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(36, 26);
+            this.pictureBox7.TabIndex = 2;
+            this.pictureBox7.TabStop = false;
             // 
             // pictureBox6
             // 
@@ -3262,7 +3326,7 @@
             this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.None;
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sideBar1.ExpandedPanel = this.sideBarPanelItemRe;
+            this.sideBar1.ExpandedPanel = this.sideBarPanelItemSto;
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
             this.sideBar1.Name = "sideBar1";
             this.sideBar1.Panels.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -3279,14 +3343,6 @@
             this.sideBar1.TabIndex = 15;
             this.sideBar1.Text = "sideBar1";
             this.sideBar1.Click += new System.EventHandler(this.superTabItemOut_Click);
-            // 
-            // sideBarPanelItem1
-            // 
-            this.sideBarPanelItem1.FontBold = true;
-            this.sideBarPanelItem1.Image = global::WSCATProject.Properties.Resources.日志小;
-            this.sideBarPanelItem1.Name = "sideBarPanelItem1";
-            this.sideBarPanelItem1.Text = "工作日志";
-            this.sideBarPanelItem1.Click += new System.EventHandler(this.sideBarPanelItem1_Click);
             // 
             // sideBarPanelItemRe
             // 
@@ -3336,6 +3392,14 @@
             this.buttonItem18.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.buttonItem18.Name = "buttonItem18";
             this.buttonItem18.Text = "今年需维护";
+            // 
+            // sideBarPanelItem1
+            // 
+            this.sideBarPanelItem1.FontBold = true;
+            this.sideBarPanelItem1.Image = global::WSCATProject.Properties.Resources.日志小;
+            this.sideBarPanelItem1.Name = "sideBarPanelItem1";
+            this.sideBarPanelItem1.Text = "工作日志";
+            this.sideBarPanelItem1.Click += new System.EventHandler(this.sideBarPanelItem1_Click);
             // 
             // sideBarPanelItemIn
             // 
@@ -3897,64 +3961,6 @@
             this.toolStripButton15.Size = new System.Drawing.Size(23, 37);
             this.toolStripButton15.Text = "toolStripButton15";
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::WSCATProject.Properties.Resources.Redocn_2012040703034492;
-            this.pictureBox7.Location = new System.Drawing.Point(266, 0);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(36, 26);
-            this.pictureBox7.TabIndex = 2;
-            this.pictureBox7.TabStop = false;
-            // 
-            // labelX2
-            // 
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(305, 0);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(226, 25);
-            this.labelX2.TabIndex = 3;
-            // 
-            // labelX3
-            // 
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(802, 2);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(75, 23);
-            this.labelX3.TabIndex = 4;
-            this.labelX3.Text = "显示登陆名";
-            // 
-            // comboBoxEx1
-            // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(648, 3);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 5;
-            this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
-            // 
-            // labelX4
-            // 
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(573, 2);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(69, 23);
-            this.labelX4.TabIndex = 6;
-            this.labelX4.Text = "选择模块：";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4063,11 +4069,11 @@
             this.superTabControlPanel1.ResumeLayout(false);
             this.maintainControlBottomPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -21,13 +21,25 @@ namespace BaseLayer
             StringBuilder strSql = new StringBuilder();
             try
             {
-                strSql.Append("select id,code,type,stock,operation,examine,isClear,updateDate,");
-                strSql.Append("state,salesCode,date,checkState,remark,reserved1,reserved2,delivery,clientCode,");
-                strSql.Append("expressOdd,expressMan,expressPhone,defaultType ");
-                strSql.Append(" FROM T_WarehouseOut ");
+                strSql.Append(@"select 
+                tw.id as ID,
+                tw.code as 出库单号,
+                tw.type as 单据类型,
+                tw.salesCode as 销售单号,
+                tw.date as 开单时间,
+                tw.state as 单据状态,
+                tw.operation as 出库员,
+                tw.examine as 审核人,
+                tw.remark as 备注,
+                ts.transportMathod as 运送方式,
+                ts.logistics as 快递名称,
+                ts.logisticsOddCode as 快递单号,
+                ts.logisticsPhone as 快递名称
+                ");
+                strSql.Append(" from T_WarehouseOut tw ,T_SalesMain ts where tw.salesCode=ts.code  ");
                 if (strWhere.Trim() != "")
                 {
-                    strSql.Append(" where " + strWhere);
+                    strSql.Append(" and tw.type='"+ strWhere + "'");
                 }
             }
             catch
@@ -96,7 +108,11 @@ namespace BaseLayer
                 return -2;
             }
         }
-
+        /// <summary>
+        /// 修改出库单
+        /// </summary>
+        /// <param name="wo"></param>
+        /// <returns></returns>
         public int update(WarehouseOut wo)
         {
             string strSql = "";

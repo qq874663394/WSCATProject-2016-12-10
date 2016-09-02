@@ -1376,5 +1376,71 @@ namespace WSCATProject
         {
 
         }
+
+        /// <summary>
+        /// 其他发货单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeOut_Click_1(object sender, EventArgs e)
+        {
+            Buys.PayBuySelect sle = new Buys.PayBuySelect();
+            sle.SelectForm = "其他发货单";
+            sle.ShowDialog();
+        }
+        /// <summary>
+        /// 其他收货单点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeIn_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 盘点单的事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeClearing_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 报损单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeDamage_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 调价单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeAdjust_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 调拨单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeChange_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 领料单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbWarehomeGetMaterial_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
