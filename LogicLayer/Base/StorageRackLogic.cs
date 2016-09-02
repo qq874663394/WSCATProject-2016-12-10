@@ -14,7 +14,6 @@ namespace LogicLayer.Base
 {
     public class StorageRackLogic
     {
-        CodingHelper ch = new CodingHelper();
         StorageRackBase sr = new StorageRackBase();
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace LogicLayer.Base
             DataTable dt = null;
             try
             {
-                dt = ch.DataTableReCoding(sr.SelStorageRackByCode(parentId));
+                dt = sr.SelStorageRackByCode(parentId);
                 LogBase lb = new LogBase();
                 log log = new log()
                 {
@@ -70,7 +69,7 @@ namespace LogicLayer.Base
             DataTable dt = null;
             try
             {
-                dt = ch.DataTableReCoding(sr.SelStorageRack());
+                dt = sr.SelStorageRack();
                 LogBase lb = new LogBase();
                 log log = new log()
                 {

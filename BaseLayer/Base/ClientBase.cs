@@ -24,7 +24,7 @@ namespace BaseLayer.Base
                 sql = "select * from T_BaseClient";
                 if (isflag == false)
                 {
-                    sql += " where enable=1";
+                    sql += " where enable=1 and";
                 }
             }
             catch
@@ -33,13 +33,11 @@ namespace BaseLayer.Base
             }
             try
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                adapter.Fill(ds, "T_BaseClient");
+                ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-2");
+                throw new Exception(ex.Message);
             }
             return ds.Tables[0];
         }

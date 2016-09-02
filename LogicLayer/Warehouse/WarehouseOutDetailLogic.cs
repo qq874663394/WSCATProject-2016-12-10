@@ -12,10 +12,9 @@ namespace LogicLayer.Warehouse
     public class WarehouseOutDetailLogic
     {
         WarehouseOutDetailBase wodb = new WarehouseOutDetailBase();
-        CodingHelper ch = new CodingHelper();
         public DataSet GetList(string strWhere)
         {
-            return ch.DataSetReCoding(wodb.GetList(strWhere));
+            return wodb.GetList(strWhere);
         }
     }
 }

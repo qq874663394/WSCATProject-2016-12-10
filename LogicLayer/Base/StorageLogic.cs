@@ -15,14 +15,13 @@ namespace LogicLayer.Base
 {
     public class StorageLogic
     {
-        CodingHelper ch = new CodingHelper();
         StorageBase srb = new StorageBase();
         public DataTable SelStorage()
         {
             DataTable dt = null;
             try
             {
-                dt= ch.DataTableReCoding(srb.SelStorage());
+                dt= srb.SelStorage();
                 LogBase lb = new LogBase();
                 log log = new log()
                 {

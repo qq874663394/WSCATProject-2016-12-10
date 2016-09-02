@@ -15,7 +15,6 @@ namespace LogicLayer.Base
     public class SupplierLogic
     {
         SupplierBase sb = new SupplierBase();
-        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 查询所有信息
         /// </summary>
@@ -25,7 +24,7 @@ namespace LogicLayer.Base
             DataTable dt = null;
             try
             {
-                dt = ch.DataTableReCoding(sb.SelSupplierTable());
+                dt = sb.SelSupplierTable();
                 LogBase lb = new LogBase();
                 log log = new log()
                 {

@@ -15,9 +15,30 @@ namespace BaseLayer
     public abstract class DbHelperSQL
     {
         //数据库连接字符串(web.config来配置)，多数据库可使用DbHelperSQLP来实现.
-        public static string connectionString = ConfigurationManager.AppSettings["WSCAT"];
+        public static readonly string connectionString = ConfigurationManager.AppSettings["WSCAT"];
         public DbHelperSQL()
         {            
+        }
+        ///public static readonly string strCon = "字符串";  
+         /// <summary>  
+         /// 打开数据库连接  
+         /// </summary>  
+        public static SqlConnection Conn
+        {
+            get
+            {
+                SqlConnection conn = null;
+                try
+                {
+                    conn = new SqlConnection(connectionString);
+                    conn.Open();
+                }
+                catch
+                {
+                    throw new Exception("-0");
+                }
+                return conn;
+            }
         }
 
         #region 公用方法
@@ -132,27 +153,18 @@ namespace BaseLayer
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 using (SqlCommand cmd = new SqlCommand(SQLString, connection))
                 {
                     try
                     {
-                        connection.Open();
-                    }
-                    catch
-                    {
-                        return -4;
-                    }
-                    try
-                    {
                         int rows = cmd.ExecuteNonQuery();
-                        connection.Close();
                         return rows;
                     }
                     catch
                     {
-                        return -5;
+                        throw new Exception("-1");
                     }
                 }
             }
@@ -160,22 +172,19 @@ namespace BaseLayer
 
         public static int ExecuteSqlByTime(string SQLString, int Times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 using (SqlCommand cmd = new SqlCommand(SQLString, connection))
                 {
                     try
                     {
-                        connection.Open();
                         cmd.CommandTimeout = Times;
                         int rows = cmd.ExecuteNonQuery();
                         return rows;
                     }
-                    catch (System.Data.SqlClient.SqlException e)
+                    catch
                     {
-                        connection.Close();
-                        throw e;
-                        
+                        throw new Exception("-1");
                     }
                 }
             }
@@ -186,9 +195,8 @@ namespace BaseLayer
         /// <param name="SQLStringList">多条SQL语句</param>		
         public static int ExecuteSqlTran(List<String> SQLStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Conn)
             {
-                conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 SqlTransaction tx = conn.BeginTransaction();
@@ -223,7 +231,7 @@ namespace BaseLayer
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, string content)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 SqlCommand cmd = new SqlCommand(SQLString, connection);
                 SqlParameter myParameter = new SqlParameter("@content", SqlDbType.NText);
@@ -235,14 +243,9 @@ namespace BaseLayer
                     int rows = cmd.ExecuteNonQuery();
                     return rows;
                 }
-                catch (SqlException e)
+                catch
                 {
-                    throw e;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    connection.Close();
+                    throw new Exception("-1");
                 }
             }
         }
@@ -254,7 +257,7 @@ namespace BaseLayer
         /// <returns>影响的记录数</returns>
         public static object ExecuteSqlGet(string SQLString, string content)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 SqlCommand cmd = new SqlCommand(SQLString, connection);
                 System.Data.SqlClient.SqlParameter myParameter = new System.Data.SqlClient.SqlParameter("@content", SqlDbType.NText);
@@ -273,9 +276,9 @@ namespace BaseLayer
                         return obj;
                     }
                 }
-                catch (System.Data.SqlClient.SqlException e)
+                catch
                 {
-                    throw e;
+                    throw new Exception("-1");
                 }
                 finally
                 {
@@ -292,7 +295,7 @@ namespace BaseLayer
         /// <returns>影响的记录数</returns>
         public static int ExecuteSqlInsertImg(string strSQL, SqlParameter[] sps)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 SqlCommand cmd = new SqlCommand(strSQL, connection);
                 cmd.Parameters.AddRange(sps);
@@ -302,14 +305,9 @@ namespace BaseLayer
                     int rows = cmd.ExecuteNonQuery();
                     return rows;
                 }
-                catch (System.Data.SqlClient.SqlException e)
+                catch
                 {
-                    throw e;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    connection.Close();
+                    throw new Exception("-1");
                 }
             }
         }
@@ -320,7 +318,7 @@ namespace BaseLayer
         /// <returns>查询结果（object）</returns>
         public static object GetSingle(string SQLString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 using (SqlCommand cmd = new SqlCommand(SQLString, connection))
                 {
@@ -337,17 +335,16 @@ namespace BaseLayer
                             return obj;
                         }
                     }
-                    catch (SqlException e)
+                    catch
                     {
-                        connection.Close();
-                        throw e;
+                        throw new Exception("-1");
                     }
                 }
             }
         }
         public static object GetSingle(string SQLString, int Times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 using (SqlCommand cmd = new SqlCommand(SQLString, connection))
                 {
@@ -365,10 +362,9 @@ namespace BaseLayer
                             return obj;
                         }
                     }
-                    catch (SqlException e)
+                    catch
                     {
-                        connection.Close();
-                        throw e;
+                        throw new Exception("-1");
                     }
                 }
             }
@@ -380,7 +376,7 @@ namespace BaseLayer
         /// <returns>SqlDataReader</returns>
         public static SqlDataReader ExecuteReader(string strSQL)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = Conn;
             SqlCommand cmd = new SqlCommand(strSQL, connection);
             try
             {
@@ -388,11 +384,10 @@ namespace BaseLayer
                 SqlDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return myReader;
             }
-            catch (SqlException e)
+            catch
             {
-                throw e;
-            }   
-
+                throw new Exception("-1");
+            }
         }
         /// <summary>
         /// 执行查询语句，返回DataSet
@@ -401,25 +396,24 @@ namespace BaseLayer
         /// <returns>DataSet</returns>
         public static DataSet Query(string SQLString)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 DataSet ds = new DataSet();
                 try
                 {
-                    connection.Open();
                     SqlDataAdapter command = new SqlDataAdapter(SQLString, connection);
                     command.Fill(ds, "ds");
                 }
-                catch(Exception ex)
+                catch
                 {
-                    throw new Exception(ex.Message);
+                    throw new Exception("-1");
                 }
                 return ds;
             }
         }
         public static DataSet Query(string SQLString, int Times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 DataSet ds = new DataSet();
                 try
@@ -429,9 +423,9 @@ namespace BaseLayer
                     command.SelectCommand.CommandTimeout = Times;
                     command.Fill(ds, "ds");
                 }
-                catch (SqlException ex)
+                catch
                 {
-                    throw new Exception(ex.Message);
+                    throw new Exception("-1");
                 }
                 return ds;
             }
@@ -448,7 +442,7 @@ namespace BaseLayer
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, params SqlParameter[] cmdParms)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
@@ -459,9 +453,9 @@ namespace BaseLayer
                         cmd.Parameters.Clear();
                         return rows;
                     }
-                    catch (SqlException e)
+                    catch
                     {
-                        throw e;
+                        throw new Exception("-1");
                     }
                 }
             }
@@ -474,9 +468,8 @@ namespace BaseLayer
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
         public static void ExecuteSqlTran(Hashtable SQLStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Conn)
             {
-                conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
                 {
                     SqlCommand cmd = new SqlCommand();
@@ -496,7 +489,7 @@ namespace BaseLayer
                     catch
                     {
                         trans.Rollback();
-                        throw;
+                        throw new Exception("-1");
                     }
                 }
             }
@@ -510,9 +503,8 @@ namespace BaseLayer
         /// <param name="paraList">插入多条数据的sql的参数集合</param>
         public static void ExecuteSqlTran(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Conn)
             {
-                conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
                 {
                     SqlCommand cmd = new SqlCommand();
@@ -544,7 +536,7 @@ namespace BaseLayer
                     catch
                     {
                         trans.Rollback();
-                        throw;
+                        throw new Exception("-1");
                     }
                 }
             }
@@ -556,9 +548,8 @@ namespace BaseLayer
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
         public static void ExecuteSqlTranWithIndentity(Hashtable SQLStringList)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Conn)
             {
-                conn.Open();
                 using (SqlTransaction trans = conn.BeginTransaction())
                 {
                     SqlCommand cmd = new SqlCommand();
@@ -605,7 +596,7 @@ namespace BaseLayer
         /// <returns>查询结果（object）</returns>
         public static int GetSingle(string SQLString, params SqlParameter[] cmdParms)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
@@ -645,7 +636,7 @@ namespace BaseLayer
         /// <returns>SqlDataReader</returns>
         public static SqlDataReader ExecuteReader(string SQLString, params SqlParameter[] cmdParms)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = Conn;
             SqlCommand cmd = new SqlCommand();
             try
             {
@@ -673,7 +664,7 @@ namespace BaseLayer
         /// <returns>DataSet</returns>
         public static DataSet Query(string SQLString, params SqlParameter[] cmdParms)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 SqlCommand cmd = new SqlCommand();
                 PrepareCommand(cmd, connection, null, SQLString, cmdParms);
@@ -732,14 +723,12 @@ namespace BaseLayer
         /// <returns>SqlDataReader</returns>
         public static SqlDataReader RunProcedure(string storedProcName, IDataParameter[] parameters)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = Conn;
             SqlDataReader returnReader;
-            connection.Open();
             SqlCommand command = BuildQueryCommand(connection, storedProcName, parameters);
             command.CommandType = CommandType.StoredProcedure;
             returnReader = command.ExecuteReader(CommandBehavior.CloseConnection);
             return returnReader;
-            
         }
 
 
@@ -752,28 +741,24 @@ namespace BaseLayer
         /// <returns>DataSet</returns>
         public static DataSet RunProcedure(string storedProcName, IDataParameter[] parameters, string tableName)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 DataSet dataSet = new DataSet();
-                connection.Open();
                 SqlDataAdapter sqlDA = new SqlDataAdapter();
                 sqlDA.SelectCommand = BuildQueryCommand(connection, storedProcName, parameters);
                 sqlDA.Fill(dataSet, tableName);
-                connection.Close();
                 return dataSet;
             }
         }
         public static DataSet RunProcedure(string storedProcName, IDataParameter[] parameters, string tableName, int Times)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 DataSet dataSet = new DataSet();
-                connection.Open();
                 SqlDataAdapter sqlDA = new SqlDataAdapter();
                 sqlDA.SelectCommand = BuildQueryCommand(connection, storedProcName, parameters);
                 sqlDA.SelectCommand.CommandTimeout = Times;
                 sqlDA.Fill(dataSet, tableName);
-                connection.Close();
                 return dataSet;
             }
         }
@@ -816,14 +801,13 @@ namespace BaseLayer
         /// <returns></returns>
         public static int RunProcedure(string storedProcName, IDataParameter[] parameters, out int rowsAffected)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Conn)
             {
                 int result;
                 connection.Open();
                 SqlCommand command = BuildIntCommand(connection, storedProcName, parameters);
                 rowsAffected = command.ExecuteNonQuery();
                 result = (int)command.Parameters["ReturnValue"].Value;
-                //Connection.Close();
                 return result;
             }
         }
@@ -843,8 +827,5 @@ namespace BaseLayer
             return command;
         }
         #endregion
-
-
     }
-
 }

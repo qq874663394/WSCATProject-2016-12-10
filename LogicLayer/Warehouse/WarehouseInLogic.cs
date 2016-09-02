@@ -14,7 +14,6 @@ namespace LogicLayer
 {
     public class WarehouseInLogic
     {
-        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 根据where条件获取数据列表
         /// </summary>
@@ -60,7 +59,7 @@ namespace LogicLayer
 
                 throw ex;
             }
-            return ch.DataSetReCoding( ds);
+            return ds;
         }
 
         /// <summary>

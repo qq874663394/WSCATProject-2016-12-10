@@ -13,7 +13,6 @@ namespace LogicLayer.Warehouse
     public class WarehouseOutLogic
     {
         WarehouseOutBase wob = new WarehouseOutBase();
-        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 根据where条件获取出库单列表
         /// </summary>
@@ -21,7 +20,7 @@ namespace LogicLayer.Warehouse
         /// <returns></returns>
         public DataSet GetList(string strWhere)
         {
-            return ch.DataSetReCoding(wob.GetList(strWhere));
+            return wob.GetList(strWhere);
         }
         /// <summary>
         /// 添加出库单
