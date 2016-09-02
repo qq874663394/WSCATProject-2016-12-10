@@ -9,6 +9,5 @@ E:\619项目\2016年8月29日094544\Model\obj\Debug\Model.dll
 E:\619项目\2016年8月29日094544\Model\obj\Debug\Model.pdb
 E:\619项目\WSCATProject\Model\bin\Debug\Model.dll
 E:\619项目\WSCATProject\Model\bin\Debug\Model.pdb
-E:\619项目\WSCATProject\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 E:\619项目\WSCATProject\Model\obj\Debug\Model.dll
 E:\619项目\WSCATProject\Model\obj\Debug\Model.pdb

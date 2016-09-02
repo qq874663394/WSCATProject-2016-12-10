@@ -70,9 +70,8 @@ E:\619项目\2016年8月29日094544\WSCATProject\obj\Debug\WSCATProject.Warehous
 E:\619项目\2016年8月29日094544\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
 E:\619项目\2016年8月29日094544\WSCATProject\obj\Debug\WSCATProject.exe
 E:\619项目\2016年8月29日094544\WSCATProject\obj\Debug\WSCATProject.pdb
+E:\619项目\WSCATProject\WSCATProject\bin\Debug\Model.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\WSCATProject.exe.config
-E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.exe
-E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\WSCATProject.exe
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\WSCATProject.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\BaseLayer.dll
@@ -90,7 +89,6 @@ E:\619项目\WSCATProject\WSCATProject\bin\Debug\BaseLayer.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\HelperUtility.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\InterfaceLayer.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\UpdateManagerLayer.pdb
-E:\619项目\WSCATProject\WSCATProject\bin\Debug\Model.pdb
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\DevComponents.DotNetBar.SuperGrid.xml
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\DevComponents.DotNetBar2.xml
 E:\619项目\WSCATProject\WSCATProject\bin\Debug\LogicLayer.pdb
@@ -107,3 +105,7 @@ E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHous
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHouseOut.resources
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHuseStorageRack.resources
 E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
+E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.exe
+E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.pdb
+E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventoryProfitForm.resources
+E:\619项目\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventoryLossForm.resources

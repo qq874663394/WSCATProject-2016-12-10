@@ -12,6 +12,5 @@ E:\619项目\2016年8月29日094544\HelperUtility\obj\Debug\HelperUtility.pdb
 E:\619项目\WSCATProject\HelperUtility\bin\Debug\HelperUtility.dll
 E:\619项目\WSCATProject\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\WSCATProject\HelperUtility\bin\Debug\NPOI.dll
-E:\619项目\WSCATProject\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
 E:\619项目\WSCATProject\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\WSCATProject\HelperUtility\obj\Debug\HelperUtility.pdb
