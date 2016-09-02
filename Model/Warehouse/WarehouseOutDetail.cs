@@ -32,6 +32,9 @@ namespace Model
         private string _storageRackName;
         private string _storageRackCode;
         private string _mainCode;
+        private int _isArrive;
+        private string _warehouseCode;
+        private string _warehouseName;
         /// <summary>
         /// 出库编号
         /// </summary>
@@ -219,6 +222,51 @@ namespace Model
             set
             {
                 _mainCode = value;
+            }
+        }
+        /// <summary>
+        /// 是否出库
+        /// </summary>
+        public int IsArrive
+        {
+            get
+            {
+                return _isArrive;
+            }
+
+            set
+            {
+                _isArrive = value;
+            }
+        }
+        /// <summary>
+        /// 仓库code
+        /// </summary>
+        public string WarehouseCode
+        {
+            get
+            {
+                return _warehouseCode;
+            }
+
+            set
+            {
+                _warehouseCode = value;
+            }
+        }
+        /// <summary>
+        /// 仓库名
+        /// </summary>
+        public string WarehouseName
+        {
+            get
+            {
+                return _warehouseName;
+            }
+
+            set
+            {
+                _warehouseName = value;
             }
         }
         #endregion Model

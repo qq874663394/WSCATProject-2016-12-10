@@ -45,6 +45,7 @@
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1240, 39);
+            this.panel1.Size = new System.Drawing.Size(1131, 39);
             this.panel1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
@@ -90,12 +91,12 @@
             // panel7
             // 
             this.panel7.Location = new System.Drawing.Point(0, 65);
-            this.panel7.Size = new System.Drawing.Size(1238, 250);
+            this.panel7.Size = new System.Drawing.Size(1129, 250);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.comboBoxEx1);
-            this.panel6.Size = new System.Drawing.Size(1238, 65);
+            this.panel6.Size = new System.Drawing.Size(1129, 65);
             this.panel6.Click += new System.EventHandler(this.panel6_Click);
             this.panel6.Controls.SetChildIndex(this.labTop1, 0);
             this.panel6.Controls.SetChildIndex(this.labTop2, 0);
@@ -403,7 +404,8 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControl1.Size = new System.Drawing.Size(1236, 248);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn12);
+            this.superGridControl1.Size = new System.Drawing.Size(1138, 248);
             this.superGridControl1.Text = "  ";
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
@@ -414,19 +416,19 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(0, 381);
-            this.panel2.Size = new System.Drawing.Size(1240, 118);
+            this.panel2.Size = new System.Drawing.Size(1131, 118);
             // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1240, 317);
+            this.panel3.Size = new System.Drawing.Size(1131, 317);
             // 
             // panel4
             // 
-            this.panel4.Size = new System.Drawing.Size(1240, 47);
+            this.panel4.Size = new System.Drawing.Size(1131, 47);
             // 
             // panel5
             // 
-            this.panel5.Size = new System.Drawing.Size(1240, 71);
+            this.panel5.Size = new System.Drawing.Size(1131, 71);
             // 
             // pictureBox5
             // 
@@ -476,6 +478,7 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.DataPropertyName = "warehouseName";
             this.gridColumn8.HeaderText = "仓库名称";
             this.gridColumn8.Name = "gridColumn8";
             // 
@@ -532,15 +535,20 @@
             // 
             // gridColumn11
             // 
-            this.gridColumn11.DataPropertyName = "price";
             this.gridColumn11.HeaderText = "单价";
             this.gridColumn11.Name = "gridColumn11";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridCheckBoxXEditControl);
+            this.gridColumn12.HeaderText = "是否出库";
+            this.gridColumn12.Name = "gridColumn12";
             // 
             // WareHouseOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 499);
+            this.ClientSize = new System.Drawing.Size(1131, 499);
             this.KeyPreview = true;
             this.Name = "WareHouseOut";
             this.Text = "出库单";
@@ -582,12 +590,13 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.Editors.ComboItem comboItem5;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
     }
 }
