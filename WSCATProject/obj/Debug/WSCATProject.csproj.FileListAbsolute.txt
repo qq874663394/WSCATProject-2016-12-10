@@ -149,3 +149,7 @@ E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.WareHouse
 E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHuseStorageRack.resources
 E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
 E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.Warehouse.TestVoidForm.resources
+D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.TestVoidForm.resources
+D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseAllotForm.resources
+D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventoryLossForm.resources
+D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventoryProfitForm.resources

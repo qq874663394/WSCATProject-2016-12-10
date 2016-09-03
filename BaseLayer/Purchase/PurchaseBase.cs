@@ -21,20 +21,11 @@ namespace BaseLayer
             try
             {
                 sql = "select * from T_PurchaseMain po,T_PurchaseDetail pd where po.code=pd.PurchaseCode";
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
-            }
-            try
-            {
-                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                dapter.Fill(ds, "T_PurchaseOrder");
-            }
-            catch
-            {
-                throw new Exception("-2");
             }
             return ds.Tables[0];
         }

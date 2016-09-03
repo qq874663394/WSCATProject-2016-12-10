@@ -54,7 +54,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(15, 24);
+            this.labelX1.Location = new System.Drawing.Point(15, 23);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(42, 23);
             this.labelX1.TabIndex = 0;
@@ -66,11 +66,11 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(310, 24);
+            this.labelX2.Location = new System.Drawing.Point(162, 23);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(47, 23);
             this.labelX2.TabIndex = 1;
-            this.labelX2.Text = "货架：";
+            this.labelX2.Text = "区域：";
             // 
             // labelX3
             // 
@@ -78,11 +78,11 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(458, 24);
+            this.labelX3.Location = new System.Drawing.Point(310, 23);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(32, 23);
             this.labelX3.TabIndex = 2;
-            this.labelX3.Text = "行：";
+            this.labelX3.Text = "货架：";
             // 
             // labelX4
             // 
@@ -90,12 +90,12 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(592, 23);
+            this.labelX4.Location = new System.Drawing.Point(444, 23);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(33, 23);
             this.labelX4.TabIndex = 3;
             this.labelX4.Tag = "";
-            this.labelX4.Text = "格：";
+            this.labelX4.Text = "排：";
             // 
             // comboBoxEx1
             // 
@@ -126,7 +126,7 @@
             this.comboBoxEx2.ItemHeight = 15;
             this.comboBoxEx2.Items.AddRange(new object[] {
             this.comboItem2});
-            this.comboBoxEx2.Location = new System.Drawing.Point(353, 24);
+            this.comboBoxEx2.Location = new System.Drawing.Point(205, 24);
             this.comboBoxEx2.Name = "comboBoxEx2";
             this.comboBoxEx2.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -146,7 +146,7 @@
             this.comboBoxEx3.ItemHeight = 15;
             this.comboBoxEx3.Items.AddRange(new object[] {
             this.comboItem3});
-            this.comboBoxEx3.Location = new System.Drawing.Point(485, 24);
+            this.comboBoxEx3.Location = new System.Drawing.Point(337, 24);
             this.comboBoxEx3.Name = "comboBoxEx3";
             this.comboBoxEx3.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -166,7 +166,7 @@
             this.comboBoxEx4.ItemHeight = 15;
             this.comboBoxEx4.Items.AddRange(new object[] {
             this.comboItem4});
-            this.comboBoxEx4.Location = new System.Drawing.Point(620, 23);
+            this.comboBoxEx4.Location = new System.Drawing.Point(472, 24);
             this.comboBoxEx4.Name = "comboBoxEx4";
             this.comboBoxEx4.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -219,11 +219,11 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(162, 23);
+            this.labelX5.Location = new System.Drawing.Point(584, 23);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(47, 23);
             this.labelX5.TabIndex = 1;
-            this.labelX5.Text = "区域：";
+            this.labelX5.Text = "列：";
             // 
             // comboBoxEx5
             // 
@@ -234,12 +234,11 @@
             this.comboBoxEx5.ItemHeight = 15;
             this.comboBoxEx5.Items.AddRange(new object[] {
             this.comboItem5});
-            this.comboBoxEx5.Location = new System.Drawing.Point(205, 23);
+            this.comboBoxEx5.Location = new System.Drawing.Point(627, 24);
             this.comboBoxEx5.Name = "comboBoxEx5";
             this.comboBoxEx5.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx5.TabIndex = 5;
-            this.comboBoxEx5.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx5_SelectedIndexChanged);
             // 
             // comboItem5
             // 

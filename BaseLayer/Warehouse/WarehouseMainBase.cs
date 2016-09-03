@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BaseLayer.Base
+namespace BaseLayer.Warehouse
 {
-    public class WarehouseOrder
+    public class WarehouseMainBase
     {
         /// <summary>
         /// 减少库存
@@ -21,18 +23,11 @@ namespace BaseLayer.Base
             try
             {
                 sql = string.Format("update T_WarehouseMain set enaNumber=enaNumber-{0} where code='{1}'", number, code);
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            try
-            {
                 result = DbHelperSQL.ExecuteSql(sql);
             }
             catch
             {
-                throw new Exception("-2");
+                throw new Exception("-1");
             }
             return result;
         }
@@ -49,20 +44,33 @@ namespace BaseLayer.Base
             try
             {
                 sql = string.Format("update T_WarehouseMain set enaNumber=enaNumber+{0} where code='{1}'", number, code);
+                result = DbHelperSQL.ExecuteSql(sql);
             }
             catch
             {
                 throw new Exception("-1");
             }
+                
+            return result;
+        }
+        public DataTable GetList(string strWhere)
+        {
+            string sql = "";
+            DataSet ds = null;
             try
             {
-                result = DbHelperSQL.ExecuteSql(sql);
+                sql = "select * from T_WarehouseMain";
+                if (strWhere.Trim() != "")
+                {
+                    sql += " where " + strWhere;
+                }
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
-                throw new Exception("-2");
+                throw new Exception("-1");
             }
-            return result;
+            return ds.Tables[0];
         }
     }
 }

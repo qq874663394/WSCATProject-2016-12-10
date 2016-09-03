@@ -128,18 +128,18 @@ namespace LogicLayer
                 operationTime = DateTime.Now,
                 objective = "查询入库商品详情",
                 result = 1,
-                operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + mainCode
+                operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + XYEEncoding.strHexDecode(mainCode)
             };
             try
             {
                 ds = warehouseInDetailBase.getListByMainCode(mainCode);
 
-                log.operationContent = "根据主表code查询T_WarehouseInDetail表的数据列表,条件为:" + mainCode;
+                log.operationContent = "根据主表code查询T_WarehouseInDetail表的数据列表,条件为:" + XYEEncoding.strHexDecode(mainCode);
                 lb.Add(log);
             }
             catch(Exception ex)
             {
-                log.operationContent = "T_WarehouseInDetail表的数据列表查询失败,code为:" + mainCode;
+                log.operationContent = "T_WarehouseInDetail表的数据列表查询失败,code为:" + XYEEncoding.strHexDecode(mainCode);
                 lb.Add(log);
                 throw ex;
             }

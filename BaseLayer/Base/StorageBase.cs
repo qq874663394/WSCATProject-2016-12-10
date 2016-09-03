@@ -13,24 +13,34 @@ namespace BaseLayer.Base
         public DataTable SelStorage()
         {
             string sql = "";
+            DataSet ds = null;
             try
             {
                 sql = string.Format("SELECT * FROM T_BaseStorage order by id");
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
             }
+            return ds.Tables[0];
+        }
+        public DataTable GetList(string strWhere)
+        {
+            string sql = "";
             DataSet ds = null;
             try
             {
-                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                dapter.Fill(ds, "T_Storage");
+                sql = "select * from T_WarehouseMain";
+                if (strWhere.Trim() != "")
+                {
+                    sql += " where " + strWhere;
+                }
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
-                throw new Exception("-2");
+                throw new Exception("-1");
             }
             return ds.Tables[0];
         }

@@ -37,7 +37,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "查询货架信息",
                     result = 1,
-                    operationContent = "查询T_StorageRack表的数据成功,条件为:ParentId=" + parentId
+                    operationContent = "查询T_StorageRack表的数据成功,条件为:ParentId=" + XYEEncoding.strHexDecode(parentId)
                 };
                 lb.Add(log);
             }
@@ -53,7 +53,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "查询货架信息",
                     result = -1,
-                    operationContent = "查询T_StorageRack表的数据失败,条件为:ParentId=" + parentId
+                    operationContent = "查询T_StorageRack表的数据失败,条件为:ParentId=" + XYEEncoding.strHexDecode(parentId)
                 };
                 lb.Add(log);
                 throw ex;
@@ -124,7 +124,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "查询货架信息",
                     result = 1,
-                    operationContent = "删除T_StorageRack表的数据成功,条件为:code=" + code
+                    operationContent = "删除T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(code)
                 };
                 lb.Add(log);
             }
@@ -140,7 +140,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "删除货架信息",
                     result = -1,
-                    operationContent = "删除T_StorageRack表的数据失败,条件为:code=" + code
+                    operationContent = "删除T_StorageRack表的数据失败,条件为:code=" + XYEEncoding.strHexDecode(code)
                 };
                 lb.Add(log);
                 throw ex;
@@ -168,7 +168,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "修改货架信息",
                     result = 1,
-                    operationContent = "修改T_StorageRack表的数据成功,条件为:code=" + code
+                    operationContent = "修改T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(code)
                 };
                 lb.Add(log);
             }
@@ -184,7 +184,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "修改货架信息",
                     result = -1,
-                    operationContent = "修改T_StorageRack表的数据成功,条件为:code=" + code
+                    operationContent = "修改T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(code)
                 };
                 lb.Add(log);
                 throw ex;
@@ -212,7 +212,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "新增货架信息",
                     result = 1,
-                    operationContent = "新增T_StorageRack表的数据成功,条件为:code=" + srb.code
+                    operationContent = "新增T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(srb.code)
                 };
                 lb.Add(log);
             }
@@ -228,7 +228,7 @@ namespace LogicLayer.Base
                     operationTime = DateTime.Now,
                     objective = "新增货架信息",
                     result = -1,
-                    operationContent = "新增T_StorageRack表的数据失败,条件为:code=" + srb.code
+                    operationContent = "新增T_StorageRack表的数据失败,条件为:code=" + XYEEncoding.strHexDecode(srb.code)
                 };
                 lb.Add(log);
                 throw ex;

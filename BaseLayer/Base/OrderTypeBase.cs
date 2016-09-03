@@ -22,20 +22,11 @@ namespace BaseLayer.Base
                 {
                     sql += " where " + strWhere;
                 }
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
-            }
-            try
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                adapter.Fill(ds, "T_BaseOrderType");
-            }
-            catch
-            {
-                throw new Exception("-2");
             }
             return ds.Tables[0];
         }
