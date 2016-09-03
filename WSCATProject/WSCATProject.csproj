@@ -111,6 +111,12 @@
     <Compile Include="Warehouse\TestVoidForm.Designer.cs">
       <DependentUpon>TestVoidForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\T_WarehouseInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\T_WarehouseInventoryForm.Designer.cs">
+      <DependentUpon>T_WarehouseInventoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseAllotForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\TestVoidForm.resx">
       <DependentUpon>TestVoidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\T_WarehouseInventoryForm.resx">
+      <DependentUpon>T_WarehouseInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
@@ -261,6 +270,7 @@
     <Content Include="Resources\countPreview.png" />
     <Content Include="Resources\countPrint.png" />
     <Content Include="Resources\countSelect.png" />
+    <None Include="Resources\daying副本.png" />
     <Content Include="Resources\deliverManager.png" />
     <Content Include="Resources\diquziliao.png" />
     <Content Include="Resources\financeBank.png" />
@@ -275,6 +285,7 @@
     <Content Include="Resources\godDownIn.png" />
     <Content Include="Resources\godDownOut.png" />
     <Content Include="Resources\goodsData.png" />
+    <None Include="Resources\guanbi.PNG" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\houdan.png" />
@@ -316,7 +327,9 @@
     <Content Include="Resources\setterManager.png" />
     <Content Include="Resources\sff.png" />
     <None Include="Resources\shenghe.PNG" />
+    <None Include="Resources\shanchu副本.png" />
     <Content Include="Resources\shoukuan.png" />
+    <None Include="Resources\shuaxin.PNG" />
     <Content Include="Resources\souhouweihu.png" />
     <Content Include="Resources\staffData.png" />
     <Content Include="Resources\staffSetting.png" />
@@ -333,6 +346,7 @@
     <Content Include="Resources\systemOpeChange.png" />
     <Content Include="Resources\systemOpenAccount.png" />
     <Content Include="Resources\systemOperator.png" />
+    <None Include="Resources\tianjia副本.png" />
     <Content Include="Resources\today.PNG" />
     <Content Include="Resources\undo.png" />
     <Content Include="Resources\undo_2.png" />
@@ -358,6 +372,7 @@
     <Content Include="Resources\售后小.png" />
     <Content Include="Resources\帐套回收站.png" />
     <Content Include="Resources\帐套选项.png" />
+    <None Include="Resources\排序.PNG" />
     <Content Include="Resources\日志大.png" />
     <Content Include="Resources\日志大1.png" />
     <Content Include="Resources\日志小.png" />
