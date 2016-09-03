@@ -10,6 +10,10 @@ namespace BaseLayer.Base
 {
     public class StorageBase
     {
+        /// <summary>
+        /// 获取所有数据
+        /// </summary>
+        /// <returns></returns>
         public DataTable SelStorage()
         {
             string sql = "";
@@ -25,6 +29,11 @@ namespace BaseLayer.Base
             }
             return ds.Tables[0];
         }
+        /// <summary>
+        /// 自定义条件取得列表
+        /// </summary>
+        /// <param name="strWhere">where后面的条件</param>
+        /// <returns></returns>
         public DataTable GetList(string strWhere)
         {
             string sql = "";
