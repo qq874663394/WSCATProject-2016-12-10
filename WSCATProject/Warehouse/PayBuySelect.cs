@@ -23,7 +23,7 @@ namespace WSCATProject.Buys
         //ConllectionWaitManager cwm = new ConllectionWaitManager();
         WarehouseInterface ware = new WarehouseInterface();
         DataTable dt = null;
-
+        CodingHelper ch = new CodingHelper();
         public string whereField;
         public string orderField;
         private string _selectForm;//判断窗体选中的列表
@@ -2308,7 +2308,7 @@ namespace WSCATProject.Buys
             gc.HeaderText = "备注";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = ware.getWarehouseInList(where).Tables[0];
+            dt =  ch.DataTableReCoding(ware.getWarehouseInList(where).Tables[0]);
             if (dt.Rows.Count > 0)
             {
                 superGridControl1.PrimaryGrid.DataSource = dt;
@@ -2407,13 +2407,13 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "快递名称";
+            gc.DataPropertyName = "快递电话";
             gc.Name = "logisticsPhone";
-            gc.HeaderText = "快递名称";
+            gc.HeaderText = "快递电话";
             gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = new WarehouseOutInterface().GetList(where).Tables[0];
+            dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(where).Tables[0]);
             //if (dt.Rows.Count>0)
             //{
                 superGridControl1.PrimaryGrid.DataSource = dt;
