@@ -50,20 +50,11 @@ namespace BaseLayer.Base
                 {
                     sql += " and isEnable=1";
                 }
+                ds=DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
-            }
-            try
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                adapter.Fill(ds, "T_BaseEmpolyee");
-            }
-            catch
-            {
-                throw new Exception("-2");
             }
             return ds.Tables[0];
         }

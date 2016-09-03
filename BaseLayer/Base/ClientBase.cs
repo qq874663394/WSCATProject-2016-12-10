@@ -26,18 +26,11 @@ namespace BaseLayer.Base
                 {
                     sql += " where enable=1 and";
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            try
-            {
                 ds = DbHelperSQL.Query(sql);
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw new Exception("-1");
             }
             return ds.Tables[0];
         }

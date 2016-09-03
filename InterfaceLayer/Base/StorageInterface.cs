@@ -10,5 +10,9 @@ namespace InterfaceLayer.Base
         {
             return sl.SelStorage();
         }
+        public DataTable GetList(string strWhere)
+        {
+            return sl.GetList(strWhere);
+        }
     }
 }

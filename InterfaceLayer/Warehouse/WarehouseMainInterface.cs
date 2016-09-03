@@ -1,15 +1,16 @@
 ﻿using LogicLayer.Warehouse;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InterfaceLayer.Warehouse
 {
-    public class WarehouseOrderInterface
+    public class WarehouseMainInterface
     {
-        WarehouseOrderLogic wo = new WarehouseOrderLogic();
+        WarehouseMainLogic wo = new WarehouseMainLogic();
         /// <summary>
         /// 减少库存
         /// </summary>
@@ -29,6 +30,15 @@ namespace InterfaceLayer.Warehouse
         public int updateAug(int number, string code)
         {
             return wo.updateAug(number, code);
+        }
+        /// <summary>
+        /// 自定义条件获取列表
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
+        public DataTable GetList(string strWhere)
+        {
+            return wo.GetList(strWhere);
         }
     }
 }

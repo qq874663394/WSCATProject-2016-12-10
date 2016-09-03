@@ -19,24 +19,15 @@ namespace BaseLayer.Base
         public DataTable SelStorageRackByCode(string parentId)
         {
             string sql = "";
+            DataSet ds = null;
             try
             {
                 sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 and parentId='{0}' order by id", parentId);
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
-            }
-            DataSet ds = null;
-            try
-            {
-                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                dapter.Fill(ds, "T_StorageRack");
-            }
-            catch
-            {
-                throw new Exception("-2");
             }
             return ds.Tables[0];
         }
@@ -47,24 +38,15 @@ namespace BaseLayer.Base
         public DataTable SelStorageRack()
         {
             string sql = "";
+            DataSet ds = null;
             try
             {
                 sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 order by id");
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
-            }
-            DataSet ds = null;
-            try
-            {
-                SqlDataAdapter dapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                dapter.Fill(ds, "T_StorageRack");
-            }
-            catch
-            {
-                throw new Exception("-2");
             }
             return ds.Tables[0];
         }
@@ -76,22 +58,15 @@ namespace BaseLayer.Base
         public int DelStorageRackByCode(string code)
         {
             string sql = "";
+            int result = 0;
             try
             {
                 sql = string.Format("update from T_BaseStorageRack set isClear=0 where code='{1}'", code);
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            int result;
-            try
-            {
                 result = DbHelperSQL.ExecuteSql(sql);
             }
             catch
             {
-                throw new Exception("-2");
+                throw new Exception("-1");
             }
             return result;
         }
@@ -103,22 +78,15 @@ namespace BaseLayer.Base
         public int UpdateStorageRackByCode(string fieldName, string fieldValue, string code)
         {
             string sql = "";
+            int result = 0;
             try
             {
-                sql = string.Format("update from T_BaseStorageRack set {0}='{1}' where code='{2}'",fieldName, fieldValue, code);
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            int result;
-            try
-            {
+                sql = string.Format("update from T_BaseStorageRack set {0}='{1}' where code='{2}'", fieldName, fieldValue, code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
             catch
             {
-                throw new Exception("-2");
+                throw new Exception("-1");
             }
             return result;
         }
@@ -130,32 +98,27 @@ namespace BaseLayer.Base
         public int InsStorageRack(BaseStorageRack srb)
         {
             string sql = "";
+            int result = 0;
             SqlParameter[] sps;
             try
             {
                 sql = "insert into T_BaseStorageRack values(@code,@name,@parentId,@isEnable,@isClear,@updateDate)";
+                sps = new SqlParameter[]
+                {
+                    new SqlParameter("@code", srb.code),
+                    new SqlParameter("@name", srb.name),
+                    new SqlParameter("@parentId", srb.parentId),
+                    new SqlParameter("@isEnable", srb.isEnable),
+                    new SqlParameter("@isClear", srb.isClear),
+                    new SqlParameter("@updateDate", srb.updateDate)
+                };
+                result=DbHelperSQL.ExecuteSql(sql, sps);
             }
             catch
             {
                 throw new Exception("-1");
             }
-            try
-            {
-                sps = new SqlParameter[]
-                    {
-                        new SqlParameter("@code", srb.code),
-                        new SqlParameter("@name", srb.name),
-                        new SqlParameter("@parentId", srb.parentId),
-                        new SqlParameter("@isEnable", srb.isEnable),
-                        new SqlParameter("@isClear", srb.isClear),
-                        new SqlParameter("@updateDate", srb.updateDate)
-                    };
-            }
-            catch
-            {
-                throw new Exception("-2");
-            }
-            return DbHelperSQL.ExecuteSql(sql, sps);
+            return result;
         }
     }
 }
