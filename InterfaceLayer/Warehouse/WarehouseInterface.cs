@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 using LogicLayer;
 using System.Data;
 using Model;
+using System.Collections;
+using System.Data.SqlClient;
 
 namespace InterfaceLayer.Warehouse
 {
     public class WarehouseInterface
     {
         WarehouseInLogic warehouseInLogic = new WarehouseInLogic();
-
+        /// <summary>
+        /// 事务修改
+        /// </summary>
+        /// <param name="hashTable">主表的sql和parameter</param>
+        /// <param name="sql">子表sql</param>
+        /// <param name="list">子表的parameter</param>
+        public void UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        {
+            warehouseInLogic.UpdateList(hashTable, sql, list);
+        }
         /// <summary>
         /// 新增一条入库单
         /// </summary>
