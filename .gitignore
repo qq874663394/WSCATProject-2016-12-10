@@ -27,3 +27,6 @@
 /WSCATProject/WSCATProject.csproj
 /WSCATProject/WSCATProject.csproj.user
 /WSCATProject/bin
+/WSCATProject/Program.cs
+/BaseLayer/DbHelperSQL.cs
+DbHelperSQL.cs
