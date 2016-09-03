@@ -96,10 +96,10 @@ namespace WSCATProject
             }
             this.comboBoxEx1.DataSource = Writ;
 
-            if (string.IsNullOrWhiteSpace(loginInf.UserName))
-            {
-                Close();
-            }
+            //if (string.IsNullOrWhiteSpace(loginInf.UserName))
+            //{
+            //    Close();
+            //}
             superTabControl1.SelectedTab = superTabItem1;
             this.sideBarPanelItem1.Image = Properties.Resources.日志大;
             this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
@@ -1385,7 +1385,7 @@ namespace WSCATProject
         private void pbWarehomeOut_Click_1(object sender, EventArgs e)
         {
             Buys.PayBuySelect sle = new Buys.PayBuySelect();
-            sle.SelectForm = "其他发货单";
+            sle.SelectForm = "出库开单";
             sle.ShowDialog();
         }
         /// <summary>
@@ -1395,7 +1395,9 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeIn_Click_1(object sender, EventArgs e)
         {
-
+            Buys.PayBuySelect sel = new Buys.PayBuySelect();
+            sel.SelectForm = "入库开单";
+            sel.ShowDialog();
         }
         /// <summary>
         /// 盘点单的事件
@@ -1441,6 +1443,11 @@ namespace WSCATProject
         private void pbWarehomeGetMaterial_Click_1(object sender, EventArgs e)
         {
 
+        }
+        //双击组件回到工作日志
+        private void panel4_DoubleClick(object sender, EventArgs e)
+        {
+            sideBarPanelItem1_Click(sender,e);
         }
     }
 }

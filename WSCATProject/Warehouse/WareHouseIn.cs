@@ -186,8 +186,6 @@ namespace WSCATProject.WareHouse
                     try
                     {
                         superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
-                        superGridControl1.PrimaryGrid.EnsureVisible();
-                        InitDataGridView();
                     }
                     catch (Exception ex)
                     {
@@ -203,7 +201,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-
+                        superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
                     }
                     catch (Exception ex)
                     {
@@ -218,7 +216,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-
+                        superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
                     }
                     catch (Exception ex)
                     {
@@ -226,6 +224,8 @@ namespace WSCATProject.WareHouse
                     }
                 }
             }
+            superGridControl1.PrimaryGrid.EnsureVisible();
+            InitDataGridView();
             OrderTypeInterface oti = new OrderTypeInterface();
             comboBoxEx1.ValueMember = "code";
             comboBoxEx1.DisplayMember = "name";

@@ -348,27 +348,21 @@ namespace WSCATProject.WareHouse
             warehouseOut.remark = XYEEncoding.strCodeHex( labtextboxBotton2.Text.Trim());
             warehouseOut.examine = XYEEncoding.strCodeHex( labtextboxBotton4.Text.Trim());
             warehouseOut.date = dateTimePicker1.Value;
-
             warehouseOut.checkState = 0;
             warehouseOut.code = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["code"].Value.ToString());
             warehouseOut.DefaultType = "57125B065B4E5141";
-            warehouseOut.Delivery = "";
-            warehouseOut.ExpressMan = "";
-            warehouseOut.ExpressOdd = "";
-            warehouseOut.ExpressPhone = "";
+            warehouseOut.Delivery =XYEEncoding.strCodeHex(  _wareHouseoutModel.Cells[""].Value.ToString());
+            warehouseOut.ExpressMan = "";//未知快递员
+            warehouseOut.ExpressOdd = XYEEncoding.strCodeHex( _wareHouseoutModel.Cells[""].Value.ToString());
+            warehouseOut.ExpressPhone = XYEEncoding.strCodeHex( _wareHouseoutModel.Cells[""].Value.ToString());
             warehouseOut.id = 1;
             warehouseOut.isClear = 1;
             warehouseOut.reserved1 = "";
             warehouseOut.reserved2 = "";
-            warehouseOut.state = 1;
+            warehouseOut.state = 0;
             warehouseOut.stock = "";
             warehouseOut.updateDate = null;
-
-
             int result = woi.update(warehouseOut);
-
-
-
             List<WarehouseOutDetail> wareHouseOutList = new List<WarehouseOutDetail>();
             //获得商品列表数据,准备传给base层新增数据
             GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
