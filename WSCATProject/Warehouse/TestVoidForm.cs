@@ -1,9 +1,11 @@
 ﻿using BaseLayer;
 using LogicLayer.Base;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -49,25 +51,88 @@ namespace WSCATProject.Warehouse
         private void button1_Click(object sender, EventArgs e)
         {
             #region 查询
-            ClientLogic cl = new ClientLogic();
-            comboBox1.ValueMember = "code";
-            comboBox1.DisplayMember = "name";
-            try
-            {
-                comboBox1.DataSource = cl.SelClient(false);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ExSwitch(ex.Message));
-            }
+            //ClientLogic cl = new ClientLogic();
+            //comboBox1.ValueMember = "code";
+            //comboBox1.DisplayMember = "name";
+            //try
+            //{
+            //    comboBox1.DataSource = cl.SelClient(false);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ExSwitch(ex.Message));
+            //}
             #endregion
 
             #region 新增
+            //多条数据的
+            string sqlToList = "insert into T_BaseArea(code,name,parentId,isEnable) values(@code, @name, @parentId,@isEnable)";
+            //多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
+            List<SqlParameter[]> list = new List<SqlParameter[]>();//存储参数集合的list
+            SqlParameter[] sps;  //定义一个参数集合
+            sps = new SqlParameter[]
+            {
+                new SqlParameter("@code","duotiao"),
+                new SqlParameter("@name","duotiao"),
+                new SqlParameter("@parentId","duotiao"),
+                new SqlParameter("@isEnable",1)
+            };
+            list.Add(sps);
+
+            sps = new SqlParameter[]
+            {
+                new SqlParameter("@code","duotiao"),
+                new SqlParameter("@name","duotiao"),
+                new SqlParameter("@parentId","duotiao"),
+                new SqlParameter("@isEnable",2)
+            };
+            list.Add(sps);
+
+            sps = new SqlParameter[]
+            {
+                new SqlParameter("@code","duotiao"),
+                new SqlParameter("@name","duotiao"),
+                new SqlParameter("@parentId","duotiao"),
+                new SqlParameter("@isEnable",3)
+            };
+            list.Add(sps);
+
+            sps = new SqlParameter[]
+            {
+                new SqlParameter("@code","duotiao"),
+                new SqlParameter("@name","duotiao"),
+                new SqlParameter("@parentId","duotiao"),
+                new SqlParameter("@isEnable",4)
+            };
+            list.Add(sps);
+
+            sps = new SqlParameter[]
+            {
+                new SqlParameter("@code","duotiao"),
+                new SqlParameter("@name","duotiao"),
+                new SqlParameter("@parentId","duotiao"),
+                new SqlParameter("@isEnable",5)
+            };
+            list.Add(sps);
+
+            Hashtable htKey = new Hashtable();  //参数要求
+
             string sql = @"insert into T_BaseArea(code,name,parentId) 
-values(888B83C9D6D4D5D2D4DCD6D1D5D2D4D0D5DCD3DC,'888B83C9D6D4D5D2D4DCD6D1D5D2D4D0D5DCD3DC','888B83C9D6D4D5D2D4DCD6D1D5D2D4D0D5DCD3DC')";
+values(@code,@name,@parentId)";  //主表的
+            SqlParameter[] parameters = //主表参数
+            {
+                new SqlParameter("@code","duotiao"),
+                new SqlParameter("@name","duotiao"),
+                new SqlParameter("@parentId","duotiao")
+            };
+
+
+            htKey.Add(sql, parameters);//sql语句和主表的参数集合
+
+
             try
             {
-                int result = DbHelperSQL.ExecuteSql(sql);
+                DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
             }
             catch (Exception ex)
             {

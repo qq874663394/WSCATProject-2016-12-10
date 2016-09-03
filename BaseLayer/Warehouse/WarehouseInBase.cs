@@ -3,6 +3,8 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using Model;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace BaseLayer
 {
@@ -11,6 +13,23 @@ namespace BaseLayer
     /// </summary>
     public partial class WarehouseInBase
     {
+        /// <summary>
+        /// 事务修改
+        /// </summary>
+        /// <param name="hashTable">主表的sql和parameter</param>
+        /// <param name="sql">子表sql</param>
+        /// <param name="list">子表的parameter</param>
+        public void UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        {
+            try
+            {
+                DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("-1");
+            }
+        }
         /// <summary>
         /// 获取数据列表
         /// </summary>

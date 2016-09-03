@@ -9,11 +9,24 @@ using BaseLayer;
 using HelperUtility.Encrypt;
 using HelperUtility;
 using UpdateManagerLayer;
+using System.Collections;
+using System.Data.SqlClient;
 
 namespace LogicLayer
 {
     public class WarehouseInLogic
     {
+        /// <summary>
+        /// 事务修改
+        /// </summary>
+        /// <param name="hashTable">主表的sql和parameter</param>
+        /// <param name="sql">子表sql</param>
+        /// <param name="list">子表的parameter</param>
+        public void UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        {
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            warehouseInBase.UpdateList(hashTable, sql, list);
+        }
         /// <summary>
         /// 根据where条件获取数据列表
         /// </summary>
@@ -41,7 +54,7 @@ namespace LogicLayer
                 };
                 lb.Add(log);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogBase lb = new LogBase();
                 log log = new log()
@@ -66,7 +79,7 @@ namespace LogicLayer
         /// 增加一条数据
         /// </summary>
         /// <returns>返回新增结果,1为成功</returns>
-        public int InsertWarehouseInTable(WarehouseIn wi, 
+        public int InsertWarehouseInTable(WarehouseIn wi,
             List<WarehouseInDetail> widList
             )
         {
@@ -88,7 +101,7 @@ namespace LogicLayer
             {
                 int addWarehouseInResult = warehouseInBase.update(wi);
                 int addWarehouseInDetailResult = 0;
-                
+
                 //当正确新增时开始新增详情表
                 if (addWarehouseInResult > 0)
                 {
@@ -114,7 +127,7 @@ namespace LogicLayer
                         //调用管理层 循环添加管理的数据
                         string detailUpdateManagerCode = BuildCode.ModuleCode("WDU") + i.ToString();
                         detailUpdateManager.addWarehouseInDetail(detailUpdateManagerCode, wi.code,
-                            "T_WarehouseInDetail", addWarehouseInDetailResult, 
+                            "T_WarehouseInDetail", addWarehouseInDetailResult,
                             "", "", (DateTime)widList[i].updateDate);
 
                         log.objective = "新增入库商品详情";
@@ -155,7 +168,7 @@ namespace LogicLayer
                         Warehousep.Operator = XYEEncoding.strCodeHex("保存入库单");
                         Warehousep.operatorMan = "";
                         Warehousep.remark = "";
-                        Warehousep.updateDate = dt; 
+                        Warehousep.updateDate = dt;
                         Warehousep.warehouseInDetailCode = wi.code;
                         warehouseInProcessBase.Add(Warehousep);
 
@@ -179,7 +192,7 @@ namespace LogicLayer
                         log.result = addWarehouseInResult;
                         lb.Add(log);
                     }
-                    if(!addErr)
+                    if (!addErr)
                     {
                         return addWarehouseInDetailResult;
                     }
@@ -216,7 +229,7 @@ namespace LogicLayer
             }
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             int result = warehouseInBase.deleteByCode(code);
-            if(result > 0)
+            if (result > 0)
             {
                 LogBase lb = new LogBase();
                 log log = new log()
@@ -256,7 +269,7 @@ namespace LogicLayer
 
         public int update(WarehouseIn wi)
         {
-            if(wi == null)
+            if (wi == null)
             {
                 return -7;
             }

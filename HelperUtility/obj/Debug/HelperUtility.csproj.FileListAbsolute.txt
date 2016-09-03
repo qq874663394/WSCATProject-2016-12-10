@@ -14,8 +14,3 @@ E:\619项目\WSCATProject\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\WSCATProject\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\WSCATProject\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\WSCATProject\HelperUtility\obj\Debug\HelperUtility.pdb
-E:\619项目\2016年9月2日093632\HelperUtility\bin\Debug\HelperUtility.dll
-E:\619项目\2016年9月2日093632\HelperUtility\bin\Debug\HelperUtility.pdb
-E:\619项目\2016年9月2日093632\HelperUtility\bin\Debug\NPOI.dll
-E:\619项目\2016年9月2日093632\HelperUtility\obj\Debug\HelperUtility.dll
-E:\619项目\2016年9月2日093632\HelperUtility\obj\Debug\HelperUtility.pdb
