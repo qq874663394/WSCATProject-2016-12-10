@@ -27,9 +27,9 @@ namespace BaseLayer.Base
                     sql += " where enable=1 and";
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             try
             {
@@ -37,7 +37,7 @@ namespace BaseLayer.Base
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             return ds.Tables[0];
         }
