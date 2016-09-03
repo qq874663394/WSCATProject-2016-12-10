@@ -185,7 +185,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
+                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding( waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString())));
                     }
                     catch (Exception ex)
                     {
@@ -201,7 +201,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
+                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding(waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString())));
                     }
                     catch (Exception ex)
                     {
@@ -216,7 +216,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        superGridControl1.PrimaryGrid.DataSource = waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString()));
+                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding(waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString())));
                     }
                     catch (Exception ex)
                     {
@@ -416,7 +416,7 @@ namespace WSCATProject.WareHouse
                         WarehouseIndetail.state = 1;
                         int isarrive = Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn11"].Value) == true ? 1 : 0;
                         if (isarrive == 1)
-                        {
+                        { 
                             _rukushu++;
                         }
                         WarehouseIndetail.IsArrive = isarrive;

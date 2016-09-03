@@ -34,7 +34,7 @@ namespace BaseLayer
                 ts.transportMathod as 运送方式,
                 ts.logistics as 快递名称,
                 ts.logisticsOddCode as 快递单号,
-                ts.logisticsPhone as 快递名称
+                ts.logisticsPhone as 快递电话
                 ");
                 strSql.Append(" from T_WarehouseOut tw ,T_SalesMain ts where tw.salesCode=ts.code  ");
                 if (strWhere.Trim() != "")
