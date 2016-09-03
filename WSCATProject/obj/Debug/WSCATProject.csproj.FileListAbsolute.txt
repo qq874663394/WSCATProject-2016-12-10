@@ -149,3 +149,6 @@ E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.WareHouse
 E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHuseStorageRack.resources
 E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
 E:\619项目\2016年9月2日093632\WSCATProject\obj\Debug\WSCATProject.Warehouse.TestVoidForm.resources
+E:\619项目\2016年9月3日143635\WSCATProject\bin\Debug\WSCATProject.exe.config
+E:\619项目\2016年9月3日143635\WSCATProject\obj\Debug\WSCATProject.exe
+E:\619项目\2016年9月3日143635\WSCATProject\obj\Debug\WSCATProject.pdb
