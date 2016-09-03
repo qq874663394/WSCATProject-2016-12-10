@@ -11,6 +11,11 @@ namespace BaseLayer.Base
 {
     public class OrderTypeBase
     {
+        /// <summary>
+        /// 自定义条件取得列表
+        /// </summary>
+        /// <param name="strWhere">where后面的条件</param>
+        /// <returns></returns>
         public DataTable GetList(string strWhere)
         {
             string sql = "";
@@ -22,20 +27,11 @@ namespace BaseLayer.Base
                 {
                     sql += " where " + strWhere;
                 }
+                ds = DbHelperSQL.Query(sql);
             }
             catch
             {
                 throw new Exception("-1");
-            }
-            try
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, DbHelperSQL.connectionString);
-                ds = new DataSet();
-                adapter.Fill(ds, "T_BaseOrderType");
-            }
-            catch
-            {
-                throw new Exception("-2");
             }
             return ds.Tables[0];
         }

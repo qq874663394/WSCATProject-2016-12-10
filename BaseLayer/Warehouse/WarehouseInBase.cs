@@ -216,20 +216,13 @@ namespace BaseLayer
             try
             {
                 sql = string.Format("update from T_WarehouseIn set checkState=1 where code='{0}'", code);
+                result = DbHelperSQL.ExecuteSql(sql);
             }
             catch
             {
                 return -1;
             }
-            try
-            {
-                result = DbHelperSQL.ExecuteSql(sql);
-                return result;
-            }
-            catch
-            {
-                return -2;
-            }
+            return result;
         }
     }
 }

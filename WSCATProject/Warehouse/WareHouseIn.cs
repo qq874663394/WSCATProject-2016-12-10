@@ -97,6 +97,24 @@ namespace WSCATProject.WareHouse
             set { _ge = value; }
         }
         /// <summary>
+        /// 区域code
+        /// </summary>
+        private string _quyuCode;
+        public string StorageQuyuCode
+        {
+            get { return _quyuCode; }
+            set { _quyuCode = value; }
+        }
+        /// <summary>
+        /// 区域名称
+        /// </summary>
+        private string _quyu;
+        public string StorageQuyu
+        {
+            get { return _quyu; }
+            set { _quyu = value; }
+        }
+        /// <summary>
         /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
         /// </summary>
         public int State
@@ -185,7 +203,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding( waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString())));
+                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding(waredeta.getListByMainCode(XYEEncoding.strCodeHex(_wareHouseModel["code"].Value.ToString())));
                     }
                     catch (Exception ex)
                     {
@@ -292,7 +310,7 @@ namespace WSCATProject.WareHouse
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
-              
+
                 resizablePanel1.Location = new Point(204, 300);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
@@ -332,14 +350,14 @@ namespace WSCATProject.WareHouse
             {
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                 labtextboxTop3.Text = name;
-                resizablePanel1.Visible = false;              
+                resizablePanel1.Visible = false;
             }
             //业务员
             if (_Click == 2)
             {
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                 labtextboxBotton1.Text = name;
-                resizablePanel1.Visible = false;           
+                resizablePanel1.Visible = false;
             }
         }
         #endregion
@@ -408,7 +426,7 @@ namespace WSCATProject.WareHouse
                         WarehouseIndetail.remark = "";
                         WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
                         WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
-                        WarehouseIndetail.StorageRackName = XYEEncoding.strCodeHex(StorageRack + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
+                        WarehouseIndetail.StorageRackName = StorageRackCode == "" ? XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu) : XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu + "/" + StorageRackCode + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
                         WarehouseIndetail.reserved2 = "";
                         WarehouseIndetail.rfid = "";
                         WarehouseIndetail.rfid = "";
@@ -416,7 +434,7 @@ namespace WSCATProject.WareHouse
                         WarehouseIndetail.state = 1;
                         int isarrive = Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn11"].Value) == true ? 1 : 0;
                         if (isarrive == 1)
-                        { 
+                        {
                             _rukushu++;
                         }
                         WarehouseIndetail.IsArrive = isarrive;
@@ -498,7 +516,7 @@ namespace WSCATProject.WareHouse
                 whsr.ShowDialog(this);
 
                 gc.GridRow.Cells[8].Value = Storage;
-                gc.GridRow.Cells[9].Value = StorageRack + "/" + StoragePai + "/" + StorageGe;
+                gc.GridRow.Cells[9].Value = StorageRackCode == "" ? XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu) : XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu + "/" + StorageRackCode + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格;
             }
 
         }
@@ -600,6 +618,6 @@ namespace WSCATProject.WareHouse
             }
         }
 
-       
+
     }
 }
