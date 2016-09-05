@@ -35,6 +35,10 @@ namespace InterfaceLayer.Warehouse
         {
             return wol.update(wo);
         }
+        public int update(string field, int state, string code)
+        {
+            return wol.update(field, state, code);
+        }
         /// <summary>
         /// 更新主表和从表
         /// </summary>
@@ -42,7 +46,7 @@ namespace InterfaceLayer.Warehouse
         /// <param name="listModel">从表：多行，用List类型保存多条model的数据</param>
         public void update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
         {
-            update(warehouseOut, listModel);
+            wol.update(warehouseOut, listModel);
         }
         public int delete(string code)
         {

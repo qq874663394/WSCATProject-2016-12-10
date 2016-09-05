@@ -26,9 +26,13 @@ namespace LogicLayer.Warehouse
         {
             return wob.update(wo);
         }
+        public int update(string field, int state, string code)
+        {
+            return wob.update(field, state, code);
+        }
         public void update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
         {
-            update(warehouseOut, listModel);
+            wob.update(warehouseOut, listModel);
         }
         public int delete(string code)
         {
