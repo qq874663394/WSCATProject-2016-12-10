@@ -37,7 +37,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void panel6_Click(object sender, EventArgs e)
+        protected override void panel6_Click(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
         }

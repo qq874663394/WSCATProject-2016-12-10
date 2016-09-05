@@ -156,3 +156,4 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WS
 E:\619项目\2016年9月3日143635\WSCATProject\bin\Debug\WSCATProject.exe.config
 E:\619项目\2016年9月3日143635\WSCATProject\obj\Debug\WSCATProject.exe
 E:\619项目\2016年9月3日143635\WSCATProject\obj\Debug\WSCATProject.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.T_WarehouseInventoryForm.resources
