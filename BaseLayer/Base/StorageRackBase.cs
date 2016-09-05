@@ -1,18 +1,14 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BaseLayer.Base
 {
     public class StorageRackBase
     {
         /// <summary>
-        /// 根据父级ID查询
+        /// 根据父级ID查询货架信息
         /// </summary>
         /// <param name="parentId"></param>
         /// <returns></returns>
@@ -32,7 +28,7 @@ namespace BaseLayer.Base
             return ds.Tables[0];
         }
         /// <summary>
-        /// 查询所有
+        /// 查询全部
         /// </summary>
         /// <returns></returns>
         public DataTable SelStorageRack()
@@ -51,7 +47,7 @@ namespace BaseLayer.Base
             return ds.Tables[0];
         }
         /// <summary>
-        /// 删除
+        /// 假删除
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
@@ -71,9 +67,11 @@ namespace BaseLayer.Base
             return result;
         }
         /// <summary>
-        /// 修改
+        /// 根据条件修改
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="fieldName">字段名</param>
+        /// <param name="fieldValue">修改后的值</param>
+        /// <param name="code">编码</param>
         /// <returns></returns>
         public int UpdateStorageRackByCode(string fieldName, string fieldValue, string code)
         {
@@ -91,7 +89,7 @@ namespace BaseLayer.Base
             return result;
         }
         /// <summary>
-        /// 新增
+        /// 新增货架信息
         /// </summary>
         /// <param name="srb"></param>
         /// <returns></returns>

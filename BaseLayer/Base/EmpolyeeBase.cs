@@ -10,7 +10,6 @@ namespace BaseLayer.Base
 {
     public class EmpolyeeBase
     {
-        #region 查询所有信息
         /// <summary>
         /// 查询所有信息
         /// </summary>
@@ -58,6 +57,5 @@ namespace BaseLayer.Base
             }
             return ds.Tables[0];
         }
-        #endregion
     }
 }

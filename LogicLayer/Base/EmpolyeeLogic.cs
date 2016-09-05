@@ -1,24 +1,15 @@
 ﻿using BaseLayer;
 using BaseLayer.Base;
 using HelperUtility;
-using HelperUtility.Encrypt;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogicLayer.Base
 {
     public class EmpolyeeLogic
     {
         EmpolyeeBase eb = new EmpolyeeBase();
-        /// <summary>
-        /// 查询所有信息
-        /// </summary>
-        /// <returns>所有数据以DataTable的形式返回</returns>
         public DataTable SelEmpolyeeTable(bool isflag)
         {
             DataTable dt = null;

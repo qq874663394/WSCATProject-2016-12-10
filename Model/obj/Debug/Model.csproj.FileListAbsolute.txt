@@ -11,3 +11,7 @@ E:\619项目\WSCATProject\Model\bin\Debug\Model.dll
 E:\619项目\WSCATProject\Model\bin\Debug\Model.pdb
 E:\619项目\WSCATProject\Model\obj\Debug\Model.dll
 E:\619项目\WSCATProject\Model\obj\Debug\Model.pdb
+E:\619项目\619项目\Model\bin\Debug\Model.dll
+E:\619项目\619项目\Model\bin\Debug\Model.pdb
+E:\619项目\619项目\Model\obj\Debug\Model.dll
+E:\619项目\619项目\Model\obj\Debug\Model.pdb

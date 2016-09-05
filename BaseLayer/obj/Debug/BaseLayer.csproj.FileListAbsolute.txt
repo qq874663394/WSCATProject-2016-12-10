@@ -28,3 +28,13 @@ E:\619项目\WSCATProject\BaseLayer\bin\Debug\HelperUtility.pdb
 E:\619项目\WSCATProject\BaseLayer\bin\Debug\Model.pdb
 E:\619项目\WSCATProject\BaseLayer\obj\Debug\BaseLayer.dll
 E:\619项目\WSCATProject\BaseLayer\obj\Debug\BaseLayer.pdb
+E:\619项目\619项目\BaseLayer\bin\Debug\BaseLayer.dll
+E:\619项目\619项目\BaseLayer\bin\Debug\BaseLayer.pdb
+E:\619项目\619项目\BaseLayer\bin\Debug\HelperUtility.dll
+E:\619项目\619项目\BaseLayer\bin\Debug\Model.dll
+E:\619项目\619项目\BaseLayer\bin\Debug\NPOI.dll
+E:\619项目\619项目\BaseLayer\bin\Debug\HelperUtility.pdb
+E:\619项目\619项目\BaseLayer\bin\Debug\Model.pdb
+E:\619项目\619项目\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache
+E:\619项目\619项目\BaseLayer\obj\Debug\BaseLayer.dll
+E:\619项目\619项目\BaseLayer\obj\Debug\BaseLayer.pdb
