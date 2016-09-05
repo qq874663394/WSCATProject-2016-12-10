@@ -35,6 +35,15 @@ namespace InterfaceLayer.Warehouse
         {
             return wol.update(wo);
         }
+        /// <summary>
+        /// 更新主表和从表
+        /// </summary>
+        /// <param name="warehouseOut">主表：只有一行数据</param>
+        /// <param name="listModel">从表：多行，用List类型保存多条model的数据</param>
+        public void update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
+        {
+            update(warehouseOut, listModel);
+        }
         public int delete(string code)
         {
             return wol.delete(code);
