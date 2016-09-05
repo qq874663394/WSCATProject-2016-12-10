@@ -19,7 +19,7 @@ namespace BaseLayer.Base
                 sql = "select * from T_BaseClient";
                 if (isflag == false)
                 {
-                    sql += " where enable=1";
+                    sql += " where enable=1 and";
                 }
                 ds = DbHelperSQL.Query(sql);
             }
