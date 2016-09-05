@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace WSCATProject.Warehouse
 {
-    public partial class T_WarehouseInventoryForm : Form
+    public partial class WareHouseInventoryForm : Form
     {
-        public T_WarehouseInventoryForm()
+        public WareHouseInventoryForm()
         {
             InitializeComponent();
-        }
-
-        private void T_WarehouseInventoryForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

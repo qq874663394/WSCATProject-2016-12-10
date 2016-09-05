@@ -348,6 +348,7 @@
             // superGridControl1
             // 
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.ForeColor = System.Drawing.Color.Black;
             // 
             // 
             // 
