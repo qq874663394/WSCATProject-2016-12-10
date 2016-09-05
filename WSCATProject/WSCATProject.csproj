@@ -129,6 +129,12 @@
     <Compile Include="Warehouse\WareHouseInventoryForm.Designer.cs">
       <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareJouseInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareJouseInventoryForm.Designer.cs">
+      <DependentUpon>WareJouseInventoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseInventoryLossForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryForm.resx">
       <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareJouseInventoryForm.resx">
+      <DependentUpon>WareJouseInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryLossForm.resx">
       <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
@@ -324,6 +333,7 @@
     <Content Include="Resources\reRetuened.png" />
     <Content Include="Resources\reSelect.png" />
     <None Include="Resources\save.PNG" />
+    <None Include="Resources\search.PNG" />
     <Content Include="Resources\setterManager.png" />
     <Content Include="Resources\sff.png" />
     <None Include="Resources\shenghe.PNG" />
