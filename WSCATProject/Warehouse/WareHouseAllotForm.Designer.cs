@@ -31,18 +31,19 @@
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.gridColumnmaterialCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmateriaName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmateriaModel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmateriaUnit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnStockOut = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnStockIn = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncurNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnOutprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnOutMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnoutcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnincode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -364,9 +365,9 @@
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStockOut);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStock);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStockIn);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmaterialCode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmateriaName);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmateriaModel);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmateriaUnit);
@@ -376,8 +377,14 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
-            this.superGridControl1.Size = new System.Drawing.Size(1184, 261);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnoutcode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnincode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.Size = new System.Drawing.Size(1184, 291);
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.Click += new System.EventHandler(this.superGridControl1_Click);
             // 
             // panel2
             // 
@@ -424,10 +431,10 @@
             // 
             this.comboItem2.Text = "异价调拨";
             // 
-            // gridColumnmaterialCode
+            // material
             // 
-            this.gridColumnmaterialCode.HeaderText = "编号";
-            this.gridColumnmaterialCode.Name = "gridColumnmaterialCode";
+            this.material.HeaderText = "编号";
+            this.material.Name = "material";
             // 
             // gridColumnmateriaName
             // 
@@ -444,10 +451,10 @@
             this.gridColumnmateriaUnit.HeaderText = "单位";
             this.gridColumnmateriaUnit.Name = "gridColumnmateriaUnit";
             // 
-            // gridColumnStockOut
+            // gridColumnStock
             // 
-            this.gridColumnStockOut.HeaderText = "调出仓库";
-            this.gridColumnStockOut.Name = "gridColumnStockOut";
+            this.gridColumnStock.HeaderText = "调出仓库";
+            this.gridColumnStock.Name = "gridColumnStock";
             // 
             // gridColumnStockIn
             // 
@@ -456,16 +463,19 @@
             // 
             // gridColumncurNumber
             // 
+            this.gridColumncurNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumncurNumber.HeaderText = "数量";
             this.gridColumncurNumber.Name = "gridColumncurNumber";
             // 
             // gridColumnOutprice
             // 
+            this.gridColumnOutprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnOutprice.HeaderText = "调出单价";
             this.gridColumnOutprice.Name = "gridColumnOutprice";
             // 
             // gridColumnOutMoney
             // 
+            this.gridColumnOutMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnOutMoney.HeaderText = "调出金额";
             this.gridColumnOutMoney.Name = "gridColumnOutMoney";
             // 
@@ -485,6 +495,9 @@
             this.gridColumn2.HeaderText = "调出金额";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = false;
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.Visible = false;
             // 
             // WareHouseAllotForm
             // 
@@ -524,17 +537,18 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmateriaName;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmateriaModel;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmateriaUnit;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStockOut;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStockIn;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncurNumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnOutprice;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnOutMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnremark;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnoutcode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnincode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }

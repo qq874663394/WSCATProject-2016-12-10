@@ -123,7 +123,7 @@ namespace BaseLayer
                     "stock='{1}',operation='{2}',examine='{3}'," +
                     "isClear={4},updateDate='{5}',state={6},salesCode='{7}',date='{8}'," +
                     "checkState={9},remark='{10}',reserved1='{11}',reserved2='{12}'," +
-                    "delivery='{13}',clientCode='{14}',expressOdd='{15}'," +
+                    "delivey='{13}',clientCode='{14}',expressOdd='{15}'," +
                     "expressMan='{16}',expressPhone='{17}',defaultType='{18}' where code='{19}'",
                     wo.type,
                     wo.stock,
@@ -158,6 +158,21 @@ namespace BaseLayer
             catch
             {
                 return -2;
+            }
+            return result;
+        }
+        public int update(string field, int state, string code)
+        {
+            string sql = "";
+            int result = 0;
+            try
+            {
+                sql = string.Format("update T_WarehouseOut set {0}={1} where code='{2}'", field, state, code);
+                result = DbHelperSQL.ExecuteSql(sql);
+            }
+            catch (Exception)
+            {
+                throw new Exception("-1");
             }
             return result;
         }
@@ -202,10 +217,12 @@ namespace BaseLayer
                 {
                         new SqlParameter("@code",item.code),
                         new SqlParameter("@materialCode",item.WarehouseCode),
+                        new SqlParameter("@materiaName",item.materiaName),
                         new SqlParameter("@materiaModel",item.materiaModel),
                         new SqlParameter("@materiaUnit",item.materiaUnit),
                         new SqlParameter("@number",item.number),
                         new SqlParameter("@price",item.price),
+                        new SqlParameter("@money",item.money),
                         new SqlParameter("@barcode",item.barcode),
                         new SqlParameter("@rfid",item.rfid),
                         new SqlParameter("@updateDate",item.updateDate),

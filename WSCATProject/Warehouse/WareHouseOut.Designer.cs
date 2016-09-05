@@ -65,7 +65,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1131, 39);
+            this.panel1.Size = new System.Drawing.Size(1127, 39);
             this.panel1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
@@ -92,14 +92,14 @@
             // panel7
             // 
             this.panel7.Location = new System.Drawing.Point(0, 65);
-            this.panel7.Size = new System.Drawing.Size(1129, 250);
+            this.panel7.Size = new System.Drawing.Size(1125, 250);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.textBoxX1);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.comboBoxEx1);
-            this.panel6.Size = new System.Drawing.Size(1129, 65);
+            this.panel6.Size = new System.Drawing.Size(1125, 65);
             this.panel6.Click += new System.EventHandler(this.panel6_Click);
             this.panel6.Controls.SetChildIndex(this.labTop1, 0);
             this.panel6.Controls.SetChildIndex(this.labTop2, 0);
@@ -411,7 +411,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControl1.Size = new System.Drawing.Size(1127, 248);
+            this.superGridControl1.Size = new System.Drawing.Size(1123, 248);
             this.superGridControl1.Text = "  ";
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
@@ -422,19 +422,19 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(0, 381);
-            this.panel2.Size = new System.Drawing.Size(1131, 118);
+            this.panel2.Size = new System.Drawing.Size(1127, 118);
             // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1131, 317);
+            this.panel3.Size = new System.Drawing.Size(1127, 317);
             // 
             // panel4
             // 
-            this.panel4.Size = new System.Drawing.Size(1131, 47);
+            this.panel4.Size = new System.Drawing.Size(1127, 47);
             // 
             // panel5
             // 
-            this.panel5.Size = new System.Drawing.Size(1131, 71);
+            this.panel5.Size = new System.Drawing.Size(1127, 71);
             // 
             // pictureBox5
             // 
@@ -591,7 +591,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 499);
+            this.ClientSize = new System.Drawing.Size(1127, 499);
             this.KeyPreview = true;
             this.Name = "WareHouseOut";
             this.Text = "出库单";
