@@ -111,12 +111,6 @@
     <Compile Include="Warehouse\TestVoidForm.Designer.cs">
       <DependentUpon>TestVoidForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\T_WarehouseInventoryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\T_WarehouseInventoryForm.Designer.cs">
-      <DependentUpon>T_WarehouseInventoryForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Warehouse\WareHouseAllotForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +122,12 @@
     </Compile>
     <Compile Include="Warehouse\WareHouseIn.Designer.cs">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryForm.Designer.cs">
+      <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\WareHouseInventoryLossForm.cs">
       <SubType>Form</SubType>
@@ -181,14 +181,14 @@
     <EmbeddedResource Include="Warehouse\TestVoidForm.resx">
       <DependentUpon>TestVoidForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\T_WarehouseInventoryForm.resx">
-      <DependentUpon>T_WarehouseInventoryForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInventoryForm.resx">
+      <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryLossForm.resx">
       <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
