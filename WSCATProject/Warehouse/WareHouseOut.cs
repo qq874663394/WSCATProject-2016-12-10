@@ -442,5 +442,10 @@ namespace WSCATProject.WareHouse
                     return "未知错误.";
             }
         }
+
+        private void buttonExamine_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
