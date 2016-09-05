@@ -198,4 +198,5 @@ E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventor
 E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.WareHouse.WareHouseOut.resources
 E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHuseStorageRack.resources
 E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.csproj.GenerateResource.Cache
-E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareJouseInventoryForm.resources
+E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WarehouseAdjustPriceForm.resources
+E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventoryReportForm.resources

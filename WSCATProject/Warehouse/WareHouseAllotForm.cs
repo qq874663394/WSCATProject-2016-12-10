@@ -175,7 +175,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 //查询仓库的方法
-              //  dataGridViewFujia.DataSource = _AllStorage.Tables[0];
+                //  dataGridViewFujia.DataSource = _AllStorage.Tables[0];
             }
         }
 
@@ -479,6 +479,25 @@ namespace WSCATProject.Warehouse
             //SendKeys.Send("^{End}{Home}");
 
             //早知道就拿爆米花来了，然后就回去就用东西吃了，真烦躁
+        }
+
+        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxEx1.Text.Trim())
+            {
+                case "同价调拨":                 
+                    superGridControl1.PrimaryGrid.Columns["gridColumn1"].Visible = false;
+                    superGridControl1.PrimaryGrid.Columns["gridColumn2"].Visible = false;
+                    labTop9.Visible = false;
+                    labtextboxTop9.Visible = false;
+                    break;
+                case "异价调拨":
+                    superGridControl1.PrimaryGrid.Columns["gridColumn1"].Visible = true;
+                    superGridControl1.PrimaryGrid.Columns["gridColumn2"].Visible = true;
+                    labTop9.Visible = true;
+                    labtextboxTop9.Visible = true;
+                    break;
+            }
         }
     }
 }

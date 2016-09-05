@@ -40,10 +40,9 @@
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.panel6.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -52,9 +51,24 @@
             this.resizablePanelData.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Size = new System.Drawing.Size(1188, 39);
+            this.panel1.Click += new System.EventHandler(this.panel6_Click);
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Text = "盘盈单";
+            // 
+            // panel7
+            // 
+            this.panel7.Location = new System.Drawing.Point(0, 55);
+            this.panel7.Size = new System.Drawing.Size(1186, 320);
             // 
             // panel6
             // 
@@ -85,52 +99,6 @@
             this.panel6.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel6.Controls.SetChildIndex(this.labtextboxTop6, 0);
             this.panel6.Controls.SetChildIndex(this.comboBoxEx1, 0);
-            // 
-            // panel4
-            // 
-            this.panel4.Size = new System.Drawing.Size(1188, 47);
-            this.panel4.Click += new System.EventHandler(this.panel6_Click);
-            // 
-            // labtextboxTop4
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxTop4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxTop4.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxTop4.Border.BorderBottomWidth = 1;
-            this.labtextboxTop4.Border.BorderGradientAngle = 0;
-            this.labtextboxTop4.Border.Class = "SideNavStrip";
-            this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(368, 21);
-            this.labtextboxTop4.Visible = false;
-            // 
-            // labtextboxTop2
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxTop2.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxTop2.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxTop2.Border.BorderBottomWidth = 1;
-            this.labtextboxTop2.Border.BorderGradientAngle = 0;
-            this.labtextboxTop2.Border.Class = "SideNavStrip";
-            this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop2.Visible = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1188, 39);
-            this.panel1.Click += new System.EventHandler(this.panel6_Click);
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.Text = "盘盈单";
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(0, 55);
-            this.panel7.Size = new System.Drawing.Size(1186, 320);
             // 
             // labTop6
             // 
@@ -240,6 +208,33 @@
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.Location = new System.Drawing.Point(368, 21);
             this.labtextboxTop7.Visible = false;
+            // 
+            // labtextboxTop4
+            // 
+            // 
+            // 
+            // 
+            this.labtextboxTop4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtextboxTop4.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxTop4.Border.BorderBottomWidth = 1;
+            this.labtextboxTop4.Border.BorderGradientAngle = 0;
+            this.labtextboxTop4.Border.Class = "SideNavStrip";
+            this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop4.Location = new System.Drawing.Point(368, 21);
+            this.labtextboxTop4.Visible = false;
+            // 
+            // labtextboxTop2
+            // 
+            // 
+            // 
+            // 
+            this.labtextboxTop2.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtextboxTop2.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxTop2.Border.BorderBottomWidth = 1;
+            this.labtextboxTop2.Border.BorderGradientAngle = 0;
+            this.labtextboxTop2.Border.Class = "SideNavStrip";
+            this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop2.Visible = false;
             // 
             // labtextboxTop1
             // 
@@ -374,6 +369,11 @@
             // 
             this.panel3.Size = new System.Drawing.Size(1188, 377);
             // 
+            // panel4
+            // 
+            this.panel4.Size = new System.Drawing.Size(1188, 47);
+            this.panel4.Click += new System.EventHandler(this.panel6_Click);
+            // 
             // panel5
             // 
             this.panel5.Size = new System.Drawing.Size(1188, 71);
@@ -459,12 +459,11 @@
             this.Text = "盘盈单";
             this.Load += new System.EventHandler(this.WareHouseInventoryProfitForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseAllotForm_KeyPress);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -475,6 +474,7 @@
             this.resizablePanelData.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

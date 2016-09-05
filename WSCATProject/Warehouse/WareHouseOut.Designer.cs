@@ -163,6 +163,7 @@
             // 
             // labTop9
             // 
+            this.labTop9.ForeColor = System.Drawing.Color.DimGray;
             this.labTop9.Location = new System.Drawing.Point(587, 25);
             this.labTop9.Text = "销售单号：";
             // 
@@ -444,54 +445,63 @@
             this.gridColumn1.DataPropertyName = "code";
             this.gridColumn1.HeaderText = "编号";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ReadOnly = true;
             // 
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "materiaName";
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "materiaModel";
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             // 
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "materiaUnit";
             this.gridColumn4.HeaderText = "单位";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
             // 
             // gridColumn5
             // 
             this.gridColumn5.DataPropertyName = "number";
             this.gridColumn5.HeaderText = "数量";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.ReadOnly = true;
             // 
             // gridColumn6
             // 
             this.gridColumn6.DataPropertyName = "money";
             this.gridColumn6.HeaderText = "金额";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.ReadOnly = true;
             // 
             // gridColumn7
             // 
             this.gridColumn7.DataPropertyName = "remark";
             this.gridColumn7.HeaderText = "备注";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.ReadOnly = true;
             // 
             // gridColumn8
             // 
             this.gridColumn8.DataPropertyName = "warehouseName";
             this.gridColumn8.HeaderText = "仓库名称";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.ReadOnly = true;
             // 
             // gridColumn9
             // 
             this.gridColumn9.DataPropertyName = "storageRackName";
             this.gridColumn9.HeaderText = "货架/排/格";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.ReadOnly = true;
             this.gridColumn9.Width = 200;
             // 
             // gridColumn10
@@ -543,10 +553,12 @@
             this.gridColumn11.DataPropertyName = "price";
             this.gridColumn11.HeaderText = "单价";
             this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.ReadOnly = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(804, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
