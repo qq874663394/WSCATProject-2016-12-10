@@ -51,7 +51,6 @@
     <Compile Include="Base\StorageBase.cs" />
     <Compile Include="Base\StorageRackBase.cs" />
     <Compile Include="Base\SupplierBase.cs" />
-    <Compile Include="Base\WarehouseOrder.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="LogBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +58,7 @@
     <Compile Include="Warehouse\WarehouseInBase.cs" />
     <Compile Include="Warehouse\WarehouseInDetailBase.cs" />
     <Compile Include="Warehouse\WarehouseInProcessBase.cs" />
+    <Compile Include="Warehouse\WarehouseMainBase.cs" />
     <Compile Include="Warehouse\WarehouseOutBase.cs" />
     <Compile Include="Warehouse\WarehouseOutDetailBase.cs" />
   </ItemGroup>

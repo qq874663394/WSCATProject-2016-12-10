@@ -477,6 +477,8 @@ namespace WSCATProject.Warehouse
 
             //superGridControl1.Focus();
             //SendKeys.Send("^{End}{Home}");
+
+            //早知道就拿爆米花来了，然后就回去就用东西吃了，真烦躁
         }
     }
 }
