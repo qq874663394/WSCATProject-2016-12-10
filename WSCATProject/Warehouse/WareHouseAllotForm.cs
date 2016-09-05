@@ -1,4 +1,5 @@
-﻿using InterfaceLayer.Base;
+﻿using DevComponents.DotNetBar.SuperGrid;
+using InterfaceLayer.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,23 @@ namespace WSCATProject.Warehouse
         /// 点击的项,1业务员
         /// </summary>
         private int _Click = 0;
+        /// <summary>
+        /// 所有商品列表
+        /// </summary>
+        private DataSet _AllMaterial = null;
+        /// <summary>
+        /// 所有仓库列表
+        /// </summary>
+        private DataTable  _AllStorage = null;
+        /// <summary>
+        /// 保存仓库的Code
+        /// </summary>
+        private string _StorageCode = "";
+        /// <summary>
+        /// 保存商品Code
+        /// </summary>
+        private string _MaterialCode = "";
+        private KeyValuePair<string, string> _ClickStorage;
 
         #endregion
 
@@ -33,8 +51,9 @@ namespace WSCATProject.Warehouse
         {
             //业务员
             EmpolyeeInterface employee = new EmpolyeeInterface();
+            StorageInterface storage = new StorageInterface();
             _AllEmployee = employee.SelSupplierTable(false);
-
+            _AllStorage = storage.GetList("");
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
@@ -43,6 +62,8 @@ namespace WSCATProject.Warehouse
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //调用初始化表格数据
+            InitDataGridView();
         }
 
         /// <summary>
@@ -110,6 +131,36 @@ namespace WSCATProject.Warehouse
                 labtextboxBotton1.Text = name;
                 resizablePanel1.Visible = false;
             }
+            //仓库信息
+            if (_Click == 2)
+            {
+                GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                string code = dataGridViewFujia.Rows[e.RowIndex].Cells["St_Code"].Value.ToString();
+                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["St_Name"].Value.ToString();
+                gr.Cells["gridColumnStockCode"].Value = code;
+                gr.Cells["gridColumnStock"].Value = name;
+                _ClickStorage = new KeyValuePair<string, string>(code, name);
+                _StorageCode = code;
+                resizablePanel1.Visible = false;
+                //统计库存数
+                //if (gr.Cells["gridColumnMaCode"].Value != null)
+                //{
+                //    if (!string.IsNullOrEmpty(gr.Cells["gridColumnMaCode"].Value.ToString()))
+                //    {
+                //        DataTable tempDT = sm.searchMaterialStockNumber(_AllStock,
+                //            gr.Cells["gridColumnStockCode"].Value.ToString(),
+                //            gr.Cells["gridColumnMaCode"].Value.ToString());
+
+                //        materialStockNumber(tempDT, true, gr.Cells["gridColumnName"].Value.ToString(),
+                //            gr.Cells["gridColumnStock"].Value.ToString());
+                //    }
+                //}
+                //else
+                //{
+                //    labelXZongKuCun.Visible = false;
+                //    labelXKuCun.Visible = false;
+                //}
+            }
         }
 
         #endregion
@@ -134,7 +185,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_BeginEdit(object sender, DevComponents.DotNetBar.SuperGrid.GridEditEventArgs e)
         {
-            if (e.GridCell.GridColumn.Name == "gridColumnStockOut")
+            if (e.GridCell.GridColumn.Name == "gridColumnStock")
             {
                 //绑定仓库列表
                 InitStorageList();
@@ -175,7 +226,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 //查询仓库的方法
-              //  dataGridViewFujia.DataSource = _AllStorage.Tables[0];
+                dataGridViewFujia.DataSource = _AllStorage;
             }
         }
 
@@ -374,6 +425,31 @@ namespace WSCATProject.Warehouse
             dgvc.DataPropertyName = "Ma_Barcode";
             dataGridView1.Columns.Add(dgvc);
         }
+
+        /// <summary>
+        /// 初始化表格的数据
+        /// </summary>
+        private void InitDataGridView()
+        {
+            //改为点击可编辑
+            superGridControl1.PrimaryGrid.MouseEditMode = MouseEditMode.SingleClick;
+            //新增一行 用于给客户操作
+            superGridControl1.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["gridColumnStock"].Value = "合计";
+            gr.Cells["gridColumnStock"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumncurNumber"].Value = 0;
+            gr.Cells["gridColumncurNumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumncurNumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumnOutMoney"].Value = 0;
+            gr.Cells["gridColumnOutMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnOutMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+        }
         #endregion
 
         /// <summary>
@@ -477,8 +553,15 @@ namespace WSCATProject.Warehouse
 
             //superGridControl1.Focus();
             //SendKeys.Send("^{End}{Home}");
+        }
 
-            //早知道就拿爆米花来了，然后就回去就用东西吃了，真烦躁
+     
+
+        //表格的点击事件 
+        private void superGridControl1_Click(object sender, EventArgs e)
+        {
+            resizablePanelData.Visible = false;
+            resizablePanel1.Visible = false;
         }
     }
 }

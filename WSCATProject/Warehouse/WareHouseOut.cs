@@ -382,7 +382,7 @@ namespace WSCATProject.WareHouse
             GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
             GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
             int i = 0;
-            string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
+           // string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
             DateTime nowDataTime = DateTime.Now;
             foreach (GridRow gr in grs)
             {
