@@ -1307,6 +1307,16 @@ namespace WSCATProject
 
             #endregion
         }
+        //绑定仓库两个表格的数据
+        private void BDStorage()
+        {
+            #region 跟进进度 查询以审核的
+            #endregion
+
+            #region 待处理事件 查询未审核的
+
+            #endregion
+        }
         /// <summary>
         /// 下拉框选中改变事件
         /// </summary>
@@ -1332,6 +1342,8 @@ namespace WSCATProject
                     case "物料信息":
                         break;
                     case "仓库系统":
+                        Clear();
+
                         break;
                     case "销售系统":
                         Clear();

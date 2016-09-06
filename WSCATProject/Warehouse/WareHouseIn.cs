@@ -373,7 +373,7 @@ namespace WSCATProject.WareHouse
             isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
             string warehouseIncode = "";
-            WarehouseInterface warehouseInterface = new WarehouseInterface();
+            WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             //入库单
             WarehouseIn warehouseIn = new WarehouseIn();
             //入库商品列表
@@ -586,7 +586,7 @@ namespace WSCATProject.WareHouse
             isNUllValidate();
             int checkResult = 0;
             string wherecode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim());
-            WarehouseInterface warehouseInterface = new WarehouseInterface();
+            WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             int result = warehouseInterface.getWarehouseInList("code='" + wherecode + "' and state=0").Tables[0].Rows.Count;
             if (result > 0)
             {

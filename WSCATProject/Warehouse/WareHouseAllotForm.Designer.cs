@@ -308,7 +308,7 @@
             this.labtextboxTop9.Border.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(380, 15);
+            this.labtextboxTop9.Location = new System.Drawing.Point(387, 15);
             this.labtextboxTop9.ReadOnly = true;
             this.labtextboxTop9.Size = new System.Drawing.Size(155, 16);
             this.labtextboxTop9.Visible = false;
@@ -486,6 +486,16 @@
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             // 
+            // gridColumnoutcode
+            // 
+            this.gridColumnoutcode.Name = "gridColumnoutcode";
+            this.gridColumnoutcode.Visible = false;
+            // 
+            // gridColumnincode
+            // 
+            this.gridColumnincode.Name = "gridColumnincode";
+            this.gridColumnincode.Visible = false;
+            // 
             // gridColumnid
             // 
             this.gridColumnid.Name = "gridColumnid";
@@ -493,12 +503,14 @@
             // 
             // gridColumnInmoney
             // 
+            this.gridColumnInmoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnInmoney.HeaderText = "调入金额";
             this.gridColumnInmoney.Name = "gridColumnInmoney";
             this.gridColumnInmoney.Visible = false;
             // 
             // gridColumnInPrice
             // 
+            this.gridColumnInPrice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnInPrice.HeaderText = "调入单价";
             this.gridColumnInPrice.Name = "gridColumnInPrice";
             this.gridColumnInPrice.Visible = false;
