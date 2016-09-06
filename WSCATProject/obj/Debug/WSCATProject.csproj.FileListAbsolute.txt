@@ -243,3 +243,5 @@ E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\Model.pdb
 E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.DotNetBar.SuperGrid.xml
 E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.DotNetBar2.xml
 E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.Instrumentation.xml
+E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.ScheduleForm.resources
+E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\DataGridViewProcessEditTest.StateControl.resources
