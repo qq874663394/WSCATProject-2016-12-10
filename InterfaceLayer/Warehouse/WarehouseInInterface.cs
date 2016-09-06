@@ -11,9 +11,18 @@ using System.Data.SqlClient;
 
 namespace InterfaceLayer.Warehouse
 {
-    public class WarehouseInterface
+    public class WarehouseInInterface
     {
         WarehouseInLogic warehouseInLogic = new WarehouseInLogic();
+
+        /// <summary>
+        /// 根据审核状态查询
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetListToIn(int state)
+        {
+            return warehouseInLogic.GetListToIn(state);
+        }
         /// <summary>
         /// 事务修改
         /// </summary>
@@ -29,7 +38,7 @@ namespace InterfaceLayer.Warehouse
         /// </summary>
         /// <param name="wi">入库单实体</param>
         /// <returns></returns>
-        public int addWarehouseIn(WarehouseIn wi,List<WarehouseInDetail> widList)
+        public int addWarehouseIn(WarehouseIn wi, List<WarehouseInDetail> widList)
         {
             return warehouseInLogic.InsertWarehouseInTable(wi, widList);
         }

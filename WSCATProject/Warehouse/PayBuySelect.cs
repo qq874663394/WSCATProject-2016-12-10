@@ -21,7 +21,7 @@ namespace WSCATProject.Buys
         //BuyManager bm = new BuyManager();
         //SellManager sm = new SellManager();
         //ConllectionWaitManager cwm = new ConllectionWaitManager();
-        WarehouseInterface ware = new WarehouseInterface();
+        WarehouseInInterface ware = new WarehouseInInterface();
         DataTable dt = null;
         CodingHelper ch = new CodingHelper();
         public string whereField;

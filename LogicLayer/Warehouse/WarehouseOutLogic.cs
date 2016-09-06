@@ -13,7 +13,14 @@ namespace LogicLayer.Warehouse
     public class WarehouseOutLogic
     {
         WarehouseOutBase wob = new WarehouseOutBase();
-
+        /// <summary>
+        /// 根据审核状态查询
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetListToOut(int state)
+        {
+            return wob.GetListToOut(state);
+        }
         public DataSet GetList(string strWhere)
         {
             return wob.GetList(strWhere);

@@ -8,6 +8,7 @@ using BaseLayer;
 using HelperUtility.Encrypt;
 using System.Data;
 using HelperUtility;
+using UpdateManagerLayer;
 
 namespace LogicLayer
 {
@@ -19,39 +20,36 @@ namespace LogicLayer
         /// </summary>
         public int InsertWarehouseInDetailTable(WarehouseInDetail model)
         {
-            int result = wdb.Add(model);
-            if(result > 0)
+            int result = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseInDetail",
+                operationTime = DateTime.Now,
+                objective = "新增入库商品详情",
+                operationContent = "新增T_WarehouseInDetail表的数据"
+            };
+            if (model != null)
+            {
+                result = wdb.Add(model);
+                if (result > 0)
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseInDetail",
-                    operationTime = DateTime.Now,
-                    objective = "新增入库商品详情",
-                    result = 1,
-                    operationContent = "查询T_WarehouseInDetail表的数据,code为:" + model.code
-                };
-                lb.Add(log);
+                    logModel.result = 1;
+                }
+                else
+                {
+                    logModel.result = 0;
+                }
             }
             else
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseInDetail",
-                    operationTime = DateTime.Now,
-                    objective = "新增入库商品详情失败",
-                    result = 1,
-                    operationContent = "新增T_WarehouseInDetail表的数据失败,code为:" + model.code
-                };
-                lb.Add(log);
+                logModel.result = 0;
+                result = -7;
             }
+            lb.Add(logModel);
             return result;
         }
 
@@ -62,16 +60,38 @@ namespace LogicLayer
         /// <returns></returns>
         public int deleteInDetailTable(string code)
         {
-            if(!string.IsNullOrWhiteSpace(code))
+            int result = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseInDetail",
+                operationTime = DateTime.Now,
+                objective = "删除入库商品详情",
+                operationContent = "删除T_WarehouseInDetail表的数据,条件为:code=" + code
+            };
+            if (!string.IsNullOrWhiteSpace(code))
             {
                 WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
-                int result = warehouseInDetailBase.deleteByCode(code);
-                return result;
+                result = warehouseInDetailBase.deleteByCode(code);
+                if (result > 0)
+                {
+                    logModel.result = 1;
+                }
+                else
+                {
+                    logModel.result = 0;
+                }
             }
             else
             {
-                return -7;
+                logModel.result = 0;
+                result = -7;
             }
+            lb.Add(logModel);
+            return result;
         }
         /// <summary>
         /// 根据where条件获取数据列表
@@ -83,7 +103,7 @@ namespace LogicLayer
             WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
             DataSet ds = null;
             LogBase lb = new LogBase();
-            log log = new log()
+            log logModel = new log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -91,22 +111,19 @@ namespace LogicLayer
                 operationTable = "T_WarehouseInDetail",
                 operationTime = DateTime.Now,
                 objective = "查询入库商品详情",
-                result = 1,
                 operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + strWhere
             };
             try
             {
                 ds = warehouseInDetailBase.getList(strWhere);
-                log.operationContent = "查询T_WarehouseInDetail表的数据列表,条件为:" + strWhere;
-                lb.Add(log);
+                logModel.result = 1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                log.operationContent = "T_WarehouseInDetail表的数据列表查询失败,条件为:" + strWhere;
-                lb.Add(log);
-
+                logModel.result = 0;
                 throw ex;
             }
+            lb.Add(logModel);
             return ds;
         }
         /// <summary>
@@ -119,31 +136,35 @@ namespace LogicLayer
             WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
             DataSet ds = null;
             LogBase lb = new LogBase();
-            log log = new log()
+            log logModel = new log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
                 operationTable = "T_WarehouseInDetail",
                 operationTime = DateTime.Now,
-                objective = "查询入库商品详情",
-                result = 1,
-                operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + XYEEncoding.strHexDecode(mainCode)
+                objective = "根据主单code查询入库商品详情",
+                operationContent = "根据主单code查询T_WarehouseInDetail表的数据,条件为:mainCode=" + mainCode
             };
-            try
+            if (!string.IsNullOrWhiteSpace(mainCode))
             {
-                ds = warehouseInDetailBase.getListByMainCode(mainCode);
-
-                log.operationContent = "根据主表code查询T_WarehouseInDetail表的数据列表,条件为:" + XYEEncoding.strHexDecode(mainCode);
-                lb.Add(log);
+                try
+                {
+                    ds = warehouseInDetailBase.getListByMainCode(mainCode);
+                    logModel.result = 1;
+                }
+                catch (Exception ex)
+                {
+                    logModel.result = 0;
+                    throw ex;
+                }
             }
-            catch(Exception ex)
+            else
             {
-                log.operationContent = "T_WarehouseInDetail表的数据列表查询失败,code为:" + XYEEncoding.strHexDecode(mainCode);
-                lb.Add(log);
-                throw ex;
+                logModel.result = 0;
+                throw new Exception("-7");
             }
-            
+            lb.Add(logModel);
             return ds;
         }
         /// <summary>
@@ -153,7 +174,39 @@ namespace LogicLayer
         /// <returns></returns>
         public int updateByCode(string code)
         {
-            return wdb.updateByCode(code);
+            int result = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseInDetail",
+                operationTime = DateTime.Now,
+                objective = "修改入库商品详情",
+                operationContent = "修改T_WarehouseInDetail表的数据,条件为:code=" + code
+            };
+            
+            if (!string.IsNullOrWhiteSpace(code))
+            {
+                try
+                {
+                    result = wdb.updateByCode(code);
+                    logModel.result = 1;
+                }
+                catch (Exception ex)
+                {
+                    logModel.result = 0;
+                    throw ex;
+                }
+            }
+            else
+            {
+                logModel.result = 0;
+                throw new Exception("-7");
+            }
+            lb.Add(logModel);
+            return result;
         }
     }
 }
