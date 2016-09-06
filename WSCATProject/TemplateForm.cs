@@ -181,5 +181,17 @@ namespace WSCATProject
                     e.GridCell.UnMergedBounds.Bottom + panel7.Location.Y + 65);
             }
         }
+
+        private void toolStripButton3_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip p = new ToolTip();
+            p.ShowAlways = true;
+            this.toolStripButton3.AutoToolTip = false;
+            this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
+            this.toolStripButton5.AutoToolTip = false;
+            this.toolStripButton5.ToolTipText = "导出Excel(Ctrl+T)";
+            this.toolStripButton4.AutoToolTip = false;
+            this.toolStripButton4.ToolTipText = "关闭(Ctrl+X)";
+        }
     }
 }
