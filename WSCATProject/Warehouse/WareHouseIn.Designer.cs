@@ -131,6 +131,7 @@
             // 
             // labTop5
             // 
+            this.labTop5.ForeColor = System.Drawing.Color.DimGray;
             this.labTop5.Location = new System.Drawing.Point(688, 26);
             this.labTop5.Size = new System.Drawing.Size(77, 12);
             this.labTop5.Text = "采购单单号：";
@@ -223,6 +224,7 @@
             // 
             // labtextboxTop3
             // 
+            this.labtextboxTop3.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -233,6 +235,7 @@
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop3.Location = new System.Drawing.Point(501, 21);
+            this.labtextboxTop3.ReadOnly = true;
             this.labtextboxTop3.Size = new System.Drawing.Size(123, 16);
             // 
             // labtextboxTop7
