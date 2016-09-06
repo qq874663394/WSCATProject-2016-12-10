@@ -94,3 +94,5 @@ E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\UpdateManagerLayer.p
 E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
+E:\619项目\619\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.dll
+E:\619项目\619\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.xml
