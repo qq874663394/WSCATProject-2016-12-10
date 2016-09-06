@@ -17,6 +17,15 @@ namespace LogicLayer
     public class WarehouseInLogic
     {
         /// <summary>
+        /// 根据审核状态查询
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetListToIn(int state)
+        {
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            return warehouseInBase.GetListToIn(state);
+        }
+        /// <summary>
         /// 事务修改
         /// </summary>
         /// <param name="hashTable">主表的sql和parameter</param>
@@ -36,42 +45,28 @@ namespace LogicLayer
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             DataSet ds = null;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "查询入库信息",
+                operationContent = "查询T_WarehouseIn表的数据,条件为:" + strWhere
+            };
             try
             {
                 ds = warehouseInBase.GetList(strWhere);
-
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseIn",
-                    operationTime = DateTime.Now,
-                    objective = "查询入库信息",
-                    result = 1,
-                    operationContent = "查询T_WarehouseIn表的数据,条件为:" + strWhere
-                };
-                lb.Add(log);
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseIn",
-                    operationTime = DateTime.Now,
-                    objective = "查询入库信息失败",
-                    result = -1,
-                    operationContent = "查询失败。数据表：T_WarehouseIn表；条件为：" + strWhere
-                };
-                lb.Add(log);
-
+                logModel.result = 0;
                 throw ex;
             }
+            lb.Add(logModel);
             return ds;
         }
 
@@ -90,9 +85,8 @@ namespace LogicLayer
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                //OperationTable = "操作表名",
+                operationTable = "操作表名",
                 operationTime = nowDateTime,
-                //OperationContent = "",
                 objective = "增加入库信息"
             };
             WarehouseInBase warehouseInBase = new WarehouseInBase();

@@ -14,6 +14,25 @@ namespace BaseLayer
     public partial class WarehouseInBase
     {
         /// <summary>
+        /// 根据审核状态查询
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetListToIn(int state)
+        {
+            string sql = "";
+            DataSet ds = null;
+            try
+            {
+                sql = string.Format("select code,defaultType,purchaseCode as mainCode,date,state,operation,examine from T_WarehouseIn where checkState={0}", state);
+                ds = DbHelperSQL.Query(sql);
+            }
+            catch (Exception)
+            {
+                throw new Exception("-1");
+            }
+            return ds;
+        }
+        /// <summary>
         /// 事务修改
         /// </summary>
         /// <param name="hashTable">主表的sql和parameter</param>

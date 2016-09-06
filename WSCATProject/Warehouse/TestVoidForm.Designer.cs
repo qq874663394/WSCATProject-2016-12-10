@@ -54,7 +54,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(228, 262);
+            this.ClientSize = new System.Drawing.Size(1055, 494);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Name = "TestVoidForm";
