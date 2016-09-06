@@ -19,6 +19,6 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestVoidForm());        }
+            Application.Run(new Warehouse.WareHouseAllotForm());        }
     }
 }

@@ -44,6 +44,8 @@
             this.gridColumnoutcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnincode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnInmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnInPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -374,14 +376,14 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncurNumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnOutprice);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnOutMoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnInPrice);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnInmoney);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnoutcode);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnincode);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1184, 291);
+            this.superGridControl1.Size = new System.Drawing.Size(1184, 261);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.Click += new System.EventHandler(this.superGridControl1_Click);
@@ -484,20 +486,22 @@
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.HeaderText = "调入单价";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = false;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.HeaderText = "调出金额";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = false;
+            // gridColumnid
             // 
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.Visible = false;
+            // 
+            // gridColumnInmoney
+            // 
+            this.gridColumnInmoney.HeaderText = "调入金额";
+            this.gridColumnInmoney.Name = "gridColumnInmoney";
+            this.gridColumnInmoney.Visible = false;
+            // 
+            // gridColumnInPrice
+            // 
+            this.gridColumnInPrice.HeaderText = "调入单价";
+            this.gridColumnInPrice.Name = "gridColumnInPrice";
+            this.gridColumnInPrice.Visible = false;
             // 
             // WareHouseAllotForm
             // 
@@ -550,5 +554,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnoutcode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnincode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnInPrice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnInmoney;
     }
 }

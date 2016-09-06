@@ -703,14 +703,14 @@ namespace WSCATProject.Warehouse
             switch (comboBoxEx1.Text.Trim())
             {
                 case "同价调拨":                 
-                    superGridControl1.PrimaryGrid.Columns["gridColumn1"].Visible = false;
-                    superGridControl1.PrimaryGrid.Columns["gridColumn2"].Visible = false;
+                    superGridControl1.PrimaryGrid.Columns["gridColumnInPrice"].Visible = false;
+                    superGridControl1.PrimaryGrid.Columns["gridColumnInmoney"].Visible = false;
                     labTop9.Visible = false;
                     labtextboxTop9.Visible = false;
                     break;
                 case "异价调拨":
-                    superGridControl1.PrimaryGrid.Columns["gridColumn1"].Visible = true;
-                    superGridControl1.PrimaryGrid.Columns["gridColumn2"].Visible = true;
+                    superGridControl1.PrimaryGrid.Columns["gridColumnInPrice"].Visible = true;
+                    superGridControl1.PrimaryGrid.Columns["gridColumnInmoney"].Visible = true;
                     labTop9.Visible = true;
                     labtextboxTop9.Visible = true;
                     break;
