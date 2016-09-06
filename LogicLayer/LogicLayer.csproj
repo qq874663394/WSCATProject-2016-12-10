@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warehouse\WarehouseInDetailLogic.cs" />
     <Compile Include="Warehouse\WarehouseInLogic.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryLogic.cs" />
     <Compile Include="Warehouse\WarehouseMainLogic.cs" />
     <Compile Include="Warehouse\WarehouseOutDetailLogic.cs" />
     <Compile Include="Warehouse\WarehouseOutLogic.cs" />

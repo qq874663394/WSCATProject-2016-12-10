@@ -2413,17 +2413,10 @@ namespace WSCATProject.Buys
             gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(where).Tables[0]);
-            //if (dt.Rows.Count>0)
-            //{
+                dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(where).Tables[0]);
                 superGridControl1.PrimaryGrid.DataSource = dt;
                 whereField = "单据日期";
                 orderField = "ID";
-            //}
-            //else
-            //{
-            //    MessageBox.Show("查无数据");
-            //}
         }
 
         private void 商品出库ToolStripMenuItem_Click(object sender, EventArgs e)

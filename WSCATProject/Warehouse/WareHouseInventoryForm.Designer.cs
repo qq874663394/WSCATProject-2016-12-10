@@ -91,7 +91,6 @@
             this.panelEx1.Size = new System.Drawing.Size(1032, 39);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.Color = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
@@ -133,6 +132,7 @@
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
             this.comboBoxEx1.Location = new System.Drawing.Point(553, 9);
@@ -140,6 +140,7 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 3;
+            this.comboBoxEx1.SelectedValueChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged);
             // 
             // labelX2
             // 
@@ -183,7 +184,6 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton2,
             this.toolStripButton6,
-            this.toolStripButton7,
             this.toolStripButton5,
             this.toolStripButton4,
             this.toolStripButton3,
@@ -253,8 +253,10 @@
             // 
             // superGridControl1
             // 
+            this.superGridControl1.BackColor = System.Drawing.Color.White;
             this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.ForeColor = System.Drawing.Color.Black;
             this.superGridControl1.Location = new System.Drawing.Point(0, 0);
             this.superGridControl1.Name = "superGridControl1";
             // 
@@ -275,46 +277,55 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.DataPropertyName = "name";
             this.gridColumn1.HeaderText = "仓库";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
             // 
+            this.gridColumn2.DataPropertyName = "code";
             this.gridColumn2.HeaderText = "商品编号";
             this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn3
             // 
+            this.gridColumn3.DataPropertyName = "shopname";
             this.gridColumn3.HeaderText = "商品名称";
             this.gridColumn3.Name = "gridColumn3";
             // 
             // gridColumn4
             // 
+            this.gridColumn4.DataPropertyName = "model";
             this.gridColumn4.HeaderText = "规格型号";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // gridColumn5
             // 
+            this.gridColumn5.DataPropertyName = "unit";
             this.gridColumn5.HeaderText = "单位";
             this.gridColumn5.Name = "gridColumn5";
             // 
             // gridColumn6
             // 
+            this.gridColumn6.DataPropertyName = "allNumber";
             this.gridColumn6.HeaderText = "贮存数量";
             this.gridColumn6.Name = "gridColumn6";
             // 
             // gridColumn7
             // 
+            this.gridColumn7.DataPropertyName = "checkNumber";
             this.gridColumn7.HeaderText = "盘点数量";
             this.gridColumn7.Name = "gridColumn7";
             // 
             // gridColumn8
             // 
+            this.gridColumn8.DataPropertyName = "remark";
             this.gridColumn8.HeaderText = "备注";
             this.gridColumn8.Name = "gridColumn8";
             // 
             // gridColumn9
             // 
+            this.gridColumn9.DataPropertyName = "barCode";
             this.gridColumn9.HeaderText = "条码";
             this.gridColumn9.Name = "gridColumn9";
             // 
@@ -335,6 +346,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "WareHouseInventoryForm";
             this.Text = "录入盘点数据";
+            this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelEx1.ResumeLayout(false);
