@@ -26,9 +26,9 @@ E:\619项目\619\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\619\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
 E:\619项目\619\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\619\HelperUtility\obj\Debug\HelperUtility.pdb
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\bin\Debug\HelperUtility.dll
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\bin\Debug\HelperUtility.pdb
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\bin\Debug\NPOI.dll
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\obj\Debug\HelperUtility.dll
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\obj\Debug\HelperUtility.pdb
+E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.dll
+E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.pdb
+E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\NPOI.dll
+E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
+E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.dll
+E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.pdb

@@ -55,6 +55,7 @@
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -328,6 +329,14 @@
             this.gridColumn9.HeaderText = "条码";
             this.gridColumn9.Name = "gridColumn9";
             // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Image = global::WSCATProject.Properties.Resources.caozuo;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton7.Text = "编制";
+            // 
             // WareHouseInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -336,7 +345,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "WareHouseInventoryForm";
-            this.Text = "WareHouseInventoryForm";
+            this.Text = "录入盘点数据";
             this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -378,5 +387,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
+        protected System.Windows.Forms.ToolStripButton toolStripButton7;
     }
 }

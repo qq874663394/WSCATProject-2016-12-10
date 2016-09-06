@@ -171,6 +171,15 @@ namespace WSCATProject
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel7.Location.Y + 65);
             }
+            if (e.GridCell.GridColumn.Name == "gridColumnStockIn")
+            {
+                ClickRowIndex = e.GridCell.RowIndex;
+                ClickStorage = true;
+                resizablePanel1.Visible = true;
+                resizablePanel1.Size = new Size(190, 120);
+                resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
+                    e.GridCell.UnMergedBounds.Bottom + panel7.Location.Y + 65);
+            }
         }
     }
 }

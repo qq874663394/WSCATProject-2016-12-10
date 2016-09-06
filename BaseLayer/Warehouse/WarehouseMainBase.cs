@@ -53,16 +53,22 @@ namespace BaseLayer.Warehouse
                 
             return result;
         }
+        /// <summary>
+        /// 林修改方法 查询库存商品
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
         public DataTable GetList(string strWhere)
         {
             string sql = "";
             DataSet ds = null;
             try
             {
-                sql = "select * from T_WarehouseMain";
+                sql = @"select * from T_BaseMaterial bm,T_WarehouseMain tw,T_WarehouseDetail td 
+                    where tw.materialCode=bm.code and tw.code=td.warehouseOrdercode";
                 if (strWhere.Trim() != "")
                 {
-                    sql += " where " + strWhere;
+                    sql += " and tw.storageCode='"+ strWhere + "' ";
                 }
                 ds = DbHelperSQL.Query(sql);
             }

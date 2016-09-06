@@ -67,6 +67,7 @@ namespace WSCATProject.WareHouse
 
         private void StockOut_Load(object sender, EventArgs e)
         {
+            comboBoxEx1.SelectedIndex = 0;
             #region 隐藏控件
             checkBox1.Visible = false;
             labTop4.Visible = false;
@@ -110,7 +111,7 @@ namespace WSCATProject.WareHouse
                 {
                     try
                     {
-                        if (_wareHouseoutModel.Cells["transportMathod"].Value.ToString()=="快递")
+                        if (_wareHouseoutModel.Cells["transportMathod"].Value.ToString() == "快递")
                         {
                             this.label3.Visible = true;
                             this.textBoxX1.Visible = true;
@@ -118,7 +119,7 @@ namespace WSCATProject.WareHouse
                         }
                         //根据条件查询表格里面的数据
                         string code = XYEEncoding.strCodeHex(_wareHouseoutModel["code"].Value.ToString());
-                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding( warehouseout.GetList(" mainCode='"+code+"'"));
+                        superGridControl1.PrimaryGrid.DataSource = ch.DataSetReCoding(warehouseout.GetList(" mainCode='" + code + "'"));
                         superGridControl1.PrimaryGrid.EnsureVisible();
                         //调用统计的方法
                         InitDataGridView();
@@ -348,10 +349,10 @@ namespace WSCATProject.WareHouse
             WarehouseOutInterface woi = new WarehouseOutInterface();
             try
             {
-                warehouseOut.type = XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString());
-                warehouseOut.ClientCode = XYEEncoding.strCodeHex(_ClientCode);
+                warehouseOut.type = XYEEncoding.strCodeHex(comboBoxEx1.Text.ToString());
+                warehouseOut.ClientCode = XYEEncoding.strCodeHex(_ClientCode == "" ? labtextboxTop2.Text.Trim() : _Operation);
                 warehouseOut.salesCode = XYEEncoding.strCodeHex(labtextboxTop7.Text.Trim());
-                warehouseOut.operation = XYEEncoding.strCodeHex(_Operation);
+                warehouseOut.operation = XYEEncoding.strCodeHex(_Operation == "" ? labtextboxBotton1.Text.Trim() : _Operation);
                 warehouseOut.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text.Trim());
                 warehouseOut.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text.Trim());
                 warehouseOut.date = dateTimePicker1.Value;
@@ -372,7 +373,7 @@ namespace WSCATProject.WareHouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("出库单保存失败"+ex.Message);
+                MessageBox.Show("出库单保存失败" + ex.Message);
             }
 
             int result = woi.update(warehouseOut);
@@ -382,7 +383,7 @@ namespace WSCATProject.WareHouse
             GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
             GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
             int i = 0;
-            string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
+           // string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
             DateTime nowDataTime = DateTime.Now;
             foreach (GridRow gr in grs)
             {
@@ -416,7 +417,8 @@ namespace WSCATProject.WareHouse
                     WarehouseOutdetail.IsArrive = isarrive;
                     GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                     //调用修改出库单的方法
-                   // wareHouseOutList.Add(WarehouseOutdetail);
+                    wareHouseOutList.Add(WarehouseOutdetail);
+                    woi.update(warehouseOut, wareHouseOutList);
                 }
             }
         }
@@ -445,7 +447,16 @@ namespace WSCATProject.WareHouse
 
         private void buttonExamine_Click(object sender, EventArgs e)
         {
-
+            WarehouseOutInterface woi = new WarehouseOutInterface();
+            int result = woi.update("state", 1, XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()));
+            if (result > 0)
+            {
+                MessageBox.Show("审核成功");
+            }
+            else
+            {
+                MessageBox.Show("审核失败");
+            }
         }
     }
 }
