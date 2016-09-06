@@ -308,7 +308,7 @@
             this.labtextboxTop9.Border.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(380, 15);
+            this.labtextboxTop9.Location = new System.Drawing.Point(387, 15);
             this.labtextboxTop9.ReadOnly = true;
             this.labtextboxTop9.Size = new System.Drawing.Size(155, 16);
             this.labtextboxTop9.Visible = false;

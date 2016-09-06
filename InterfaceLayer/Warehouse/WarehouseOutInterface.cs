@@ -13,6 +13,14 @@ namespace InterfaceLayer.Warehouse
     {
         WarehouseOutLogic wol = new WarehouseOutLogic();
         /// <summary>
+        /// 根据审核状态查询
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetListToOut(int state)
+        {
+            return wol.GetListToOut(state);
+        }
+        /// <summary>
         /// 根据where条件获取出库单列表
         /// </summary>
         /// <param name="strWhere"></param>

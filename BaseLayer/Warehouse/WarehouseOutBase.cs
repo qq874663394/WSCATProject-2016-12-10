@@ -13,6 +13,25 @@ namespace BaseLayer
     public class WarehouseOutBase
     {
         /// <summary>
+        /// 根据审核状态查询
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetListToOut(int state)
+        {
+            string sql = "";
+            DataSet ds = null;
+            try
+            {
+                sql = string.Format("select code,defaultType,salesCode as mainCode,date,state,operation,examine from T_WarehouseOut where checkState={0}", state);
+                ds = DbHelperSQL.Query(sql);
+            }
+            catch (Exception)
+            {
+                throw new Exception("-1");
+            }
+            return ds;
+        }
+        /// <summary>
         /// 根据where条件获取出库单列表
         /// </summary>
         /// <param name="strWhere"></param>
