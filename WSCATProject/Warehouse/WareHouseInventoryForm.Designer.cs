@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -44,6 +37,13 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -56,9 +56,9 @@
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,70 +71,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1032, 63);
             this.panel1.TabIndex = 0;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2,
-            this.toolStripButton6,
-            this.toolStripButton5,
-            this.toolStripButton4,
-            this.toolStripButton3,
-            this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1032, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = global::WSCATProject.Properties.Resources.tianjia副本;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton2.Text = "添加";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.guanbi;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton1.Text = "关闭";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.daying副本;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton3.Text = "打印";
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = global::WSCATProject.Properties.Resources.shuaxin;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton4.Text = "刷新";
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.Image = global::WSCATProject.Properties.Resources.排序;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton5.Text = "排序";
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.Image = global::WSCATProject.Properties.Resources.shanchu副本;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton6.Text = "清除";
             // 
             // panelEx1
             // 
@@ -154,7 +90,6 @@
             this.panelEx1.Size = new System.Drawing.Size(1032, 39);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.Color = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
@@ -196,6 +131,7 @@
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
             this.comboBoxEx1.Location = new System.Drawing.Point(553, 9);
@@ -203,6 +139,7 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 3;
+            this.comboBoxEx1.SelectedValueChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged);
             // 
             // labelX2
             // 
@@ -240,6 +177,70 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton2,
+            this.toolStripButton6,
+            this.toolStripButton5,
+            this.toolStripButton4,
+            this.toolStripButton3,
+            this.toolStripButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1032, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = global::WSCATProject.Properties.Resources.tianjia副本;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton2.Text = "添加";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.Image = global::WSCATProject.Properties.Resources.shanchu副本;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton6.Text = "清除";
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.Image = global::WSCATProject.Properties.Resources.排序;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton5.Text = "排序";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Image = global::WSCATProject.Properties.Resources.shuaxin;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton4.Text = "刷新";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.daying副本;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton3.Text = "打印";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.guanbi;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton1.Text = "关闭";
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.superGridControl1);
@@ -251,8 +252,10 @@
             // 
             // superGridControl1
             // 
+            this.superGridControl1.BackColor = System.Drawing.Color.White;
             this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.ForeColor = System.Drawing.Color.Black;
             this.superGridControl1.Location = new System.Drawing.Point(0, 0);
             this.superGridControl1.Name = "superGridControl1";
             // 
@@ -273,46 +276,55 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.DataPropertyName = "name";
             this.gridColumn1.HeaderText = "仓库";
             this.gridColumn1.Name = "gridColumn1";
             // 
             // gridColumn2
             // 
+            this.gridColumn2.DataPropertyName = "code";
             this.gridColumn2.HeaderText = "商品编号";
             this.gridColumn2.Name = "gridColumn2";
             // 
             // gridColumn3
             // 
+            this.gridColumn3.DataPropertyName = "shopname";
             this.gridColumn3.HeaderText = "商品名称";
             this.gridColumn3.Name = "gridColumn3";
             // 
             // gridColumn4
             // 
+            this.gridColumn4.DataPropertyName = "model";
             this.gridColumn4.HeaderText = "规格型号";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // gridColumn5
             // 
+            this.gridColumn5.DataPropertyName = "unit";
             this.gridColumn5.HeaderText = "单位";
             this.gridColumn5.Name = "gridColumn5";
             // 
             // gridColumn6
             // 
+            this.gridColumn6.DataPropertyName = "allNumber";
             this.gridColumn6.HeaderText = "贮存数量";
             this.gridColumn6.Name = "gridColumn6";
             // 
             // gridColumn7
             // 
+            this.gridColumn7.DataPropertyName = "checkNumber";
             this.gridColumn7.HeaderText = "盘点数量";
             this.gridColumn7.Name = "gridColumn7";
             // 
             // gridColumn8
             // 
+            this.gridColumn8.DataPropertyName = "remark";
             this.gridColumn8.HeaderText = "备注";
             this.gridColumn8.Name = "gridColumn8";
             // 
             // gridColumn9
             // 
+            this.gridColumn9.DataPropertyName = "barCode";
             this.gridColumn9.HeaderText = "条码";
             this.gridColumn9.Name = "gridColumn9";
             // 
@@ -325,12 +337,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "WareHouseInventoryForm";
             this.Text = "WareHouseInventoryForm";
+            this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 

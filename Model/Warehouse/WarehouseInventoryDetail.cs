@@ -13,7 +13,7 @@ namespace Model
 		#region Model
 		private string _code;
 		private int _id;
-		private int? _materialcode;
+		private string _materialcode;
 		private string _materianame;
 		private string _materiamodel;
 		private string _materiaunit;
@@ -47,7 +47,7 @@ namespace Model
 		/// <summary>
 		/// 物料ID
 		/// </summary>
-		public int? materialCode
+		public string materialCode
 		{
 			set{ _materialcode=value;}
 			get{return _materialcode;}

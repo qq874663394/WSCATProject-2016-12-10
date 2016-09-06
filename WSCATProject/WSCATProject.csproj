@@ -129,12 +129,6 @@
     <Compile Include="Warehouse\WareHouseInventoryForm.Designer.cs">
       <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\WareJouseInventoryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\WareJouseInventoryForm.Designer.cs">
-      <DependentUpon>WareJouseInventoryForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Warehouse\WareHouseInventoryLossForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,9 +190,6 @@
     <EmbeddedResource Include="Warehouse\WareHouseInventoryForm.resx">
       <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\WareJouseInventoryForm.resx">
-      <DependentUpon>WareJouseInventoryForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryLossForm.resx">
       <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,7 +213,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">
