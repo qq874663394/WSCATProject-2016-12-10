@@ -96,61 +96,73 @@
             this.superGridControl1.Size = new System.Drawing.Size(1104, 463);
             this.superGridControl1.TabIndex = 0;
             this.superGridControl1.Text = "superGridControl1";
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             // 
             // gridColumn1
             // 
             this.gridColumn1.DataPropertyName = "name";
             this.gridColumn1.HeaderText = "仓库";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ReadOnly = true;
             // 
             // gridColumn2
             // 
             this.gridColumn2.DataPropertyName = "code";
             this.gridColumn2.HeaderText = "商品编号";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
             // 
             // gridColumn3
             // 
             this.gridColumn3.DataPropertyName = "shopname";
             this.gridColumn3.HeaderText = "商品名称";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             // 
             // gridColumn4
             // 
             this.gridColumn4.DataPropertyName = "model";
             this.gridColumn4.HeaderText = "规格型号";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
             // 
             // gridColumn5
             // 
             this.gridColumn5.DataPropertyName = "unit";
             this.gridColumn5.HeaderText = "单位";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.ReadOnly = true;
             // 
             // gridColumn6
             // 
             this.gridColumn6.DataPropertyName = "barCode";
             this.gridColumn6.HeaderText = "条码";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.ReadOnly = true;
             // 
             // gridColumn7
             // 
             this.gridColumn7.DataPropertyName = "allNumber";
+            this.gridColumn7.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn7.HeaderText = "贮存数量";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.ReadOnly = true;
             // 
             // gridColumn8
             // 
+            this.gridColumn8.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn8.HeaderText = "盘点数量";
             this.gridColumn8.Name = "gridColumn8";
             // 
             // gridColumn9
             // 
+            this.gridColumn9.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn9.HeaderText = "盘盈数量";
             this.gridColumn9.Name = "gridColumn9";
             // 
             // gridColumn10
             // 
+            this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn10.HeaderText = "盘亏数量";
             this.gridColumn10.Name = "gridColumn10";
             // 
@@ -159,6 +171,7 @@
             this.gridColumn11.DataPropertyName = "remark";
             this.gridColumn11.HeaderText = "备注";
             this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.ReadOnly = true;
             // 
             // toolStripButton1
             // 
@@ -267,7 +280,7 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 3;
-            this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged);
+            this.comboBoxEx1.SelectedValueChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged);
             // 
             // labelX2
             // 
@@ -348,7 +361,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "WareHouseInventoryReportForm";
             this.Text = "商品盘点报告单";
-            this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
+            this.Load += new System.EventHandler(this.WareHouseInventoryReportForm_Load);
             this.panel3.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

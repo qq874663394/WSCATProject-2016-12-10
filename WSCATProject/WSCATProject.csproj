@@ -327,6 +327,8 @@
     <Content Include="Resources\godDownOut.png" />
     <Content Include="Resources\goodsData.png" />
     <None Include="Resources\guanbi.PNG" />
+    <None Include="Resources\green.PNG" />
+    <None Include="Resources\green大.png" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\houdan.png" />
@@ -358,7 +360,9 @@
     <Content Include="Resources\pandian.PNG" />
     <Content Include="Resources\payment.png" />
     <None Include="Resources\qiandan.PNG" />
+    <None Include="Resources\red.PNG" />
     <Content Include="Resources\Redocn_2012040703034492.png" />
+    <None Include="Resources\red大.png" />
     <Content Include="Resources\regionData.png" />
     <Content Include="Resources\renshi.PNG" />
     <Content Include="Resources\renshiguanli.png" />
@@ -404,6 +408,8 @@
     <Content Include="Resources\wuliuxinxi.png" />
     <Content Include="Resources\xiaoshou.png" />
     <Content Include="Resources\xitongweihu.png" />
+    <None Include="Resources\yellow.PNG" />
+    <None Include="Resources\yellow大.png" />
     <Content Include="Resources\yuangongyonghu.png" />
     <Content Include="Resources\zijinzhanghu.png" />
     <Content Include="Resources\人事大.png" />

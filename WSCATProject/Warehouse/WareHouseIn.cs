@@ -369,6 +369,8 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            //非空验证
+            isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
             string warehouseIncode = "";
             WarehouseInInterface warehouseInterface = new WarehouseInInterface();
@@ -543,25 +545,34 @@ namespace WSCATProject.WareHouse
             gr.Cells["gridColumn8"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumn8"].CellStyles.Default.Background.Color1 = Color.Orange;
 
-            //计算金额
-            decimal number = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
-            decimal price = Convert.ToDecimal(gr.Cells["gridColumn8"].FormattedValue);
-            decimal allPrice = number * price;
-            gr.Cells["gridColumn8"].Value = allPrice;
-            //逐行统计数据总数
-            decimal tempAllNumber = 0;
-            decimal tempAllMoney = 0;
-            for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+            try
             {
-                GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
-                tempAllNumber += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
-                tempAllMoney += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+                //计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
+                decimal price = Convert.ToDecimal(gr.Cells["gridColumn8"].FormattedValue);
+                decimal allPrice = number * price;
+                gr.Cells["gridColumn8"].Value = allPrice;
+                //逐行统计数据总数
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+                }
+                _MaterialMoney = tempAllMoney;
+                _MaterialNumber = tempAllNumber;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["gridColumn6"].Value = _MaterialNumber.ToString();
+                gr["gridColumn8"].Value = _MaterialMoney.ToString();
             }
-            _MaterialMoney = tempAllMoney;
-            _MaterialNumber = tempAllNumber;
-            gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-            gr["gridColumn6"].Value = _MaterialNumber.ToString();
-            gr["gridColumn8"].Value = _MaterialMoney.ToString();
+            catch (Exception ex)
+            {
+                MessageBox.Show("逐行计算金额或统计数据出错！请检查："+ex.Message);
+                throw;
+            }
+         
         }
 
         /// <summary>
@@ -571,6 +582,8 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         private void buttonExamine_Click(object sender, EventArgs e)
         {
+            //非空验证
+            isNUllValidate();
             int checkResult = 0;
             string wherecode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim());
             WarehouseInInterface warehouseInterface = new WarehouseInInterface();
@@ -618,6 +631,30 @@ namespace WSCATProject.WareHouse
             }
         }
 
-
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private void isNUllValidate()
+        {
+            if (comboBoxEx1.Text.Trim() == null)
+            {
+                MessageBox.Show("入货类型不能为空！");
+            }
+            if (labtextboxTop3.Text.Trim() == null)
+            {
+                MessageBox.Show("供应商不能为空！");
+            }
+            if (labtextboxBotton1.Text.Trim() == null)
+            {
+                MessageBox.Show("业务员不能为空！");
+            }
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+               Rows[superGridControl1.PrimaryGrid.Rows.Count];
+            if (gr.Cells["griCoulumcangku"].Value == null&&gr.Cells["griCoulumhuojia"].Value==null)
+            {
+                MessageBox.Show("仓库和货架不能为空！");
+            }
+           
+        }
     }
 }

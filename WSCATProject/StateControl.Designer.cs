@@ -42,10 +42,12 @@
             this.imageList1.Images.SetKeyName(2, "Green");
             this.imageList1.Images.SetKeyName(3, "Yellow");
             this.imageList1.Images.SetKeyName(4, "Red");
+            this.imageList1.Images.SetKeyName(5, "red.PNG");
+            this.imageList1.Images.SetKeyName(6, "green.PNG");
+            this.imageList1.Images.SetKeyName(7, "yellow.PNG");
             // 
             // StateControl
             // 
-            this.Name = "StateControl";
             this.Size = new System.Drawing.Size(90, 20);
             this.ResumeLayout(false);
 
@@ -54,6 +56,5 @@
         #endregion
 
         private System.Windows.Forms.ImageList imageList1;
-
     }
 }
