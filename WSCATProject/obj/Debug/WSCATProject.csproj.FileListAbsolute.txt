@@ -247,3 +247,5 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WS
 D:\项目\2016年8月29日周一拉取的\WSCATProject\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInventoryReportForm.resources
 E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.ScheduleForm.resources
 E:\619项目\619\WSCATProject\obj\Debug\DataGridViewProcessEditTest.StateControl.resources
+E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseAssembyForm.resources
+E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseDisassembly.resources

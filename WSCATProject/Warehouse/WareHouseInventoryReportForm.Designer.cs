@@ -159,12 +159,14 @@
             this.gridColumn9.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn9.HeaderText = "盘盈数量";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.ReadOnly = true;
             // 
             // gridColumn10
             // 
             this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn10.HeaderText = "盘亏数量";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.ReadOnly = true;
             // 
             // gridColumn11
             // 

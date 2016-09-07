@@ -88,6 +88,9 @@ namespace WSCATProject.Warehouse
             _AllEmployee = employee.SelSupplierTable(false);
             _AllStorage = storage.GetList("");
 
+            //显示行号
+            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;

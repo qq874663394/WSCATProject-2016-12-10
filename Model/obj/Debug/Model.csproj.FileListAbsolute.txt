@@ -17,7 +17,6 @@ E:\619项目\619项目\Model\obj\Debug\Model.dll
 E:\619项目\619项目\Model\obj\Debug\Model.pdb
 E:\619项目\619\Model\bin\Debug\Model.dll
 E:\619项目\619\Model\bin\Debug\Model.pdb
-E:\619项目\619\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 E:\619项目\619\Model\obj\Debug\Model.dll
 E:\619项目\619\Model\obj\Debug\Model.pdb
 E:\619项目\2016年9月5日092343\Model\bin\Debug\Model.dll
@@ -25,3 +24,4 @@ E:\619项目\2016年9月5日092343\Model\bin\Debug\Model.pdb
 E:\619项目\2016年9月5日092343\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 E:\619项目\2016年9月5日092343\Model\obj\Debug\Model.dll
 E:\619项目\2016年9月5日092343\Model\obj\Debug\Model.pdb
+E:\619项目\619\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
