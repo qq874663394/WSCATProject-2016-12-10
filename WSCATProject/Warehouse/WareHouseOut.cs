@@ -251,25 +251,34 @@ namespace WSCATProject.WareHouse
             gr.Cells["gridColumn6"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumn6"].CellStyles.Default.Background.Color1 = Color.Orange;
 
-            //计算金额
-            decimal number = Convert.ToDecimal(gr.Cells["gridColumn5"].FormattedValue);
-            decimal price = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
-            decimal allPrice = number * price;
-            gr.Cells["gridColumn6"].Value = allPrice;
-            //逐行统计数据总数
-            decimal tempAllNumber = 0;
-            decimal tempAllMoney = 0;
-            for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+            try
             {
-                GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
-                tempAllNumber += Convert.ToDecimal(tempGR["gridColumn5"].FormattedValue);
-                tempAllMoney += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
+                //计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["gridColumn5"].FormattedValue);
+                decimal price = Convert.ToDecimal(gr.Cells["gridColumn6"].FormattedValue);
+                decimal allPrice = number * price;
+                gr.Cells["gridColumn6"].Value = allPrice;
+                //逐行统计数据总数
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumn5"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumn6"].FormattedValue);
+                }
+                _MaterialMoney = tempAllMoney;
+                _MaterialNumber = tempAllNumber;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["gridColumn5"].Value = _MaterialNumber.ToString();
+                gr["gridColumn6"].Value = _MaterialMoney.ToString();
             }
-            _MaterialMoney = tempAllMoney;
-            _MaterialNumber = tempAllNumber;
-            gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-            gr["gridColumn5"].Value = _MaterialNumber.ToString();
-            gr["gridColumn6"].Value = _MaterialMoney.ToString();
+            catch (Exception ex)
+            {
+                MessageBox.Show("逐行计算金额或统计数据出错！请检查：" + ex.Message);
+                throw;
+            }
+
         }
         #endregion
 
@@ -345,6 +354,8 @@ namespace WSCATProject.WareHouse
         /// <param name="e"></param>
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            //非空验证
+            isNUllValidate();
             WarehouseOut warehouseOut = new WarehouseOut();
             WarehouseOutInterface woi = new WarehouseOutInterface();
             try
@@ -422,6 +433,7 @@ namespace WSCATProject.WareHouse
                 }
             }
         }
+
         public string ExSwitch(int ExValue)
         {
             switch (ExValue)
@@ -447,6 +459,8 @@ namespace WSCATProject.WareHouse
 
         private void buttonExamine_Click(object sender, EventArgs e)
         {
+            //非空验证
+            isNUllValidate();
             WarehouseOutInterface woi = new WarehouseOutInterface();
             int result = woi.update("state", 1, XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()));
             if (result > 0)
@@ -456,6 +470,25 @@ namespace WSCATProject.WareHouse
             else
             {
                 MessageBox.Show("审核失败");
+            }
+        }
+
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private void isNUllValidate()
+        {
+            if (comboBoxEx1.Text.Trim() == null)
+            {
+                MessageBox.Show("出货类型不能为空！");
+            }
+            if (labtextboxTop2.Text.Trim() == null)
+            {
+                MessageBox.Show("客户不能为空！");
+            }
+            if (labtextboxBotton1.Text.Trim() == null)
+            {
+                MessageBox.Show("业务员不能为空！");
             }
         }
     }

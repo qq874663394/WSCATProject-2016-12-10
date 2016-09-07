@@ -15,6 +15,9 @@ using DevComponents.DotNetBar;
 using HelperUtility;
 using DevComponents.DotNetBar.SuperGrid;
 using Model;
+using InterfaceLayer;
+using InterfaceLayer.Warehouse;
+using HelperUtility.Encrypt;
 
 namespace WSCATProject
 {
@@ -28,6 +31,9 @@ namespace WSCATProject
 
         private int _Jindushu;//进度条数
         private int _Daichuli;//待处理的条数
+        WarehouseInInterface warehousein = new WarehouseInInterface();
+        WarehouseOutInterface warehouseout = new WarehouseOutInterface();
+        CodingHelper ch = new CodingHelper();
         //维护天数的枚举列表 
         enum maintainDateTime
         {
@@ -100,6 +106,7 @@ namespace WSCATProject
             //{
             //    Close();
             //}
+            BDStorage();
             superTabControl1.SelectedTab = superTabItem1;
             this.sideBarPanelItem1.Image = Properties.Resources.日志大;
             this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
@@ -1307,6 +1314,23 @@ namespace WSCATProject
 
             #endregion
         }
+        //绑定仓库两个表格的数据
+        private void BDStorage()
+        {
+            #region 跟进进度 查询以审核的
+            DataTable dtin = ch.DataTableReCoding(warehousein.GetListToIn(1).Tables[0]);
+            DataTable dtout = ch.DataTableReCoding(warehouseout.GetListToOut(1).Tables[0]);
+            dtin.Merge(dtout);
+            superGridControlSetback.PrimaryGrid.DataSource = dtin;
+
+            #endregion
+            #region 待处理事件 查询未审核的
+            DataTable dt1 = ch.DataTableReCoding(warehousein.GetListToIn(0).Tables[0]);
+            DataTable dt2 = ch.DataTableReCoding(warehouseout.GetListToOut(0).Tables[0]);
+            dt1.Merge(dt2);
+            superGridControlhandl.PrimaryGrid.DataSource = dt1;
+            #endregion
+        }
         /// <summary>
         /// 下拉框选中改变事件
         /// </summary>
@@ -1332,6 +1356,8 @@ namespace WSCATProject
                     case "物料信息":
                         break;
                     case "仓库系统":
+                        Clear();
+                        BDStorage();
                         break;
                     case "销售系统":
                         Clear();
@@ -1448,6 +1474,16 @@ namespace WSCATProject
         private void panel4_DoubleClick(object sender, EventArgs e)
         {
             sideBarPanelItem1_Click(sender,e);
+        }
+
+        private void superGridControlSetback_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void superGridControlSetback_RowMouseMove(object sender, GridRowMouseEventArgs e)
+        {
+            MessageBox.Show("Test");
         }
     }
 }
