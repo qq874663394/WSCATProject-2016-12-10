@@ -17,26 +17,31 @@ namespace WSCATProject
         public ScheduleForm()
         {
             InitializeComponent();
-            initializeGrid();
         }
-        private void initializeGrid()
+        /// <summary>
+        /// 模块类型
+        /// </summary>
+        private string _Mokualiex;
+        /// <summary>
+        /// 模块类型
+        /// </summary>
+        public string Mokualiex
         {
-            GridPanel panel = superGridControl1.PrimaryGrid;
-            GridColumn column = panel.Columns["gridColumn1"];
-            column.EditorType = typeof(GridStateEditControl);
-            GridColumn column1 = panel.Columns["gridColumn2"];
-            column1.EditorType = typeof(GridStateEditControl);
-            GridColumn column2 = panel.Columns["gridColumn3"];
-            column2.EditorType = typeof(GridStateEditControl);
+            get{ return _Mokualiex; }
+
+            set {_Mokualiex = value;}
         }
 
         private void ScheduleForm_Load(object sender, EventArgs e)
         {
             GridRow gr = superGridControl1.PrimaryGrid.NewRow();
-            gr[0].Value = "1";
-            gr[1].Value = "0";
-            gr[2].Value = "2";
+            gr.Cells["gridColumn2"].CellStyles.Default.Image = Properties.Resources.red;
+            this.gridColumn2.EditorType = typeof(GridImageEditControl);
+            gr.Cells["gridColumn1"].EditorType = typeof(GridImageEditControl);
+            gr.Cells["gridColumn1"].CellStyles.Default.Image = Properties.Resources.green大;
             superGridControl1.PrimaryGrid.Rows.Add(gr);
+            superGridControl1.PrimaryGrid.DefaultRowHeight = 40;
+
         }
     }
 }

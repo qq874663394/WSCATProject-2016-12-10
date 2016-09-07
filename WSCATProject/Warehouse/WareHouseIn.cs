@@ -617,7 +617,10 @@ namespace WSCATProject.WareHouse
                 }
             }
         }
-
+        protected override void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test2");
+        }
 
     }
 }

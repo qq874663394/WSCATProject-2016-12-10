@@ -181,5 +181,15 @@ namespace WSCATProject
                     e.GridCell.UnMergedBounds.Bottom + panel7.Location.Y + 65);
             }
         }
+
+        protected virtual void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test1");
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
