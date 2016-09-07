@@ -1,0 +1,12 @@
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\UpdateManagerLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\UpdateManagerLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\BaseLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\HelperUtility.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\Model.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\NPOI.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\BaseLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\HelperUtility.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\bin\Release\Model.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\obj\Release\UpdateManagerLayer.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\obj\Release\UpdateManagerLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\ManagerLayer\obj\Release\UpdateManagerLayer.pdb

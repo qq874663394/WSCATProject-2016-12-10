@@ -1,0 +1,6 @@
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\bin\Release\HelperUtility.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\bin\Release\HelperUtility.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\bin\Release\NPOI.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\obj\Release\HelperUtility.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\obj\Release\HelperUtility.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\HelperUtility\obj\Release\HelperUtility.pdb
