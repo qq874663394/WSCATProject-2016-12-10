@@ -23,8 +23,36 @@ namespace LogicLayer
         public DataSet GetListToIn(int state)
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-            return warehouseInBase.GetListToIn(state);
+            DataSet ds = null;
+            
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "根据审核状态查询",
+                operationContent = "根据审核状态查询入库表,state值为"+state
+            };
+
+            try
+            {
+                ds= warehouseInBase.GetListToIn(state);
+                logModel.result = 1;
+            }
+            catch(Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            
+            lb.Add(logModel);//rz
+            return ds;
         }
+
+
         /// <summary>
         /// 事务修改
         /// </summary>
@@ -33,9 +61,32 @@ namespace LogicLayer
         /// <param name="list">子表的parameter</param>
         public void UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
         {
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "修改入库信息,修改入库商品详情",
+                operationContent = "修改T_WarehouseIn和T_WarehouseInDetail表的数据"
+            };
+
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-            warehouseInBase.UpdateList(hashTable, sql, list);
+            try
+            {
+                warehouseInBase.UpdateList(hashTable, sql, list);
+                logModel.result = 1;
+            }
+            catch(Exception ex)
+            {
+                logModel.result = 0;//rz
+                throw ex;
+            }
+            lb.Add(logModel);//rz
         }
+
         /// <summary>
         /// 根据where条件获取数据列表
         /// </summary>
@@ -45,6 +96,9 @@ namespace LogicLayer
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             DataSet ds = null;
+
+
+
             LogBase lb = new LogBase();
             log logModel = new log()
             {
@@ -56,17 +110,20 @@ namespace LogicLayer
                 objective = "查询入库信息",
                 operationContent = "查询T_WarehouseIn表的数据,条件为:" + strWhere
             };
+
+
+
             try
             {
                 ds = warehouseInBase.GetList(strWhere);
-                logModel.result = 1;
+                logModel.result = 1;//rz
             }
             catch (Exception ex)
             {
-                logModel.result = 0;
+                logModel.result = 0;//rz
                 throw ex;
             }
-            lb.Add(logModel);
+            lb.Add(logModel);//rz
             return ds;
         }
 
@@ -303,7 +360,32 @@ namespace LogicLayer
         public int updateByCode(string code)
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-            return warehouseInBase.updateByCode(code);
+
+            int upcode = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "查询入库信息",
+                operationContent = "查询T_WarehouseIn表的数据,条件code为:" + code
+            };
+ 
+            try
+            {
+                upcode= warehouseInBase.updateByCode(code);
+                logModel.result = 1;//rz
+            }
+            catch(Exception ex)
+            {
+                logModel.result = 0;//rz
+                throw ex;
+            }
+            lb.Add(logModel);//rz
+            return upcode;
         }
     }
 }

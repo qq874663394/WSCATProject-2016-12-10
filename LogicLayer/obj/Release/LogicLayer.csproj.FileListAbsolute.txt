@@ -1,0 +1,14 @@
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\LogicLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\LogicLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\BaseLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\HelperUtility.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\Model.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\UpdateManagerLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\NPOI.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\BaseLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\HelperUtility.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\UpdateManagerLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\bin\Release\Model.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\obj\Release\LogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\obj\Release\LogicLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\obj\Release\LogicLayer.pdb
