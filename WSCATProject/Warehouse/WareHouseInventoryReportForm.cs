@@ -19,16 +19,37 @@ namespace WSCATProject.Warehouse
         {
             InitializeComponent();
         }
-        private decimal _MaterialMoney;
-        private decimal _MaterialNumber;
+        #region  数据字段
+        /// <summary>
+        /// 统计贮存数量
+        /// </summary>
+        private decimal _Materialzhucun;
+        /// <summary>
+        /// 统计判定数量
+        /// </summary>
+        private decimal _Materialpandian;
+        /// <summary>
+        /// 统计盘盈数量
+        /// </summary>
+        private decimal _Materialpanying;
+        /// <summary>
+        /// 统计盘亏数量
+        /// </summary>
+        private decimal _Materialpankui;
+        #endregion
+
+        WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
+        CodingHelper codeh = new CodingHelper();
+
+        #region  窗体加载事件
         private void WareHouseInventoryReportForm_Load(object sender, EventArgs e)
         {
-            //调用表格初始化
-            InitDataGridView();
-            #region 盘点方案
-            WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
-            CodingHelper codeh = new CodingHelper();
+            //显示行号
+            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+            //不可自动添加列
+            this.superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
 
+            #region 加载盘点方案的数据
             DataTable dt = codeh.DataTableReCoding(iface.GetList());
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
@@ -39,25 +60,24 @@ namespace WSCATProject.Warehouse
             comboBoxEx1.DataSource = dt;
             #endregion
 
-            //盘点数量
+            //设置盘点数量可输入的最大值和最小值
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumn8"].EditControl as GridDoubleInputEditControl;
             gdiecNumber.MinValue = 0;
             gdiecNumber.MaxValue = 999999999;
-          
 
-
+            //调用表格初始化
+            superGridControl1.PrimaryGrid.EnsureVisible();
+            InitDataGridView();
         }
+        #endregion
 
+        #region  下拉框选择改变事件
         private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
         {
-            WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
-            CodingHelper codeh = new CodingHelper();
-
             if (comboBoxEx1.SelectedValue == null || comboBoxEx1.SelectedValue.ToString() == "")
             {
                 //绑定dgv   查询全部数据
                 DataTable dt = codeh.DataTableReCoding(iface.GetTbList(1, ""));
-
                 if (dt == null)
                 {
                     superGridControl1.PrimaryGrid.DataSource = null;
@@ -72,16 +92,22 @@ namespace WSCATProject.Warehouse
                 string a = comboBoxEx1.SelectedValue.ToString();
                 DataTable dts = codeh.DataTableReCoding(iface.GetTbList(2, XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString())));
                 superGridControl1.PrimaryGrid.DataSource = dts;
+                //调用表格初始化
+                superGridControl1.PrimaryGrid.EnsureVisible();
+                InitDataGridView();
+
             }
         }
+        #endregion
 
+        #region  表格初始化
         /// <summary>
         /// supergridControl表格初始化
         /// </summary>
         private void InitDataGridView()
         {
             //改为点击可编辑
-            superGridControl1.PrimaryGrid.MouseEditMode = MouseEditMode.SingleClick;
+          //  superGridControl1.PrimaryGrid.MouseEditMode = MouseEditMode.SingleClick;
             //新增一行 用于给客户操作
             superGridControl1.PrimaryGrid.NewRow(true);
             //最后一行做统计行
@@ -108,17 +134,20 @@ namespace WSCATProject.Warehouse
             gr.Cells["gridColumn10"].Value = 0;
             gr.Cells["gridColumn10"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumn10"].CellStyles.Default.Background.Color1 = Color.Orange;
-
         }
+        #endregion
 
+        #region superGridControl单元格验证事件
         private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //计算盘盈、盘亏的数量
             try
             {
-                decimal tempAllNumber = 0;
-                decimal tempAllMoney = 0;
+                decimal tempAllzhucun = 0;
+                decimal tempAllpandian = 0;
+                decimal tempAllpanying = 0;
+                decimal tempAllpankui = 0;
                 decimal zhucunnumber = Convert.ToDecimal(gr.Cells["gridColumn7"].FormattedValue);
                 decimal pandiannumber = Convert.ToDecimal(gr.Cells["gridColumn8"].FormattedValue);
                 decimal panying = pandiannumber - zhucunnumber;
@@ -137,20 +166,26 @@ namespace WSCATProject.Warehouse
                 for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
                 {
                     GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumn7"].FormattedValue);
-                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+                    tempAllzhucun += Convert.ToDecimal(tempGR["gridColumn7"].FormattedValue);
+                    tempAllpandian += Convert.ToDecimal(tempGR["gridColumn8"].FormattedValue);
+                    tempAllpanying += Convert.ToDecimal(tempGR["gridColumn9"].FormattedValue);
+                    tempAllpankui += Convert.ToDecimal(tempGR["gridColumn10"].FormattedValue);
                 }
-                _MaterialMoney = tempAllMoney;
-                _MaterialNumber = tempAllNumber;
+                _Materialzhucun = tempAllzhucun;
+                _Materialpandian = tempAllpandian;
+                _Materialpanying = tempAllpanying;
+                _Materialpankui = tempAllpankui;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                gr["gridColumn7"].Value = _MaterialNumber.ToString();
-                gr["gridColumn8"].Value = _MaterialMoney.ToString();
-
+                gr["gridColumn7"].Value = _Materialzhucun.ToString();
+                gr["gridColumn8"].Value = _Materialpandian.ToString();
+                gr["gridColumn9"].Value = _Materialpanying.ToString();
+                gr["gridColumn10"].Value = _Materialpankui.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误" + ex.Message);
+                MessageBox.Show("统计数量错误" + ex.Message);
             }
         }
+        #endregion
     }
 }

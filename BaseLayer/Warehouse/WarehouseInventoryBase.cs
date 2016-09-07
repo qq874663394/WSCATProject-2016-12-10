@@ -41,17 +41,17 @@ namespace BaseLayer.Warehouse
                     {
                         // 1 查全部
                         case 1:
-                            sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.checkNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode ";
+                            sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode ";
                             break;
                         case 2:
-                            sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.checkNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.storageCode='" + code + "' and  mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode";
+                            sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.storageCode='" + code + "' and  mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode";
                             break;
 
                     }
                 }
                 else
                 {
-                    sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.checkNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.storageCode=" + code + "and  mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode";
+                    sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.storageCode=" + code + "and  mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode";
                 }
                 ds = DbHelperSQL.Query(sql);
             }

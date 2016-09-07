@@ -41,6 +41,8 @@
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -354,6 +356,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn4);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn5);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
@@ -434,29 +437,34 @@
             // 
             // gridColumn7
             // 
+            this.gridColumn7.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn7.HeaderText = "调前单价";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.ReadOnly = true;
             // 
             // gridColumn8
             // 
+            this.gridColumn8.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn8.HeaderText = "调前金额";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.ReadOnly = true;
             // 
             // gridColumn9
             // 
+            this.gridColumn9.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn9.HeaderText = "调后单价";
             this.gridColumn9.Name = "gridColumn9";
             // 
             // gridColumn10
             // 
+            this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn10.HeaderText = "调后金额";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.ReadOnly = true;
             // 
             // gridColumn11
             // 
+            this.gridColumn11.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn11.HeaderText = "调价金额";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.ReadOnly = true;
@@ -466,6 +474,13 @@
             this.gridColumn12.HeaderText = "备注";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.ReadOnly = true;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn13.HeaderText = "数量";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.ReadOnly = true;
             // 
             // WarehouseAdjustPriceForm
             // 
@@ -516,5 +531,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
