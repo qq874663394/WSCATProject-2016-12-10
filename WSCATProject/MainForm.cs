@@ -56,7 +56,7 @@ namespace WSCATProject
             superTabItemSta.Click += SuperTabItemRe_Click;
             superTabItemSys.Click += SuperTabItemRe_Click;
             //BLL.StockManager s = new BLL.StockManager();
-          
+
         }
 
         private void SuperTabItemRe_Click(object sender, EventArgs e)
@@ -93,26 +93,27 @@ namespace WSCATProject
 
             //LoginForm lf = new LoginForm();
             //lf.ShowDialog();
-            LoginInfomation loginInf = LoginInfomation.getInstance();
-            List<string> Writ = new List<string>();
-            //写入权限
-            foreach (var writ in loginInf.WritePermission)
-            {
-                Writ.Add(writ);
-            }
-            this.comboBoxEx1.DataSource = Writ;
+            //LoginInfomation loginInf = LoginInfomation.getInstance();
+            //List<string> Writ = new List<string>();
+            ////写入权限
+            //foreach (var writ in loginInf.WritePermission)
+            //{
+            //    Writ.Add(writ);
+            //}
+            //this.comboBoxEx1.DataSource = Writ;
 
             //if (string.IsNullOrWhiteSpace(loginInf.UserName))
             //{
             //    Close();
             //}
+            //现在没有登录所以没有权限，就显示仓库模块的东西
             BDStorage();
+            this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
+            superGridControlSetback.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
             superTabControl1.SelectedTab = superTabItem1;
             this.sideBarPanelItem1.Image = Properties.Resources.日志大;
             this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
             this.labelX2.Text = "待处理事项总数:" + _Daichuli + "";
-
-
 
             //LoginForm lf = new LoginForm();
             //lf.ShowDialog();
@@ -1318,6 +1319,57 @@ namespace WSCATProject
         private void BDStorage()
         {
             #region 跟进进度 查询以审核的
+
+            GridColumn gc = null;
+            gc = new GridColumn();
+            gc.DataPropertyName = "code";
+            gc.Name = "code";
+            gc.HeaderText = "单据编号";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "defaultType";
+            gc.Name = "defaultType";
+            gc.HeaderText = "单据类型";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "mainCode";
+            gc.Name = "mainCode";
+            gc.HeaderText = "采购/销售单号";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "date";
+            gc.Name = "date";
+            gc.HeaderText = "开单日期";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "state";
+            gc.Name = "state";
+            gc.HeaderText = "单据状态";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "operation";
+            gc.Name = "operation";
+            gc.HeaderText = "开单人";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "examine";
+            gc.Name = "examine";
+            gc.HeaderText = "审核人";
+            gc.Visible = true;
+            superGridControlSetback.PrimaryGrid.Columns.Add(gc);
+
             DataTable dtin = ch.DataTableReCoding(warehousein.GetListToIn(1).Tables[0]);
             DataTable dtout = ch.DataTableReCoding(warehouseout.GetListToOut(1).Tables[0]);
             dtin.Merge(dtout);
@@ -1325,6 +1377,56 @@ namespace WSCATProject
 
             #endregion
             #region 待处理事件 查询未审核的
+            GridColumn gc1 = null;
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "code";
+            gc1.Name = "code";
+            gc1.HeaderText = "单据编号";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "defaultType";
+            gc1.Name = "defaultType";
+            gc1.HeaderText = "单据类型";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "mainCode";
+            gc1.Name = "mainCode";
+            gc1.HeaderText = "采购/销售单号";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "date";
+            gc1.Name = "date";
+            gc1.HeaderText = "开单日期";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "state";
+            gc1.Name = "state";
+            gc1.HeaderText = "单据状态";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "operation";
+            gc1.Name = "operation";
+            gc1.HeaderText = "开单人";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
+            gc1 = new GridColumn();
+            gc1.DataPropertyName = "examine";
+            gc1.Name = "examine";
+            gc1.HeaderText = "审核人";
+            gc1.Visible = true;
+            superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
+
             DataTable dt1 = ch.DataTableReCoding(warehousein.GetListToIn(0).Tables[0]);
             DataTable dt2 = ch.DataTableReCoding(warehouseout.GetListToOut(0).Tables[0]);
             dt1.Merge(dt2);
@@ -1366,7 +1468,7 @@ namespace WSCATProject
                     case "售后系统":
                         break;
                     case "采购系统":
-                        Clear(); 
+                        Clear();
                         BDBuySupGridView();
                         break;
                     case "财务系统":
@@ -1473,17 +1575,165 @@ namespace WSCATProject
         //双击组件回到工作日志
         private void panel4_DoubleClick(object sender, EventArgs e)
         {
-            sideBarPanelItem1_Click(sender,e);
+            sideBarPanelItem1_Click(sender, e);
         }
 
-        private void superGridControlSetback_Click(object sender, EventArgs e)
+        #region 单击一行出现进度条 备用
+        /// <summary>
+        /// 单击进度表格出来进度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private void superGridControlSetback_RowClick(object sender, GridRowClickEventArgs e)
+        //{
+        //    if (superGridControlSetback.PrimaryGrid.GetSelectedRows() != null)
+        //    {
+        //        SelectedElementCollection cols = superGridControlSetback.PrimaryGrid.GetSelectedRows();
+        //        if (cols.Count > 0)
+        //        {
+        //            GridRow rows = cols[0] as GridRow;
+        //            string comtext = comboBoxEx1.Text;
+        //            switch (comtext)
+        //            {
+        //                case "用户资料":
+        //                    break;
+        //                case "权限分配":
+        //                    break;
+        //                case "仓库资料":
+        //                    break;
+        //                case "货品资料":
+        //                    break;
+        //                case "供应商资料":
+        //                    break;
+        //                case "物料信息":
+        //                    break;
+        //                case "仓库系统":
+        //                    string shengh = rows.Cells["state"].Value.ToString();
+        //                    string type = rows.Cells["defaultType"].Value.ToString();
+        //                    if (shengh == "0")
+        //                    {
+        //                        ScheduleForm sch = new ScheduleForm();
+        //                        sch.Mokualiex = comtext;
+        //                        sch.State = 0;
+        //                        sch.Canku = type;
+        //                        sch.ShowDialog();
+        //                    }
+        //                    if (shengh == "1")
+        //                    {
+        //                        ScheduleForm sch = new ScheduleForm();
+        //                        sch.Mokualiex = comtext;
+        //                        sch.State = 1;
+        //                        sch.Canku = type;
+        //                        sch.ShowDialog();
+        //                    }
+        //                    if (shengh == "2")
+        //                    {
+        //                        ScheduleForm sch = new ScheduleForm();
+        //                        sch.Mokualiex = comtext;
+        //                        sch.State = 2;
+        //                        sch.Canku = type;
+        //                        sch.ShowDialog();
+        //                    }
+        //                    break;
+        //                case "销售系统":
+        //                    break;
+        //                case "售后系统":
+        //                    break;
+        //                case "采购系统":
+        //                    break;
+        //                case "财务系统":
+        //                    break;
+        //                case "考勤系统":
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("请选择要审核的数据行！");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("请先选中要查看的数据所在行");
+        //    }
+        //}
+        #endregion
+        private void 查看进度条ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void superGridControlSetback_RowMouseMove(object sender, GridRowMouseEventArgs e)
-        {
-            MessageBox.Show("Test");
+            if (superGridControlSetback.PrimaryGrid.GetSelectedRows() != null)
+            {
+                SelectedElementCollection cols = superGridControlSetback.PrimaryGrid.GetSelectedRows();
+                if (cols.Count > 0)
+                {
+                    GridRow rows = cols[0] as GridRow;
+                    string comtext = comboBoxEx1.Text;
+                    switch (comtext)
+                    {
+                        case "用户资料":
+                            break;
+                        case "权限分配":
+                            break;
+                        case "仓库资料":
+                            break;
+                        case "货品资料":
+                            break;
+                        case "供应商资料":
+                            break;
+                        case "物料信息":
+                            break;
+                        case "仓库系统":
+                            string shengh = rows.Cells["state"].Value.ToString();
+                            string type = rows.Cells["defaultType"].Value.ToString();
+                            if (shengh == "0")
+                            {
+                                ScheduleForm sch = new ScheduleForm();
+                                sch.Mokualiex = comtext;
+                                sch.State = 0;
+                                sch.Canku = type;
+                                sch.ShowDialog();
+                            }
+                            if (shengh == "1")
+                            {
+                                ScheduleForm sch = new ScheduleForm();
+                                sch.Mokualiex = comtext;
+                                sch.State = 1;
+                                sch.Canku = type;
+                                sch.ShowDialog();
+                            }
+                            if (shengh == "2")
+                            {
+                                ScheduleForm sch = new ScheduleForm();
+                                sch.Mokualiex = comtext;
+                                sch.State = 2;
+                                sch.Canku = type;
+                                sch.ShowDialog();
+                            }
+                            break;
+                        case "销售系统":
+                            break;
+                        case "售后系统":
+                            break;
+                        case "采购系统":
+                            break;
+                        case "财务系统":
+                            break;
+                        case "考勤系统":
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择要审核的数据行！");
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先选中要查看的数据所在行");
+            }
         }
     }
 }

@@ -327,8 +327,8 @@
     <Content Include="Resources\godDownOut.png" />
     <Content Include="Resources\goodsData.png" />
     <None Include="Resources\guanbi.PNG" />
-    <None Include="Resources\green.PNG" />
     <None Include="Resources\green大.png" />
+    <None Include="Resources\green.PNG" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\houdan.png" />
