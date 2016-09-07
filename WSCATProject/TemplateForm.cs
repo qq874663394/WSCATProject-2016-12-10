@@ -182,14 +182,16 @@ namespace WSCATProject
             }
         }
 
-        protected virtual void toolStripButton1_Click(object sender, EventArgs e)
+        private void toolStripButton3_MouseEnter(object sender, EventArgs e)
         {
-            MessageBox.Show("Test1");
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-
+            ToolTip p = new ToolTip();
+            p.ShowAlways = true;
+            this.toolStripButton3.AutoToolTip = false;
+            this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
+            this.toolStripButton5.AutoToolTip = false;
+            this.toolStripButton5.ToolTipText = "导出Excel(Ctrl+T)";
+            this.toolStripButton4.AutoToolTip = false;
+            this.toolStripButton4.ToolTipText = "关闭(Ctrl+X)";
         }
     }
 }

@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxOddNumbers = new System.Windows.Forms.TextBox();
             this.labelprie = new System.Windows.Forms.Label();
@@ -101,6 +104,7 @@
             this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -128,7 +132,9 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripSeparator1,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripButton5,
+            this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1186, 25);
@@ -160,11 +166,30 @@
             // 
             // toolStripButton3
             // 
-            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.caozuo;
+            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.daying副本;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton3.Text = "操作";
+            this.toolStripButton3.Text = "打印";
+            this.toolStripButton3.MouseEnter += new System.EventHandler(this.toolStripButton3_MouseEnter);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.Image = global::WSCATProject.Properties.Resources.countExc;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(105, 22);
+            this.toolStripButton5.Text = "导出Excel表格";
+            this.toolStripButton5.MouseEnter += new System.EventHandler(this.toolStripButton3_MouseEnter);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Image = global::WSCATProject.Properties.Resources.guanbi;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton4.Text = "关闭";
+            this.toolStripButton4.MouseEnter += new System.EventHandler(this.toolStripButton3_MouseEnter);
             // 
             // panel1
             // 
@@ -889,6 +914,12 @@
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 3;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 0;
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // TemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1005,5 +1036,8 @@
         protected DevComponents.DotNetBar.SuperGrid.GridCell gridCell11;
         protected DevComponents.DotNetBar.SuperGrid.GridCell gridCell12;
         protected System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

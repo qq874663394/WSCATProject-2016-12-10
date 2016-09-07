@@ -113,6 +113,14 @@ namespace WSCATProject.Warehouse
             gdiecNumber.MaxValue = 999999999;
             //调用初始化表格数据
             InitDataGridView();
+
+           //窗体加载时列只读
+            superGridControl1.PrimaryGrid.Columns["gridColumnmateriaName"].ReadOnly = true;
+            superGridControl1.PrimaryGrid.Columns["gridColumnmateriaModel"].ReadOnly = true;
+            superGridControl1.PrimaryGrid.Columns["gridColumnmateriaUnit"].ReadOnly = true;
+            superGridControl1.PrimaryGrid.Columns["gridColumnOutprice"].ReadOnly = true;
+            superGridControl1.PrimaryGrid.Columns["gridColumnOutMoney"].ReadOnly = true;
+            superGridControl1.PrimaryGrid.Columns["gridColumnremark"].ReadOnly = true;       
         }
 
         /// <summary>
@@ -756,12 +764,14 @@ namespace WSCATProject.Warehouse
                     superGridControl1.PrimaryGrid.Columns["gridColumnInmoney"].Visible = false;
                     labTop9.Visible = false;
                     labtextboxTop9.Visible = false;
+                
                     break;
                 case "异价调拨":
                     superGridControl1.PrimaryGrid.Columns["gridColumnInPrice"].Visible = true;
                     superGridControl1.PrimaryGrid.Columns["gridColumnInmoney"].Visible = true;
                     labTop9.Visible = true;
                     labtextboxTop9.Visible = true;
+                    superGridControl1.PrimaryGrid.Columns["gridColumnInmoney"].ReadOnly = true;
                     break;
             }
         }
