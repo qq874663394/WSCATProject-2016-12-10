@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -43,6 +43,8 @@
             this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -350,12 +352,12 @@
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStock);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn3);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn4);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
@@ -363,8 +365,12 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn12);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1183, 261);
-            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             // 
             // panel2
             // 
@@ -401,10 +407,10 @@
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 30;
             // 
-            // gridColumn1
+            // material
             // 
-            this.gridColumn1.HeaderText = "商品编号";
-            this.gridColumn1.Name = "gridColumn1";
+            this.material.HeaderText = "商品编号";
+            this.material.Name = "material";
             // 
             // gridColumn2
             // 
@@ -430,10 +436,10 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.ReadOnly = true;
             // 
-            // gridColumn6
+            // gridColumnStock
             // 
-            this.gridColumn6.HeaderText = "仓库";
-            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumnStock.HeaderText = "仓库";
+            this.gridColumnStock.Name = "gridColumnStock";
             // 
             // gridColumn7
             // 
@@ -482,6 +488,14 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.ReadOnly = true;
             // 
+            // gridColumncode
+            // 
+            this.gridColumncode.Name = "gridColumncode";
+            // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            // 
             // WarehouseAdjustPriceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -519,12 +533,12 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
@@ -533,5 +547,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }

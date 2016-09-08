@@ -311,7 +311,7 @@ namespace WSCATProject.WareHouse
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(204, 300);
+                resizablePanel1.Location = new Point(204, 310);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
         }

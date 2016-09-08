@@ -187,6 +187,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(52, 22);
             this.toolStripButton4.Text = "关闭";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             this.toolStripButton4.MouseEnter += new System.EventHandler(this.toolStripButton3_MouseEnter);
             // 
             // panel1
@@ -205,6 +206,7 @@
             // 
             // textBoxOddNumbers
             // 
+            this.textBoxOddNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxOddNumbers.Location = new System.Drawing.Point(1031, 10);
             this.textBoxOddNumbers.Name = "textBoxOddNumbers";
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 21);
@@ -212,6 +214,7 @@
             // 
             // labelprie
             // 
+            this.labelprie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelprie.AutoSize = true;
             this.labelprie.Location = new System.Drawing.Point(994, 13);
             this.labelprie.Name = "labelprie";
@@ -221,6 +224,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Location = new System.Drawing.Point(853, 10);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
@@ -228,6 +232,7 @@
             // 
             // labelDate
             // 
+            this.labelDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDate.AutoSize = true;
             this.labelDate.Location = new System.Drawing.Point(816, 13);
             this.labelDate.Name = "labelDate";
@@ -405,6 +410,7 @@
             // 
             // buttonExamine
             // 
+            this.buttonExamine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExamine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonExamine.Image = global::WSCATProject.Properties.Resources.shenghe;
             this.buttonExamine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -418,6 +424,7 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSave.Image = global::WSCATProject.Properties.Resources.save;
             this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -431,6 +438,7 @@
             // 
             // buttonClose
             // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClose.Image = global::WSCATProject.Properties.Resources.close;
             this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
