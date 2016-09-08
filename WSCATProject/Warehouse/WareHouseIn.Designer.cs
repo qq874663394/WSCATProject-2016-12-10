@@ -237,6 +237,7 @@
             this.labtextboxTop3.Location = new System.Drawing.Point(501, 21);
             this.labtextboxTop3.ReadOnly = true;
             this.labtextboxTop3.Size = new System.Drawing.Size(123, 16);
+            this.labtextboxTop3.TextAlignChanged += new System.EventHandler(this.labtextboxTop3_TextAlignChanged);
             // 
             // labtextboxTop7
             // 
