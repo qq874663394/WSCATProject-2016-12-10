@@ -138,6 +138,18 @@
     <Compile Include="Warehouse\WareHouseAllotForm.Designer.cs">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseAssembyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseAssembyForm.Designer.cs">
+      <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseDisassembly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseDisassembly.Designer.cs">
+      <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseAssembyForm.resx">
+      <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseDisassembly.resx">
+      <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
@@ -327,8 +345,8 @@
     <Content Include="Resources\godDownOut.png" />
     <Content Include="Resources\goodsData.png" />
     <None Include="Resources\guanbi.PNG" />
-    <None Include="Resources\green.PNG" />
     <None Include="Resources\green大.png" />
+    <None Include="Resources\green.PNG" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\houdan.png" />

@@ -110,6 +110,9 @@
             this.superGridControlhandl = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
             this.superGridControlSetback = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.查看进度条ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看详情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel8 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -261,6 +264,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -347,6 +351,7 @@
             this.superTabControlPanel8.SuspendLayout();
             this.expandablePanel2.SuspendLayout();
             this.expandablePanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -1479,6 +1484,7 @@
             // 
             // superGridControlSetback
             // 
+            this.superGridControlSetback.ContextMenuStrip = this.contextMenuStrip1;
             this.superGridControlSetback.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControlSetback.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superGridControlSetback.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
@@ -1491,7 +1497,27 @@
             this.superGridControlSetback.Size = new System.Drawing.Size(745, 213);
             this.superGridControlSetback.TabIndex = 4;
             this.superGridControlSetback.Text = "superGridControl1";
-            this.superGridControlSetback.RowMouseMove += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridRowMouseEventArgs>(this.superGridControlSetback_RowMouseMove);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.查看进度条ToolStripMenuItem,
+            this.查看详情ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
+            // 
+            // 查看进度条ToolStripMenuItem
+            // 
+            this.查看进度条ToolStripMenuItem.Name = "查看进度条ToolStripMenuItem";
+            this.查看进度条ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.查看进度条ToolStripMenuItem.Text = "查看进度条";
+            this.查看进度条ToolStripMenuItem.Click += new System.EventHandler(this.查看进度条ToolStripMenuItem_Click);
+            // 
+            // 查看详情ToolStripMenuItem
+            // 
+            this.查看详情ToolStripMenuItem.Name = "查看详情ToolStripMenuItem";
+            this.查看详情ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.查看详情ToolStripMenuItem.Text = "查看详情";
             // 
             // panel8
             // 
@@ -3250,12 +3276,18 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
+            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.comboItem1});
             this.comboBoxEx1.Location = new System.Drawing.Point(648, 3);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 5;
             this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "仓库系统";
             // 
             // labelX3
             // 
@@ -3992,6 +4024,7 @@
             this.superTabControlPanel8.ResumeLayout(false);
             this.expandablePanel2.ResumeLayout(false);
             this.expandablePanel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
@@ -4389,6 +4422,10 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 查看进度条ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看详情ToolStripMenuItem;
     }
 }
 
