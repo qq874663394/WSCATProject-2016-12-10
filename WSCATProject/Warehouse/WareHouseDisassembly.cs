@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using InterfaceLayer.Base;
 using System;
 using System.Collections.Generic;
@@ -33,10 +34,14 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseAssemblyForm_Load(object sender, EventArgs e)
         {
+            //拆卸单单号
+            textBoxOddNumbers.Text = BuildCode.ModuleCode("CXD");
             //业务员
             EmpolyeeInterface employee = new EmpolyeeInterface();
             _AllEmployee = employee.SelSupplierTable(false);
 
+            //显示行号
+            superGridControl2.PrimaryGrid.ShowRowGridIndex = true;
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
