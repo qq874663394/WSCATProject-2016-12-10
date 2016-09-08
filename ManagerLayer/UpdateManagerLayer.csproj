@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemUpdataManager.cs" />
+    <Compile Include="SalesUpdataManager.cs" />
+    <Compile Include="OtherUpdataManager.cs" />
+    <Compile Include="HRUpdataManager.cs" />
+    <Compile Include="FinanceUpdataManager.cs" />
     <Compile Include="DbHelperSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Warehouse\WarehouseInDetailUpdataManager.cs" />
-    <Compile Include="Warehouse\WarehouseUpdataManager.cs" />
+    <Compile Include="BaseUpdataManager.cs" />
+    <Compile Include="WarehouseUpdataManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">

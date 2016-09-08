@@ -12,3 +12,17 @@ C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject
 C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\obj\Debug\LogicLayer.dll
 C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\LogicLayer\obj\Debug\LogicLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\LogicLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\LogicLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\BaseLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\HelperUtility.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\Model.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\UpdateManagerLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\NPOI.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\BaseLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\HelperUtility.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\UpdateManagerLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\bin\Debug\Model.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\obj\Debug\LogicLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\LogicLayer\obj\Debug\LogicLayer.pdb

@@ -43,7 +43,6 @@ namespace LogicLayer.Warehouse
             {
                 logModel.result = 0;//rz
                 throw ex;
-
             }
             lb.Add(logModel);//rz
             return dt;

@@ -15,5 +15,14 @@ namespace InterfaceLayer.Base
         {
             return el.SelEmpolyeeTable(isflag);
         }
+        /// <summary>
+        /// 自定义条件取得列表
+        /// </summary>
+        /// <param name="strWhere">where后面的条件</param>
+        /// <returns></returns>
+        public DataTable GetList(string strWhere)
+        {
+            return el.GetList(strWhere);
+        }
     }
 }
