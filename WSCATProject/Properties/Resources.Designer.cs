@@ -503,9 +503,9 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap green {
+        internal static System.Drawing.Bitmap gr {
             get {
-                object obj = ResourceManager.GetObject("green", resourceCulture);
+                object obj = ResourceManager.GetObject("gr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1306,6 +1306,16 @@ namespace WSCATProject.Properties {
         internal static System.Drawing.Bitmap xitongweihu {
             get {
                 object obj = ResourceManager.GetObject("xitongweihu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ye {
+            get {
+                object obj = ResourceManager.GetObject("ye", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

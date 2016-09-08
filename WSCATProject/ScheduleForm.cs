@@ -108,9 +108,9 @@ namespace WSCATProject
                 case "入库开单":
                     if (_state == 0)
                     {
-                        this.pictureBox0.Image = Properties.Resources.yellow大;
-                        this.pictureBox1.Image = Properties.Resources.green;
-                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.pictureBox0.Image = Properties.Resources.ye;
+                        this.pictureBox1.Image = Properties.Resources.gr;
+                        this.pictureBox2.Image = Properties.Resources.gr;
                         this.label1.Text = "未入库";
                         this.label2.Text = "部分入库";
                         this.label3.Text = "已入库";
@@ -118,8 +118,8 @@ namespace WSCATProject
                     if (_state == 1)
                     {
                         this.pictureBox0.Image = Properties.Resources.red;
-                        this.pictureBox1.Image = Properties.Resources.yellow大;
-                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.pictureBox1.Image = Properties.Resources.ye;
+                        this.pictureBox2.Image = Properties.Resources.gr;
                         this.label1.Text = "未入库";
                         this.label2.Text = "部分入库";
                         this.label3.Text = "已入库";
@@ -128,7 +128,7 @@ namespace WSCATProject
                     {
                         this.pictureBox0.Image = Properties.Resources.red;
                         this.pictureBox1.Image = Properties.Resources.red;
-                        this.pictureBox2.Image = Properties.Resources.yellow大;
+                        this.pictureBox2.Image = Properties.Resources.ye;
                         this.label1.Text = "未入库";
                         this.label2.Text = "部分入库";
                         this.label3.Text = "已入库";
@@ -137,9 +137,9 @@ namespace WSCATProject
                 case "出库开单":
                     if (_state == 0)
                     {
-                        this.pictureBox0.Image = Properties.Resources.yellow大;
-                        this.pictureBox1.Image = Properties.Resources.green;
-                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.pictureBox0.Image = Properties.Resources.ye;
+                        this.pictureBox1.Image = Properties.Resources.gr;
+                        this.pictureBox2.Image = Properties.Resources.gr;
                         this.label1.Text = "未出库";
                         this.label2.Text = "部分出库";
                         this.label3.Text = "已出库";
@@ -147,8 +147,8 @@ namespace WSCATProject
                     if (_state == 1)
                     {
                         this.pictureBox0.Image = Properties.Resources.red;
-                        this.pictureBox1.Image = Properties.Resources.yellow大;
-                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.pictureBox1.Image = Properties.Resources.ye;
+                        this.pictureBox2.Image = Properties.Resources.gr;
                         this.label1.Text = "未出库";
                         this.label2.Text = "部分出库";
                         this.label3.Text = "已出库";
@@ -157,7 +157,7 @@ namespace WSCATProject
                     {
                         this.pictureBox0.Image = Properties.Resources.red;
                         this.pictureBox1.Image = Properties.Resources.red;
-                        this.pictureBox2.Image = Properties.Resources.yellow大;
+                        this.pictureBox2.Image = Properties.Resources.ye;
                         this.label1.Text = "未出库";
                         this.label2.Text = "部分出库";
                         this.label3.Text = "已出库";
@@ -202,29 +202,29 @@ namespace WSCATProject
                         case "入库开单":
                             if (_state == 0)
                             {
-                                toolTip1.Show("当前单据并没有入库", panel1);
+                                toolTip1.Show("当前单据并没有入库", pictureBox0);
                             }
                             if (_state == 1)
                             {
-                                toolTip1.Show("当前单据只有部分入库", panel1);
+                                toolTip1.Show("当前单据只有部分入库", pictureBox1);
                             }
                             if (_state == 2)
                             {
-                                toolTip1.Show("当前单据已全部入库", panel1);
+                                toolTip1.Show("当前单据已全部入库", pictureBox2);
                             }
                             break;
                         case "出库开单":
                             if (_state == 0)
                             {
-                                toolTip1.Show("当前单据并没有出库", panel1);
+                                toolTip1.Show("当前单据并没有出库", pictureBox0);
                             }
                             if (_state == 1)
                             {
-                                toolTip1.Show("当前单据只有部分出库", panel1);
+                                toolTip1.Show("当前单据只有部分出库", pictureBox1);
                             }
                             if (_state == 2)
                             {
-                                toolTip1.Show("当前单据已全部出库", panel1);
+                                toolTip1.Show("当前单据已全部出库", pictureBox2);
                             }
                             break;
                     }
@@ -266,29 +266,29 @@ namespace WSCATProject
                         case "入库开单":
                             if (_state == 0)
                             {
-                                toolTip1.Show("当前单据并没有入库", panel1);
+                                toolTip1.Show("当前单据并没有入库", pictureBox0);
                             }
                             if (_state == 1)
                             {
-                                toolTip1.Show("当前单据只有部分入库", panel1);
+                                toolTip1.Show("当前单据只有部分入库", pictureBox1);
                             }
                             if (_state == 2)
                             {
-                                toolTip1.Show("当前单据已全部入库", panel1);
+                                toolTip1.Show("当前单据已全部入库", pictureBox2);
                             }
                             break;
                         case "出库开单":
                             if (_state == 0)
                             {
-                                toolTip1.Show("当前单据并没有出库", panel1);
+                                toolTip1.Show("当前单据并没有出库", pictureBox0);
                             }
                             if (_state == 1)
                             {
-                                toolTip1.Show("当前单据只有部分出库", panel1);
+                                toolTip1.Show("当前单据只有部分出库", pictureBox1);
                             }
                             if (_state == 2)
                             {
-                                toolTip1.Show("当前单据已全部出库", panel1);
+                                toolTip1.Show("当前单据已全部出库", pictureBox2);
                             }
                             break;
                     }
