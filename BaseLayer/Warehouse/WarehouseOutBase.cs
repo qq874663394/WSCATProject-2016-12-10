@@ -313,6 +313,7 @@ SET type = @type
             }
             catch (Exception ex)
             {
+                throw ex;
             }
         }
 

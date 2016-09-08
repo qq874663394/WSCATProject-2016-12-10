@@ -40,7 +40,7 @@ namespace BaseLayer
                         XYEEncoding.strCodeHex(log.operationTable),
                         log.operationTime,
                         XYEEncoding.strCodeHex(log.objective),
-                        log.operationContent,
+                        XYEEncoding.strCodeHex(log.operationContent),
                         log.result);
             }
             catch
