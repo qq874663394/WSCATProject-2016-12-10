@@ -227,7 +227,7 @@ namespace LogicLayer
                     //调用管理层
                     if (!addErr)
                     {
-                        log.operationContent = updateManagerCode;
+                        log.operationContent = "";
                         log.objective = "新增入库表的更新管理";
                         log.operationTable = "T_Warehouse";
                         log.result = addWarehouseInResult;

@@ -34,7 +34,7 @@ namespace LogicLayer.Base
             catch (Exception ex)
             {
                 model.result = 0;
-                throw new Exception("-1");
+                throw ex;
             }
             lb.Add(model);
             return dt;

@@ -77,7 +77,7 @@ namespace BaseLayer.Base
             }
             catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }
