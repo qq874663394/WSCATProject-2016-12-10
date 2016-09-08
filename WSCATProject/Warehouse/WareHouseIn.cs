@@ -135,6 +135,9 @@ namespace WSCATProject.WareHouse
         CodingHelper ch = new CodingHelper();
         InterfaceLayer.Warehouse.WarehouseInDetailInterface waredeta = new WarehouseInDetailInterface();
 
+        SupplierInterface supply = new SupplierInterface();
+
+        EmpolyeeInterface employee = new EmpolyeeInterface();
         #region 数据字段
 
         /// <summary>
@@ -165,11 +168,9 @@ namespace WSCATProject.WareHouse
         private void StockIn_Load(object sender, EventArgs e)
         {
             //供应商
-            SupplierInterface supply = new SupplierInterface();
             _AllSupply = supply.SelSupplierTable();
 
             //业务员
-            EmpolyeeInterface employee = new EmpolyeeInterface();
             _AllEmployee = employee.SelSupplierTable(false);
 
             //仓库
@@ -655,6 +656,32 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("仓库和货架不能为空！");
             }
            
+        }
+        /// <summary>
+        /// 模糊查询显示表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxTop3_TextAlignChanged(object sender, EventArgs e)
+        {
+            string name = this.labtextboxTop3.Text.Trim();
+            dataGridViewFujia.DataSource = null;
+            dataGridViewFujia.Columns.Clear();
+
+            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "code";
+            dgvc.HeaderText = "编码";
+            dgvc.DataPropertyName = "编码";
+            dataGridViewFujia.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "name";
+            dgvc.HeaderText = "单位名称";
+            dgvc.DataPropertyName = "单位名称";
+            dataGridViewFujia.Columns.Add(dgvc);
+            resizablePanel1.Location = new Point(640, 110);
+            dataGridViewFujia.DataSource = supply.SelSupplierTable();
+
         }
     }
 }

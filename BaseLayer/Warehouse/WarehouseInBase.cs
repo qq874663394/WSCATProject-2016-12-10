@@ -46,7 +46,7 @@ namespace BaseLayer
             }
             catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
         }
         /// <summary>

@@ -148,6 +148,7 @@ namespace LogicLayer
             };
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
+            WarehouseUpdataManager updateManager = new WarehouseUpdataManager();
             if (wi != null)
             {
                 int addWarehouseInResult = warehouseInBase.update(wi);
@@ -165,7 +166,6 @@ namespace LogicLayer
                     //判断新增过程中有没有失败
                     bool addErr = false;
                     //循环加入多条数据到详情表
-                    WarehouseInDetailUpdataManager detailUpdateManager = new WarehouseInDetailUpdataManager();
                     for (int i = 0; i < widList.Count; i++)
                     {
                         addWarehouseInDetailResult = warehouseInDetailBase.updateByCode(widList[i]);
@@ -176,11 +176,6 @@ namespace LogicLayer
                             break;
                         }
                         //调用管理层 循环添加管理的数据
-                        string detailUpdateManagerCode = BuildCode.ModuleCode("WDU") + i.ToString();
-                        detailUpdateManager.addWarehouseInDetail(detailUpdateManagerCode, wi.code,
-                            "T_WarehouseInDetail", addWarehouseInDetailResult,
-                            "", "", (DateTime)widList[i].updateDate);
-
                         log.objective = "新增入库商品详情";
                         log.operationTable = "T_WarehouseInDetail";
                         log.result = addWarehouseInDetailResult;
@@ -232,12 +227,7 @@ namespace LogicLayer
                     //调用管理层
                     if (!addErr)
                     {
-                        WarehouseUpdataManager updateManager = new WarehouseUpdataManager();
-                        string updateManagerCode = BuildCode.ModuleCode("WIU");
-                        updateManager.addWarehouseIn(updateManagerCode, wi.code,
-                            "T_WarehouseIn", addWarehouseInResult, "", "", (DateTime)wi.updateDate);
-
-                        log.operationContent = updateManagerCode;
+                        log.operationContent = "";
                         log.objective = "新增入库表的更新管理";
                         log.operationTable = "T_Warehouse";
                         log.result = addWarehouseInResult;

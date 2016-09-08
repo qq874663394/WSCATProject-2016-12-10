@@ -93,7 +93,6 @@ namespace WSCATProject.WareHouse
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
 
-
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             // 将dataGridView中的内容居中显示
@@ -394,46 +393,53 @@ namespace WSCATProject.WareHouse
             GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
             GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
             int i = 0;
-           // string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
+            // string _wareHouesDetailCode = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WD"));
             DateTime nowDataTime = DateTime.Now;
-            foreach (GridRow gr in grs)
+            try
             {
-                if (gr["gridColumn2"].Value.ToString() != "")
+                foreach (GridRow gr in grs)
                 {
-                    i++;
-                    WarehouseOutDetail WarehouseOutdetail = new WarehouseOutDetail()
+                    if (gr["gridColumn2"].Value.ToString() != "")
                     {
-                        barcode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text),
-                        date = this.dateTimePicker1.Value,
-                        isClear = 1,
-                        code = XYEEncoding.strCodeHex(gr["gridColumn1"].Value.ToString()),
-                        materiaName = XYEEncoding.strCodeHex(gr["gridColumn2"].Value.ToString()),
-                        materiaModel = XYEEncoding.strCodeHex(gr["gridColumn3"].Value.ToString()),
-                        materiaUnit = XYEEncoding.strCodeHex(gr["gridColumn4"].Value.ToString()),
-                        number = Convert.ToDecimal(gr["gridColumn5"].Value),
-                        money = Convert.ToDecimal(gr["gridColumn6"].Value),
-                        price = Convert.ToDecimal(gr["gridColumn11"].Value),
-                        remark = XYEEncoding.strCodeHex(gr["gridColumn7"].Value.ToString()),
-                        StorageRackName = XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString()),  //货架名称、排、格
-                        updateDate = nowDataTime,
-                        state = 1,
-                        MainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text),
-                        materialCode = ""
-                    };
-                    int isarrive = Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn10"].Value) == true ? 1 : 0;
-                    if (isarrive == 1)
-                    {
-                        _chukushu++;
+                        i++;
+                        WarehouseOutDetail WarehouseOutdetail = new WarehouseOutDetail()
+                        {
+                            barcode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text),
+                            date = this.dateTimePicker1.Value,
+                            isClear = 1,
+                            code = XYEEncoding.strCodeHex(gr["gridColumn1"].Value.ToString()),
+                            materiaName = XYEEncoding.strCodeHex(gr["gridColumn2"].Value.ToString()),
+                            materiaModel = XYEEncoding.strCodeHex(gr["gridColumn3"].Value.ToString()),
+                            materiaUnit = XYEEncoding.strCodeHex(gr["gridColumn4"].Value.ToString()),
+                            number = Convert.ToDecimal(gr["gridColumn5"].Value),
+                            money = Convert.ToDecimal(gr["gridColumn6"].Value),
+                            price = Convert.ToDecimal(gr["gridColumn11"].Value),
+                            remark = XYEEncoding.strCodeHex(gr["gridColumn7"].Value.ToString()),
+                            StorageRackName = XYEEncoding.strCodeHex(gr["gridColumn9"].Value.ToString()),  //货架名称、排、格
+                            updateDate = nowDataTime,
+                            state = 1,
+                            MainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text),
+                            materialCode = ""
+                        };
+                        int isarrive = Convert.ToBoolean((superGridControl1.PrimaryGrid.Rows[i] as GridRow).Cells["gridColumn10"].Value) == true ? 1 : 0;
+                        if (isarrive == 1)
+                        {
+                            _chukushu++;
+                        }
+                        WarehouseOutdetail.IsArrive = isarrive;
+                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        //调用修改出库单的方法
+                        wareHouseOutList.Add(WarehouseOutdetail);
                     }
-                    WarehouseOutdetail.IsArrive = isarrive;
-                    GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
-                    //调用修改出库单的方法
-                    wareHouseOutList.Add(WarehouseOutdetail);
-                    woi.update(warehouseOut, wareHouseOutList);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("出库详细赋值失败！"+ex.Message);
+            }
+            //调用方法修改出库单
+            woi.update(warehouseOut, wareHouseOutList);
         }
-
         public string ExSwitch(int ExValue)
         {
             switch (ExValue)

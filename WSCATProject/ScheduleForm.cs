@@ -35,37 +35,36 @@ namespace WSCATProject
         /// </summary>
         public string Mokualiex
         {
-            get{ return _Mokualiex; }
+            get { return _Mokualiex; }
 
-            set {_Mokualiex = value;}
+            set { _Mokualiex = value; }
         }
         /// <summary>
         /// 接收状态值
         /// </summary>
         public int State
         {
-            get{return _state; }
-            set{ _state = value;}
+            get { return _state; }
+            set { _state = value; }
         }
         /// <summary>
         /// 仓库出库的类型
         /// </summary>
         public string Canku
         {
-            get {return _canku;}
-            set { _canku = value;}
+            get { return _canku; }
+            set { _canku = value; }
         }
-
+        /// <summary>
+        /// 窗体加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScheduleForm_Load(object sender, EventArgs e)
         {
-            superGridControl1.PrimaryGrid.DefaultRowHeight = 40;
-            this.superGridControl1.PrimaryGrid.ShowRowHeaders = false;
-        
-            //控制列的高度不能拖动
-           // datagridUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            //控制列的宽度不能拖动
-           // datagridUser.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-        
+            //superGridControl1.PrimaryGrid.DefaultRowHeight = 40;
+            //this.superGridControl1.PrimaryGrid.ShowRowHeaders = false;
+
             switch (_Mokualiex)
             {
                 case "用户资料":
@@ -81,34 +80,7 @@ namespace WSCATProject
                 case "物料信息":
                     break;
                 case "仓库系统":
-                  
-                    if (_state ==0)
-                    {
-                        InStorage();
-                        GridRow gr = superGridControl1.PrimaryGrid.NewRow();
-                        gr.Cells["weiruku"].CellStyles.Default.Image = Properties.Resources.yellow大;
-                        gr.Cells["bufunruk"].CellStyles.Default.Image = Properties.Resources.green;
-                        gr.Cells["yiruku"].CellStyles.Default.Image = Properties.Resources.green;
-                        superGridControl1.PrimaryGrid.Rows.Add(gr);
-                    }
-                    if (_state == 1)
-                    {
-                        InStorage();
-                        GridRow gr = superGridControl1.PrimaryGrid.NewRow();
-                        gr.Cells["weiruku"].CellStyles.Default.Image = Properties.Resources.red;
-                        gr.Cells["bufunruk"].CellStyles.Default.Image = Properties.Resources.yellow大;
-                        gr.Cells["yiruku"].CellStyles.Default.Image = Properties.Resources.green;
-                        superGridControl1.PrimaryGrid.Rows.Add(gr);
-                    }
-                    if (_state == 2)
-                    {
-                        InStorage();
-                        GridRow gr = superGridControl1.PrimaryGrid.NewRow();
-                        gr.Cells["weiruku"].CellStyles.Default.Image = Properties.Resources.red;
-                        gr.Cells["bufunruk"].CellStyles.Default.Image = Properties.Resources.red;
-                        gr.Cells["yiruku"].CellStyles.Default.Image = Properties.Resources.yellow大;
-                        superGridControl1.PrimaryGrid.Rows.Add(gr); ;
-                    }
+                    InStorage();
                     break;
                 case "销售系统":
                     break;
@@ -130,67 +102,68 @@ namespace WSCATProject
         /// </summary>
         private void InStorage()
         {
-            if (_canku=="入库开单")
+            this.Size = new Size(330,120);
+            switch (_canku)
             {
-                GridColumn gc = null;
-                gc = new GridColumn();
-                gc.Name = "weiruku";
-                gc.HeaderText = "未入库";
-                gc.EditorType = typeof(GridImageEditControl);//转换可以显示图片的控件
-                gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-                gc.InfoImageAlignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                gc.Visible = true;
-                superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                gc = new GridColumn();
-                gc.Name = "bufunruk";
-                gc.HeaderText = "部分入库";
-                gc.EditorType = typeof(GridImageEditControl);
-                gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-                gc.InfoImageAlignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                gc.Visible = true;
-                superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                gc = new GridColumn();
-                gc.Name = "yiruku";
-                gc.HeaderText = "已入库";
-                gc.EditorType = typeof(GridImageEditControl);
-                gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-                gc.InfoImageAlignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                gc.Visible = true;
-                superGridControl1.PrimaryGrid.Columns.Add(gc);
+                case "入库开单":
+                    if (_state == 0)
+                    {
+                        this.pictureBox0.Image = Properties.Resources.yellow大;
+                        this.pictureBox1.Image = Properties.Resources.green;
+                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.label1.Text = "未入库";
+                        this.label2.Text = "部分入库";
+                        this.label3.Text = "已入库";
+                    }
+                    if (_state == 1)
+                    {
+                        this.pictureBox0.Image = Properties.Resources.red;
+                        this.pictureBox1.Image = Properties.Resources.yellow大;
+                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.label1.Text = "未入库";
+                        this.label2.Text = "部分入库";
+                        this.label3.Text = "已入库";
+                    }
+                    if (_state == 2)
+                    {
+                        this.pictureBox0.Image = Properties.Resources.red;
+                        this.pictureBox1.Image = Properties.Resources.red;
+                        this.pictureBox2.Image = Properties.Resources.yellow大;
+                        this.label1.Text = "未入库";
+                        this.label2.Text = "部分入库";
+                        this.label3.Text = "已入库";
+                    }
+                    break;
+                case "出库开单":
+                    if (_state == 0)
+                    {
+                        this.pictureBox0.Image = Properties.Resources.yellow大;
+                        this.pictureBox1.Image = Properties.Resources.green;
+                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.label1.Text = "未出库";
+                        this.label2.Text = "部分出库";
+                        this.label3.Text = "已出库";
+                    }
+                    if (_state == 1)
+                    {
+                        this.pictureBox0.Image = Properties.Resources.red;
+                        this.pictureBox1.Image = Properties.Resources.yellow大;
+                        this.pictureBox2.Image = Properties.Resources.green;
+                        this.label1.Text = "未出库";
+                        this.label2.Text = "部分出库";
+                        this.label3.Text = "已出库";
+                    }
+                    if (_state == 2)
+                    {
+                        this.pictureBox0.Image = Properties.Resources.red;
+                        this.pictureBox1.Image = Properties.Resources.red;
+                        this.pictureBox2.Image = Properties.Resources.yellow大;
+                        this.label1.Text = "未出库";
+                        this.label2.Text = "部分出库";
+                        this.label3.Text = "已出库";
+                    }
+                    break;
             }
-            if (_canku=="出库开单")
-            {
-                GridColumn gc = null;
-                gc = new GridColumn();
-                gc.Name = "weiruku";
-                gc.HeaderText = "未出库";
-                gc.EditorType = typeof(GridImageEditControl);
-                gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-                gc.InfoImageAlignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                gc.Visible = true;
-                superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                gc = new GridColumn();
-                gc.Name = "bufunruk";
-                gc.HeaderText = "部分出库";
-                gc.EditorType = typeof(GridImageEditControl);
-                gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-                gc.InfoImageAlignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                gc.Visible = true;
-                superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-                gc = new GridColumn();
-                gc.Name = "yiruku";
-                gc.HeaderText = "已出库";
-                gc.EditorType = typeof(GridImageEditControl);
-                gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-                gc.InfoImageAlignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                gc.Visible = true;
-                superGridControl1.PrimaryGrid.Columns.Add(gc);
-            }
-        
         }
 
         private void ScheduleForm_KeyPress(object sender, KeyPressEventArgs e)
@@ -200,6 +173,144 @@ namespace WSCATProject
                 this.Close();
                 this.Dispose();
             }
+        }
+        /// <summary>
+        /// 鼠标滑入滑出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_CellMouseEnter(object sender, GridCellEventArgs e)
+        {
+
+            switch (_Mokualiex)
+            {
+                case "用户资料":
+                    break;
+                case "权限分配":
+                    break;
+                case "仓库资料":
+                    break;
+                case "货品资料":
+                    break;
+                case "供应商资料":
+                    break;
+                case "物料信息":
+                    break;
+                case "仓库系统":
+                    switch (_canku)
+                    {
+                        case "入库开单":
+                            if (_state == 0)
+                            {
+                                toolTip1.Show("当前单据并没有入库", panel1);
+                            }
+                            if (_state == 1)
+                            {
+                                toolTip1.Show("当前单据只有部分入库", panel1);
+                            }
+                            if (_state == 2)
+                            {
+                                toolTip1.Show("当前单据已全部入库", panel1);
+                            }
+                            break;
+                        case "出库开单":
+                            if (_state == 0)
+                            {
+                                toolTip1.Show("当前单据并没有出库", panel1);
+                            }
+                            if (_state == 1)
+                            {
+                                toolTip1.Show("当前单据只有部分出库", panel1);
+                            }
+                            if (_state == 2)
+                            {
+                                toolTip1.Show("当前单据已全部出库", panel1);
+                            }
+                            break;
+                    }
+                    break;
+                case "销售系统":
+                    break;
+                case "售后系统":
+                    break;
+                case "采购系统":
+                    break;
+                case "财务系统":
+                    break;
+                case "考勤系统":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void superGridControl1_MouseEnter(object sender, EventArgs e)
+        {
+            switch (_Mokualiex)
+            {
+                case "用户资料":
+                    break;
+                case "权限分配":
+                    break;
+                case "仓库资料":
+                    break;
+                case "货品资料":
+                    break;
+                case "供应商资料":
+                    break;
+                case "物料信息":
+                    break;
+                case "仓库系统":
+                    switch (_canku)
+                    {
+                        case "入库开单":
+                            if (_state == 0)
+                            {
+                                toolTip1.Show("当前单据并没有入库", panel1);
+                            }
+                            if (_state == 1)
+                            {
+                                toolTip1.Show("当前单据只有部分入库", panel1);
+                            }
+                            if (_state == 2)
+                            {
+                                toolTip1.Show("当前单据已全部入库", panel1);
+                            }
+                            break;
+                        case "出库开单":
+                            if (_state == 0)
+                            {
+                                toolTip1.Show("当前单据并没有出库", panel1);
+                            }
+                            if (_state == 1)
+                            {
+                                toolTip1.Show("当前单据只有部分出库", panel1);
+                            }
+                            if (_state == 2)
+                            {
+                                toolTip1.Show("当前单据已全部出库", panel1);
+                            }
+                            break;
+                    }
+                    break;
+                case "销售系统":
+                    break;
+                case "售后系统":
+                    break;
+                case "采购系统":
+                    break;
+                case "财务系统":
+                    break;
+                case "考勤系统":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void panel1_MouseLeave(object sender, EventArgs e)
+        {
+            toolTip1.Hide(panel1);
         }
     }
 }

@@ -21,22 +21,26 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_BaseEmpolyee",
                 operationTime = DateTime.Now,
-                objective = "查询员工信息"
+                objective = "查询员工信息",
+                operationContent = "查询T_BaseEmpolyee表的所有数据,显示全部:" + isflag.ToString()
             };
             try
             {
                 dt = eb.SelEmpolyee(isflag);
                 model.result = 1;
-                model.operationContent = "查询T_BaseEmpolyee表的数据成功";
                 lb.Add(model);
             }
-            catch
+            catch (Exception ex)
             {
                 model.result = 0;
-                model.operationContent = "查询T_BaseEmpolyee表的数据失败";
                 lb.Add(model);
+                throw ex;
             }
             return dt;
+        }
+        public DataTable GetList(string strWhere)
+        {
+            return eb.GetList(strWhere);
         }
     }
 }
