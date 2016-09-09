@@ -40,7 +40,7 @@ namespace BaseLayer.Base
             DataSet ds = null;
             try
             {
-                sql = "select * from T_BaseEmpolyee";
+                sql = "select * from T_BaseClient";
                 if (strWhere.Trim() != "")
                 {
                     sql += " where " + strWhere;

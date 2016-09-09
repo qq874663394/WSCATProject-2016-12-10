@@ -286,6 +286,7 @@
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop2.Location = new System.Drawing.Point(405, 23);
+            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTop2_TextChanged);
             // 
             // labtextboxTop1
             // 
