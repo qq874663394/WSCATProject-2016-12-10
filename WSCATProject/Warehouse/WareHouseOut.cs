@@ -25,6 +25,8 @@ namespace WSCATProject.WareHouse
 
         WarehouseOutDetailInterface warehouseout = new WarehouseOutDetailInterface();
         CodingHelper ch = new CodingHelper();//解密表格
+        ClientInterface client = new ClientInterface();
+        EmpolyeeInterface employee = new EmpolyeeInterface();
         #region  数据字段    
         /// <summary>
         /// 所有客户
@@ -82,7 +84,6 @@ namespace WSCATProject.WareHouse
             #endregion
 
             //客户
-            ClientInterface client = new ClientInterface();
             _AllClient = client.SelClient(false);
 
             //业务员
@@ -98,11 +99,19 @@ namespace WSCATProject.WareHouse
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            //绑定出库单号
-            textBoxOddNumbers.Text = _wareHouseoutModel["code"].Value.ToString();
-            this.labtextboxTop7.Text = _wareHouseoutModel["salesCode"].Value.ToString();
-            comboBoxEx1.SelectedIndex = 0;
-            superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+            try
+            {
+               // 绑定出库单号
+                textBoxOddNumbers.Text = _wareHouseoutModel["code"].Value.ToString();
+                this.labtextboxTop7.Text = _wareHouseoutModel["salesCode"].Value.ToString();
+                comboBoxEx1.SelectedIndex = 0;
+                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误：绑定出库单号错误!"+ex.Message);
+            }
+          
             //待入库进行查看的时候
             if (_state == 0)
             {
@@ -496,6 +505,31 @@ namespace WSCATProject.WareHouse
             {
                 MessageBox.Show("业务员不能为空！");
             }
+        }
+        /// <summary>
+        /// 客户的控件改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxTop2_TextChanged(object sender, EventArgs e)
+        {
+            string name = XYEEncoding.strCodeHex( this.labtextboxTop2.Text.Trim());
+            dataGridViewFujia.DataSource = null;
+            dataGridViewFujia.Columns.Clear();
+
+            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "code";
+            dgvc.HeaderText = "客户编号";
+            dgvc.DataPropertyName = "code";
+            dataGridViewFujia.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "name";
+            dgvc.HeaderText = "客户名称";
+            dgvc.DataPropertyName = "name";
+            dataGridViewFujia.Columns.Add(dgvc);
+            resizablePanel1.Location = new Point(530, 110);
+            dataGridViewFujia.DataSource =ch.DataTableReCoding( client.GetList(" name like '%"+name+"%'"));
         }
     }
 }
