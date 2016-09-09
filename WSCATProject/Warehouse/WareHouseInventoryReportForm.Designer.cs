@@ -29,18 +29,6 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -57,6 +45,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,108 +72,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1104, 463);
             this.panel3.TabIndex = 3;
-            // 
-            // superGridControl1
-            // 
-            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.superGridControl1.Name = "superGridControl1";
-            // 
-            // 
-            // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn3);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn4);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
-            this.superGridControl1.Size = new System.Drawing.Size(1104, 463);
-            this.superGridControl1.TabIndex = 0;
-            this.superGridControl1.Text = "superGridControl1";
-            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.DataPropertyName = "name";
-            this.gridColumn1.HeaderText = "仓库";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.ReadOnly = true;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.DataPropertyName = "code";
-            this.gridColumn2.HeaderText = "商品编号";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.ReadOnly = true;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.DataPropertyName = "shopname";
-            this.gridColumn3.HeaderText = "商品名称";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.ReadOnly = true;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.DataPropertyName = "model";
-            this.gridColumn4.HeaderText = "规格型号";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.ReadOnly = true;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.DataPropertyName = "unit";
-            this.gridColumn5.HeaderText = "单位";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.ReadOnly = true;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.DataPropertyName = "barCode";
-            this.gridColumn6.HeaderText = "条码";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.ReadOnly = true;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.DataPropertyName = "allNumber";
-            this.gridColumn7.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumn7.HeaderText = "贮存数量";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.ReadOnly = true;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumn8.HeaderText = "盘点数量";
-            this.gridColumn8.Name = "gridColumn8";
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumn9.HeaderText = "盘盈数量";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.ReadOnly = true;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumn10.HeaderText = "盘亏数量";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.ReadOnly = true;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.DataPropertyName = "remark";
-            this.gridColumn11.HeaderText = "备注";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.ReadOnly = true;
             // 
             // toolStripButton1
             // 
@@ -354,6 +252,94 @@
             this.panel1.Size = new System.Drawing.Size(1104, 63);
             this.panel1.TabIndex = 2;
             // 
+            // superGridControl1
+            // 
+            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.superGridControl1.Name = "superGridControl1";
+            this.superGridControl1.Size = new System.Drawing.Size(1104, 463);
+            this.superGridControl1.TabIndex = 0;
+            this.superGridControl1.Text = "superGridControl1";
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.DataPropertyName = "remark";
+            this.gridColumn11.HeaderText = "备注";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.ReadOnly = true;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn10.HeaderText = "盘亏数量";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.ReadOnly = true;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn9.HeaderText = "盘盈数量";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.ReadOnly = true;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn8.HeaderText = "盘点数量";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.DataPropertyName = "allNumber";
+            this.gridColumn7.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn7.HeaderText = "贮存数量";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.ReadOnly = true;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.DataPropertyName = "barCode";
+            this.gridColumn6.HeaderText = "条码";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.ReadOnly = true;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.DataPropertyName = "unit";
+            this.gridColumn5.HeaderText = "单位";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.ReadOnly = true;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.DataPropertyName = "model";
+            this.gridColumn4.HeaderText = "规格型号";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.DataPropertyName = "shopname";
+            this.gridColumn3.HeaderText = "商品名称";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.DataPropertyName = "code";
+            this.gridColumn2.HeaderText = "商品编号";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.DataPropertyName = "name";
+            this.gridColumn1.HeaderText = "仓库";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.ReadOnly = true;
+            // 
             // WareHouseInventoryReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -377,7 +363,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panel3;
-        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         protected System.Windows.Forms.ToolStripButton toolStripButton1;
         protected System.Windows.Forms.ToolStripButton toolStripButton3;
         protected System.Windows.Forms.ToolStripButton toolStripButton4;
@@ -394,16 +379,17 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.Panel panel1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
     }
 }

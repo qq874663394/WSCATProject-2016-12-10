@@ -30,7 +30,6 @@
         {
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
@@ -46,6 +45,7 @@
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // labelX1
@@ -72,25 +72,13 @@
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "区域：";
             // 
-            // labelX3
-            // 
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(310, 23);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(32, 23);
-            this.labelX3.TabIndex = 2;
-            this.labelX3.Text = "货架：";
-            // 
             // labelX4
             // 
             // 
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(444, 23);
+            this.labelX4.Location = new System.Drawing.Point(467, 23);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(33, 23);
             this.labelX4.TabIndex = 3;
@@ -146,7 +134,7 @@
             this.comboBoxEx3.ItemHeight = 15;
             this.comboBoxEx3.Items.AddRange(new object[] {
             this.comboItem3});
-            this.comboBoxEx3.Location = new System.Drawing.Point(337, 24);
+            this.comboBoxEx3.Location = new System.Drawing.Point(360, 24);
             this.comboBoxEx3.Name = "comboBoxEx3";
             this.comboBoxEx3.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -166,7 +154,7 @@
             this.comboBoxEx4.ItemHeight = 15;
             this.comboBoxEx4.Items.AddRange(new object[] {
             this.comboItem4});
-            this.comboBoxEx4.Location = new System.Drawing.Point(472, 24);
+            this.comboBoxEx4.Location = new System.Drawing.Point(495, 24);
             this.comboBoxEx4.Name = "comboBoxEx4";
             this.comboBoxEx4.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -219,7 +207,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(584, 23);
+            this.labelX5.Location = new System.Drawing.Point(607, 23);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(47, 23);
             this.labelX5.TabIndex = 1;
@@ -234,7 +222,7 @@
             this.comboBoxEx5.ItemHeight = 15;
             this.comboBoxEx5.Items.AddRange(new object[] {
             this.comboItem5});
-            this.comboBoxEx5.Location = new System.Drawing.Point(627, 24);
+            this.comboBoxEx5.Location = new System.Drawing.Point(650, 24);
             this.comboBoxEx5.Name = "comboBoxEx5";
             this.comboBoxEx5.Size = new System.Drawing.Size(85, 21);
             this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -244,11 +232,23 @@
             // 
             this.comboItem5.Text = "请选择";
             // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(312, 23);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(42, 23);
+            this.labelX3.TabIndex = 2;
+            this.labelX3.Text = "货架：";
+            // 
             // WareHuseStorageRack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 146);
+            this.ClientSize = new System.Drawing.Size(753, 146);
             this.Controls.Add(this.checkBoxX1);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
@@ -273,7 +273,6 @@
 
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
@@ -289,5 +288,6 @@
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
         private DevComponents.Editors.ComboItem comboItem5;
+        private DevComponents.DotNetBar.LabelX labelX3;
     }
 }
