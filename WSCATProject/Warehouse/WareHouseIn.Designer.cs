@@ -73,20 +73,20 @@
             // 
             this.textBoxOddNumbers.BackColor = System.Drawing.Color.White;
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(941, 10);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(896, 10);
             this.textBoxOddNumbers.ReadOnly = true;
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(904, 13);
+            this.labelprie.Location = new System.Drawing.Point(859, 13);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(763, 10);
+            this.dateTimePicker1.Location = new System.Drawing.Point(718, 10);
             // 
             // labelDate
             // 
-            this.labelDate.Location = new System.Drawing.Point(726, 13);
+            this.labelDate.Location = new System.Drawing.Point(681, 13);
             // 
             // panel7
             // 
@@ -196,16 +196,16 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(750, 8);
+            this.buttonExamine.Location = new System.Drawing.Point(705, 8);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(987, 8);
+            this.buttonClose.Location = new System.Drawing.Point(942, 8);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(859, 8);
+            this.buttonSave.Location = new System.Drawing.Point(814, 8);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6

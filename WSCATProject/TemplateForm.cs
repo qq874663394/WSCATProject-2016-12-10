@@ -189,6 +189,8 @@ namespace WSCATProject
             this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
             this.toolStripButton5.AutoToolTip = false;
             this.toolStripButton5.ToolTipText = "导出Excel(Ctrl+T)";
+            this.toolStripButton6.AutoToolTip = false;
+            this.toolStripButton6.ToolTipText = "条码(F3)";
             this.toolStripButton4.AutoToolTip = false;
             this.toolStripButton4.ToolTipText = "关闭(Ctrl+X)";
         }
