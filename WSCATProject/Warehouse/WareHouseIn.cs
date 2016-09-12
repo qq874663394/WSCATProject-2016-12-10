@@ -19,7 +19,7 @@ using InterfaceLayer.Base;
 
 namespace WSCATProject.WareHouse
 {
-    public partial class WareHouseIn : TemplateForm
+    public partial class WareHouseIn : TestForm
     {
         public WareHouseIn()
         {

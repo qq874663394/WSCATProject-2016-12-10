@@ -211,3 +211,6 @@ E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.Warehouse
 E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseDisassembly.resources
 E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseAssembyForm.resources
 E:\619项目\619\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseDisassembly.resources
+E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.DotNetBar.Schedule.dll
+E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.DotNetBar.Schedule.xml
+E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.TestForm.resources
