@@ -54,7 +54,7 @@ namespace LogicLayer.Base
             };
             try
             {
-                dt = srb.GetList();
+                dt = srb.GetList(strWhere);
                 log.result = 1;
                 lb.Add(log);
             }
