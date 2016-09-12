@@ -21,19 +21,18 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_StorageRack",
                 operationTime = DateTime.Now,
-                objective = "查询仓库信息"
+                objective = "查询仓库信息",
+                operationContent = "查询T_Storage表的所有数据"
             };
             try
             {
                 dt = srb.SelStorage();
                 log.result = 1;
-                log.operationContent = "查询T_Storage表的数据成功";
                 lb.Add(log);
             }
             catch (Exception ex)
             {
-                log.result = -1;
-                log.operationContent = "查询T_Storage表的数据失败";
+                log.result = 0;
                 lb.Add(log);
                 throw ex;
             }
@@ -41,7 +40,31 @@ namespace LogicLayer.Base
         }
         public DataTable GetList(string strWhere)
         {
-            return srb.GetList(strWhere);
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log log = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_StorageRack",
+                operationTime = DateTime.Now,
+                objective = "查询仓库信息",
+                operationContent = "查询T_Storage表的所有数据"
+            };
+            try
+            {
+                dt = srb.GetList(strWhere);
+                log.result = 1;
+                lb.Add(log);
+            }
+            catch (Exception ex)
+            {
+                log.result = 0;
+                lb.Add(log);
+                throw ex;
+            }
+            return dt;
         }
     }
 }
