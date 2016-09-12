@@ -915,7 +915,7 @@ namespace WSCATProject.WareHouse
             {
                 //绑定商品列表
                 _AllMaterial = waremain.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""));
-                InitMaterialDataGridView(); ;
+                InitMaterialDataGridView(); 
             }
         }
 
