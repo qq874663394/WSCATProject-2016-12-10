@@ -95,87 +95,87 @@ namespace WSCATProject.Warehouse
             #endregion
 
             #region 新增
-            ////多条数据的
-            //string sqlToList = "insert into T_BaseArea(code,name,parentId,isEnable) values(@code, @name, @parentId,@isEnable)";
-            ////多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
-            //List<SqlParameter[]> list = new List<SqlParameter[]>();//存储参数集合的list
-            //SqlParameter[] sps;  //定义一个参数集合
-            //sps = new SqlParameter[]
-            //{
-            //                new SqlParameter("@code","duotiao"),
-            //                new SqlParameter("@name","duotiao"),
-            //                new SqlParameter("@parentId","duotiao"),
-            //                new SqlParameter("@isEnable",1)
-            //};
-            //list.Add(sps);
+            //多条数据的
+            string sqlToList = "insert into T_BaseArea(code,name,parentId,isEnable) values(@code, @name, @parentId,@isEnable)";
+            //多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
+            List<SqlParameter[]> list = new List<SqlParameter[]>();//存储参数集合的list
+            SqlParameter[] sps;  //定义一个参数集合
+            sps = new SqlParameter[]
+            {
+                            new SqlParameter("@code","duotiao"),
+                            new SqlParameter("@name","duotiao"),
+                            new SqlParameter("@parentId","duotiao"),
+                            new SqlParameter("@isEnable",1)
+            };
+            list.Add(sps);
 
-            //sps = new SqlParameter[]
-            //{
-            //                new SqlParameter("@code","duotiao"),
-            //                new SqlParameter("@name","duotiao"),
-            //                new SqlParameter("@parentId","duotiao"),
-            //                new SqlParameter("@isEnable",2)
-            //};
-            //list.Add(sps);
+            sps = new SqlParameter[]
+            {
+                            new SqlParameter("@code","duotiao"),
+                            new SqlParameter("@name","duotiao"),
+                            new SqlParameter("@parentId","duotiao"),
+                            new SqlParameter("@isEnable",2)
+            };
+            list.Add(sps);
 
-            //sps = new SqlParameter[]
-            //{
-            //                new SqlParameter("@code","duotiao"),
-            //                new SqlParameter("@name","duotiao"),
-            //                new SqlParameter("@parentId","duotiao"),
-            //                new SqlParameter("@isEnable",3)
-            //};
-            //list.Add(sps);
+            sps = new SqlParameter[]
+            {
+                            new SqlParameter("@code","duotiao"),
+                            new SqlParameter("@name","duotiao"),
+                            new SqlParameter("@parentId","duotiao"),
+                            new SqlParameter("@isEnable",3)
+            };
+            list.Add(sps);
 
-            //sps = new SqlParameter[]
-            //{
-            //                new SqlParameter("@code","duotiao"),
-            //                new SqlParameter("@name","duotiao"),
-            //                new SqlParameter("@parentId","duotiao"),
-            //                new SqlParameter("@isEnable",4)
-            //};
-            //list.Add(sps);
+            sps = new SqlParameter[]
+            {
+                            new SqlParameter("@code","duotiao"),
+                            new SqlParameter("@name","duotiao"),
+                            new SqlParameter("@parentId","duotiao"),
+                            new SqlParameter("@isEnable",4)
+            };
+            list.Add(sps);
 
-            //sps = new SqlParameter[]
-            //{
-            //                new SqlParameter("@code","duotiao"),
-            //                new SqlParameter("@name","duotiao"),
-            //                new SqlParameter("@parentId","duotiao"),
-            //                new SqlParameter("@isEnable",5)
-            //};
-            //list.Add(sps);
+            sps = new SqlParameter[]
+            {
+                            new SqlParameter("@code","duotiao"),
+                            new SqlParameter("@name","duotiao"),
+                            new SqlParameter("@parentId","duotiao"),
+                            new SqlParameter("@isEnable",5)
+            };
+            list.Add(sps);
 
-            //Hashtable htKey = new Hashtable();  //参数要求
+            Hashtable htKey = new Hashtable();  //参数要求
 
-            //string sql = @"insert into T_BaseArea(code,name,parentId) 
-            //values(@code,@name,@parentId)";  //主表的
-            //SqlParameter[] parameters = //主表参数
-            //{
-            //                new SqlParameter("@code","duotiao"),
-            //                new SqlParameter("@name","duotiao"),
-            //                new SqlParameter("@parentId","duotiao")
-            //            };
-
-
-            //htKey.Add(sql, parameters);//sql语句和主表的参数集合
+            string sql = @"insert into T_BaseArea(code,name,parentId) 
+            values(@code,@name,@parentId)";  //主表的
+            SqlParameter[] parameters = //主表参数
+            {
+                            new SqlParameter("@code","duotiao"),
+                            new SqlParameter("@name","duotiao"),
+                            new SqlParameter("@parentId","duotiao")
+                        };
 
 
-            //try
-            //{
-            //    DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ExSwitch(ex.Message));
-            //}
+            htKey.Add(sql, parameters);//sql语句和主表的参数集合
+
+
+            try
+            {
+                DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ExSwitch(ex.Message));
+            }
             #endregion
 
-            WarehouseInInterface wi = new WarehouseInInterface();
-            WarehouseOutInterface wo = new WarehouseOutInterface();
-            DataTable widt = wi.GetListToIn(0).Tables[0];
-            DataTable wodt = wo.GetListToOut(0).Tables[0];
-            
-            wodt.Merge(widt);
+            //WarehouseInInterface wi = new WarehouseInInterface();
+            //WarehouseOutInterface wo = new WarehouseOutInterface();
+            //DataTable widt = wi.GetListToIn(0).Tables[0];
+            //DataTable wodt = wo.GetListToOut(0).Tables[0];
+
+            //wodt.Merge(widt);
         }
     }
 }

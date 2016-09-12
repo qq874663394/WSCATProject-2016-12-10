@@ -10,7 +10,7 @@ namespace BaseLayer.Base
         /// </summary>
         /// <param name="isflag">true显示全部 false显示未禁用</param>
         /// <returns></returns>
-        public DataTable SelClient(bool isflag)
+        public DataTable GetList(bool isflag)
         {
             string sql = "";
             DataSet ds = null;
@@ -53,5 +53,6 @@ namespace BaseLayer.Base
             }
             return ds.Tables[0];
         }
+        public Set
     }
 }

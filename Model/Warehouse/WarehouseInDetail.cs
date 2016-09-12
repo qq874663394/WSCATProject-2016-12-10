@@ -12,7 +12,8 @@ namespace Model
 		#region Model
 		private int _id;
 		private string _code;
-		private string _materianame;
+        private string _zhujima;
+        private string _materianame;
 		private string _materiamodel;
 		private string _materiaunit;
 		private decimal? _number;
@@ -49,10 +50,18 @@ namespace Model
 			set{ _code=value;}
 			get{return _code;}
 		}
-		/// <summary>
-		/// 物料名称
+        /// <summary>
+		/// 助记码
 		/// </summary>
-		public string materiaName
+		public string zhujima
+        {
+            set { _zhujima = value; }
+            get { return _zhujima; }
+        }
+        /// <summary>
+        /// 物料名称
+        /// </summary>
+        public string materiaName
 		{
 			set{ _materianame=value;}
 			get{return _materianame;}

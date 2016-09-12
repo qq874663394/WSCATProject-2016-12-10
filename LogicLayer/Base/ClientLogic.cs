@@ -55,8 +55,8 @@ namespace LogicLayer.Base
             };
             try
             {
-                model.result = 1;
                 dt = cb.GetList(strWhere);
+                model.result = 1;
             }
             catch (Exception ex)
             {
