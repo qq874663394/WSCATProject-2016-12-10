@@ -19,11 +19,6 @@ E:\619项目\619\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\619\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\619\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\619\HelperUtility\obj\Debug\HelperUtility.pdb
-E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.dll
-E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.pdb
-E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\NPOI.dll
-E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.dll
-E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.pdb
 E:\619项目\619\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
 D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\bin\Debug\HelperUtility.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\bin\Debug\HelperUtility.pdb
@@ -31,4 +26,9 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\bin\Debug\N
 D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
 D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\obj\Debug\HelperUtility.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\obj\Debug\HelperUtility.pdb
+E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.dll
+E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.pdb
+E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\NPOI.dll
+E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.dll
+E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.pdb
 E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache

@@ -183,12 +183,16 @@ namespace WSCATProject
 
         private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
         {
+            int intX = ScreenCursorPosition.X;
+            int intY = ScreenCursorPosition.Y;
             if (e.GridCell.GridColumn.Name == "material")
             {
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
-                resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y -160);
+                 int x=resizablePanelData.Location.X;
+                int y = resizablePanelData.Location.Y;
+                resizablePanelData.Location = new Point(intX-306,
+                    intY-277);
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStock")
             {
@@ -226,6 +230,18 @@ namespace WSCATProject
         {
             this.Close();
             this.Dispose();
+        }
+
+        [DllImport("User32.dll")]
+        public static extern int GetCursorPos(out Point point);//得到光标在屏幕上的位置
+        public static Point ScreenCursorPosition //获取光标相对于显示器的位置 
+        {
+            get
+            {
+                Point showPoint = new Point();
+                GetCursorPos(out showPoint);
+                return showPoint;
+            }
         }
     }
 }
