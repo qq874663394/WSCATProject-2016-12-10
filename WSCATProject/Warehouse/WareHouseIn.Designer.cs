@@ -105,7 +105,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.Location = new System.Drawing.Point(177, 22);
+            this.labtextboxTop3.Location = new System.Drawing.Point(196, 24);
             this.labtextboxTop3.ReadOnly = true;
             this.labtextboxTop3.Size = new System.Drawing.Size(123, 16);
             this.labtextboxTop3.TextAlignChanged += new System.EventHandler(this.labtextboxTop3_TextAlignChanged);
@@ -176,7 +176,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(157, 23);
+            this.labtextboxTop4.Location = new System.Drawing.Point(265, 23);
             this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
@@ -206,7 +206,7 @@
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop1.ForeColor = System.Drawing.Color.Gray;
-            this.labtextboxTop1.Location = new System.Drawing.Point(230, 44);
+            this.labtextboxTop1.Location = new System.Drawing.Point(999, 29);
             this.labtextboxTop1.ReadOnly = true;
             this.labtextboxTop1.Visible = false;
             // 
@@ -233,7 +233,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(354, 47);
+            this.pictureBox1.Location = new System.Drawing.Point(1006, 45);
             this.pictureBox1.Size = new System.Drawing.Size(17, 18);
             this.pictureBox1.Visible = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox5_Click);
@@ -373,17 +373,17 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(635, 13);
+            this.buttonExamine.Location = new System.Drawing.Point(531, 13);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(744, 13);
+            this.buttonSave.Location = new System.Drawing.Point(640, 13);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(869, 13);
+            this.buttonClose.Location = new System.Drawing.Point(765, 13);
             // 
             // panel1
             // 

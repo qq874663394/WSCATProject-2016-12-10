@@ -32,6 +32,15 @@ namespace WSCATProject
             get { return _clickStorage; }
             set { _clickStorage = value; }
         }
+
+        //控制面板是否显示
+        private bool _btnAdd = false;
+
+        protected bool BtnAdd
+        {
+            get { return _btnAdd; }
+            set { _btnAdd = value; }
+        }
         #endregion
 
         /// <summary>
@@ -149,7 +158,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                    resizablePanel1.Location = new Point(204, 610);
+                    resizablePanel1.Location = new Point(204, 200);
                     break;
             }
             if (!_btnAdd)
@@ -165,14 +174,6 @@ namespace WSCATProject
             }
         }
 
-        //控制面板是否显示
-        private bool _btnAdd = false;
-
-        protected bool BtnAdd
-        {
-            get { return _btnAdd; }
-            set { _btnAdd = value; }
-        }
 
         protected virtual void dataGridViewFujia_VisibleChanged(object sender, EventArgs e)
         {
@@ -187,7 +188,7 @@ namespace WSCATProject
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y + 65);
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y -160);
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStock")
             {
