@@ -51,6 +51,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\dotnetbar\DevComponents.DotNetBar.Layout.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\dotnetbar\DevComponents.DotNetBar.SuperGrid.dll</HintPath>
@@ -113,6 +114,12 @@
     </Compile>
     <Compile Include="TemplateForm.Designer.cs">
       <DependentUpon>TemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\PayBuySelect.cs">
       <SubType>Form</SubType>
@@ -219,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateForm.resx">
       <DependentUpon>TemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\PayBuySelect.resx">
       <DependentUpon>PayBuySelect.cs</DependentUpon>
@@ -365,10 +375,13 @@
     <Content Include="Resources\maintainToTheMonth.png" />
     <Content Include="Resources\maintainToTheWeek.png" />
     <Content Include="Resources\maintainToTheYear.png" />
+    <None Include="Resources\man.png" />
     <Content Include="Resources\marketGet.png" />
     <Content Include="Resources\marketGet副本.png" />
     <Content Include="Resources\marketReceipts.png" />
     <Content Include="Resources\marketReturned.png" />
+    <None Include="Resources\max.png" />
+    <None Include="Resources\min.png" />
     <Content Include="Resources\month.png" />
     <Content Include="Resources\newBackImage.jpg" />
     <Content Include="Resources\newBackImage1.jpg" />
@@ -450,6 +463,7 @@
     <Content Include="Resources\日志大1.png" />
     <Content Include="Resources\日志小.png" />
     <Content Include="Resources\日志小1.png" />
+    <None Include="Resources\标题.png" />
     <Content Include="Resources\系统大.png" />
     <Content Include="Resources\系统小.PNG" />
     <Content Include="Resources\财务大.png" />
