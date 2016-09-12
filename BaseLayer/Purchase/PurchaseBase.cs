@@ -14,20 +14,24 @@ namespace BaseLayer
         /// 获取入库仓库的商品列表
         /// </summary>
         /// <returns></returns>
-        public DataTable selectInMaterial()
+        public DataTable GetList(string strWhere)
         {
             string sql = "";
-            DataSet ds = null;
+            DataTable dt = null;
             try
             {
-                sql = "select * from T_PurchaseMain po,T_PurchaseDetail pd where po.code=pd.PurchaseCode";
-                ds = DbHelperSQL.Query(sql);
+                sql = "select * from T_PurchaseMain";
+                if (!string.IsNullOrWhiteSpace(strWhere))
+                {
+                    sql += string.Format(" where {0}", strWhere);
+                }
+                dt = DbHelperSQL.Query(sql).Tables[0];
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
-            return ds.Tables[0];
+            return dt;
         }
     }
 }
