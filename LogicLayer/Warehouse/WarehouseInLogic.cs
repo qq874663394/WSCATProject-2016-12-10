@@ -84,7 +84,7 @@ namespace LogicLayer
                 logModel.result = 0;
                 throw ex;
             }
-            wum.add(hashTable, logModel.operationTable,list.Count,"",logModel.operationTime);
+            wum.add("", logModel.operationTable,list.Count,"",logModel.operationTime);
             lb.Add(logModel);
         }
 

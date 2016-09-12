@@ -305,7 +305,6 @@
             this.superGridControl1.Size = new System.Drawing.Size(1140, 296);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // resizablePanel1
             // 
@@ -373,17 +372,17 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(531, 13);
+            this.buttonExamine.Location = new System.Drawing.Point(805, 13);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(640, 13);
+            this.buttonSave.Location = new System.Drawing.Point(911, 13);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(765, 13);
+            this.buttonClose.Location = new System.Drawing.Point(1036, 13);
             // 
             // panel1
             // 
@@ -565,7 +564,7 @@
             this.KeyPreview = true;
             this.Name = "WareHouseIn";
             this.Text = "入库单";
-            this.Load += new System.EventHandler(this.StockIn_Load);
+            this.Load += new System.EventHandler(this.WareHouseIn_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseIn_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

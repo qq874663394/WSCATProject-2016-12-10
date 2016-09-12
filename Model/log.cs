@@ -16,7 +16,7 @@ namespace Model
 		private string _operationcode;
 		private string _operationname;
 		private string _operationtable;
-		private DateTime? _operationtime;
+		private DateTime _operationtime;
 		private int? _result;
 		private string _objective;
 		private string _operationcontent;
