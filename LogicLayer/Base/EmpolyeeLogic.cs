@@ -28,7 +28,6 @@ namespace LogicLayer.Base
             {
                 dt = eb.SelEmpolyee(isflag);
                 model.result = 1;
-                lb.Add(model);
             }
             catch (Exception ex)
             {

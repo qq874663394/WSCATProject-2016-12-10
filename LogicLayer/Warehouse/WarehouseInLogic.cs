@@ -16,6 +16,7 @@ namespace LogicLayer
 {
     public class WarehouseInLogic
     {
+        WarehouseUpdataManager wum = new WarehouseUpdataManager();
         /// <summary>
         /// 根据审核状态查询
         /// </summary>
@@ -34,7 +35,7 @@ namespace LogicLayer
                 operationTable = "T_WarehouseIn",
                 operationTime = DateTime.Now,
                 objective = "根据审核状态查询",
-                operationContent = "根据审核状态查询入库表,state值为"+state
+                operationContent = "根据审核状态查询入库表,条件为：state="+state
             };
 
             try
@@ -47,8 +48,7 @@ namespace LogicLayer
                 logModel.result = 0;
                 throw ex;
             }
-            
-            lb.Add(logModel);//rz
+            lb.Add(logModel);
             return ds;
         }
 
@@ -81,10 +81,11 @@ namespace LogicLayer
             }
             catch(Exception ex)
             {
-                logModel.result = 0;//rz
+                logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);//rz
+            wum.add(hashTable, logModel.operationTable,list.Count,"",logModel.operationTime);
+            lb.Add(logModel);
         }
 
         /// <summary>

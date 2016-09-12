@@ -25,16 +25,16 @@ namespace BaseLayer
             try
             {
                 strSql.Append("insert into T_WarehouseInDetail(");
-                strSql.Append("code,materiaName,materiaModel,materiaUnit,number,price,money,remark,reserved1,reserved2,isClear,barcode,rfid,updateDate,state,date,warehouseCode,warehouseName,mainCode)");
+                strSql.Append("code,materiaName,zhujima,materiaModel,materiaUnit,number,price,money,remark,reserved1,reserved2,isClear,barcode,rfid,updateDate,state,date,warehouseCode,warehouseName,mainCode)");
                 strSql.Append(" values (");
-                strSql.Append("@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@state,@date,@warehouseCode,@warehouseName,@mainCode)");
+                strSql.Append("@code,@materiaName,@zhujima,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@state,@date,@warehouseCode,@warehouseName,@mainCode)");
                 strSql.Append(";select @@IDENTITY");
             }
             catch
             {
                 return -1;
             }
-            SqlParameter[] parameters = new SqlParameter[18];
+            SqlParameter[] parameters = new SqlParameter[19];
             try
             {
                 parameters[0] = new SqlParameter("@code", SqlDbType.NVarChar, 45);
@@ -56,6 +56,7 @@ namespace BaseLayer
                 parameters[16] = new SqlParameter("@warehouseCode", SqlDbType.NVarChar,45);
                 parameters[17] = new SqlParameter("@warehouseName", SqlDbType.NVarChar,40);
                 parameters[18] = new SqlParameter("@mainCode", SqlDbType.NVarChar, 45);
+                parameters[19] = new SqlParameter("@zhujima",SqlDbType.NVarChar,45);
             }
             catch
             {
@@ -82,6 +83,7 @@ namespace BaseLayer
                 parameters[16].Value = model.WarehouseCode;
                 parameters[17].Value = model.WarehouseName;
                 parameters[18].Value = model.MainCode;
+                parameters[19].Value = model.zhujima;
             }
             catch
             {
@@ -129,7 +131,7 @@ namespace BaseLayer
             string updateStr = "";
             try
             {
-                updateStr = string.Format("update T_WarehouseInDetail set materiaName='{0}',"
+                updateStr = string.Format("update T_WarehouseInDetail set materiaName='{0}',zhujima='{22}',"
                     + "materiaModel='{1}',materiaUnit='{2}',number={3},price={4},money={5},barcode='{6}',"
                     + "rfid='{7}',updateDate='{8}',state={9},date='{10}',isClear={11},remark='{12}',"
                     + "reserved1='{13}',reserved2='{14}',storageRackName='{15}',storageRackCode='{16}',"
@@ -155,7 +157,8 @@ namespace BaseLayer
                     wid.WarehouseCode,
                     wid.WarehouseName,
                     wid.MainCode,
-                    wid.code);
+                    wid.code,
+                    wid.zhujima);
             }
             catch
             {
@@ -170,7 +173,7 @@ namespace BaseLayer
             StringBuilder strSql = new StringBuilder();
             try
             {
-                strSql.Append("select id,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
+                strSql.Append("select id,code,materiaName,zhujima,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
                 strSql.Append(" FROM T_WarehouseInDetail ");
                 if (strWhere.Trim() != "")
                 {
@@ -198,7 +201,7 @@ namespace BaseLayer
             StringBuilder strSql = new StringBuilder();
             try
             {
-                strSql.Append("select id,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
+                strSql.Append("select id,code,materiaName,zhujima,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
                 strSql.Append(" FROM T_WarehouseInDetail ");
                 strSql.Append(" where mainCode = '" + mainCode + "' and state=0");
             }

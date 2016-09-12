@@ -63,7 +63,7 @@ namespace Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? operationTime
+		public DateTime operationTime
 		{
 			set{ _operationtime=value;}
 			get{return _operationtime;}
