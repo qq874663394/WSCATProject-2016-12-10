@@ -63,7 +63,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1156, 39);
+            this.panel1.Size = new System.Drawing.Size(1140, 39);
             this.panel1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
@@ -77,30 +77,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxOddNumbers.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(821, 14);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(868, 11);
             this.textBoxOddNumbers.ReadOnly = true;
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(784, 15);
+            this.labelprie.Location = new System.Drawing.Point(831, 12);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(643, 10);
+            this.dateTimePicker1.Location = new System.Drawing.Point(690, 9);
             // 
             // labelDate
             // 
-            this.labelDate.Location = new System.Drawing.Point(606, 13);
+            this.labelDate.Location = new System.Drawing.Point(653, 12);
             // 
             // panel7
             // 
             this.panel7.Location = new System.Drawing.Point(0, 62);
-            this.panel7.Size = new System.Drawing.Size(1154, 294);
+            this.panel7.Size = new System.Drawing.Size(1138, 294);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.comboBoxEx1);
-            this.panel6.Size = new System.Drawing.Size(1154, 62);
+            this.panel6.Size = new System.Drawing.Size(1138, 62);
             this.panel6.Click += new System.EventHandler(this.panel6_Click);
             this.panel6.Controls.SetChildIndex(this.labTop1, 0);
             this.panel6.Controls.SetChildIndex(this.labTop2, 0);
@@ -201,16 +201,18 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(636, 8);
+            this.buttonExamine.Location = new System.Drawing.Point(786, 9);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(873, 8);
+            this.buttonClose.Location = new System.Drawing.Point(1034, 8);
+            this.buttonClose.Size = new System.Drawing.Size(98, 32);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(745, 8);
+            this.buttonSave.Location = new System.Drawing.Point(898, 9);
+            this.buttonSave.Size = new System.Drawing.Size(125, 32);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6
@@ -410,7 +412,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1152, 292);
+            this.superGridControl1.Size = new System.Drawing.Size(1136, 292);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
@@ -426,20 +428,20 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(0, 422);
-            this.panel2.Size = new System.Drawing.Size(1156, 118);
+            this.panel2.Size = new System.Drawing.Size(1140, 118);
             // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1156, 358);
+            this.panel3.Size = new System.Drawing.Size(1140, 358);
             // 
             // panel4
             // 
-            this.panel4.Size = new System.Drawing.Size(1156, 47);
+            this.panel4.Size = new System.Drawing.Size(1140, 47);
             this.panel4.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel5
             // 
-            this.panel5.Size = new System.Drawing.Size(1156, 71);
+            this.panel5.Size = new System.Drawing.Size(1140, 71);
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
             // 
             // label1
@@ -568,7 +570,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 540);
+            this.ClientSize = new System.Drawing.Size(1140, 540);
             this.KeyPreview = true;
             this.Name = "WareHouseIn";
             this.Text = "入库单";
