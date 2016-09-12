@@ -665,6 +665,7 @@ namespace WSCATProject
         private void sideBarPanelItemIn_Click(object sender, EventArgs e)
         {
             superTabControl1.SelectedTab = superTabItemIn;
+            //this.sideBarPanelItemIn.HeaderSideStyle.BorderSide = ;
             this.sideBarPanelItemIn.Image = Properties.Resources.采购大;
             this.sideBarPanelItemRe.Image = Properties.Resources.售后小;
             this.sideBarPanelItem1.Image = Properties.Resources.日志小;

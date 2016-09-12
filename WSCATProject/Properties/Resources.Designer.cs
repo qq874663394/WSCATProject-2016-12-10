@@ -353,6 +353,16 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap daying {
+            get {
+                object obj = ResourceManager.GetObject("daying", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap daying副本 {
             get {
                 object obj = ResourceManager.GetObject("daying副本", resourceCulture);
@@ -503,9 +513,9 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap green {
+        internal static System.Drawing.Bitmap gr {
             get {
-                object obj = ResourceManager.GetObject("green", resourceCulture);
+                object obj = ResourceManager.GetObject("gr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1163,6 +1173,26 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap tiaoma {
+            get {
+                object obj = ResourceManager.GetObject("tiaoma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap tiaoma2 {
+            get {
+                object obj = ResourceManager.GetObject("tiaoma2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap today {
             get {
                 object obj = ResourceManager.GetObject("today", resourceCulture);
@@ -1306,6 +1336,16 @@ namespace WSCATProject.Properties {
         internal static System.Drawing.Bitmap xitongweihu {
             get {
                 object obj = ResourceManager.GetObject("xitongweihu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ye {
+            get {
+                object obj = ResourceManager.GetObject("ye", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

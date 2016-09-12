@@ -16,7 +16,6 @@ namespace WSCATProject
         {
             InitializeComponent();
         }
-        /// <summary>
         /// 当前被点击的行位置
         /// </summary>
         protected int ClickRowIndex
@@ -108,7 +107,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 100);
                     break;
                 case "pictureBox2":
-                    resizablePanel1.Location = new Point(400, 100);
+                    resizablePanel1.Location = new Point(640, 110);
                     break;
                 case "pictureBox3":
                     resizablePanel1.Location = new Point(400, 130);
@@ -117,7 +116,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                    resizablePanel1.Location = new Point(204, 310);
+                    resizablePanel1.Location = new Point(204, 610);
                     break;
             }
             if (!_btnAdd)
@@ -190,8 +189,16 @@ namespace WSCATProject
             this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
             this.toolStripButton5.AutoToolTip = false;
             this.toolStripButton5.ToolTipText = "导出Excel(Ctrl+T)";
+            this.toolStripButton6.AutoToolTip = false;
+            this.toolStripButton6.ToolTipText = "条码(F3)";
             this.toolStripButton4.AutoToolTip = false;
             this.toolStripButton4.ToolTipText = "关闭(Ctrl+X)";
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
         }
     }
 }

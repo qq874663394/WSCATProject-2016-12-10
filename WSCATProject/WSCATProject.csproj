@@ -330,6 +330,7 @@
     <Content Include="Resources\countPrint.png" />
     <Content Include="Resources\countSelect.png" />
     <None Include="Resources\daying副本.png" />
+    <None Include="Resources\daying.jpg" />
     <Content Include="Resources\deliverManager.png" />
     <Content Include="Resources\diquziliao.png" />
     <Content Include="Resources\financeBank.png" />
@@ -347,6 +348,7 @@
     <None Include="Resources\guanbi.PNG" />
     <None Include="Resources\green大.png" />
     <None Include="Resources\green.PNG" />
+    <None Include="Resources\gr.jpg" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\houdan.png" />
@@ -379,6 +381,7 @@
     <Content Include="Resources\payment.png" />
     <None Include="Resources\qiandan.PNG" />
     <None Include="Resources\red.PNG" />
+    <None Include="Resources\red.jpg" />
     <Content Include="Resources\Redocn_2012040703034492.png" />
     <None Include="Resources\red大.png" />
     <Content Include="Resources\regionData.png" />
@@ -411,6 +414,8 @@
     <Content Include="Resources\systemOpenAccount.png" />
     <Content Include="Resources\systemOperator.png" />
     <None Include="Resources\tianjia副本.png" />
+    <None Include="Resources\tiaoma.PNG" />
+    <None Include="Resources\tiaoma2.PNG" />
     <Content Include="Resources\today.PNG" />
     <Content Include="Resources\undo.png" />
     <Content Include="Resources\undo_2.png" />
@@ -428,6 +433,7 @@
     <Content Include="Resources\xitongweihu.png" />
     <None Include="Resources\yellow.PNG" />
     <None Include="Resources\yellow大.png" />
+    <None Include="Resources\ye.jpg" />
     <Content Include="Resources\yuangongyonghu.png" />
     <Content Include="Resources\zijinzhanghu.png" />
     <Content Include="Resources\人事大.png" />
@@ -439,6 +445,7 @@
     <Content Include="Resources\帐套回收站.png" />
     <Content Include="Resources\帐套选项.png" />
     <None Include="Resources\排序.PNG" />
+    <None Include="Resources\打印.jpg" />
     <Content Include="Resources\日志大.png" />
     <Content Include="Resources\日志大1.png" />
     <Content Include="Resources\日志小.png" />

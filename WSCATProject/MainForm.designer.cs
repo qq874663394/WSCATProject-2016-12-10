@@ -3359,7 +3359,7 @@
             // sideBar1
             // 
             this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
-            this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.None;
+            this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sideBar1.ExpandedPanel = this.sideBarPanelItem1;
             this.sideBar1.Location = new System.Drawing.Point(0, 0);

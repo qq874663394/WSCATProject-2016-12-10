@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
@@ -81,6 +82,8 @@ namespace WSCATProject.Warehouse
         WarehouseMainInterface waremain = new WarehouseMainInterface();
         private void WareHouseAllotForm_Load(object sender, EventArgs e)
         {
+            //调拨单单号
+            textBoxOddNumbers.Text = BuildCode.ModuleCode("DBD"); ;
             //业务员
             EmpolyeeInterface employee = new EmpolyeeInterface();
             StorageInterface storage = new StorageInterface();
