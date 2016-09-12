@@ -162,6 +162,12 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                DictionaryEntry de = new DictionaryEntry();
+                foreach (DictionaryEntry de1 in htKey)
+                {
+                    de.Key = de1.Key;
+                    de.Value = de1.Value;
+                }
                 DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
             }
             catch (Exception ex)
