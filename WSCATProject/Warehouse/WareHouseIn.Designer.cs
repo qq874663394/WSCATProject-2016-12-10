@@ -46,8 +46,8 @@
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -308,16 +308,17 @@
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn3);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnname);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmodel);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntiaoxingma);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnnumber);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 358);
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
