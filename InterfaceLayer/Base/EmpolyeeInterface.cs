@@ -13,7 +13,7 @@ namespace InterfaceLayer.Base
         /// <returns></returns>
         public DataTable SelSupplierTable(bool isflag)
         {
-            return el.SelEmpolyeeTable(isflag);
+            return el.GetEmpByBool(isflag);
         }
         /// <summary>
         /// 自定义条件取得列表

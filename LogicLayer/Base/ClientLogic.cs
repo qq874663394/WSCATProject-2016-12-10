@@ -12,7 +12,7 @@ namespace LogicLayer.Base
     {
         BaseUpdataManager bum = new BaseUpdataManager();
         ClientBase cb = new ClientBase();
-        public DataTable SelClient(bool isflag)
+        public DataTable GetClientByBool(bool isflag)
         {
             DataTable dt = null;
             LogBase lb = new LogBase();
@@ -28,7 +28,7 @@ namespace LogicLayer.Base
             };
             try
             {
-                dt = cb.SelClient(isflag);
+                dt = cb.GetClientByBool(isflag);
                 model.result = 1;
             }
             catch (Exception ex)

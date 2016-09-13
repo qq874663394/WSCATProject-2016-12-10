@@ -19,5 +19,14 @@ namespace InterfaceLayer.Base
         {
             return sl.SelSupplierTable();
         }
+        /// <summary>
+        /// 自定义条件
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
+        public DataTable GetList(string strWhere)
+        {
+            return sl.GetList(strWhere);
+        }
     }
 }

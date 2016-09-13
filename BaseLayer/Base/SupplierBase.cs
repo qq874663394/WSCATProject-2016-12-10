@@ -38,11 +38,35 @@ namespace BaseLayer.Base
                         from T_BaseSupplier where isClear=1 and isEnable=1";
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
+        }
+        /// <summary>
+        /// 自定义条件
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
+        public DataTable GetList(string strWhere)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = "select * from T_BaseSupplier";
+                if (!string.IsNullOrWhiteSpace(strWhere))
+                {
+                    sql += " where " + strWhere;
+                }
+                dt=DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
         }
     }
 }

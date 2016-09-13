@@ -9,13 +9,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UpdateManagerLayer;
 
 namespace LogicLayer.Base
 {
     public class StorageRackLogic
     {
         StorageRackBase sr = new StorageRackBase();
-
+        BaseUpdataManager bum = new BaseUpdataManager();
         /// <summary>
         /// 根据父级ID查询
         /// </summary>
@@ -24,40 +25,36 @@ namespace LogicLayer.Base
         public DataTable SelStorageRackByCode(string parentId)
         {
             DataTable dt = null;
-            try
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                dt = sr.SelStorageRackByCode(parentId);
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "查询货架信息",
-                    result = 1,
-                    operationContent = "查询T_StorageRack表的数据成功,条件为:ParentId=" + XYEEncoding.strHexDecode(parentId)
-                };
-                lb.Add(log);
-            }
-            catch (Exception ex)
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_StorageRack",
+                operationTime = DateTime.Now,
+                objective = "查询货架信息",
+                operationContent = "查询T_StorageRack表的数据,条件为:ParentId=" + parentId
+            };
+            if (!string.IsNullOrWhiteSpace(parentId))
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                try
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "查询货架信息",
-                    result = -1,
-                    operationContent = "查询T_StorageRack表的数据失败,条件为:ParentId=" + XYEEncoding.strHexDecode(parentId)
-                };
-                lb.Add(log);
-                throw ex;
+                    dt = sr.SelStorageRackByCode(parentId);
+                    logModel.result = 1;
+                }
+                catch (Exception ex)
+                {
+                    logModel.result = 0;
+                    throw ex;
+                }
             }
+            else
+            {
+                logModel.result = 0;
+                throw new Exception("-7");
+            }
+            lb.Add(logModel);
             return dt;
         }
         /// <summary>
@@ -67,40 +64,28 @@ namespace LogicLayer.Base
         public DataTable SelStorageRack()
         {
             DataTable dt = null;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_StorageRack",
+                operationTime = DateTime.Now,
+                objective = "查询货架信息",
+                operationContent = "查询T_StorageRack表的数据"
+            };
             try
             {
                 dt = sr.SelStorageRack();
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "查询货架信息",
-                    result = 1,
-                    operationContent = "查询T_StorageRack表的数据成功"
-                };
-                lb.Add(log);
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "查询货架信息",
-                    result = -1,
-                    operationContent = "查询T_StorageRack表的数据失败"
-                };
-                lb.Add(log);
+                logModel.result = 0;
                 throw ex;
             }
+            lb.Add(logModel);
             return dt;
         }
         /// <summary>
@@ -111,40 +96,44 @@ namespace LogicLayer.Base
         public int DelStorageRackByCode(string code)
         {
             int result = 0;
-            try
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                result = sr.DelStorageRackByCode(code);
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "查询货架信息",
-                    result = 1,
-                    operationContent = "删除T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(code)
-                };
-                lb.Add(log);
-            }
-            catch (Exception ex)
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_StorageRack",
+                operationTime = DateTime.Now,
+                objective = "删除货架信息",
+                operationContent = "删除T_StorageRack表的数据,条件为:code=" + code
+            };
+            if (!string.IsNullOrWhiteSpace(code))
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                try
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "删除货架信息",
-                    result = -1,
-                    operationContent = "删除T_StorageRack表的数据失败,条件为:code=" + XYEEncoding.strHexDecode(code)
-                };
-                lb.Add(log);
-                throw ex;
+                    result = sr.DelStorageRackByCode(code);
+                    if (result > 0)
+                    {
+                        logModel.result = 1;
+                        bum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+                    }
+                    else
+                    {
+                        logModel.result = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logModel.result = 0;
+                    throw ex;
+                }
             }
+            else
+            {
+                logModel.result = 0;
+                throw new Exception("-7");
+            }
+            lb.Add(logModel);
             return result;
         }
         /// <summary>
@@ -155,40 +144,44 @@ namespace LogicLayer.Base
         public int UpdateStorageRackByCode(string fieldName, string fieldValue, string code)
         {
             int result = 0;
-            try
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                result = sr.UpdateStorageRackByCode(fieldName, fieldValue,code);
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "修改货架信息",
-                    result = 1,
-                    operationContent = "修改T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(code)
-                };
-                lb.Add(log);
-            }
-            catch (Exception ex)
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_StorageRack",
+                operationTime = DateTime.Now,
+                objective = "修改货架信息",
+                operationContent = string.Format("修改T_StorageRack表的数据,条件为:fieldName={1},fieldValue={2},code={3}", fieldName, fieldValue, code)
+            };
+            if (!string.IsNullOrWhiteSpace(fieldName) && !string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(code))
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                try
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "修改货架信息",
-                    result = 0,
-                    operationContent = "修改T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(code)
-                };
-                lb.Add(log);
-                throw ex;
+                    result = sr.UpdateStorageRackByCode(fieldName, fieldValue, code);
+                    if (result > 0)
+                    {
+                        logModel.result = 1;
+                        bum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+                    }
+                    else
+                    {
+                        logModel.result = 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logModel.result = 0;
+                    throw ex;
+                }
             }
+            else
+            {
+                logModel.result = 0;
+                throw new Exception("-7");
+            }
+            lb.Add(logModel);
             return result;
         }
         /// <summary>
@@ -199,40 +192,44 @@ namespace LogicLayer.Base
         public int InsStorageRack(BaseStorageRack srb)
         {
             int result = 0;
-            try
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                result = sr.InsStorageRack(srb);
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "新增货架信息",
-                    result = 1,
-                    operationContent = "新增T_StorageRack表的数据成功,条件为:code=" + XYEEncoding.strHexDecode(srb.code)
-                };
-                lb.Add(log);
-            }
-            catch (Exception ex)
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_StorageRack",
+                operationTime = DateTime.Now,
+                objective = "新增货架信息",
+                operationContent = "新增T_StorageRack表的数据,条件为:code=" + srb.code
+            };
+            if (!string.IsNullOrWhiteSpace(srb.code) && srb != null)
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                try
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_StorageRack",
-                    operationTime = DateTime.Now,
-                    objective = "新增货架信息",
-                    result = 0,
-                    operationContent = "新增T_StorageRack表的数据失败,条件为:code=" + XYEEncoding.strHexDecode(srb.code)
-                };
-                lb.Add(log);
-                throw ex;
+                    result = sr.InsStorageRack(srb);
+                    if (result > 0)
+                    {
+                        logModel.result = 1;
+                        bum.add(srb.code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+                    }
+                    else
+                    {
+                        logModel.result = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logModel.result = 0;
+                    throw ex;
+                }
             }
+            else
+            {
+                logModel.result = 0;
+                throw new Exception("-7");
+            }
+            lb.Add(logModel);
             return result;
         }
     }
