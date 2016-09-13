@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -292,6 +292,9 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.pictureBox5);
@@ -303,10 +306,9 @@
             this.panel4.Controls.Add(this.labBotton2);
             this.panel4.Controls.Add(this.labBotton3);
             this.panel4.Controls.Add(this.labBotton1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 496);
+            this.panel4.Location = new System.Drawing.Point(0, 514);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1202, 86);
+            this.panel4.Size = new System.Drawing.Size(1202, 84);
             this.panel4.TabIndex = 10;
             this.panel4.Click += new System.EventHandler(this.panel6_Click);
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
@@ -434,9 +436,9 @@
             this.panel5.Controls.Add(this.buttonSave);
             this.panel5.Controls.Add(this.buttonClose);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 582);
+            this.panel5.Location = new System.Drawing.Point(0, 597);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1202, 60);
+            this.panel5.Size = new System.Drawing.Size(1202, 45);
             this.panel5.TabIndex = 11;
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
@@ -447,7 +449,7 @@
             this.buttonExamine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonExamine.Image = global::WSCATProject.Properties.Resources.shenghe;
             this.buttonExamine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExamine.Location = new System.Drawing.Point(841, 14);
+            this.buttonExamine.Location = new System.Drawing.Point(870, 6);
             this.buttonExamine.Name = "buttonExamine";
             this.buttonExamine.Size = new System.Drawing.Size(100, 32);
             this.buttonExamine.TabIndex = 3;
@@ -461,7 +463,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSave.Image = global::WSCATProject.Properties.Resources.save;
             this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSave.Location = new System.Drawing.Point(950, 14);
+            this.buttonSave.Location = new System.Drawing.Point(979, 6);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(119, 32);
             this.buttonSave.TabIndex = 4;
@@ -475,7 +477,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClose.Image = global::WSCATProject.Properties.Resources.close;
             this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonClose.Location = new System.Drawing.Point(1075, 16);
+            this.buttonClose.Location = new System.Drawing.Point(1104, 8);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(91, 32);
             this.buttonClose.TabIndex = 5;
@@ -826,7 +828,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 196);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1202, 300);
+            this.panel3.Size = new System.Drawing.Size(1202, 320);
             this.panel3.TabIndex = 9;
             // 
             // superGridControl1
@@ -835,7 +837,7 @@
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.superGridControl1.Location = new System.Drawing.Point(0, 0);
             this.superGridControl1.Name = "superGridControl1";
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 300);
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 320);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
@@ -902,14 +904,14 @@
             this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;

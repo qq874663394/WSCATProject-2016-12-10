@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+      this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmodel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -55,23 +59,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
             // 
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1086, 64);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1050, 64);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(1049, 68);
+            this.labelprie.Location = new System.Drawing.Point(1013, 68);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(910, 64);
+            this.dateTimePicker1.Location = new System.Drawing.Point(874, 64);
             // 
             // labelDate
             // 
-            this.labelDate.Location = new System.Drawing.Point(870, 67);
+            this.labelDate.Location = new System.Drawing.Point(834, 67);
+            // 
+            // resizablePanel1
+            // 
+            this.resizablePanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            // 
+            // resizablePanelData
+            // 
+            this.resizablePanelData.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // labtextboxBotton4
             // 
@@ -123,15 +136,23 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(808, 14);
+            this.buttonExamine.Location = new System.Drawing.Point(869, 8);
+            this.buttonExamine.Size = new System.Drawing.Size(100, 30);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(917, 14);
+            this.buttonSave.Location = new System.Drawing.Point(978, 8);
+            this.buttonSave.Size = new System.Drawing.Size(119, 30);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1042, 16);
+            this.buttonClose.Location = new System.Drawing.Point(1103, 8);
+            this.buttonClose.Size = new System.Drawing.Size(91, 30);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // labelTitle
             // 
@@ -140,6 +161,41 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.pictureBox8);
+            this.panel2.Controls.Add(this.comboBoxEx2);
+            this.panel2.Controls.Add(this.comboBoxEx1);
+            this.panel2.Controls.Add(this.textBoxX1);
+            this.panel2.Size = new System.Drawing.Size(1202, 86);
+            this.panel2.Controls.SetChildIndex(this.labTop1, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop2, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop3, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop4, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop5, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop6, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop7, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop8, 0);
+            this.panel2.Controls.SetChildIndex(this.labTop9, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.panel2.Controls.SetChildIndex(this.checkBox1, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBox2, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBox3, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBox4, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop1, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop2, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop4, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop5, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop8, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop9, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop7, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
+            this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
+            this.panel2.Controls.SetChildIndex(this.textBoxX1, 0);
+            this.panel2.Controls.SetChildIndex(this.comboBoxEx1, 0);
+            this.panel2.Controls.SetChildIndex(this.comboBoxEx2, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBox8, 0);
             // 
             // labtextboxTop6
             // 
@@ -152,6 +208,8 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop6.Location = new System.Drawing.Point(91, 15);
+            this.labtextboxTop6.Size = new System.Drawing.Size(132, 16);
             // 
             // labtextboxTop3
             // 
@@ -164,6 +222,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop3.Visible = false;
             // 
             // labtextboxTop7
             // 
@@ -176,6 +235,9 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop7.Location = new System.Drawing.Point(374, 45);
+            this.labtextboxTop7.Size = new System.Drawing.Size(125, 16);
+            this.labtextboxTop7.Visible = false;
             // 
             // labtextboxTop9
             // 
@@ -188,6 +250,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop9.Location = new System.Drawing.Point(606, 45);
             // 
             // labtextboxTop8
             // 
@@ -200,6 +263,8 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop8.Location = new System.Drawing.Point(609, 45);
+            this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
             // 
@@ -212,6 +277,8 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop5.Location = new System.Drawing.Point(606, 45);
+            this.labtextboxTop5.Visible = false;
             // 
             // labtextboxTop4
             // 
@@ -224,6 +291,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
             // 
@@ -248,10 +316,91 @@
             this.labtextboxTop1.Border.BorderGradientAngle = 0;
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop1.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(223, 11);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(479, 41);
+            this.pictureBox3.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(479, 11);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(223, 48);
+            this.checkBox1.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Visible = false;
+            // 
+            // labTop9
+            // 
+            this.labTop9.Location = new System.Drawing.Point(547, 47);
+            // 
+            // labTop8
+            // 
+            this.labTop8.Location = new System.Drawing.Point(550, 47);
+            this.labTop8.Visible = false;
+            // 
+            // labTop7
+            // 
+            this.labTop7.Location = new System.Drawing.Point(317, 47);
+            this.labTop7.Text = "入货类型：";
+            // 
+            // labTop6
+            // 
+            this.labTop6.Location = new System.Drawing.Point(34, 17);
+            this.labTop6.Text = "供 应 商：";
+            // 
+            // labTop5
+            // 
+            this.labTop5.Visible = false;
+            // 
+            // labTop4
+            // 
+            this.labTop4.Text = "入库类型：";
+            this.labTop4.Visible = false;
+            // 
+            // labTop3
+            // 
+            this.labTop3.Location = new System.Drawing.Point(33, 45);
+            this.labTop3.Text = "采购单号：";
+            // 
+            // labTop2
+            // 
+            this.labTop2.Location = new System.Drawing.Point(32, 45);
+            this.labTop2.Text = "采购单号：";
+            this.labTop2.Visible = false;
+            // 
+            // labTop1
+            // 
+            this.labTop1.Location = new System.Drawing.Point(317, 17);
+            this.labTop1.Text = "产品检索：";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.None;
+            this.panel3.Location = new System.Drawing.Point(0, 171);
+            this.panel3.Size = new System.Drawing.Size(1202, 365);
             // 
             // superGridControl1
             // 
+            this.superGridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.None;
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 342);
             // 
             // 
             // 
@@ -273,16 +422,61 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(1166, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(1182, 1);
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(1139, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(1155, 1);
             // 
             // pictureBoxtitle
             // 
             this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
+            // 
+            // textBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(374, 11);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.Size = new System.Drawing.Size(132, 21);
+            this.textBoxX1.TabIndex = 53;
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DisplayMember = "Text";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.ItemHeight = 15;
+            this.comboBoxEx1.Location = new System.Drawing.Point(91, 40);
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Size = new System.Drawing.Size(150, 21);
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx1.TabIndex = 54;
+            // 
+            // comboBoxEx2
+            // 
+            this.comboBoxEx2.DisplayMember = "Text";
+            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx2.FormattingEnabled = true;
+            this.comboBoxEx2.ItemHeight = 15;
+            this.comboBoxEx2.Location = new System.Drawing.Point(374, 40);
+            this.comboBoxEx2.Name = "comboBoxEx2";
+            this.comboBoxEx2.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx2.TabIndex = 55;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Location = new System.Drawing.Point(1049, 3);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(140, 77);
+            this.pictureBox8.TabIndex = 56;
+            this.pictureBox8.TabStop = false;
             // 
             // material
             // 
@@ -358,6 +552,34 @@
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.Visible = false;
             // 
+            this.gridColumnmoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnmoney.HeaderText = "金额";
+            this.gridColumnmoney.Name = "gridColumnmoney";
+            this.gridColumnmoney.Visible = false;
+            // 
+            // griCoulumcangku
+            // 
+            this.griCoulumcangku.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.griCoulumcangku.HeaderText = "仓库";
+            this.griCoulumcangku.Name = "griCoulumcangku";
+            // 
+            // griCoulumhuojia
+            // 
+            this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.griCoulumhuojia.HeaderText = "货架";
+            this.griCoulumhuojia.Name = "griCoulumhuojia";
+            // 
+            // gridColumnremark
+            // 
+            this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnremark.HeaderText = "备注";
+            this.gridColumnremark.Name = "gridColumnremark";
+            // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.Visible = false;
+            // 
             // WareHouseInMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -386,13 +608,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
+      private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private System.Windows.Forms.PictureBox pictureBox8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;
