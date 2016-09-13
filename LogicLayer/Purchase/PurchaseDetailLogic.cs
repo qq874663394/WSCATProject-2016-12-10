@@ -1,4 +1,5 @@
 ﻿using BaseLayer;
+using BaseLayer.Purchase;
 using HelperUtility;
 using Model;
 using System;
@@ -12,7 +13,7 @@ namespace LogicLayer.Purchase
 {
     public class PurchaseDetailLogic
     {
-        PurchaseDetailLogic pdl = new PurchaseDetailLogic();
+        PurchaseDetailBase pdl = new PurchaseDetailBase();
         public DataTable GetList(string purchaseCode, string zhujima)
         {
             DataTable dt = null;

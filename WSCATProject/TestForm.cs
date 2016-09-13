@@ -188,7 +188,7 @@ namespace WSCATProject
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y -160);
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStock")
             {

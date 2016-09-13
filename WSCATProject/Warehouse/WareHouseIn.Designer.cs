@@ -45,6 +45,7 @@
             this.griCoulumcangku = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.griCoulumhuojia = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -107,7 +108,7 @@
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop3.Location = new System.Drawing.Point(196, 24);
             this.labtextboxTop3.ReadOnly = true;
-            this.labtextboxTop3.Size = new System.Drawing.Size(123, 16);
+            this.labtextboxTop3.Size = new System.Drawing.Size(142, 16);
             this.labtextboxTop3.TextAlignChanged += new System.EventHandler(this.labtextboxTop3_TextAlignChanged);
             // 
             // labtextboxTop7
@@ -176,7 +177,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(265, 23);
+            this.labtextboxTop4.Location = new System.Drawing.Point(227, 23);
             this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
@@ -300,11 +301,13 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControl1.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1140, 296);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.TextChanged += new System.EventHandler(this.superGridControl1_TextChanged);
             // 
             // resizablePanel1
             // 
@@ -372,17 +375,17 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(805, 13);
+            this.buttonExamine.Location = new System.Drawing.Point(803, 13);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(911, 13);
+            this.buttonSave.Location = new System.Drawing.Point(909, 13);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1036, 13);
+            this.buttonClose.Location = new System.Drawing.Point(1034, 13);
             // 
             // panel1
             // 
@@ -427,6 +430,7 @@
             // 
             // panel4
             // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Location = new System.Drawing.Point(0, 455);
             this.panel4.Size = new System.Drawing.Size(1140, 92);
             this.panel4.Click += new System.EventHandler(this.panel6_Click);
@@ -556,6 +560,12 @@
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.ReadOnly = true;
+            this.gridColumnid.Visible = false;
+            // 
             // WareHouseIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -605,5 +615,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumcangku;
         private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumhuojia;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnremark;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }

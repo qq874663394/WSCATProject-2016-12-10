@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
@@ -155,6 +155,7 @@
             this.pictureBoxtitle.Size = new System.Drawing.Size(1202, 61);
             this.pictureBoxtitle.TabIndex = 0;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.Click += new System.EventHandler(this.panel6_Click);
             this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // toolStrip1
@@ -171,6 +172,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1202, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.Click += new System.EventHandler(this.panel6_Click);
             this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // toolStripButton1
@@ -595,7 +597,7 @@
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
+            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // resizablePanelData
             // 
@@ -658,14 +660,14 @@
             this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -705,6 +707,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1202, 100);
             this.panel4.TabIndex = 10;
+            this.panel4.Click += new System.EventHandler(this.panel6_Click);
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBox5
@@ -834,6 +837,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1202, 61);
             this.panel5.TabIndex = 11;
+            this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // buttonExamine
