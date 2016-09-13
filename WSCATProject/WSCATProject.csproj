@@ -163,6 +163,12 @@
     <Compile Include="Warehouse\WareHouseIn.Designer.cs">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseInMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInMain.Designer.cs">
+      <DependentUpon>WareHouseInMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseInventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     <EmbeddedResource Include="Warehouse\WareHouseIn.resx">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInMain.resx">
+      <DependentUpon>WareHouseInMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryForm.resx">
       <DependentUpon>WareHouseInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -318,6 +327,7 @@
     <Content Include="Resources\backgroup2.png" />
     <Content Include="Resources\banner.jpg" />
     <Content Include="Resources\banner.png" />
+    <None Include="Resources\big.PNG" />
     <Content Include="Resources\bottomBtnBackgroup.png" />
     <Content Include="Resources\btnRightBackgroup.png" />
     <Content Include="Resources\btn_enter.png" />
@@ -362,6 +372,7 @@
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\houdan.png" />
+    <None Include="Resources\huanyuan.PNG" />
     <Content Include="Resources\huopinziliao.png" />
     <Content Include="Resources\inInsert.png" />
     <Content Include="Resources\inSelect.png" />
@@ -410,6 +421,7 @@
     <None Include="Resources\shanchu副本.png" />
     <Content Include="Resources\shoukuan.png" />
     <None Include="Resources\shuaxin.PNG" />
+    <None Include="Resources\small.PNG" />
     <Content Include="Resources\souhouweihu.png" />
     <Content Include="Resources\staffData.png" />
     <Content Include="Resources\staffSetting.png" />

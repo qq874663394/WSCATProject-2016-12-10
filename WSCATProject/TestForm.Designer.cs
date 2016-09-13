@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -45,13 +47,6 @@
             this.labelprie = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDate = new System.Windows.Forms.Label();
-            this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.resizablePanel1 = new HelperUtility.ExUI.ResizablePanel();
-            this.panelDataView = new System.Windows.Forms.Panel();
-            this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labtextboxBotton4 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -66,6 +61,7 @@
             this.buttonExamine = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.labtextboxTop6 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -93,14 +89,18 @@
             this.labTop1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.resizablePanel1 = new HelperUtility.ExUI.ResizablePanel();
+            this.panelDataView = new System.Windows.Forms.Panel();
+            this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.resizablePanelData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.resizablePanel1.SuspendLayout();
-            this.panelDataView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel5.SuspendLayout();
@@ -110,6 +110,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.resizablePanelData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.resizablePanel1.SuspendLayout();
+            this.panelDataView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -119,6 +124,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox7);
+            this.panel1.Controls.Add(this.pictureBox6);
             this.panel1.Controls.Add(this.labelTitle);
             this.panel1.Controls.Add(this.pictureBoxtitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -126,6 +133,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1202, 61);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox7.BackColor = System.Drawing.Color.White;
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
+            this.pictureBox7.Location = new System.Drawing.Point(1150, 5);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox7.TabIndex = 43;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox6.Image = global::WSCATProject.Properties.Resources.big;
+            this.pictureBox6.Location = new System.Drawing.Point(1177, 5);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox6.TabIndex = 42;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // labelTitle
             // 
@@ -155,6 +190,7 @@
             this.pictureBoxtitle.Size = new System.Drawing.Size(1202, 61);
             this.pictureBoxtitle.TabIndex = 0;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.Click += new System.EventHandler(this.panel6_Click);
             this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // toolStrip1
@@ -171,6 +207,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1202, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.Click += new System.EventHandler(this.panel6_Click);
             this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // toolStripButton1
@@ -253,101 +290,13 @@
             this.labelDate.TabIndex = 6;
             this.labelDate.Text = "日期：";
             // 
-            // resizablePanelData
-            // 
-            this.resizablePanelData.BackColor = System.Drawing.Color.White;
-            this.resizablePanelData.Controls.Add(this.dataGridView1);
-            this.resizablePanelData.Controls.Add(this.label2);
-            this.resizablePanelData.Location = new System.Drawing.Point(684, 243);
-            this.resizablePanelData.Name = "resizablePanelData";
-            this.resizablePanelData.Size = new System.Drawing.Size(72, 54);
-            this.resizablePanelData.TabIndex = 6;
-            this.resizablePanelData.Visible = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(72, 38);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(0, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 16);
-            this.label2.TabIndex = 3;
-            // 
-            // resizablePanel1
-            // 
-            this.resizablePanel1.BackColor = System.Drawing.Color.White;
-            this.resizablePanel1.Controls.Add(this.panelDataView);
-            this.resizablePanel1.Controls.Add(this.label1);
-            this.resizablePanel1.ForeColor = System.Drawing.Color.Black;
-            this.resizablePanel1.Location = new System.Drawing.Point(94, 178);
-            this.resizablePanel1.Name = "resizablePanel1";
-            this.resizablePanel1.Size = new System.Drawing.Size(248, 148);
-            this.resizablePanel1.TabIndex = 5;
-            this.resizablePanel1.Visible = false;
-            // 
-            // panelDataView
-            // 
-            this.panelDataView.Controls.Add(this.dataGridViewFujia);
-            this.panelDataView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDataView.Location = new System.Drawing.Point(0, 0);
-            this.panelDataView.Name = "panelDataView";
-            this.panelDataView.Size = new System.Drawing.Size(248, 132);
-            this.panelDataView.TabIndex = 30;
-            // 
-            // dataGridViewFujia
-            // 
-            this.dataGridViewFujia.AllowUserToAddRows = false;
-            this.dataGridViewFujia.AllowUserToDeleteRows = false;
-            this.dataGridViewFujia.AllowUserToResizeColumns = false;
-            this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewFujia.MultiSelect = false;
-            this.dataGridViewFujia.Name = "dataGridViewFujia";
-            this.dataGridViewFujia.RowHeadersVisible = false;
-            this.dataGridViewFujia.RowTemplate.Height = 23;
-            this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
-            this.dataGridViewFujia.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("宋体", 12F);
-            this.label1.Location = new System.Drawing.Point(0, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 16);
-            this.label1.TabIndex = 2;
-            // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.labtextboxBotton4);
             this.panel4.Controls.Add(this.labtextboxBotton3);
@@ -357,18 +306,18 @@
             this.panel4.Controls.Add(this.labBotton2);
             this.panel4.Controls.Add(this.labBotton3);
             this.panel4.Controls.Add(this.labBotton1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 481);
+            this.panel4.Location = new System.Drawing.Point(0, 514);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1202, 100);
+            this.panel4.Size = new System.Drawing.Size(1202, 84);
             this.panel4.TabIndex = 10;
+            this.panel4.Click += new System.EventHandler(this.panel6_Click);
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::WSCATProject.Properties.Resources.checkMore;
-            this.pictureBox5.Location = new System.Drawing.Point(197, 25);
+            this.pictureBox5.Location = new System.Drawing.Point(197, 15);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(20, 20);
             this.pictureBox5.TabIndex = 40;
@@ -386,7 +335,7 @@
             this.labtextboxBotton4.Border.BorderGradientAngle = 0;
             this.labtextboxBotton4.Border.Class = "SideNavStrip";
             this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton4.Location = new System.Drawing.Point(354, 59);
+            this.labtextboxBotton4.Location = new System.Drawing.Point(354, 49);
             this.labtextboxBotton4.Name = "labtextboxBotton4";
             this.labtextboxBotton4.PreventEnterBeep = true;
             this.labtextboxBotton4.Size = new System.Drawing.Size(117, 16);
@@ -403,7 +352,7 @@
             this.labtextboxBotton3.Border.BorderGradientAngle = 0;
             this.labtextboxBotton3.Border.Class = "SideNavStrip";
             this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton3.Location = new System.Drawing.Point(97, 59);
+            this.labtextboxBotton3.Location = new System.Drawing.Point(97, 49);
             this.labtextboxBotton3.Name = "labtextboxBotton3";
             this.labtextboxBotton3.PreventEnterBeep = true;
             this.labtextboxBotton3.Size = new System.Drawing.Size(105, 16);
@@ -420,7 +369,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(354, 29);
+            this.labtextboxBotton2.Location = new System.Drawing.Point(354, 19);
             this.labtextboxBotton2.Name = "labtextboxBotton2";
             this.labtextboxBotton2.PreventEnterBeep = true;
             this.labtextboxBotton2.Size = new System.Drawing.Size(424, 16);
@@ -437,7 +386,7 @@
             this.labtextboxBotton1.Border.BorderGradientAngle = 0;
             this.labtextboxBotton1.Border.Class = "SideNavStrip";
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton1.Location = new System.Drawing.Point(97, 29);
+            this.labtextboxBotton1.Location = new System.Drawing.Point(97, 19);
             this.labtextboxBotton1.Name = "labtextboxBotton1";
             this.labtextboxBotton1.PreventEnterBeep = true;
             this.labtextboxBotton1.Size = new System.Drawing.Size(105, 16);
@@ -446,7 +395,7 @@
             // labBotton4
             // 
             this.labBotton4.AutoSize = true;
-            this.labBotton4.Location = new System.Drawing.Point(297, 61);
+            this.labBotton4.Location = new System.Drawing.Point(297, 51);
             this.labBotton4.Name = "labBotton4";
             this.labBotton4.Size = new System.Drawing.Size(65, 12);
             this.labBotton4.TabIndex = 39;
@@ -455,7 +404,7 @@
             // labBotton2
             // 
             this.labBotton2.AutoSize = true;
-            this.labBotton2.Location = new System.Drawing.Point(297, 31);
+            this.labBotton2.Location = new System.Drawing.Point(297, 21);
             this.labBotton2.Name = "labBotton2";
             this.labBotton2.Size = new System.Drawing.Size(65, 12);
             this.labBotton2.TabIndex = 34;
@@ -464,7 +413,7 @@
             // labBotton3
             // 
             this.labBotton3.AutoSize = true;
-            this.labBotton3.Location = new System.Drawing.Point(52, 61);
+            this.labBotton3.Location = new System.Drawing.Point(52, 51);
             this.labBotton3.Name = "labBotton3";
             this.labBotton3.Size = new System.Drawing.Size(53, 12);
             this.labBotton3.TabIndex = 33;
@@ -473,7 +422,7 @@
             // labBotton1
             // 
             this.labBotton1.AutoSize = true;
-            this.labBotton1.Location = new System.Drawing.Point(52, 31);
+            this.labBotton1.Location = new System.Drawing.Point(52, 21);
             this.labBotton1.Name = "labBotton1";
             this.labBotton1.Size = new System.Drawing.Size(53, 12);
             this.labBotton1.TabIndex = 32;
@@ -486,11 +435,12 @@
             this.panel5.Controls.Add(this.buttonExamine);
             this.panel5.Controls.Add(this.buttonSave);
             this.panel5.Controls.Add(this.buttonClose);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 581);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 597);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1202, 61);
+            this.panel5.Size = new System.Drawing.Size(1202, 45);
             this.panel5.TabIndex = 11;
+            this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // buttonExamine
@@ -499,7 +449,7 @@
             this.buttonExamine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonExamine.Image = global::WSCATProject.Properties.Resources.shenghe;
             this.buttonExamine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExamine.Location = new System.Drawing.Point(841, 14);
+            this.buttonExamine.Location = new System.Drawing.Point(870, 6);
             this.buttonExamine.Name = "buttonExamine";
             this.buttonExamine.Size = new System.Drawing.Size(100, 32);
             this.buttonExamine.TabIndex = 3;
@@ -513,7 +463,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSave.Image = global::WSCATProject.Properties.Resources.save;
             this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSave.Location = new System.Drawing.Point(950, 14);
+            this.buttonSave.Location = new System.Drawing.Point(979, 6);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(119, 32);
             this.buttonSave.TabIndex = 4;
@@ -527,13 +477,20 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClose.Image = global::WSCATProject.Properties.Resources.close;
             this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonClose.Location = new System.Drawing.Point(1075, 16);
+            this.buttonClose.Location = new System.Drawing.Point(1104, 8);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(91, 32);
             this.buttonClose.TabIndex = 5;
             this.buttonClose.Text = "    退出(&C)";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(283, 368);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(310, 139);
+            this.panel6.TabIndex = 6;
             // 
             // toolTip1
             // 
@@ -866,11 +823,12 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.superGridControl1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 196);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1202, 285);
+            this.panel3.Size = new System.Drawing.Size(1202, 320);
             this.panel3.TabIndex = 9;
             // 
             // superGridControl1
@@ -879,11 +837,102 @@
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.superGridControl1.Location = new System.Drawing.Point(0, 0);
             this.superGridControl1.Name = "superGridControl1";
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 285);
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 320);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
+            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
+            // 
+            // resizablePanelData
+            // 
+            this.resizablePanelData.BackColor = System.Drawing.Color.White;
+            this.resizablePanelData.Controls.Add(this.dataGridView1);
+            this.resizablePanelData.Controls.Add(this.label2);
+            this.resizablePanelData.Location = new System.Drawing.Point(684, 243);
+            this.resizablePanelData.Name = "resizablePanelData";
+            this.resizablePanelData.Size = new System.Drawing.Size(389, 188);
+            this.resizablePanelData.TabIndex = 6;
+            this.resizablePanelData.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(389, 172);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F);
+            this.label2.Location = new System.Drawing.Point(0, 172);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.TabIndex = 3;
+            // 
+            // resizablePanel1
+            // 
+            this.resizablePanel1.BackColor = System.Drawing.Color.White;
+            this.resizablePanel1.Controls.Add(this.panelDataView);
+            this.resizablePanel1.Controls.Add(this.label1);
+            this.resizablePanel1.ForeColor = System.Drawing.Color.Black;
+            this.resizablePanel1.Location = new System.Drawing.Point(94, 178);
+            this.resizablePanel1.Name = "resizablePanel1";
+            this.resizablePanel1.Size = new System.Drawing.Size(248, 148);
+            this.resizablePanel1.TabIndex = 5;
+            this.resizablePanel1.Visible = false;
+            // 
+            // panelDataView
+            // 
+            this.panelDataView.Controls.Add(this.dataGridViewFujia);
+            this.panelDataView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDataView.Location = new System.Drawing.Point(0, 0);
+            this.panelDataView.Name = "panelDataView";
+            this.panelDataView.Size = new System.Drawing.Size(248, 132);
+            this.panelDataView.TabIndex = 30;
+            // 
+            // dataGridViewFujia
+            // 
+            this.dataGridViewFujia.AllowUserToAddRows = false;
+            this.dataGridViewFujia.AllowUserToDeleteRows = false;
+            this.dataGridViewFujia.AllowUserToResizeColumns = false;
+            this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewFujia.MultiSelect = false;
+            this.dataGridViewFujia.Name = "dataGridViewFujia";
+            this.dataGridViewFujia.RowHeadersVisible = false;
+            this.dataGridViewFujia.RowTemplate.Height = 23;
+            this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
+            this.dataGridViewFujia.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F);
+            this.label1.Location = new System.Drawing.Point(0, 132);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.TabIndex = 2;
             // 
             // TestForm
             // 
@@ -892,8 +941,8 @@
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Controls.Add(this.resizablePanelData);
             this.Controls.Add(this.resizablePanel1);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.textBoxOddNumbers);
             this.Controls.Add(this.labelprie);
@@ -909,16 +958,11 @@
             this.Load += new System.EventHandler(this.TestForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.resizablePanelData.ResumeLayout(false);
-            this.resizablePanelData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.resizablePanel1.ResumeLayout(false);
-            this.resizablePanel1.PerformLayout();
-            this.panelDataView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -930,6 +974,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.resizablePanelData.ResumeLayout(false);
+            this.resizablePanelData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.resizablePanel1.ResumeLayout(false);
+            this.resizablePanel1.PerformLayout();
+            this.panelDataView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -937,7 +988,6 @@
 
         #endregion
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private System.Windows.Forms.PictureBox pictureBoxtitle;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
@@ -998,5 +1048,9 @@
         protected System.Windows.Forms.Label labTop1;
         protected System.Windows.Forms.Panel panel3;
         protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
+        protected System.Windows.Forms.Panel panel6;
+        public System.Windows.Forms.PictureBox pictureBox6;
+        public System.Windows.Forms.PictureBox pictureBox7;
+        public System.Windows.Forms.PictureBox pictureBoxtitle;
     }
 }

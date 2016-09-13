@@ -82,7 +82,6 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
-E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\InterfaceLayer.dll
 E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\InterfaceLayer.pdb
 E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.dll
@@ -98,5 +97,8 @@ E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\Model.pdb
 E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.xml
 E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\BaseLayer.pdb
 E:\619项目\2016年9月5日092343\InterfaceLayer\bin\Debug\UpdateManagerLayer.pdb
+E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 E:\619项目\2016年9月5日092343\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
+E:\619项目\619项目\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.dll
+E:\619项目\619项目\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.xml

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicLayer.Purchase;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace InterfaceLayer.Purchase
 {
     public class PurchaseDetailInterface
     {
-        PurchaseDetailInterface pdi = new PurchaseDetailInterface();
+        PurchaseDetailLogic pdi = new PurchaseDetailLogic();
         public DataTable GetList(string purchaseCode, string zhujima)
         {
             return pdi.GetList(purchaseCode, zhujima);

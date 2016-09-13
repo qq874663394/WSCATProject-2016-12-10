@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaseLayer.Purchase
 {
-    public class PurchaseDetail
+    public class PurchaseDetailBase
     {
         public DataTable GetList(string purchaseCode, string zhujima)
         {
@@ -23,7 +23,7 @@ namespace BaseLayer.Purchase
                     {
                         sql += string.Format("PurchaseCode='{0}'", purchaseCode);
                     }
-                    if (!string.IsNullOrWhiteSpace(purchaseCode) && string.IsNullOrWhiteSpace(zhujima))
+                    if (!string.IsNullOrWhiteSpace(purchaseCode) && !string.IsNullOrWhiteSpace(zhujima))
                     {
                         sql += " and ";
                     }

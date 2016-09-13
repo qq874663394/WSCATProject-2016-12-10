@@ -183,12 +183,11 @@ namespace WSCATProject
 
         private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
         {
-            int intX = ScreenCursorPosition.X;
-            int intY = ScreenCursorPosition.Y;
             if (e.GridCell.GridColumn.Name == "material")
             {
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
+
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
@@ -199,7 +198,7 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y + 65);
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y );
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStockIn")
             {
@@ -208,7 +207,7 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y + 65);
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y );
             }
         }
 
@@ -230,21 +229,39 @@ namespace WSCATProject
             this.Dispose();
         }
 
-        [DllImport("User32.dll")]
-        public static extern int GetCursorPos(out Point point);//得到光标在屏幕上的位置
-        public static Point ScreenCursorPosition //获取光标相对于显示器的位置 
+        private void pictureBox6_Click(object sender, EventArgs e)
         {
-            get
+            if (this.WindowState == FormWindowState.Maximized)
             {
-                Point showPoint = new Point();
-                GetCursorPos(out showPoint);
-                return showPoint;
+                this.WindowState = FormWindowState.Normal;
+                pictureBox6.Image = Properties.Resources.big;
+                return;
             }
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                pictureBox6.Image = Properties.Resources.huanyuan;
+                return;
+            }
+
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void pictureBox7_Click(object sender, EventArgs e)
         {
-            resizablePanelData.Visible = false;
+            this.WindowState = FormWindowState.Minimized;
         }
+
+        //获取鼠标的位置
+        //[DllImport("User32.dll")]
+        //public static extern int GetCursorPos(out Point point);//得到光标在屏幕上的位置
+        //public static Point ScreenCursorPosition //获取光标相对于显示器的位置 
+        //{
+        //    get
+        //    {
+        //        Point showPoint = new Point();
+        //        GetCursorPos(out showPoint);
+        //        return showPoint;
+        //    }
+        //}
     }
 }
