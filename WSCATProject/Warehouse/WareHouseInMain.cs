@@ -206,6 +206,8 @@ namespace WSCATProject.Warehouse
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //调用合计行数据
+            InitDataGridView();
         }
 
         #region  仓库的选择和两个表格的点击事件
@@ -291,21 +293,21 @@ namespace WSCATProject.Warehouse
         {
             if (e.GridCell.GridColumn.Name == "material")
             {
-                SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
-                GridCell gc = ge[0] as GridCell;
-                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
-                {
-                    //模糊查询商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
-                    InitMaterialDataGridView();
-                }
-                else
-                {
-                    //绑定商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "");
-                    InitMaterialDataGridView();
-                }
-                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                //SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+                //GridCell gc = ge[0] as GridCell;
+                //if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                //{
+                //    //模糊查询商品列表
+                //    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                //    InitMaterialDataGridView();
+                //}
+                //else
+                //{
+                //    //绑定商品列表
+                //    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "");
+                //    InitMaterialDataGridView();
+                //}
+                //dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
         }
 

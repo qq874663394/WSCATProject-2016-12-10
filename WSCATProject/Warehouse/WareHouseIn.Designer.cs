@@ -147,17 +147,17 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(1213, 17);
+            this.buttonExamine.Location = new System.Drawing.Point(1313, 17);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(1319, 17);
+            this.buttonSave.Location = new System.Drawing.Point(1419, 17);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1444, 17);
+            this.buttonClose.Location = new System.Drawing.Point(1544, 17);
             // 
             // panel1
             // 
@@ -461,15 +461,15 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(2039, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(2139, 5);
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(2012, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(2112, 5);
             // 
             // pictureBoxtitle
             // 
-            this.pictureBoxtitle.Size = new System.Drawing.Size(1902, 61);
+            this.pictureBoxtitle.Size = new System.Drawing.Size(2002, 61);
             // 
             // comboBoxEx1
             // 

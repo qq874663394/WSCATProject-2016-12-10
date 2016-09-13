@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-      this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -400,7 +400,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.superGridControl1.Dock = System.Windows.Forms.DockStyle.None;
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 342);
             // 
             // 
             // 
@@ -416,17 +415,19 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 342);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(1182, 1);
+            this.pictureBox6.Location = new System.Drawing.Point(1160, 26);
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(1155, 1);
+            this.pictureBox7.Location = new System.Drawing.Point(1133, 26);
             // 
             // pictureBoxtitle
             // 
@@ -523,34 +524,6 @@
             this.gridColumnprice.Visible = false;
             // 
             // gridColumnmoney
-            // 
-            this.gridColumnmoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumnmoney.HeaderText = "金额";
-            this.gridColumnmoney.Name = "gridColumnmoney";
-            this.gridColumnmoney.Visible = false;
-            // 
-            // griCoulumcangku
-            // 
-            this.griCoulumcangku.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.griCoulumcangku.HeaderText = "仓库";
-            this.griCoulumcangku.Name = "griCoulumcangku";
-            // 
-            // griCoulumhuojia
-            // 
-            this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.griCoulumhuojia.HeaderText = "货架";
-            this.griCoulumhuojia.Name = "griCoulumhuojia";
-            // 
-            // gridColumnremark
-            // 
-            this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumnremark.HeaderText = "备注";
-            this.gridColumnremark.Name = "gridColumnremark";
-            // 
-            // gridColumnid
-            // 
-            this.gridColumnid.Name = "gridColumnid";
-            this.gridColumnid.Visible = false;
             // 
             this.gridColumnmoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnmoney.HeaderText = "金额";
