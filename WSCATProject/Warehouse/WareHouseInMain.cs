@@ -210,7 +210,26 @@ namespace WSCATProject.Warehouse
             InitDataGridView();
         }
 
-        #region  仓库的选择和两个表格的点击事件
+        #region 小箭头图标和仓库的选择以及两个表格的点击事件
+
+        //供应商
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                InitSupply();
+            }
+            _Click = 3;
+        }
+        //入库员
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            if (_Click != 2)
+            {
+                InitEmployee();
+            }
+            _Click = 3;
+        }
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -538,7 +557,7 @@ namespace WSCATProject.Warehouse
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(204, 310);
+                resizablePanel1.Location = new Point(204, 380);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
         }
@@ -565,7 +584,7 @@ namespace WSCATProject.Warehouse
                 dgvc.HeaderText = "单位名称";
                 dgvc.DataPropertyName = "单位名称";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(640, 110);
+                resizablePanel1.Location = new Point(520, 123);
                 dataGridViewFujia.DataSource = _AllSupply;
             }
         }
@@ -638,5 +657,7 @@ namespace WSCATProject.Warehouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
+     
     }
 }

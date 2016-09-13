@@ -92,7 +92,7 @@ namespace WSCATProject.WareHouse
             pictureBox4.Visible = false;
             #endregion
             //客户
-            _AllClient = client.SelClient(false);
+            _AllClient = client.GetClientByBool(false);
 
             //业务员
             EmpolyeeInterface employee = new EmpolyeeInterface();

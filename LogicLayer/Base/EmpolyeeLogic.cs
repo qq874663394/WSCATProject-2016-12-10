@@ -10,7 +10,7 @@ namespace LogicLayer.Base
     public class EmpolyeeLogic
     {
         EmpolyeeBase eb = new EmpolyeeBase();
-        public DataTable SelEmpolyeeTable(bool isflag)
+        public DataTable GetEmpByBool(bool isflag)
         {
             DataTable dt = null;
             LogBase lb = new LogBase();
@@ -32,9 +32,9 @@ namespace LogicLayer.Base
             catch (Exception ex)
             {
                 model.result = 0;
-                lb.Add(model);
                 throw ex;
             }
+            lb.Add(model);
             return dt;
         }
         public DataTable GetList(string strWhere)
@@ -53,8 +53,8 @@ namespace LogicLayer.Base
             };
             try
             {
-                model.result = 1;
                 dt = eb.GetList(strWhere);
+                model.result = 1;
             }
             catch (Exception ex)
             {

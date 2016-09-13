@@ -11,9 +11,9 @@ namespace InterfaceLayer.Base
         /// </summary>
         /// <param name="isflag">true显示全部 false显示未禁用</param>
         /// <returns></returns>
-        public DataTable SelClient(bool isflag)
+        public DataTable GetClientByBool(bool isflag)
         {
-            return cb.SelClient(isflag);
+            return cb.GetClientByBool(isflag);
         }
         /// <summary>
         /// 自定义条件取得列表

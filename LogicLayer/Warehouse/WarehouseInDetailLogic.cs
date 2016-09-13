@@ -15,6 +15,7 @@ namespace LogicLayer
     public class WarehouseInDetailLogic
     {
         private WarehouseInDetailBase wdb = new WarehouseInDetailBase();
+        private WarehouseUpdataManager wum = new WarehouseUpdataManager();
         /// <summary>
         /// 新增一条数据 
         /// </summary>
@@ -32,22 +33,31 @@ namespace LogicLayer
                 objective = "新增入库商品详情",
                 operationContent = "新增T_WarehouseInDetail表的数据"
             };
-            if (model != null)
+            if (model != null && !string.IsNullOrWhiteSpace(model.code))
             {
-                result = wdb.Add(model);
-                if (result > 0)
+                try
                 {
-                    logModel.result = 1;
+                    result = wdb.Add(model);
+                    if (result > 0)
+                    {
+                        logModel.result = 1;
+                        wum.add(model.code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+                    }
+                    else
+                    {
+                        logModel.result = 0;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     logModel.result = 0;
+                    throw ex;
                 }
             }
             else
             {
                 logModel.result = 0;
-                result = -7;
+                throw new Exception("-7");
             }
             lb.Add(logModel);
             return result;
@@ -88,7 +98,7 @@ namespace LogicLayer
             else
             {
                 logModel.result = 0;
-                result = -7;
+                throw new Exception("-7");
             }
             lb.Add(logModel);
             return result;

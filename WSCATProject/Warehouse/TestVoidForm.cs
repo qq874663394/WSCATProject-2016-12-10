@@ -1,4 +1,5 @@
 ﻿using BaseLayer;
+using DevComponents.DotNetBar.SuperGrid;
 using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
 using LogicLayer;
@@ -28,7 +29,6 @@ namespace WSCATProject.Warehouse
 
         private void TestVoidForm_Load(object sender, EventArgs e)
         {
-
         }
         public string ExSwitch(string warehouseInResult)
         {
@@ -86,7 +86,7 @@ namespace WSCATProject.Warehouse
             ////ClientInterface ba = new ClientInterface();
             ////try
             ////{
-            ////    DataTable dt = ba.SelClient(false);
+            ////    DataTable dt = ba.GetClientByBool(false);
             ////}
             ////catch (Exception ex)
             ////{
@@ -162,6 +162,12 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                DictionaryEntry de = new DictionaryEntry();
+                foreach (DictionaryEntry de1 in htKey)
+                {
+                    de.Key = de1.Key;
+                    de.Value = de1.Value;
+                }
                 DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
             }
             catch (Exception ex)
@@ -176,6 +182,81 @@ namespace WSCATProject.Warehouse
             //DataTable wodt = wo.GetListToOut(0).Tables[0];
 
             //wodt.Merge(widt);
+        }
+
+        //发生的任何单元格的值更改时
+        private void superGridControl1_CellValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs e)
+        {
+            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            //string text = gr.Cells[0].Value == null ? "" : gr.Cells[0].Value.ToString();
+            //MessageBox.Show(text);
+        }
+        //当单元格编辑器值更改后发生
+        private void superGridControl1_EditorValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridEditEventArgs e)
+        {
+            
+            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            //string text = gr.Cells[0].Value == null ? "" : gr.Cells[0].Value.ToString();
+            string text = e.EditControl.EditorValue.ToString();
+            MessageBox.Show(text);
+        }
+
+        private void superGridControl1_FilterEditValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridFilterEditValueChangedEventArgs e)
+        {
+            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            //string text = gr.Cells[0].Value == null ? "" : gr.Cells[0].Value.ToString();
+            //MessageBox.Show(text);
+        }
+
+        private void superGridControl1_FilterPopupValueChanged(object sender, GridFilterPopupValueChangedEventArgs e)
+        {
+        }
+
+        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+        }
+
+        private void superGridControl1_CellValidating(object sender, GridCellValidatingEventArgs e)
+        {
+        }
+
+        private void superGridControl1_CellActivated(object sender, GridCellActivatedEventArgs e)
+        {
+        }
+
+        private void superGridControl1_CellActivating(object sender, GridCellActivatingEventArgs e)
+        {
+        }
+
+        private void superGridControl1_CausesValidationChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void superGridControl1_ActiveGridChanged(object sender, GridActiveGridChangedEventArgs e)
+        {
+        }
+
+        private void superGridControl1_AfterCheck(object sender, GridAfterCheckEventArgs e)
+        {
+
+        }
+
+        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        {
+        }
+
+        private void superGridControl1_SortChanged(object sender, GridEventArgs e)
+        {
+        }
+
+        private void superGridControl1_Validated(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void superGridControl1_PrimaryGrid_ParentChanged(object sender, EventArgs e)
+        {
         }
     }
 }

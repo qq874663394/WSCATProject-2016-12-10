@@ -10,7 +10,7 @@ namespace BaseLayer.Base
         /// </summary>
         /// <param name="isflag">true显示全部 false显示未禁用</param>
         /// <returns></returns>
-        public DataTable SelClient(bool isflag)
+        public DataTable GetClientByBool(bool isflag)
         {
             string sql = "";
             DataSet ds = null;
@@ -23,9 +23,9 @@ namespace BaseLayer.Base
                 }
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }

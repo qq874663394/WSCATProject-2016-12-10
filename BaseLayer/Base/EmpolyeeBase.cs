@@ -51,9 +51,9 @@ namespace BaseLayer.Base
                 }
                 ds=DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }
