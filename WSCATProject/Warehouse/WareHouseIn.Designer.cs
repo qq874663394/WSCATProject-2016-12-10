@@ -589,7 +589,6 @@
             this.KeyPreview = true;
             this.Name = "WareHouseIn";
             this.Text = "入库单";
-            this.Load += new System.EventHandler(this.StockIn_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseIn_KeyPress);
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();

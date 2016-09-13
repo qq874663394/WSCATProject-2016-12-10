@@ -23,9 +23,9 @@ namespace BaseLayer.Base
                 sql = string.Format("SELECT * FROM T_BaseStorage order by id");
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }
@@ -47,9 +47,9 @@ namespace BaseLayer.Base
                 }
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }

@@ -26,9 +26,9 @@ namespace BaseLayer
                 sql = string.Format("select code,defaultType,purchaseCode as mainCode,date,state,operation,examine from T_WarehouseIn where checkState={0}", state);
                 ds = DbHelperSQL.Query(sql);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds;
         }

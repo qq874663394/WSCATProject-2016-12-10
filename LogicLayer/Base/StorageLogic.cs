@@ -28,14 +28,13 @@ namespace LogicLayer.Base
             {
                 dt = srb.SelStorage();
                 log.result = 1;
-                lb.Add(log);
             }
             catch (Exception ex)
             {
                 log.result = 0;
-                lb.Add(log);
                 throw ex;
             }
+            lb.Add(log);
             return dt;
         }
         public DataTable GetList(string strWhere)
@@ -56,14 +55,13 @@ namespace LogicLayer.Base
             {
                 dt = srb.GetList(strWhere);
                 log.result = 1;
-                lb.Add(log);
             }
             catch (Exception ex)
             {
                 log.result = 0;
-                lb.Add(log);
                 throw ex;
             }
+            lb.Add(log);
             return dt;
         }
     }

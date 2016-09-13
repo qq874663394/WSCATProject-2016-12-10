@@ -21,9 +21,9 @@ namespace BaseLayer.Base
                 sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 and parentId='{0}' order by id", parentId);
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }
@@ -40,9 +40,9 @@ namespace BaseLayer.Base
                 sql = string.Format("SELECT * FROM T_BaseStorageRack where isClear=1 order by id");
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }
@@ -60,9 +60,9 @@ namespace BaseLayer.Base
                 sql = string.Format("update from T_BaseStorageRack set isClear=0 where code='{1}'", code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return result;
         }
@@ -82,9 +82,9 @@ namespace BaseLayer.Base
                 sql = string.Format("update from T_BaseStorageRack set {0}='{1}' where code='{2}'", fieldName, fieldValue, code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return result;
         }
@@ -112,9 +112,9 @@ namespace BaseLayer.Base
                 };
                 result=DbHelperSQL.ExecuteSql(sql, sps);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return result;
         }

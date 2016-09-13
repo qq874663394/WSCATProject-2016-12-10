@@ -27,12 +27,12 @@ namespace LogicLayer.Base
                 operationTable = "T_OrderType",
                 operationTime = DateTime.Now,
                 objective = "查询客户信息",
-                operationContent = "查询T_OrderType表的所有数据,显示全部:" + strWhere
+                operationContent = "查询T_OrderType表的所有数据,条件:" + strWhere
             };
             try
             {
-                model.result = 1;
                 dt = otb.GetList(strWhere);
+                model.result = 1;
             }
             catch (Exception ex)
             {

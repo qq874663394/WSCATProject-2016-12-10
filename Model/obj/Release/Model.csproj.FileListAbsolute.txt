@@ -1,4 +1,0 @@
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\Model\bin\Release\Model.dll
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\Model\bin\Release\Model.pdb
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\Model\obj\Release\Model.dll
-C:\Users\Administrator.USER-20160704SV\Desktop\619WSCAT项目文档\WSCATProject\Model\obj\Release\Model.pdb

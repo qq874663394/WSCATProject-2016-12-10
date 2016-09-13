@@ -22,40 +22,55 @@ namespace LogicLayer.Base
         public DataTable SelSupplierTable()
         {
             DataTable dt = null;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseSupplier",
+                operationTime = DateTime.Now,
+                objective = "查询供应商信息",
+                operationContent = "查询T_BaseSupplier表的数据成功"
+            };
             try
             {
                 dt = sb.SelSupplierTable();
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_BaseSupplier",
-                    operationTime = DateTime.Now,
-                    objective = "查询供应商信息",
-                    result = 1,
-                    operationContent = "查询T_BaseSupplier表的数据成功"
-                };
-                lb.Add(log);
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_BaseSupplier",
-                    operationTime = DateTime.Now,
-                    objective = "查询供应商信息",
-                    result = 1,
-                    operationContent = "查询T_BaseSupplier表的数据失败"
-                };
-                lb.Add(log);
+                logModel.result = 0;
                 throw ex;
             }
+            lb.Add(logModel);
+            return dt;
+        }
+        public DataTable GetList(string strWhere)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log model = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseSupplier",
+                operationTime = DateTime.Now,
+                objective = "查询员工信息",
+                operationContent = "查询T_BaseSupplier表的所有数据,条件:" + strWhere
+            };
+            try
+            {
+                dt = sb.GetList(strWhere);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            lb.Add(model);
             return dt;
         }
     }
