@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-      this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -86,6 +86,10 @@
             // 
             this.resizablePanelData.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
             // labtextboxBotton4
             // 
             // 
@@ -134,20 +138,24 @@
             this.labtextboxBotton1.Border.Class = "SideNavStrip";
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
+            // labBotton1
+            // 
+            this.labBotton1.Text = "入库员：";
+            // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(869, 8);
-            this.buttonExamine.Size = new System.Drawing.Size(100, 30);
+            this.buttonExamine.Location = new System.Drawing.Point(1005, 8);
+            this.buttonExamine.Size = new System.Drawing.Size(90, 30);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(978, 8);
-            this.buttonSave.Size = new System.Drawing.Size(119, 30);
+            this.buttonSave.Location = new System.Drawing.Point(908, 8);
+            this.buttonSave.Size = new System.Drawing.Size(90, 30);
             // 
             // buttonClose
             // 
             this.buttonClose.Location = new System.Drawing.Point(1103, 8);
-            this.buttonClose.Size = new System.Drawing.Size(91, 30);
+            this.buttonClose.Size = new System.Drawing.Size(90, 30);
             // 
             // panel4
             // 
@@ -161,6 +169,7 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelTitle.Text = "入库单";
             // 
             // panel2
             // 
@@ -208,7 +217,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(91, 15);
+            this.labtextboxTop6.Location = new System.Drawing.Point(374, 15);
             this.labtextboxTop6.Size = new System.Drawing.Size(132, 16);
             // 
             // labtextboxTop3
@@ -320,7 +329,8 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(223, 11);
+            this.pictureBox4.Location = new System.Drawing.Point(506, 11);
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox3
             // 
@@ -330,6 +340,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(479, 11);
+            this.pictureBox2.Visible = false;
             // 
             // checkBox1
             // 
@@ -351,12 +362,12 @@
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(317, 47);
+            this.labTop7.Location = new System.Drawing.Point(317, 43);
             this.labTop7.Text = "入货类型：";
             // 
             // labTop6
             // 
-            this.labTop6.Location = new System.Drawing.Point(34, 17);
+            this.labTop6.Location = new System.Drawing.Point(317, 17);
             this.labTop6.Text = "供 应 商：";
             // 
             // labTop5
@@ -365,24 +376,25 @@
             // 
             // labTop4
             // 
+            this.labTop4.Location = new System.Drawing.Point(317, 43);
             this.labTop4.Text = "入库类型：";
             this.labTop4.Visible = false;
             // 
             // labTop3
             // 
-            this.labTop3.Location = new System.Drawing.Point(33, 45);
+            this.labTop3.Location = new System.Drawing.Point(33, 17);
             this.labTop3.Text = "采购单号：";
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(32, 45);
-            this.labTop2.Text = "采购单号：";
-            this.labTop2.Visible = false;
+            this.labTop2.Location = new System.Drawing.Point(33, 45);
+            this.labTop2.Text = "产品检索：";
             // 
             // labTop1
             // 
-            this.labTop1.Location = new System.Drawing.Point(317, 17);
+            this.labTop1.Location = new System.Drawing.Point(33, 45);
             this.labTop1.Text = "产品检索：";
+            this.labTop1.Visible = false;
             // 
             // panel3
             // 
@@ -400,7 +412,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.superGridControl1.Dock = System.Windows.Forms.DockStyle.None;
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 342);
             // 
             // 
             // 
@@ -416,22 +427,29 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 342);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(1182, 1);
+            this.pictureBox6.Location = new System.Drawing.Point(1144, 26);
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(1155, 1);
+            this.pictureBox7.Location = new System.Drawing.Point(1117, 26);
             // 
             // pictureBoxtitle
             // 
             this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(812, 8);
+            this.button1.Size = new System.Drawing.Size(90, 30);
             // 
             // textBoxX1
             // 
@@ -440,10 +458,10 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(374, 11);
+            this.textBoxX1.Location = new System.Drawing.Point(91, 40);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(132, 21);
+            this.textBoxX1.Size = new System.Drawing.Size(150, 21);
             this.textBoxX1.TabIndex = 53;
             // 
             // comboBoxEx1
@@ -452,7 +470,7 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(91, 40);
+            this.comboBoxEx1.Location = new System.Drawing.Point(91, 12);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(150, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -466,7 +484,7 @@
             this.comboBoxEx2.ItemHeight = 15;
             this.comboBoxEx2.Location = new System.Drawing.Point(374, 40);
             this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxEx2.Size = new System.Drawing.Size(152, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx2.TabIndex = 55;
             // 
@@ -480,105 +498,76 @@
             // 
             // material
             // 
-            this.material.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.material.HeaderText = "助记码";
+            this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             // 
             // gridColumnname
             // 
-            this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
+            this.gridColumnname.Width = 120;
             // 
             // gridColumnmodel
             // 
-            this.gridColumnmodel.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnmodel.HeaderText = "规格类型";
             this.gridColumnmodel.Name = "gridColumnmodel";
             // 
             // gridColumnunit
             // 
-            this.gridColumnunit.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
+            this.gridColumnunit.Width = 80;
             // 
             // gridColumntiaoxingma
             // 
-            this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
+            this.gridColumntiaoxingma.Width = 120;
             // 
             // gridColumnnumber
             // 
-            this.gridColumnnumber.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
+            this.gridColumnnumber.Width = 80;
             // 
             // gridColumnprice
             // 
-            this.gridColumnprice.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnprice.HeaderText = "单价";
             this.gridColumnprice.Name = "gridColumnprice";
             this.gridColumnprice.Visible = false;
+            this.gridColumnprice.Width = 50;
             // 
             // gridColumnmoney
             // 
-            this.gridColumnmoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnmoney.HeaderText = "金额";
             this.gridColumnmoney.Name = "gridColumnmoney";
             this.gridColumnmoney.Visible = false;
+            this.gridColumnmoney.Width = 50;
             // 
             // griCoulumcangku
             // 
-            this.griCoulumcangku.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.griCoulumcangku.HeaderText = "仓库";
             this.griCoulumcangku.Name = "griCoulumcangku";
             // 
             // griCoulumhuojia
             // 
-            this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.griCoulumhuojia.HeaderText = "货架";
+            this.griCoulumhuojia.HeaderText = "区域/货架/排/格";
             this.griCoulumhuojia.Name = "griCoulumhuojia";
+            this.griCoulumhuojia.Width = 150;
             // 
             // gridColumnremark
             // 
             this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
+            this.gridColumnremark.Width = 80;
             // 
             // gridColumnid
             // 
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.Visible = false;
-            // 
-            this.gridColumnmoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumnmoney.HeaderText = "金额";
-            this.gridColumnmoney.Name = "gridColumnmoney";
-            this.gridColumnmoney.Visible = false;
-            // 
-            // griCoulumcangku
-            // 
-            this.griCoulumcangku.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.griCoulumcangku.HeaderText = "仓库";
-            this.griCoulumcangku.Name = "griCoulumcangku";
-            // 
-            // griCoulumhuojia
-            // 
-            this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.griCoulumhuojia.HeaderText = "货架";
-            this.griCoulumhuojia.Name = "griCoulumhuojia";
-            // 
-            // gridColumnremark
-            // 
-            this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumnremark.HeaderText = "备注";
-            this.gridColumnremark.Name = "gridColumnremark";
-            // 
-            // gridColumnid
-            // 
-            this.gridColumnid.Name = "gridColumnid";
-            this.gridColumnid.Visible = false;
+            this.gridColumnid.Width = 80;
             // 
             // WareHouseInMain
             // 

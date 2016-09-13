@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -58,6 +58,7 @@
             this.labBotton3 = new System.Windows.Forms.Label();
             this.labBotton1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonExamine = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -140,7 +141,7 @@
             this.pictureBox7.BackColor = System.Drawing.Color.White;
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBox7.Location = new System.Drawing.Point(1150, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(1112, 26);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(20, 20);
             this.pictureBox7.TabIndex = 43;
@@ -154,7 +155,7 @@
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::WSCATProject.Properties.Resources.big;
-            this.pictureBox6.Location = new System.Drawing.Point(1177, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(1139, 26);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(20, 20);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -432,6 +433,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.buttonExamine);
             this.panel5.Controls.Add(this.buttonSave);
             this.panel5.Controls.Add(this.buttonClose);
@@ -443,18 +445,30 @@
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Image = global::WSCATProject.Properties.Resources._new;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(812, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 32);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "    新增(&N)";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // buttonExamine
             // 
             this.buttonExamine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExamine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonExamine.Image = global::WSCATProject.Properties.Resources.shenghe;
             this.buttonExamine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExamine.Location = new System.Drawing.Point(870, 6);
+            this.buttonExamine.Location = new System.Drawing.Point(1007, 7);
             this.buttonExamine.Name = "buttonExamine";
-            this.buttonExamine.Size = new System.Drawing.Size(100, 32);
+            this.buttonExamine.Size = new System.Drawing.Size(90, 32);
             this.buttonExamine.TabIndex = 3;
-            this.buttonExamine.Text = "审核过账(&E)";
-            this.buttonExamine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonExamine.Text = "    审核(&E)";
             this.buttonExamine.UseVisualStyleBackColor = true;
             // 
             // buttonSave
@@ -463,12 +477,11 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSave.Image = global::WSCATProject.Properties.Resources.save;
             this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSave.Location = new System.Drawing.Point(979, 6);
+            this.buttonSave.Location = new System.Drawing.Point(909, 7);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(119, 32);
+            this.buttonSave.Size = new System.Drawing.Size(91, 32);
             this.buttonSave.TabIndex = 4;
-            this.buttonSave.Text = "保存并新增(&S)";
-            this.buttonSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSave.Text = "    保存(&S)";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
             // buttonClose
@@ -477,9 +490,9 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClose.Image = global::WSCATProject.Properties.Resources.close;
             this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonClose.Location = new System.Drawing.Point(1104, 8);
+            this.buttonClose.Location = new System.Drawing.Point(1104, 7);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(91, 32);
+            this.buttonClose.Size = new System.Drawing.Size(90, 32);
             this.buttonClose.TabIndex = 5;
             this.buttonClose.Text = "    退出(&C)";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -904,14 +917,14 @@
             this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1052,5 +1065,6 @@
         public System.Windows.Forms.PictureBox pictureBox6;
         public System.Windows.Forms.PictureBox pictureBox7;
         public System.Windows.Forms.PictureBox pictureBoxtitle;
+        protected System.Windows.Forms.Button button1;
     }
 }

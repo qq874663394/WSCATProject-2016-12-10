@@ -394,6 +394,7 @@
     <None Include="Resources\max.png" />
     <None Include="Resources\min.png" />
     <Content Include="Resources\month.png" />
+    <None Include="Resources\new.png" />
     <Content Include="Resources\newBackImage.jpg" />
     <Content Include="Resources\newBackImage1.jpg" />
     <Content Include="Resources\operaterManager.png" />
