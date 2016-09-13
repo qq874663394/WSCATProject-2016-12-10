@@ -175,7 +175,7 @@ namespace WSCATProject.WareHouse
 
         #endregion
 
-        private void WareHouseIn_Load(object sender, EventArgs e)
+        private void StockIn_Load(object sender, EventArgs e)
         {
             //供应商
             //_AllSupply = supply.SelSupplierTable();
@@ -210,7 +210,7 @@ namespace WSCATProject.WareHouse
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             textBoxOddNumbers.Text = _wareHouseModel["code"].Value.ToString();
-            this.labtextboxTop4.Text = _wareHouseModel["purchaseCode"].Value.ToString();
+            this.labtextboxTop5.Text = _wareHouseModel["purchaseCode"].Value.ToString();
             comboBoxEx1.SelectedIndex = 0;
             superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
             //待入库进行查看的时候
@@ -275,7 +275,6 @@ namespace WSCATProject.WareHouse
         protected override void panel6_Click(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
-            resizablePanelData.Visible = false;
         }
 
         #region 初始化数据
@@ -958,5 +957,6 @@ namespace WSCATProject.WareHouse
             superGridControl1.Focus();
             SendKeys.Send("^{End}{Home}");
         }
+
     }
 }

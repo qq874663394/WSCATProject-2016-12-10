@@ -57,27 +57,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxOddNumbers.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(965, 64);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1127, 64);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(929, 67);
+            this.labelprie.Location = new System.Drawing.Point(1091, 67);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(788, 64);
+            this.dateTimePicker1.Location = new System.Drawing.Point(950, 64);
             // 
             // labelDate
             // 
-            this.labelDate.Location = new System.Drawing.Point(741, 67);
+            this.labelDate.Location = new System.Drawing.Point(903, 67);
             // 
             // resizablePanel1
             // 
@@ -145,33 +148,34 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(554, 13);
+            this.buttonExamine.Location = new System.Drawing.Point(16, 12);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(663, 13);
+            this.buttonSave.Location = new System.Drawing.Point(130, 12);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(788, 13);
+            this.buttonClose.Location = new System.Drawing.Point(262, 12);
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1140, 64);
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Size = new System.Drawing.Size(1302, 64);
             this.panel1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel4
             // 
             this.panel4.Location = new System.Drawing.Point(0, 455);
-            this.panel4.Size = new System.Drawing.Size(1140, 92);
+            this.panel4.Size = new System.Drawing.Size(1302, 92);
             this.panel4.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel5
             // 
             this.panel5.Location = new System.Drawing.Point(0, 547);
-            this.panel5.Size = new System.Drawing.Size(1140, 58);
+            this.panel5.Size = new System.Drawing.Size(1302, 58);
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
@@ -187,7 +191,7 @@
             // 
             this.panel2.Controls.Add(this.comboBoxEx1);
             this.panel2.Location = new System.Drawing.Point(0, 89);
-            this.panel2.Size = new System.Drawing.Size(1140, 70);
+            this.panel2.Size = new System.Drawing.Size(1302, 70);
             this.panel2.Click += new System.EventHandler(this.panel6_Click);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
             this.panel2.Controls.SetChildIndex(this.labTop2, 0);
@@ -421,7 +425,7 @@
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(0, 159);
-            this.panel3.Size = new System.Drawing.Size(1140, 296);
+            this.panel3.Size = new System.Drawing.Size(1302, 446);
             // 
             // superGridControl1
             // 
@@ -442,10 +446,27 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1140, 296);
+            this.superGridControl1.Size = new System.Drawing.Size(1302, 446);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(935, 0);
+            this.panel6.Size = new System.Drawing.Size(365, 56);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Location = new System.Drawing.Point(1539, 5);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Location = new System.Drawing.Point(1512, 5);
+            // 
+            // pictureBoxtitle
+            // 
+            this.pictureBoxtitle.Size = new System.Drawing.Size(1402, 61);
             // 
             // comboBoxEx1
             // 
@@ -561,7 +582,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 605);
+            this.ClientSize = new System.Drawing.Size(1302, 605);
             this.KeyPreview = true;
             this.Name = "WareHouseIn";
             this.Text = "入库单";
@@ -583,6 +604,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
