@@ -147,17 +147,17 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(1013, 17);
+            this.buttonExamine.Location = new System.Drawing.Point(1213, 17);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(1119, 17);
+            this.buttonSave.Location = new System.Drawing.Point(1319, 17);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1244, 17);
+            this.buttonClose.Location = new System.Drawing.Point(1444, 17);
             // 
             // panel1
             // 
@@ -451,6 +451,7 @@
             this.superGridControl1.Size = new System.Drawing.Size(1302, 446);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel6
@@ -460,15 +461,15 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(1839, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(2039, 5);
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(1812, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(2012, 5);
             // 
             // pictureBoxtitle
             // 
-            this.pictureBoxtitle.Size = new System.Drawing.Size(1702, 61);
+            this.pictureBoxtitle.Size = new System.Drawing.Size(1902, 61);
             // 
             // comboBoxEx1
             // 

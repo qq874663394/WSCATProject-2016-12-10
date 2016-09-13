@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnmodel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnunit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumntiaoxingma = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.griCoulumcangku = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.griCoulumhuojia = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.resizablePanel1.SuspendLayout();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -241,6 +253,24 @@
             // 
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
+            // 
+            // 
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnname);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmodel);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntiaoxingma);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnnumber);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
+            // 
             // pictureBox6
             // 
             this.pictureBox6.Location = new System.Drawing.Point(1166, 5);
@@ -254,6 +284,80 @@
             this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
             // 
+            // material
+            // 
+            this.material.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.material.HeaderText = "助记码";
+            this.material.Name = "material";
+            // 
+            // gridColumnname
+            // 
+            this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnname.HeaderText = "商品名称";
+            this.gridColumnname.Name = "gridColumnname";
+            // 
+            // gridColumnmodel
+            // 
+            this.gridColumnmodel.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnmodel.HeaderText = "规格类型";
+            this.gridColumnmodel.Name = "gridColumnmodel";
+            // 
+            // gridColumnunit
+            // 
+            this.gridColumnunit.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnunit.HeaderText = "单位";
+            this.gridColumnunit.Name = "gridColumnunit";
+            // 
+            // gridColumntiaoxingma
+            // 
+            this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumntiaoxingma.HeaderText = "条形码";
+            this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
+            // 
+            // gridColumnnumber
+            // 
+            this.gridColumnnumber.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnnumber.HeaderText = "数量";
+            this.gridColumnnumber.Name = "gridColumnnumber";
+            // 
+            // gridColumnprice
+            // 
+            this.gridColumnprice.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnprice.HeaderText = "单价";
+            this.gridColumnprice.Name = "gridColumnprice";
+            this.gridColumnprice.Visible = false;
+            // 
+            // gridColumnmoney
+            // 
+            this.gridColumnmoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnmoney.HeaderText = "金额";
+            this.gridColumnmoney.Name = "gridColumnmoney";
+            this.gridColumnmoney.Visible = false;
+            // 
+            // griCoulumcangku
+            // 
+            this.griCoulumcangku.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.griCoulumcangku.HeaderText = "仓库";
+            this.griCoulumcangku.Name = "griCoulumcangku";
+            // 
+            // griCoulumhuojia
+            // 
+            this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.griCoulumhuojia.HeaderText = "货架";
+            this.griCoulumhuojia.Name = "griCoulumhuojia";
+            // 
+            // gridColumnremark
+            // 
+            this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnremark.HeaderText = "备注";
+            this.gridColumnremark.Name = "gridColumnremark";
+            // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.Visible = false;
+            // 
             // WareHouseInMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -262,6 +366,7 @@
             this.Name = "WareHouseInMain";
             this.Text = "WareHouseInMain";
             this.Load += new System.EventHandler(this.WareHouseInMain_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInMain_KeyPress);
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();
             this.resizablePanelData.ResumeLayout(false);
@@ -287,5 +392,18 @@
         }
 
         #endregion
+
+        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnunit;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumntiaoxingma;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnnumber;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumcangku;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumhuojia;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnremark;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }

@@ -913,16 +913,30 @@ namespace WSCATProject.WareHouse
             SendKeys.Send("^{End}{Home}");
         }
 
-        private void superGridControl1_EnabledChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void superGridControl1_TextChanged(object sender, EventArgs e)
         {
             string SS = "";
             GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
             string zujima = XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());
+            if (SS == "")
+            {
+                //模糊查询商品列表
+                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + zujima + "");
+                InitMaterialDataGridView();
+                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            }
+        }
+
+        /// <summary>
+        /// 输入值模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        {
+            string SS = "";
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            string zujima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
             if (SS == "")
             {
                 //模糊查询商品列表
