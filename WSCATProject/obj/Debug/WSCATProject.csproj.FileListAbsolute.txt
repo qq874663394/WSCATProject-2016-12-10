@@ -263,3 +263,4 @@ E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.DotNetBa
 E:\619项目\2016年9月5日092343\WSCATProject\bin\Debug\DevComponents.Instrumentation.xml
 E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.exe
 E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.pdb
+E:\619项目\2016年9月5日092343\WSCATProject\obj\Debug\WSCATProject.Warehouse.WareHouseInMain.resources
