@@ -346,6 +346,7 @@
     <Content Include="Resources\clientManager.png" />
     <None Include="Resources\countExc.png" />
     <None Include="Resources\close.PNG" />
+    <None Include="Resources\clo.png" />
     <Content Include="Resources\countPreview.png" />
     <Content Include="Resources\countPrint.png" />
     <Content Include="Resources\countSelect.png" />
@@ -463,6 +464,7 @@
     <None Include="Resources\ye.jpg" />
     <Content Include="Resources\yuangongyonghu.png" />
     <Content Include="Resources\zijinzhanghu.png" />
+    <None Include="Resources\zuidahua1.png" />
     <Content Include="Resources\人事大.png" />
     <Content Include="Resources\人事小.png" />
     <Content Include="Resources\仓库大.png" />

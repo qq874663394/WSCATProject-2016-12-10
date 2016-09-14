@@ -243,7 +243,7 @@ namespace WSCATProject
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
-                pictureBox6.Image = Properties.Resources.big;
+                pictureBox6.Image = Properties.Resources.zuidahua1;
                 return;
             }
             if (this.WindowState == FormWindowState.Normal)
