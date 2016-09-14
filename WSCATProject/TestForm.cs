@@ -201,7 +201,7 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y );
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStockIn")
             {
@@ -210,7 +210,7 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y );
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
         }
 
@@ -230,6 +230,7 @@ namespace WSCATProject
             this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
             this.toolStripButton8.AutoToolTip = false;
             this.toolStripButton8.ToolTipText = "审核(F4)";
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -264,6 +265,21 @@ namespace WSCATProject
         {
             this.Close();
             this.Dispose();
+        }
+
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                toolTip2.SetToolTip(pictureBox6, "还原");
+                return;
+            }
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                toolTip2.SetToolTip(pictureBox6, "最大化");
+                return;
+            }
+
         }
 
         //获取鼠标的位置

@@ -96,6 +96,7 @@
             this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -149,6 +150,7 @@
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox8.TabIndex = 45;
             this.pictureBox8.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox8, "关闭");
             this.pictureBox8.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // pictureBox7
@@ -162,6 +164,7 @@
             this.pictureBox7.Size = new System.Drawing.Size(20, 20);
             this.pictureBox7.TabIndex = 43;
             this.pictureBox7.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox7, "最小化");
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox6
@@ -178,6 +181,7 @@
             this.pictureBox6.TabIndex = 42;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             // 
             // labelTitle
             // 
@@ -825,7 +829,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(895, 21);
+            this.labtextboxBotton2.Location = new System.Drawing.Point(962, 17);
             this.labtextboxBotton2.Name = "labtextboxBotton2";
             this.labtextboxBotton2.PreventEnterBeep = true;
             this.labtextboxBotton2.Size = new System.Drawing.Size(140, 16);
@@ -1059,5 +1063,6 @@
         protected HelperUtility.ExUI.ResizablePanel resizablePanelData;
         protected System.Windows.Forms.DataGridView dataGridView1;
         protected System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }
