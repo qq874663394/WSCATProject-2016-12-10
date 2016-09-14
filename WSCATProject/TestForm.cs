@@ -161,7 +161,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                    resizablePanel1.Location = new Point(204, 200);
+                   resizablePanel1.Location = new Point(234, 440);
                     break;
             }
             if (!_btnAdd)
@@ -201,7 +201,7 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y );
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStockIn")
             {
@@ -210,26 +210,27 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
-                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y );
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
         }
 
         private void toolStripButton3_MouseEnter(object sender, EventArgs e)
         {
-            ToolTip p = new ToolTip();
-            p.ShowAlways = true;
-            this.toolStripButton3.AutoToolTip = false;
-            this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
-            this.toolStripButton4.AutoToolTip = false;
-            this.toolStripButton4.ToolTipText = "导出Excel(Ctrl+T)";
-            this.toolStripButton6.AutoToolTip = false;
-            this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
-            this.toolStripButton5.AutoToolTip = false;
-            this.toolStripButton5.ToolTipText = "新增(Ctrl+N)";
-            this.toolStripButton7.AutoToolTip = false;
-            this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
-            this.toolStripButton8.AutoToolTip = false;
-            this.toolStripButton8.ToolTipText = "审核(F4)";
+            //ToolTip p = new ToolTip();
+            //p.ShowAlways = true;
+            //this.toolStripButton3.AutoToolTip = false;
+            //this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
+            //this.toolStripButton4.AutoToolTip = false;
+            //this.toolStripButton4.ToolTipText = "导出Excel(Ctrl+T)";
+            //this.toolStripButton6.AutoToolTip = false;
+            //this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
+            //this.toolStripButton5.AutoToolTip = false;
+            //this.toolStripButton5.ToolTipText = "新增(Ctrl+N)";
+            //this.toolStripButton7.AutoToolTip = false;
+            //this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
+            //this.toolStripButton8.AutoToolTip = false;
+            //this.toolStripButton8.ToolTipText = "审核(F4)";
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -243,13 +244,13 @@ namespace WSCATProject
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
-                pictureBox6.Image = Properties.Resources.big;
+                pictureBox6.Image = Properties.Resources.zuidahua1;
                 return;
             }
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                pictureBox6.Image = Properties.Resources.huanyuan;
+                pictureBox6.Image = Properties.Resources.zuidahua;
                 return;
             }
 
@@ -264,6 +265,21 @@ namespace WSCATProject
         {
             this.Close();
             this.Dispose();
+        }
+
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                toolTip2.SetToolTip(pictureBox6, "还原");
+                return;
+            }
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                toolTip2.SetToolTip(pictureBox6, "最大化");
+                return;
+            }
+
         }
 
         //获取鼠标的位置

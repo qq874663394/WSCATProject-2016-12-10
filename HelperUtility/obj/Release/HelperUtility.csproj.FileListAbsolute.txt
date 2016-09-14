@@ -1,0 +1,6 @@
+D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\bin\Release\HelperUtility.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\bin\Release\HelperUtility.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\bin\Release\NPOI.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\obj\Release\HelperUtility.csprojResolveAssemblyReference.cache
+D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\obj\Release\HelperUtility.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\HelperUtility\obj\Release\HelperUtility.pdb
