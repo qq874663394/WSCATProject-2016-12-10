@@ -83,92 +83,10 @@ namespace WSCATProject.Warehouse
         private void button1_Click(object sender, EventArgs e)
         {
             #region 查询
-            ////ClientInterface ba = new ClientInterface();
-            ////try
-            ////{
-            ////    DataTable dt = ba.GetClientByBool(false);
-            ////}
-            ////catch (Exception ex)
-            ////{
-            ////    MessageBox.Show(ExSwitch(ex.Message));
-            ////}
-            #endregion
-
-            #region 新增
-            //多条数据的
-            string sqlToList = "insert into T_BaseArea(code,name,parentId,isEnable) values(@code, @name, @parentId,@isEnable)";
-            //多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
-            List<SqlParameter[]> list = new List<SqlParameter[]>();//存储参数集合的list
-            SqlParameter[] sps;  //定义一个参数集合
-            sps = new SqlParameter[]
-            {
-                            new SqlParameter("@code","duotiao"),
-                            new SqlParameter("@name","duotiao"),
-                            new SqlParameter("@parentId","duotiao"),
-                            new SqlParameter("@isEnable",1)
-            };
-            list.Add(sps);
-
-            sps = new SqlParameter[]
-            {
-                            new SqlParameter("@code","duotiao"),
-                            new SqlParameter("@name","duotiao"),
-                            new SqlParameter("@parentId","duotiao"),
-                            new SqlParameter("@isEnable",2)
-            };
-            list.Add(sps);
-
-            sps = new SqlParameter[]
-            {
-                            new SqlParameter("@code","duotiao"),
-                            new SqlParameter("@name","duotiao"),
-                            new SqlParameter("@parentId","duotiao"),
-                            new SqlParameter("@isEnable",3)
-            };
-            list.Add(sps);
-
-            sps = new SqlParameter[]
-            {
-                            new SqlParameter("@code","duotiao"),
-                            new SqlParameter("@name","duotiao"),
-                            new SqlParameter("@parentId","duotiao"),
-                            new SqlParameter("@isEnable",4)
-            };
-            list.Add(sps);
-
-            sps = new SqlParameter[]
-            {
-                            new SqlParameter("@code","duotiao"),
-                            new SqlParameter("@name","duotiao"),
-                            new SqlParameter("@parentId","duotiao"),
-                            new SqlParameter("@isEnable",5)
-            };
-            list.Add(sps);
-
-            Hashtable htKey = new Hashtable();  //参数要求
-
-            string sql = @"insert into T_BaseArea(code,name,parentId) 
-            values(@code,@name,@parentId)";  //主表的
-            SqlParameter[] parameters = //主表参数
-            {
-                            new SqlParameter("@code","duotiao"),
-                            new SqlParameter("@name","duotiao"),
-                            new SqlParameter("@parentId","duotiao")
-                        };
-
-
-            htKey.Add(sql, parameters);//sql语句和主表的参数集合
-
-
+            ClientInterface ba = new ClientInterface();
             try
             {
-                DictionaryEntry de = new DictionaryEntry();
-                foreach (DictionaryEntry de1 in htKey)
-                {
-                    de.Key = de1.Key;
-                    de.Value = de1.Value;
-                }
-                DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
+                DataTable dt = ba.GetList(8,"");
             }
             catch (Exception ex)
             {
@@ -176,87 +94,101 @@ namespace WSCATProject.Warehouse
             }
             #endregion
 
+            #region 事物新增和更新示例
+            ////多条数据的
+            //string sqlToList = "insert into T_BaseArea(code,name,parentId,isEnable) values(@code, @name, @parentId,@isEnable)";
+            ////多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
+            //List<SqlParameter[]> list = new List<SqlParameter[]>();//存储参数集合的list
+            //SqlParameter[] sps;  //定义一个参数集合
+            //sps = new SqlParameter[]
+            //{
+            //                new SqlParameter("@code","duotiao"),
+            //                new SqlParameter("@name","duotiao"),
+            //                new SqlParameter("@parentId","duotiao"),
+            //                new SqlParameter("@isEnable",1)
+            //};
+            //list.Add(sps);
+
+            //sps = new SqlParameter[]
+            //{
+            //                new SqlParameter("@code","duotiao"),
+            //                new SqlParameter("@name","duotiao"),
+            //                new SqlParameter("@parentId","duotiao"),
+            //                new SqlParameter("@isEnable",2)
+            //};
+            //list.Add(sps);
+
+            //sps = new SqlParameter[]
+            //{
+            //                new SqlParameter("@code","duotiao"),
+            //                new SqlParameter("@name","duotiao"),
+            //                new SqlParameter("@parentId","duotiao"),
+            //                new SqlParameter("@isEnable",3)
+            //};
+            //list.Add(sps);
+
+            //sps = new SqlParameter[]
+            //{
+            //                new SqlParameter("@code","duotiao"),
+            //                new SqlParameter("@name","duotiao"),
+            //                new SqlParameter("@parentId","duotiao"),
+            //                new SqlParameter("@isEnable",4)
+            //};
+            //list.Add(sps);
+
+            //sps = new SqlParameter[]
+            //{
+            //                new SqlParameter("@code","duotiao"),
+            //                new SqlParameter("@name","duotiao"),
+            //                new SqlParameter("@parentId","duotiao"),
+            //                new SqlParameter("@isEnable",5)
+            //};
+            //list.Add(sps);
+
+            //Hashtable htKey = new Hashtable();  //参数要求
+
+            //string sql = @"insert into T_BaseArea(code,name,parentId) 
+            //values(@code,@name,@parentId)";  //主表的
+            //SqlParameter[] parameters = //主表参数
+            //{
+            //                new SqlParameter("@code","duotiao"),
+            //                new SqlParameter("@name","duotiao"),
+            //                new SqlParameter("@parentId","duotiao")
+            //            };
+
+
+            //htKey.Add(sql, parameters);//sql语句和主表的参数集合
+
+
+            //try
+            //{
+            //    DictionaryEntry de = new DictionaryEntry();
+            //    foreach (DictionaryEntry de1 in htKey)
+            //    {
+            //        de.Key = de1.Key;
+            //        de.Value = de1.Value;
+            //    }
+            //    DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ExSwitch(ex.Message));
+            //}
+            #endregion
+
+            #region Table合并
             //WarehouseInInterface wi = new WarehouseInInterface();
             //WarehouseOutInterface wo = new WarehouseOutInterface();
             //DataTable widt = wi.GetListToIn(0).Tables[0];
             //DataTable wodt = wo.GetListToOut(0).Tables[0];
-
-            //wodt.Merge(widt);
-        }
-
-        //发生的任何单元格的值更改时
-        private void superGridControl1_CellValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs e)
-        {
-            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
-            //string text = gr.Cells[0].Value == null ? "" : gr.Cells[0].Value.ToString();
-            //MessageBox.Show(text);
+            //wodt.Merge(widt); 
+            #endregion
         }
         //当单元格编辑器值更改后发生
         private void superGridControl1_EditorValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridEditEventArgs e)
         {
-            
-            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
-            //string text = gr.Cells[0].Value == null ? "" : gr.Cells[0].Value.ToString();
             string text = e.EditControl.EditorValue.ToString();
             MessageBox.Show(text);
-        }
-
-        private void superGridControl1_FilterEditValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridFilterEditValueChangedEventArgs e)
-        {
-            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
-            //string text = gr.Cells[0].Value == null ? "" : gr.Cells[0].Value.ToString();
-            //MessageBox.Show(text);
-        }
-
-        private void superGridControl1_FilterPopupValueChanged(object sender, GridFilterPopupValueChangedEventArgs e)
-        {
-        }
-
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
-        {
-        }
-
-        private void superGridControl1_CellValidating(object sender, GridCellValidatingEventArgs e)
-        {
-        }
-
-        private void superGridControl1_CellActivated(object sender, GridCellActivatedEventArgs e)
-        {
-        }
-
-        private void superGridControl1_CellActivating(object sender, GridCellActivatingEventArgs e)
-        {
-        }
-
-        private void superGridControl1_CausesValidationChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void superGridControl1_ActiveGridChanged(object sender, GridActiveGridChangedEventArgs e)
-        {
-        }
-
-        private void superGridControl1_AfterCheck(object sender, GridAfterCheckEventArgs e)
-        {
-
-        }
-
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
-        {
-        }
-
-        private void superGridControl1_SortChanged(object sender, GridEventArgs e)
-        {
-        }
-
-        private void superGridControl1_Validated(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void superGridControl1_PrimaryGrid_ParentChanged(object sender, EventArgs e)
-        {
         }
     }
 }

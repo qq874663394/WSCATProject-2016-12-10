@@ -26,7 +26,7 @@ namespace LogicLayer.Purchase
                 operationTable = "T_PurchaseDetail",
                 operationTime = DateTime.Now,
                 objective = "查询采购明细表",
-                operationContent = string.Format("查询T_PurchaseDetail表的数据,条件为:purchaseCode={0},zhujima={1}",purchaseCode,zhujima)
+                operationContent = string.Format("查询T_PurchaseDetail表的数据,条件为:purchaseCode={0},zhujima={1}", purchaseCode, zhujima)
             };
             try
             {
@@ -38,7 +38,10 @@ namespace LogicLayer.Purchase
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return dt;
         }
         public decimal GetCheckNumber(string purchaseCode, string code)
@@ -57,6 +60,10 @@ namespace LogicLayer.Purchase
             };
             try
             {
+                if (string.IsNullOrWhiteSpace(purchaseCode) && !string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
                 result = pdl.GetCheckNumber(purchaseCode, code);
                 logModel.result = 1;
             }
@@ -65,7 +72,10 @@ namespace LogicLayer.Purchase
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
     }

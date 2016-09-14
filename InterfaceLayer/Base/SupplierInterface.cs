@@ -20,9 +20,10 @@ namespace InterfaceLayer.Base
             return sl.SelSupplierTable();
         }
         /// <summary>
-        /// 自定义条件
+        /// 复合查询
         /// </summary>
-        /// <param name="strWhere"></param>
+        /// <param name="fieldName">0:模糊name,1:模糊cityName,2:isEnable,3:isClear,</param>
+        /// <param name="fieldValue">条件值</param>
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {

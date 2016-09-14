@@ -34,7 +34,10 @@ namespace LogicLayer.Base
                 model.result = 0;
                 throw ex;
             }
-            lb.Add(model);
+            finally
+            {
+                lb.Add(model);
+            }
             return dt;
         }
         public DataTable GetList(int fieldName, string fieldValue)
@@ -53,35 +56,34 @@ namespace LogicLayer.Base
             };
             try
             {
-                if (!string.IsNullOrWhiteSpace(fieldValue))
+                if (string.IsNullOrWhiteSpace(fieldValue))
                 {
-                    switch (fieldName)
-                    {
-                        case 0:
-                            strWhere += string.Format("name like '%{0}%'", fieldValue);
-                            break;
-                        case 1:
-                            strWhere += string.Format("cityName like '%{0}%'", fieldValue);
-                            break;
-                        case 2:
-                            strWhere += string.Format("isEnable = {0}", fieldValue);
-                            break;
-                        case 3:
-                            strWhere += string.Format("isClear = {0}", fieldValue);
-                            break;
-                        case 4:
-                            strWhere += string.Format("roleCode = '{0}'", fieldValue);
-                            break;
-                        case 5:
-                            strWhere += string.Format("passWord = '{0}'", fieldValue);
-                            break;
-                        default:
-                            throw new Exception("-7");
-                    }
-                    model.operationContent = "查询T_BaseEmpolyee表的所有数据,条件:" + strWhere;
-                    dt = eb.GetList(strWhere);
-                    model.result = 1; 
+                    throw new Exception("-2");
                 }
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("name like '%{0}%'", fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("cityName like '%{0}%'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("isEnable = {0}", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("isClear = {0}", fieldValue);
+                        break;
+                    case 4:
+                        strWhere += string.Format("roleCode = '{0}'", fieldValue);
+                        break;
+                    case 5:
+                        strWhere += string.Format("passWord = '{0}'", fieldValue);
+                        break;
+                }
+                model.operationContent = "查询T_BaseEmpolyee表的所有数据,条件:" + strWhere;
+                dt = eb.GetList(strWhere);
+                model.result = 1;
             }
             catch (Exception ex)
             {

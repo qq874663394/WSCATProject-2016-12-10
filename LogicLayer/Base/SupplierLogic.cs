@@ -43,9 +43,18 @@ namespace LogicLayer.Base
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return dt;
         }
+        /// <summary>
+        /// 复合查询
+        /// </summary>
+        /// <param name="fieldName">0:模糊name,1:模糊cityName,2:isEnable,3:isClear,</param>
+        /// <param name="fieldValue">条件值</param>
+        /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {
             string strWhere = "";
@@ -58,11 +67,14 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_BaseSupplier",
                 operationTime = DateTime.Now,
-                objective = "查询员工信息",
-                operationContent = "查询T_BaseSupplier表的所有数据,条件:" + strWhere
+                objective = "查询员工信息"
             };
             try
             {
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    throw new Exception("-3");
+                }
                 switch (fieldName)
                 {
                     case 0:
@@ -77,9 +89,9 @@ namespace LogicLayer.Base
                     case 3:
                         strWhere += string.Format("isClear = {0}", fieldValue);
                         break;
-                    default:
-                        throw new Exception("-7");
                 }
+
+                model.operationContent = "查询T_BaseSupplier表的所有数据,条件:" + strWhere;
                 dt = sb.GetList(strWhere);
                 model.result = 1;
             }
@@ -110,16 +122,12 @@ namespace LogicLayer.Base
             };
             try
             {
-                if (!string.IsNullOrWhiteSpace(code))
+                if (string.IsNullOrWhiteSpace(code))
                 {
-                    dt = sb.GetPurchaseList(code);
-                    model.result = 1;
+                    throw new Exception("-2");
                 }
-                else
-                {
-                    model.result = 0;
-                    throw new Exception("-7");
-                }
+                dt = sb.GetPurchaseList(code);
+                model.result = 1;
             }
             catch (Exception ex)
             {

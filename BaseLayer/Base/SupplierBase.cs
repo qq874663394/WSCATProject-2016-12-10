@@ -79,7 +79,7 @@ namespace BaseLayer.Base
             DataTable dt = null;
             try
             {
-                sql = @"select pm.* from T_BaseSupplier su,T_PurchaseMain pm where pm.supplierCode = su.code where checkState=1 and purchaseOrderState=4 and (putStorageState=0 or putStorageState=1)";
+                sql = @"select pm.* from T_BaseSupplier su,T_PurchaseMain pm where pm.supplierCode = su.code and checkState=1 and purchaseOrderState=4 and (putStorageState=0 or putStorageState=1)";
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)

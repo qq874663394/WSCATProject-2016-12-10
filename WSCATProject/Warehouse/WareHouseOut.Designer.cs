@@ -76,20 +76,20 @@
             // 
             // textBoxOddNumbers
             // 
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(914, 10);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(794, 10);
             this.textBoxOddNumbers.ReadOnly = true;
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(877, 13);
+            this.labelprie.Location = new System.Drawing.Point(757, 13);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(736, 10);
+            this.dateTimePicker1.Location = new System.Drawing.Point(616, 10);
             // 
             // labelDate
             // 
-            this.labelDate.Location = new System.Drawing.Point(699, 13);
+            this.labelDate.Location = new System.Drawing.Point(579, 13);
             // 
             // panel7
             // 
@@ -209,15 +209,16 @@
             this.buttonExamine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExamine.Location = new System.Drawing.Point(726, 8);
+            this.buttonExamine.Size = new System.Drawing.Size(0, 32);
             this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(963, 8);
+            this.buttonClose.Location = new System.Drawing.Point(843, 8);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(835, 8);
+            this.buttonSave.Location = new System.Drawing.Point(715, 8);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6
@@ -419,7 +420,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnhuojiaName);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1123, 248);
+            this.superGridControl1.Size = new System.Drawing.Size(1062, 248);
             this.superGridControl1.Text = "  ";
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
@@ -454,7 +455,8 @@
             // 
             this.gridColumnzhujima.DataPropertyName = "";
             this.gridColumnzhujima.HeaderText = "助记码";
-            this.gridColumnzhujima.Name = "gridColumnzhujima";            // 
+            this.gridColumnzhujima.Name = "gridColumnzhujima";
+            // 
             // gridColumnname
             // 
             this.gridColumnname.DataPropertyName = "";
@@ -481,7 +483,6 @@
             this.gridColumnnumber.DataPropertyName = "";
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
-            this.gridColumnunit.ReadOnly = true;
             // 
             // gridColumnmoney
             // 

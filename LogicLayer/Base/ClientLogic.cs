@@ -12,6 +12,11 @@ namespace LogicLayer.Base
     {
         BaseUpdataManager bum = new BaseUpdataManager();
         ClientBase cb = new ClientBase();
+        /// <summary>
+        /// 查询所有客户信息
+        /// </summary>
+        /// <param name="isflag">true显示全部 false显示未禁用</param>
+        /// <returns></returns>
         public DataTable GetClientByBool(bool isflag)
         {
             DataTable dt = null;
@@ -42,7 +47,13 @@ namespace LogicLayer.Base
             }
             return dt;
         }
-        public DataTable GetList(int fieldName,string fieldValue)
+        /// <summary>
+        /// 复合查询
+        /// </summary>
+        /// <param name="fieldName">0：模糊name,1:cityName,2:name,3:code</param>
+        /// <param name="fieldValue">条件值</param>
+        /// <returns></returns>
+        public DataTable GetList(int fieldName, string fieldValue)
         {
             string strWhere = "";
             DataTable dt = null;
@@ -58,16 +69,24 @@ namespace LogicLayer.Base
             };
             try
             {
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    throw new Exception("-2");
+                }
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("name like '%{0}%'",fieldValue);
+                        strWhere += string.Format("name like '%{0}%'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("cityName like '%{0}%'",fieldValue);
+                        strWhere += string.Format("cityName like '%{0}%'", fieldValue);
                         break;
-                    default:
-                        throw new Exception("-7");
+                    case 2:
+                        strWhere += string.Format("name = '{0}'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("code = '{0}'", fieldValue);
+                        break;
                 }
                 model.operationContent = "查询T_Client表的所有数据,条件:" + strWhere;
                 dt = cb.GetList(strWhere);

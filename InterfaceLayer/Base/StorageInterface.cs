@@ -15,13 +15,14 @@ namespace InterfaceLayer.Base
             return sl.SelStorage();
         }
         /// <summary>
-        /// 自定义条件取得列表
+        /// 模糊查询
         /// </summary>
-        /// <param name="strWhere">where后面的条件</param>
+        /// <param name="fieldName">需要查询的列：0：模糊查询name,1：模糊查询address,2:name,3:code</param>
+        /// <param name="fieldValue">需要查询的列的值</param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return sl.GetList(strWhere);
+            return sl.GetList(fieldName, fieldValue);
         }
     }
 }

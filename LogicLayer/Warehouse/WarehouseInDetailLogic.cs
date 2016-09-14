@@ -33,33 +33,30 @@ namespace LogicLayer
                 objective = "新增入库商品详情",
                 operationContent = "新增T_WarehouseInDetail表的数据"
             };
-            if (model != null && !string.IsNullOrWhiteSpace(model.code))
+
+            try
             {
-                try
+                if (model == null && string.IsNullOrWhiteSpace(model.code))
                 {
-                    result = wdb.Add(model);
-                    if (result > 0)
-                    {
-                        logModel.result = 1;
-                        wum.add(model.code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
-                    }
-                    else
-                    {
-                        logModel.result = 0;
-                    }
+                    throw new Exception("-2");
                 }
-                catch (Exception ex)
+                result = wdb.Add(model);
+                if (result <= 0)
                 {
-                    logModel.result = 0;
-                    throw ex;
+                    throw new Exception("-3");
                 }
+                logModel.result = 1;
+                wum.add(model.code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
             }
-            else
+            catch (Exception ex)
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
 
@@ -82,26 +79,30 @@ namespace LogicLayer
                 objective = "删除入库商品详情",
                 operationContent = "删除T_WarehouseInDetail表的数据,条件为:code=" + code
             };
-            if (!string.IsNullOrWhiteSpace(code))
+            try
             {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
                 WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
                 result = warehouseInDetailBase.deleteByCode(code);
-                if (result > 0)
+                if (result <= 0)
                 {
-                    logModel.result = 1;
-                    wum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+                    throw new Exception("-3");
                 }
-                else
-                {
-                    logModel.result = 0;
-                }
+                logModel.result = 1;
             }
-            else
+            catch(Exception ex)
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                wum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+                lb.Add(logModel);
+            }
             return result;
         }
         /// <summary>
@@ -109,8 +110,9 @@ namespace LogicLayer
         /// </summary>
         /// <param name="strWhere">where条件</param>
         /// <returns></returns>
-        public DataSet getList(string strWhere)
+        public DataSet getList(int fieldName, string fieldValue)
         {
+            string strWhere = "";
             WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
             DataSet ds = null;
             LogBase lb = new LogBase();
@@ -121,11 +123,21 @@ namespace LogicLayer
                 operationName = "操作人名",
                 operationTable = "T_WarehouseInDetail",
                 operationTime = DateTime.Now,
-                objective = "查询入库商品详情",
-                operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + strWhere
+                objective = "查询入库商品详情"
             };
             try
             {
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    throw new Exception("-2");
+                }
+                switch (fieldName)
+                {
+
+                    default:
+                        break;
+                }
+                logModel.operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + strWhere;
                 ds = warehouseInDetailBase.getList(strWhere);
                 logModel.result = 1;
             }
@@ -134,7 +146,10 @@ namespace LogicLayer
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return ds;
         }
         /// <summary>
@@ -173,7 +188,7 @@ namespace LogicLayer
             else
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw new Exception("-2");
             }
             lb.Add(logModel);
             return ds;
@@ -197,7 +212,7 @@ namespace LogicLayer
                 objective = "修改入库商品详情",
                 operationContent = "修改T_WarehouseInDetail表的数据,条件为:code=" + code
             };
-            
+
             if (!string.IsNullOrWhiteSpace(code))
             {
                 try
@@ -214,7 +229,7 @@ namespace LogicLayer
             else
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw new Exception("-2");
             }
             lb.Add(logModel);
             return result;

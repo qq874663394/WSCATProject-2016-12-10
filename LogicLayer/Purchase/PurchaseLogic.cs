@@ -14,11 +14,14 @@ namespace LogicLayer.Purchase
     {
         PurchaseBase pb = new PurchaseBase();
         /// <summary>
-        /// 获取入库仓库的商品列表
+        /// 复合查询
         /// </summary>
+        /// <param name="fieldName">0:模糊name,1:模糊supplierName,2:supplierCode</param>
+        /// <param name="fieldValue">条件值</param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
+            string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
             log logModel = new log()
@@ -28,18 +31,38 @@ namespace LogicLayer.Purchase
                 operationName = "操作人名",
                 operationTable = "T_Purchase",
                 operationTime = DateTime.Now,
-                objective = "查询采购表",
-                operationContent = string.Format("查询T_Purchase表的数据,条件为:", strWhere)
+                objective = "查询采购表"
             };
             try
             {
-                dt=pb.GetList(strWhere);
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    throw new Exception("-2");
+                }
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("name like '{0}'",fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("supplierName like '{0}'",fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("supplierCode='{0}'",fieldValue);
+                        break;
+                }
+                logModel.operationContent = "查询T_Purchase表的所有数据,条件:" + strWhere;
+                dt = pb.GetList(strWhere);
                 logModel.result = 1;
             }
             catch (Exception ex)
             {
                 logModel.result = 0;
                 throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
             }
             return dt;
         }

@@ -36,25 +36,24 @@ namespace LogicLayer.Base
                 objective = "查询货架信息",
                 operationContent = "查询T_StorageRack表的数据,条件为:ParentId=" + parentId
             };
-            if (!string.IsNullOrWhiteSpace(parentId))
+            try
             {
-                try
+                if (string.IsNullOrWhiteSpace(parentId))
                 {
-                    dt = sr.SelStorageRackByCode(parentId);
-                    logModel.result = 1;
+                    throw new Exception("-2");
                 }
-                catch (Exception ex)
-                {
-                    logModel.result = 0;
-                    throw ex;
-                }
+                dt = sr.SelStorageRackByCode(parentId);
+                logModel.result = 1;
             }
-            else
+            catch (Exception ex)
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return dt;
         }
         /// <summary>
@@ -85,7 +84,10 @@ namespace LogicLayer.Base
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return dt;
         }
         /// <summary>
@@ -107,33 +109,29 @@ namespace LogicLayer.Base
                 objective = "删除货架信息",
                 operationContent = "删除T_StorageRack表的数据,条件为:code=" + code
             };
-            if (!string.IsNullOrWhiteSpace(code))
+            try
             {
-                try
+                if (string.IsNullOrWhiteSpace(code))
                 {
-                    result = sr.DelStorageRackByCode(code);
-                    if (result > 0)
-                    {
-                        logModel.result = 1;
-                        bum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
-                    }
-                    else
-                    {
-                        logModel.result = 0;
-                    }
+                    throw new Exception("-2");
                 }
-                catch (Exception ex)
+                result = sr.DelStorageRackByCode(code);
+                if (result <= 0)
                 {
-                    logModel.result = 0;
-                    throw ex;
+                    throw new Exception("-3");
                 }
+                logModel.result = 1;
+                bum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
             }
-            else
+            catch (Exception ex)
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
         /// <summary>
@@ -155,33 +153,30 @@ namespace LogicLayer.Base
                 objective = "修改货架信息",
                 operationContent = string.Format("修改T_StorageRack表的数据,条件为:fieldName={1},fieldValue={2},code={3}", fieldName, fieldValue, code)
             };
-            if (!string.IsNullOrWhiteSpace(fieldName) && !string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(code))
+            try
             {
-                try
+
+                if (!string.IsNullOrWhiteSpace(fieldName) && !string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(code))
                 {
-                    result = sr.UpdateStorageRackByCode(fieldName, fieldValue, code);
-                    if (result > 0)
-                    {
-                        logModel.result = 1;
-                        bum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
-                    }
-                    else
-                    {
-                        logModel.result = 1;
-                    }
+                    throw new Exception("-7");
                 }
-                catch (Exception ex)
+                result = sr.UpdateStorageRackByCode(fieldName, fieldValue, code);
+                if (result <= 0)
                 {
-                    logModel.result = 0;
-                    throw ex;
+                    throw new Exception("-3");
                 }
+                logModel.result = 1;
+                bum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
             }
-            else
+            catch (Exception ex)
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
         /// <summary>
@@ -201,35 +196,31 @@ namespace LogicLayer.Base
                 operationTable = "T_StorageRack",
                 operationTime = DateTime.Now,
                 objective = "新增货架信息",
-                operationContent = "新增T_StorageRack表的数据,条件为:code=" + srb.code
+                operationContent = "新增T_StorageRack表的数据,条件:code=" + srb.code
             };
-            if (!string.IsNullOrWhiteSpace(srb.code) && srb != null)
+            try
             {
-                try
+                if (string.IsNullOrWhiteSpace(srb.code) && srb == null)
                 {
-                    result = sr.InsStorageRack(srb);
-                    if (result > 0)
-                    {
-                        logModel.result = 1;
-                        bum.add(srb.code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
-                    }
-                    else
-                    {
-                        logModel.result = 0;
-                    }
+                    throw new Exception("-2");
                 }
-                catch (Exception ex)
+                result = sr.InsStorageRack(srb);
+                if (result <= 0)
                 {
-                    logModel.result = 0;
-                    throw ex;
+                    throw new Exception("-3");
                 }
+                logModel.result = 1;
+                bum.add(srb.code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
             }
-            else
+            catch (Exception ex)
             {
                 logModel.result = 0;
-                throw new Exception("-7");
+                throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
     }

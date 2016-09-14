@@ -33,8 +33,9 @@
             this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -68,23 +69,9 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.PrimaryGrid.ParentChanged += new System.EventHandler(this.superGridControl1_PrimaryGrid_ParentChanged);
             this.superGridControl1.Size = new System.Drawing.Size(1060, 230);
             this.superGridControl1.TabIndex = 2;
-            this.superGridControl1.ActiveGridChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridActiveGridChangedEventArgs>(this.superGridControl1_ActiveGridChanged);
-            this.superGridControl1.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.superGridControl1_CellActivated);
-            this.superGridControl1.CellActivating += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatingEventArgs>(this.superGridControl1_CellActivating);
-            this.superGridControl1.CellValidating += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatingEventArgs>(this.superGridControl1_CellValidating);
-            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
-            this.superGridControl1.AfterCheck += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridAfterCheckEventArgs>(this.superGridControl1_AfterCheck);
-            this.superGridControl1.CellValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs>(this.superGridControl1_CellValueChanged);
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
-            this.superGridControl1.FilterEditValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridFilterEditValueChangedEventArgs>(this.superGridControl1_FilterEditValueChanged);
-            this.superGridControl1.FilterPopupValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridFilterPopupValueChangedEventArgs>(this.superGridControl1_FilterPopupValueChanged);
-            this.superGridControl1.SortChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEventArgs>(this.superGridControl1_SortChanged);
-            this.superGridControl1.CausesValidationChanged += new System.EventHandler(this.superGridControl1_CausesValidationChanged);
-            this.superGridControl1.Validated += new System.EventHandler(this.superGridControl1_Validated);
             // 
             // gridColumn1
             // 
@@ -94,32 +81,38 @@
             // 
             this.gridColumn2.Name = "gridColumn2";
             // 
-            // pictureBox1
+            // dataGridView1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::WSCATProject.Properties.Resources.arrows;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1055, 494);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dataGridView1.Location = new System.Drawing.Point(313, 33);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 72;
             // 
             // TestVoidForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 494);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.superGridControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Name = "TestVoidForm";
             this.Text = "TestVoidForm";
             this.Load += new System.EventHandler(this.TestVoidForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -130,6 +123,7 @@
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

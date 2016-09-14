@@ -7,13 +7,14 @@ namespace InterfaceLayer.Base
     {
         OrderTypeLogic otl = new OrderTypeLogic();
         /// <summary>
-        /// 自定义条件取得列表
+        /// 复合查询
         /// </summary>
-        /// <param name="strWhere">where后面的条件</param>
+        /// <param name="fieldName">0:模糊name,1:name,2:code</param>
+        /// <param name="fieldValue">条件值</param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return otl.GetList(strWhere);
+            return otl.GetList(fieldName, fieldValue);
         }
     }
 }

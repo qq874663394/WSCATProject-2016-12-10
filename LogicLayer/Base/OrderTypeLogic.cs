@@ -15,8 +15,15 @@ namespace LogicLayer.Base
     public class OrderTypeLogic
     {
         OrderTypeBase otb = new OrderTypeBase();
-        public DataTable GetList(string strWhere)
+        /// <summary>
+        /// 复合查询
+        /// </summary>
+        /// <param name="fieldName">0:模糊name,1:name,2:code</param>
+        /// <param name="fieldValue">条件值</param>
+        /// <returns></returns>
+        public DataTable GetList(int fieldName, string fieldValue)
         {
+            string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
             log model = new log()
@@ -26,11 +33,27 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_OrderType",
                 operationTime = DateTime.Now,
-                objective = "查询客户信息",
-                operationContent = "查询T_OrderType表的所有数据,条件:" + strWhere
+                objective = "查询客户信息"
             };
             try
             {
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    throw new Exception("-2");
+                }
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("name like '{0}'", fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("name = '{0}'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("code = '{0}'", fieldValue);
+                        break;
+                }
+                model.operationContent = "查询T_OrderType表的所有数据,条件:" + strWhere;
                 dt = otb.GetList(strWhere);
                 model.result = 1;
             }
@@ -39,7 +62,10 @@ namespace LogicLayer.Base
                 model.result = 0;
                 throw ex;
             }
-            lb.Add(model);
+            finally
+            {
+                lb.Add(model);
+            }
             return dt;
         }
     }
