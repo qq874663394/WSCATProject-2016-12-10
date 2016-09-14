@@ -589,8 +589,7 @@
             this.gridColumndate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumndate.HeaderText = "生产/采购日期";
             this.gridColumndate.Name = "gridColumndate";
-            this.gridColumndate.Width = 75;
-            // 
+            this.gridColumndate.Width = 75;            // 
             // gridColumnbaozhe
             // 
             this.gridColumnbaozhe.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;

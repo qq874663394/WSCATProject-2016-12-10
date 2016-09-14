@@ -79,7 +79,9 @@
             this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+   this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -95,8 +97,7 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.pictureBoxtitle = new System.Windows.Forms.PictureBox();            this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.resizablePanel1.SuspendLayout();
@@ -135,6 +136,52 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1202, 61);
             this.panel1.TabIndex = 2;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox8.Image = global::WSCATProject.Properties.Resources.捕获;
+            this.pictureBox8.Location = new System.Drawing.Point(1139, 26);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox8.TabIndex = 45;
+            this.pictureBox8.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox8, "关闭");
+            this.pictureBox8.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox7.BackColor = System.Drawing.Color.White;
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
+            this.pictureBox7.Location = new System.Drawing.Point(1083, 26);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox7.TabIndex = 43;
+            this.pictureBox7.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox7, "最小化");
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox6.Image = global::WSCATProject.Properties.Resources.big;
+            this.pictureBox6.Location = new System.Drawing.Point(1110, 26);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox6.TabIndex = 42;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             // 
             // labelTitle
             // 
@@ -1059,5 +1106,6 @@
         protected HelperUtility.ExUI.ResizablePanel resizablePanelData;
         protected System.Windows.Forms.DataGridView dataGridView1;
         protected System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }
