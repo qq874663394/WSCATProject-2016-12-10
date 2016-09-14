@@ -200,15 +200,37 @@ namespace WSCATProject.Warehouse
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
 
+            superGridControl1.HScrollBarVisible = true;
 
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //调用合计行数据
+            InitDataGridView();
         }
 
-        #region  仓库的选择和两个表格的点击事件
+        #region 小箭头图标和仓库的选择以及两个表格的点击事件
+
+        //供应商
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                InitSupply();
+            }
+            _Click = 3;
+        }
+        //入库员
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            if (_Click != 2)
+            {
+                InitEmployee();
+            }
+            _Click = 3;
+        }
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -291,21 +313,21 @@ namespace WSCATProject.Warehouse
         {
             if (e.GridCell.GridColumn.Name == "material")
             {
-                SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
-                GridCell gc = ge[0] as GridCell;
-                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
-                {
-                    //模糊查询商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
-                    InitMaterialDataGridView();
-                }
-                else
-                {
-                    //绑定商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "");
-                    InitMaterialDataGridView();
-                }
-                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                //SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+                //GridCell gc = ge[0] as GridCell;
+                //if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                //{
+                //    //模糊查询商品列表
+                //    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                //    InitMaterialDataGridView();
+                //}
+                //else
+                //{
+                //    //绑定商品列表
+                //    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "");
+                //    InitMaterialDataGridView();
+                //}
+                //dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
         }
 
@@ -536,7 +558,7 @@ namespace WSCATProject.Warehouse
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(204, 310);
+                resizablePanel1.Location = new Point(204, 380);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
         }
@@ -563,7 +585,7 @@ namespace WSCATProject.Warehouse
                 dgvc.HeaderText = "单位名称";
                 dgvc.DataPropertyName = "单位名称";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(640, 110);
+                resizablePanel1.Location = new Point(520, 123);
                 dataGridViewFujia.DataSource = _AllSupply;
             }
         }
@@ -636,5 +658,7 @@ namespace WSCATProject.Warehouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
+     
     }
 }

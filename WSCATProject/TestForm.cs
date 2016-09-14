@@ -51,6 +51,9 @@ namespace WSCATProject
         private void TestForm_Load(object sender, EventArgs e)
         {
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBox6.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBox7.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBox8.BackColor = Color.FromArgb(85, 177, 238);
         }
 
         /// <summary>
@@ -221,6 +224,12 @@ namespace WSCATProject
             this.toolStripButton4.ToolTipText = "导出Excel(Ctrl+T)";
             this.toolStripButton6.AutoToolTip = false;
             this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
+            this.toolStripButton5.AutoToolTip = false;
+            this.toolStripButton5.ToolTipText = "新增(Ctrl+N)";
+            this.toolStripButton7.AutoToolTip = false;
+            this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
+            this.toolStripButton8.AutoToolTip = false;
+            this.toolStripButton8.ToolTipText = "审核(F4)";
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -249,6 +258,12 @@ namespace WSCATProject
         private void pictureBox7_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
         }
 
         //获取鼠标的位置

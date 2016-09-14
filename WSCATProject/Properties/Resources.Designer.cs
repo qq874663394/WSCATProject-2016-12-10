@@ -63,6 +63,16 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _new {
+            get {
+                object obj = ResourceManager.GetObject("_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap _out {
             get {
                 object obj = ResourceManager.GetObject("_out", resourceCulture);
@@ -366,6 +376,16 @@ namespace WSCATProject.Properties {
         internal static System.Drawing.Bitmap daying {
             get {
                 object obj = ResourceManager.GetObject("daying", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap daying1 {
+            get {
+                object obj = ResourceManager.GetObject("daying1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1526,6 +1546,16 @@ namespace WSCATProject.Properties {
         internal static System.Drawing.Bitmap 帐套选项 {
             get {
                 object obj = ResourceManager.GetObject("帐套选项", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 捕获 {
+            get {
+                object obj = ResourceManager.GetObject("捕获", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

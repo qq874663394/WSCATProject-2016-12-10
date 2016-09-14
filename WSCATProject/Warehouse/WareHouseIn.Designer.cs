@@ -49,8 +49,6 @@
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -147,17 +145,13 @@
             // 
             // buttonExamine
             // 
-            this.buttonExamine.Location = new System.Drawing.Point(1213, 17);
-            this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
+
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(1319, 17);
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1444, 17);
             // 
             // panel1
             // 
@@ -167,15 +161,9 @@
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(0, 605);
-            this.panel4.Size = new System.Drawing.Size(1302, 0);
-            this.panel4.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel5
             // 
-            this.panel5.Location = new System.Drawing.Point(0, 543);
-            this.panel5.Size = new System.Drawing.Size(1302, 62);
-            this.panel5.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
             // 
@@ -456,20 +444,18 @@
             // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(877, 385);
-            this.panel6.Size = new System.Drawing.Size(415, 57);
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(2039, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(2139, 5);
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Location = new System.Drawing.Point(2012, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(2112, 5);
             // 
             // pictureBoxtitle
             // 
-            this.pictureBoxtitle.Size = new System.Drawing.Size(1902, 61);
+            this.pictureBoxtitle.Size = new System.Drawing.Size(2002, 61);
             // 
             // comboBoxEx1
             // 
@@ -596,9 +582,6 @@
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
