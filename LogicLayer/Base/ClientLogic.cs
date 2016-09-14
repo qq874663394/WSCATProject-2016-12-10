@@ -36,11 +36,15 @@ namespace LogicLayer.Base
                 model.result = 0;
                 throw ex;
             }
-            lb.Add(model);
+            finally
+            {
+                lb.Add(model);
+            }
             return dt;
         }
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName,string fieldValue)
         {
+            string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
             log model = new log()
@@ -50,11 +54,22 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_Client",
                 operationTime = DateTime.Now,
-                objective = "查询客户信息",
-                operationContent = "查询T_Client表的所有数据,条件:" + strWhere
+                objective = "查询客户信息"
             };
             try
             {
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("name like '%{0}%'",fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("cityName like '%{0}%'",fieldValue);
+                        break;
+                    default:
+                        throw new Exception("-7");
+                }
+                model.operationContent = "查询T_Client表的所有数据,条件:" + strWhere;
                 dt = cb.GetList(strWhere);
                 model.result = 1;
             }
@@ -63,7 +78,10 @@ namespace LogicLayer.Base
                 model.result = 0;
                 throw ex;
             }
-            lb.Add(model);
+            finally
+            {
+                lb.Add(model);
+            }
             return dt;
         }
     }

@@ -33,6 +33,8 @@
             this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -56,7 +58,7 @@
             // superGridControl1
             // 
             this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(-2, 41);
+            this.superGridControl1.Location = new System.Drawing.Point(-2, 267);
             this.superGridControl1.Name = "superGridControl1";
             // 
             // 
@@ -67,9 +69,8 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.PrimaryGrid.ParentChanged += new System.EventHandler(this.superGridControl1_PrimaryGrid_ParentChanged);
-            this.superGridControl1.Size = new System.Drawing.Size(1060, 456);
+            this.superGridControl1.Size = new System.Drawing.Size(1060, 230);
             this.superGridControl1.TabIndex = 2;
-            this.superGridControl1.Text = "superGridControl1";
             this.superGridControl1.ActiveGridChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridActiveGridChangedEventArgs>(this.superGridControl1_ActiveGridChanged);
             this.superGridControl1.CellActivated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatedEventArgs>(this.superGridControl1_CellActivated);
             this.superGridControl1.CellActivating += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellActivatingEventArgs>(this.superGridControl1_CellActivating);
@@ -93,18 +94,32 @@
             // 
             this.gridColumn2.Name = "gridColumn2";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::WSCATProject.Properties.Resources.arrows;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1055, 494);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // TestVoidForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 494);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.superGridControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Name = "TestVoidForm";
             this.Text = "TestVoidForm";
             this.Load += new System.EventHandler(this.TestVoidForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -115,5 +130,6 @@
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -16,13 +16,14 @@ namespace InterfaceLayer.Base
             return el.GetEmpByBool(isflag);
         }
         /// <summary>
-        /// 自定义条件取得列表
+        /// 模糊查询
         /// </summary>
-        /// <param name="strWhere">where后面的条件</param>
+        /// <param name="fieldName">需要查询的列:0:name,1:cityName,2:jobStatus,3:isEnable,4:isClear,5:roleCode,6:passWord</param>
+        /// <param name="fieldValue">需要查询的列的值</param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return el.GetList(strWhere);
+            return el.GetList(fieldName,fieldValue);
         }
     }
 }

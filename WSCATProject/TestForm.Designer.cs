@@ -184,7 +184,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxtitle.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pictureBoxtitle.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxtitle.Image")));
             this.pictureBoxtitle.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxtitle.Name = "pictureBoxtitle";
             this.pictureBoxtitle.Size = new System.Drawing.Size(1202, 61);
