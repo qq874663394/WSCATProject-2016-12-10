@@ -106,7 +106,7 @@ namespace LogicLayer.Base
                 operationTable = "T_BaseSupplier/T_PurchaseMain",
                 operationTime = DateTime.Now,
                 objective = "查询员工信息",
-                operationContent = "根据T_BaseSupplier表的code查询T_PurchaseMain表的所有数据,条件:code=" + code
+                operationContent = "根据T_BaseSupplier表的code查询T_PurchaseMain表的所有数据,条件:code=" + XYEEncoding.strHexDecode(code)
             };
             try
             {

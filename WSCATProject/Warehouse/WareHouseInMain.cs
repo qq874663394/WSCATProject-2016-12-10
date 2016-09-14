@@ -135,6 +135,7 @@ namespace WSCATProject.Warehouse
         SupplierInterface supply = new SupplierInterface();
         EmpolyeeInterface employee = new EmpolyeeInterface();
         InterfaceLayer.Purchase.PurchaseDetailInterface pdi = new InterfaceLayer.Purchase.PurchaseDetailInterface();
+
         #endregion
 
         #region 数据字段
@@ -171,7 +172,10 @@ namespace WSCATProject.Warehouse
         /// 统计数量
         /// </summary>
         private decimal _Materialnumber;
-
+        /// <summary>
+        /// 保存供应商Code
+        /// </summary>
+        private string _suppliercode;
         #endregion
 
         private void WareHouseInMain_Load(object sender, EventArgs e)
@@ -227,7 +231,6 @@ namespace WSCATProject.Warehouse
             {
                 InitEmployee();
             }
-            _Click = 3;
         }
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -240,24 +243,30 @@ namespace WSCATProject.Warehouse
             {
                 newAdd = true;
             }
-            gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
-            gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
-            gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
-            gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
-            gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-            decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
-            decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
-            gr.Cells["gridColumnmoney"].Value = number * price;//金额
-            resizablePanelData.Visible = false;
-
-            //新增一行 
-            if (newAdd)
+            try
             {
-                superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
-                //递增数量和金额 默认为1和单价 
-                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                _Materialnumber += 1;
-                gr.Cells["gridColumnnumber"].Value = _Materialnumber;
+                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
+                gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
+                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
+                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
+                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
+                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
+                gr.Cells["gridColumnmoney"].Value = number * price;//金额
+                resizablePanelData.Visible = false;
+                //新增一行 
+                if (newAdd)
+                {
+                    superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
+                    //递增数量和金额 默认为1和单价 
+                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    _Materialnumber += 1;
+                    gr.Cells["gridColumnnumber"].Value = _Materialnumber;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("点击物料绑定数据错误！" + ex.Message);
             }
             SendKeys.Send("^{End}{Home}");
         }
@@ -265,11 +274,16 @@ namespace WSCATProject.Warehouse
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //供应商
-            if (_Click == 1)
+            if (_Click == 1 || _Click==3)
             {
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                labtextboxTop3.Text = name;
+                _suppliercode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
+                labtextboxTop6.Text = name;
                 resizablePanel1.Visible = false;
+                DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_suppliercode));
+                this.comboBoxEx1.DataSource = dt;
+                comboBoxEx1.ValueMember = "code";
+                comboBoxEx1.DisplayMember = "name";
             }
             //业务员
             if (_Click == 2)
@@ -309,23 +323,28 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
         {
+            if (this.comboBoxEx1.Text.Trim()=="")
+            {
+                MessageBox.Show("请先选择供应商，显示采购单号!");
+                return;
+            }
             if (e.GridCell.GridColumn.Name == "material")
             {
-                //SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
-                //GridCell gc = ge[0] as GridCell;
-                //if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
-                //{
-                //    //模糊查询商品列表
-                //    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
-                //    InitMaterialDataGridView();
-                //}
-                //else
-                //{
-                //    //绑定商品列表
-                //    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "");
-                //    InitMaterialDataGridView();
-                //}
-                //dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                {
+                    //模糊查询商品列表
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                    InitMaterialDataGridView();
+                }
+                else
+                {
+                    //绑定商品列表
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "");
+                    InitMaterialDataGridView();
+                }
+                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
         }
 
@@ -556,8 +575,8 @@ namespace WSCATProject.Warehouse
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(204, 380);
-                dataGridViewFujia.DataSource = _AllEmployee;
+                resizablePanel1.Location = new Point(234, 440);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
             }
         }
 
@@ -583,8 +602,8 @@ namespace WSCATProject.Warehouse
                 dgvc.HeaderText = "单位名称";
                 dgvc.DataPropertyName = "单位名称";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(520, 123);
-                dataGridViewFujia.DataSource = _AllSupply;
+                resizablePanel1.Location = new Point(550, 160);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllSupply);
             }
         }
 
@@ -599,7 +618,6 @@ namespace WSCATProject.Warehouse
         {
             try
             {
-
                 //最后一行做统计行
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
                 ////计算金额
@@ -621,7 +639,6 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("统计数量出错！请检查：" + ex.Message);
-                throw;
             }
         }
 
@@ -634,11 +651,11 @@ namespace WSCATProject.Warehouse
         {
             string SS = "";
             GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            string zujima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+            string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
             if (SS == "")
             {
                 //模糊查询商品列表
-                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(_wareHouseModel["purchaseCode"].Value.ToString() + ""), "" + zujima + "");
+                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim()+ ""), "" + materialDaima + "");
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
@@ -656,7 +673,29 @@ namespace WSCATProject.Warehouse
                 this.resizablePanel1.Visible = false;
             }
         }
-
-
+        #region 修改Panel的边框颜色
+        /// <summary>
+        /// 修改Panel的边框颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                               this.panel2.ClientRectangle,
+                               Color.White,
+                               1,
+                               ButtonBorderStyle.Solid,
+                               Color.FromArgb(85, 177, 238),
+                               1,
+                               ButtonBorderStyle.Solid,
+                               Color.White,
+                               1,
+                               ButtonBorderStyle.Solid,
+                               Color.White,
+                               1,
+                               ButtonBorderStyle.Solid);
+        }
+        #endregion
     }
 }

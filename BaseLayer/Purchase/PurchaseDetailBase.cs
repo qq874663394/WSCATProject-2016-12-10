@@ -9,27 +9,27 @@ namespace BaseLayer.Purchase
 {
     public class PurchaseDetailBase
     {
-        public DataTable GetList(string purchaseCode, string zhujima)
+        public DataTable GetList(string purchaseCode, string materialDaima)
         {
             string sql = "";
             DataTable dt = null;
             try
             {
                 sql = "select * from T_PurchaseDetail";
-                if (!string.IsNullOrWhiteSpace(purchaseCode) || string.IsNullOrWhiteSpace(zhujima))
+                if (!string.IsNullOrWhiteSpace(purchaseCode) || string.IsNullOrWhiteSpace(materialDaima))
                 {
                     sql += " where ";
                     if (!string.IsNullOrWhiteSpace(purchaseCode))
                     {
                         sql += string.Format("PurchaseCode='{0}'", purchaseCode);
                     }
-                    if (!string.IsNullOrWhiteSpace(purchaseCode) && !string.IsNullOrWhiteSpace(zhujima))
+                    if (!string.IsNullOrWhiteSpace(purchaseCode) && !string.IsNullOrWhiteSpace(materialDaima))
                     {
                         sql += " and ";
                     }
-                    if (!string.IsNullOrWhiteSpace(zhujima))
+                    if (!string.IsNullOrWhiteSpace(materialDaima))
                     {
-                        sql += string.Format("zhujima like '%{0}%'", zhujima);
+                        sql += string.Format("materialDaima like '%{0}%'", materialDaima);
                     }
                 }
                 dt = DbHelperSQL.Query(sql).Tables[0];

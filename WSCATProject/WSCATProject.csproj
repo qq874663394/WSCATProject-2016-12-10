@@ -442,8 +442,8 @@
     <Content Include="Resources\systemOpenAccount.png" />
     <Content Include="Resources\systemOperator.png" />
     <None Include="Resources\tianjia副本.png" />
-    <None Include="Resources\tiaoma.PNG" />
     <None Include="Resources\tiaoma2.PNG" />
+    <None Include="Resources\tiaoma.png" />
     <Content Include="Resources\today.PNG" />
     <Content Include="Resources\undo.png" />
     <Content Include="Resources\undo_2.png" />
@@ -465,6 +465,7 @@
     <Content Include="Resources\yuangongyonghu.png" />
     <Content Include="Resources\zijinzhanghu.png" />
     <None Include="Resources\zuidahua1.png" />
+    <None Include="Resources\zuidahua.jpg" />
     <Content Include="Resources\人事大.png" />
     <Content Include="Resources\人事小.png" />
     <Content Include="Resources\仓库大.png" />

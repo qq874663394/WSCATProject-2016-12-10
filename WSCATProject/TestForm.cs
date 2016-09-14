@@ -161,7 +161,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                    resizablePanel1.Location = new Point(204, 200);
+                   resizablePanel1.Location = new Point(234, 440);
                     break;
             }
             if (!_btnAdd)
@@ -216,20 +216,20 @@ namespace WSCATProject
 
         private void toolStripButton3_MouseEnter(object sender, EventArgs e)
         {
-            ToolTip p = new ToolTip();
-            p.ShowAlways = true;
-            this.toolStripButton3.AutoToolTip = false;
-            this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
-            this.toolStripButton4.AutoToolTip = false;
-            this.toolStripButton4.ToolTipText = "导出Excel(Ctrl+T)";
-            this.toolStripButton6.AutoToolTip = false;
-            this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
-            this.toolStripButton5.AutoToolTip = false;
-            this.toolStripButton5.ToolTipText = "新增(Ctrl+N)";
-            this.toolStripButton7.AutoToolTip = false;
-            this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
-            this.toolStripButton8.AutoToolTip = false;
-            this.toolStripButton8.ToolTipText = "审核(F4)";
+            //ToolTip p = new ToolTip();
+            //p.ShowAlways = true;
+            //this.toolStripButton3.AutoToolTip = false;
+            //this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
+            //this.toolStripButton4.AutoToolTip = false;
+            //this.toolStripButton4.ToolTipText = "导出Excel(Ctrl+T)";
+            //this.toolStripButton6.AutoToolTip = false;
+            //this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
+            //this.toolStripButton5.AutoToolTip = false;
+            //this.toolStripButton5.ToolTipText = "新增(Ctrl+N)";
+            //this.toolStripButton7.AutoToolTip = false;
+            //this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
+            //this.toolStripButton8.AutoToolTip = false;
+            //this.toolStripButton8.ToolTipText = "审核(F4)";
 
         }
 
@@ -250,7 +250,7 @@ namespace WSCATProject
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                pictureBox6.Image = Properties.Resources.huanyuan;
+                pictureBox6.Image = Properties.Resources.zuidahua;
                 return;
             }
 
