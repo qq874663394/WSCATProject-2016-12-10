@@ -89,6 +89,7 @@ namespace LogicLayer
                 if (result > 0)
                 {
                     logModel.result = 1;
+                    wum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
                 }
                 else
                 {

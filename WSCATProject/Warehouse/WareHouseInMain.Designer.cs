@@ -46,6 +46,7 @@
             this.gridColumndate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnbaozhe = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnyouxiao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.resizablePanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -61,28 +62,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel3.SuspendLayout();
             this.resizablePanelData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1050, 64);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1048, -1);
+            this.textBoxOddNumbers.ReadOnly = false;
             // 
             // labelprie
             // 
             this.labelprie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelprie.Location = new System.Drawing.Point(1013, 68);
+            this.labelprie.Location = new System.Drawing.Point(1006, 5);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(646, 11);
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 21);
+            this.dateTimePicker1.Location = new System.Drawing.Point(648, 52);
+            this.dateTimePicker1.Size = new System.Drawing.Size(132, 21);
             // 
             // labelDate
             // 
             this.labelDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelDate.Location = new System.Drawing.Point(585, 14);
+            this.labelDate.Location = new System.Drawing.Point(589, 55);
             this.labelDate.Size = new System.Drawing.Size(65, 12);
             this.labelDate.Text = "日    期：";
             // 
@@ -101,6 +104,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Controls.Add(this.comboBoxEx2);
             this.panel2.Controls.Add(this.comboBoxEx1);
             this.panel2.Controls.Add(this.textBoxX1);
@@ -135,6 +139,7 @@
             this.panel2.Controls.SetChildIndex(this.textBoxX1, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxEx1, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxEx2, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBox9, 0);
             // 
             // labtextboxTop6
             // 
@@ -147,7 +152,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(374, 15);
+            this.labtextboxTop6.Location = new System.Drawing.Point(374, 17);
             this.labtextboxTop6.Size = new System.Drawing.Size(132, 16);
             // 
             // labtextboxTop3
@@ -190,7 +195,8 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(646, 55);
+            this.labtextboxTop9.Location = new System.Drawing.Point(648, 17);
+            this.labtextboxTop9.Size = new System.Drawing.Size(132, 16);
             // 
             // labtextboxTop8
             // 
@@ -203,7 +209,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop8.Location = new System.Drawing.Point(648, 55);
+            this.labtextboxTop8.Location = new System.Drawing.Point(651, 15);
             this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
@@ -217,7 +223,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop5.Location = new System.Drawing.Point(645, 55);
+            this.labtextboxTop5.Location = new System.Drawing.Point(648, 15);
             this.labtextboxTop5.Visible = false;
             // 
             // labtextboxTop4
@@ -285,11 +291,12 @@
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(586, 57);
+            this.labTop9.Location = new System.Drawing.Point(589, 17);
+            this.labTop9.Text = "采购电话：";
             // 
             // labTop8
             // 
-            this.labTop8.Location = new System.Drawing.Point(589, 57);
+            this.labTop8.Location = new System.Drawing.Point(592, 17);
             this.labTop8.Visible = false;
             // 
             // labTop7
@@ -304,7 +311,7 @@
             // 
             // labTop5
             // 
-            this.labTop5.Location = new System.Drawing.Point(630, 57);
+            this.labTop5.Location = new System.Drawing.Point(633, 17);
             this.labTop5.Visible = false;
             // 
             // labTop4
@@ -351,7 +358,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(195, 15);
+            this.pictureBox5.Location = new System.Drawing.Point(219, 15);
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // labtextboxBotton4
@@ -365,7 +372,8 @@
             this.labtextboxBotton4.Border.BorderGradientAngle = 0;
             this.labtextboxBotton4.Border.Class = "SideNavStrip";
             this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton4.Location = new System.Drawing.Point(637, 16);
+            this.labtextboxBotton4.Location = new System.Drawing.Point(648, 16);
+            this.labtextboxBotton4.Size = new System.Drawing.Size(132, 16);
             // 
             // labtextboxBotton3
             // 
@@ -378,7 +386,8 @@
             this.labtextboxBotton3.Border.BorderGradientAngle = 0;
             this.labtextboxBotton3.Border.Class = "SideNavStrip";
             this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton3.Location = new System.Drawing.Point(366, 17);
+            this.labtextboxBotton3.Location = new System.Drawing.Point(374, 17);
+            this.labtextboxBotton3.Size = new System.Drawing.Size(132, 16);
             // 
             // labtextboxBotton2
             // 
@@ -392,6 +401,7 @@
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxBotton2.Location = new System.Drawing.Point(894, 16);
+            this.labtextboxBotton2.Size = new System.Drawing.Size(150, 16);
             // 
             // labtextboxBotton1
             // 
@@ -404,11 +414,12 @@
             this.labtextboxBotton1.Border.BorderGradientAngle = 0;
             this.labtextboxBotton1.Border.Class = "SideNavStrip";
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton1.Location = new System.Drawing.Point(95, 19);
+            this.labtextboxBotton1.Location = new System.Drawing.Point(91, 19);
+            this.labtextboxBotton1.Size = new System.Drawing.Size(132, 16);
             // 
             // labBotton4
             // 
-            this.labBotton4.Location = new System.Drawing.Point(580, 18);
+            this.labBotton4.Location = new System.Drawing.Point(589, 18);
             // 
             // labBotton2
             // 
@@ -416,11 +427,11 @@
             // 
             // labBotton3
             // 
-            this.labBotton3.Location = new System.Drawing.Point(321, 19);
+            this.labBotton3.Location = new System.Drawing.Point(317, 19);
             // 
             // labBotton1
             // 
-            this.labBotton1.Location = new System.Drawing.Point(50, 21);
+            this.labBotton1.Location = new System.Drawing.Point(33, 21);
             this.labBotton1.Text = "入库员：";
             // 
             // superGridControl1
@@ -432,19 +443,20 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnname);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmodel);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntiaoxingma);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumndate);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnbaozhe);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.PrimaryGrid.UseAlternateRowStyle = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 371);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
@@ -500,29 +512,31 @@
             // 
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
+            this.material.Width = 120;
             // 
             // gridColumnname
             // 
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
-            this.gridColumnname.Width = 120;
+            this.gridColumnname.Width = 140;
             // 
             // gridColumnmodel
             // 
             this.gridColumnmodel.HeaderText = "规格类型";
             this.gridColumnmodel.Name = "gridColumnmodel";
+            this.gridColumnmodel.Width = 130;
             // 
             // gridColumnunit
             // 
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
-            this.gridColumnunit.Width = 80;
+            this.gridColumnunit.Width = 70;
             // 
             // gridColumntiaoxingma
             // 
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
-            this.gridColumntiaoxingma.Width = 120;
+            this.gridColumntiaoxingma.Width = 150;
             // 
             // gridColumnnumber
             // 
@@ -549,18 +563,20 @@
             // 
             this.griCoulumcangku.HeaderText = "仓库";
             this.griCoulumcangku.Name = "griCoulumcangku";
+            this.griCoulumcangku.Width = 80;
             // 
             // griCoulumhuojia
             // 
-            this.griCoulumhuojia.HeaderText = "区域/货架/排/格";
+            this.griCoulumhuojia.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.griCoulumhuojia.HeaderText = "区域/排/行/列";
             this.griCoulumhuojia.Name = "griCoulumhuojia";
-            this.griCoulumhuojia.Width = 150;
+            this.griCoulumhuojia.Width = 80;
             // 
             // gridColumnremark
             // 
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
-            this.gridColumnremark.Width = 80;
+            this.gridColumnremark.Width = 110;
             // 
             // gridColumnid
             // 
@@ -570,20 +586,32 @@
             // 
             // gridColumndate
             // 
+            this.gridColumndate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumndate.HeaderText = "生产/采购日期";
             this.gridColumndate.Name = "gridColumndate";
-            this.gridColumndate.ResizeMode = DevComponents.DotNetBar.SuperGrid.ColumnResizeMode.None;
-            this.gridColumndate.Width = 70;
-            // 
+            this.gridColumndate.Width = 75;            // 
             // gridColumnbaozhe
             // 
+            this.gridColumnbaozhe.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.gridColumnbaozhe.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnbaozhe.HeaderText = "保质期（天）";
             this.gridColumnbaozhe.Name = "gridColumnbaozhe";
+            this.gridColumnbaozhe.Width = 50;
             // 
             // gridColumnyouxiao
             // 
             this.gridColumnyouxiao.HeaderText = "有效期至";
             this.gridColumnyouxiao.Name = "gridColumnyouxiao";
+            this.gridColumnyouxiao.Width = 80;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox9.Location = new System.Drawing.Point(1048, 23);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(141, 59);
+            this.pictureBox9.TabIndex = 56;
+            this.pictureBox9.TabStop = false;
             // 
             // WareHouseInMain
             // 
@@ -613,6 +641,7 @@
             this.panel3.ResumeLayout(false);
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -637,5 +666,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumndate;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnbaozhe;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyouxiao;
+        private System.Windows.Forms.PictureBox pictureBox9;
     }
 }

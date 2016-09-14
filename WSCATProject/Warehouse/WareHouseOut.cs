@@ -514,7 +514,7 @@ namespace WSCATProject.WareHouse
             dgvc.DataPropertyName = "name";
             dataGridViewFujia.Columns.Add(dgvc);
             resizablePanel1.Location = new Point(530, 110);
-            dataGridViewFujia.DataSource = ch.DataTableReCoding(client.GetList(" name like '%" + name + "%'"));
+            dataGridViewFujia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
         }
 
         private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)

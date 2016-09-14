@@ -35,10 +35,10 @@ namespace BaseLayer.Base
                         cityName as 城市,
                         remark as 备注,
                         isEnable
-                        from T_BaseSupplier where isClear=1 and isEnable=1";
+                        from T_BaseSupplier where isClear=1 and isEnable=1 order by id";
                 ds = DbHelperSQL.Query(sql);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -60,7 +60,27 @@ namespace BaseLayer.Base
                 {
                     sql += " where " + strWhere;
                 }
-                dt=DbHelperSQL.Query(sql).Tables[0];
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
+        /// <summary>
+        /// 根据供应商code查询所有采购单
+        /// </summary>
+        /// <param name="code">供应商code</param>
+        /// <returns></returns>
+        public DataTable GetPurchaseList(string code)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = @"select pm.* from T_BaseSupplier su,T_PurchaseMain pm where pm.supplierCode = su.code where checkState=1 and purchaseOrderState=4 and (putStorageState=0 or putStorageState=1)";
+                dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)
             {

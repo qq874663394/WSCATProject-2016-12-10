@@ -199,7 +199,6 @@ namespace WSCATProject.Warehouse
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
-
             superGridControl1.HScrollBarVisible = true;
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
@@ -658,6 +657,6 @@ namespace WSCATProject.Warehouse
             }
         }
 
-     
+
     }
 }

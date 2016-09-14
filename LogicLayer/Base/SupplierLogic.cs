@@ -46,8 +46,9 @@ namespace LogicLayer.Base
             lb.Add(logModel);
             return dt;
         }
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
+            string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
             log model = new log()
@@ -62,6 +63,23 @@ namespace LogicLayer.Base
             };
             try
             {
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("name like '%{0}%'", fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("cityName like '%{0}%'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("isEnable = {0}", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("isClear = {0}", fieldValue);
+                        break;
+                    default:
+                        throw new Exception("-7");
+                }
                 dt = sb.GetList(strWhere);
                 model.result = 1;
             }
@@ -70,7 +88,48 @@ namespace LogicLayer.Base
                 model.result = 0;
                 throw ex;
             }
-            lb.Add(model);
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
+        }
+        public DataTable GetPurchaseList(string code)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log model = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseSupplier/T_PurchaseMain",
+                operationTime = DateTime.Now,
+                objective = "查询员工信息",
+                operationContent = "根据T_BaseSupplier表的code查询T_PurchaseMain表的所有数据,条件:code=" + code
+            };
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(code))
+                {
+                    dt = sb.GetPurchaseList(code);
+                    model.result = 1;
+                }
+                else
+                {
+                    model.result = 0;
+                    throw new Exception("-7");
+                }
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
             return dt;
         }
     }
