@@ -34,6 +34,10 @@ namespace Model
         private string _warehouseCode;
         private string _warehouseName;
         private string _mainCode;
+        private string _materialdaima;
+        private DateTime? _productiondate;
+        private DateTime? _qualitydate;
+        private DateTime? _effectivedate;
         /// <summary>
         /// 栏号(自增)
         /// </summary>
@@ -267,6 +271,38 @@ namespace Model
             {
                 _mainCode = value;
             }
+        }
+        /// <summary>
+        /// 商品代码
+        /// </summary>
+        public string materialDaima
+        {
+            set { _materialdaima = value; }
+            get { return _materialdaima; }
+        }
+        /// <summary>
+		/// 生产/采购日期
+		/// </summary>
+		public DateTime? productionDate
+        {
+            set { _productiondate = value; }
+            get { return _productiondate; }
+        }
+        /// <summary>
+		/// 保质期
+		/// </summary>
+		public DateTime? qualityDate
+        {
+            set { _qualitydate = value; }
+            get { return _qualitydate; }
+        }
+        /// <summary>
+		/// 有效期至
+		/// </summary>
+		public DateTime? effectiveDate
+        {
+            set { _effectivedate = value; }
+            get { return _effectivedate; }
         }
         #endregion Model
 

@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
@@ -41,6 +41,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
@@ -48,22 +51,6 @@
             this.labelprie = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDate = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.labtextboxBotton4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labtextboxBotton3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labtextboxBotton2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labtextboxBotton1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labBotton4 = new System.Windows.Forms.Label();
-            this.labBotton2 = new System.Windows.Forms.Label();
-            this.labBotton3 = new System.Windows.Forms.Label();
-            this.labBotton1 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonExamine = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.labtextboxTop6 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -89,34 +76,46 @@
             this.labTop3 = new System.Windows.Forms.Label();
             this.labTop2 = new System.Windows.Forms.Label();
             this.labTop1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.resizablePanel1 = new HelperUtility.ExUI.ResizablePanel();
             this.panelDataView = new System.Windows.Forms.Panel();
             this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.labtextboxBotton4 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labtextboxBotton3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labtextboxBotton2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labtextboxBotton1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labBotton4 = new System.Windows.Forms.Label();
+            this.labBotton2 = new System.Windows.Forms.Label();
+            this.labBotton3 = new System.Windows.Forms.Label();
+            this.labBotton1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.resizablePanelData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.resizablePanel1.SuspendLayout();
             this.panelDataView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.resizablePanelData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -126,6 +125,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.pictureBox7);
             this.panel1.Controls.Add(this.pictureBox6);
             this.panel1.Controls.Add(this.labelTitle);
@@ -136,13 +136,28 @@
             this.panel1.Size = new System.Drawing.Size(1202, 61);
             this.panel1.TabIndex = 2;
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox8.Image = global::WSCATProject.Properties.Resources.捕获;
+            this.pictureBox8.Location = new System.Drawing.Point(1139, 26);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox8.TabIndex = 45;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
             // pictureBox7
             // 
             this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox7.BackColor = System.Drawing.Color.White;
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBox7.Location = new System.Drawing.Point(1112, 26);
+            this.pictureBox7.Location = new System.Drawing.Point(1083, 26);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(20, 20);
             this.pictureBox7.TabIndex = 43;
@@ -156,7 +171,7 @@
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::WSCATProject.Properties.Resources.big;
-            this.pictureBox6.Location = new System.Drawing.Point(1139, 26);
+            this.pictureBox6.Location = new System.Drawing.Point(1110, 26);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(20, 20);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -166,6 +181,8 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTitle.BackColor = System.Drawing.Color.DeepSkyBlue;
             // 
             // 
@@ -173,11 +190,12 @@
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelTitle.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(462, 5);
+            this.labelTitle.Location = new System.Drawing.Point(528, 5);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(109, 30);
             this.labelTitle.TabIndex = 2;
             this.labelTitle.Text = "模块页";
+            this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBoxtitle
@@ -190,6 +208,7 @@
             this.pictureBoxtitle.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxtitle.Name = "pictureBoxtitle";
             this.pictureBoxtitle.Size = new System.Drawing.Size(1202, 61);
+            this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 0;
             this.pictureBoxtitle.TabStop = false;
             this.pictureBoxtitle.Click += new System.EventHandler(this.panel6_Click);
@@ -197,16 +216,21 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.AutoSize = false;
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStrip1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
+            this.toolStripButton5,
+            this.toolStripButton7,
+            this.toolStripButton8,
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1202, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1202, 60);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.Click += new System.EventHandler(this.panel6_Click);
@@ -214,49 +238,92 @@
             // 
             // toolStripButton1
             // 
+            this.toolStripButton1.AutoSize = false;
             this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.qiandan;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(41, 57);
             this.toolStripButton1.Text = "前单";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripButton2
             // 
             this.toolStripButton2.Image = global::WSCATProject.Properties.Resources.houdan;
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton2.Size = new System.Drawing.Size(41, 57);
             this.toolStripButton2.Text = "后单";
+            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.Image = global::WSCATProject.Properties.Resources._new;
+            this.toolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButton5.Text = "新增";
+            this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Image = global::WSCATProject.Properties.Resources.save;
+            this.toolStripButton7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButton7.Text = "保存";
+            this.toolStripButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.Image = global::WSCATProject.Properties.Resources.shenghe;
+            this.toolStripButton8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButton8.Text = "审核";
+            this.toolStripButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripButton3
             // 
-            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.daying;
+            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.daying1;
+            this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton3.Size = new System.Drawing.Size(41, 57);
             this.toolStripButton3.Text = "打印";
+            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton3.MouseEnter += new System.EventHandler(this.toolStripButton3_MouseEnter);
             // 
             // toolStripButton4
             // 
             this.toolStripButton4.Image = global::WSCATProject.Properties.Resources.countExc;
+            this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(81, 22);
+            this.toolStripButton4.Size = new System.Drawing.Size(75, 57);
             this.toolStripButton4.Text = "导出Excel";
+            this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripButton6
             // 
             this.toolStripButton6.Image = global::WSCATProject.Properties.Resources.guanbi;
+            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton6.Size = new System.Drawing.Size(41, 57);
             this.toolStripButton6.Text = "关闭";
+            this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxOddNumbers.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1053, 64);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1018, 78);
             this.textBoxOddNumbers.Name = "textBoxOddNumbers";
             this.textBoxOddNumbers.ReadOnly = true;
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 21);
@@ -267,7 +334,7 @@
             this.labelprie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelprie.AutoSize = true;
             this.labelprie.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelprie.Location = new System.Drawing.Point(1016, 68);
+            this.labelprie.Location = new System.Drawing.Point(980, 83);
             this.labelprie.Name = "labelprie";
             this.labelprie.Size = new System.Drawing.Size(41, 12);
             this.labelprie.TabIndex = 7;
@@ -276,7 +343,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(877, 64);
+            this.dateTimePicker1.Location = new System.Drawing.Point(631, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(124, 21);
             this.dateTimePicker1.TabIndex = 5;
@@ -286,225 +353,11 @@
             this.labelDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDate.AutoSize = true;
             this.labelDate.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelDate.Location = new System.Drawing.Point(837, 67);
+            this.labelDate.Location = new System.Drawing.Point(591, 18);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(41, 12);
             this.labelDate.TabIndex = 6;
             this.labelDate.Text = "日期：";
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.pictureBox5);
-            this.panel4.Controls.Add(this.labtextboxBotton4);
-            this.panel4.Controls.Add(this.labtextboxBotton3);
-            this.panel4.Controls.Add(this.labtextboxBotton2);
-            this.panel4.Controls.Add(this.labtextboxBotton1);
-            this.panel4.Controls.Add(this.labBotton4);
-            this.panel4.Controls.Add(this.labBotton2);
-            this.panel4.Controls.Add(this.labBotton3);
-            this.panel4.Controls.Add(this.labBotton1);
-            this.panel4.Location = new System.Drawing.Point(0, 514);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1202, 84);
-            this.panel4.TabIndex = 10;
-            this.panel4.Click += new System.EventHandler(this.panel6_Click);
-            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.checkMore;
-            this.pictureBox5.Location = new System.Drawing.Point(197, 15);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox5.TabIndex = 40;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.ClickPicBox);
-            // 
-            // labtextboxBotton4
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxBotton4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton4.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton4.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton4.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton4.Border.Class = "SideNavStrip";
-            this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton4.Location = new System.Drawing.Point(354, 49);
-            this.labtextboxBotton4.Name = "labtextboxBotton4";
-            this.labtextboxBotton4.PreventEnterBeep = true;
-            this.labtextboxBotton4.Size = new System.Drawing.Size(117, 16);
-            this.labtextboxBotton4.TabIndex = 35;
-            // 
-            // labtextboxBotton3
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxBotton3.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton3.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton3.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton3.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton3.Border.Class = "SideNavStrip";
-            this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton3.Location = new System.Drawing.Point(97, 49);
-            this.labtextboxBotton3.Name = "labtextboxBotton3";
-            this.labtextboxBotton3.PreventEnterBeep = true;
-            this.labtextboxBotton3.Size = new System.Drawing.Size(105, 16);
-            this.labtextboxBotton3.TabIndex = 36;
-            // 
-            // labtextboxBotton2
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxBotton2.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton2.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton2.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton2.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton2.Border.Class = "SideNavStrip";
-            this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(354, 19);
-            this.labtextboxBotton2.Name = "labtextboxBotton2";
-            this.labtextboxBotton2.PreventEnterBeep = true;
-            this.labtextboxBotton2.Size = new System.Drawing.Size(424, 16);
-            this.labtextboxBotton2.TabIndex = 37;
-            // 
-            // labtextboxBotton1
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxBotton1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton1.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton1.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton1.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton1.Border.Class = "SideNavStrip";
-            this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton1.Location = new System.Drawing.Point(97, 19);
-            this.labtextboxBotton1.Name = "labtextboxBotton1";
-            this.labtextboxBotton1.PreventEnterBeep = true;
-            this.labtextboxBotton1.Size = new System.Drawing.Size(105, 16);
-            this.labtextboxBotton1.TabIndex = 38;
-            // 
-            // labBotton4
-            // 
-            this.labBotton4.AutoSize = true;
-            this.labBotton4.Location = new System.Drawing.Point(297, 51);
-            this.labBotton4.Name = "labBotton4";
-            this.labBotton4.Size = new System.Drawing.Size(65, 12);
-            this.labBotton4.TabIndex = 39;
-            this.labBotton4.Text = "审 核 人：";
-            // 
-            // labBotton2
-            // 
-            this.labBotton2.AutoSize = true;
-            this.labBotton2.Location = new System.Drawing.Point(297, 21);
-            this.labBotton2.Name = "labBotton2";
-            this.labBotton2.Size = new System.Drawing.Size(65, 12);
-            this.labBotton2.TabIndex = 34;
-            this.labBotton2.Text = "摘    要：";
-            // 
-            // labBotton3
-            // 
-            this.labBotton3.AutoSize = true;
-            this.labBotton3.Location = new System.Drawing.Point(52, 51);
-            this.labBotton3.Name = "labBotton3";
-            this.labBotton3.Size = new System.Drawing.Size(53, 12);
-            this.labBotton3.TabIndex = 33;
-            this.labBotton3.Text = "制单人：";
-            // 
-            // labBotton1
-            // 
-            this.labBotton1.AutoSize = true;
-            this.labBotton1.Location = new System.Drawing.Point(52, 21);
-            this.labBotton1.Name = "labBotton1";
-            this.labBotton1.Size = new System.Drawing.Size(53, 12);
-            this.labBotton1.TabIndex = 32;
-            this.labBotton1.Text = "业务员：";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.button1);
-            this.panel5.Controls.Add(this.buttonExamine);
-            this.panel5.Controls.Add(this.buttonSave);
-            this.panel5.Controls.Add(this.buttonClose);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 597);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1202, 45);
-            this.panel5.TabIndex = 11;
-            this.panel5.Click += new System.EventHandler(this.panel6_Click);
-            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = global::WSCATProject.Properties.Resources._new;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(812, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 32);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "    新增(&N)";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // buttonExamine
-            // 
-            this.buttonExamine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExamine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonExamine.Image = global::WSCATProject.Properties.Resources.shenghe;
-            this.buttonExamine.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExamine.Location = new System.Drawing.Point(1007, 7);
-            this.buttonExamine.Name = "buttonExamine";
-            this.buttonExamine.Size = new System.Drawing.Size(90, 32);
-            this.buttonExamine.TabIndex = 3;
-            this.buttonExamine.Text = "    审核(&E)";
-            this.buttonExamine.UseVisualStyleBackColor = true;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSave.Image = global::WSCATProject.Properties.Resources.save;
-            this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSave.Location = new System.Drawing.Point(909, 7);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(91, 32);
-            this.buttonSave.TabIndex = 4;
-            this.buttonSave.Text = "    保存(&S)";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonClose.Image = global::WSCATProject.Properties.Resources.close;
-            this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonClose.Location = new System.Drawing.Point(1104, 7);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(90, 32);
-            this.buttonClose.TabIndex = 5;
-            this.buttonClose.Text = "    退出(&C)";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.Location = new System.Drawing.Point(283, 368);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(310, 139);
-            this.panel6.TabIndex = 6;
             // 
             // toolTip1
             // 
@@ -521,8 +374,12 @@
             this.panel2.Controls.Add(this.labtextboxTop7);
             this.panel2.Controls.Add(this.labtextboxTop9);
             this.panel2.Controls.Add(this.labtextboxTop8);
+            this.panel2.Controls.Add(this.textBoxOddNumbers);
+            this.panel2.Controls.Add(this.labelprie);
             this.panel2.Controls.Add(this.labtextboxTop5);
             this.panel2.Controls.Add(this.labtextboxTop4);
+            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.labelDate);
             this.panel2.Controls.Add(this.labtextboxTop2);
             this.panel2.Controls.Add(this.labtextboxTop1);
             this.panel2.Controls.Add(this.pictureBox4);
@@ -540,7 +397,7 @@
             this.panel2.Controls.Add(this.labTop2);
             this.panel2.Controls.Add(this.labTop1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 86);
+            this.panel2.Location = new System.Drawing.Point(0, 121);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1202, 110);
             this.panel2.TabIndex = 4;
@@ -609,7 +466,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(909, 76);
+            this.labtextboxTop9.Location = new System.Drawing.Point(845, 78);
             this.labtextboxTop9.Name = "labtextboxTop9";
             this.labtextboxTop9.PreventEnterBeep = true;
             this.labtextboxTop9.Size = new System.Drawing.Size(105, 16);
@@ -757,7 +614,7 @@
             // labTop9
             // 
             this.labTop9.AutoSize = true;
-            this.labTop9.Location = new System.Drawing.Point(850, 78);
+            this.labTop9.Location = new System.Drawing.Point(786, 80);
             this.labTop9.Name = "labTop9";
             this.labTop9.Size = new System.Drawing.Size(65, 12);
             this.labTop9.TabIndex = 38;
@@ -835,60 +692,6 @@
             this.labTop1.TabIndex = 30;
             this.labTop1.Text = "单据类型：";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.superGridControl1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 196);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1202, 320);
-            this.panel3.TabIndex = 9;
-            // 
-            // superGridControl1
-            // 
-            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.superGridControl1.Name = "superGridControl1";
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 320);
-            this.superGridControl1.TabIndex = 1;
-            this.superGridControl1.Text = "superGridControl1";
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
-            // 
-            // resizablePanelData
-            // 
-            this.resizablePanelData.BackColor = System.Drawing.Color.White;
-            this.resizablePanelData.Controls.Add(this.dataGridView1);
-            this.resizablePanelData.Controls.Add(this.label2);
-            this.resizablePanelData.Location = new System.Drawing.Point(684, 243);
-            this.resizablePanelData.Name = "resizablePanelData";
-            this.resizablePanelData.Size = new System.Drawing.Size(389, 188);
-            this.resizablePanelData.TabIndex = 6;
-            this.resizablePanelData.Visible = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(389, 172);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(0, 172);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 16);
-            this.label2.TabIndex = 3;
-            // 
             // resizablePanel1
             // 
             this.resizablePanel1.BackColor = System.Drawing.Color.White;
@@ -948,6 +751,201 @@
             this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 2;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.pictureBox5);
+            this.panel5.Controls.Add(this.labtextboxBotton4);
+            this.panel5.Controls.Add(this.labtextboxBotton3);
+            this.panel5.Controls.Add(this.labtextboxBotton2);
+            this.panel5.Controls.Add(this.labtextboxBotton1);
+            this.panel5.Controls.Add(this.labBotton4);
+            this.panel5.Controls.Add(this.labBotton2);
+            this.panel5.Controls.Add(this.labBotton3);
+            this.panel5.Controls.Add(this.labBotton1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1202, 64);
+            this.panel5.TabIndex = 11;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.checkMore;
+            this.pictureBox5.Location = new System.Drawing.Point(206, 17);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox5.TabIndex = 40;
+            this.pictureBox5.TabStop = false;
+            // 
+            // labtextboxBotton4
+            // 
+            // 
+            // 
+            // 
+            this.labtextboxBotton4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtextboxBotton4.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxBotton4.Border.BorderBottomWidth = 1;
+            this.labtextboxBotton4.Border.BorderGradientAngle = 0;
+            this.labtextboxBotton4.Border.Class = "SideNavStrip";
+            this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton4.Location = new System.Drawing.Point(632, 21);
+            this.labtextboxBotton4.Name = "labtextboxBotton4";
+            this.labtextboxBotton4.PreventEnterBeep = true;
+            this.labtextboxBotton4.Size = new System.Drawing.Size(117, 16);
+            this.labtextboxBotton4.TabIndex = 35;
+            // 
+            // labtextboxBotton3
+            // 
+            // 
+            // 
+            // 
+            this.labtextboxBotton3.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtextboxBotton3.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxBotton3.Border.BorderBottomWidth = 1;
+            this.labtextboxBotton3.Border.BorderGradientAngle = 0;
+            this.labtextboxBotton3.Border.Class = "SideNavStrip";
+            this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton3.Location = new System.Drawing.Point(362, 21);
+            this.labtextboxBotton3.Name = "labtextboxBotton3";
+            this.labtextboxBotton3.PreventEnterBeep = true;
+            this.labtextboxBotton3.Size = new System.Drawing.Size(105, 16);
+            this.labtextboxBotton3.TabIndex = 36;
+            // 
+            // labtextboxBotton2
+            // 
+            // 
+            // 
+            // 
+            this.labtextboxBotton2.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtextboxBotton2.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxBotton2.Border.BorderBottomWidth = 1;
+            this.labtextboxBotton2.Border.BorderGradientAngle = 0;
+            this.labtextboxBotton2.Border.Class = "SideNavStrip";
+            this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton2.Location = new System.Drawing.Point(895, 21);
+            this.labtextboxBotton2.Name = "labtextboxBotton2";
+            this.labtextboxBotton2.PreventEnterBeep = true;
+            this.labtextboxBotton2.Size = new System.Drawing.Size(140, 16);
+            this.labtextboxBotton2.TabIndex = 37;
+            // 
+            // labtextboxBotton1
+            // 
+            // 
+            // 
+            // 
+            this.labtextboxBotton1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtextboxBotton1.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxBotton1.Border.BorderBottomWidth = 1;
+            this.labtextboxBotton1.Border.BorderGradientAngle = 0;
+            this.labtextboxBotton1.Border.Class = "SideNavStrip";
+            this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton1.Location = new System.Drawing.Point(106, 21);
+            this.labtextboxBotton1.Name = "labtextboxBotton1";
+            this.labtextboxBotton1.PreventEnterBeep = true;
+            this.labtextboxBotton1.Size = new System.Drawing.Size(105, 16);
+            this.labtextboxBotton1.TabIndex = 38;
+            // 
+            // labBotton4
+            // 
+            this.labBotton4.AutoSize = true;
+            this.labBotton4.Location = new System.Drawing.Point(575, 23);
+            this.labBotton4.Name = "labBotton4";
+            this.labBotton4.Size = new System.Drawing.Size(65, 12);
+            this.labBotton4.TabIndex = 39;
+            this.labBotton4.Text = "审 核 人：";
+            // 
+            // labBotton2
+            // 
+            this.labBotton2.AutoSize = true;
+            this.labBotton2.Location = new System.Drawing.Point(838, 23);
+            this.labBotton2.Name = "labBotton2";
+            this.labBotton2.Size = new System.Drawing.Size(65, 12);
+            this.labBotton2.TabIndex = 34;
+            this.labBotton2.Text = "摘    要：";
+            // 
+            // labBotton3
+            // 
+            this.labBotton3.AutoSize = true;
+            this.labBotton3.Location = new System.Drawing.Point(317, 23);
+            this.labBotton3.Name = "labBotton3";
+            this.labBotton3.Size = new System.Drawing.Size(53, 12);
+            this.labBotton3.TabIndex = 33;
+            this.labBotton3.Text = "制单人：";
+            // 
+            // labBotton1
+            // 
+            this.labBotton1.AutoSize = true;
+            this.labBotton1.Location = new System.Drawing.Point(61, 23);
+            this.labBotton1.Name = "labBotton1";
+            this.labBotton1.Size = new System.Drawing.Size(53, 12);
+            this.labBotton1.TabIndex = 32;
+            this.labBotton1.Text = "业务员：";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 578);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1202, 64);
+            this.panel4.TabIndex = 10;
+            // 
+            // superGridControl1
+            // 
+            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.superGridControl1.Name = "superGridControl1";
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 347);
+            this.superGridControl1.TabIndex = 1;
+            this.superGridControl1.Text = "superGridControl1";
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.superGridControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 231);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1202, 347);
+            this.panel3.TabIndex = 9;
+            // 
+            // resizablePanelData
+            // 
+            this.resizablePanelData.BackColor = System.Drawing.Color.White;
+            this.resizablePanelData.Controls.Add(this.dataGridView1);
+            this.resizablePanelData.Controls.Add(this.label2);
+            this.resizablePanelData.Location = new System.Drawing.Point(453, 220);
+            this.resizablePanelData.Name = "resizablePanelData";
+            this.resizablePanelData.Size = new System.Drawing.Size(389, 188);
+            this.resizablePanelData.TabIndex = 11;
+            this.resizablePanelData.Visible = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(389, 172);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F);
+            this.label2.Location = new System.Drawing.Point(0, 172);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.TabIndex = 3;
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -955,13 +953,8 @@
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Controls.Add(this.resizablePanelData);
             this.Controls.Add(this.resizablePanel1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.textBoxOddNumbers);
-            this.Controls.Add(this.labelprie);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.labelDate);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
@@ -972,31 +965,31 @@
             this.Load += new System.EventHandler(this.TestForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.resizablePanelData.ResumeLayout(false);
-            this.resizablePanelData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();
             this.panelDataView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.resizablePanelData.ResumeLayout(false);
+            this.resizablePanelData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1015,26 +1008,9 @@
         protected System.Windows.Forms.Panel panelDataView;
         protected System.Windows.Forms.DataGridView dataGridViewFujia;
         protected System.Windows.Forms.Label label1;
-        protected HelperUtility.ExUI.ResizablePanel resizablePanelData;
-        protected System.Windows.Forms.DataGridView dataGridView1;
-        protected System.Windows.Forms.Label label2;
-        protected System.Windows.Forms.PictureBox pictureBox5;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton4;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton3;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton2;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton1;
-        protected System.Windows.Forms.Label labBotton4;
-        protected System.Windows.Forms.Label labBotton2;
-        protected System.Windows.Forms.Label labBotton3;
-        protected System.Windows.Forms.Label labBotton1;
-        protected System.Windows.Forms.Button buttonExamine;
-        protected System.Windows.Forms.Button buttonSave;
-        protected System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.ToolTip toolTip1;
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.ToolStrip toolStrip1;
-        protected System.Windows.Forms.Panel panel4;
-        protected System.Windows.Forms.Panel panel5;
         protected DevComponents.DotNetBar.LabelX labelTitle;
         protected System.Windows.Forms.Panel panel2;
         protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxTop6;
@@ -1060,12 +1036,28 @@
         protected System.Windows.Forms.Label labTop3;
         protected System.Windows.Forms.Label labTop2;
         protected System.Windows.Forms.Label labTop1;
-        protected System.Windows.Forms.Panel panel3;
-        protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
-        protected System.Windows.Forms.Panel panel6;
         public System.Windows.Forms.PictureBox pictureBox6;
         public System.Windows.Forms.PictureBox pictureBox7;
         public System.Windows.Forms.PictureBox pictureBoxtitle;
-        protected System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        protected System.Windows.Forms.PictureBox pictureBox8;
+        protected System.Windows.Forms.Panel panel5;
+        protected System.Windows.Forms.PictureBox pictureBox5;
+        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton4;
+        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton3;
+        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton2;
+        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton1;
+        protected System.Windows.Forms.Label labBotton4;
+        protected System.Windows.Forms.Label labBotton2;
+        protected System.Windows.Forms.Label labBotton3;
+        protected System.Windows.Forms.Label labBotton1;
+        private System.Windows.Forms.Panel panel4;
+        protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
+        protected System.Windows.Forms.Panel panel3;
+        protected HelperUtility.ExUI.ResizablePanel resizablePanelData;
+        protected System.Windows.Forms.DataGridView dataGridView1;
+        protected System.Windows.Forms.Label label2;
     }
 }
