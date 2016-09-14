@@ -24,9 +24,18 @@ namespace InterfaceLayer.Base
         /// </summary>
         /// <param name="strWhere"></param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return sl.GetList(strWhere);
+            return sl.GetList(fieldName, fieldValue);
+        }
+        /// <summary>
+        /// 根据供应商code查询所有采购单
+        /// </summary>
+        /// <param name="code">供应商code</param>
+        /// <returns></returns>
+        public DataTable GetPurchaseList(string code)
+        {
+            return sl.GetPurchaseList(code);
         }
     }
 }

@@ -16,13 +16,14 @@ namespace InterfaceLayer.Base
             return cb.GetClientByBool(isflag);
         }
         /// <summary>
-        /// 自定义条件取得列表
+        /// 模糊查询
         /// </summary>
-        /// <param name="strWhere">where后面的条件</param>
+        /// <param name="fieldName">需要查询的列：0：name,1：cityName</param>
+        /// <param name="fieldValue">需要查询的列的值</param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return cb.GetList(strWhere);
+            return cb.GetList(fieldName,fieldValue);
         }
     }
 }
