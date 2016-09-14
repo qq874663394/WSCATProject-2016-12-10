@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\PurchaseDetailInterface.cs" />
     <Compile Include="Purchase\PurchaseInterface.cs" />
-    <Compile Include="Warehouse\WarehouseDetailInterface.cs" />
+    <Compile Include="Warehouse\WarehouseInDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInInterface.cs" />
     <Compile Include="Warehouse\WarehouseInventoryInterface.cs" />
     <Compile Include="Warehouse\WarehouseMainInterface.cs" />

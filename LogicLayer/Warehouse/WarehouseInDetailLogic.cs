@@ -106,9 +106,10 @@ namespace LogicLayer
             return result;
         }
         /// <summary>
-        /// 根据where条件获取数据列表
+        /// 复合查询
         /// </summary>
-        /// <param name="strWhere">where条件</param>
+        /// <param name="fieldName">0:模糊zhujima,1:模糊materialName,2:state,3:isClear</param>
+        /// <param name="fieldValue">条件值</param>
         /// <returns></returns>
         public DataSet getList(int fieldName, string fieldValue)
         {
@@ -127,14 +128,23 @@ namespace LogicLayer
             };
             try
             {
-                if (string.IsNullOrWhiteSpace(fieldValue))
-                {
-                    throw new Exception("-2");
-                }
+                //if (string.IsNullOrWhiteSpace(fieldValue))
+                //{
+                //    throw new Exception("-2");
+                //}
                 switch (fieldName)
                 {
-
-                    default:
+                    case 0:
+                        strWhere += string.Format("zhujima like '{0}'",fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("materialName like '{0}'",fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("state={0}",fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("isClear={0}",fieldValue);
                         break;
                 }
                 logModel.operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + strWhere;

@@ -89,7 +89,7 @@ namespace WSCATProject.Warehouse
             StorageInterface storage = new StorageInterface();
 
             _AllEmployee = employee.SelSupplierTable(false);
-            _AllStorage = storage.GetList("");
+            _AllStorage = storage.GetList(00,"");
 
             //显示行号
             superGridControl1.PrimaryGrid.ShowRowGridIndex = true;

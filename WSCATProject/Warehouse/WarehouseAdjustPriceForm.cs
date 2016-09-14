@@ -99,7 +99,7 @@ namespace WSCATProject.Warehouse
             _AllEmployee = employee.SelSupplierTable(false);
             //仓库
             StorageInterface storage = new StorageInterface();
-            _AllStorage = storage.GetList("");
+            _AllStorage = storage.GetList(00,"");
 
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;

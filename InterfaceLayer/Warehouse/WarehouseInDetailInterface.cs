@@ -31,13 +31,14 @@ namespace InterfaceLayer.Warehouse
             return wdl.deleteInDetailTable(code);
         }
         /// <summary>
-        /// 根据where条件获取数据列表
+        /// 复合查询
         /// </summary>
-        /// <param name="strWhere"></param>
+        /// <param name="fieldName">0:模糊zhujima,1:模糊materialName,2:state,3:isClear</param>
+        /// <param name="fieldValue">条件值</param>
         /// <returns></returns>
-        public DataSet getList(string strWhere)
+        public DataSet getList(int fieldName, string fieldValue)
         {
-            return wdl.getList(strWhere);
+            return wdl.getList(fieldName, fieldValue);
         }
         /// <summary>
         /// 根据主表code获取列表
