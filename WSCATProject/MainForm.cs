@@ -1524,9 +1524,11 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeIn_Click_1(object sender, EventArgs e)
         {
-            Buys.PayBuySelect sel = new Buys.PayBuySelect();
-            sel.SelectForm = "入库开单";
-            sel.ShowDialog();
+            //Buys.PayBuySelect sel = new Buys.PayBuySelect();
+            //sel.SelectForm = "入库开单";
+            //sel.ShowDialog();
+            Warehouse.WareHouseInMain warein = new Warehouse.WareHouseInMain();
+            warein.ShowDialog();           
         }
         /// <summary>
         /// 盘点单的事件

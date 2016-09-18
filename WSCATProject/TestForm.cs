@@ -141,6 +141,8 @@ namespace WSCATProject
         {
             if (resizablePanel1.Visible)
                 resizablePanel1.Visible = false;
+            if (resizablePanelData.Visible)
+                resizablePanelData.Visible = false;
         }
 
         protected virtual void ClickPicBox(object sender, EventArgs e)
@@ -281,6 +283,7 @@ namespace WSCATProject
             }
 
         }
+
 
         //获取鼠标的位置
         //[DllImport("User32.dll")]

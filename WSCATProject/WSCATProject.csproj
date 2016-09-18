@@ -157,9 +157,7 @@
     <Compile Include="Warehouse\WareHouseDisassembly.Designer.cs">
       <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\WareHouseIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Warehouse\WareHouseIn.cs" />
     <Compile Include="Warehouse\WareHouseIn.Designer.cs">
       <DependentUpon>WareHouseIn.cs</DependentUpon>
     </Compile>

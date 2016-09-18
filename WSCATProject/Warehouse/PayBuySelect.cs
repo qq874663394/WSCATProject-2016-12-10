@@ -13,6 +13,7 @@ using HelperUtility.Encrypt;
 using InterfaceLayer;
 using InterfaceLayer.Warehouse;
 using BaseLayer;
+using WSCATProject.Warehouse;
 
 namespace WSCATProject.Buys
 {
@@ -30,8 +31,8 @@ namespace WSCATProject.Buys
         //判断窗体选中的列表
         public string SelectForm
         {
-            get{return _selectForm; }
-            set{ _selectForm = value;}
+            get { return _selectForm; }
+            set { _selectForm = value; }
         }
 
         public PayBuySelect()
@@ -181,7 +182,7 @@ namespace WSCATProject.Buys
             superGridControl1.PrimaryGrid.FocusCuesEnabled = false;
             superGridControl1.PrimaryGrid.ActiveRowIndicatorStyle = ActiveRowIndicatorStyle.None;
             toolStripComboBox1.SelectedIndex = 0;
-           // toolStripComboBox2.SelectedIndex = 0;
+            // toolStripComboBox2.SelectedIndex = 0;
             GridColumn gc = null;
             switch (_selectForm)
             {
@@ -451,7 +452,7 @@ namespace WSCATProject.Buys
                     商品入库ToolStripMenuItem.Visible = true;
                     break;
                 case "出库开单":
-                     this.toolStripLabel8.Visible = true;
+                    this.toolStripLabel8.Visible = true;
                     this.toolStripComboBox4.Visible = true;
                     this.toolStripComboBox2.Text = "出库开单";
                     this.toolStripComboBox4.Items.Clear();
@@ -1537,7 +1538,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
                     toolStripComboBox4.SelectedIndex = 0;
-                    
+
                     break;
                 case "其他发货单":
                     break;
@@ -2156,7 +2157,7 @@ namespace WSCATProject.Buys
                         //待入库查看
                         if (shengh == "0")
                         {
-                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            WareHouseInMain ware = new WareHouseInMain();
                             ware.WareHouseModel = rows;
                             ware.State = 0;
                             ware.Show();
@@ -2164,7 +2165,7 @@ namespace WSCATProject.Buys
                         //部分入库查看
                         if (shengh == "1")
                         {
-                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            WareHouseInMain ware = new WareHouseInMain();
                             ware.WareHouseModel = rows;
                             ware.State = 1;
                             ware.Show();
@@ -2172,7 +2173,7 @@ namespace WSCATProject.Buys
                         //已完成查看
                         if (shengh == "2")
                         {
-                            WSCATProject.WareHouse.WareHouseIn ware = new WareHouse.WareHouseIn();
+                            WareHouseInMain ware = new WareHouseInMain();
                             ware.WareHouseModel = rows;
                             ware.State = 2;
                             ware.Show();
@@ -2247,7 +2248,7 @@ namespace WSCATProject.Buys
         private void BindWareHouesIn(int fieldName, string fieldValue)
         {
             GridColumn gc = null;
-          
+
             superGridControl1.PrimaryGrid.DataSource = null;
             superGridControl1.PrimaryGrid.Columns.Clear();
             gc = new GridColumn();
@@ -2316,7 +2317,7 @@ namespace WSCATProject.Buys
             {
                 MessageBox.Show("查无数据!");
             }
-         
+
         }
         /// <summary>
         /// 初始化出库的列表
@@ -2325,7 +2326,7 @@ namespace WSCATProject.Buys
         private void BanDWareHouesOut(string where)
         {
             GridColumn gc = null;
-         
+
             superGridControl1.PrimaryGrid.DataSource = null;
             superGridControl1.PrimaryGrid.Columns.Clear();
             gc = new GridColumn();
@@ -2410,10 +2411,10 @@ namespace WSCATProject.Buys
             gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-                dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(where).Tables[0]);
-                superGridControl1.PrimaryGrid.DataSource = dt;
-                whereField = "单据日期";
-                orderField = "ID";
+            dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(where).Tables[0]);
+            superGridControl1.PrimaryGrid.DataSource = dt;
+            whereField = "单据日期";
+            orderField = "ID";
         }
 
         private void 商品出库ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2428,7 +2429,7 @@ namespace WSCATProject.Buys
                     {
                         GridRow rows = cols[0] as GridRow;
                         string shengh = rows.Cells["state"].Value.ToString();
-                       
+
                         //待出库查看
                         if (shengh == "0")
                         {

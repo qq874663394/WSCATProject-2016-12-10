@@ -125,7 +125,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            WareHouseIn whi = (WareHouseIn)this.Owner;
+            WareHouseInMain whi = (WareHouseInMain)this.Owner;
             if (checkBoxX1.Checked == false || comboBoxEx2.Text == "请选择")
             {
                 if (MessageBox.Show(Owner, "是否临时存放", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.OK)
