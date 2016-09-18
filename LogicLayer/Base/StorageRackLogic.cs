@@ -158,7 +158,7 @@ namespace LogicLayer.Base
 
                 if (!string.IsNullOrWhiteSpace(fieldName) && !string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(code))
                 {
-                    throw new Exception("-7");
+                    throw new Exception("-2");
                 }
                 result = sr.UpdateStorageRackByCode(fieldName, fieldValue, code);
                 if (result <= 0)

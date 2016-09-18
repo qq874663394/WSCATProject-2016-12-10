@@ -25,7 +25,7 @@ namespace LogicLayer
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             DataSet ds = null;
-            
+
             LogBase lb = new LogBase();
             log logModel = new log()
             {
@@ -35,20 +35,22 @@ namespace LogicLayer
                 operationTable = "T_WarehouseIn",
                 operationTime = DateTime.Now,
                 objective = "根据审核状态查询",
-                operationContent = "根据审核状态查询入库表,条件为：state="+state
+                operationContent = "根据审核状态查询入库表,条件为：state=" + state
             };
-
             try
             {
-                ds= warehouseInBase.GetListToIn(state);
+                ds = warehouseInBase.GetListToIn(state);
                 logModel.result = 1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return ds;
         }
 
@@ -78,14 +80,17 @@ namespace LogicLayer
             {
                 warehouseInBase.UpdateList(hashTable, sql, list);
                 logModel.result = 1;
+                wum.add("", logModel.operationTable, list.Count, "", logModel.operationTime);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logModel.result = 0;
                 throw ex;
             }
-            wum.add("", logModel.operationTable,list.Count,"",logModel.operationTime);
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
         }
 
         /// <summary>
@@ -93,13 +98,11 @@ namespace LogicLayer
         /// </summary>
         /// <param name="strWhere">where条件</param>
         /// <returns></returns>
-        public DataSet GetList(string strWhere)
+        public DataSet GetList(int fieldName, string fieldValue)
         {
+            string strWhere = "";
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             DataSet ds = null;
-
-
-
             LogBase lb = new LogBase();
             log logModel = new log()
             {
@@ -111,20 +114,29 @@ namespace LogicLayer
                 objective = "查询入库信息",
                 operationContent = "查询T_WarehouseIn表的数据,条件为:" + strWhere
             };
-
-
-
             try
             {
+                switch (fieldName)
+                {
+                    case 1:
+                        strWhere += string.Format(" code='{0}'");
+                        break;
+                    case 2:
+                        strWhere += string.Format(" type='{0}'");
+                        break;
+                }
                 ds = warehouseInBase.GetList(strWhere);
-                logModel.result = 1;//rz
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                logModel.result = 0;//rz
+                logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);//rz
+            finally
+            {
+                lb.Add(logModel);
+            }
             return ds;
         }
 
@@ -364,13 +376,13 @@ namespace LogicLayer
                 objective = "查询入库信息",
                 operationContent = "查询T_WarehouseIn表的数据,条件code为:" + code
             };
- 
+
             try
             {
-                upcode= warehouseInBase.updateByCode(code);
+                upcode = warehouseInBase.updateByCode(code);
                 logModel.result = 1;//rz
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logModel.result = 0;//rz
                 throw ex;

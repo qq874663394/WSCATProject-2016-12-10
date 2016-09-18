@@ -60,7 +60,7 @@ namespace LogicLayer.Purchase
             };
             try
             {
-                if (string.IsNullOrWhiteSpace(purchaseCode) && !string.IsNullOrWhiteSpace(code))
+                if (string.IsNullOrWhiteSpace(purchaseCode) && string.IsNullOrWhiteSpace(code))
                 {
                     throw new Exception("-2");
                 }

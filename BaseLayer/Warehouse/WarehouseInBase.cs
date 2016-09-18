@@ -243,5 +243,13 @@ namespace BaseLayer
             }
             return result;
         }
+        public DataTable GetPre(int id)
+        {
+            string sql = "";
+            DataTable dt = null;
+            sql = string.Format("select top 1 * from T_log where id>{0}",id);
+            dt = DbHelperSQL.Query(sql).Tables[0];
+            return dt;
+        }
     }
 }
