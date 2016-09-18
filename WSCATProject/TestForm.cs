@@ -141,6 +141,8 @@ namespace WSCATProject
         {
             if (resizablePanel1.Visible)
                 resizablePanel1.Visible = false;
+            if (resizablePanelData.Visible)
+                resizablePanelData.Visible = false;
         }
 
         protected virtual void ClickPicBox(object sender, EventArgs e)
@@ -279,6 +281,11 @@ namespace WSCATProject
                 toolTip2.SetToolTip(pictureBox6, "最大化");
                 return;
             }
+
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
 
         }
 

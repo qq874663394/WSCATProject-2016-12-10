@@ -284,6 +284,7 @@
             this.toolStripButton7.Text = "保存";
             this.toolStripButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // toolStripButton8
             // 

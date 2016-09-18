@@ -1419,9 +1419,9 @@
             this.expandablePanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.expandablePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expandablePanel2.HideControlsWhenCollapsed = true;
-            this.expandablePanel2.Location = new System.Drawing.Point(0, 239);
+            this.expandablePanel2.Location = new System.Drawing.Point(0, 26);
             this.expandablePanel2.Name = "expandablePanel2";
-            this.expandablePanel2.Size = new System.Drawing.Size(745, 142);
+            this.expandablePanel2.Size = new System.Drawing.Size(745, 355);
             this.expandablePanel2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.expandablePanel2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1451,7 +1451,7 @@
             // 
             // 
             this.superGridControlhandl.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlhandl.Size = new System.Drawing.Size(745, 116);
+            this.superGridControlhandl.Size = new System.Drawing.Size(745, 329);
             this.superGridControlhandl.TabIndex = 4;
             this.superGridControlhandl.Text = "superGridControl2";
             // 
@@ -1462,10 +1462,12 @@
             this.expandablePanel1.Controls.Add(this.superGridControlSetback);
             this.expandablePanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.expandablePanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandablePanel1.Expanded = false;
+            this.expandablePanel1.ExpandedBounds = new System.Drawing.Rectangle(0, 0, 745, 239);
             this.expandablePanel1.HideControlsWhenCollapsed = true;
             this.expandablePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandablePanel1.Name = "expandablePanel1";
-            this.expandablePanel1.Size = new System.Drawing.Size(745, 239);
+            this.expandablePanel1.Size = new System.Drawing.Size(745, 26);
             this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.expandablePanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -1494,7 +1496,7 @@
             // 
             // 
             this.superGridControlSetback.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlSetback.Size = new System.Drawing.Size(745, 213);
+            this.superGridControlSetback.Size = new System.Drawing.Size(745, 0);
             this.superGridControlSetback.TabIndex = 4;
             this.superGridControlSetback.Text = "superGridControl1";
             // 
@@ -3361,7 +3363,7 @@
             this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sideBar1.ExpandedPanel = this.sideBarPanelItem1;
+            this.sideBar1.ExpandedPanel = this.sideBarPanelItemSto;
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
             this.sideBar1.Name = "sideBar1";
             this.sideBar1.Panels.AddRange(new DevComponents.DotNetBar.BaseItem[] {

@@ -260,7 +260,7 @@ namespace WSCATProject.Warehouse
                     superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                    _Materialnumber += 1;
+                    _Materialnumber += 0;
                     gr.Cells["gridColumnnumber"].Value = _Materialnumber;
                 }
             }
@@ -697,5 +697,10 @@ namespace WSCATProject.Warehouse
                                ButtonBorderStyle.Solid);
         }
         #endregion
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

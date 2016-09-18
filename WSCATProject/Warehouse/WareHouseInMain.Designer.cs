@@ -518,6 +518,7 @@
             // material
             // 
             this.material.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             this.material.Width = 120;
@@ -525,6 +526,7 @@
             // gridColumnname
             // 
             this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
             this.gridColumnname.Width = 140;
@@ -532,12 +534,14 @@
             // gridColumnmodel
             // 
             this.gridColumnmodel.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格类型";
             this.gridColumnmodel.Name = "gridColumnmodel";
             this.gridColumnmodel.Width = 130;
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.Width = 70;
@@ -545,12 +549,14 @@
             // gridColumntiaoxingma
             // 
             this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
             this.gridColumntiaoxingma.Width = 150;
             // 
             // gridColumnnumber
             // 
+            this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
@@ -572,6 +578,7 @@
             // 
             // griCoulumcangku
             // 
+            this.griCoulumcangku.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.griCoulumcangku.HeaderText = "仓库";
             this.griCoulumcangku.Name = "griCoulumcangku";
             this.griCoulumcangku.Width = 80;
@@ -579,6 +586,7 @@
             // griCoulumhuojia
             // 
             this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.griCoulumhuojia.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.griCoulumhuojia.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.griCoulumhuojia.HeaderText = "区域/排/行/列";
             this.griCoulumhuojia.Name = "griCoulumhuojia";
@@ -587,6 +595,7 @@
             // gridColumnremark
             // 
             this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             this.gridColumnremark.Width = 110;
@@ -599,6 +608,7 @@
             // 
             // gridColumndate
             // 
+            this.gridColumndate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumndate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumndate.HeaderText = "生产/采购日期";
             this.gridColumndate.Name = "gridColumndate";
@@ -606,6 +616,7 @@
             // 
             // gridColumnbaozhe
             // 
+            this.gridColumnbaozhe.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbaozhe.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.gridColumnbaozhe.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnbaozhe.HeaderText = "保质期（天）";
@@ -614,6 +625,7 @@
             // 
             // gridColumnyouxiao
             // 
+            this.gridColumnyouxiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnyouxiao.HeaderText = "有效期至";
             this.gridColumnyouxiao.Name = "gridColumnyouxiao";
             this.gridColumnyouxiao.Width = 80;
