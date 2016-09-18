@@ -200,6 +200,10 @@ namespace WSCATProject.Warehouse
             gdiehuojia.ButtonCustom.Visible = true;
             gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
+            toolStripButtonqian.Click += ToolStripButtonqian_Click;//前单的事件
+            toolStripButtonhou.Click += ToolStripButtonhou_Click;//后单的事件
+            toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存的事件
+            toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核的事件
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
@@ -211,6 +215,44 @@ namespace WSCATProject.Warehouse
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //调用合计行数据
             InitDataGridView();
+        }
+        /// <summary>
+        /// 审核按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 保存按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 后单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonhou_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 前单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonqian_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #region 小箭头图标和仓库的选择以及两个表格的点击事件
@@ -673,6 +715,7 @@ namespace WSCATProject.Warehouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
         #region 修改Panel的边框颜色
         /// <summary>
         /// 修改Panel的边框颜色
