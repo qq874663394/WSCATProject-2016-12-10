@@ -284,10 +284,6 @@ namespace WSCATProject
 
         }
 
-        private void toolStripButton7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         //获取鼠标的位置
         //[DllImport("User32.dll")]
