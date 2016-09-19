@@ -178,6 +178,10 @@ namespace WSCATProject.Warehouse
         /// 保存供应商Code
         /// </summary>
         private string _suppliercode;
+        /// <summary>
+        /// 入库code
+        /// </summary>
+        private string _warehouseincode;
         #endregion
 
         private void WareHouseInMain_Load(object sender, EventArgs e)
@@ -218,6 +222,13 @@ namespace WSCATProject.Warehouse
             //调用合计行数据
             InitDataGridView();
             comboBoxEx2.SelectedIndex = 0;
+            //生成code 和显示条形码
+            _warehouseincode = BuildCode.ModuleCode("WHI");
+            textBoxOddNumbers.Text = _warehouseincode;
+            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+            _Code.ValueFont = new Font("微软雅黑", 20);
+            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+            pictureBox9.Image = imgTemp;
         }
 
         /// <summary>
@@ -315,35 +326,35 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
-            switch (warehouseInResult)
-            {
-                case -1:
-                    MessageBox.Show("错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据.");
-                    break;
-                case -2:
-                    MessageBox.Show("错误代码:4002;建立查询字符串参数时出现异常");
-                    break;
-                case -3:
-                    MessageBox.Show("错误代码:4003;对参数赋值时出现异常,请检查输入");
-                    break;
-                case -4:
-                    MessageBox.Show("错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接");
-                    break;
-                case -5:
-                    MessageBox.Show("错误代码:4005;对数据库新增数据时未能增加任何数据");
-                    break;
-                case -6:
-                    MessageBox.Show("错误代码:4006;对数据库新增数据的方法失效,未能增加任何行");
-                    break;
-                case -7:
-                    MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
-                    break;
-            }
-            if (warehouseInResult > 0)
-            {
-                MessageBox.Show("新增入库数据成功");
-            }
+            //int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
+            //switch (warehouseInResult)
+            //{
+            //    case -1:
+            //        MessageBox.Show("错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据.");
+            //        break;
+            //    case -2:
+            //        MessageBox.Show("错误代码:4002;建立查询字符串参数时出现异常");
+            //        break;
+            //    case -3:
+            //        MessageBox.Show("错误代码:4003;对参数赋值时出现异常,请检查输入");
+            //        break;
+            //    case -4:
+            //        MessageBox.Show("错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接");
+            //        break;
+            //    case -5:
+            //        MessageBox.Show("错误代码:4005;对数据库新增数据时未能增加任何数据");
+            //        break;
+            //    case -6:
+            //        MessageBox.Show("错误代码:4006;对数据库新增数据的方法失效,未能增加任何行");
+            //        break;
+            //    case -7:
+            //        MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
+            //        break;
+            //}
+            //if (warehouseInResult > 0)
+            //{
+            //    MessageBox.Show("新增入库数据成功");
+            //}
         }
 
         /// <summary>
@@ -440,7 +451,7 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
+            //int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
 
         }
 
@@ -451,7 +462,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonhou_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           //后单
         }
         /// <summary>
         /// 前单的点击事件
@@ -460,7 +471,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonqian_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //前单
         }
 
         #region 小箭头图标和仓库的选择以及两个表格的点击事件
@@ -507,9 +518,9 @@ namespace WSCATProject.Warehouse
                 decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
 
                 gr.Cells["gridColumnmoney"].Value = number * price;//金额
-                gr.Cells["gridColumnundate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value;//生产日期
-                gr.Cells["gridColumnunbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
-                gr.Cells["gridColumnunyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期至
+                gr.Cells["gridColumndate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value.ToString();//生产日期
+                gr.Cells["gridColumnbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString();//保质期
+                gr.Cells["gridColumnyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期至
                 resizablePanelData.Visible = false;
                 //新增一行 
                 if (newAdd)
@@ -583,38 +594,6 @@ namespace WSCATProject.Warehouse
         }
 
         #endregion
-
-        /// <summary>
-        /// 第一列编辑的时候
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
-        {
-            if (this.comboBoxEx1.Text.Trim() == "")
-            {
-                MessageBox.Show("请先选择供应商，显示采购单号!");
-                return;
-            }
-            if (e.GridCell.GridColumn.Name == "material")
-            {
-                SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
-                GridCell gc = ge[0] as GridCell;
-                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
-                {
-                    //模糊查询商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
-                    InitMaterialDataGridView();
-                }
-                else
-                {
-                    //绑定商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "");
-                    InitMaterialDataGridView();
-                }
-                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
-            }
-        }
 
         #region  初始化数据
 
@@ -1071,6 +1050,39 @@ namespace WSCATProject.Warehouse
             resizablePanel1.Location = new Point(234, 440);
             dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
             resizablePanel1.Visible = true;
+        }
+
+        private void WareHouseInMain_Activated(object sender, EventArgs e)
+        {
+            labtextboxTop6.Focus();
+        }
+
+        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            if (this.comboBoxEx1.Text.Trim() == "")
+            {
+                MessageBox.Show("请先选择供应商，显示采购单号!");
+                return;
+            }
+            if (e.GridCell.GridColumn.Name == "material")
+            {
+                SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                {
+                    //模糊查询商品列表
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                    InitMaterialDataGridView();
+                }
+                else
+                {
+                    //绑定商品列表
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "");
+                    InitMaterialDataGridView();
+                }
+                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            }
+
         }
     }
 }

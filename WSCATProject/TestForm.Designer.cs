@@ -87,11 +87,11 @@
             this.labBotton3 = new System.Windows.Forms.Label();
             this.labBotton1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.labeldata = new System.Windows.Forms.Label();
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -112,8 +112,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.resizablePanel1.SuspendLayout();
@@ -461,7 +461,7 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(389, 76);
+            this.labtextboxTop7.Location = new System.Drawing.Point(374, 76);
             this.labtextboxTop7.Name = "labtextboxTop7";
             this.labtextboxTop7.PreventEnterBeep = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(177, 16);
@@ -845,28 +845,6 @@
             this.panel4.Size = new System.Drawing.Size(994, 88);
             this.panel4.TabIndex = 10;
             // 
-            // superGridControl1
-            // 
-            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.superGridControl1.Name = "superGridControl1";
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 459);
-            this.superGridControl1.TabIndex = 1;
-            this.superGridControl1.Text = "superGridControl1";
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.superGridControl1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 231);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1202, 459);
-            this.panel3.TabIndex = 9;
-            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
-            // 
             // labeldata
             // 
             this.labeldata.AutoSize = true;
@@ -895,12 +873,32 @@
             this.bar1.Click += new System.EventHandler(this.panel6_Click);
             this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.superGridControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 231);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1202, 369);
+            this.panel3.TabIndex = 16;
+            // 
+            // superGridControl1
+            // 
+            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.superGridControl1.Name = "superGridControl1";
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 369);
+            this.superGridControl1.TabIndex = 1;
+            this.superGridControl1.Text = "superGridControl1";
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            // 
             // resizablePanelData
             // 
             this.resizablePanelData.BackColor = System.Drawing.Color.White;
             this.resizablePanelData.Controls.Add(this.dataGridView1);
             this.resizablePanelData.Controls.Add(this.label2);
-            this.resizablePanelData.Location = new System.Drawing.Point(453, 220);
+            this.resizablePanelData.Location = new System.Drawing.Point(517, 225);
             this.resizablePanelData.Name = "resizablePanelData";
             this.resizablePanelData.Size = new System.Drawing.Size(389, 188);
             this.resizablePanelData.TabIndex = 11;
@@ -933,10 +931,10 @@
             this.resizablePanel1.Controls.Add(this.panelDataView);
             this.resizablePanel1.Controls.Add(this.label1);
             this.resizablePanel1.ForeColor = System.Drawing.Color.Black;
-            this.resizablePanel1.Location = new System.Drawing.Point(94, 178);
+            this.resizablePanel1.Location = new System.Drawing.Point(95, 213);
             this.resizablePanel1.Name = "resizablePanel1";
             this.resizablePanel1.Size = new System.Drawing.Size(248, 148);
-            this.resizablePanel1.TabIndex = 5;
+            this.resizablePanel1.TabIndex = 6;
             this.resizablePanel1.Visible = false;
             // 
             // panelDataView
@@ -991,13 +989,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 690);
+            this.Controls.Add(this.resizablePanelData);
+            this.Controls.Add(this.resizablePanel1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.bar1);
             this.Controls.Add(this.labeldata);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.resizablePanelData);
-            this.Controls.Add(this.resizablePanel1);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
@@ -1023,8 +1021,8 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1044,10 +1042,6 @@
         protected System.Windows.Forms.Label labelprie;
         protected System.Windows.Forms.DateTimePicker dateTimePicker1;
         protected System.Windows.Forms.Label labelDate;
-        protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
-        protected System.Windows.Forms.Panel panelDataView;
-        protected System.Windows.Forms.DataGridView dataGridViewFujia;
-        protected System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.ToolStrip toolStrip1;
@@ -1091,8 +1085,6 @@
         protected System.Windows.Forms.Label labBotton3;
         protected System.Windows.Forms.Label labBotton1;
         private System.Windows.Forms.Panel panel4;
-        protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
-        protected System.Windows.Forms.Panel panel3;
         protected HelperUtility.ExUI.ResizablePanel resizablePanelData;
         protected System.Windows.Forms.DataGridView dataGridView1;
         protected System.Windows.Forms.Label label2;
@@ -1106,5 +1098,11 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtonnew;
         protected System.Windows.Forms.ToolStripButton toolStripButtonsave;
         protected System.Windows.Forms.ToolStripButton toolStripButtonshen;
+        protected System.Windows.Forms.Panel panel3;
+        protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
+        protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
+        protected System.Windows.Forms.Panel panelDataView;
+        protected System.Windows.Forms.DataGridView dataGridViewFujia;
+        protected System.Windows.Forms.Label label1;
     }
 }

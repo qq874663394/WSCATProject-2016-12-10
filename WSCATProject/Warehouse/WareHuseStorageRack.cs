@@ -62,7 +62,7 @@ namespace WSCATProject.Warehouse
 
         private void comboBoxEx2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx2.SelectedValue == null)
+            if (comboBoxEx2.SelectedValue == null || comboBoxEx2.Text == "请选择")
             {
                 comboBoxEx3.DataSource = null;
                 return;
@@ -81,7 +81,7 @@ namespace WSCATProject.Warehouse
 
         private void comboBoxEx3_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx3.SelectedValue == null)
+            if (comboBoxEx3.SelectedValue == null || comboBoxEx3.Text == "请选择")
             {
                 comboBoxEx4.DataSource = null;
                 return;
@@ -100,7 +100,7 @@ namespace WSCATProject.Warehouse
 
         private void comboBoxEx4_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx4.SelectedValue == null)
+            if (comboBoxEx4.SelectedValue == null || comboBoxEx4.Text == "请选择")
             {
                 comboBoxEx5.DataSource = null;
                 return;
