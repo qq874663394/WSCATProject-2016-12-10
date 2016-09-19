@@ -16,8 +16,8 @@ namespace HelperUtility
         public static string ModuleCode(string module)
         {
             string code = "";
-            string datetime = DateTime.Now.ToString("yyyyMMddHHmmssff");
-            code = module + "-" + datetime;
+            string datetime = DateTime.Now.ToString("yyMMddHHmmssff");
+            code = module + datetime;
             return code;
         }
 
@@ -30,7 +30,7 @@ namespace HelperUtility
         {
             string code = "";
             string userid = "";
-            string datetime = DateTime.Now.ToString("yyyyMMddHHmmssff");
+            string datetime = DateTime.Now.ToString("yyMMddHHmmssff");
             code = module + "-" + userid + "-" + datetime;
             return code;
         }

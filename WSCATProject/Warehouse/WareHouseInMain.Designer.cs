@@ -153,8 +153,8 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(406, 15);
-            this.labtextboxTop6.Size = new System.Drawing.Size(142, 16);
+            this.labtextboxTop6.Location = new System.Drawing.Point(390, 15);
+            this.labtextboxTop6.Size = new System.Drawing.Size(158, 16);
             this.labtextboxTop6.TextChanged += new System.EventHandler(this.labtextboxTop6_TextChanged);
             // 
             // labtextboxTop3

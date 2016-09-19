@@ -61,8 +61,9 @@ namespace LogicLayer
         /// <param name="hashTable">主表的sql和parameter</param>
         /// <param name="sql">子表sql</param>
         /// <param name="list">子表的parameter</param>
-        public void UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        public int UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
         {
+            int result = 0;
             LogBase lb = new LogBase();
             log logModel = new log()
             {
@@ -78,7 +79,7 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             try
             {
-                warehouseInBase.UpdateList(hashTable, sql, list);
+                result=warehouseInBase.UpdateList(hashTable, sql, list);
                 logModel.result = 1;
                 wum.add("", logModel.operationTable, list.Count, "", logModel.operationTime);
             }
@@ -91,6 +92,7 @@ namespace LogicLayer
             {
                 lb.Add(logModel);
             }
+            return result;
         }
 
         /// <summary>
@@ -144,130 +146,38 @@ namespace LogicLayer
         /// 增加一条数据
         /// </summary>
         /// <returns>返回新增结果,1为成功</returns>
-        public int InsertWarehouseInTable(WarehouseIn wi,
-            List<WarehouseInDetail> widList
-            )
+        public int Add(Hashtable hashTable, string sql, List<SqlParameter[]> list)
         {
-            DateTime nowDateTime = DateTime.Now;
+            int result = 0;
             LogBase lb = new LogBase();
-            log log = new log()
+            log logModel = new log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "操作表名",
-                operationTime = nowDateTime,
-                objective = "增加入库信息"
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "新增入库信息,新增入库商品详情",
+                operationContent = "新增T_WarehouseIn和T_WarehouseInDetail表的数据"
             };
+
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-            WarehouseInDetailBase warehouseInDetailBase = new WarehouseInDetailBase();
-            WarehouseUpdataManager updateManager = new WarehouseUpdataManager();
-            if (wi != null)
+            try
             {
-                int addWarehouseInResult = warehouseInBase.update(wi);
-                int addWarehouseInDetailResult = 0;
-
-                //当正确新增时开始新增详情表
-                if (addWarehouseInResult > 0)
-                {
-                    log.operationTable = "T_WarehouseIn";
-                    log.result = addWarehouseInResult;
-                    log.operationContent = wi.code;
-                    lb.Add(log);
-
-                    int addcount = 0;
-                    //判断新增过程中有没有失败
-                    bool addErr = false;
-                    //循环加入多条数据到详情表
-                    for (int i = 0; i < widList.Count; i++)
-                    {
-                        addWarehouseInDetailResult = warehouseInDetailBase.updateByCode(widList[i]);
-                        if (addWarehouseInDetailResult < 1)
-                        {
-                            addcount = i;
-                            addErr = true;
-                            break;
-                        }
-                        //调用管理层 循环添加管理的数据
-                        log.objective = "新增入库商品详情";
-                        log.operationTable = "T_WarehouseInDetail";
-                        log.result = addWarehouseInDetailResult;
-                        log.operationContent = widList[i].code;
-                        lb.Add(log);
-                    }
-                    //如果加入过程中出错,倒过来删除之前加入的
-                    if (!addErr)
-                    {
-                        for (int i = addcount; i < 0; i--)
-                        {
-                            warehouseInDetailBase.deleteByCode(widList[i].code);
-
-                            //调用删除删掉入库的更新管理数据
-                            warehouseInDetailBase.deleteByCode(widList[i].code);
-
-                            //调用删除方法删掉加入的详情单
-                            log.objective = "回滚入库商品详情";
-                            log.operationTable = "T_WarehouseInDetail";
-                            log.result = addWarehouseInResult;
-                            log.operationContent = widList[i].code;
-                            lb.Add(log);
-                        }
-                        //调用删除方法删掉入库单
-                        warehouseInBase.deleteByCode(wi.code);
-                    }
-                    //调用流程表
-                    if (!addErr)
-                    {
-                        WarehouseInProcessBase warehouseInProcessBase = new WarehouseInProcessBase();
-                        WarehouseInProcess Warehousep = new WarehouseInProcess();//操作流程
-                        Warehousep.code = XYEEncoding.strCodeHex(BuildCode.ModuleCode("WP"));
-                        DateTime dt = nowDateTime;
-                        Warehousep.createDatetime = dt;
-                        Warehousep.isClear = 1;
-                        Warehousep.Operator = XYEEncoding.strCodeHex("保存入库单");
-                        Warehousep.operatorMan = "";
-                        Warehousep.remark = "";
-                        Warehousep.updateDate = dt;
-                        Warehousep.warehouseInDetailCode = wi.code;
-                        warehouseInProcessBase.Add(Warehousep);
-
-                        log.operationContent = Warehousep.code;
-                        log.objective = "新增入库流程数据";
-                        log.operationTable = "T_WarehouseInProcess";
-                        log.result = addWarehouseInResult;
-                        lb.Add(log);
-                    }
-                    //调用管理层
-                    if (!addErr)
-                    {
-                        log.operationContent = "";
-                        log.objective = "新增入库表的更新管理";
-                        log.operationTable = "T_Warehouse";
-                        log.result = addWarehouseInResult;
-                        lb.Add(log);
-                    }
-                    if (!addErr)
-                    {
-                        return addWarehouseInDetailResult;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-                else
-                {
-                    log.objective = "新增入库商品详情错误";
-                    log.operationTable = "T_WarehouseInDetail";
-                    log.result = addWarehouseInResult;
-                    lb.Add(log);
-                    return addWarehouseInResult;
-                }
+                result = warehouseInBase.Add(hashTable, sql, list);
+                logModel.result = 1;
+                wum.add("", logModel.operationTable, list.Count, "", logModel.operationTime);
             }
-            else
+            catch (Exception ex)
             {
-                return -7;
+                logModel.result = 0;
+                throw ex;
             }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
         }
 
         /// <summary>
@@ -373,22 +283,74 @@ namespace LogicLayer
                 operationName = "操作人名",
                 operationTable = "T_WarehouseIn",
                 operationTime = DateTime.Now,
-                objective = "查询入库信息",
-                operationContent = "查询T_WarehouseIn表的数据,条件code为:" + code
+                objective = "修改入库状态",
+                operationContent = "修改T_WarehouseIn表的数据,条件code为:" + code
             };
-
             try
             {
                 upcode = warehouseInBase.updateByCode(code);
-                logModel.result = 1;//rz
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                logModel.result = 0;//rz
+                logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);//rz
+            finally
+            {
+                lb.Add(logModel);
+            }
             return upcode;
+        }
+
+        /// <summary>
+        /// 上下一单
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="state">状态:0:下一单,1:上一单</param>
+        /// <returns></returns>
+        public WarehouseIn GetPreAndNext(int id, int state)
+        {
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+
+            return warehouseInBase.GetPreAndNext(id, state);
+        }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            bool result = false;
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "判断入库单是否存在",
+                operationContent = "查询T_WarehouseIn表的数据是否存在,条件code为:" + code
+            };
+            try
+            {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
+                result = warehouseInBase.Exists(code);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            lb.Add(logModel);
+            return result;
         }
     }
 }

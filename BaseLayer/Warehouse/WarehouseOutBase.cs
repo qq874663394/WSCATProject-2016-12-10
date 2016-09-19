@@ -200,8 +200,9 @@ namespace BaseLayer
         /// </summary>
         /// <param name="warehouseOut">主表：只有一行数据</param>
         /// <param name="listModel">从表：多行，用List类型保存多条model的数据</param>
-        public void update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
+        public int update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
         {
+            int result = 0;
             //多条数据的
             string sqlToList = @"UPDATE T_WarehouseOutDetail
    SET code = @code
@@ -309,12 +310,13 @@ SET type = @type
             htKey.Add(sql, parameters);//sql语句和主表的参数集合
             try
             {
-                DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, listParameter);
+                result = DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, listParameter);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            return result;
         }
 
         public int delete(string code)
