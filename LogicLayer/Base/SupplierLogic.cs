@@ -71,10 +71,6 @@ namespace LogicLayer.Base
             };
             try
             {
-                if (string.IsNullOrWhiteSpace(fieldValue))
-                {
-                    throw new Exception("-3");
-                }
                 switch (fieldName)
                 {
                     case 0:

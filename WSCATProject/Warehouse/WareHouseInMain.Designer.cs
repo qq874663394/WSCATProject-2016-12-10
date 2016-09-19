@@ -30,6 +30,11 @@
         {
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmodel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -47,6 +52,7 @@
             this.gridColumnyouxiao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.resizablePanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -181,6 +187,7 @@
             // 
             // labtextboxTop9
             // 
+            this.labtextboxTop9.BackColor = System.Drawing.SystemColors.Window;
             // 
             // 
             // 
@@ -191,6 +198,7 @@
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop9.Location = new System.Drawing.Point(734, 16);
+            this.labtextboxTop9.ReadOnly = true;
             this.labtextboxTop9.Size = new System.Drawing.Size(162, 16);
             // 
             // labtextboxTop8
@@ -459,6 +467,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnbaozhe);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.PrimaryGrid.UseAlternateRowStyle = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 435);
@@ -502,11 +511,37 @@
             this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx2.FormattingEnabled = true;
             this.comboBoxEx2.ItemHeight = 15;
-            this.comboBoxEx2.Location = new System.Drawing.Point(390, 51);
+            this.comboBoxEx2.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4,
+            this.comboItem5});
+            this.comboBoxEx2.Location = new System.Drawing.Point(390, 52);
             this.comboBoxEx2.Name = "comboBoxEx2";
             this.comboBoxEx2.Size = new System.Drawing.Size(177, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx2.TabIndex = 55;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "采购入库";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "退货入库";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "赠商品入库";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "获赔商品入库";
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "以货抵债";
             // 
             // material
             // 
@@ -595,6 +630,7 @@
             // 
             // gridColumnid
             // 
+            this.gridColumnid.HeaderText = "";
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.Visible = false;
             this.gridColumnid.Width = 80;
@@ -646,6 +682,11 @@
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(162, 21);
             this.textBoxX2.TabIndex = 57;
+            // 
+            // gridColumncode
+            // 
+            this.gridColumncode.HeaderText = "商品单号";
+            this.gridColumncode.Name = "gridColumncode";
             // 
             // WareHouseInMain
             // 
@@ -704,5 +745,11 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyouxiao;
         private System.Windows.Forms.PictureBox pictureBox9;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.Editors.ComboItem comboItem5;
     }
 }

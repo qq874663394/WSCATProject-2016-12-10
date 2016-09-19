@@ -448,7 +448,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    BindWareHouesIn("");
+                    BindWareHouesIn(0,"");
                     商品入库ToolStripMenuItem.Visible = true;
                     break;
                 case "出库开单":
@@ -1120,7 +1120,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
 
-                    BindWareHouesIn("");
+                    BindWareHouesIn(0,"");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -1526,7 +1526,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品入库");
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
-                    BindWareHouesIn("");
+                    BindWareHouesIn(0,"");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -2205,23 +2205,20 @@ namespace WSCATProject.Buys
             switch (cb4)
             {
                 case "采购申请单":
-
-                    BindWareHouesIn(" type='562D5D5E2D0E230F5141'");
+                    BindWareHouesIn(2,"562D5D5E2D0E230F5141");
                     break;
                 case "采购退货单":
-
-                    BindWareHouesIn(" type='562D5D5E292F5F115141'");
+                   BindWareHouesIn(2, "562D5D5E292F5F115141");
                     break;
                 case "赠商品入库":
-
-                    BindWareHouesIn(" type='301D2D2822532C0F5B06'");
+                    BindWareHouesIn(2, "301D2D2822532C0F5B06");
                     break;
                 case "获赔商品入库":
-
-                    BindWareHouesIn(" type='5F1521062D2822532C0F5B06'");
+                
+                    BindWareHouesIn(2,"5F1521062D2822532C0F5B06");
                     break;
                 case "以货抵债":
-                    BindWareHouesIn(" type='36305F115132314A'");
+                    BindWareHouesIn(2,"36305F115132314A");
                     break;
                 case "销售申请单":
                     BanDWareHouesOut("2B1E2E3F2D0E230F5141");
@@ -2247,8 +2244,8 @@ namespace WSCATProject.Buys
         /// 初始化入库的列表
         /// </summary>
         /// <param name="where"></param>
-
-        private void BindWareHouesIn(string where)
+    
+        private void BindWareHouesIn(int fieldName, string fieldValue)
         {
             GridColumn gc = null;
 
@@ -2309,7 +2306,7 @@ namespace WSCATProject.Buys
             gc.HeaderText = "备注";
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = ch.DataTableReCoding(ware.getWarehouseInList(where).Tables[0]);
+            dt =  ch.DataTableReCoding(ware.GetList(fieldName,fieldValue).Tables[0]);
             if (dt.Rows.Count > 0)
             {
                 superGridControl1.PrimaryGrid.DataSource = dt;

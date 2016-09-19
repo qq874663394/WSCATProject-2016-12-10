@@ -15,6 +15,7 @@ namespace Model
 		private string _type;
 		private string _stock;
 		private string _operation;
+        private string _makeman;
 		private string _examine;
 		private int? _state;
 		private DateTime? _date;
@@ -27,6 +28,9 @@ namespace Model
 		private string _remark;
         private string _goodsCode;
         private string _defaultType;
+        private string _suppliercode;
+        private string _suppliername;
+        private string _supplierphone;
         /// <summary>
         /// 自增ID 
         /// </summary>
@@ -67,10 +71,18 @@ namespace Model
 			set{ _operation=value;}
 			get{return _operation;}
 		}
-		/// <summary>
-		/// 审查人
-		/// </summary>
-		public string examine
+        /// <summary>
+        /// 制单人
+        /// </summary>
+        public string makeMan
+        {
+            set { _makeman = value; }
+            get { return _makeman; }
+        }
+        /// <summary>
+        /// 审查人
+        /// </summary>
+        public string examine
 		{
 			set{ _examine=value;}
 			get{return _examine;}
@@ -175,6 +187,52 @@ namespace Model
             set
             {
                 _defaultType = value;
+            }
+        }
+
+        /// <summary>
+        /// 供应商code
+        /// </summary>
+        public string supplierCode
+        {
+            get
+            {
+                return _suppliercode;
+            }
+
+            set
+            {
+                _suppliercode = value;
+            }
+        }
+        /// <summary>
+        /// 供应商名称
+        /// </summary>
+        public string supplierName
+        {
+            get
+            {
+                return _suppliername;
+            }
+
+            set
+            {
+                _suppliername = value;
+            }
+        }
+        /// <summary>
+        /// 联系电话
+        /// </summary>
+        public string supplierPhone
+        {
+            get
+            {
+                return _supplierphone;
+            }
+
+            set
+            {
+                _supplierphone = value;
             }
         }
         #endregion Model

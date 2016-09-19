@@ -92,15 +92,15 @@ namespace LogicLayer
                     throw new Exception("-3");
                 }
                 logModel.result = 1;
+                wum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logModel.result = 0;
                 throw ex;
             }
             finally
             {
-                wum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
                 lb.Add(logModel);
             }
             return result;
@@ -128,23 +128,19 @@ namespace LogicLayer
             };
             try
             {
-                //if (string.IsNullOrWhiteSpace(fieldValue))
-                //{
-                //    throw new Exception("-2");
-                //}
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("zhujima like '{0}'",fieldValue);
+                        strWhere += string.Format("zhujima like '{0}'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("materialName like '{0}'",fieldValue);
+                        strWhere += string.Format("materialName like '{0}'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format("state={0}",fieldValue);
+                        strWhere += string.Format("state={0}", fieldValue);
                         break;
                     case 3:
-                        strWhere += string.Format("isClear={0}",fieldValue);
+                        strWhere += string.Format("isClear={0}", fieldValue);
                         break;
                 }
                 logModel.operationContent = "查询T_WarehouseInDetail表的数据,条件为:" + strWhere;
@@ -182,25 +178,24 @@ namespace LogicLayer
                 objective = "根据主单code查询入库商品详情",
                 operationContent = "根据主单code查询T_WarehouseInDetail表的数据,条件为:mainCode=" + mainCode
             };
-            if (!string.IsNullOrWhiteSpace(mainCode))
+            if (string.IsNullOrWhiteSpace(mainCode))
             {
-                try
-                {
-                    ds = warehouseInDetailBase.getListByMainCode(mainCode);
-                    logModel.result = 1;
-                }
-                catch (Exception ex)
-                {
-                    logModel.result = 0;
-                    throw ex;
-                }
-            }
-            else
-            {
-                logModel.result = 0;
                 throw new Exception("-2");
             }
-            lb.Add(logModel);
+            try
+            {
+                ds = warehouseInDetailBase.getListByMainCode(mainCode);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
             return ds;
         }
         /// <summary>
@@ -223,25 +218,29 @@ namespace LogicLayer
                 operationContent = "修改T_WarehouseInDetail表的数据,条件为:code=" + code
             };
 
-            if (!string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(code))
             {
-                try
-                {
-                    result = wdb.updateByCode(code);
-                    logModel.result = 1;
-                }
-                catch (Exception ex)
-                {
-                    logModel.result = 0;
-                    throw ex;
-                }
-            }
-            else
-            {
-                logModel.result = 0;
                 throw new Exception("-2");
             }
-            lb.Add(logModel);
+            try
+            {
+                result = wdb.updateByCode(code);
+                if (result<=0)
+                {
+                    throw new Exception("-3");
+                }
+                logModel.result = 1;
+                wum.add(code, logModel.operationTable, result, logModel.operationContent, logModel.operationTime);
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
     }

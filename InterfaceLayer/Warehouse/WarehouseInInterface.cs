@@ -48,9 +48,9 @@ namespace InterfaceLayer.Warehouse
         /// </summary>
         /// <param name="strWhere">where条件</param>
         /// <returns></returns>
-        public DataSet getWarehouseInList(string strWhere)
+        public DataSet GetList(int fieldName, string fieldValue)
         {
-            return warehouseInLogic.GetList(strWhere);
+            return warehouseInLogic.GetList(fieldName, fieldValue);
         }
 
         /// <summary>
