@@ -250,6 +250,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(554, 10);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // checkBox1
             // 
@@ -319,6 +320,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Location = new System.Drawing.Point(248, 15);
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // labtextboxBotton4
             // 
