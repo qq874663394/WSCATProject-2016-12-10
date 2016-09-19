@@ -315,35 +315,35 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
-            switch (warehouseInResult)
-            {
-                case -1:
-                    MessageBox.Show("错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据.");
-                    break;
-                case -2:
-                    MessageBox.Show("错误代码:4002;建立查询字符串参数时出现异常");
-                    break;
-                case -3:
-                    MessageBox.Show("错误代码:4003;对参数赋值时出现异常,请检查输入");
-                    break;
-                case -4:
-                    MessageBox.Show("错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接");
-                    break;
-                case -5:
-                    MessageBox.Show("错误代码:4005;对数据库新增数据时未能增加任何数据");
-                    break;
-                case -6:
-                    MessageBox.Show("错误代码:4006;对数据库新增数据的方法失效,未能增加任何行");
-                    break;
-                case -7:
-                    MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
-                    break;
-            }
-            if (warehouseInResult > 0)
-            {
-                MessageBox.Show("新增入库数据成功");
-            }
+            //int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
+            //switch (warehouseInResult)
+            //{
+            //    case -1:
+            //        MessageBox.Show("错误代码:4001;拼接连接字符串时出现异常,请尝试重新插入数据.");
+            //        break;
+            //    case -2:
+            //        MessageBox.Show("错误代码:4002;建立查询字符串参数时出现异常");
+            //        break;
+            //    case -3:
+            //        MessageBox.Show("错误代码:4003;对参数赋值时出现异常,请检查输入");
+            //        break;
+            //    case -4:
+            //        MessageBox.Show("错误代码:4004;尝试打开数据库连接时出错,请检查服务器连接");
+            //        break;
+            //    case -5:
+            //        MessageBox.Show("错误代码:4005;对数据库新增数据时未能增加任何数据");
+            //        break;
+            //    case -6:
+            //        MessageBox.Show("错误代码:4006;对数据库新增数据的方法失效,未能增加任何行");
+            //        break;
+            //    case -7:
+            //        MessageBox.Show("错误代码:4007;检查到传入的参数为空,无法进行新增操作");
+            //        break;
+            //}
+            //if (warehouseInResult > 0)
+            //{
+            //    MessageBox.Show("新增入库数据成功");
+            //}
         }
 
         /// <summary>
@@ -440,7 +440,7 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
+            //int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
 
         }
 
