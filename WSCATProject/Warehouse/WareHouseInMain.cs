@@ -387,6 +387,7 @@ namespace WSCATProject.Warehouse
                 gr.Cells["gridColumnprice"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);//单价
                 decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
                 decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
+          
                 gr.Cells["gridColumnmoney"].Value = number * price;//金额
                 gr.Cells["gridColumnundate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value;//生产日期
                 gr.Cells["gridColumnunbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
@@ -399,7 +400,8 @@ namespace WSCATProject.Warehouse
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                     _Materialnumber += 0;
-                    gr.Cells["gridColumnnumber"].Value = _Materialnumber;
+                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
+                   
                 }
             }
             catch (Exception ex)
@@ -817,7 +819,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e) 
         {
             string SS = "";
             GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];

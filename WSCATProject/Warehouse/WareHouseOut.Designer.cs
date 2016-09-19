@@ -76,20 +76,20 @@
             // 
             // textBoxOddNumbers
             // 
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(794, 10);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(674, 10);
             this.textBoxOddNumbers.ReadOnly = true;
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(757, 13);
+            this.labelprie.Location = new System.Drawing.Point(637, 13);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(616, 10);
+            this.dateTimePicker1.Location = new System.Drawing.Point(496, 10);
             // 
             // labelDate
             // 
-            this.labelDate.Location = new System.Drawing.Point(579, 13);
+            this.labelDate.Location = new System.Drawing.Point(459, 13);
             // 
             // panel7
             // 
@@ -214,11 +214,11 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(843, 8);
+            this.buttonClose.Location = new System.Drawing.Point(723, 8);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(715, 8);
+            this.buttonSave.Location = new System.Drawing.Point(595, 8);
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labtextboxTop6
