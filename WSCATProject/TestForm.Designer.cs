@@ -746,6 +746,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1202, 64);
             this.panel5.TabIndex = 11;
+            this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBox5
@@ -891,6 +892,7 @@
             this.bar1.TabIndex = 15;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
+            this.bar1.Click += new System.EventHandler(this.panel6_Click);
             this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // resizablePanelData

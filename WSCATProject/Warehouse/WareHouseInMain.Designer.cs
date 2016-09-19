@@ -155,6 +155,7 @@
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop6.Location = new System.Drawing.Point(406, 15);
             this.labtextboxTop6.Size = new System.Drawing.Size(142, 16);
+            this.labtextboxTop6.TextChanged += new System.EventHandler(this.labtextboxTop6_TextChanged);
             // 
             // labtextboxTop3
             // 
@@ -427,6 +428,7 @@
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxBotton1.Location = new System.Drawing.Point(91, 19);
             this.labtextboxBotton1.Size = new System.Drawing.Size(142, 16);
+            this.labtextboxBotton1.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
             // 
             // labBotton4
             // 
@@ -503,7 +505,6 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 54;
-            this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
             // 
             // comboBoxEx2
             // 
