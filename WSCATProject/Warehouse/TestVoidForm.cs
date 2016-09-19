@@ -1,5 +1,6 @@
 ﻿using BaseLayer;
 using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
 using LogicLayer;
@@ -82,16 +83,17 @@ namespace WSCATProject.Warehouse
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(BuildCode.ModuleCode("asd"));
             #region 查询
-            ClientInterface ba = new ClientInterface();
-            try
-            {
-                DataTable dt = ba.GetList(8,"");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ExSwitch(ex.Message));
-            }
+            //ClientInterface ba = new ClientInterface();
+            //try
+            //{
+            //    DataTable dt = ba.GetList(8,"");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ExSwitch(ex.Message));
+            //}
             #endregion
 
             #region 事物新增和更新示例

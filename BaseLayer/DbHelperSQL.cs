@@ -17,12 +17,12 @@ namespace BaseLayer
         //数据库连接字符串(web.config来配置)，多数据库可使用DbHelperSQLP来实现.
         public static readonly string connectionString = ConfigurationManager.AppSettings["WSCAT"];
         public DbHelperSQL()
-        {            
+        {
         }
         ///public static readonly string strCon = "字符串";  
-         /// <summary>  
-         /// 打开数据库连接  
-         /// </summary>  
+        /// <summary>  
+        /// 打开数据库连接  
+        /// </summary>  
         public static SqlConnection Conn
         {
             get
@@ -501,8 +501,10 @@ namespace BaseLayer
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
         /// <param name="sqlstr">对某表插入多条数据的sql</param>
         /// <param name="paraList">插入多条数据的sql的参数集合</param>
-        public static void ExecuteSqlTran(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
+        /// <param name="isState">是否新增</param>
+        public static int ExecuteSqlTran(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
         {
+            int result = 0;
             using (SqlConnection conn = Conn)
             {
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -512,31 +514,46 @@ namespace BaseLayer
                     {
                         if (paraList.Count > 0)
                         {
-                            //循环
-                            foreach (DictionaryEntry myDE in SQLStringList)
+                            try
                             {
-                                string cmdText = myDE.Key.ToString();
-                                SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
-                                PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                int val = cmd.ExecuteNonQuery();
-                                cmd.Parameters.Clear();
+                                //循环
+                                foreach (DictionaryEntry myDE in SQLStringList)
+                                {
+                                    string cmdText = myDE.Key.ToString();
+                                    SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    int val = cmd.ExecuteNonQuery();
+                                    cmd.Parameters.Clear();
+                                }
                             }
-
-                            foreach (SqlParameter[] para in paraList)
+                            catch (Exception)
                             {
-                                string cmdText = sqlstr;
-                                SqlParameter[] cmdParms = para;
-                                PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                int val = cmd.ExecuteNonQuery();
-                                cmd.Parameters.Clear();
+                                throw new Exception("7.1");
+                            }
+                            try
+                            {
+                                foreach (SqlParameter[] para in paraList)
+                                {
+                                    string cmdText = sqlstr;
+                                    SqlParameter[] cmdParms = para;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    int val = cmd.ExecuteNonQuery();
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.2");
                             }
                             trans.Commit();
+                            result = 1;
                         }
+                        return result;
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         trans.Rollback();
-                        throw new Exception("-1");
+                        throw ex;
                     }
                 }
             }
@@ -697,8 +714,6 @@ namespace BaseLayer
             cmd.CommandType = CommandType.Text;//cmdType;
             if (cmdParms != null)
             {
-
-
                 foreach (SqlParameter parameter in cmdParms)
                 {
                     if ((parameter.Direction == ParameterDirection.InputOutput || parameter.Direction == ParameterDirection.Input) &&
@@ -710,7 +725,7 @@ namespace BaseLayer
                 }
             }
         }
-        
+
         #endregion
 
         #region 存储过程操作

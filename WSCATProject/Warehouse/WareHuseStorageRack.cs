@@ -43,7 +43,7 @@ namespace WSCATProject.Warehouse
 
         private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx1.SelectedValue == null)
+            if (comboBoxEx1.SelectedValue == null || comboBoxEx1.Text=="请选择")
             {
                 comboBoxEx2.DataSource = null;
                 return;

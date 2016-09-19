@@ -34,13 +34,14 @@ namespace InterfaceLayer.Warehouse
             warehouseInLogic.UpdateList(hashTable, sql, list);
         }
         /// <summary>
-        /// 新增一条入库单
+        /// 事务新增
         /// </summary>
-        /// <param name="wi">入库单实体</param>
-        /// <returns></returns>
-        public int addWarehouseIn(WarehouseIn wi, List<WarehouseInDetail> widList)
+        /// <param name="hashTable">主表的sql和parameter</param>
+        /// <param name="sql">子表sql</param>
+        /// <param name="list">子表的parameter</param>
+        public int Add(Hashtable hashTable, string sql, List<SqlParameter[]> list)
         {
-            return warehouseInLogic.InsertWarehouseInTable(wi, widList);
+            return warehouseInLogic.Add(hashTable, sql, list);
         }
 
         /// <summary>
@@ -62,10 +63,24 @@ namespace InterfaceLayer.Warehouse
         {
             return warehouseInLogic.deleteByCode(code);
         }
+        /// <summary>
+        /// 修改审核状态
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public int updateByCode(string code)
         {
             return warehouseInLogic.updateByCode(code);
         }
-
+        /// <summary>
+        /// 上下一单
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="state">状态:0:下一单,1:上一单</param>
+        /// <returns></returns>
+        public WarehouseIn GetPreAndNext(int id, int state)
+        {
+            return warehouseInLogic.GetPreAndNext(id, state);
+        }
     }
 }

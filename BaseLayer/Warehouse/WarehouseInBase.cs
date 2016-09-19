@@ -38,16 +38,18 @@ namespace BaseLayer
         /// <param name="hashTable">主表的sql和parameter</param>
         /// <param name="sql">子表sql</param>
         /// <param name="list">子表的parameter</param>
-        public void UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        public int UpdateList(Hashtable hashTable, string sql, List<SqlParameter[]> list)
         {
+            int result = 0;
             try
             {
-                DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
+                result=DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            return result;
         }
         /// <summary>
         /// 获取数据列表
@@ -83,72 +85,22 @@ namespace BaseLayer
         }
 
         /// <summary>
-        /// 增加一条数据
+        /// 事务新增
         /// </summary>
-        public int Add(WarehouseIn model)
+        /// <param name="hashTable">主表的sql和parameter</param>
+        /// <param name="sql">子表sql</param>
+        /// <param name="list">子表的parameter</param>
+        public int Add(Hashtable hashTable, string sql, List<SqlParameter[]> list)
         {
-            StringBuilder strSql = new StringBuilder();
+            int result = 0;
             try
             {
-                strSql.Append("insert into T_WarehouseIn(");
-                strSql.Append("code,goodsCode,defaultType,type,stock,operation,examine,remark,reserved1,reserved2,isClear,updateDate,state,date,purchaseCode,checkState)");
-                strSql.Append(" values (");
-                strSql.Append("@code,@goodsCode,@defaultType,@type,@stock,@operation,@examine,@remark,@reserved1,@reserved2,@isClear,@updateDate,@state,@date,@purchaseCode,@checkState)");
-                strSql.Append(";select @@IDENTITY");
+                result = DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
             }
-            catch
+            catch (Exception ex)
             {
-                return -1;
+                throw ex;
             }
-            SqlParameter[] parameters = new SqlParameter[14];
-            try
-            {
-                parameters[0] = new SqlParameter("@code", SqlDbType.NVarChar, 45);
-                parameters[1] = new SqlParameter("@goodsCode", SqlDbType.NVarChar, 80);
-                parameters[2] = new SqlParameter("@defaultType", SqlDbType.NVarChar, 30);
-                parameters[3] = new SqlParameter("@type", SqlDbType.NVarChar, 30);
-                parameters[4] = new SqlParameter("@stock", SqlDbType.NVarChar, 40);
-                parameters[5] = new SqlParameter("@operation", SqlDbType.NVarChar, 40);
-                parameters[6] = new SqlParameter("@examine", SqlDbType.NVarChar, 40);
-                parameters[7] = new SqlParameter("@remark", SqlDbType.NVarChar, 400);
-                parameters[8] = new SqlParameter("@reserved1", SqlDbType.NVarChar, 50);
-                parameters[9] = new SqlParameter("@reserved2", SqlDbType.NVarChar, 50);
-                parameters[10] = new SqlParameter("@isClear", SqlDbType.Int, 4);
-                parameters[11] = new SqlParameter("@updateDate", SqlDbType.DateTime);
-                parameters[12] = new SqlParameter("@state", SqlDbType.Int, 4);
-                parameters[13] = new SqlParameter("@date", SqlDbType.DateTime);
-                parameters[14] = new SqlParameter("@purchaseCode", SqlDbType.NVarChar, 45);
-                parameters[15] = new SqlParameter("@checkState", SqlDbType.Int, 4);
-            }
-            catch
-            {
-                return -2;
-            }
-            try
-            {
-                parameters[0].Value = model.code;
-                parameters[1].Value = model.GoodsCode;
-                parameters[2].Value = model.DefaultType;
-                parameters[3].Value = model.type;
-                parameters[4].Value = model.stock;
-                parameters[5].Value = model.operation;
-                parameters[6].Value = model.examine;
-                parameters[7].Value = model.remark;
-                parameters[8].Value = model.reserved1;
-                parameters[9].Value = model.reserved2;
-                parameters[10].Value = model.isClear;
-                parameters[11].Value = model.updateDate;
-                parameters[12].Value = model.state;
-                parameters[13].Value = model.date;
-                parameters[14].Value = model.purchaseCode;
-                parameters[15].Value = model.checkState;
-            }
-            catch
-            {
-                return -3;
-            }
-            int result = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
-
             return result;
         }
         /// <summary>
@@ -237,19 +189,85 @@ namespace BaseLayer
                 sql = string.Format("update from T_WarehouseIn set checkState=1 where code='{0}'", code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch
+            catch (Exception ex)
             {
-                return -1;
+                throw ex;
             }
             return result;
         }
-        public DataTable GetPre(int id)
+        /// <summary>
+        /// 上下一单
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="state">状态:0:下一单,1:上一单</param>
+        /// <returns></returns>
+        public WarehouseIn GetPreAndNext(int id, int state)
         {
             string sql = "";
-            DataTable dt = null;
-            sql = string.Format("select top 1 * from T_log where id>{0}",id);
-            dt = DbHelperSQL.Query(sql).Tables[0];
-            return dt;
+            try
+            {
+                if (state == 0)
+                {
+                    sql = string.Format("select top 1 * from T_log where id>{0}", id);
+                }
+                else
+                {
+                    sql = string.Format("select top 1 * from T_log where id<{0} order by id desc", id);
+                }
+
+                SqlDataReader read = DbHelperSQL.ExecuteReader(sql);
+                if (read.Read())
+                {
+                    WarehouseIn wi = new WarehouseIn()
+                    {
+                        id = Convert.ToInt32(read["id"]),
+                        code = read["code"].ToString(),
+                        checkState = Convert.ToInt32(read["checkState"]),
+                        date = Convert.ToDateTime(read["checkState"]),
+                        DefaultType = read["checkState"].ToString(),
+                        examine = read["examine"].ToString(),
+                        GoodsCode = read["GoodsCode"].ToString(),
+                        isClear = Convert.ToInt32(read["isClear"]),
+                        makeMan = read["makeMan"].ToString(),
+                        operation = read["operation"].ToString(),
+                        purchaseCode = read["purchaseCode"].ToString(),
+                        remark = read["remark"].ToString(),
+                        reserved1 = read["reserved1"].ToString(),
+                        reserved2 = read["reserved2"].ToString(),
+                        state = Convert.ToInt32(read["state"]),
+                        stock = read["stock"].ToString(),
+                        supplierCode = read["supplierCode"].ToString(),
+                        supplierName = read["supplierName"].ToString(),
+                        supplierPhone = read["supplierPhone"].ToString(),
+                        type = read["type"].ToString(),
+                        updateDate = Convert.ToDateTime(read["updateDate"])
+                    };
+                    return wi;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return null;
+        }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_WarehouseIn where code='{0}'",code);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return DbHelperSQL.Exists(sql);
         }
     }
 }
