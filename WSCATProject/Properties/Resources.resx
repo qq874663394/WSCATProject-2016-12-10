@@ -619,4 +619,16 @@
   <data name="zuidahua" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zuidahua.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="shanchu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shanchu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tianjia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tianjia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="刷新" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\刷新.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="盘点" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\盘点.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

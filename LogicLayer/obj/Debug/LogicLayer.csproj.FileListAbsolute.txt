@@ -82,3 +82,17 @@ E:\619项目\2016年9月14日085327\LogicLayer\bin\Debug\Model.pdb
 E:\619项目\2016年9月14日085327\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\2016年9月14日085327\LogicLayer\obj\Debug\LogicLayer.dll
 E:\619项目\2016年9月14日085327\LogicLayer\obj\Debug\LogicLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\LogicLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\LogicLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\BaseLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\HelperUtility.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\Model.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\UpdateManagerLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\NPOI.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\BaseLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\HelperUtility.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\UpdateManagerLayer.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\bin\Debug\Model.pdb
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\obj\Debug\LogicLayer.dll
+C:\Users\Administrator.USER-20160704SV\Desktop\619\LogicLayer\obj\Debug\LogicLayer.pdb

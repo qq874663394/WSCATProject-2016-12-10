@@ -848,6 +848,16 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
                 resizablePanel1.Visible = true;
 
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(230, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(230, 450);
+                    return;
+                }
             }
         }
 

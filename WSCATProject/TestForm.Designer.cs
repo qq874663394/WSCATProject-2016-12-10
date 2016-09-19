@@ -46,6 +46,7 @@
             this.toolStripButtonshen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDate = new System.Windows.Forms.Label();
@@ -233,6 +234,7 @@
             this.toolStripButtonshen,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
+            this.toolStripButtonshuaixin,
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
@@ -318,6 +320,18 @@
             this.toolStripButtondaochu.Text = "导出Excel";
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
+            // 
+            // toolStripButtonshuaixin
+            // 
+            this.toolStripButtonshuaixin.AutoSize = false;
+            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
+            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
+            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButtonshuaixin.Text = "刷新";
+            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
             // 
             // toolStripButton6
             // 
@@ -427,6 +441,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop6.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop6.Location = new System.Drawing.Point(91, 76);
             this.labtextboxTop6.Name = "labtextboxTop6";
             this.labtextboxTop6.PreventEnterBeep = true;
@@ -444,6 +459,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop3.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop3.Location = new System.Drawing.Point(91, 45);
             this.labtextboxTop3.Name = "labtextboxTop3";
             this.labtextboxTop3.PreventEnterBeep = true;
@@ -461,7 +477,8 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(374, 76);
+            this.labtextboxTop7.DisabledBackColor = System.Drawing.Color.White;
+            this.labtextboxTop7.Location = new System.Drawing.Point(389, 76);
             this.labtextboxTop7.Name = "labtextboxTop7";
             this.labtextboxTop7.PreventEnterBeep = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(177, 16);
@@ -478,6 +495,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop9.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop9.Location = new System.Drawing.Point(888, 78);
             this.labtextboxTop9.Name = "labtextboxTop9";
             this.labtextboxTop9.PreventEnterBeep = true;
@@ -495,6 +513,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop8.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop8.Location = new System.Drawing.Point(657, 76);
             this.labtextboxTop8.Name = "labtextboxTop8";
             this.labtextboxTop8.PreventEnterBeep = true;
@@ -512,6 +531,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop5.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop5.Location = new System.Drawing.Point(657, 45);
             this.labtextboxTop5.Name = "labtextboxTop5";
             this.labtextboxTop5.PreventEnterBeep = true;
@@ -529,6 +549,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop4.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop4.Location = new System.Drawing.Point(374, 45);
             this.labtextboxTop4.Name = "labtextboxTop4";
             this.labtextboxTop4.PreventEnterBeep = true;
@@ -546,6 +567,7 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop2.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop2.Location = new System.Drawing.Point(374, 15);
             this.labtextboxTop2.Name = "labtextboxTop2";
             this.labtextboxTop2.PreventEnterBeep = true;
@@ -563,6 +585,7 @@
             this.labtextboxTop1.Border.BorderGradientAngle = 0;
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop1.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop1.Location = new System.Drawing.Point(91, 15);
             this.labtextboxTop1.Name = "labtextboxTop1";
             this.labtextboxTop1.PreventEnterBeep = true;
@@ -724,6 +747,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton2.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton2.Location = new System.Drawing.Point(888, 43);
             this.labtextboxBotton2.Name = "labtextboxBotton2";
             this.labtextboxBotton2.PreventEnterBeep = true;
@@ -770,6 +794,7 @@
             this.labtextboxBotton4.Border.BorderGradientAngle = 0;
             this.labtextboxBotton4.Border.Class = "SideNavStrip";
             this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton4.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton4.Location = new System.Drawing.Point(616, 21);
             this.labtextboxBotton4.Name = "labtextboxBotton4";
             this.labtextboxBotton4.PreventEnterBeep = true;
@@ -787,6 +812,7 @@
             this.labtextboxBotton3.Border.BorderGradientAngle = 0;
             this.labtextboxBotton3.Border.Class = "SideNavStrip";
             this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton3.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton3.Location = new System.Drawing.Point(385, 21);
             this.labtextboxBotton3.Name = "labtextboxBotton3";
             this.labtextboxBotton3.PreventEnterBeep = true;
@@ -804,6 +830,7 @@
             this.labtextboxBotton1.Border.BorderGradientAngle = 0;
             this.labtextboxBotton1.Border.Class = "SideNavStrip";
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton1.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton1.Location = new System.Drawing.Point(99, 19);
             this.labtextboxBotton1.Name = "labtextboxBotton1";
             this.labtextboxBotton1.PreventEnterBeep = true;
@@ -1072,7 +1099,6 @@
         protected System.Windows.Forms.Label labTop1;
         public System.Windows.Forms.PictureBox pictureBox6;
         public System.Windows.Forms.PictureBox pictureBox7;
-        public System.Windows.Forms.PictureBox pictureBoxtitle;
         protected System.Windows.Forms.PictureBox pictureBox8;
         protected System.Windows.Forms.Panel panel5;
         protected System.Windows.Forms.PictureBox pictureBox5;
@@ -1098,11 +1124,12 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtonnew;
         protected System.Windows.Forms.ToolStripButton toolStripButtonsave;
         protected System.Windows.Forms.ToolStripButton toolStripButtonshen;
-        protected System.Windows.Forms.Panel panel3;
+        protected System.Windows.Forms.ToolStripButton toolStripButtonshuaixin;
+        protected System.Windows.Forms.PictureBox pictureBoxtitle;
+     protected System.Windows.Forms.Panel panel3;
         protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
         protected System.Windows.Forms.Panel panelDataView;
         protected System.Windows.Forms.DataGridView dataGridViewFujia;
-        protected System.Windows.Forms.Label label1;
-    }
+        protected System.Windows.Forms.Label label1;    }
 }
