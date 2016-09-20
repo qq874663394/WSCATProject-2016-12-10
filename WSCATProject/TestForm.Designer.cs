@@ -207,10 +207,8 @@
             // 
             // pictureBoxtitle
             // 
-            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxtitle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxtitle.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxtitle.Image")));
             this.pictureBoxtitle.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxtitle.Name = "pictureBoxtitle";
@@ -1097,8 +1095,6 @@
         protected System.Windows.Forms.Label labTop3;
         protected System.Windows.Forms.Label labTop2;
         protected System.Windows.Forms.Label labTop1;
-        public System.Windows.Forms.PictureBox pictureBox6;
-        public System.Windows.Forms.PictureBox pictureBox7;
         protected System.Windows.Forms.PictureBox pictureBox8;
         protected System.Windows.Forms.Panel panel5;
         protected System.Windows.Forms.PictureBox pictureBox5;
@@ -1131,5 +1127,8 @@
         protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
         protected System.Windows.Forms.Panel panelDataView;
         protected System.Windows.Forms.DataGridView dataGridViewFujia;
-        protected System.Windows.Forms.Label label1;    }
+        protected System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.PictureBox pictureBox6;
+        protected System.Windows.Forms.PictureBox pictureBox7;
+    }
 }

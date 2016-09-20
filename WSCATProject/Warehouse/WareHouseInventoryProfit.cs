@@ -33,45 +33,33 @@ namespace WSCATProject.Warehouse
         #region 数据字段
 
         /// <summary>
-        /// 所有供应商
-        /// </summary>
-        private DataTable _AllSupply = null;
-        /// <summary>
         /// 所有业务员
         /// </summary>
         private DataTable _AllEmployee = null;
         /// <summary>
-        /// 点击的项,1供应商  2为业务员
+        /// 点击的项 1为业务员
         /// </summary>
         private int _Click = 0;
-        /// <summary>
-        /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
-        /// </summary>
-        private int _state;
-        /// <summary>
-        /// 保存仓库商品明细
-        /// </summary>
-        private GridRow _wareHouseModel;
-        // private decimal _MaterialMoney;
-        private decimal _MaterialNumber;
-        private int _rukushu;//入库数量
-
-        /// <summary>
-        /// 所有商品列表
-        /// </summary>
-        private DataTable _AllMaterial = null;
-        /// <summary>
-        /// 统计数量
-        /// </summary>
-        private decimal _Materialnumber;
-        /// <summary>
-        /// 保存供应商Code
-        /// </summary>
-        private string _suppliercode;
         /// <summary>
         /// 入库code
         /// </summary>
         private string _warehouseincode;
+        /// <summary>
+        /// 统计贮存数量
+        /// </summary>
+        private decimal _Allzhucunshu;
+        /// <summary>
+        /// 统计盘点数量
+        /// </summary>
+        private decimal _Allpandianshu;
+        /// <summary>
+        /// 统计盘盈数量
+        /// </summary>
+        private decimal _Allpanyingshu;
+        /// <summary>
+        /// 统计盘盈金额
+        /// </summary>
+        private decimal _Allpanyingmoney;
         #endregion
 
         /// <summary>
@@ -81,11 +69,8 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void WareHouseInventoryProfit_Load(object sender, EventArgs e)
         {
-            ////供应商
-            //_AllSupply = supply.SelSupplierTable();
-
-            ////业务员
-            //_AllEmployee = employee.SelSupplierTable(false);
+            //业务员
+            _AllEmployee = employee.SelSupplierTable(false);
 
             //数量
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnzhangmianshu"].EditControl as GridDoubleInputEditControl;
@@ -117,16 +102,6 @@ namespace WSCATProject.Warehouse
 
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //表的点击事件
-        }
-
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //表的点击事件
-        }
-
         #region 初始化数据
         /// <summary>
         /// 统计行数据
@@ -149,9 +124,28 @@ namespace WSCATProject.Warehouse
             gr.Cells["gridColumnpandianshu"].Value = 0;
             gr.Cells["gridColumnpandianshu"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnpandianshu"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["gridColumnpanyingshu"].Value = 0;
+            gr.Cells["gridColumnpanyingshu"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnpanyingshu"].CellStyles.Default.Background.Color1 = Color.Orange;
             gr.Cells["gridColumnmoney"].Value = 0;
             gr.Cells["gridColumnmoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnmoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+        }
+
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private void isNUllValidate()
+        {
+            if (comboBoxEx1.Text.Trim() == null)
+            {
+                MessageBox.Show("出库类别不能为空！");
+            }
+            if (labtextboxBotton1.Text.Trim() == null)
+            {
+                MessageBox.Show("业务员不能为空！");
+            }
+
         }
 
         /// <summary>
@@ -159,7 +153,9 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitEmployee()
         {
-           
+            if (_Click != 1)
+            {
+                _Click = 1;
                 dataGridViewFujia.DataSource = null;
                 dataGridViewFujia.Columns.Clear();
 
@@ -175,15 +171,156 @@ namespace WSCATProject.Warehouse
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(234, 440);
+                resizablePanel1.Location = new Point(234, 420);
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
                 resizablePanel1.Visible = true;
+
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(230, 650);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 420);
+                    return;
+                }
+            }
         }
         #endregion
+        
+        #region 小箭头图标和表格数据的点击事件
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                InitEmployee();
+            }
+            _Click = 2;
+        }
+
+        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //业务员
+                if (_Click == 1 || _Click == 2)
+                {
+                    string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                    labtextboxBotton1.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("双击绑定业务员员数据错误！请检查：" + ex.Message);
+            }
+        }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //表的点击事件
+        }
+
+        #endregion
+
 
         private void WareHouseInventoryProfit_Activated(object sender, EventArgs e)
         {
             comboBoxEx1.Focus();
+        }
+
+        #region 修改Panel的边框颜色
+        /// <summary>
+        /// 修改Panel的边框颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                              this.panel2.ClientRectangle,
+                              Color.White,
+                              1,
+                              ButtonBorderStyle.Solid,
+                              Color.FromArgb(85, 177, 238),
+                              1,
+                              ButtonBorderStyle.Solid,
+                              Color.White,
+                              1,
+                              ButtonBorderStyle.Solid,
+                              Color.White,
+                              1,
+                              ButtonBorderStyle.Solid);
+        }
+        #endregion
+
+        /// <summary>
+        /// 业务员模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        {
+            if (labtextboxBotton1.Text.Trim() == "")
+            {
+                _Click = 2;
+                InitEmployee();
+                return;
+            }
+            dataGridViewFujia.DataSource = null;
+            dataGridViewFujia.Columns.Clear();
+
+            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "code";
+            dgvc.HeaderText = "员工工号";
+            dgvc.DataPropertyName = "code";
+            dataGridViewFujia.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "name";
+            dgvc.HeaderText = "姓名";
+            dgvc.DataPropertyName = "name";
+            dataGridViewFujia.Columns.Add(dgvc);
+
+            resizablePanel1.Location = new Point(234, 440);
+            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+            resizablePanel1.Visible = true;
+        }
+
+        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            //最后一行做统计行
+            GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+            try
+            {
+                //逐行统计数据总数
+                decimal tempAllzhucun = 0;
+                decimal tempAllpandian = 0;
+                decimal tempAllpanying = 0;
+                decimal tempAllpanyingmoney = 0;
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllzhucun += Convert.ToDecimal(tempGR["gridColumnzhangmianshu"].FormattedValue);
+                    tempAllpandian += Convert.ToDecimal(tempGR["gridColumnpandianshu"].FormattedValue);
+                    tempAllpanying += Convert.ToDecimal(tempGR["gridColumnpanyingshu"].FormattedValue);
+                    tempAllpanyingmoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
+                }
+                _Allzhucunshu = tempAllzhucun;
+                _Allpandianshu = tempAllpandian;
+                _Allpanyingshu = tempAllpanying;
+                _Allpanyingmoney = tempAllpanyingmoney;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["gridColumnzhangmianshu"].Value = _Allzhucunshu.ToString();
+                gr["gridColumnpandianshu"].Value = _Allpandianshu.ToString();
+                gr["gridColumnpanyingshu"].Value = _Allpanyingshu.ToString();
+                gr["gridColumnmoney"].Value = _Allpanyingmoney.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("统计出错！请检查：" + ex.Message);
+            }
         }
     }
 }
