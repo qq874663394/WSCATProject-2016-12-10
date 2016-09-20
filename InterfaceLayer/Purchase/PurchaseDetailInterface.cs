@@ -19,5 +19,9 @@ namespace InterfaceLayer.Purchase
         {
             return pdi.GetCheckNumber(purchaseCode, code);
         }
+        public DataTable GetListAndMaterial(string fieldValue)
+        {
+            return pdi.GetListAndMaterial(fieldValue);
+        }
     }
 }

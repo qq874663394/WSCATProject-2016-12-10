@@ -324,7 +324,6 @@ namespace BaseLayer
                 {
                     try
                     {
-                        connection.Open();
                         object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                         {
@@ -504,6 +503,8 @@ namespace BaseLayer
         /// <param name="isState">是否新增</param>
         public static int ExecuteSqlTran(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
         {
+            int val1 = 0;
+            int val2 = 0;
             int result = 0;
             using (SqlConnection conn = Conn)
             {
@@ -522,8 +523,13 @@ namespace BaseLayer
                                     string cmdText = myDE.Key.ToString();
                                     SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    int val = cmd.ExecuteNonQuery();
+                                    val1 += cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
+                                }
+                                if (val1 != SQLStringList.Count)
+                                {
+                                    trans.Rollback();
+                                    return result = 0;
                                 }
                             }
                             catch (Exception)
@@ -537,8 +543,13 @@ namespace BaseLayer
                                     string cmdText = sqlstr;
                                     SqlParameter[] cmdParms = para;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    int val = cmd.ExecuteNonQuery();
+                                    val2 += cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
+                                }
+                                if (val2 != paraList.Count)
+                                {
+                                    trans.Rollback();
+                                    return result = 0;
                                 }
                             }
                             catch (Exception)
@@ -558,7 +569,72 @@ namespace BaseLayer
                 }
             }
         }
-
+        /// <summary>
+        /// 执行多条SQL语句，实现数据库事务。并在其中有一条多影响行数的多参数语句
+        /// </summary>
+        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        /// <param name="sqlstr">对某表插入多条数据的sql</param>
+        /// <param name="paraList">插入多条数据的sql的参数集合</param>
+        /// <param name="isState">是否新增</param>
+        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
+        {
+            object val1 = 0;
+            using (SqlConnection conn = Conn)
+            {
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    try
+                    {
+                        if (paraList.Count > 0)
+                        {
+                            try
+                            {
+                                //循环
+                                foreach (DictionaryEntry myDE in SQLStringList)
+                                {
+                                    string cmdText = myDE.Key.ToString();
+                                    SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    val1 = cmd.ExecuteScalar();
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.1");
+                            }
+                            try
+                            {
+                                foreach (SqlParameter[] para in paraList)
+                                {
+                                    string cmdText = sqlstr;
+                                    SqlParameter[] cmdParms = para;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    cmd.ExecuteNonQuery();
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.2");
+                            }
+                            trans.Commit();
+                        }
+                        if (val1==null)
+                        {
+                            throw new Exception("-3");
+                        }
+                        return val1;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>
@@ -714,7 +790,7 @@ namespace BaseLayer
             cmd.CommandType = CommandType.Text;//cmdType;
             if (cmdParms != null)
             {
-                foreach (SqlParameter parameter in cmdParms)
+                foreach (SqlParameter parameter  in cmdParms)
                 {
                     if ((parameter.Direction == ParameterDirection.InputOutput || parameter.Direction == ParameterDirection.Input) &&
                         (parameter.Value == null))

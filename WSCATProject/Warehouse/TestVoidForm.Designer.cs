@@ -34,7 +34,6 @@
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,19 +84,11 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(313, 33);
+            this.dataGridView1.Location = new System.Drawing.Point(-2, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(1060, 220);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 72;
             // 
             // TestVoidForm
             // 
@@ -124,6 +115,5 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

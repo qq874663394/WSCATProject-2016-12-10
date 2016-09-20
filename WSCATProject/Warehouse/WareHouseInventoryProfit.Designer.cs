@@ -75,8 +75,7 @@
             // labelprie
             // 
             this.labelprie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelprie.Location = new System.Drawing.Point(995, 2);
-            // 
+            this.labelprie.Location = new System.Drawing.Point(995, 2);            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1037, 82);
@@ -305,6 +304,16 @@
             // 
             this.labTop1.Location = new System.Drawing.Point(34, 24);
             this.labTop1.Text = "商品检索：";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBox6.Location = new System.Drawing.Point(1043, 26);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBox7.Location = new System.Drawing.Point(1016, 26);
             // 
             // pictureBox8
             // 

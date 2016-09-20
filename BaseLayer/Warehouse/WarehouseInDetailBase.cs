@@ -8,20 +8,21 @@ using System.Collections.Generic;
 
 namespace BaseLayer
 {
-	/// <summary>
-	/// 数据访问类:T_WarehouseInDetail
-	/// </summary>
-	public partial class WarehouseInDetailBase
+    /// <summary>
+    /// 数据访问类:T_WarehouseInDetail
+    /// </summary>
+    public partial class WarehouseInDetailBase
     {
-		public WarehouseInDetailBase()
-		{}
+        public WarehouseInDetailBase()
+        { }
 
-		/// <summary>
-		/// 增加一条数据
-		/// </summary>
-		public int Add(WarehouseInDetail model)
-		{
-			StringBuilder strSql=new StringBuilder();
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public int Add(WarehouseInDetail model)
+        {
+            int result = 0;
+            StringBuilder strSql = new StringBuilder();
             try
             {
                 strSql.Append("insert into T_WarehouseInDetail(");
@@ -29,14 +30,7 @@ namespace BaseLayer
                 strSql.Append(" values (");
                 strSql.Append("@code,@materiaName,@zhujima,@materiaModel,@materiaUnit,@number,@price,@money,@remark,@reserved1,@reserved2,@isClear,@barcode,@rfid,@updateDate,@state,@date,@warehouseCode,@warehouseName,@mainCode)");
                 strSql.Append(";select @@IDENTITY");
-            }
-            catch
-            {
-                return -1;
-            }
-            SqlParameter[] parameters = new SqlParameter[19];
-            try
-            {
+                SqlParameter[] parameters = new SqlParameter[19];
                 parameters[0] = new SqlParameter("@code", SqlDbType.NVarChar, 45);
                 parameters[1] = new SqlParameter("@materiaName", SqlDbType.NVarChar, 100);
                 parameters[2] = new SqlParameter("@materiaModel", SqlDbType.NVarChar, 100);
@@ -53,17 +47,10 @@ namespace BaseLayer
                 parameters[13] = new SqlParameter("@updateDate", SqlDbType.DateTime);
                 parameters[14] = new SqlParameter("@state", SqlDbType.Int, 4);
                 parameters[15] = new SqlParameter("@date", SqlDbType.DateTime);
-                parameters[16] = new SqlParameter("@warehouseCode", SqlDbType.NVarChar,45);
-                parameters[17] = new SqlParameter("@warehouseName", SqlDbType.NVarChar,40);
+                parameters[16] = new SqlParameter("@warehouseCode", SqlDbType.NVarChar, 45);
+                parameters[17] = new SqlParameter("@warehouseName", SqlDbType.NVarChar, 40);
                 parameters[18] = new SqlParameter("@mainCode", SqlDbType.NVarChar, 45);
-                parameters[19] = new SqlParameter("@zhujima",SqlDbType.NVarChar,45);
-            }
-            catch
-            {
-                return -2;
-            }
-            try
-            {
+                parameters[19] = new SqlParameter("@zhujima", SqlDbType.NVarChar, 45);
                 parameters[0].Value = model.code;
                 parameters[1].Value = model.materiaName;
                 parameters[2].Value = model.materiaModel;
@@ -80,17 +67,16 @@ namespace BaseLayer
                 parameters[13].Value = model.updateDate;
                 parameters[14].Value = model.state;
                 parameters[15].Value = model.date;
-                parameters[16].Value = model.WarehouseCode;
-                parameters[17].Value = model.WarehouseName;
-                parameters[18].Value = model.MainCode;
+                parameters[16].Value = model.warehouseCode;
+                parameters[17].Value = model.warehouseName;
+                parameters[18].Value = model.mainCode;
                 parameters[19].Value = model.zhujima;
+                result = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
             }
-            catch
+            catch (Exception ex)
             {
-                return -3;
+                throw ex;
             }
-			int result = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
-
             return result;
         }
         /// <summary>
@@ -105,18 +91,11 @@ namespace BaseLayer
             try
             {
                 deleteStr = "delete T_WarehouseInDetail where code = '" + code + "'";
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            try
-            {
                 result = DbHelperSQL.ExecuteSql(deleteStr);
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-2");
+                throw ex;
             }
             return result;
         }
@@ -151,18 +130,18 @@ namespace BaseLayer
                     wid.remark,
                     wid.reserved1,
                     wid.reserved2,
-                    wid.StorageRackName,
-                    wid.StorageRackName,
-                    wid.IsArrive,
-                    wid.WarehouseCode,
-                    wid.WarehouseName,
-                    wid.MainCode,
+                    wid.storageRackName,
+                    wid.storageRackName,
+                    wid.isArrive,
+                    wid.warehouseCode,
+                    wid.warehouseName,
+                    wid.mainCode,
                     wid.code,
                     wid.zhujima);
             }
-            catch
+            catch(Exception ex)
             {
-                return -1;
+                throw ex;
             }
             int result = DbHelperSQL.ExecuteSql(updateStr);
             return result;
@@ -170,6 +149,7 @@ namespace BaseLayer
 
         public DataSet getList(string strWhere)
         {
+            DataSet ds = null;
             StringBuilder strSql = new StringBuilder();
             try
             {
@@ -179,44 +159,29 @@ namespace BaseLayer
                 {
                     strSql.Append(" where " + strWhere);
                 }
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            DataSet ds = null;
-            try
-            {
                 ds = DbHelperSQL.Query(strSql.ToString());
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-2");
+                throw ex;
             }
             return ds;
         }
 
         public DataSet getListByMainCode(string mainCode)
         {
-            StringBuilder strSql = new StringBuilder();
-            try
-            {
-                strSql.Append("select id,code,materiaName,zhujima,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
-                strSql.Append(" FROM T_WarehouseInDetail ");
-                strSql.Append(" where mainCode = '" + mainCode + "' and state=0");
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
             DataSet ds = null;
             try
             {
+                StringBuilder strSql = new StringBuilder();
+                strSql.Append("select id,code,materiaName,zhujima,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
+                strSql.Append(" FROM T_WarehouseInDetail ");
+                strSql.Append(" where mainCode = '" + mainCode + "' and state=0");
                 ds = DbHelperSQL.Query(strSql.ToString());
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-2");
+                throw ex;
             }
             return ds;
         }
@@ -227,22 +192,14 @@ namespace BaseLayer
             int result = 0;
             try
             {
-                updateStr = string.Format("update T_WarehouseInDetail set state=1 where code='{0}'",code);
-            }
-            catch
-            {
-                return -1;
-            }
-            try
-            {
+                updateStr = string.Format("update T_WarehouseInDetail set state=1 where code='{0}'", code);
                 result = DbHelperSQL.ExecuteSql(updateStr);
             }
-            catch
+            catch (Exception ex)
             {
-                return -2;
+                throw ex;
             }
             return result;
         }
-	}
+    }
 }
-

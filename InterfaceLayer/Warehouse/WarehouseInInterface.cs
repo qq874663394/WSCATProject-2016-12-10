@@ -36,12 +36,9 @@ namespace InterfaceLayer.Warehouse
         /// <summary>
         /// 事务新增
         /// </summary>
-        /// <param name="hashTable">主表的sql和parameter</param>
-        /// <param name="sql">子表sql</param>
-        /// <param name="list">子表的parameter</param>
-        public int Add(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        public object AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
         {
-            return warehouseInLogic.Add(hashTable, sql, list);
+            return warehouseInLogic.AddWarehouseOrToDetail(warehouseIn, warehouseInDetail);
         }
 
         /// <summary>
@@ -68,9 +65,9 @@ namespace InterfaceLayer.Warehouse
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public int updateByCode(string code)
+        public int updateByCode(WarehouseIn warehouseIn, List<WarehouseInDetail> list)
         {
-            return warehouseInLogic.updateByCode(code);
+            return warehouseInLogic.updateByCode(warehouseIn, list);
         }
         /// <summary>
         /// 上下一单

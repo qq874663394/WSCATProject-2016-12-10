@@ -16,7 +16,7 @@ namespace BaseLayer.Purchase
             try
             {
                 sql = "select * from T_PurchaseDetail";
-                if (!string.IsNullOrWhiteSpace(purchaseCode) || string.IsNullOrWhiteSpace(materialDaima))
+                if (!string.IsNullOrWhiteSpace(purchaseCode) || !string.IsNullOrWhiteSpace(materialDaima))
                 {
                     sql += " where ";
                     if (!string.IsNullOrWhiteSpace(purchaseCode))
@@ -40,13 +40,13 @@ namespace BaseLayer.Purchase
             }
             return dt;
         }
-        public decimal GetCheckNumber(string purchaseCode,string code)
+        public decimal GetCheckNumber(string purchaseCode, string code)
         {
             string sql = "";
             decimal result = 0;
             try
             {
-                sql = string.Format("select number from T_PurchaseDetail where purchaseCode='{0}' and code='{1}'", purchaseCode,code);
+                sql = string.Format("select number from T_PurchaseDetail where purchaseCode='{0}' and code='{1}'", purchaseCode, code);
                 result = Convert.ToDecimal(DbHelperSQL.GetSingle(sql));
             }
             catch (Exception ex)

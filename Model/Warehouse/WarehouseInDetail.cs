@@ -36,7 +36,7 @@ namespace Model
         private string _mainCode;
         private string _materialdaima;
         private DateTime? _productiondate;
-        private DateTime? _qualitydate;
+        private Double? _qualitydate;
         private DateTime? _effectivedate;
         /// <summary>
         /// 栏号(自增)
@@ -185,7 +185,7 @@ namespace Model
         /// <summary>
         /// 货架名称
         /// </summary>
-        public string StorageRackName
+        public string storageRackName
         {
             get
             {
@@ -200,7 +200,7 @@ namespace Model
         /// <summary>
         /// 货架code
         /// </summary>
-        public string StorageRackCode
+        public string storageRackCode
         {
             get
             {
@@ -215,7 +215,7 @@ namespace Model
         /// <summary>
         /// 货物是否抵达
         /// </summary>
-        public int? IsArrive
+        public int? isArrive
         {
             get
             {
@@ -230,7 +230,7 @@ namespace Model
         /// <summary>
         /// 仓库code
         /// </summary>
-        public string WarehouseCode
+        public string warehouseCode
         {
             get
             {
@@ -245,7 +245,7 @@ namespace Model
         /// <summary>
         /// 仓库name
         /// </summary>
-        public string WarehouseName
+        public string warehouseName
         {
             get
             {
@@ -260,7 +260,7 @@ namespace Model
         /// <summary>
         /// 主表code
         /// </summary>
-        public string MainCode
+        public string mainCode
         {
             get
             {
@@ -291,7 +291,7 @@ namespace Model
         /// <summary>
 		/// 保质期
 		/// </summary>
-		public DateTime? qualityDate
+		public Double? qualityDate
         {
             set { _qualitydate = value; }
             get { return _qualitydate; }
