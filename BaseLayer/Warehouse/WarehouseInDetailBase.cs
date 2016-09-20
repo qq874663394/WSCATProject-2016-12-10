@@ -201,9 +201,9 @@ namespace BaseLayer
             StringBuilder strSql = new StringBuilder();
             try
             {
-                strSql.Append("select id,code,materiaName,zhujima,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode ");
+                strSql.Append("select id,code,materiaName,zhujima,materialDaima,materiaModel,materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,mainCode,productionDate,qualityDate,effectiveDate ");
                 strSql.Append(" FROM T_WarehouseInDetail ");
-                strSql.Append(" where mainCode = '" + mainCode + "' and state=0");
+                strSql.Append(" where mainCode = '" + mainCode + "'");
             }
             catch
             {

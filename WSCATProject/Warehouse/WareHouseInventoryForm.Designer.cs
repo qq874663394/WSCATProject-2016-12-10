@@ -338,7 +338,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1186, 417);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
@@ -450,6 +449,7 @@
             // bar1
             // 
             this.bar1.AntiAlias = true;
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.bar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bar1.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
             this.bar1.Font = new System.Drawing.Font("微软雅黑", 9F);

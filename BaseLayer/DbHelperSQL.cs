@@ -239,7 +239,7 @@ namespace BaseLayer
                 cmd.Parameters.Add(myParameter);
                 try
                 {
-                    connection.Open();
+                    
                     int rows = cmd.ExecuteNonQuery();
                     return rows;
                 }
@@ -265,7 +265,7 @@ namespace BaseLayer
                 cmd.Parameters.Add(myParameter);
                 try
                 {
-                    connection.Open();
+                    
                     object obj = cmd.ExecuteScalar();
                     if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                     {
@@ -301,7 +301,7 @@ namespace BaseLayer
                 cmd.Parameters.AddRange(sps);
                 try
                 {
-                    connection.Open();
+                    
                     int rows = cmd.ExecuteNonQuery();
                     return rows;
                 }
@@ -324,7 +324,7 @@ namespace BaseLayer
                 {
                     try
                     {
-                        connection.Open();
+                        
                         object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                         {
@@ -350,7 +350,7 @@ namespace BaseLayer
                 {
                     try
                     {
-                        connection.Open();
+                        
                         cmd.CommandTimeout = Times;
                         object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
@@ -380,7 +380,7 @@ namespace BaseLayer
             SqlCommand cmd = new SqlCommand(strSQL, connection);
             try
             {
-                connection.Open();
+                
                 SqlDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return myReader;
             }
@@ -418,7 +418,7 @@ namespace BaseLayer
                 DataSet ds = new DataSet();
                 try
                 {
-                    connection.Open();
+                    
                     SqlDataAdapter command = new SqlDataAdapter(SQLString, connection);
                     command.SelectCommand.CommandTimeout = Times;
                     command.Fill(ds, "ds");
@@ -896,7 +896,7 @@ namespace BaseLayer
             using (SqlConnection connection = Conn)
             {
                 int result;
-                connection.Open();
+                
                 SqlCommand command = BuildIntCommand(connection, storedProcName, parameters);
                 rowsAffected = command.ExecuteNonQuery();
                 result = (int)command.Parameters["ReturnValue"].Value;

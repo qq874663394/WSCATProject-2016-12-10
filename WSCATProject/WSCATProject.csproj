@@ -484,6 +484,7 @@
     <None Include="Resources\刷新.png" />
     <Content Include="Resources\售后大.png" />
     <Content Include="Resources\售后小.png" />
+    <None Include="Resources\审核.png" />
     <Content Include="Resources\帐套回收站.png" />
     <Content Include="Resources\帐套选项.png" />
     <None Include="Resources\打印.jpg" />

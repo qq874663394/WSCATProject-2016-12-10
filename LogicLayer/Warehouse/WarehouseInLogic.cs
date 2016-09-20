@@ -354,7 +354,7 @@ namespace LogicLayer
             };
             try
             {
-                if (state == 0 || state == 1)
+                if (state != 0 && state != 1)
                 {
                     throw new Exception("-2");
                 }
