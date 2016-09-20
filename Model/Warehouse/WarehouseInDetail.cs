@@ -185,7 +185,7 @@ namespace Model
         /// <summary>
         /// 货架名称
         /// </summary>
-        public string StorageRackName
+        public string storageRackName
         {
             get
             {
@@ -200,7 +200,7 @@ namespace Model
         /// <summary>
         /// 货架code
         /// </summary>
-        public string StorageRackCode
+        public string storageRackCode
         {
             get
             {
@@ -215,7 +215,7 @@ namespace Model
         /// <summary>
         /// 货物是否抵达
         /// </summary>
-        public int? IsArrive
+        public int? isArrive
         {
             get
             {
@@ -230,7 +230,7 @@ namespace Model
         /// <summary>
         /// 仓库code
         /// </summary>
-        public string WarehouseCode
+        public string warehouseCode
         {
             get
             {
@@ -245,7 +245,7 @@ namespace Model
         /// <summary>
         /// 仓库name
         /// </summary>
-        public string WarehouseName
+        public string warehouseName
         {
             get
             {
@@ -260,7 +260,7 @@ namespace Model
         /// <summary>
         /// 主表code
         /// </summary>
-        public string MainCode
+        public string mainCode
         {
             get
             {

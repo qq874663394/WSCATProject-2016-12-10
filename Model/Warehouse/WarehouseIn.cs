@@ -162,7 +162,7 @@ namespace Model
         /// <summary>
         /// 供应商单据code
         /// </summary>
-        public string GoodsCode
+        public string goodsCode
         {
             get
             {
@@ -177,7 +177,7 @@ namespace Model
         /// <summary>
         /// 默认单据类型
         /// </summary>
-        public string DefaultType
+        public string defaultType
         {
             get
             {

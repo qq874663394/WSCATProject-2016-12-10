@@ -504,6 +504,8 @@ namespace BaseLayer
         /// <param name="isState">是否新增</param>
         public static int ExecuteSqlTran(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
         {
+            int val1 = 0;
+            int val2 = 0;
             int result = 0;
             using (SqlConnection conn = Conn)
             {
@@ -522,8 +524,13 @@ namespace BaseLayer
                                     string cmdText = myDE.Key.ToString();
                                     SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    int val = cmd.ExecuteNonQuery();
+                                    val1 += cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
+                                }
+                                if (val1 != SQLStringList.Count)
+                                {
+                                    trans.Rollback();
+                                    return result = 0;
                                 }
                             }
                             catch (Exception)
@@ -537,8 +544,13 @@ namespace BaseLayer
                                     string cmdText = sqlstr;
                                     SqlParameter[] cmdParms = para;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    int val = cmd.ExecuteNonQuery();
+                                    val2 += cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
+                                }
+                                if (val2!= paraList.Count)
+                                {
+                                    trans.Rollback();
+                                    return result=0;
                                 }
                             }
                             catch (Exception)

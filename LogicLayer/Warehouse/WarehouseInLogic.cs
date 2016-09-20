@@ -53,8 +53,6 @@ namespace LogicLayer
             }
             return ds;
         }
-
-
         /// <summary>
         /// 事务修改
         /// </summary>
@@ -79,7 +77,7 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             try
             {
-                result=warehouseInBase.UpdateList(hashTable, sql, list);
+                result = warehouseInBase.UpdateList(hashTable, sql, list);
                 logModel.result = 1;
                 wum.add("", logModel.operationTable, list.Count, "", logModel.operationTime);
             }
@@ -94,7 +92,6 @@ namespace LogicLayer
             }
             return result;
         }
-
         /// <summary>
         /// 根据where条件获取数据列表
         /// </summary>
@@ -141,12 +138,11 @@ namespace LogicLayer
             }
             return ds;
         }
-
         /// <summary>
         /// 增加一条数据
         /// </summary>
         /// <returns>返回新增结果,1为成功</returns>
-        public int Add(Hashtable hashTable, string sql, List<SqlParameter[]> list)
+        public int AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
         {
             int result = 0;
             LogBase lb = new LogBase();
@@ -164,9 +160,9 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             try
             {
-                result = warehouseInBase.Add(hashTable, sql, list);
+                warehouseInBase.AddWarehouseOrToDetail(warehouseIn, warehouseInDetail);
                 logModel.result = 1;
-                wum.add("", logModel.operationTable, list.Count, "", logModel.operationTime);
+                wum.add(warehouseIn.code, logModel.operationTable, warehouseInDetail.Count + 1, "", logModel.operationTime);
             }
             catch (Exception ex)
             {
@@ -179,7 +175,6 @@ namespace LogicLayer
             }
             return result;
         }
-
         /// <summary>
         /// 根据code删除一条数据
         /// </summary>
@@ -187,62 +182,50 @@ namespace LogicLayer
         /// <returns></returns>
         public int deleteByCode(string code)
         {
-            if (string.IsNullOrWhiteSpace(code))
-            {
-                return -7;
-            }
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-            int result = warehouseInBase.deleteByCode(code);
-            if (result > 0)
+            int result = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseIn",
-                    operationTime = DateTime.Now,
-                    objective = "删除入库信息",
-                    result = result,
-                    operationContent = "删除T_WarehouseIn表的数据,code为:" + code
-                };
-                lb.Add(log);
-
-                return result;
-            }
-            else
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "删除入库信息",
+                operationContent = "删除T_WarehouseIn表的数据,code为:" + code
+            };
+            try
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                if (string.IsNullOrWhiteSpace(code))
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseIn",
-                    operationTime = DateTime.Now,
-                    objective = "删除入库信息失败",
-                    result = result,
-                    operationContent = "删除T_WarehouseIn数据失败,code为:" + code
-                };
-                lb.Add(log);
-
-                return result;
+                    throw new Exception("-2");
+                }
+                result = warehouseInBase.deleteByCode(code);
+                if (result <= 0)
+                {
+                    throw new Exception("-3");
+                }
+                logModel.result = 1;
             }
+            catch (Exception)
+            {
+                logModel.result = 0;
+                throw;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
         }
-
         public int update(WarehouseIn wi)
         {
-            if (wi == null)
-            {
-                return -7;
-            }
+            int result = 0;
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-            int result = warehouseInBase.update(wi);
-
             //添加日志
             LogBase lb = new LogBase();
-            log log = new log()
+            log logModel = new log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -250,31 +233,43 @@ namespace LogicLayer
                 operationTable = "T_WarehouseIn",
                 operationTime = DateTime.Now,
                 objective = "更新入库表信息",
-                result = result,
+                operationContent = "更新T_WarehouseIn表的数据,code为:" + wi.code
             };
-            if (result > 0)
+            try
             {
-                log.operationContent = "更新T_WarehouseIn表的数据,code为:" + wi.code;
-                lb.Add(log);
+                if (wi == null)
+                {
+                    throw new Exception("-2");
+                }
+                result = warehouseInBase.update(wi);
+                if (result <= 0)
+                {
+                    throw new Exception("-3");
+                }
+                logModel.result = 1;
+                wum.add(wi.code, logModel.operationTable, result, "", logModel.operationTime);
             }
-            else
+            catch (Exception ex)
             {
-                log.operationContent = "更新T_WarehouseIn表数据失败,code为:" + wi.code;
-                lb.Add(log);
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
             }
             return result;
         }
-
         /// <summary>
         /// 修改审核状态
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="warehouseIn">主表</param>
+        /// <param name="list">从表</param>
         /// <returns></returns>
-        public int updateByCode(string code)
+        public int updateByCode(WarehouseIn warehouseIn, List<WarehouseInDetail> list)
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-
-            int upcode = 0;
+            int result = 0;
             LogBase lb = new LogBase();
             log logModel = new log()
             {
@@ -284,12 +279,28 @@ namespace LogicLayer
                 operationTable = "T_WarehouseIn",
                 operationTime = DateTime.Now,
                 objective = "修改入库状态",
-                operationContent = "修改T_WarehouseIn表的数据,条件code为:" + code
+                operationContent = "修改T_WarehouseIn表的数据,条件code为:" + warehouseIn.code
             };
             try
             {
-                upcode = warehouseInBase.updateByCode(code);
+                if (!string.IsNullOrWhiteSpace(warehouseIn.code))
+                {
+                    throw new Exception("-2");
+                }
+                if (Exists(warehouseIn.code) == true)
+                {
+                    result = warehouseInBase.updateByCode(warehouseIn.code);
+                }
+                else
+                {
+                    result = AddWarehouseOrToDetail(warehouseIn, list);
+                }
+                if (result <= 0)
+                {
+                    throw new Exception("-3");
+                }
                 logModel.result = 1;
+                wum.add(warehouseIn.code, logModel.operationTable, result, "", logModel.operationTime);
             }
             catch (Exception ex)
             {
@@ -300,9 +311,8 @@ namespace LogicLayer
             {
                 lb.Add(logModel);
             }
-            return upcode;
+            return result;
         }
-
         /// <summary>
         /// 上下一单
         /// </summary>

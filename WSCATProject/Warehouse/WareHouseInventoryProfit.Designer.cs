@@ -53,12 +53,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.panel3.SuspendLayout();
             this.resizablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -69,14 +69,14 @@
             this.textBoxOddNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1005, 1);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(989, 1);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
             this.labelprie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelprie.Location = new System.Drawing.Point(965, 5);
+            this.labelprie.Location = new System.Drawing.Point(949, 5);
             // 
             // dateTimePicker1
             // 
@@ -312,23 +312,17 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox6.Location = new System.Drawing.Point(1075, 26);
+            this.pictureBox6.Location = new System.Drawing.Point(1059, 26);
             // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox7.Location = new System.Drawing.Point(1048, 26);
-            // 
-            // pictureBoxtitle
-            // 
-            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxtitle.Size = new System.Drawing.Size(1186, 61);
+            this.pictureBox7.Location = new System.Drawing.Point(1032, 26);
             // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox8.Location = new System.Drawing.Point(1104, 26);
+            this.pictureBox8.Location = new System.Drawing.Point(1088, 26);
             // 
             // panel5
             // 
@@ -419,6 +413,12 @@
             // 
             this.bar1.Location = new System.Drawing.Point(0, 626);
             this.bar1.Size = new System.Drawing.Size(1186, 26);
+            // 
+            // pictureBoxtitle
+            // 
+            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxtitle.Size = new System.Drawing.Size(1186, 61);
             // 
             // panel3
             // 
@@ -572,7 +572,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -580,6 +579,7 @@
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.panel3.ResumeLayout(false);
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();

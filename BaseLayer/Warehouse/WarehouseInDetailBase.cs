@@ -80,9 +80,9 @@ namespace BaseLayer
                 parameters[13].Value = model.updateDate;
                 parameters[14].Value = model.state;
                 parameters[15].Value = model.date;
-                parameters[16].Value = model.WarehouseCode;
-                parameters[17].Value = model.WarehouseName;
-                parameters[18].Value = model.MainCode;
+                parameters[16].Value = model.warehouseCode;
+                parameters[17].Value = model.warehouseName;
+                parameters[18].Value = model.mainCode;
                 parameters[19].Value = model.zhujima;
             }
             catch
@@ -151,12 +151,12 @@ namespace BaseLayer
                     wid.remark,
                     wid.reserved1,
                     wid.reserved2,
-                    wid.StorageRackName,
-                    wid.StorageRackName,
-                    wid.IsArrive,
-                    wid.WarehouseCode,
-                    wid.WarehouseName,
-                    wid.MainCode,
+                    wid.storageRackName,
+                    wid.storageRackName,
+                    wid.isArrive,
+                    wid.warehouseCode,
+                    wid.warehouseName,
+                    wid.mainCode,
                     wid.code,
                     wid.zhujima);
             }
