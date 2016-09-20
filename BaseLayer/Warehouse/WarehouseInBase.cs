@@ -99,7 +99,7 @@ namespace BaseLayer
             string sqlMain = "";
             try
             {
-                sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stockoperation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
+                sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stock,operation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
 VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone)";
                 SqlParameter[] spsMain =
                 {
@@ -126,7 +126,7 @@ VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@
                 };
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail = @"INSERT INTO T_WarehouseInDetail(zhujima,materialDaima,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,
-pdateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,ainCode,productionDate,qualityDate,effectiveDate) 
+updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate) 
 VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@remark,@reserved1,
 @reserved2,@storageRackName,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)";
                 

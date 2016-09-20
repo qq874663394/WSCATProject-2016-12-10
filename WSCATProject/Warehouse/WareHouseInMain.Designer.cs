@@ -66,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.panel3.SuspendLayout();
             this.resizablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -451,6 +452,11 @@
             this.bar1.DockTabStripHeight = 20;
             this.bar1.Location = new System.Drawing.Point(0, 616);
             // 
+            // pictureBoxtitle
+            // 
+            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
+            // 
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(0, 207);
@@ -487,11 +493,6 @@
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
-            // pictureBoxtitle
-            // 
-            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
-            // 
             // comboBoxEx1
             // 
             this.comboBoxEx1.DisplayMember = "Text";
@@ -503,7 +504,6 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 54;
-            //this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
             // 
             // comboBoxEx2
             // 
@@ -714,6 +714,7 @@
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.panel3.ResumeLayout(false);
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();

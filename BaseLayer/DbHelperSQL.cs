@@ -726,7 +726,7 @@ namespace BaseLayer
             cmd.CommandType = CommandType.Text;//cmdType;
             if (cmdParms != null)
             {
-                foreach (SqlParameter parameter in cmdParms)
+                foreach (SqlParameter parameter  in cmdParms)
                 {
                     if ((parameter.Direction == ParameterDirection.InputOutput || parameter.Direction == ParameterDirection.Input) &&
                         (parameter.Value == null))

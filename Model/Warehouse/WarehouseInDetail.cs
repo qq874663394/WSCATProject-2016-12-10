@@ -36,7 +36,7 @@ namespace Model
         private string _mainCode;
         private string _materialdaima;
         private DateTime? _productiondate;
-        private DateTime? _qualitydate;
+        private Double? _qualitydate;
         private DateTime? _effectivedate;
         /// <summary>
         /// 栏号(自增)
@@ -291,7 +291,7 @@ namespace Model
         /// <summary>
 		/// 保质期
 		/// </summary>
-		public DateTime? qualityDate
+		public Double? qualityDate
         {
             set { _qualitydate = value; }
             get { return _qualitydate; }

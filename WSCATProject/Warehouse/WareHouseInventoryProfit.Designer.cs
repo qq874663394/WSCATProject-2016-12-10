@@ -69,14 +69,14 @@
             this.textBoxOddNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(989, 1);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(973, 1);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
             this.labelprie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelprie.Location = new System.Drawing.Point(949, 5);
+            this.labelprie.Location = new System.Drawing.Point(933, 5);
             // 
             // dateTimePicker1
             // 
@@ -312,17 +312,17 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox6.Location = new System.Drawing.Point(1059, 26);
+            this.pictureBox6.Location = new System.Drawing.Point(1043, 26);
             // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox7.Location = new System.Drawing.Point(1032, 26);
+            this.pictureBox7.Location = new System.Drawing.Point(1016, 26);
             // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox8.Location = new System.Drawing.Point(1088, 26);
+            this.pictureBox8.Location = new System.Drawing.Point(1072, 26);
             // 
             // panel5
             // 
