@@ -691,6 +691,7 @@
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(162, 21);
             this.textBoxX2.TabIndex = 57;
+            this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
             // 
             // gridColumncode
             // 

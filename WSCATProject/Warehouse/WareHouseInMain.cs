@@ -1063,6 +1063,7 @@ namespace WSCATProject.Warehouse
         {
             if (this.comboBoxEx1.Text.Trim() == "")
             {
+                resizablePanelData.Visible = false;
                 MessageBox.Show("请先选择供应商，显示采购单号!");
                 return;
             }
@@ -1085,6 +1086,20 @@ namespace WSCATProject.Warehouse
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
 
+        }
+
+        private void textBoxX2_TextChanged(object sender, EventArgs e)
+        {
+            string SS = "";
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            string materialDaima = XYEEncoding.strCodeHex(textBoxX2.Text.Trim());
+            if (SS == "")
+            {
+                //模糊查询商品列表
+                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+                InitMaterialDataGridView();
+                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            }
         }
     }
 }

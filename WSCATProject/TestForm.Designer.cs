@@ -933,12 +933,21 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(389, 172);
             this.dataGridView1.TabIndex = 4;
             // 
@@ -978,6 +987,7 @@
             this.dataGridViewFujia.AllowUserToAddRows = false;
             this.dataGridViewFujia.AllowUserToDeleteRows = false;
             this.dataGridViewFujia.AllowUserToResizeColumns = false;
+            this.dataGridViewFujia.AllowUserToResizeRows = false;
             this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -989,7 +999,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
