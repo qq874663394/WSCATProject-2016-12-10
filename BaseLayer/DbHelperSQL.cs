@@ -324,8 +324,7 @@ namespace BaseLayer
                 {
                     try
                     {
-                        
-                        object obj = cmd.ExecuteScalar();
+                        connection.Open();                        object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                         {
                             return null;

@@ -207,10 +207,8 @@
             // 
             // pictureBoxtitle
             // 
-            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxtitle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxtitle.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxtitle.Image")));
             this.pictureBoxtitle.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxtitle.Name = "pictureBoxtitle";
@@ -933,12 +931,21 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(389, 172);
             this.dataGridView1.TabIndex = 4;
             // 
@@ -978,6 +985,7 @@
             this.dataGridViewFujia.AllowUserToAddRows = false;
             this.dataGridViewFujia.AllowUserToDeleteRows = false;
             this.dataGridViewFujia.AllowUserToResizeColumns = false;
+            this.dataGridViewFujia.AllowUserToResizeRows = false;
             this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -989,7 +997,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
@@ -1097,8 +1105,6 @@
         protected System.Windows.Forms.Label labTop3;
         protected System.Windows.Forms.Label labTop2;
         protected System.Windows.Forms.Label labTop1;
-        public System.Windows.Forms.PictureBox pictureBox6;
-        public System.Windows.Forms.PictureBox pictureBox7;
         protected System.Windows.Forms.PictureBox pictureBox8;
         protected System.Windows.Forms.Panel panel5;
         protected System.Windows.Forms.PictureBox pictureBox5;
@@ -1131,5 +1137,8 @@
         protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
         protected System.Windows.Forms.Panel panelDataView;
         protected System.Windows.Forms.DataGridView dataGridViewFujia;
-        protected System.Windows.Forms.Label label1;    }
+        protected System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.PictureBox pictureBox6;
+        protected System.Windows.Forms.PictureBox pictureBox7;
+    }
 }

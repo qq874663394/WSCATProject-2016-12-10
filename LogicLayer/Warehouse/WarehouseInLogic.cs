@@ -301,7 +301,7 @@ namespace LogicLayer
             };
             try
             {
-                if (!string.IsNullOrWhiteSpace(warehouseIn.code))
+                if (string.IsNullOrWhiteSpace(warehouseIn.code))
                 {
                     throw new Exception("-2");
                 }

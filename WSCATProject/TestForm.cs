@@ -281,7 +281,6 @@ namespace WSCATProject
                 toolTip2.SetToolTip(pictureBox6, "最大化");
                 return;
             }
-
         }
 
 

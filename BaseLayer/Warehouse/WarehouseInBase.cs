@@ -43,7 +43,7 @@ namespace BaseLayer
             int result = 0;
             try
             {
-                result=DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
+                result = DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
             }
             catch (Exception ex)
             {
@@ -59,28 +59,14 @@ namespace BaseLayer
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            try
+            strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
+            strSql.Append(" FROM T_WarehouseIn ");
+            if (strWhere.Trim() != "")
             {
-                strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
-                strSql.Append(" FROM T_WarehouseIn ");
-                if (strWhere.Trim() != "")
-                {
-                    strSql.Append(" where " + strWhere);
-                }
-            }
-            catch
-            {
-                throw new Exception("-1");
+                strSql.Append(" where " + strWhere);
             }
             DataSet ds = null;
-            try
-            {
-                ds = DbHelperSQL.Query(strSql.ToString());
-            }
-            catch
-            {
-                throw new Exception("-2");
-            }
+            ds = DbHelperSQL.Query(strSql.ToString());
             return ds;
         }
 
@@ -130,7 +116,7 @@ VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@
 updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate) 
 VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@remark,@reserved1,
 @reserved2,@storageRackName,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)";
-                
+
                 foreach (var item in warehouseInDetail)
                 {
                     SqlParameter[] spsDetail =
@@ -187,7 +173,7 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
                 deleteStr = "delete T_WarehouseIn where code = '" + code + "'";
                 result = DbHelperSQL.ExecuteSql(deleteStr);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -249,7 +235,7 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
             int result = 0;
             try
             {
-                sql = string.Format("update from T_WarehouseIn set checkState=1 where code='{0}'", code);
+                sql = string.Format("update T_WarehouseIn set checkState=1 where code='{0}'", code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
             catch (Exception ex)
@@ -324,7 +310,7 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
             string sql = "";
             try
             {
-                sql = string.Format("select count(1) from T_WarehouseIn where code='{0}'",code);
+                sql = string.Format("select count(1) from T_WarehouseIn where code='{0}'", code);
             }
             catch (Exception ex)
             {
