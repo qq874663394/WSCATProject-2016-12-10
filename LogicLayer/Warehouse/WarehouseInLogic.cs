@@ -78,6 +78,10 @@ namespace LogicLayer
             try
             {
                 result = warehouseInBase.UpdateList(hashTable, sql, list);
+                if (result <= 0)
+                {
+                    throw new Exception("-3");
+                }
                 logModel.result = 1;
                 wum.add("", logModel.operationTable, list.Count, "", logModel.operationTime);
             }
@@ -118,10 +122,10 @@ namespace LogicLayer
                 switch (fieldName)
                 {
                     case 1:
-                        strWhere += string.Format(" code='{0}'");
+                        strWhere += string.Format(" code='{0}'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format(" type='{0}'");
+                        strWhere += string.Format(" type='{0}'", fieldValue);
                         break;
                 }
                 ds = warehouseInBase.GetList(strWhere);
@@ -142,9 +146,9 @@ namespace LogicLayer
         /// 增加一条数据
         /// </summary>
         /// <returns>返回新增结果,1为成功</returns>
-        public int AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
+        public object AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
         {
-            int result = 0;
+            object result = null;
             LogBase lb = new LogBase();
             log logModel = new log()
             {
@@ -160,7 +164,15 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             try
             {
-                warehouseInBase.AddWarehouseOrToDetail(warehouseIn, warehouseInDetail);
+                if (warehouseIn == null || warehouseInDetail == null)
+                {
+                    throw new Exception("-2");
+                }
+                result = warehouseInBase.AddWarehouseOrToDetail(warehouseIn, warehouseInDetail);
+                if (result == null)
+                {
+                    throw new Exception("-3");
+                }
                 logModel.result = 1;
                 wum.add(warehouseIn.code, logModel.operationTable, warehouseInDetail.Count + 1, "", logModel.operationTime);
             }
@@ -207,6 +219,7 @@ namespace LogicLayer
                     throw new Exception("-3");
                 }
                 logModel.result = 1;
+                wum.add(code, logModel.operationTable, result, "", logModel.operationTime);
             }
             catch (Exception)
             {
@@ -219,6 +232,11 @@ namespace LogicLayer
             }
             return result;
         }
+        /// <summary>
+        /// 根据code更新某一条数据
+        /// </summary>
+        /// <param name="wi"></param>
+        /// <returns></returns>
         public int update(WarehouseIn wi)
         {
             int result = 0;
@@ -278,8 +296,8 @@ namespace LogicLayer
                 operationName = "操作人名",
                 operationTable = "T_WarehouseIn",
                 operationTime = DateTime.Now,
-                objective = "修改入库状态",
-                operationContent = "修改T_WarehouseIn表的数据,条件code为:" + warehouseIn.code
+                objective = "更新入库表信息",
+                operationContent = "更新T_WarehouseIn表的数据,code为:" + warehouseIn.code
             };
             try
             {
@@ -293,7 +311,7 @@ namespace LogicLayer
                 }
                 else
                 {
-                    result = AddWarehouseOrToDetail(warehouseIn, list);
+                    result = AddWarehouseOrToDetail(warehouseIn, list) == null ? 0 : (int)AddWarehouseOrToDetail(warehouseIn, list);
                 }
                 if (result <= 0)
                 {
@@ -322,7 +340,36 @@ namespace LogicLayer
         public WarehouseIn GetPreAndNext(int id, int state)
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
-
+            WarehouseIn whi = new WarehouseIn();
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseIn",
+                operationTime = DateTime.Now,
+                objective = "修改入库状态",
+                operationContent = "修改T_WarehouseIn表的数据,条件id为:" + id
+            };
+            try
+            {
+                if (state == 0 || state == 1)
+                {
+                    throw new Exception("-2");
+                }
+                whi = warehouseInBase.GetPreAndNext(id, state);
+                if (whi == null)
+                {
+                    throw new Exception("-3");
+                }
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
             return warehouseInBase.GetPreAndNext(id, state);
         }
         /// <summary>
@@ -359,7 +406,10 @@ namespace LogicLayer
                 logModel.result = 0;
                 throw ex;
             }
-            lb.Add(logModel);
+            finally
+            {
+                lb.Add(logModel);
+            }
             return result;
         }
     }

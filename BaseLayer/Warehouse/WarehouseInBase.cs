@@ -90,15 +90,16 @@ namespace BaseLayer
         /// <param name="hashTable">主表的sql和parameter</param>
         /// <param name="sql">子表sql</param>
         /// <param name="list">子表的parameter</param>
-        public int AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
+        public object AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
         {
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();
-            int result = 0;
+            object result = null;
             string sqlDetail = "";
             string sqlMain = "";
             try
             {
+
                 sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stock,operation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
 VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone)";
                 SqlParameter[] spsMain =
@@ -164,7 +165,7 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
                     };
                     list.Add(spsDetail);
                 }
-                result = DbHelperSQL.ExecuteSqlTran(hashTable, sqlDetail, list);
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
             }
             catch (Exception ex)
             {

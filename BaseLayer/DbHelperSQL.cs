@@ -547,10 +547,10 @@ namespace BaseLayer
                                     val2 += cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
                                 }
-                                if (val2!= paraList.Count)
+                                if (val2 != paraList.Count)
                                 {
                                     trans.Rollback();
-                                    return result=0;
+                                    return result = 0;
                                 }
                             }
                             catch (Exception)
@@ -570,7 +570,72 @@ namespace BaseLayer
                 }
             }
         }
-
+        /// <summary>
+        /// 执行多条SQL语句，实现数据库事务。并在其中有一条多影响行数的多参数语句
+        /// </summary>
+        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        /// <param name="sqlstr">对某表插入多条数据的sql</param>
+        /// <param name="paraList">插入多条数据的sql的参数集合</param>
+        /// <param name="isState">是否新增</param>
+        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
+        {
+            object val1 = 0;
+            using (SqlConnection conn = Conn)
+            {
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    try
+                    {
+                        if (paraList.Count > 0)
+                        {
+                            try
+                            {
+                                //循环
+                                foreach (DictionaryEntry myDE in SQLStringList)
+                                {
+                                    string cmdText = myDE.Key.ToString();
+                                    SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    val1 = cmd.ExecuteScalar();
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.1");
+                            }
+                            try
+                            {
+                                foreach (SqlParameter[] para in paraList)
+                                {
+                                    string cmdText = sqlstr;
+                                    SqlParameter[] cmdParms = para;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    cmd.ExecuteNonQuery();
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.2");
+                            }
+                            trans.Commit();
+                        }
+                        if (val1==null)
+                        {
+                            throw new Exception("-3");
+                        }
+                        return val1;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>
