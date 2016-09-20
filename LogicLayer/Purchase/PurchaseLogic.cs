@@ -52,6 +52,9 @@ namespace LogicLayer.Purchase
                     case 4:
                         strWhere += string.Format("type='{0}'",fieldValue);
                         break;
+                    case 5:
+                        strWhere += string.Format("");
+                        break;
                 }
                 logModel.operationContent = "查询T_Purchase表的所有数据,条件:" + strWhere;
                 dt = pb.GetList(strWhere);

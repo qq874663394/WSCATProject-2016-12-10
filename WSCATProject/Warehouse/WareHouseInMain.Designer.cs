@@ -53,6 +53,7 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.resizablePanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -61,13 +62,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel3.SuspendLayout();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.resizablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
@@ -350,6 +351,11 @@
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.pictureBox7.Location = new System.Drawing.Point(1096, 26);
             // 
+            // pictureBoxtitle
+            // 
+            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
+            // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
@@ -440,23 +446,6 @@
             this.labBotton1.Location = new System.Drawing.Point(33, 21);
             this.labBotton1.Text = "入 库 员：";
             // 
-            // labeldata
-            // 
-            this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labeldata.Location = new System.Drawing.Point(969, 91);
-            // 
-            // bar1
-            // 
-            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.bar1.DockTabStripHeight = 20;
-            this.bar1.Location = new System.Drawing.Point(0, 616);
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(0, 207);
-            this.panel3.Size = new System.Drawing.Size(1202, 345);
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
             // superGridControl1
             // 
             this.superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
@@ -482,15 +471,27 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.PrimaryGrid.UseAlternateRowStyle = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 345);
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 435);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
-            // pictureBoxtitle
+            // panel3
             // 
-            this.pictureBoxtitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 207);
+            this.panel3.Size = new System.Drawing.Size(1202, 435);
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // labeldata
+            // 
+            this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labeldata.Location = new System.Drawing.Point(969, 91);
+            // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.bar1.DockTabStripHeight = 20;
+            this.bar1.Location = new System.Drawing.Point(0, 616);
             // 
             // comboBoxEx1
             // 
@@ -503,7 +504,6 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 54;
-            //this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
             // 
             // comboBoxEx2
             // 
@@ -698,6 +698,8 @@
             this.Activated += new System.EventHandler(this.WareHouseInMain_Activated);
             this.Load += new System.EventHandler(this.WareHouseInMain_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInMain_KeyPress);
+            this.resizablePanel1.ResumeLayout(false);
+            this.resizablePanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -707,16 +709,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.resizablePanel1.ResumeLayout(false);
-            this.resizablePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

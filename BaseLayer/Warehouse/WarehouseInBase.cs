@@ -90,17 +90,17 @@ namespace BaseLayer
         /// <param name="hashTable">主表的sql和parameter</param>
         /// <param name="sql">子表sql</param>
         /// <param name="list">子表的parameter</param>
-        public int AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
+        public object AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
         {
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();
-            int result = 0;
+            object result = null;
             string sqlDetail = "";
             string sqlMain = "";
             try
             {
-                sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stockoperation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
-VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone)";
+                sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stock,operation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
+VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone);select SCOPE_IDENTITY()";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseIn.code),
@@ -126,7 +126,7 @@ VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@
                 };
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail = @"INSERT INTO T_WarehouseInDetail(zhujima,materialDaima,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,
-pdateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,ainCode,productionDate,qualityDate,effectiveDate) 
+pdateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate) 
 VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@remark,@reserved1,
 @reserved2,@storageRackName,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)";
                 
@@ -164,7 +164,7 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
                     };
                     list.Add(spsDetail);
                 }
-                result = DbHelperSQL.ExecuteSqlTran(hashTable, sqlDetail, list);
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
             }
             catch (Exception ex)
             {

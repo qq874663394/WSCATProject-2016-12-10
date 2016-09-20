@@ -36,7 +36,7 @@ namespace InterfaceLayer.Warehouse
         /// <summary>
         /// 事务新增
         /// </summary>
-        public int AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
+        public object AddWarehouseOrToDetail(WarehouseIn warehouseIn, List<WarehouseInDetail> warehouseInDetail)
         {
             return warehouseInLogic.AddWarehouseOrToDetail(warehouseIn, warehouseInDetail);
         }
