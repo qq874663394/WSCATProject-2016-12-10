@@ -18,6 +18,7 @@ using Model;
 using InterfaceLayer;
 using InterfaceLayer.Warehouse;
 using HelperUtility.Encrypt;
+using WSCATProject.Warehouse;
 
 namespace WSCATProject
 {
@@ -1513,9 +1514,11 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeOut_Click_1(object sender, EventArgs e)
         {
-            Buys.PayBuySelect sle = new Buys.PayBuySelect();
-            sle.SelectForm = "出库开单";
-            sle.ShowDialog();
+            //Buys.PayBuySelect sle = new Buys.PayBuySelect();
+            //sle.SelectForm = "出库开单";
+            //sle.ShowDialog();
+            WareHouseOutMainForm warehouseout = new WareHouseOutMainForm();
+            warehouseout.ShowDialog();
         }
         /// <summary>
         /// 其他收货单点击事件

@@ -175,6 +175,12 @@
     <Compile Include="Warehouse\WareHouseInventoryLossForm.Designer.cs">
       <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseInventoryProfit.Designer.cs">
+      <DependentUpon>WareHouseInventoryProfit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseInventoryProfitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryLossForm.resx">
       <DependentUpon>WareHouseInventoryLossForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseInventoryProfit.resx">
+      <DependentUpon>WareHouseInventoryProfit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryProfitForm.resx">
       <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
@@ -422,6 +431,7 @@
     <Content Include="Resources\sff.png" />
     <None Include="Resources\shanchu副本.png" />
     <None Include="Resources\shenghe.png" />
+    <None Include="Resources\shanchu.png" />
     <Content Include="Resources\shoukuan.png" />
     <None Include="Resources\shuaxin.PNG" />
     <None Include="Resources\small.PNG" />
@@ -444,6 +454,7 @@
     <None Include="Resources\tianjia副本.png" />
     <None Include="Resources\tiaoma2.PNG" />
     <None Include="Resources\tiaoma.png" />
+    <None Include="Resources\tianjia.png" />
     <Content Include="Resources\today.PNG" />
     <Content Include="Resources\undo.png" />
     <Content Include="Resources\undo_2.png" />
@@ -470,18 +481,20 @@
     <Content Include="Resources\人事小.png" />
     <Content Include="Resources\仓库大.png" />
     <Content Include="Resources\仓库小.png" />
+    <None Include="Resources\刷新.png" />
     <Content Include="Resources\售后大.png" />
     <Content Include="Resources\售后小.png" />
     <Content Include="Resources\帐套回收站.png" />
     <Content Include="Resources\帐套选项.png" />
-    <None Include="Resources\排序.PNG" />
     <None Include="Resources\打印.jpg" />
     <None Include="Resources\捕获.PNG" />
+    <None Include="Resources\排序.PNG" />
     <Content Include="Resources\日志大.png" />
     <Content Include="Resources\日志大1.png" />
     <Content Include="Resources\日志小.png" />
     <Content Include="Resources\日志小1.png" />
     <None Include="Resources\标题.png" />
+    <None Include="Resources\盘点.png" />
     <Content Include="Resources\系统大.png" />
     <Content Include="Resources\系统小.PNG" />
     <Content Include="Resources\财务大.png" />

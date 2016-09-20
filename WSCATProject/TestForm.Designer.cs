@@ -46,6 +46,7 @@
             this.toolStripButtonshen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDate = new System.Windows.Forms.Label();
@@ -87,11 +88,11 @@
             this.labBotton3 = new System.Windows.Forms.Label();
             this.labBotton1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.labeldata = new System.Windows.Forms.Label();
             this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.resizablePanelData = new HelperUtility.ExUI.ResizablePanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -112,8 +113,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.resizablePanel1.SuspendLayout();
@@ -233,6 +234,7 @@
             this.toolStripButtonshen,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
+            this.toolStripButtonshuaixin,
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
@@ -318,6 +320,18 @@
             this.toolStripButtondaochu.Text = "导出Excel";
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
+            // 
+            // toolStripButtonshuaixin
+            // 
+            this.toolStripButtonshuaixin.AutoSize = false;
+            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
+            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
+            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButtonshuaixin.Text = "刷新";
+            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
             // 
             // toolStripButton6
             // 
@@ -427,6 +441,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop6.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop6.Location = new System.Drawing.Point(91, 76);
             this.labtextboxTop6.Name = "labtextboxTop6";
             this.labtextboxTop6.PreventEnterBeep = true;
@@ -444,6 +459,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop3.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop3.Location = new System.Drawing.Point(91, 45);
             this.labtextboxTop3.Name = "labtextboxTop3";
             this.labtextboxTop3.PreventEnterBeep = true;
@@ -461,6 +477,7 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop7.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop7.Location = new System.Drawing.Point(389, 76);
             this.labtextboxTop7.Name = "labtextboxTop7";
             this.labtextboxTop7.PreventEnterBeep = true;
@@ -478,6 +495,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop9.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop9.Location = new System.Drawing.Point(888, 78);
             this.labtextboxTop9.Name = "labtextboxTop9";
             this.labtextboxTop9.PreventEnterBeep = true;
@@ -495,6 +513,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop8.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop8.Location = new System.Drawing.Point(657, 76);
             this.labtextboxTop8.Name = "labtextboxTop8";
             this.labtextboxTop8.PreventEnterBeep = true;
@@ -512,6 +531,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop5.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop5.Location = new System.Drawing.Point(657, 45);
             this.labtextboxTop5.Name = "labtextboxTop5";
             this.labtextboxTop5.PreventEnterBeep = true;
@@ -529,6 +549,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop4.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop4.Location = new System.Drawing.Point(374, 45);
             this.labtextboxTop4.Name = "labtextboxTop4";
             this.labtextboxTop4.PreventEnterBeep = true;
@@ -546,6 +567,7 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop2.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop2.Location = new System.Drawing.Point(374, 15);
             this.labtextboxTop2.Name = "labtextboxTop2";
             this.labtextboxTop2.PreventEnterBeep = true;
@@ -563,6 +585,7 @@
             this.labtextboxTop1.Border.BorderGradientAngle = 0;
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop1.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxTop1.Location = new System.Drawing.Point(91, 15);
             this.labtextboxTop1.Name = "labtextboxTop1";
             this.labtextboxTop1.PreventEnterBeep = true;
@@ -724,6 +747,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton2.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton2.Location = new System.Drawing.Point(888, 43);
             this.labtextboxBotton2.Name = "labtextboxBotton2";
             this.labtextboxBotton2.PreventEnterBeep = true;
@@ -746,6 +770,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1202, 64);
             this.panel5.TabIndex = 11;
+            this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBox5
@@ -769,6 +794,7 @@
             this.labtextboxBotton4.Border.BorderGradientAngle = 0;
             this.labtextboxBotton4.Border.Class = "SideNavStrip";
             this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton4.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton4.Location = new System.Drawing.Point(616, 21);
             this.labtextboxBotton4.Name = "labtextboxBotton4";
             this.labtextboxBotton4.PreventEnterBeep = true;
@@ -786,6 +812,7 @@
             this.labtextboxBotton3.Border.BorderGradientAngle = 0;
             this.labtextboxBotton3.Border.Class = "SideNavStrip";
             this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton3.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton3.Location = new System.Drawing.Point(385, 21);
             this.labtextboxBotton3.Name = "labtextboxBotton3";
             this.labtextboxBotton3.PreventEnterBeep = true;
@@ -803,6 +830,7 @@
             this.labtextboxBotton1.Border.BorderGradientAngle = 0;
             this.labtextboxBotton1.Border.Class = "SideNavStrip";
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton1.DisabledBackColor = System.Drawing.Color.White;
             this.labtextboxBotton1.Location = new System.Drawing.Point(99, 19);
             this.labtextboxBotton1.Name = "labtextboxBotton1";
             this.labtextboxBotton1.PreventEnterBeep = true;
@@ -844,28 +872,6 @@
             this.panel4.Size = new System.Drawing.Size(994, 88);
             this.panel4.TabIndex = 10;
             // 
-            // superGridControl1
-            // 
-            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.superGridControl1.Name = "superGridControl1";
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 459);
-            this.superGridControl1.TabIndex = 1;
-            this.superGridControl1.Text = "superGridControl1";
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.superGridControl1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 231);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1202, 459);
-            this.panel3.TabIndex = 9;
-            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
-            // 
             // labeldata
             // 
             this.labeldata.AutoSize = true;
@@ -891,14 +897,35 @@
             this.bar1.TabIndex = 15;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
+            this.bar1.Click += new System.EventHandler(this.panel6_Click);
             this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.superGridControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 231);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1202, 369);
+            this.panel3.TabIndex = 16;
+            // 
+            // superGridControl1
+            // 
+            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.superGridControl1.Name = "superGridControl1";
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 369);
+            this.superGridControl1.TabIndex = 1;
+            this.superGridControl1.Text = "superGridControl1";
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             // 
             // resizablePanelData
             // 
             this.resizablePanelData.BackColor = System.Drawing.Color.White;
             this.resizablePanelData.Controls.Add(this.dataGridView1);
             this.resizablePanelData.Controls.Add(this.label2);
-            this.resizablePanelData.Location = new System.Drawing.Point(453, 220);
+            this.resizablePanelData.Location = new System.Drawing.Point(517, 225);
             this.resizablePanelData.Name = "resizablePanelData";
             this.resizablePanelData.Size = new System.Drawing.Size(389, 188);
             this.resizablePanelData.TabIndex = 11;
@@ -931,10 +958,10 @@
             this.resizablePanel1.Controls.Add(this.panelDataView);
             this.resizablePanel1.Controls.Add(this.label1);
             this.resizablePanel1.ForeColor = System.Drawing.Color.Black;
-            this.resizablePanel1.Location = new System.Drawing.Point(94, 178);
+            this.resizablePanel1.Location = new System.Drawing.Point(95, 213);
             this.resizablePanel1.Name = "resizablePanel1";
             this.resizablePanel1.Size = new System.Drawing.Size(248, 148);
-            this.resizablePanel1.TabIndex = 5;
+            this.resizablePanel1.TabIndex = 6;
             this.resizablePanel1.Visible = false;
             // 
             // panelDataView
@@ -989,13 +1016,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 690);
+            this.Controls.Add(this.resizablePanelData);
+            this.Controls.Add(this.resizablePanel1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.bar1);
             this.Controls.Add(this.labeldata);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.resizablePanelData);
-            this.Controls.Add(this.resizablePanel1);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
@@ -1021,8 +1048,8 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1042,10 +1069,6 @@
         protected System.Windows.Forms.Label labelprie;
         protected System.Windows.Forms.DateTimePicker dateTimePicker1;
         protected System.Windows.Forms.Label labelDate;
-        protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
-        protected System.Windows.Forms.Panel panelDataView;
-        protected System.Windows.Forms.DataGridView dataGridViewFujia;
-        protected System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.ToolStrip toolStrip1;
@@ -1076,7 +1099,6 @@
         protected System.Windows.Forms.Label labTop1;
         public System.Windows.Forms.PictureBox pictureBox6;
         public System.Windows.Forms.PictureBox pictureBox7;
-        public System.Windows.Forms.PictureBox pictureBoxtitle;
         protected System.Windows.Forms.PictureBox pictureBox8;
         protected System.Windows.Forms.Panel panel5;
         protected System.Windows.Forms.PictureBox pictureBox5;
@@ -1089,8 +1111,6 @@
         protected System.Windows.Forms.Label labBotton3;
         protected System.Windows.Forms.Label labBotton1;
         private System.Windows.Forms.Panel panel4;
-        protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
-        protected System.Windows.Forms.Panel panel3;
         protected HelperUtility.ExUI.ResizablePanel resizablePanelData;
         protected System.Windows.Forms.DataGridView dataGridView1;
         protected System.Windows.Forms.Label label2;
@@ -1104,5 +1124,12 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtonnew;
         protected System.Windows.Forms.ToolStripButton toolStripButtonsave;
         protected System.Windows.Forms.ToolStripButton toolStripButtonshen;
-    }
+        protected System.Windows.Forms.ToolStripButton toolStripButtonshuaixin;
+        protected System.Windows.Forms.PictureBox pictureBoxtitle;
+     protected System.Windows.Forms.Panel panel3;
+        protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
+        protected HelperUtility.ExUI.ResizablePanel resizablePanel1;
+        protected System.Windows.Forms.Panel panelDataView;
+        protected System.Windows.Forms.DataGridView dataGridViewFujia;
+        protected System.Windows.Forms.Label label1;    }
 }

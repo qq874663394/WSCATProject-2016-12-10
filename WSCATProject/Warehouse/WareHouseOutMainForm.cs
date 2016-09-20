@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
@@ -25,14 +26,16 @@ namespace WSCATProject.Warehouse
         InterfaceLayer.Warehouse.WarehouseOutDetailInterface waredetaout = new WarehouseOutDetailInterface();
         EmpolyeeInterface employee = new EmpolyeeInterface();
         InterfaceLayer.Purchase.PurchaseDetailInterface pdi = new InterfaceLayer.Purchase.PurchaseDetailInterface();
+        ClientInterface client = new ClientInterface();//客户
+     
         #endregion
 
         #region 数据字段
 
         /// <summary>
-        /// 所有供应商
+        /// 所有客户
         /// </summary>
-        private DataTable _AllSupply = null;
+        private DataTable _AllClient = null;
         /// <summary>
         /// 所有业务员
         /// </summary>
@@ -48,7 +51,7 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 保存仓库商品明细
         /// </summary>
-        private GridRow _wareHouseModel;
+       // private GridRow _wareHouseModel;
         // private decimal _MaterialMoney;
         private decimal _MaterialNumber;
         private int _rukushu;//入库数量
@@ -62,15 +65,24 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private decimal _Materialnumber;
         /// <summary>
-        /// 保存供应商Code
+        /// 保存客户Code
         /// </summary>
-        private string _suppliercode;
+        private string _clientcode;
+        /// <summary>
+        /// 出库code
+        /// </summary>
+        private string _warehouseoutcode;
         #endregion
 
+        /// <summary>
+        /// 加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WareHouseOutMainForm_Load(object sender, EventArgs e)
         {
             //客户
-
+            _AllClient = client.GetClientByBool(false);
             //业务员
             _AllEmployee = employee.SelSupplierTable(false);
 
@@ -88,74 +100,17 @@ namespace WSCATProject.Warehouse
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
             InitDataGridView();
+            //生成出库code 和显示条形码
+            _warehouseoutcode = BuildCode.ModuleCode("WHO");
+            textBoxOddNumbers.Text = _warehouseoutcode;
+
+            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+            _Code.ValueFont = new Font("微软雅黑", 20);
+            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+            pictureBox9.Image = imgTemp;
+
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //是否要新增一行的标记
-            bool newAdd = false;
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            //id字段为空 说明是没有数据的行 不是修改而是新增
-            if (gr.Cells["gridColumnid"].Value == null)
-            {
-                newAdd = true;
-            }
-            try
-            {
-                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
-                gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
-                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                gr.Cells["gridColumnprice"].Value = dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value;//单价
-                //还需要绑定，仓库，货架
-                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
-                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
-
-                gr.Cells["gridColumnmoney"].Value = number * price;//金额
-                resizablePanelData.Visible = false;
-                //新增一行 
-                if (newAdd)
-                {
-                    superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
-                    //递增数量和金额 默认为1和单价 
-                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                    _Materialnumber += 0;
-                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("点击物料绑定数据错误！" + ex.Message);
-            }
-            SendKeys.Send("^{End}{Home}");
-        }
-
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //客户
-            if (_Click == 1 || _Click == 3)
-            {
-                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                _suppliercode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
-                labtextboxTop6.Text = name;
-                resizablePanel1.Visible = false;
-                //根据搜索的客户来绑定下拉列表
-                //DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_suppliercode));
-                //this.comboBoxEx1.DataSource = dt;
-                //comboBoxEx1.ValueMember = "code";
-                //comboBoxEx1.DisplayMember = "name";
-
-            }
-            //业务员
-            if (_Click == 2)
-            {
-                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                labtextboxBotton1.Text = name;
-                resizablePanel1.Visible = false;
-            }
-        }
 
         #region 初始化数据
         /// <summary>
@@ -359,8 +314,46 @@ namespace WSCATProject.Warehouse
 
                 resizablePanel1.Location = new Point(234, 440);
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                resizablePanel1.Visible = true;
             }
         }
+
+        /// <summary>
+        /// 初始化客户
+        /// </summary>
+        private void InitClient()
+        {
+            if (_Click != 1)
+            {
+                _Click = 1;
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "客户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "客户姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.HeaderText = "销售电话";
+                dgvc.DataPropertyName = "mobilePhone";
+                dgvc.Visible = false;
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(550, 160);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllClient);
+                resizablePanel1.Visible = true;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -370,9 +363,10 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
         {
-            if (this.comboBoxEx1.Text.Trim() == "")
+            if (this.labtextboxTop2.Text.Trim() == "")
             {
                 MessageBox.Show("请先选择客户，显示销售单号!");
+                resizablePanelData.Visible = false;
                 return;
             }
             if (e.GridCell.GridColumn.Name == "material")
@@ -439,6 +433,169 @@ namespace WSCATProject.Warehouse
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
+        }
+
+        #region 小箭头和两个附表的点击事件
+        /// <summary>
+        /// 出库员箭头点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            if (_Click != 2)
+            {
+                InitEmployee();
+            }
+            _Click = 4;
+        }
+        /// <summary>
+        /// 客户箭头的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                //调用客户的绑定列
+                InitClient();
+            }
+            _Click = 3;
+        }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //是否要新增一行的标记
+            bool newAdd = false;
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            //id字段为空 说明是没有数据的行 不是修改而是新增
+            if (gr.Cells["gridColumnid"].Value == null)
+            {
+                newAdd = true;
+            }
+            try
+            {
+                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
+                gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
+                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
+                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
+                gr.Cells["gridColumnprice"].Value = dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value;//单价
+                //还需要绑定，仓库，货架
+                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
+                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
+
+                gr.Cells["gridColumnmoney"].Value = number * price;//金额
+                resizablePanelData.Visible = false;
+                //新增一行 
+                if (newAdd)
+                {
+                    superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
+                    //递增数量和金额 默认为1和单价 
+                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    _Materialnumber += 0;
+                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("点击物料绑定数据错误！" + ex.Message);
+            }
+            SendKeys.Send("^{End}{Home}");
+        }
+
+        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //客户
+            if (_Click == 1 || _Click == 3)
+            {
+                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                _clientcode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
+                string phone = dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();
+                labtextboxTop2.Text = name;
+                labtextboxTop9.Text = phone;
+                resizablePanel1.Visible = false;
+                //根据搜索的客户来绑定下拉列表
+                //DataTable dt = ch.DataTableReCoding(client.GetPurchaseList(_clientcode));
+                //this.comboBoxEx1.DataSource = dt;
+                //comboBoxEx1.ValueMember = "code";
+                //comboBoxEx1.DisplayMember = "name";
+
+            }
+            //业务员
+            if (_Click == 2||_Click==4)
+            {
+                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                labtextboxBotton1.Text = name;
+                resizablePanel1.Visible = false;
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 光标默认在哪个控件上面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseOutMainForm_Activated(object sender, EventArgs e)
+        {
+            labtextboxTop2.Focus();
+        }
+        /// <summary>
+        /// 改变边框颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                           this.panel2.ClientRectangle,
+                           Color.White,
+                           1,
+                           ButtonBorderStyle.Solid,
+                           Color.FromArgb(85, 177, 238),
+                           1,
+                           ButtonBorderStyle.Solid,
+                           Color.White,
+                           1,
+                           ButtonBorderStyle.Solid,
+                           Color.White,
+                           1,
+                           ButtonBorderStyle.Solid);
+        }
+        /// <summary>
+        /// 出库员模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        {
+            if (labtextboxBotton1.Text.Trim() == "")
+            {
+                InitEmployee();
+                return;
+            }
+            dataGridViewFujia.DataSource = null;
+            dataGridViewFujia.Columns.Clear();
+
+            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "code";
+            dgvc.HeaderText = "员工工号";
+            dgvc.DataPropertyName = "code";
+            dataGridViewFujia.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "name";
+            dgvc.HeaderText = "姓名";
+            dgvc.DataPropertyName = "name";
+            dataGridViewFujia.Columns.Add(dgvc);
+
+            resizablePanel1.Location = new Point(234, 440);
+            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+            resizablePanel1.Visible = true;
         }
     }
 }

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="barcodeXYE.cs" />
     <Compile Include="BuildCode.cs" />
     <Compile Include="Encrypt\CodingHelper.cs" />
     <Compile Include="Encrypt\XYEEncoding.cs" />

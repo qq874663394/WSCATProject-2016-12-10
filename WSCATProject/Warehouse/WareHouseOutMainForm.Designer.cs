@@ -48,7 +48,6 @@
             this.gridColumnbaozhe = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnyouxiao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.resizablePanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -61,11 +60,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel3.SuspendLayout();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.resizablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
+            // 
+            // textBoxOddNumbers
+            // 
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1055, 2);
+            // 
+            // labelprie
+            // 
+            this.labelprie.Location = new System.Drawing.Point(1015, 5);
             // 
             // labelTitle
             // 
@@ -78,11 +86,13 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.comboBoxEx1);
             this.panel2.Controls.Add(this.textBoxchanpin);
             this.panel2.Controls.Add(this.comboBoxExxiaos);
             this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Size = new System.Drawing.Size(1202, 86);
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
             this.panel2.Controls.SetChildIndex(this.labTop2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop3, 0);
@@ -152,7 +162,6 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(374, 76);
             this.labtextboxTop7.Visible = false;
             // 
             // labtextboxTop9
@@ -250,6 +259,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(554, 10);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // checkBox1
             // 
@@ -314,11 +324,14 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Location = new System.Drawing.Point(0, 552);
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Location = new System.Drawing.Point(248, 15);
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // labtextboxBotton4
             // 
@@ -375,6 +388,7 @@
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxBotton1.Location = new System.Drawing.Point(97, 19);
             this.labtextboxBotton1.Size = new System.Drawing.Size(152, 16);
+            this.labtextboxBotton1.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
             // 
             // labBotton4
             // 
@@ -392,6 +406,16 @@
             // 
             this.labBotton1.Location = new System.Drawing.Point(34, 21);
             this.labBotton1.Text = "出 库 员：";
+            // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.bar1.Location = new System.Drawing.Point(0, 616);
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(0, 207);
+            this.panel3.Size = new System.Drawing.Size(1202, 345);
             // 
             // superGridControl1
             // 
@@ -416,28 +440,18 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 435);
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 345);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(0, 207);
-            this.panel3.Size = new System.Drawing.Size(1202, 435);
-            // 
-            // bar1
-            // 
-            this.bar1.Location = new System.Drawing.Point(0, 616);
-            // 
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Image = global::WSCATProject.Properties.Resources.tiaoma;
-            this.pictureBox9.Location = new System.Drawing.Point(1053, 24);
+            this.pictureBox9.Location = new System.Drawing.Point(1055, 24);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(140, 59);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox9.TabIndex = 57;
             this.pictureBox9.TabStop = false;
             // 
@@ -598,9 +612,8 @@
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Name = "WareHouseOutMainForm";
             this.Text = "WareHouseOutMainForm";
+            this.Activated += new System.EventHandler(this.WareHouseOutMainForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseOutMainForm_Load);
-            this.resizablePanel1.ResumeLayout(false);
-            this.resizablePanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -615,10 +628,12 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.resizablePanel1.ResumeLayout(false);
+            this.resizablePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
