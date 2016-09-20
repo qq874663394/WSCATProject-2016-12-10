@@ -78,5 +78,49 @@ namespace LogicLayer.Purchase
             }
             return result;
         }
+        public DataTable GetListAndMaterial(string fieldValue)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_PurchaseDetail",
+                operationTime = DateTime.Now,
+                objective = "查询采购明细表",
+                operationContent = string.Format("查询T_PurchaseDetail表的数据,条件为:物料名，助记码，物料代码，参数：fieldValue=",fieldValue)
+            };
+            try
+            {
+                DataView view = null;
+                dt = pdl.GetList("","");
+                view = new DataView();
+                view.Table = dt;
+                view.RowFilter = string.Format("materialName='{0}'",fieldValue);//itemType是A中的一个字段
+                DataTable dt1 = view.ToTable();
+
+                view = new DataView();
+                view.Table = dt;
+                view.RowFilter = string.Format("zhujima='{0}'", fieldValue);//itemType是A中的一个字段
+                DataTable dt2 = view.ToTable();
+
+                view = new DataView();
+                view.Table = dt;
+                view.RowFilter = string.Format("materialDaima='{0}'", fieldValue);//itemType是A中的一个字段
+                DataTable dt3 = view.ToTable();
+                dt = dt2;
+
+                dt1.Merge(dt2);
+                dt1.Merge(dt3);
+                dt=dt1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
     }
 }

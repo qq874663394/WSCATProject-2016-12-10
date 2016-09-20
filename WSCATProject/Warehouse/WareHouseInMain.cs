@@ -286,7 +286,7 @@ namespace WSCATProject.Warehouse
                     {
                         i++;
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
-                        WarehouseIndetail.MainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
+                        WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
                         WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
                         WarehouseIndetail.code = XYEEncoding.strCodeHex(gr["gridColumncode"].Value.ToString()+ _wareHouesDetailCode);//商品单号
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
@@ -299,10 +299,10 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value);//数量
                         WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value);//价格
                         WarehouseIndetail.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString()); ;//备注
-                        WarehouseIndetail.WarehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code；
-                        WarehouseIndetail.WarehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
-                        WarehouseIndetail.StorageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
-                        WarehouseIndetail.StorageRackName = StorageRackCode == "" ? XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu) : XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu + "/" + StorageRackCode + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
+                        WarehouseIndetail.warehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code；
+                        WarehouseIndetail.warehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
+                        WarehouseIndetail.storageRackCode = XYEEncoding.strCodeHex(StorageRackCode);//货架code
+                        WarehouseIndetail.storageRackName = StorageRackCode == "" ? XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu) : XYEEncoding.strCodeHex(Storage + "/" + StorageQuyu + "/" + StorageRackCode + "/" + StoragePai + "/" + StorageGe);  //货架名称、排、格
                         WarehouseIndetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value);//采购或者生产日期
                         WarehouseIndetail.qualityDate = Convert.ToDateTime(gr["gridColumnbaozhe"].Value);//保质期
                         WarehouseIndetail.effectiveDate = Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
@@ -323,7 +323,7 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
+            //int warehouseInResult = warehouseInterface.addWarehouseIn(warehouseIn, wareHouseInList);
 
         }
 

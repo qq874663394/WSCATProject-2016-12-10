@@ -38,13 +38,19 @@ namespace LogicLayer.Purchase
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("name like '{0}'",fieldValue);
+                        strWhere += string.Format("name like '{0}'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("supplierName like '{0}'",fieldValue);
+                        strWhere += string.Format("supplierName like '{0}'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format("supplierCode='{0}'",fieldValue);
+                        strWhere += string.Format("supplierCode='{0}'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("code ='{0}'",fieldValue);
+                        break;
+                    case 4:
+                        strWhere += string.Format("type='{0}'",fieldValue);
                         break;
                 }
                 logModel.operationContent = "查询T_Purchase表的所有数据,条件:" + strWhere;
