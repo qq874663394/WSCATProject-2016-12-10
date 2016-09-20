@@ -101,7 +101,7 @@ namespace BaseLayer
             {
 
                 sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stock,operation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
-VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone)";
+VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone);select scope_identity()";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseIn.code),
