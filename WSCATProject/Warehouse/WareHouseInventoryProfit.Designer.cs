@@ -599,6 +599,7 @@
             this.Text = "WareHouseInventoryProfit";
             this.Activated += new System.EventHandler(this.WareHouseInventoryProfit_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryProfit_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInventoryProfit_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

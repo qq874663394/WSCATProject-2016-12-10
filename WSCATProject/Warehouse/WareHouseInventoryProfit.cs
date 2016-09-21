@@ -43,23 +43,23 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 入库code
         /// </summary>
-        private string _warehouseincode;
+        private string _WareHousePanYingCode;
         /// <summary>
         /// 统计贮存数量
         /// </summary>
-        private decimal _Allzhucunshu;
+        private decimal _AllZhuCunShuLiang;
         /// <summary>
         /// 统计盘点数量
         /// </summary>
-        private decimal _Allpandianshu;
+        private decimal _AllPanDianShuLiang;
         /// <summary>
         /// 统计盘盈数量
         /// </summary>
-        private decimal _Allpanyingshu;
+        private decimal _AllPanYingShuLiang;
         /// <summary>
         /// 统计盘盈金额
         /// </summary>
-        private decimal _Allpanyingmoney;
+        private decimal _AllPanYingMoney;
         #endregion
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace WSCATProject.Warehouse
             //调用合计行数据
             InitDataGridView();
             //生成code 和显示条形码
-            _warehouseincode = BuildCode.ModuleCode("WIP");
-            textBoxOddNumbers.Text = _warehouseincode;
+            _WareHousePanYingCode = BuildCode.ModuleCode("WIP");
+            textBoxOddNumbers.Text = _WareHousePanYingCode;
             barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
@@ -307,19 +307,32 @@ namespace WSCATProject.Warehouse
                     tempAllpanying += Convert.ToDecimal(tempGR["gridColumnpanyingshu"].FormattedValue);
                     tempAllpanyingmoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
                 }
-                _Allzhucunshu = tempAllzhucun;
-                _Allpandianshu = tempAllpandian;
-                _Allpanyingshu = tempAllpanying;
-                _Allpanyingmoney = tempAllpanyingmoney;
+                _AllZhuCunShuLiang = tempAllzhucun;
+                _AllPanDianShuLiang = tempAllpandian;
+                _AllPanYingShuLiang = tempAllpanying;
+                _AllPanYingMoney = tempAllpanyingmoney;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                gr["gridColumnzhangmianshu"].Value = _Allzhucunshu.ToString();
-                gr["gridColumnpandianshu"].Value = _Allpandianshu.ToString();
-                gr["gridColumnpanyingshu"].Value = _Allpanyingshu.ToString();
-                gr["gridColumnmoney"].Value = _Allpanyingmoney.ToString();
+                gr["gridColumnzhangmianshu"].Value = _AllZhuCunShuLiang.ToString();
+                gr["gridColumnpandianshu"].Value = _AllPanDianShuLiang.ToString();
+                gr["gridColumnpanyingshu"].Value = _AllPanYingShuLiang.ToString();
+                gr["gridColumnmoney"].Value = _AllPanYingMoney.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("统计出错！请检查：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 按下ESC按钮关闭子窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseInventoryProfit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.resizablePanel1.Visible = false;
             }
         }
     }

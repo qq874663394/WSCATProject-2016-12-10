@@ -28,99 +28,98 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 仓库code
         /// </summary>
-        private string _cangkucode;
+        private string _StorgeCode;
         public string StorageCode
         {
-            get { return _cangkucode; }
-            set { _cangkucode = value; }
+            get { return _StorgeCode; }
+            set { _StorgeCode = value; }
         }
         /// <summary>
         /// 仓库名称
         /// </summary>
-        private string _cangku;
+        private string _Storage;
         public string Storage
         {
-            get { return _cangku; }
-            set { _cangku = value; }
+            get { return _Storage; }
+            set { _Storage = value; }
         }
         /// <summary>
         /// 货架code
         /// </summary>
-        private string _huojiacode;
+        private string _StorageRackCode;
         public string StorageRackCode
         {
-            get { return _huojiacode; }
-            set { _huojiacode = value; }
+            get { return _StorageRackCode; }
+            set { _StorageRackCode = value; }
         }
         //货架名称
-        private string _huojia;
+        private string _StorageRack;
         public string StorageRack
         {
-            get { return _huojia; }
-            set { _huojia = value; }
+            get { return _StorageRack; }
+            set { _StorageRack = value; }
         }
         /// <summary>
         /// 排code
         /// </summary>
-        private string _paicode;
+        private string _StoragePaiCode;
         public string StoragePaiCode
         {
-            get { return _paicode; }
-            set { _paicode = value; }
+            get { return _StoragePaiCode; }
+            set { _StoragePaiCode = value; }
         }
         /// <summary>
         /// 排名称
         /// </summary>
-        private string _pai;
+        private string _StoragePai;
         public string StoragePai
         {
-            get { return _pai; }
-            set { _pai = value; }
+            get { return _StoragePai; }
+            set { _StoragePai = value; }
         }
         /// <summary>
         /// 格子code
         /// </summary>
-        private string _gecode;
+        private string _StorageGeCode;
         public string StorageGeCode
         {
-            get { return _gecode; }
-            set { _gecode = value; }
+            get { return _StorageGeCode; }
+            set { _StorageGeCode = value; }
         }
         /// <summary>
         /// 格子名称
         /// </summary>
-        private string _ge;
+        private string _StorageGe;
         public string StorageGe
         {
-            get { return _ge; }
-            set { _ge = value; }
+            get { return _StorageGe; }
+            set { _StorageGe = value; }
         }
         /// <summary>
         /// 区域code
         /// </summary>
-        private string _quyuCode;
+        private string _StorageQuyuCode;
         public string StorageQuyuCode
         {
-            get { return _quyuCode; }
-            set { _quyuCode = value; }
+            get { return _StorageQuyuCode; }
+            set { _StorageQuyuCode = value; }
         }
         /// <summary>
         /// 区域名称
         /// </summary>
-        private string _quyu;
-
+        private string _StorageQuyu;
         public string StorageQuyu
         {
-            get { return _quyu; }
-            set { _quyu = value; }
+            get { return _StorageQuyu; }
+            set { _StorageQuyu = value; }
         }
         /// <summary>
         /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
         /// </summary>
         public int State
         {
-            get { return _state; }
-            set { _state = value; }
+            get { return _State; }
+            set { _State = value; }
         }
         /// <summary>
         /// 保存仓库商品明细
@@ -158,15 +157,12 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
         /// </summary>
-        private int _state;
+        private int _State;
         /// <summary>
         /// 保存仓库商品明细
         /// </summary>
         private GridRow _wareHouseModel;
-        // private decimal _MaterialMoney;
         private decimal _MaterialNumber;
-        private int _rukushu;//入库数量
-
         /// <summary>
         /// 所有商品列表
         /// </summary>
@@ -178,11 +174,11 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 保存供应商Code
         /// </summary>
-        private string _suppliercode;
+        private string _SupplierCode;
         /// <summary>
         /// 入库code
         /// </summary>
-        private string _warehouseincode;
+        private string _WareHouseInCode;
         #endregion
 
         private void WareHouseInMain_Load(object sender, EventArgs e)
@@ -210,23 +206,20 @@ namespace WSCATProject.Warehouse
                 gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
 
-                toolStripButtonqian.Click += ToolStripButtonqian_Click;//前单的事件
-                toolStripButtonhou.Click += ToolStripButtonhou_Click;//后单的事件
-                toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存的事件
-                toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核的事件
-                                                                       //禁用自动创建列
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridViewFujia.AutoGenerateColumns = false;
-                superGridControl1.HScrollBarVisible = true;
-                //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
-                // 将dataGridView中的内容居中显示
-                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //调用合计行数据
-                InitDataGridView();
-                comboBoxEx2.SelectedIndex = 0;
-                //生成code 和显示条形码
+
+            //禁用自动创建列
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridViewFujia.AutoGenerateColumns = false;
+            superGridControl1.HScrollBarVisible = true;
+            //绑定事件 双击事填充内容并隐藏列表
+            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+            // 将dataGridView中的内容居中显示
+            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //调用合计行数据
+            InitDataGridView();
+            comboBoxEx2.SelectedIndex = 0;
+            //生成code 和显示条形码
 
                 _warehouseincode = BuildCode.ModuleCode("WHI");
                 textBoxOddNumbers.Text = _warehouseincode;
@@ -261,12 +254,12 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
-                warehouseIn.code = XYEEncoding.strCodeHex(_warehouseincode);//入库单号
+                warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
                 warehouseIn.isClear = 1;
                 warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 1;
-                warehouseIn.supplierCode = _suppliercode;//供应商code
+                warehouseIn.supplierCode = _SupplierCode;//供应商code
                 warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
                 warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
@@ -303,7 +296,7 @@ namespace WSCATProject.Warehouse
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
                         WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
-                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_warehouseincode + i.ToString());//入库明细的商品入库单
+                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_WareHouseInCode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
                         WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
@@ -369,12 +362,12 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
-                warehouseIn.code = XYEEncoding.strCodeHex(_warehouseincode);//入库单号
+                warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
                 warehouseIn.isClear = 1;
                 warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 0;
-                warehouseIn.supplierCode = _suppliercode;//供应商code
+                warehouseIn.supplierCode = _SupplierCode;//供应商code
                 warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
                 warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
@@ -413,7 +406,7 @@ namespace WSCATProject.Warehouse
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
                         WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
-                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_warehouseincode + i.ToString());//入库明细的商品入库单
+                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_WareHouseInCode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
                         WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
@@ -650,10 +643,10 @@ namespace WSCATProject.Warehouse
                 if (_Click == 1 || _Click == 3)
                 {
                     string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    _suppliercode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
+                    _SupplierCode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
                     labtextboxTop6.Text = name;
                     resizablePanel1.Visible = false;
-                    DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_suppliercode));
+                    DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_SupplierCode));
                     this.comboBoxEx1.DataSource = dt;
                     comboBoxEx1.ValueMember = "code";
                     comboBoxEx1.DisplayMember = "name";

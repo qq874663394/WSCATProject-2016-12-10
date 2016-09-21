@@ -1,6 +1,6 @@
 ﻿namespace WSCATProject.Warehouse
 {
-    partial class WareHouseInventoryProfitForm
+    partial class WarehouseAdjustPrice
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,22 @@
         private void InitializeComponent()
         {
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn12 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn13 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -58,22 +63,22 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1188, 39);
+            this.panel1.Size = new System.Drawing.Size(1187, 39);
             this.panel1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // labelTitle
             // 
-            this.labelTitle.Text = "盘盈单";
+            this.labelTitle.Text = "调价单";
             // 
             // panel7
             // 
-            this.panel7.Location = new System.Drawing.Point(0, 55);
-            this.panel7.Size = new System.Drawing.Size(1186, 320);
+            this.panel7.Location = new System.Drawing.Point(0, 50);
+            this.panel7.Size = new System.Drawing.Size(1185, 263);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.comboBoxEx1);
-            this.panel6.Size = new System.Drawing.Size(1186, 55);
+            this.panel6.Size = new System.Drawing.Size(1185, 50);
             this.panel6.Click += new System.EventHandler(this.panel6_Click);
             this.panel6.Controls.SetChildIndex(this.labTop1, 0);
             this.panel6.Controls.SetChildIndex(this.labTop2, 0);
@@ -102,12 +107,12 @@
             // 
             // labTop6
             // 
-            this.labTop6.Location = new System.Drawing.Point(89, 24);
-            this.labTop6.Text = "入库类别：";
+            this.labTop6.Location = new System.Drawing.Point(28, 23);
+            this.labTop6.Text = "调价科目：";
             // 
             // labTop5
             // 
-            this.labTop5.Location = new System.Drawing.Point(585, 23);
+            this.labTop5.Location = new System.Drawing.Point(311, 23);
             this.labTop5.Visible = false;
             // 
             // labTop4
@@ -117,7 +122,7 @@
             // 
             // labTop3
             // 
-            this.labTop3.Location = new System.Drawing.Point(91, 24);
+            this.labTop3.Location = new System.Drawing.Point(28, 23);
             this.labTop3.Visible = false;
             // 
             // labTop2
@@ -126,17 +131,17 @@
             // 
             // labTop1
             // 
-            this.labTop1.Location = new System.Drawing.Point(94, 23);
             this.labTop1.Visible = false;
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(844, 23);
-            this.labTop9.Visible = false;
+            this.labTop9.ForeColor = System.Drawing.Color.Gray;
+            this.labTop9.Location = new System.Drawing.Point(311, 23);
+            this.labTop9.Text = "调价金额：";
             // 
             // labTop8
             // 
-            this.labTop8.Location = new System.Drawing.Point(585, 23);
+            this.labTop8.Location = new System.Drawing.Point(311, 23);
             this.labTop8.Visible = false;
             // 
             // labTop7
@@ -146,7 +151,7 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.Location = new System.Drawing.Point(193, 23);
+            this.checkBox1.Location = new System.Drawing.Point(193, 24);
             this.checkBox1.Visible = false;
             // 
             // pictureBox1
@@ -155,12 +160,12 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(214, 17);
+            this.pictureBox4.Location = new System.Drawing.Point(190, 19);
             this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(473, 19);
+            this.pictureBox3.Location = new System.Drawing.Point(473, 14);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2
@@ -178,7 +183,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(151, 22);
+            this.labtextboxTop6.Location = new System.Drawing.Point(85, 21);
             this.labtextboxTop6.Visible = false;
             // 
             // labtextboxTop3
@@ -192,11 +197,12 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.Location = new System.Drawing.Point(149, 21);
+            this.labtextboxTop3.Location = new System.Drawing.Point(85, 21);
             this.labtextboxTop3.Visible = false;
             // 
             // labtextboxTop7
             // 
+            this.labtextboxTop7.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -207,7 +213,8 @@
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.Location = new System.Drawing.Point(368, 21);
-            this.labtextboxTop7.Visible = false;
+            this.labtextboxTop7.ReadOnly = true;
+            this.labtextboxTop7.Size = new System.Drawing.Size(137, 16);
             // 
             // labtextboxTop4
             // 
@@ -247,7 +254,6 @@
             this.labtextboxTop1.Border.BorderGradientAngle = 0;
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop1.Location = new System.Drawing.Point(151, 21);
             this.labtextboxTop1.Visible = false;
             // 
             // labtextboxTop8
@@ -261,7 +267,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop8.Location = new System.Drawing.Point(644, 21);
+            this.labtextboxTop8.Location = new System.Drawing.Point(370, 21);
             this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
@@ -275,7 +281,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop5.Location = new System.Drawing.Point(644, 21);
+            this.labtextboxTop5.Location = new System.Drawing.Point(370, 21);
             this.labtextboxTop5.Visible = false;
             // 
             // labtextboxTop9
@@ -289,7 +295,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(903, 21);
+            this.labtextboxTop9.Location = new System.Drawing.Point(370, 21);
             this.labtextboxTop9.Visible = false;
             // 
             // labtextboxBotton4
@@ -346,37 +352,43 @@
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStock);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn3);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn4);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn6);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn13);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn7);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn9);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn10);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn11);
-            this.superGridControl1.Size = new System.Drawing.Size(1184, 318);
-            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn12);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.Size = new System.Drawing.Size(1183, 261);
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(0, 441);
-            this.panel2.Size = new System.Drawing.Size(1188, 118);
+            this.panel2.Location = new System.Drawing.Point(0, 379);
+            this.panel2.Size = new System.Drawing.Size(1187, 118);
             // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1188, 377);
+            this.panel3.Size = new System.Drawing.Size(1187, 315);
             // 
             // panel4
             // 
-            this.panel4.Size = new System.Drawing.Size(1188, 47);
+            this.panel4.Size = new System.Drawing.Size(1187, 47);
             this.panel4.Click += new System.EventHandler(this.panel6_Click);
             // 
             // panel5
             // 
-            this.panel5.Size = new System.Drawing.Size(1188, 71);
+            this.panel5.Size = new System.Drawing.Size(1187, 71);
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
             // 
             // pictureBox5
@@ -389,76 +401,111 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(149, 18);
+            this.comboBoxEx1.Location = new System.Drawing.Point(85, 19);
             this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(137, 21);
+            this.comboBoxEx1.Size = new System.Drawing.Size(125, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 30;
             // 
-            // gridColumn1
+            // material
             // 
-            this.gridColumn1.HeaderText = "商品编号";
-            this.gridColumn1.Name = "gridColumn1";
+            this.material.HeaderText = "商品编号";
+            this.material.Name = "material";
             // 
             // gridColumn2
             // 
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
             // 
             // gridColumn3
             // 
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.HeaderText = "仓库";
+            this.gridColumn4.HeaderText = "单位";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
             // 
             // gridColumn5
             // 
-            this.gridColumn5.HeaderText = "单位";
+            this.gridColumn5.HeaderText = "条码";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.ReadOnly = true;
             // 
-            // gridColumn6
+            // gridColumnStock
             // 
-            this.gridColumn6.HeaderText = "贮存数量";
-            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumnStock.HeaderText = "仓库";
+            this.gridColumnStock.Name = "gridColumnStock";
             // 
             // gridColumn7
             // 
-            this.gridColumn7.HeaderText = "盘点数量";
+            this.gridColumn7.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn7.HeaderText = "调前单价";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.ReadOnly = true;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.HeaderText = "盘盈数量";
+            this.gridColumn8.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn8.HeaderText = "调前金额";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.ReadOnly = true;
             // 
             // gridColumn9
             // 
-            this.gridColumn9.HeaderText = "单价";
+            this.gridColumn9.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn9.HeaderText = "调后单价";
             this.gridColumn9.Name = "gridColumn9";
             // 
             // gridColumn10
             // 
-            this.gridColumn10.HeaderText = "盘盈金额";
+            this.gridColumn10.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn10.HeaderText = "调后金额";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.ReadOnly = true;
             // 
             // gridColumn11
             // 
-            this.gridColumn11.HeaderText = "备注";
+            this.gridColumn11.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn11.HeaderText = "调价金额";
             this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.ReadOnly = true;
             // 
-            // WareHouseInventoryProfitForm
+            // gridColumn12
+            // 
+            this.gridColumn12.HeaderText = "备注";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.ReadOnly = true;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumn13.HeaderText = "数量";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.ReadOnly = true;
+            // 
+            // gridColumncode
+            // 
+            this.gridColumncode.Name = "gridColumncode";
+            // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            // 
+            // WarehouseAdjustPrice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 559);
-            this.Name = "WareHouseInventoryProfitForm";
-            this.Text = "盘盈单";
-            this.Load += new System.EventHandler(this.WareHouseInventoryProfitForm_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseAllotForm_KeyPress);
+            this.ClientSize = new System.Drawing.Size(1187, 497);
+            this.KeyPreview = true;
+            this.Name = "WarehouseAdjustPrice";
+            this.Text = "调价单";
+            this.Load += new System.EventHandler(this.WarehouseAdjustPriceForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WarehouseAdjustPriceForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -486,16 +533,21 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn12;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn13;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }
