@@ -283,6 +283,16 @@ namespace WSCATProject
             }
         }
 
+        private void dataGridView1_Leave(object sender, EventArgs e)
+        {
+            resizablePanelData.Visible = false;
+        }
+
+        private void dataGridViewFujia_Leave(object sender, EventArgs e)
+        {
+            resizablePanel1.Visible = false;
+        }
+
 
         //获取鼠标的位置
         //[DllImport("User32.dll")]

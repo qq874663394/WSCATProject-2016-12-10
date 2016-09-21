@@ -197,7 +197,7 @@ namespace WSCATProject.Warehouse
             GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
             gdieccangku.ButtonCustom.Visible = true;
             gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
-
+            
             //数量
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
             gdiecNumber.MinValue = 0;
@@ -490,9 +490,14 @@ namespace WSCATProject.Warehouse
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
             //是否要新增一行的标记
             bool newAdd = false;
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count - 2];
+            labBotton2.Text = (superGridControl1.PrimaryGrid.Rows.Count - 1).ToString() + "," + ClickRowIndex;
             //id字段为空 说明是没有数据的行 不是修改而是新增
             if (gr.Cells["gridColumnid"].Value == null)
             {
@@ -1108,7 +1113,7 @@ namespace WSCATProject.Warehouse
         private void textBoxX2_TextChanged(object sender, EventArgs e)
         {
             resizablePanelData.Location = new Point(91, 193);
-            this.resizablePanelData.Visible = true;
+            resizablePanelData.Visible = true;
             PurchaseDetailInterface pd = new PurchaseDetailInterface();
             if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))
             {
@@ -1122,6 +1127,21 @@ namespace WSCATProject.Warehouse
             _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(textBoxX2.Text.Trim()));
             InitMaterialDataGridView();
             dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+        }
+
+        private void textBoxX2_Enter(object sender, EventArgs e)
+        {
+            textBoxX2_TextChanged(sender, e);
+        }
+
+        private void textBoxX2_Leave(object sender, EventArgs e)
+        {
+            if (ActiveControl.Name == "dataGridView1")//如果当前活动控件是dataGridView1
+            {
+                resizablePanelData.Visible = true;
+                return;
+            }
+            resizablePanelData.Visible = false;
         }
     }
 }
