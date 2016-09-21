@@ -59,7 +59,23 @@ namespace WSCATProject.Warehouse
         }
         #endregion
 
-        #region 最大化，最小化，关闭按钮
+        #region 最小化、最大化、关闭的点击事件
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            //当窗体的状态为最大化时，工具提示文本为还原
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                toolTip1.SetToolTip(pictureBox6, "还原");
+                return;
+            }
+            //当窗体的状态为正常时时，工具提示文本为最大化
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                toolTip1.SetToolTip(pictureBox6, "最大化");
+                return;
+            }
+        }
+
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -76,26 +92,13 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void pictureBox6_MouseEnter(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                toolTip1.SetToolTip(pictureBox6, "还原");
-                return;
-            }
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                toolTip1.SetToolTip(pictureBox6, "最大化");
-                return;
-            }
-        }
-
         private void pictureBox7_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        //关闭
+        private void pictureBox8_Click(object sender, EventArgs e)
         {
             this.Close();
             this.Dispose();

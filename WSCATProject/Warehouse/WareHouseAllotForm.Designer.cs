@@ -270,7 +270,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(754, 22);
+            this.pictureBox3.Location = new System.Drawing.Point(754, 18);
             this.pictureBox3.Visible = false;
             // 
             // pictureBox2

@@ -163,7 +163,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                   resizablePanel1.Location = new Point(234, 440);
+                    resizablePanel1.Location = new Point(234, 440);
                     break;
             }
             if (!_btnAdd)
@@ -281,6 +281,14 @@ namespace WSCATProject
                 toolTip2.SetToolTip(pictureBox6, "最大化");
                 return;
             }
+        }
+
+        private void dataGridViewFujia_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip p = new ToolTip();
+            p.ShowAlways = true;
+            dataGridViewFujia.ShowCellToolTips = true;
+            p.SetToolTip(resizablePanel1, "按Esc键关闭");
         }
 
 
