@@ -139,17 +139,17 @@
     <Compile Include="Warehouse\WarehouseAdjustPriceForm.Designer.cs">
       <DependentUpon>WarehouseAdjustPriceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\WareHouseAllot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseAllot.Designer.cs">
-      <DependentUpon>WareHouseAllot.cs</DependentUpon>
-    </Compile>
     <Compile Include="Warehouse\WareHouseAllotForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Warehouse\WareHouseAllotForm.Designer.cs">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseAssemby.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseAssemby.Designer.cs">
+      <DependentUpon>WareHouseAssemby.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\WareHouseAssembyForm.cs">
       <SubType>Form</SubType>
@@ -257,11 +257,11 @@
     <EmbeddedResource Include="Warehouse\WarehouseAdjustPriceForm.resx">
       <DependentUpon>WarehouseAdjustPriceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\WareHouseAllot.resx">
-      <DependentUpon>WareHouseAllot.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseAssemby.resx">
+      <DependentUpon>WareHouseAssemby.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAssembyForm.resx">
       <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>

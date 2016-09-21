@@ -171,6 +171,7 @@ namespace BaseLayer
         public DataSet getListByMainCode(string mainCode)
         {
             DataSet ds = null;
+            StringBuilder strSql = new StringBuilder();
             try
             {
                 

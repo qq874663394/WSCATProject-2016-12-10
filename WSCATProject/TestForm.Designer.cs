@@ -46,7 +46,6 @@
             this.toolStripButtonshen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDate = new System.Windows.Forms.Label();
@@ -232,7 +231,6 @@
             this.toolStripButtonshen,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
-            this.toolStripButtonshuaixin,
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
@@ -318,18 +316,6 @@
             this.toolStripButtondaochu.Text = "导出Excel";
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
-            // 
-            // toolStripButtonshuaixin
-            // 
-            this.toolStripButtonshuaixin.AutoSize = false;
-            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
-            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
-            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 57);
-            this.toolStripButtonshuaixin.Text = "刷新";
-            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
             // 
             // toolStripButton6
             // 
@@ -1130,7 +1116,6 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtonnew;
         protected System.Windows.Forms.ToolStripButton toolStripButtonsave;
         protected System.Windows.Forms.ToolStripButton toolStripButtonshen;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonshuaixin;
         protected System.Windows.Forms.PictureBox pictureBoxtitle;
      protected System.Windows.Forms.Panel panel3;
         protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;

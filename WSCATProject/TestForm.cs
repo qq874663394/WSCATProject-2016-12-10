@@ -192,7 +192,6 @@ namespace WSCATProject
             {
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
-
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
@@ -212,6 +211,14 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
+            }
+
+            if(e.GridCell.GridColumn.Name== "sup1material")
+            {
+                ClickRowIndex = e.GridCell.RowIndex;
+                resizablePanelData.Visible = true;
+                resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
         }
