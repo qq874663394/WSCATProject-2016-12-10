@@ -257,11 +257,11 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
             {
                 if (state == 0)
                 {
-                    sql = string.Format("select top 1 * from T_log where id>{0}", id);
+                    sql = string.Format("select top 1 * from T_WarehouseIn where id>{0}", id);
                 }
                 else
                 {
-                    sql = string.Format("select top 1 * from T_log where id<{0} order by id desc", id);
+                    sql = string.Format("select top 1 * from T_WarehouseIn where id<{0} order by id desc", id);
                 }
 
                 SqlDataReader read = DbHelperSQL.ExecuteReader(sql);
@@ -272,8 +272,8 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
                         id = Convert.ToInt32(read["id"]),
                         code = read["code"].ToString(),
                         checkState = Convert.ToInt32(read["checkState"]),
-                        date = Convert.ToDateTime(read["checkState"]),
-                        defaultType = read["checkState"].ToString(),
+                        date = Convert.ToDateTime(read["date"]),
+                        defaultType = read["defaultType"].ToString(),
                         examine = read["examine"].ToString(),
                         goodsCode = read["GoodsCode"].ToString(),
                         isClear = Convert.ToInt32(read["isClear"]),

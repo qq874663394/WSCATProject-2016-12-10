@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using System;
@@ -31,9 +32,29 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private DataTable _AllEmployee = null;
         /// <summary>
-        /// 点击的项,1供应商  2为业务员
+        /// 点击的项 1为业务员
         /// </summary>
         private int _Click = 0;
+        /// <summary>
+        /// 盘亏单code
+        /// </summary>
+        private string _warehousepankuicode;
+        /// <summary>
+        /// 统计贮存数量
+        /// </summary>
+        private decimal _Allzhucunshu;
+        /// <summary>
+        /// 统计盘点数量
+        /// </summary>
+        private decimal _Allpandianshu;
+        /// <summary>
+        /// 统计盘亏数量
+        /// </summary>
+        private decimal _Allpankuishu;
+        /// <summary>
+        /// 统计盘亏金额
+        /// </summary>
+        private decimal _Allpankuimoney;
         #endregion
 
         private void WareHouseInventoryLossForm_Load(object sender, EventArgs e)
@@ -41,17 +62,29 @@ namespace WSCATProject.Warehouse
             //业务员
             _AllEmployee = employee.SelSupplierTable(false);
 
+            //数量
+            GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
+            gdiecNumber.MinValue = 0;
+            gdiecNumber.MaxValue = 999999999;
+
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
             superGridControl1.HScrollBarVisible = true;
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            //dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //调用合计行数据
-            //InitDataGridView();
+            InitDataGridView();
+            //生成code 和显示条形码
+            _warehousepankuicode = BuildCode.ModuleCode("WIL");
+            textBoxOddNumbers.Text = _warehousepankuicode;
+            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+            _Code.ValueFont = new Font("微软雅黑", 20);
+            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+            pictureBox9.Image = imgTemp;
         }
 
         #region  初始化数据
@@ -71,9 +104,18 @@ namespace WSCATProject.Warehouse
             gr.Cells["material"].Value = "合计";
             gr.Cells["material"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumnnumber"].Value = 0;
-            gr.Cells["gridColumnnumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumnnumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["zhangcunnumber"].Value = 0;
+            gr.Cells["zhangcunnumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["zhangcunnumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["pandiannumber"].Value = 0;
+            gr.Cells["pandiannumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["pandiannumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["pankuinumber"].Value = 0;
+            gr.Cells["pankuinumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["pankuinumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["pankuimoney"].Value = 0;
+            gr.Cells["pankuimoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["pankuimoney"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
 
         /// <summary>
@@ -162,6 +204,11 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("双击绑定业务员员数据错误！请检查：" + ex.Message);
             }
         }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //表的点击事件
+        }
         #endregion
 
         #region 修改Panel的边框颜色
@@ -190,7 +237,7 @@ namespace WSCATProject.Warehouse
         #endregion
 
         /// <summary>
-        /// 入库员模糊查询
+        /// 业务员模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -232,6 +279,61 @@ namespace WSCATProject.Warehouse
             if (e.KeyChar == (char)Keys.Escape)
             {
                 this.resizablePanel1.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 统计和验证数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+                //最后一行做统计行
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+            //try
+            //{
+            //    decimal zhucunshu = Convert.ToDecimal(gr.Cells["zhangcunnumber"].FormattedValue);
+            //    decimal pandianshu = Convert.ToDecimal(gr.Cells["pandiannumber"].FormattedValue);
+            //    decimal price = Convert.ToDecimal(gr.Cells["price"].FormattedValue);
+            //    decimal pankuishu = zhucunshu - pandianshu;
+            //    gr.Cells["pankuinumber"].Value = pankuishu;
+            //    decimal money = pankuishu * price;
+            //    gr.Cells["pankuimoney"].Value = money;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("计算盘亏数量和盘亏金额出错！请检查：" + ex.Message);
+            //}
+
+            try
+            {
+                //逐行统计数据总数
+                decimal tempAllzhucun = 0;
+                decimal tempAllpandian = 0;
+                decimal tempAllpankui = 0;
+                decimal tempAllpankuimoney = 0;
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
+                    tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
+                    tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                    tempAllpankuimoney += Convert.ToDecimal(tempGR["pankuimoney"].FormattedValue);
+                }
+                _Allzhucunshu = tempAllzhucun;
+                _Allpandianshu = tempAllpandian;
+                _Allpankuishu = tempAllpankui;
+                _Allpankuimoney = tempAllpankuimoney;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["zhangcunnumber"].Value = _Allzhucunshu.ToString();
+                gr["pandiannumber"].Value = _Allpandianshu.ToString();
+                gr["pankuinumber"].Value = _Allpankuishu.ToString();
+                gr["pankuimoney"].Value = _Allpankuimoney.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("统计出错！请检查：" + ex.Message);
             }
         }
     }

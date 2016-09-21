@@ -140,6 +140,12 @@
     <Compile Include="Warehouse\WarehouseAdjustPriceForm.Designer.cs">
       <DependentUpon>WarehouseAdjustPriceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseAllot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseAllot.Designer.cs">
+      <DependentUpon>WareHouseAllot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseAllotForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WarehouseAdjustPriceForm.resx">
       <DependentUpon>WarehouseAdjustPriceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseAllot.resx">
+      <DependentUpon>WareHouseAllot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
@@ -485,6 +494,7 @@
     <None Include="Resources\刷新.png" />
     <Content Include="Resources\售后大.png" />
     <Content Include="Resources\售后小.png" />
+    <None Include="Resources\审核.png" />
     <Content Include="Resources\帐套回收站.png" />
     <Content Include="Resources\帐套选项.png" />
     <None Include="Resources\打印.jpg" />
