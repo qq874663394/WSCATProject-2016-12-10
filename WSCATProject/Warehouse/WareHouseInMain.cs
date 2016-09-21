@@ -500,21 +500,21 @@ namespace WSCATProject.Warehouse
             }
             try
             {
-                gr = new GridRow(new string[] {
-                    "商品代码",
-                    "商品名称",
-                    "规格类型",
-                    "条形码",
-                    "单位",
-                    "数量",
-                    "7",
-                    "8",
-                    "仓库",
-                    "仓库地址",
-                    "11",
-                    "生产采购日期",
-                    "保质期","有效期","备注" });
-                superGridControl1.PrimaryGrid.Rows.Insert(0, gr);
+                //gr = new GridRow(new string[] {
+                //    "商品代码",
+                //    "商品名称",
+                //    "规格类型",
+                //    "条形码",
+                //    "单位",
+                //    "数量",
+                //    "7",
+                //    "8",
+                //    "仓库",
+                //    "仓库地址",
+                //    "11",
+                //    "生产采购日期",
+                //    "保质期","有效期","备注" });
+                //superGridControl1.PrimaryGrid.Rows.Insert(0, gr);
 
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
                 gr.Cells["gridColumncode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
