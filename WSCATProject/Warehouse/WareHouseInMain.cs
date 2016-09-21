@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Purchase;
 using InterfaceLayer.Warehouse;
 using Model;
 using System;
@@ -355,7 +356,7 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
-                warehouseIn.code = XYEEncoding.strCodeHex( _warehouseincode);//入库单号
+                warehouseIn.code = XYEEncoding.strCodeHex(_warehouseincode);//入库单号
                 warehouseIn.isClear = 1;
                 warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
@@ -392,14 +393,14 @@ namespace WSCATProject.Warehouse
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
                 {
-                    if (gr["gridColumnname"].Value!=null)
+                    if (gr["gridColumnname"].Value != null)
                     {
 
                         i++;
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
                         WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
-                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_warehouseincode+i.ToString());//入库明细的商品入库单
+                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_warehouseincode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
                         WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
@@ -409,7 +410,7 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
                         WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value);//数量
                         WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value);//价格
-                        WarehouseIndetail.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value==null ?
+                        WarehouseIndetail.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value == null ?
                              "" : gr["gridColumnremark"].Value.ToString());//备注
                         WarehouseIndetail.warehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code；
                         WarehouseIndetail.warehouseName = XYEEncoding.strCodeHex(Storage);//仓库名称
@@ -427,8 +428,8 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.zhujima = "";//暂时为空
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseInList.Add(WarehouseIndetail);
-              
-                    
+
+
                     }
                 }
             }
@@ -441,7 +442,7 @@ namespace WSCATProject.Warehouse
             //增加一条入库单和入库单详细数据
             object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
             this.textBoxid.Text = warehouseInResult.ToString();
-            if (warehouseInResult!=null)
+            if (warehouseInResult != null)
             {
                 MessageBox.Show("新增入库数据成功");
             }
@@ -499,6 +500,22 @@ namespace WSCATProject.Warehouse
             }
             try
             {
+                gr = new GridRow(new string[] {
+                    "商品代码",
+                    "商品名称",
+                    "规格类型",
+                    "条形码",
+                    "单位",
+                    "数量",
+                    "7",
+                    "8",
+                    "仓库",
+                    "仓库地址",
+                    "11",
+                    "生产采购日期",
+                    "保质期","有效期","备注" });
+                superGridControl1.PrimaryGrid.Rows.Insert(0, gr);
+
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
                 gr.Cells["gridColumncode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
                 gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
@@ -529,7 +546,7 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("点击物料绑定数据错误！" + ex.Message);
             }
-            SendKeys.Send("^{End}{Home}");
+            //SendKeys.Send("^{End}{Home}");
         }
 
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1090,16 +1107,21 @@ namespace WSCATProject.Warehouse
 
         private void textBoxX2_TextChanged(object sender, EventArgs e)
         {
-            string SS = "";
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            string materialDaima = XYEEncoding.strCodeHex(textBoxX2.Text.Trim());
-            if (SS == "")
+            resizablePanelData.Location = new Point(91, 193);
+            this.resizablePanelData.Visible = true;
+            PurchaseDetailInterface pd = new PurchaseDetailInterface();
+            if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))
             {
                 //模糊查询商品列表
-                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+                _AllMaterial = pd.GetListAndMaterial("");
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                return;
             }
+            //模糊查询商品列表
+            _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(textBoxX2.Text.Trim()));
+            InitMaterialDataGridView();
+            dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
         }
     }
 }
