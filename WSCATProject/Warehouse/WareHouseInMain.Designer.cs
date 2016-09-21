@@ -210,7 +210,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(734, 16);
+            this.labtextboxTop9.Location = new System.Drawing.Point(723, 17);
             this.labtextboxTop9.ReadOnly = true;
             this.labtextboxTop9.Size = new System.Drawing.Size(162, 16);
             // 
@@ -418,7 +418,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(734, 53);
+            this.labtextboxBotton2.Location = new System.Drawing.Point(723, 53);
             this.labtextboxBotton2.Size = new System.Drawing.Size(162, 16);
             // 
             // labtextboxBotton1
@@ -717,6 +717,8 @@
             this.textBoxX2.Size = new System.Drawing.Size(162, 21);
             this.textBoxX2.TabIndex = 57;
             this.textBoxX2.TextChanged += new System.EventHandler(this.textBoxX2_TextChanged);
+            this.textBoxX2.Enter += new System.EventHandler(this.textBoxX2_Enter);
+            this.textBoxX2.Leave += new System.EventHandler(this.textBoxX2_Leave);
             // 
             // gridColumncode
             // 

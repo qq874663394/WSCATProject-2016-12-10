@@ -2,8 +2,8 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Purchase;
 using InterfaceLayer.Warehouse;
-using LogicLayer;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -199,7 +199,7 @@ namespace WSCATProject.Warehouse
                 GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
                 gdieccangku.ButtonCustom.Visible = true;
                 gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
-
+            
                 //数量
                 GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 0;
@@ -208,6 +208,7 @@ namespace WSCATProject.Warehouse
                 GridTextBoxXEditControl gdiehuojia = superGridControl1.PrimaryGrid.Columns["griCoulumhuojia"].EditControl as GridTextBoxXEditControl;
                 gdiehuojia.ButtonCustom.Visible = true;
                 gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
+
 
                 toolStripButtonqian.Click += ToolStripButtonqian_Click;//前单的事件
                 toolStripButtonhou.Click += ToolStripButtonhou_Click;//后单的事件
@@ -438,6 +439,8 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.zhujima = "";//暂时为空
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseInList.Add(WarehouseIndetail);
+
+
                     }
                 }
             }
@@ -463,7 +466,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonhou_Click(object sender, EventArgs e)
         {
-            WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+                   WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             try
             {
                 if (textBoxid.Text == "")
@@ -500,9 +503,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：4106-运行后单的错误"+ex.Message,"入库单温馨提示");
-            }
-           
-        }
+            }        }
         /// <summary>
         /// 前单的点击事件
         /// </summary>
@@ -510,6 +511,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonqian_Click(object sender, EventArgs e)
         {
+
 
             WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             try
@@ -575,9 +577,14 @@ namespace WSCATProject.Warehouse
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
             //是否要新增一行的标记
             bool newAdd = false;
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count - 2];
+            labBotton2.Text = (superGridControl1.PrimaryGrid.Rows.Count - 1).ToString() + "," + ClickRowIndex;
             //id字段为空 说明是没有数据的行 不是修改而是新增
             if (gr.Cells["gridColumnid"].Value == null)
             {
@@ -585,6 +592,22 @@ namespace WSCATProject.Warehouse
             }
             try
             {
+                //gr = new GridRow(new string[] {
+                //    "商品代码",
+                //    "商品名称",
+                //    "规格类型",
+                //    "条形码",
+                //    "单位",
+                //    "数量",
+                //    "7",
+                //    "8",
+                //    "仓库",
+                //    "仓库地址",
+                //    "11",
+                //    "生产采购日期",
+                //    "保质期","有效期","备注" });
+                //superGridControl1.PrimaryGrid.Rows.Insert(0, gr);
+
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
                 gr.Cells["gridColumncode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
                 gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
@@ -615,7 +638,7 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("错误代码:4108-点击物料绑定数据错误！" + ex.Message);
             }
-            SendKeys.Send("^{End}{Home}");
+            //SendKeys.Send("^{End}{Home}");
         }
 
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -974,119 +997,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllSupply);
             }
         }
-        /// <summary>
-        /// 初始化入库明细表格
-        /// </summary>
-        private void InitWarehouseDetail()
-        {
-            GridColumn gc = null;
-            gc = new GridColumn();
-            gc.DataPropertyName = "materialDaima";
-            gc.Name = "materialDaima";
-            gc.HeaderText = "商品代码";
-            gc.Width = 120;
-            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            gc = new GridColumn();
-            gc.DataPropertyName = "materiaName";
-            gc.Name = "materiaName";
-            gc.HeaderText = "商品名称";
-            gc.Width = 140;
-            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "materiaModel";
-            gc.Name = "materiaModel";
-            gc.HeaderText = "规格型号";
-            gc.Width = 130;
-            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "barcode";
-            gc.Name = "barcode";
-            gc.HeaderText = "条形码";
-            gc.Width = 150;
-            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "materiaUnit";
-            gc.Name = "materiaUnit";
-            gc.HeaderText = "单位";
-            gc.Width = 70;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "number";
-            gc.Name = "number";
-            gc.HeaderText = "数量";
-            gc.Width = 80;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "warehouseName";
-            gc.Name = "warehouseName";
-            gc.HeaderText = "仓库";
-            gc.Width = 80;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "storageRackName";
-            gc.Name = "storageRackName";
-            gc.HeaderText = "区域/排/行/列";
-            gc.Width = 80;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "productionDate";
-            gc.Name = "productionDate";
-            gc.HeaderText = "采购/生产日期";
-            gc.Width = 70;
-            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "qualityDate";
-            gc.Name = "qualityDate";
-            gc.HeaderText = "保质期(天)";
-            gc.Width = 50;
-            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "effectiveDate";
-            gc.Name = "effectiveDate";
-            gc.HeaderText = "有效期至";
-            gc.Width = 80;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "remark";
-            gc.Name = "remark";
-            gc.HeaderText = "备注";
-            gc.Width = 110;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-        }
-        /// <summary>
-        /// 标示那个控件不可用
-        /// </summary>
-        private void InitForm()
-        {
-            this.comboBoxEx2.Enabled = false;
-            this.labtextboxTop6.ReadOnly = true;
-            this.textBoxOddNumbers.ReadOnly = true;
-            this.comboBoxEx1.Enabled = false;
-            this.labtextboxTop9.ReadOnly = true;
-            this.labtextboxBotton1.ReadOnly = true;
-            this.labtextboxBotton3.ReadOnly = true;
-            this.labtextboxBotton4.ReadOnly = true;
-            this.resizablePanel1.Visible = false;
-            this.superGridControl1.PrimaryGrid.ReadOnly = true;
-            this.toolStripButtonsave.Enabled = false;
-        }
         #endregion
 
         /// <summary>
@@ -1311,17 +1222,35 @@ namespace WSCATProject.Warehouse
 
         private void textBoxX2_TextChanged(object sender, EventArgs e)
         {
-
-            string SS = "";
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            string materialDaima = XYEEncoding.strCodeHex(textBoxX2.Text.Trim());
-            if (SS == "")
-            {
+            resizablePanelData.Location = new Point(91, 193);
+            resizablePanelData.Visible = true;
+            PurchaseDetailInterface pd = new PurchaseDetailInterface();
+            if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))            {
                 //模糊查询商品列表
-                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+                _AllMaterial = pd.GetListAndMaterial("");
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                return;
             }
+            //模糊查询商品列表
+            _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(textBoxX2.Text.Trim()));
+            InitMaterialDataGridView();
+            dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+        }
+
+        private void textBoxX2_Enter(object sender, EventArgs e)
+        {
+            textBoxX2_TextChanged(sender, e);
+        }
+
+        private void textBoxX2_Leave(object sender, EventArgs e)
+        {
+            if (ActiveControl.Name == "dataGridView1")//如果当前活动控件是dataGridView1
+            {
+                resizablePanelData.Visible = true;
+                return;
+            }
+            resizablePanelData.Visible = false;
         }
     }
 }
