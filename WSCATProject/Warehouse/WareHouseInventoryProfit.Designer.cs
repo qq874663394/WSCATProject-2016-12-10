@@ -401,6 +401,7 @@
             // 
             // bar1
             // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.bar1.Location = new System.Drawing.Point(0, 626);
             // 
             // pictureBoxtitle
