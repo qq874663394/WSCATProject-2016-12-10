@@ -1,4 +1,6 @@
-﻿using HelperUtility;
+﻿using DevComponents.DotNetBar.Controls;
+using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using System;
 using System.Collections.Generic;
@@ -12,44 +14,26 @@ using System.Windows.Forms;
 
 namespace WSCATProject.Warehouse
 {
-    public partial class WareHouseAssembyForm : TemplateForm
+    public partial class WareHouseAssembyForm : TestForm
     {
         public WareHouseAssembyForm()
         {
             InitializeComponent();
         }
-        
-        #region  数据字段
+
+        #region 数据字段
         /// <summary>
         /// 所有业务员
         /// </summary>
         private DataTable _AllEmployee = null;
-        /// <summary>
-        /// 点击的项,1业务员
-        /// </summary>
-        private int _Click = 0;
-
         #endregion
 
-        private void WareHouseAssemblyForm_Load(object sender, EventArgs e)
-        {
-            //组装单单号
-            textBoxOddNumbers.Text = BuildCode.ModuleCode("ZZD");
-            //业务员
-            EmpolyeeInterface employee = new EmpolyeeInterface();
-            _AllEmployee = employee.SelSupplierTable(false);
+        #region 实例化接口层 以及解密方法
 
-            //显示行号
-            superGridControl2.PrimaryGrid.ShowRowGridIndex = true;
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
+        CodingHelper ch = new CodingHelper();
+        EmpolyeeInterface employee = new EmpolyeeInterface();
 
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        }
+        #endregion
 
         #region 初始化数据
         /// <summary>
@@ -57,9 +41,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitEmployee()
         {
-            if (_Click != 1)
-            {
-                _Click = 1;
+            
                 dataGridViewFujia.DataSource = null;
                 dataGridViewFujia.Columns.Clear();
 
@@ -74,63 +56,152 @@ namespace WSCATProject.Warehouse
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
-                //resizablePanel1.Location = new Point(200, 300);
-                dataGridViewFujia.DataSource = _AllEmployee;
-            }
-        }
-        #endregion
 
-        #region picture  图标点击事件
-        //业务员图标点击事件
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            if (_Click != 1)
-            {
-                InitEmployee();
-            }
-        }
-        #endregion
+                resizablePanel1.Location = new Point(234, 440);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                resizablePanel1.Visible = true;
 
-        #region  绑定pictureBox表格的数据
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(230, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(230, 450);
+                    return;
+                }
+            
+        }
+
         /// <summary>
-        /// 绑定pictureBox表格的数据
+        /// 统计行数据
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void InitDataGridView()
+        {
+            //新增一行 用于给客户操作
+            superGridControl1.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["sup1material"].Value = "合计";
+            gr.Cells["sup1material"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnnumber"].Value = 0;
+            gr.Cells["gridColumnnumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["gridColumnnumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+        }
+        #endregion
+
+        private void WareHouseAssembyForm_Load(object sender, EventArgs e)
         {
             //业务员
-            if (_Click == 1)
-            {
-                string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                labtextboxBotton1.Text = name;
-                resizablePanel1.Visible = false;
-            }
+            _AllEmployee = employee.SelSupplierTable(false);
+
+            //禁用自动创建列
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridViewFujia.AutoGenerateColumns = false;
+            superGridControl1.HScrollBarVisible = true;
+
+            //绑定事件 双击事填充内容并隐藏列表
+            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+
+            InitDataGridView();
         }
 
-        #endregion
+        #region 两个副框的双击事件和下拉箭头的点击事件
 
-        /// <summary>
-        /// 点击panel隐藏扩展panel
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel5_Click(object sender, EventArgs e)
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+            labtextboxBotton1.Text = name;
             resizablePanel1.Visible = false;
         }
 
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            InitEmployee();
+        }
+
+        #endregion
         /// <summary>
-        /// 按下ESC按钮关闭子窗体
+        /// 验证只能输入数字和小数点
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void WareHouseAssemblyForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void labtextboxTop1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Escape)
+            //判断按键是不是要输入的类型。
+            if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
+                e.Handled = true;
+            //小数点的处理。
+            if ((int)e.KeyChar == 46)//小数点
             {
-                this.resizablePanel1.Visible = false;
+                if (labtextboxTop1.Text.Length <= 0)
+                    e.Handled = true;   //小数点不能在第一位
+                else
+                {
+                    float f;
+                    float oldf;
+                    bool b1 = false, b2 = false;
+                    b1 = float.TryParse(labtextboxTop1.Text, out oldf);
+                    b2 = float.TryParse(labtextboxTop1.Text + e.KeyChar.ToString(), out f);
+                    if (b2 == false)
+                    {
+                        if (b1 == true)
+                            e.Handled = true;
+                        else
+                            e.Handled = false;
+                    }
+                }
             }
+        }
+
+        private void superGridControl2_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            if (e.GridCell.GridColumn.Name == "material")
+            {
+                ClickRowIndex = e.GridCell.RowIndex;
+                resizablePanelData.Visible = true;
+                resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
+            }
+        }
+
+        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            //if (this.comboBoxEx1.Text.Trim() == "")
+            //{
+            //    resizablePanelData.Visible = false;
+            //    MessageBox.Show("请先选择供应商，显示采购单号!");
+            //    return;
+            //}
+            //if (e.GridCell.GridColumn.Name == "material")
+            //{
+            //    SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+            //    GridCell gc = ge[0] as GridCell;
+            //    if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+            //    {
+            //        //模糊查询商品列表
+            //        _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+            //        InitMaterialDataGridView();
+            //    }
+            //    else
+            //    {
+            //        //绑定商品列表
+            //        _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "");
+            //        InitMaterialDataGridView();
+            //    }
+            //    dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            //}
         }
     }
 }

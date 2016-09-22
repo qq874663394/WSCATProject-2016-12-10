@@ -163,7 +163,7 @@ namespace WSCATProject
                     resizablePanel1.Location = new Point(120, 160);
                     break;
                 case "pictureBox5":
-                   resizablePanel1.Location = new Point(234, 440);
+                    resizablePanel1.Location = new Point(234, 440);
                     break;
             }
             if (!_btnAdd)
@@ -192,7 +192,6 @@ namespace WSCATProject
             {
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
-
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
@@ -212,6 +211,14 @@ namespace WSCATProject
                 resizablePanel1.Visible = true;
                 resizablePanel1.Size = new Size(190, 120);
                 resizablePanel1.Location = new Point(e.GridCell.UnMergedBounds.X,
+                    e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
+            }
+
+            if(e.GridCell.GridColumn.Name== "sup1material")
+            {
+                ClickRowIndex = e.GridCell.RowIndex;
+                resizablePanelData.Visible = true;
+                resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
         }
@@ -283,18 +290,26 @@ namespace WSCATProject
             }
         }
 
-        private void dataGridView1_Leave(object sender, EventArgs e)
+        private void dataGridViewFujia_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip p = new ToolTip();
+            p.ShowAlways = true;
+            dataGridViewFujia.ShowCellToolTips = true;
+            p.SetToolTip(resizablePanel1, "按Esc键关闭");
+        }
+
+   private void dataGridView1_Leave(object sender, EventArgs e)
         {
             resizablePanelData.Visible = false;
         }
 
+
+
+
         private void dataGridViewFujia_Leave(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
-        }
-
-
-        //获取鼠标的位置
+        }        //获取鼠标的位置
         //[DllImport("User32.dll")]
         //public static extern int GetCursorPos(out Point point);//得到光标在屏幕上的位置
         //public static Point ScreenCursorPosition //获取光标相对于显示器的位置 

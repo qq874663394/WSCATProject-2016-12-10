@@ -75,7 +75,8 @@
             // labelprie
             // 
             this.labelprie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelprie.Location = new System.Drawing.Point(995, 2);            // 
+            this.labelprie.Location = new System.Drawing.Point(995, 2);
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1037, 82);
@@ -305,16 +306,6 @@
             this.labTop1.Location = new System.Drawing.Point(34, 24);
             this.labTop1.Text = "商品检索：";
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox6.Location = new System.Drawing.Point(1043, 26);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.pictureBox7.Location = new System.Drawing.Point(1016, 26);
-            // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
@@ -410,6 +401,7 @@
             // 
             // bar1
             // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.bar1.Location = new System.Drawing.Point(0, 626);
             // 
             // pictureBoxtitle
@@ -607,6 +599,7 @@
             this.Text = "WareHouseInventoryProfit";
             this.Activated += new System.EventHandler(this.WareHouseInventoryProfit_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryProfit_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInventoryProfit_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

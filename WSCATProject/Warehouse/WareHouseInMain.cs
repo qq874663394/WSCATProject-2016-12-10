@@ -28,99 +28,98 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 仓库code
         /// </summary>
-        private string _cangkucode;
+        private string _StorgeCode;
         public string StorageCode
         {
-            get { return _cangkucode; }
-            set { _cangkucode = value; }
+            get { return _StorgeCode; }
+            set { _StorgeCode = value; }
         }
         /// <summary>
         /// 仓库名称
         /// </summary>
-        private string _cangku;
+        private string _Storage;
         public string Storage
         {
-            get { return _cangku; }
-            set { _cangku = value; }
+            get { return _Storage; }
+            set { _Storage = value; }
         }
         /// <summary>
         /// 货架code
         /// </summary>
-        private string _huojiacode;
+        private string _StorageRackCode;
         public string StorageRackCode
         {
-            get { return _huojiacode; }
-            set { _huojiacode = value; }
+            get { return _StorageRackCode; }
+            set { _StorageRackCode = value; }
         }
         //货架名称
-        private string _huojia;
+        private string _StorageRack;
         public string StorageRack
         {
-            get { return _huojia; }
-            set { _huojia = value; }
+            get { return _StorageRack; }
+            set { _StorageRack = value; }
         }
         /// <summary>
         /// 排code
         /// </summary>
-        private string _paicode;
+        private string _StoragePaiCode;
         public string StoragePaiCode
         {
-            get { return _paicode; }
-            set { _paicode = value; }
+            get { return _StoragePaiCode; }
+            set { _StoragePaiCode = value; }
         }
         /// <summary>
         /// 排名称
         /// </summary>
-        private string _pai;
+        private string _StoragePai;
         public string StoragePai
         {
-            get { return _pai; }
-            set { _pai = value; }
+            get { return _StoragePai; }
+            set { _StoragePai = value; }
         }
         /// <summary>
         /// 格子code
         /// </summary>
-        private string _gecode;
+        private string _StorageGeCode;
         public string StorageGeCode
         {
-            get { return _gecode; }
-            set { _gecode = value; }
+            get { return _StorageGeCode; }
+            set { _StorageGeCode = value; }
         }
         /// <summary>
         /// 格子名称
         /// </summary>
-        private string _ge;
+        private string _StorageGe;
         public string StorageGe
         {
-            get { return _ge; }
-            set { _ge = value; }
+            get { return _StorageGe; }
+            set { _StorageGe = value; }
         }
         /// <summary>
         /// 区域code
         /// </summary>
-        private string _quyuCode;
+        private string _StorageQuyuCode;
         public string StorageQuyuCode
         {
-            get { return _quyuCode; }
-            set { _quyuCode = value; }
+            get { return _StorageQuyuCode; }
+            set { _StorageQuyuCode = value; }
         }
         /// <summary>
         /// 区域名称
         /// </summary>
-        private string _quyu;
-
+        private string _StorageQuyu;
         public string StorageQuyu
         {
-            get { return _quyu; }
-            set { _quyu = value; }
+            get { return _StorageQuyu; }
+            set { _StorageQuyu = value; }
         }
         /// <summary>
         /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
         /// </summary>
         public int State
         {
-            get { return _state; }
-            set { _state = value; }
+            get { return _State; }
+            set { _State = value; }
         }
         /// <summary>
         /// 保存仓库商品明细
@@ -158,15 +157,12 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 定义显示类型 0,待入库的 1、部分入库 2、已入库的
         /// </summary>
-        private int _state;
+        private int _State;
         /// <summary>
         /// 保存仓库商品明细
         /// </summary>
         private GridRow _wareHouseModel;
-        // private decimal _MaterialMoney;
         private decimal _MaterialNumber;
-        private int _rukushu;//入库数量
-
         /// <summary>
         /// 所有商品列表
         /// </summary>
@@ -178,39 +174,39 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 保存供应商Code
         /// </summary>
-        private string _suppliercode;
+        private string _SupplierCode;
         /// <summary>
         /// 入库code
         /// </summary>
-        private string _warehouseincode;
+        private string _WareHouseInCode;
         #endregion
 
         private void WareHouseInMain_Load(object sender, EventArgs e)
         {
-            //供应商
-            _AllSupply = supply.SelSupplierTable();
+            try
+            {
+                //供应商
+                _AllSupply = supply.SelSupplierTable();
 
-            //业务员
-            _AllEmployee = employee.SelSupplierTable(false);
+                //业务员
+                _AllEmployee = employee.SelSupplierTable(false);
 
-            //仓库
-            GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
-            gdieccangku.ButtonCustom.Visible = true;
-            gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
+                //仓库
+                GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
+                gdieccangku.ButtonCustom.Visible = true;
+                gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
             
-            //数量
-            GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
-            gdiecNumber.MinValue = 0;
-            gdiecNumber.MaxValue = 999999999;
-            //货架
-            GridTextBoxXEditControl gdiehuojia = superGridControl1.PrimaryGrid.Columns["griCoulumhuojia"].EditControl as GridTextBoxXEditControl;
-            gdiehuojia.ButtonCustom.Visible = true;
-            gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
+                //数量
+                GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                gdiecNumber.MinValue = 0;
+                gdiecNumber.MaxValue = 999999999;
+                //货架
+                GridTextBoxXEditControl gdiehuojia = superGridControl1.PrimaryGrid.Columns["griCoulumhuojia"].EditControl as GridTextBoxXEditControl;
+                gdiehuojia.ButtonCustom.Visible = true;
+                gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
-            toolStripButtonqian.Click += ToolStripButtonqian_Click;//前单的事件
-            toolStripButtonhou.Click += ToolStripButtonhou_Click;//后单的事件
-            toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存的事件
-            toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核的事件
+
+
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
@@ -224,12 +220,20 @@ namespace WSCATProject.Warehouse
             InitDataGridView();
             comboBoxEx2.SelectedIndex = 0;
             //生成code 和显示条形码
-            _warehouseincode = BuildCode.ModuleCode("WHI");
-            textBoxOddNumbers.Text = _warehouseincode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBox9.Image = imgTemp;
+
+                _warehouseincode = BuildCode.ModuleCode("WHI");
+                textBoxOddNumbers.Text = _warehouseincode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+                pictureBox10.Parent = pictureBoxtitle;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：4105-初始化数据失败" + ex.Message, "入库单温馨提示");
+            }
+
         }
 
         /// <summary>
@@ -250,12 +254,12 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
-                warehouseIn.code = XYEEncoding.strCodeHex(_warehouseincode);//入库单号
+                warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
                 warehouseIn.isClear = 1;
                 warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 1;
-                warehouseIn.supplierCode = _suppliercode;//供应商code
+                warehouseIn.supplierCode = _SupplierCode;//供应商code
                 warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
                 warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
@@ -273,7 +277,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message);
+                MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -292,7 +296,7 @@ namespace WSCATProject.Warehouse
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
                         WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
-                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_warehouseincode + i.ToString());//入库明细的商品入库单
+                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_WareHouseInCode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
                         WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
@@ -326,7 +330,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message);
+                MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -356,12 +360,12 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
-                warehouseIn.code = XYEEncoding.strCodeHex(_warehouseincode);//入库单号
+                warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
                 warehouseIn.isClear = 1;
                 warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 0;
-                warehouseIn.supplierCode = _suppliercode;//供应商code
+                warehouseIn.supplierCode = _SupplierCode;//供应商code
                 warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
                 warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
                 warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
@@ -380,7 +384,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message);
+                MessageBox.Show("错误代码:4103;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -400,7 +404,7 @@ namespace WSCATProject.Warehouse
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
                         WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
-                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_warehouseincode + i.ToString());//入库明细的商品入库单
+                        WarehouseIndetail.code = XYEEncoding.strCodeHex(_WareHouseInCode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
                         WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
@@ -435,7 +439,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message);
+                MessageBox.Show("错误代码：4104-尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -444,7 +448,7 @@ namespace WSCATProject.Warehouse
             this.textBoxid.Text = warehouseInResult.ToString();
             if (warehouseInResult != null)
             {
-                MessageBox.Show("新增入库数据成功");
+                MessageBox.Show("新增入库数据成功", "入库单温馨提示");
             }
         }
 
@@ -455,8 +459,44 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonhou_Click(object sender, EventArgs e)
         {
-            //后单
-        }
+                   WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            try
+            {
+                if (textBoxid.Text == "")
+                {
+                    textBoxid.Text = "0";
+                }
+
+                WarehouseIn warehouseIn = warehouseInterface.GetPreAndNext(Convert.ToInt32(textBoxid.Text), 0);
+                this.comboBoxEx2.Text = XYEEncoding.strHexDecode(warehouseIn.type);
+                this.labtextboxTop6.Text = XYEEncoding.strHexDecode(warehouseIn.supplierName);
+                this.textBoxOddNumbers.Text = XYEEncoding.strHexDecode(warehouseIn.code);
+                this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseIn.purchaseCode);
+                this.labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseIn.supplierPhone);
+                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
+                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
+                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
+                if (warehouseIn.id != null)
+                {
+                    textBoxid.Text = warehouseIn.id.ToString();
+                    WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
+                    superGridControl1.PrimaryGrid.DataSource = null;
+                    superGridControl1.PrimaryGrid.Columns.Clear();
+                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                    DataTable dt = ch.DataTableReCoding(widif.getListByMainCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)).Tables[0]);
+                    superGridControl1.PrimaryGrid.DataSource = dt;
+                    InitWarehouseDetail();
+                    InitForm();
+                }
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：4106-运行后单的错误"+ex.Message,"入库单温馨提示");
+            }        }
         /// <summary>
         /// 前单的点击事件
         /// </summary>
@@ -464,7 +504,47 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonqian_Click(object sender, EventArgs e)
         {
-            //前单
+
+
+            WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            try
+            {
+                if (textBoxid.Text == "")
+                {
+                    textBoxid.Text = "0";
+                }
+                WarehouseIn warehouseIn = warehouseInterface.GetPreAndNext(Convert.ToInt32(textBoxid.Text), 1);
+                this.comboBoxEx2.Text = XYEEncoding.strHexDecode(warehouseIn.type);
+                this.labtextboxTop6.Text = XYEEncoding.strHexDecode(warehouseIn.supplierName);
+                this.textBoxOddNumbers.Text = XYEEncoding.strHexDecode(warehouseIn.code);
+                this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseIn.purchaseCode);
+                this.labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseIn.supplierPhone);
+                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
+                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
+                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
+                if (warehouseIn.id != null)
+                {
+                    textBoxid.Text = warehouseIn.id.ToString();
+                    WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
+                    superGridControl1.PrimaryGrid.DataSource = null;
+                    superGridControl1.PrimaryGrid.Columns.Clear();
+                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                    DataTable dt = ch.DataTableReCoding(widif.getListByMainCode(XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text)).Tables[0]);
+                    superGridControl1.PrimaryGrid.DataSource = dt;
+                    InitWarehouseDetail();
+                    InitForm();
+
+                }
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：4107-显示前单错误"+ex.Message,"入库单温馨提示");
+            }
+       
         }
 
         #region 小箭头图标和仓库的选择以及两个表格的点击事件
@@ -549,7 +629,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("点击物料绑定数据错误！" + ex.Message);
+                MessageBox.Show("错误代码:4108-点击物料绑定数据错误！" + ex.Message);
             }
             //SendKeys.Send("^{End}{Home}");
         }
@@ -562,10 +642,10 @@ namespace WSCATProject.Warehouse
                 if (_Click == 1 || _Click == 3)
                 {
                     string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    _suppliercode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
+                    _SupplierCode = XYEEncoding.strCodeHex(dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString());
                     labtextboxTop6.Text = name;
                     resizablePanel1.Visible = false;
-                    DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_suppliercode));
+                    DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_SupplierCode));
                     this.comboBoxEx1.DataSource = dt;
                     comboBoxEx1.ValueMember = "code";
                     comboBoxEx1.DisplayMember = "name";
@@ -582,7 +662,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：4109-双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
             }
 
         }
@@ -942,7 +1022,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("统计数量出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：4110-统计数量出错！请检查：" + ex.Message);
             }
         }
 
@@ -953,15 +1033,22 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
         {
-            string SS = "";
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
-            if (SS == "")
+            try
             {
-                //模糊查询商品列表
-                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
-                InitMaterialDataGridView();
-                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                string SS = "";
+                GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+                if (SS == "")
+                {
+                    //模糊查询商品列表
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+                    InitMaterialDataGridView();
+                    dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:4111-表格模糊查询错误"+ex.Message,"入库单温馨提示");
             }
         }
 
@@ -1010,38 +1097,46 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void labtextboxTop6_TextChanged(object sender, EventArgs e)
         {
-
-            if (labtextboxTop6.Text.Trim() == "")
+            try
             {
-                InitSupply();
-                return;
+                if (labtextboxTop6.Text.Trim() == "")
+                {
+                    InitSupply();
+                    return;
+                }
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "编码";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "单位名称";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "联系手机";
+                dgvc.DataPropertyName = "mobilePhone";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(550, 160);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(supply.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxTop6.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+                _Click = 3;
             }
-            dataGridViewFujia.DataSource = null;
-            dataGridViewFujia.Columns.Clear();
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：4112-模糊查询供应商数据报错"+ex.Message,"入库单温馨提示");
+            }
 
-            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "code";
-            dgvc.HeaderText = "编码";
-            dgvc.DataPropertyName = "code";
-            dataGridViewFujia.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "name";
-            dgvc.HeaderText = "单位名称";
-            dgvc.DataPropertyName = "name";
-            dataGridViewFujia.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "mobilePhone";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "联系手机";
-            dgvc.DataPropertyName = "mobilePhone";
-            dataGridViewFujia.Columns.Add(dgvc);
-
-            resizablePanel1.Location = new Point(550, 160);
-            dataGridViewFujia.DataSource = ch.DataTableReCoding(supply.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxTop6.Text.Trim()) + ""));
-            resizablePanel1.Visible = true;
-            _Click = 3;
+      
         }
 
         /// <summary>
@@ -1051,29 +1146,37 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
         {
-            if (labtextboxBotton1.Text.Trim() == "")
+            try
             {
-                InitEmployee();
-                return;
+                if (labtextboxBotton1.Text.Trim() == "")
+                {
+                    InitEmployee();
+                    return;
+                }
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(234, 440);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
             }
-            dataGridViewFujia.DataSource = null;
-            dataGridViewFujia.Columns.Clear();
-
-            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "code";
-            dgvc.HeaderText = "员工工号";
-            dgvc.DataPropertyName = "code";
-            dataGridViewFujia.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "name";
-            dgvc.HeaderText = "姓名";
-            dgvc.DataPropertyName = "name";
-            dataGridViewFujia.Columns.Add(dgvc);
-
-            resizablePanel1.Location = new Point(234, 440);
-            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
-            resizablePanel1.Visible = true;
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：4113-模糊查询入库员错误"+ex.Message,"入库单温馨提示");
+            }
+          
         }
 
         private void WareHouseInMain_Activated(object sender, EventArgs e)
@@ -1115,8 +1218,7 @@ namespace WSCATProject.Warehouse
             resizablePanelData.Location = new Point(91, 193);
             resizablePanelData.Visible = true;
             PurchaseDetailInterface pd = new PurchaseDetailInterface();
-            if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))
-            {
+            if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))            {
                 //模糊查询商品列表
                 _AllMaterial = pd.GetListAndMaterial("");
                 InitMaterialDataGridView();

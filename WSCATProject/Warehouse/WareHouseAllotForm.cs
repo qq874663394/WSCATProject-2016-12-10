@@ -41,7 +41,7 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 调拨单code
         /// </summary>
-        private string _warehousediaobocode;
+        private string _WareHouseAllotCode;
         /// <summary>
         /// 所有商品列表
         /// </summary>
@@ -59,23 +59,23 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private string _MaterialCode = "";
         /// <summary>
-        /// 调出仓库
+        /// 调出仓库列表
         /// </summary>
-        private KeyValuePair<string, string> _ClickStorageout;
+        private KeyValuePair<string, string> _ClickOutStorageList;
         /// <summary>
-        /// 调入仓库
+        /// 调入仓库列表
         /// </summary>
-        private KeyValuePair<string, string> _ClickStoragein;
+        private KeyValuePair<string, string> _ClickInStorageList;
         //保存调入仓库
-        private string _Instorage;
+        private string _InStorage;
         /// <summary>
         /// 保存调出仓库
         /// </summary>
-        private string _Outstorage;
+        private string _OutStorage;
         /// <summary>
         /// 保存仓库状态 1、调出仓库 2、调入仓库 3、商品列表
         /// </summary>
-        private int _storageState;
+        private int _StorageState;
         /// <summary>
         /// 统计数量
         /// </summary>
@@ -143,13 +143,14 @@ namespace WSCATProject.Warehouse
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //显示行号
             superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+            //内容居中
             superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             //调用合计行数据
             InitDataGridView();
             comboBoxEx1.SelectedIndex = 0;
             //生成code 和显示条形码
-            _warehousediaobocode = BuildCode.ModuleCode("WIA");
-            textBoxOddNumbers.Text = _warehousediaobocode;
+            _WareHouseAllotCode = BuildCode.ModuleCode("WIA");
+            textBoxOddNumbers.Text = _WareHouseAllotCode;
             barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
@@ -507,14 +508,14 @@ namespace WSCATProject.Warehouse
 
                     GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
                     //判断是调入还是调出仓库
-                    if (_storageState == 1)
+                    if (_StorageState == 1)
                     {
                         string codeout = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                         string OutName = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                         gr.Cells["gridColumnStock"].Value = OutName;
                         gr.Cells["gridColumnoutcode"].Value = codeout;
-                        _ClickStorageout = new KeyValuePair<string, string>(codeout, OutName);
-                        _Outstorage = codeout;
+                        _ClickOutStorageList = new KeyValuePair<string, string>(codeout, OutName);
+                        _OutStorage = codeout;
 
                     }
                     else
@@ -523,8 +524,8 @@ namespace WSCATProject.Warehouse
                         string Inname = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                         gr.Cells["gridColumnStockIn"].Value = Inname;
                         gr.Cells["gridColumnincode"].Value = codein;
-                        _ClickStoragein = new KeyValuePair<string, string>(codein, Inname);
-                        _Instorage = codein;
+                        _ClickInStorageList = new KeyValuePair<string, string>(codein, Inname);
+                        _InStorage = codein;
                     }
                     resizablePanel1.Visible = false;
                 }
@@ -558,14 +559,14 @@ namespace WSCATProject.Warehouse
             resizablePanelData.Visible = false;
 
             //当上一次有选择仓库时 默认本次也为上次选择仓库
-            if (!string.IsNullOrEmpty(_ClickStorageout.Value) && !string.IsNullOrEmpty(_ClickStorageout.Key))
+            if (!string.IsNullOrEmpty(_ClickOutStorageList.Value) && !string.IsNullOrEmpty(_ClickOutStorageList.Key))
             {
-                if (!string.IsNullOrEmpty(_ClickStoragein.Value) && !string.IsNullOrEmpty(_ClickStoragein.Key))
+                if (!string.IsNullOrEmpty(_ClickInStorageList.Value) && !string.IsNullOrEmpty(_ClickInStorageList.Key))
                 {
-                    gr.Cells["gridColumnoutcode"].Value = _ClickStorageout.Key;
-                    gr.Cells["gridColumnStock"].Value = _ClickStorageout.Value;
-                    gr.Cells["gridColumnincode"].Value = _ClickStoragein.Key;
-                    gr.Cells["gridColumnStockIn"].Value = _ClickStoragein.Value;
+                    gr.Cells["gridColumnoutcode"].Value = _ClickOutStorageList.Key;
+                    gr.Cells["gridColumnStock"].Value = _ClickOutStorageList.Value;
+                    gr.Cells["gridColumnincode"].Value = _ClickInStorageList.Key;
+                    gr.Cells["gridColumnStockIn"].Value = _ClickInStorageList.Value;
                 }
             }
 
@@ -597,21 +598,21 @@ namespace WSCATProject.Warehouse
             {
                 //绑定仓库列表
                 InitStorageList();
-                _storageState = 1;
+                _StorageState = 1;
                 return;
             }
             if (e.GridCell.GridColumn.Name == "gridColumnStockIn")
             {
                 //绑定仓库列表
                 InitStorageList();
-                _storageState = 2;
+                _StorageState = 2;
                 return;
             }
             if (e.GridCell.GridColumn.Name == "material")
             {
-                _AllMaterial = waremain.GetList("" + XYEEncoding.strCodeHex(_Outstorage) + "");
+                _AllMaterial = waremain.GetList("" + XYEEncoding.strCodeHex(_OutStorage) + "");
                 InitMaterialDataGridView();
-                _storageState = 3;
+                _StorageState = 3;
             }
         }
 

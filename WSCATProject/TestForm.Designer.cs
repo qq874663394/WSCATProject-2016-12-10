@@ -46,13 +46,13 @@
             this.toolStripButtonshen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDate = new System.Windows.Forms.Label();
             this.textBoxOddNumbers = new System.Windows.Forms.TextBox();
             this.labelprie = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labtextboxTop6 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labtextboxTop3 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -98,7 +98,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resizablePanel1 = new HelperUtility.ExUI.ResizablePanel();
             this.panelDataView = new System.Windows.Forms.Panel();
-            this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -106,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -119,7 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.resizablePanel1.SuspendLayout();
             this.panelDataView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -232,7 +231,6 @@
             this.toolStripButtonshen,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
-            this.toolStripButtonshuaixin,
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
@@ -319,18 +317,6 @@
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
             // 
-            // toolStripButtonshuaixin
-            // 
-            this.toolStripButtonshuaixin.AutoSize = false;
-            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
-            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
-            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 57);
-            this.toolStripButtonshuaixin.Text = "刷新";
-            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
-            // 
             // toolStripButton6
             // 
             this.toolStripButton6.Image = global::WSCATProject.Properties.Resources.guanbi;
@@ -388,6 +374,36 @@
             this.toolTip1.AutomaticDelay = 0;
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // dataGridViewFujia
+            // 
+            this.dataGridViewFujia.AllowUserToAddRows = false;
+            this.dataGridViewFujia.AllowUserToDeleteRows = false;
+            this.dataGridViewFujia.AllowUserToResizeColumns = false;
+            this.dataGridViewFujia.AllowUserToResizeRows = false;
+            this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewFujia.MultiSelect = false;
+            this.dataGridViewFujia.Name = "dataGridViewFujia";
+            this.dataGridViewFujia.RowHeadersVisible = false;
+            this.dataGridViewFujia.RowTemplate.Height = 23;
+            this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
+            this.dataGridViewFujia.TabIndex = 0;
+            this.dataGridViewFujia.MouseEnter += new System.EventHandler(this.dataGridViewFujia_MouseEnter);
             // 
             // panel2
             // 
@@ -917,6 +933,7 @@
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
             // resizablePanelData
             // 
@@ -1037,9 +1054,11 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "TestForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TestForm";
+            this.toolTip1.SetToolTip(this, "Escap");
             this.Load += new System.EventHandler(this.TestForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             this.panel1.ResumeLayout(false);
@@ -1049,6 +1068,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -1066,7 +1086,6 @@
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();
             this.panelDataView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1132,7 +1151,6 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtonnew;
         protected System.Windows.Forms.ToolStripButton toolStripButtonsave;
         protected System.Windows.Forms.ToolStripButton toolStripButtonshen;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonshuaixin;
         protected System.Windows.Forms.PictureBox pictureBoxtitle;
      protected System.Windows.Forms.Panel panel3;
         protected DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;

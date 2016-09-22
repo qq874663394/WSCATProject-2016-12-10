@@ -38,23 +38,23 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 盘亏单code
         /// </summary>
-        private string _warehousepankuicode;
+        private string _WareHousePanKuiCode;
         /// <summary>
         /// 统计贮存数量
         /// </summary>
-        private decimal _Allzhucunshu;
+        private decimal _AllZhuCunShuLiang;
         /// <summary>
         /// 统计盘点数量
         /// </summary>
-        private decimal _Allpandianshu;
+        private decimal _AllPanDianShuLiang;
         /// <summary>
         /// 统计盘亏数量
         /// </summary>
-        private decimal _Allpankuishu;
+        private decimal _AllPanKuiShuLiang;
         /// <summary>
         /// 统计盘亏金额
         /// </summary>
-        private decimal _Allpankuimoney;
+        private decimal _AllPanKuiMoney;
         #endregion
 
         private void WareHouseInventoryLossForm_Load(object sender, EventArgs e)
@@ -79,8 +79,8 @@ namespace WSCATProject.Warehouse
             //调用合计行数据
             InitDataGridView();
             //生成code 和显示条形码
-            _warehousepankuicode = BuildCode.ModuleCode("WIL");
-            textBoxOddNumbers.Text = _warehousepankuicode;
+            _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
+            textBoxOddNumbers.Text = _WareHousePanKuiCode;
             barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
@@ -321,15 +321,15 @@ namespace WSCATProject.Warehouse
                     tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
                     tempAllpankuimoney += Convert.ToDecimal(tempGR["pankuimoney"].FormattedValue);
                 }
-                _Allzhucunshu = tempAllzhucun;
-                _Allpandianshu = tempAllpandian;
-                _Allpankuishu = tempAllpankui;
-                _Allpankuimoney = tempAllpankuimoney;
+                _AllZhuCunShuLiang = tempAllzhucun;
+                _AllPanDianShuLiang = tempAllpandian;
+                _AllPanKuiShuLiang = tempAllpankui;
+                _AllPanKuiMoney = tempAllpankuimoney;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                gr["zhangcunnumber"].Value = _Allzhucunshu.ToString();
-                gr["pandiannumber"].Value = _Allpandianshu.ToString();
-                gr["pankuinumber"].Value = _Allpankuishu.ToString();
-                gr["pankuimoney"].Value = _Allpankuimoney.ToString();
+                gr["zhangcunnumber"].Value = _AllZhuCunShuLiang.ToString();
+                gr["pandiannumber"].Value = _AllPanDianShuLiang.ToString();
+                gr["pankuinumber"].Value = _AllPanKuiShuLiang.ToString();
+                gr["pankuimoney"].Value = _AllPanKuiMoney.ToString();
             }
             catch (Exception ex)
             {

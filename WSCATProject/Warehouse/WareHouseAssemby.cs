@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace WSCATProject.Warehouse
 {
-    public partial class WareHouseInventoryProfitForm : TemplateForm
+    public partial class WareHouseAssemby : TemplateForm
     {
-        public WareHouseInventoryProfitForm()
+        public WareHouseAssemby()
         {
             InitializeComponent();
         }
+        
         #region  数据字段
-
         /// <summary>
         /// 所有业务员
         /// </summary>
@@ -31,25 +31,16 @@ namespace WSCATProject.Warehouse
 
         #endregion
 
-        /// <summary>
-        /// 点击panel隐藏扩展panel
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected override void panel6_Click(object sender, EventArgs e)
+        private void WareHouseAssemblyForm_Load(object sender, EventArgs e)
         {
-            resizablePanel1.Visible = false;
-        }
-
-        private void WareHouseInventoryProfitForm_Load(object sender, EventArgs e)
-        {
-            //盘盈单单号
-            textBoxOddNumbers.Text = BuildCode.ModuleCode("PYD");
-
+            //组装单单号
+            textBoxOddNumbers.Text = BuildCode.ModuleCode("ZZD");
             //业务员
             EmpolyeeInterface employee = new EmpolyeeInterface();
             _AllEmployee = employee.SelSupplierTable(false);
 
+            //显示行号
+            superGridControl2.PrimaryGrid.ShowRowGridIndex = true;
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
             dataGridViewFujia.AutoGenerateColumns = false;
@@ -83,7 +74,7 @@ namespace WSCATProject.Warehouse
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
                 dataGridViewFujia.Columns.Add(dgvc);
-                resizablePanel1.Location = new Point(204, 300);
+                //resizablePanel1.Location = new Point(200, 300);
                 dataGridViewFujia.DataSource = _AllEmployee;
             }
         }
@@ -120,19 +111,26 @@ namespace WSCATProject.Warehouse
         #endregion
 
         /// <summary>
+        /// 点击panel隐藏扩展panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel5_Click(object sender, EventArgs e)
+        {
+            resizablePanel1.Visible = false;
+        }
+
+        /// <summary>
         /// 按下ESC按钮关闭子窗体
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void WareHouseAllotForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void WareHouseAssemblyForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Escape)
             {
                 this.resizablePanel1.Visible = false;
             }
         }
-
-
-
     }
 }
