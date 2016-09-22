@@ -195,7 +195,7 @@ namespace WSCATProject.Warehouse
                 GridTextBoxXEditControl gdieccangku = superGridControl1.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
                 gdieccangku.ButtonCustom.Visible = true;
                 gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
-            
+
                 //数量
                 GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 0;
@@ -219,10 +219,10 @@ namespace WSCATProject.Warehouse
             //调用合计行数据
             InitDataGridView();
             comboBoxEx2.SelectedIndex = 0;
-            //生成code 和显示条形码
+                //生成code 和显示条形码
 
-                _warehouseincode = BuildCode.ModuleCode("WHI");
-                textBoxOddNumbers.Text = _warehouseincode;
+                _WareHouseInCode = BuildCode.ModuleCode("WHI");
+                textBoxOddNumbers.Text = _WareHouseInCode;
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
@@ -231,7 +231,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4105-初始化数据失败" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2101-初始化数据失败" + ex.Message, "入库单温馨提示");
             }
 
         }
@@ -277,7 +277,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2102;尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -330,7 +330,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2103-尝试创建入库单详细商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -339,6 +339,8 @@ namespace WSCATProject.Warehouse
             if (warehouseInResult > 0)
             {
                 MessageBox.Show("保存和审核入库数据成功");
+                InitForm();
+                this.pictureBox10.Image = Properties.Resources.审核;
             }
         }
 
@@ -384,7 +386,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4103;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2104;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -439,7 +441,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4104-尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2105-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -459,7 +461,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonhou_Click(object sender, EventArgs e)
         {
-                   WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             try
             {
                 if (textBoxid.Text == "")
@@ -495,8 +497,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4106-运行后单的错误"+ex.Message,"入库单温馨提示");
-            }        }
+                MessageBox.Show("错误代码：2106-尝试点击后单数据错误" + ex.Message, "入库单温馨提示");
+            }
+        }
         /// <summary>
         /// 前单的点击事件
         /// </summary>
@@ -504,8 +507,6 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonqian_Click(object sender, EventArgs e)
         {
-
-
             WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             try
             {
@@ -542,9 +543,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4107-显示前单错误"+ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码：2107-查询点击前单数据错误" + ex.Message, "入库单温馨提示");
             }
-       
+
         }
 
         #region 小箭头图标和仓库的选择以及两个表格的点击事件
@@ -629,9 +630,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4108-点击物料绑定数据错误！" + ex.Message);
+                MessageBox.Show("错误代码:2108-尝试连接物料绑定数据错误！" + ex.Message);
             }
-            //SendKeys.Send("^{End}{Home}");
+            SendKeys.Send("^{End}{Home}");
         }
 
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -662,7 +663,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4109-双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2109-双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
             }
 
         }
@@ -991,6 +992,120 @@ namespace WSCATProject.Warehouse
             }
         }
 
+        /// <summary>
+        /// 初始化入库明细表格
+        /// </summary>
+        private void InitWarehouseDetail()
+        {
+            GridColumn gc = null;
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialDaima";
+            gc.Name = "materialDaima";
+            gc.HeaderText = "商品代码";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaName";
+            gc.Name = "materiaName";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaModel";
+            gc.Name = "materiaModel";
+            gc.HeaderText = "规格型号";
+            gc.Width = 130;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "barcode";
+            gc.Name = "barcode";
+            gc.HeaderText = "条形码";
+            gc.Width = 150;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaUnit";
+            gc.Name = "materiaUnit";
+            gc.HeaderText = "单位";
+            gc.Width = 70;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "number";
+            gc.Name = "number";
+            gc.HeaderText = "数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "warehouseName";
+            gc.Name = "warehouseName";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "storageRackName";
+            gc.Name = "storageRackName";
+            gc.HeaderText = "区域/排/行/列";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "productionDate";
+            gc.Name = "productionDate";
+            gc.HeaderText = "采购/生产日期";
+            gc.Width = 70;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "qualityDate";
+            gc.Name = "qualityDate";
+            gc.HeaderText = "保质期(天)";
+            gc.Width = 50;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "effectiveDate";
+            gc.Name = "effectiveDate";
+            gc.HeaderText = "有效期至";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "备注";
+            gc.Width = 110;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+        }
+
+       /// <summary>
+        /// 标示那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            this.comboBoxEx2.Enabled = false;
+            this.labtextboxTop6.ReadOnly = true;
+            this.textBoxOddNumbers.ReadOnly = true;
+            this.comboBoxEx1.Enabled = false;
+            this.labtextboxTop9.ReadOnly = true;
+            this.labtextboxBotton1.ReadOnly = true;
+            this.labtextboxBotton3.ReadOnly = true;
+            this.labtextboxBotton4.ReadOnly = true;
+            this.resizablePanel1.Visible = false;
+            this.superGridControl1.PrimaryGrid.ReadOnly = true;
+            this.toolStripButtonsave.Enabled = false;
+        }
         #endregion
 
         /// <summary>
@@ -1022,7 +1137,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4110-统计数量出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2110-统计数量出错！请检查：" + ex.Message);
             }
         }
 
@@ -1048,7 +1163,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4111-表格模糊查询错误"+ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码:2111-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
             }
         }
 
@@ -1133,10 +1248,10 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4112-模糊查询供应商数据报错"+ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码：2112-模糊查询供应商数据错误" + ex.Message, "入库单温馨提示");
             }
 
-      
+
         }
 
         /// <summary>
@@ -1174,9 +1289,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4113-模糊查询入库员错误"+ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码：2113-模糊查询入库员数据错误" + ex.Message, "入库单温馨提示");
             }
-          
+
         }
 
         private void WareHouseInMain_Activated(object sender, EventArgs e)
@@ -1212,23 +1327,42 @@ namespace WSCATProject.Warehouse
             }
 
         }
-
+        /// <summary>
+        /// 产品检索商品
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxX2_TextChanged(object sender, EventArgs e)
         {
-            resizablePanelData.Location = new Point(91, 193);
-            resizablePanelData.Visible = true;
-            PurchaseDetailInterface pd = new PurchaseDetailInterface();
-            if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))            {
+            try
+            {
+                if (this.comboBoxEx1.Text.Trim() == "")
+                {
+                    resizablePanelData.Visible = false;
+                    MessageBox.Show("请先选择供应商，显示采购单号!");
+                    return;
+                }
+                resizablePanelData.Location = new Point(91, 193);
+                resizablePanelData.Visible = true;
+                PurchaseDetailInterface pd = new PurchaseDetailInterface();
+                if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))
+                {
+                    //模糊查询商品列表
+                    _AllMaterial = pd.GetListAndMaterial("");
+                    InitMaterialDataGridView();
+                    dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                    return;
+                }
                 //模糊查询商品列表
-                _AllMaterial = pd.GetListAndMaterial("");
+                _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(textBoxX2.Text.Trim()));
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
-                return;
             }
-            //模糊查询商品列表
-            _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(textBoxX2.Text.Trim()));
-            InitMaterialDataGridView();
-            dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message,"入库单温馨提示");
+            }
+       
         }
 
         private void textBoxX2_Enter(object sender, EventArgs e)
