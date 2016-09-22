@@ -460,17 +460,17 @@ namespace WSCATProject.WareHouse
         private void buttonExamine_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
-            WarehouseOutInterface woi = new WarehouseOutInterface();
-            int result = woi.update("state", 1, XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()));
-            if (result > 0)
-            {
-                MessageBox.Show("审核成功");
-            }
-            else
-            {
-                MessageBox.Show("审核失败");
-            }
+            //isNUllValidate();
+            //WarehouseOutInterface woi = new WarehouseOutInterface();
+            ////int result = woi.update("state", 1, XYEEncoding.strCodeHex(textBoxOddNumbers.Text.Trim()));
+            //if (result > 0)
+            //{
+            //    MessageBox.Show("审核成功");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("审核失败");
+            //}
         }
 
         /// <summary>

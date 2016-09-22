@@ -25,55 +25,35 @@ namespace BaseLayer
                 sql = string.Format("select code,defaultType,salesCode as mainCode,date,state,operation,examine from T_WarehouseOut where checkState={0}", state);
                 ds = DbHelperSQL.Query(sql);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds;
         }
         /// <summary>
         /// 根据where条件获取出库单列表
         /// </summary>
-        /// <param name="strWhere"></param>
-        /// <returns></returns>
-        public DataSet GetList(string strWhere)
+        /// <param name="strWhere">where后面的条件</param>
+        /// <returns>根据where条件获取出库单列表</returns>
+        public DataTable GetList(string strWhere)
         {
-            StringBuilder strSql = new StringBuilder();
+            string sql = "";
+            DataTable dt = null;
             try
             {
-                strSql.Append(@"select 
-                tw.id as ID,
-                tw.code as 出库单号,
-                tw.type as 单据类型,
-                tw.salesCode as 销售单号,
-                tw.date as 开单时间,
-                tw.state as 单据状态,
-                tw.operation as 出库员,
-                tw.examine as 审核人,
-                tw.remark as 备注,
-                ts.transportMathod as 运送方式,
-                ts.logistics as 快递名称,
-                ts.logisticsOddCode as 快递单号,
-                ts.logisticsPhone as 快递电话
-                ");
-                strSql.Append(" from T_WarehouseOut tw ,T_SalesMain ts where tw.salesCode=ts.code  ");
-                if (strWhere.Trim() != "")
+                sql = "select * from T_WarehouseOut";
+                if (!string.IsNullOrWhiteSpace(strWhere))
                 {
-                    strSql.Append(" and tw.type='" + strWhere + "'");
+                    sql += " where " + strWhere;
                 }
+                dt = DbHelperSQL.Query(sql).Tables[0];
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
-            try
-            {
-                return DbHelperSQL.Query(strSql.ToString());
-            }
-            catch
-            {
-                throw new Exception("-4");
-            }
+            return dt;
         }
 
         /// <summary>
@@ -83,50 +63,49 @@ namespace BaseLayer
         /// <returns></returns>
         public int Add(WarehouseOut wo)
         {
-            string strSql = "";
-            try
-            {
-                strSql = string.Format("insert into T_WarehouseOut(code," +
-                    "type,stock,operation,examine,isClear,updateDate," +
-                    "state,salesCode,date,checkState,remark," +
-                    "reserved1,reserved2,delivery,clientCode,expressOdd," +
-                    "expressMan,expressPhone,defaultType) values (" +
-                    "'{0}','{1}','{2}','{3}','{4}',{5},'{6}',{7},'{8}','{9}',{10}," +
-                    "'{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}') ",
-                    wo.code,
-                    wo.type,
-                    wo.stock,
-                    wo.operation,
-                    wo.examine,
-                    wo.isClear,
-                    wo.updateDate,
-                    wo.state,
-                    wo.salesCode,
-                    wo.date,
-                    wo.checkState,
-                    wo.remark,
-                    wo.reserved1,
-                    wo.reserved2,
-                    wo.Delivery,
-                    wo.ClientCode,
-                    wo.ExpressOdd,
-                    wo.ExpressMan,
-                    wo.ExpressPhone,
-                    wo.DefaultType);
-            }
-            catch
-            {
-                return -1;
-            }
-            try
-            {
-                int result = DbHelperSQL.ExecuteSql(strSql);
-                return result;
-            }
-            catch
-            {
-                return -2;
-            }
+            string sql = @"INSERT INTO T_WarehouseOut
+           (code
+           ,type
+           ,stock
+           ,operation
+           ,examine
+           ,isClear
+           ,updateDate
+           ,state
+           ,salesCode
+           ,date
+           ,checkState
+           ,remark
+           ,reserved1
+           ,reserved2
+           ,delivey
+           ,clientCode
+           ,expressOdd
+           ,expressMan
+           ,expressPhone
+           ,defaultType)
+     VALUES
+           (code,
+           @type,
+           @stock,
+           @operation,
+           @examine,
+           @isClear,
+           @updateDate,
+           @state,
+           @salesCode,
+           @date,
+           @checkState,
+           @remark,
+           @reserved1,
+           @reserved2,
+           @delivey,
+           @clientCode,
+           @expressOdd,
+           @expressMan,
+           @expressPhone,
+           @defaultType,";
+            return 0;
         }
         /// <summary>
         /// 修改出库单

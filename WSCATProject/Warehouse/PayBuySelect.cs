@@ -461,7 +461,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("销售补货单");
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
-                    BanDWareHouesOut("");
+                    BanDWareHouesOut(99,"");
                     商品出库ToolStripMenuItem.Visible = false;
                     break;
                 case "领料单":
@@ -1120,7 +1120,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("获赔商品入库");
                     this.toolStripComboBox4.Items.Add("以货抵债");
 
-                    BindWareHouesIn(0,"");
+                    BindWareHouesIn(99,"");
                     break;
                 case "出库开单":
                     this.toolStripLabel8.Visible = true;
@@ -1132,7 +1132,7 @@ namespace WSCATProject.Buys
                     this.toolStripComboBox4.Items.Add("赠商品出库");
                     this.toolStripComboBox4.Items.Add("获赔商品出库");
                     toolStripComboBox4.SelectedIndex = 0;
-                    BanDWareHouesOut("");
+                    BanDWareHouesOut(99,"");
                     break;
                 case "领料单":
                     break;
@@ -2221,19 +2221,19 @@ namespace WSCATProject.Buys
                     BindWareHouesIn(2,"36305F115132314A");
                     break;
                 case "销售申请单":
-                    BanDWareHouesOut("2B1E2E3F2D0E230F5141");
+                    BanDWareHouesOut(1,"2B1E2E3F2D0E230F5141");
                     break;
                 case "销售退货单":
-                    BanDWareHouesOut("2B1E2E3F292F5F115141");
+                    BanDWareHouesOut(1,"2B1E2E3F292F5F115141");
                     break;
                 case "销售补货单":
-                    BanDWareHouesOut("2B1E2E3F565D5F115141");
+                    BanDWareHouesOut(1, "2B1E2E3F565D5F115141");
                     break;
                 case "赠商品出库":
-                    BanDWareHouesOut("301D2D28225357125B06");
+                    BanDWareHouesOut(1, "301D2D28225357125B06");
                     break;
                 case "获赔商品出库":
-                    BanDWareHouesOut("5F1521062D28225357125B06");
+                    BanDWareHouesOut(1, "5F1521062D28225357125B06");
                     break;
                 default:
                     break;
@@ -2323,7 +2323,7 @@ namespace WSCATProject.Buys
         /// 初始化出库的列表
         /// </summary>
         /// <param name="where"></param>
-        private void BanDWareHouesOut(string where)
+        private void BanDWareHouesOut(int fieldName,string fieldValue)
         {
             GridColumn gc = null;
 
@@ -2411,7 +2411,7 @@ namespace WSCATProject.Buys
             gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-            dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(where).Tables[0]);
+            dt = ch.DataTableReCoding(new WarehouseOutInterface().GetList(fieldName, fieldValue));
             superGridControl1.PrimaryGrid.DataSource = dt;
             whereField = "单据日期";
             orderField = "ID";
