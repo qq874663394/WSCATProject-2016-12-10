@@ -524,10 +524,10 @@ namespace WSCATProject.Warehouse
                 labtextboxTop9.Text = phone;
                 resizablePanel1.Visible = false;
                 //根据搜索的客户来绑定下拉列表
-                //DataTable dt = ch.DataTableReCoding(client.GetList(3,_clientcode));
-                //this.comboBoxExxiaos.DataSource = dt;
-                //comboBoxExxiaos.ValueMember = "code";
-                //comboBoxExxiaos.DisplayMember = "name";
+                DataTable dt = ch.DataTableReCoding(client.GetTableByClientCode( _clientcode));
+                this.comboBoxExxiaos.DataSource = dt;
+                comboBoxExxiaos.ValueMember = "code";
+                comboBoxExxiaos.DisplayMember = "name";
 
             }
             //业务员
