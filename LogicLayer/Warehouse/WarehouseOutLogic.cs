@@ -48,25 +48,39 @@ namespace LogicLayer.Warehouse
             lb.Add(logModel);//rz
             return ds;
         }
-        public DataSet GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            DataSet ds = null;
-
+            string strWhere = "";
+            DataTable dt = null;
             LogBase lb = new LogBase();
             log logModel = new log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseOut/T_SalesMain",
+                operationTable = "T_WarehouseOut",
                 operationTime = DateTime.Now,
                 objective = "根据where条件获取出库单列表",
-                operationContent = "根据where条件查询表T_WarehouseOut、T_SalesMain出库单列表，条件strWhere值为" + strWhere
+                operationContent = "根据where条件查询表T_WarehouseOut出库单列表，条件strWhere值为" + strWhere
             };
-
             try
             {
-                ds = wob.GetList(strWhere);
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("code='{0}'", fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("type='{0}'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("checkState='{0}'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("clientCode = '{0}'", fieldValue);
+                        break;
+                }
+                dt = wob.GetList(strWhere);
                 logModel.result = 1;
             }
             catch (Exception ex)
@@ -74,39 +88,16 @@ namespace LogicLayer.Warehouse
                 logModel.result = 0;
                 throw ex;
             }
-
-            lb.Add(logModel);//rz
-            return ds;
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return dt;
         }
 
         public int Add(WarehouseOut wo)
         {
-            int result = wob.Add(wo);
-
-            //添加日志
-            LogBase lb = new LogBase();
-            log log = new log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                operationCode = "操作人code",
-                operationName = "操作人名",
-                operationTable = "T_WarehouseOut",
-                operationTime = DateTime.Now,
-                objective = "添加出库单信息",
-                result = result,
-            };
-            if (result > 0)
-            {
-                log.operationContent = "添加T_WarehouseOut表数据成功";
-                lb.Add(log);
-            }
-            else
-            {
-                log.operationContent = "添加T_WarehouseOut表数据失败";
-                lb.Add(log);
-            }
-            return result;
-           
+            return 0;
         }
 
         public int update(WarehouseOut wo)
@@ -136,37 +127,7 @@ namespace LogicLayer.Warehouse
                 lb.Add(log);
             }
             return result;
-            
-        }
 
-        public int update(string field, int state, string code)
-        {
-            int result = wob.update(field, state, code);
-
-            //添加日志
-            LogBase lb = new LogBase();
-            log log = new log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                operationCode = "操作人code",
-                operationName = "操作人名",
-                operationTable = "T_WarehouseOut",
-                operationTime = DateTime.Now,
-                objective = "根据条件更新出库表信息",
-                result = result,
-            };
-            if (result > 0)
-            {
-                log.operationContent = "更新T_WarehouseOut表的数据成功,code为:" + code;
-                lb.Add(log);
-            }
-            else
-            {
-                log.operationContent = "更新T_WarehouseOut表数据失败,code为:" + code;
-                lb.Add(log);
-            }
-            return result;
-           
         }
 
         public void update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
@@ -195,7 +156,7 @@ namespace LogicLayer.Warehouse
                 throw ex;
             }
             lb.Add(logModel);//rz
-            
+
         }
 
         public int delete(string code)
@@ -225,7 +186,7 @@ namespace LogicLayer.Warehouse
                 lb.Add(log);
             }
             return result;
-           
+
         }
     }
 }

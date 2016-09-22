@@ -311,7 +311,7 @@ namespace LogicLayer
                 }
                 else
                 {
-                    result = AddWarehouseOrToDetail(warehouseIn, list) == null ? 0 : (int)AddWarehouseOrToDetail(warehouseIn, list);
+                    result = Convert.ToInt32(AddWarehouseOrToDetail(warehouseIn, list));
                 }
                 if (result <= 0)
                 {
