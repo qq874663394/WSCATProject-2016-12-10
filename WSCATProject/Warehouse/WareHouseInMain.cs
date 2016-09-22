@@ -219,10 +219,10 @@ namespace WSCATProject.Warehouse
             //调用合计行数据
             InitDataGridView();
             comboBoxEx2.SelectedIndex = 0;
-            //生成code 和显示条形码
+                //生成code 和显示条形码
 
-                _warehouseincode = BuildCode.ModuleCode("WHI");
-                textBoxOddNumbers.Text = _warehouseincode;
+                _WareHouseInCode = BuildCode.ModuleCode("WHI");
+                textBoxOddNumbers.Text = _WareHouseInCode;
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
@@ -231,7 +231,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4105-初始化数据失败" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2101-初始化数据失败" + ex.Message, "入库单温馨提示");
             }
 
         }
@@ -277,7 +277,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4101;尝试创建入库单商品详情数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2102;尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -330,7 +330,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4102-尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2103-尝试创建入库单详细商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -386,7 +386,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4103;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2104;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -441,7 +441,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4104-尝试创建入库单数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2105-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
                 return;
             }
 
@@ -497,7 +497,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4106-运行后单的错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2106-尝试点击后单数据错误" + ex.Message, "入库单温馨提示");
             }
         }
         /// <summary>
@@ -543,7 +543,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4107-显示前单错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2107-查询点击前单数据错误" + ex.Message, "入库单温馨提示");
             }
 
         }
@@ -630,9 +630,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4108-点击物料绑定数据错误！" + ex.Message);
+                MessageBox.Show("错误代码:2108-尝试连接物料绑定数据错误！" + ex.Message);
             }
-            //SendKeys.Send("^{End}{Home}");
+            SendKeys.Send("^{End}{Home}");
         }
 
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -663,7 +663,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4109-双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2109-双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
             }
 
         }
@@ -1137,7 +1137,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4110-统计数量出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2110-统计数量出错！请检查：" + ex.Message);
             }
         }
 
@@ -1163,7 +1163,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:4111-表格模糊查询错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2111-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
             }
         }
 
@@ -1248,7 +1248,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4112-模糊查询供应商数据报错" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2112-模糊查询供应商数据错误" + ex.Message, "入库单温馨提示");
             }
 
 
@@ -1289,7 +1289,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4113-模糊查询入库员错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2113-模糊查询入库员数据错误" + ex.Message, "入库单温馨提示");
             }
 
         }
@@ -1327,7 +1327,11 @@ namespace WSCATProject.Warehouse
             }
 
         }
-
+        /// <summary>
+        /// 产品检索商品
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxX2_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1356,7 +1360,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：4114-产品检索模糊查询失败"+ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message,"入库单温馨提示");
             }
        
         }
