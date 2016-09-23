@@ -152,6 +152,12 @@
     <Compile Include="Warehouse\WareHouseAssembyForm.Designer.cs">
       <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseDisassemblyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseDisassemblyForm.Designer.cs">
+      <DependentUpon>WareHouseDisassemblyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseInMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAssembyForm.resx">
       <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseDisassemblyForm.resx">
+      <DependentUpon>WareHouseDisassemblyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInMain.resx">
       <DependentUpon>WareHouseInMain.cs</DependentUpon>

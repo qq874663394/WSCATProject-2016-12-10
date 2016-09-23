@@ -423,6 +423,7 @@
             // labBotton1
             // 
             this.labBotton1.Location = new System.Drawing.Point(34, 21);
+            this.labBotton1.Text = "调 拨 人：";
             // 
             // resizablePanelData
             // 
@@ -521,6 +522,7 @@
             // 
             // gridColumnStockIn
             // 
+            this.gridColumnStockIn.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnStockIn.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnStockIn.HeaderText = "调入仓库";
             this.gridColumnStockIn.Name = "gridColumnStockIn";
@@ -528,6 +530,7 @@
             // 
             // gridColumnStock
             // 
+            this.gridColumnStock.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnStock.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnStock.HeaderText = "调出仓库";
             this.gridColumnStock.Name = "gridColumnStock";
@@ -542,6 +545,7 @@
             // 
             // gridColumnname
             // 
+            this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
@@ -558,6 +562,7 @@
             // 
             // gridColumntiaoxingma
             // 
+            this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
