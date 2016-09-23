@@ -26,9 +26,9 @@ namespace InterfaceLayer.Sales
         /// </summary>
         /// <param name="SalesCode"></param>
         /// <returns></returns>
-        public DataTable GetDetailByMainCode(string SalesCode)
+        public DataTable GetDetailByMainCode(string SalesCode, int fieldName, string fieldValue)
         {
-            return sdl.GetDetailByMainCode(SalesCode);
+            return sdl.GetDetailByMainCode(SalesCode, fieldName, fieldValue);
         }
     }
 }

@@ -35,6 +35,15 @@ namespace LogicLayer.Sales
                     case 0:
                         strWhere += string.Format("salesMainCode='{0}'", fieldValue);
                         break;
+                        //case 1:
+                        //    strWhere += string.Format("materialDaima='{0}'", fieldValue);
+                        //    break;
+                        //case 2:
+                        //    strWhere += string.Format("barcode='{0}'",fieldValue);
+                        //    break;
+                        //case 3:
+                        //    strWhere += string.Format("materialName='{0}'",fieldValue);
+                        //    break;
                 }
                 dt = sdb.GetList(strWhere);
                 model.result = 1;
@@ -51,8 +60,9 @@ namespace LogicLayer.Sales
             return dt;
         }
 
-        public DataTable GetDetailByMainCode(string SalesCode)
+        public DataTable GetDetailByMainCode(string SalesCode, int fieldName, string fieldValue)
         {
+            string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
             log model = new log()
@@ -67,7 +77,22 @@ namespace LogicLayer.Sales
             };
             try
             {
-                sdb.GetDetailByMainCode(SalesCode);
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format(" bm.name = '{0}'", fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("bm.barCode='{0}'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("bm.zhujima='{0}'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("bm.materialDaima='{0}'", fieldValue);
+                        break;
+                }
+                sdb.GetDetailByMainCode(SalesCode, strWhere);
                 model.result = 1;
             }
             catch (Exception ex)
