@@ -309,7 +309,7 @@
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(661, 18);
+            this.labTop9.Location = new System.Drawing.Point(657, 18);
             this.labTop9.Text = "采购电话：";
             // 
             // labTop8
@@ -438,11 +438,11 @@
             // 
             // labBotton4
             // 
-            this.labBotton4.Location = new System.Drawing.Point(661, 23);
+            this.labBotton4.Location = new System.Drawing.Point(657, 23);
             // 
             // labBotton2
             // 
-            this.labBotton2.Location = new System.Drawing.Point(661, 55);
+            this.labBotton2.Location = new System.Drawing.Point(657, 55);
             // 
             // labBotton3
             // 
@@ -738,7 +738,7 @@
             // pictureBox10
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox10.Location = new System.Drawing.Point(632, 0);
+            this.pictureBox10.Location = new System.Drawing.Point(636, 0);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(64, 64);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -752,7 +752,6 @@
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Name = "WareHouseInMain";
             this.Text = "WareHouseInMain";
-            this.Activated += new System.EventHandler(this.WareHouseInMain_Activated);
             this.Load += new System.EventHandler(this.WareHouseInMain_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInMain_KeyPress);
             this.panel1.ResumeLayout(false);

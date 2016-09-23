@@ -146,23 +146,11 @@
     <Compile Include="Warehouse\WareHouseAllotForm.Designer.cs">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\WareHouseAssemby.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseAssemby.Designer.cs">
-      <DependentUpon>WareHouseAssemby.cs</DependentUpon>
-    </Compile>
     <Compile Include="Warehouse\WareHouseAssembyForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Warehouse\WareHouseAssembyForm.Designer.cs">
       <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseDisassembly.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseDisassembly.Designer.cs">
-      <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\WareHouseInMain.cs">
       <SubType>Form</SubType>
@@ -193,12 +181,6 @@
     </Compile>
     <Compile Include="Warehouse\WareHouseInventoryReportForm.Designer.cs">
       <DependentUpon>WareHouseInventoryReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseOut.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseOut.Designer.cs">
-      <DependentUpon>WareHouseOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\WareHouseOutMainForm.cs">
       <SubType>Form</SubType>
@@ -255,14 +237,8 @@
     <EmbeddedResource Include="Warehouse\WareHouseAllotForm.resx">
       <DependentUpon>WareHouseAllotForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\WareHouseAssemby.resx">
-      <DependentUpon>WareHouseAssemby.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseAssembyForm.resx">
       <DependentUpon>WareHouseAssembyForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\WareHouseDisassembly.resx">
-      <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInMain.resx">
       <DependentUpon>WareHouseInMain.cs</DependentUpon>
@@ -278,9 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryReportForm.resx">
       <DependentUpon>WareHouseInventoryReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\WareHouseOut.resx">
-      <DependentUpon>WareHouseOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseOutMainForm.resx">
       <DependentUpon>WareHouseOutMainForm.cs</DependentUpon>
@@ -415,6 +388,7 @@
     <Content Include="Resources\outSelect.png" />
     <Content Include="Resources\outUpdate.png" />
     <Content Include="Resources\pandian.PNG" />
+    <None Include="Resources\Paste.png" />
     <Content Include="Resources\payment.png" />
     <None Include="Resources\red.PNG" />
     <None Include="Resources\red.jpg" />

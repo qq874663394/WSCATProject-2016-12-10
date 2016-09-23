@@ -245,7 +245,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(930, 21);
+            this.pictureBox2.Location = new System.Drawing.Point(969, 23);
             this.pictureBox2.Visible = false;
             // 
             // checkBox1
@@ -364,6 +364,7 @@
             this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxBotton1.Location = new System.Drawing.Point(116, 19);
             this.labtextboxBotton1.Size = new System.Drawing.Size(142, 16);
+            this.labtextboxBotton1.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
             // 
             // labBotton4
             // 
@@ -381,6 +382,11 @@
             // labBotton1
             // 
             this.labBotton1.Location = new System.Drawing.Point(59, 21);
+            this.labBotton1.Text = "组 装 员：";
+            // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // panel3
             // 

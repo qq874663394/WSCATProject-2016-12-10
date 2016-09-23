@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -404,6 +403,7 @@
             this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
             this.dataGridViewFujia.TabIndex = 0;
+            this.dataGridViewFujia.Leave += new System.EventHandler(this.dataGridViewFujia_Leave);
             this.dataGridViewFujia.MouseEnter += new System.EventHandler(this.dataGridViewFujia_MouseEnter);
             // 
             // panel2
@@ -998,36 +998,6 @@
             this.panelDataView.Name = "panelDataView";
             this.panelDataView.Size = new System.Drawing.Size(248, 132);
             this.panelDataView.TabIndex = 30;
-            // 
-            // dataGridViewFujia
-            // 
-            this.dataGridViewFujia.AllowUserToAddRows = false;
-            this.dataGridViewFujia.AllowUserToDeleteRows = false;
-            this.dataGridViewFujia.AllowUserToResizeColumns = false;
-            this.dataGridViewFujia.AllowUserToResizeRows = false;
-            this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewFujia.MultiSelect = false;
-            this.dataGridViewFujia.Name = "dataGridViewFujia";
-            this.dataGridViewFujia.RowHeadersVisible = false;
-            this.dataGridViewFujia.RowTemplate.Height = 23;
-            this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
-            this.dataGridViewFujia.TabIndex = 0;
-            this.dataGridViewFujia.Leave += new System.EventHandler(this.dataGridViewFujia_Leave);
             // 
             // label1
             // 
