@@ -25,9 +25,9 @@ namespace InterfaceLayer.Warehouse
         /// </summary>
         /// <param name="strWhere"></param>
         /// <returns></returns>
-        public DataSet GetList(string strWhere)
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return wol.GetList(strWhere);
+            return wol.GetList(fieldName, fieldValue);
         }
         /// <summary>
         /// 添加出库单
@@ -42,10 +42,6 @@ namespace InterfaceLayer.Warehouse
         public int update(WarehouseOut wo)
         {
             return wol.update(wo);
-        }
-        public int update(string field, int state, string code)
-        {
-            return wol.update(field, state, code);
         }
         /// <summary>
         /// 更新主表和从表

@@ -134,6 +134,12 @@
     <Compile Include="Warehouse\TestVoidForm.Designer.cs">
       <DependentUpon>TestVoidForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WarehouseAdjustPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WarehouseAdjustPrice.Designer.cs">
+      <DependentUpon>WarehouseAdjustPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WarehouseAdjustPriceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\TestVoidForm.resx">
       <DependentUpon>TestVoidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WarehouseAdjustPrice.resx">
+      <DependentUpon>WarehouseAdjustPrice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WarehouseAdjustPriceForm.resx">
       <DependentUpon>WarehouseAdjustPriceForm.cs</DependentUpon>

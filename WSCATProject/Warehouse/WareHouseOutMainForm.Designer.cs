@@ -244,6 +244,7 @@
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop2.Location = new System.Drawing.Point(339, 13);
             this.labtextboxTop2.Size = new System.Drawing.Size(120, 16);
+            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTop2_TextChanged);
             // 
             // labtextboxTop1
             // 

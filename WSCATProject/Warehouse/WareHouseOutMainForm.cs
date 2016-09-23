@@ -81,34 +81,40 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void WareHouseOutMainForm_Load(object sender, EventArgs e)
         {
-            //客户
-            _AllClient = client.GetClientByBool(false);
-            //业务员
-            _AllEmployee = employee.SelSupplierTable(false);
+            try
+            {
+                //客户
+                _AllClient = client.GetClientByBool(false);
+                //业务员
+                _AllEmployee = employee.SelSupplierTable(false);
 
-            //数量
-            GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
-            gdiecNumber.MinValue = 0;
-            gdiecNumber.MaxValue = 999999999;
+                //数量
+                GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                gdiecNumber.MinValue = 0;
+                gdiecNumber.MaxValue = 999999999;
 
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                //禁用自动创建列
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridViewFujia.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
-            InitDataGridView();
-            //生成出库code 和显示条形码
-            _warehouseoutcode = BuildCode.ModuleCode("WHO");
-            textBoxOddNumbers.Text = _warehouseoutcode;
+                InitDataGridView();
+                //生成出库code 和显示条形码
+                _warehouseoutcode = BuildCode.ModuleCode("WHO");
+                textBoxOddNumbers.Text = _warehouseoutcode;
 
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBox9.Image = imgTemp;
-
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2201-初始化数据错误"+ex.Message,"出库单温馨提示");
+            }
         }
 
 
@@ -528,10 +534,10 @@ namespace WSCATProject.Warehouse
                 labtextboxTop9.Text = phone;
                 resizablePanel1.Visible = false;
                 //根据搜索的客户来绑定下拉列表
-                //DataTable dt = ch.DataTableReCoding(client.GetPurchaseList(_clientcode));
-                //this.comboBoxEx1.DataSource = dt;
-                //comboBoxEx1.ValueMember = "code";
-                //comboBoxEx1.DisplayMember = "name";
+                DataTable dt = ch.DataTableReCoding(client.GetTableByClientCode( _clientcode));
+                this.comboBoxExxiaos.DataSource = dt;
+                comboBoxExxiaos.ValueMember = "code";
+                comboBoxExxiaos.DisplayMember = "name";
 
             }
             //业务员
@@ -552,7 +558,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void WareHouseOutMainForm_Activated(object sender, EventArgs e)
         {
-            labtextboxTop2.Focus();
+             labtextboxTop2.Focus();
         }
         /// <summary>
         /// 改变边框颜色
@@ -583,29 +589,87 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
         {
-            if (labtextboxBotton1.Text.Trim() == "")
+            try
             {
-                InitEmployee();
-                return;
+
+                if (labtextboxBotton1.Text.Trim() == "")
+                {
+                    InitEmployee();
+                    _Click = 4;
+                    return;
+                }
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(234, 440);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
             }
-            dataGridViewFujia.DataSource = null;
-            dataGridViewFujia.Columns.Clear();
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：模糊查询出库员数据错误"+ex.Message,"出库单温馨提示");
+            }
+     
+        
+        }
+        /// <summary>
+        /// 客户的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxTop2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop2.Text.Trim()=="")
+                {
+                    InitClient();
+                    _Click = 3;
+                    return;
+                }
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
 
-            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "code";
-            dgvc.HeaderText = "员工工号";
-            dgvc.DataPropertyName = "code";
-            dataGridViewFujia.Columns.Add(dgvc);
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "客户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
 
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "name";
-            dgvc.HeaderText = "姓名";
-            dgvc.DataPropertyName = "name";
-            dataGridViewFujia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "客户姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
 
-            resizablePanel1.Location = new Point(234, 440);
-            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
-            resizablePanel1.Visible = true;
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.HeaderText = "销售电话";
+                dgvc.DataPropertyName = "mobilePhone";
+                dgvc.Visible = false;
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(550, 160);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(client.GetList(0,name));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：模糊查询客户数据错误"+ex.Message,"出库单温馨提示");
+            }
         }
     }
 }

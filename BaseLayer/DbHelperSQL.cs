@@ -239,7 +239,7 @@ namespace BaseLayer
                 cmd.Parameters.Add(myParameter);
                 try
                 {
-                    
+
                     int rows = cmd.ExecuteNonQuery();
                     return rows;
                 }
@@ -265,7 +265,7 @@ namespace BaseLayer
                 cmd.Parameters.Add(myParameter);
                 try
                 {
-                    
+
                     object obj = cmd.ExecuteScalar();
                     if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                     {
@@ -301,7 +301,7 @@ namespace BaseLayer
                 cmd.Parameters.AddRange(sps);
                 try
                 {
-                    
+
                     int rows = cmd.ExecuteNonQuery();
                     return rows;
                 }
@@ -324,7 +324,7 @@ namespace BaseLayer
                 {
                     try
                     {
-                        connection.Open();                        object obj = cmd.ExecuteScalar();
+                        object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                         {
                             return null;
@@ -349,7 +349,7 @@ namespace BaseLayer
                 {
                     try
                     {
-                        
+
                         cmd.CommandTimeout = Times;
                         object obj = cmd.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
@@ -379,7 +379,7 @@ namespace BaseLayer
             SqlCommand cmd = new SqlCommand(strSQL, connection);
             try
             {
-                
+
                 SqlDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return myReader;
             }
@@ -417,7 +417,7 @@ namespace BaseLayer
                 DataSet ds = new DataSet();
                 try
                 {
-                    
+
                     SqlDataAdapter command = new SqlDataAdapter(SQLString, connection);
                     command.SelectCommand.CommandTimeout = Times;
                     command.Fill(ds, "ds");
@@ -610,7 +610,7 @@ namespace BaseLayer
                                 {
                                     string cmdText = sqlstr;
                                     SqlParameter[] cmdParms = para;
-                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                                     cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
                                 }
@@ -621,7 +621,7 @@ namespace BaseLayer
                             }
                             trans.Commit();
                         }
-                        if (val1==null)
+                        if (val1 == null)
                         {
                             throw new Exception("-3");
                         }
@@ -790,7 +790,7 @@ namespace BaseLayer
             cmd.CommandType = CommandType.Text;//cmdType;
             if (cmdParms != null)
             {
-                foreach (SqlParameter parameter  in cmdParms)
+                foreach (SqlParameter parameter in cmdParms)
                 {
                     if ((parameter.Direction == ParameterDirection.InputOutput || parameter.Direction == ParameterDirection.Input) &&
                         (parameter.Value == null))
@@ -895,7 +895,7 @@ namespace BaseLayer
             using (SqlConnection connection = Conn)
             {
                 int result;
-                
+
                 SqlCommand command = BuildIntCommand(connection, storedProcName, parameters);
                 rowsAffected = command.ExecuteNonQuery();
                 result = (int)command.Parameters["ReturnValue"].Value;
