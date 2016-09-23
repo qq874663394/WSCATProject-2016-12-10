@@ -35,7 +35,6 @@ C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\bin\Debug\Helpe
 C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\bin\Debug\NPOI.dll
 C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\obj\Debug\HelperUtility.dll
 C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\obj\Debug\HelperUtility.pdb
-E:\619项目\2016年9月14日085327\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
 E:\619项目\619\HelperUtility\bin\Debug\HelperUtility.dll
 E:\619项目\619\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\619\HelperUtility\bin\Debug\NPOI.dll

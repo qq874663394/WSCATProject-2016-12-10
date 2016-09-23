@@ -2434,26 +2434,26 @@ namespace WSCATProject.Buys
                         if (shengh == "0")
                         {
 
-                            WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
-                            ware.WareHouseoutModel = rows;
-                            ware.State = 0;
-                            ware.ShowDialog();
+                            //WSCATProject.WareHouse ware = new WareHouse.WareHouseOut();
+                            //ware.WareHouseoutModel = rows;
+                            //ware.State = 0;
+                            //ware.ShowDialog();
                         }
                         //部分出库查看
                         if (shengh == "1")
                         {
-                            WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
-                            ware.WareHouseoutModel = rows;
-                            ware.State = 1;
-                            ware.Show();
+                            //WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
+                            //ware.WareHouseoutModel = rows;
+                            //ware.State = 1;
+                            //ware.Show();
                         }
                         //已完成查看
                         if (shengh == "2")
                         {
-                            WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
-                            ware.WareHouseoutModel = rows;
-                            ware.State = 2;
-                            ware.Show();
+                            //WSCATProject.WareHouse.WareHouseOut ware = new WareHouse.WareHouseOut();
+                            //ware.WareHouseoutModel = rows;
+                            //ware.State = 2;
+                            //ware.Show();
                         }
                     }
                     else
