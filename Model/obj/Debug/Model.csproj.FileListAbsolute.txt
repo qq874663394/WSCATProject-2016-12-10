@@ -20,6 +20,10 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Debug\Model.pdb
 D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.pdb
+E:\619项目\2016年9月14日085327\Model\bin\Debug\Model.dll
+E:\619项目\2016年9月14日085327\Model\bin\Debug\Model.pdb
+E:\619项目\2016年9月14日085327\Model\obj\Debug\Model.dll
+E:\619项目\2016年9月14日085327\Model\obj\Debug\Model.pdb
 C:\Users\Administrator.USER-20160704SV\Desktop\619\Model\bin\Debug\Model.dll
 C:\Users\Administrator.USER-20160704SV\Desktop\619\Model\bin\Debug\Model.pdb
 C:\Users\Administrator.USER-20160704SV\Desktop\619\Model\obj\Debug\Model.dll
@@ -28,8 +32,4 @@ E:\619项目\619\Model\bin\Debug\Model.dll
 E:\619项目\619\Model\bin\Debug\Model.pdb
 E:\619项目\619\Model\obj\Debug\Model.dll
 E:\619项目\619\Model\obj\Debug\Model.pdb
-E:\619项目\2016年9月14日085327\Model\bin\Debug\Model.dll
-E:\619项目\2016年9月14日085327\Model\bin\Debug\Model.pdb
-E:\619项目\2016年9月14日085327\Model\obj\Debug\Model.dll
-E:\619项目\2016年9月14日085327\Model\obj\Debug\Model.pdb
-E:\619项目\2016年9月14日085327\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.USER-20160704SV\Desktop\619\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
