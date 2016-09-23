@@ -517,6 +517,9 @@
             this.textBoxchanpin.PreventEnterBeep = true;
             this.textBoxchanpin.Size = new System.Drawing.Size(140, 21);
             this.textBoxchanpin.TabIndex = 59;
+            this.textBoxchanpin.TextChanged += new System.EventHandler(this.textBoxchanpin_TextChanged);
+            this.textBoxchanpin.Enter += new System.EventHandler(this.textBoxchanpin_Enter);
+            this.textBoxchanpin.Leave += new System.EventHandler(this.textBoxchanpin_Leave);
             // 
             // comboBoxEx1
             // 
