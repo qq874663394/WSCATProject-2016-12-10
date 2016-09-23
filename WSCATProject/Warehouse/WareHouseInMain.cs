@@ -186,7 +186,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 //供应商
-                _AllSupply = supply.SelSupplierTable();
+                _AllSupply = supply.GetList(99, "");
 
                 //业务员
                 _AllEmployee = employee.SelSupplierTable(false);
@@ -204,21 +204,26 @@ namespace WSCATProject.Warehouse
                 GridTextBoxXEditControl gdiehuojia = superGridControl1.PrimaryGrid.Columns["griCoulumhuojia"].EditControl as GridTextBoxXEditControl;
                 gdiehuojia.ButtonCustom.Visible = true;
                 gdiehuojia.ButtonCustomClick += Gdiec_ButtonCustomClick;
-
-
-
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //调用合计行数据
-            InitDataGridView();
-            comboBoxEx2.SelectedIndex = 0;
+                ///前单
+                toolStripButtonqian.Click += ToolStripButtonqian_Click;
+                //后单
+                toolStripButtonhou.Click += ToolStripButtonhou_Click;
+                //保存
+                toolStripButtonsave.Click += ToolStripButtonsave_Click;
+                //审核
+                toolStripButtonshen.Click += ToolStripButtonshen_Click;
+                //禁用自动创建列
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridViewFujia.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //调用合计行数据
+                InitDataGridView();
+                comboBoxEx2.SelectedIndex = 0;
                 //生成code 和显示条形码
 
                 _WareHouseInCode = BuildCode.ModuleCode("WHI");
@@ -336,6 +341,7 @@ namespace WSCATProject.Warehouse
 
             //增加一条入库单和入库单详细数据
             int warehouseInResult = warehouseInterface.updateByCode(warehouseIn, wareHouseInList);
+            this.textBoxid.Text = warehouseInResult.ToString();
             if (warehouseInResult > 0)
             {
                 MessageBox.Show("保存和审核入库数据成功");
@@ -478,7 +484,7 @@ namespace WSCATProject.Warehouse
                 this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
                 this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
                 this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
-                if (warehouseIn.id != null)
+                if (warehouseIn.id != 0)
                 {
                     textBoxid.Text = warehouseIn.id.ToString();
                     WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
@@ -523,7 +529,7 @@ namespace WSCATProject.Warehouse
                 this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
                 this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
                 this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
-                if (warehouseIn.id != null)
+                if (warehouseIn.id != 0)
                 {
                     textBoxid.Text = warehouseIn.id.ToString();
                     WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
@@ -575,32 +581,16 @@ namespace WSCATProject.Warehouse
             {
                 return;
             }
-            //是否要新增一行的标记
-            bool newAdd = false;
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count - 2];
-            labBotton2.Text = (superGridControl1.PrimaryGrid.Rows.Count - 1).ToString() + "," + ClickRowIndex;
-            //id字段为空 说明是没有数据的行 不是修改而是新增
-            if (gr.Cells["gridColumnid"].Value == null)
-            {
-                newAdd = true;
-            }
             try
             {
-                //gr = new GridRow(new string[] {
-                //    "商品代码",
-                //    "商品名称",
-                //    "规格类型",
-                //    "条形码",
-                //    "单位",
-                //    "数量",
-                //    "7",
-                //    "8",
-                //    "仓库",
-                //    "仓库地址",
-                //    "11",
-                //    "生产采购日期",
-                //    "保质期","有效期","备注" });
-                //superGridControl1.PrimaryGrid.Rows.Insert(0, gr);
+                //是否要新增一行的标记
+                bool newAdd = false;
+                GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count - 2];
+                //id字段为空 说明是没有数据的行 不是修改而是新增
+                if (gr.Cells["gridColumnid"].Value == null)
+                {
+                    newAdd = true;
+                }
 
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
                 gr.Cells["gridColumncode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
@@ -650,7 +640,8 @@ namespace WSCATProject.Warehouse
                     this.comboBoxEx1.DataSource = dt;
                     comboBoxEx1.ValueMember = "code";
                     comboBoxEx1.DisplayMember = "name";
-                    string phone = dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();
+                    dataGridViewFujia.DataSource = _AllSupply;
+                    string phone = XYEEncoding.strHexDecode(dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString());
                     labtextboxTop9.Text = phone;//联系电话
                 }
                 //入库员
@@ -665,7 +656,6 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("错误代码：2109-双击绑定供应商或者入库员数据错误！请检查：" + ex.Message);
             }
-
         }
 
         /// <summary>
@@ -970,13 +960,13 @@ namespace WSCATProject.Warehouse
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "编码";
-                dgvc.DataPropertyName = "编码";
+                dgvc.DataPropertyName = "code";
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "单位名称";
-                dgvc.DataPropertyName = "单位名称";
+                dgvc.DataPropertyName = "name";
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -984,7 +974,7 @@ namespace WSCATProject.Warehouse
                 dgvc.Name = "mobilePhone";
                 dgvc.Visible = false;
                 dgvc.HeaderText = "联系手机";
-                dgvc.DataPropertyName = "联系手机";
+                dgvc.DataPropertyName = "mobilePhone";
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(550, 160);
@@ -1089,7 +1079,7 @@ namespace WSCATProject.Warehouse
             superGridControl1.PrimaryGrid.Columns.Add(gc);
         }
 
-       /// <summary>
+        /// <summary>
         /// 标示那个控件不可用
         /// </summary>
         private void InitForm()
@@ -1103,8 +1093,17 @@ namespace WSCATProject.Warehouse
             this.labtextboxBotton3.ReadOnly = true;
             this.labtextboxBotton4.ReadOnly = true;
             this.resizablePanel1.Visible = false;
+            this.dateTimePicker1.Enabled = false;
             this.superGridControl1.PrimaryGrid.ReadOnly = true;
             this.toolStripButtonsave.Enabled = false;
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
+            labtextboxTop9.BackColor = Color.FromArgb(240, 240, 240);
+            comboBoxEx2.BackColor = Color.FromArgb(240, 240, 240);
+            textBoxX2.ReadOnly = true;
+            textBoxX2.Enabled = false;
+            textBoxX2.BackColor= Color.FromArgb(240, 240, 240);
         }
         #endregion
 
@@ -1177,6 +1176,7 @@ namespace WSCATProject.Warehouse
             if (e.KeyChar == (char)Keys.Escape)
             {
                 this.resizablePanel1.Visible = false;
+                this.resizablePanelData.Visible = false;
             }
         }
 
@@ -1217,6 +1217,7 @@ namespace WSCATProject.Warehouse
                 if (labtextboxTop6.Text.Trim() == "")
                 {
                     InitSupply();
+                    _Click = 3;
                     return;
                 }
                 dataGridViewFujia.DataSource = null;
@@ -1266,6 +1267,7 @@ namespace WSCATProject.Warehouse
                 if (labtextboxBotton1.Text.Trim() == "")
                 {
                     InitEmployee();
+                    _Click = 4;
                     return;
                 }
                 dataGridViewFujia.DataSource = null;
@@ -1360,9 +1362,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message, "入库单温馨提示");
             }
-       
+
         }
 
         private void textBoxX2_Enter(object sender, EventArgs e)

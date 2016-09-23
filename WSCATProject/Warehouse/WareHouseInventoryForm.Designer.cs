@@ -42,6 +42,7 @@
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -67,7 +68,6 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -139,13 +139,13 @@
             this.toolStripButtonshuaixin,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
-            this.toolStripButton6});
+            this.toolStripButton6,
+            this.toolStripButton7});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1202, 60);
             this.toolStrip1.TabIndex = 50;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolTip1.SetToolTip(this.toolStrip1, "排序");
             this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             // 
             // toolStripButtonnew
@@ -172,7 +172,7 @@
             // 
             // toolStripButtonhou
             // 
-            this.toolStripButtonhou.Image = global::WSCATProject.Properties.Resources.盘点;
+            this.toolStripButtonhou.Image = global::WSCATProject.Properties.Resources.Paste;
             this.toolStripButtonhou.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonhou.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonhou.Name = "toolStripButtonhou";
@@ -226,6 +226,14 @@
             this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
             this.toolStripButton6.Click += new System.EventHandler(this.pictureBox8_Click);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Image = global::WSCATProject.Properties.Resources.caozuo;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(57, 57);
+            this.toolStripButton7.Text = "编制";
             // 
             // labelX4
             // 
@@ -316,7 +324,6 @@
             this.superGridControl1.Size = new System.Drawing.Size(1202, 494);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
-            this.toolTip1.SetToolTip(this.superGridControl1, "添加商品");
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             // 
@@ -486,14 +493,6 @@
             this.pictureBox7.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox7, "最小化");
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.Image = global::WSCATProject.Properties.Resources.caozuo;
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(52, 22);
-            this.toolStripButton7.Text = "编制";
             // 
             // WareHouseInventoryForm
             // 

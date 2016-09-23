@@ -25,9 +25,8 @@ namespace WSCATProject.Warehouse
         CodingHelper ch = new CodingHelper();
         InterfaceLayer.Warehouse.WarehouseOutDetailInterface waredetaout = new WarehouseOutDetailInterface();
         EmpolyeeInterface employee = new EmpolyeeInterface();
-        InterfaceLayer.Purchase.PurchaseDetailInterface pdi = new InterfaceLayer.Purchase.PurchaseDetailInterface();
         ClientInterface client = new ClientInterface();//客户
-     
+        InterfaceLayer.Sales.SalesMainInterface sales = new InterfaceLayer.Sales.SalesMainInterface();
         #endregion
 
         #region 数据字段
@@ -117,7 +116,6 @@ namespace WSCATProject.Warehouse
             }
         }
 
-
         #region 初始化数据
         /// <summary>
         /// 统计行数据
@@ -140,7 +138,7 @@ namespace WSCATProject.Warehouse
         }
 
         /// <summary>
-        /// 初始化商品下拉别表的数据 待修改字段
+        /// 初始化商品下拉别表的数据
         /// </summary>
         private void InitMaterialDataGridView()
         {
@@ -168,10 +166,10 @@ namespace WSCATProject.Warehouse
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "PurchaseCode";
+            dgvc.Name = "salesOrderCode";
             dgvc.Visible = false;
-            dgvc.HeaderText = "PurchaseCode";
-            dgvc.DataPropertyName = "PurchaseCode";
+            dgvc.HeaderText = "salesOrderCode";
+            dgvc.DataPropertyName = "salesOrderCode";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
@@ -263,6 +261,14 @@ namespace WSCATProject.Warehouse
             dgvc.Visible = false;
             dgvc.HeaderText = "reserved2";
             dgvc.DataPropertyName = "reserved2";
+            dataGridView1.Columns.Add(dgvc);
+
+            //货架路径
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "storageRackLocation";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "storageRackLocation";
+            dgvc.DataPropertyName = "storageRackLocation";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
@@ -371,8 +377,8 @@ namespace WSCATProject.Warehouse
         {
             if (this.labtextboxTop2.Text.Trim() == "")
             {
-                MessageBox.Show("请先选择客户，显示销售单号!");
                 resizablePanelData.Visible = false;
+                MessageBox.Show("请先选择客户，显示销售单号!");
                 return;
             }
             if (e.GridCell.GridColumn.Name == "material")
@@ -382,13 +388,13 @@ namespace WSCATProject.Warehouse
                 if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
                 {
                     //模糊查询商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                   // _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
                     InitMaterialDataGridView();
                 }
                 else
                 {
                     //绑定商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "");
+                  //  _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim() + ""), "");
                     InitMaterialDataGridView();
                 }
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
@@ -435,7 +441,7 @@ namespace WSCATProject.Warehouse
             if (SS == "")
             {
                 //模糊查询商品列表
-                _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+               // _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
@@ -524,7 +530,7 @@ namespace WSCATProject.Warehouse
                 labtextboxTop9.Text = phone;
                 resizablePanel1.Visible = false;
                 //根据搜索的客户来绑定下拉列表
-                DataTable dt = ch.DataTableReCoding(client.GetTableByClientCode( _clientcode));
+                DataTable dt = ch.DataTableReCoding(sales.GetTableByClientCode( _clientcode));
                 this.comboBoxExxiaos.DataSource = dt;
                 comboBoxExxiaos.ValueMember = "code";
                 comboBoxExxiaos.DisplayMember = "name";
@@ -659,6 +665,19 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：模糊查询客户数据错误"+ex.Message,"出库单温馨提示");
+            }
+        }
+        /// <summary>
+        /// 按ESC关闭副表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseOutMainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.resizablePanel1.Visible = false;
+                this.resizablePanelData.Visible = false;
             }
         }
     }

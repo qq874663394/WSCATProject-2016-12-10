@@ -203,5 +203,47 @@ namespace WSCATProject.Warehouse
             //    dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             //}
         }
+
+        /// <summary>
+        /// 出库员模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (labtextboxBotton1.Text.Trim() == "")
+                {
+                    InitEmployee();
+                    return;
+                }
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(234, 440);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：模糊查询出库员数据错误" + ex.Message, "出库单温馨提示");
+            }
+
+
+        }
     }
 }

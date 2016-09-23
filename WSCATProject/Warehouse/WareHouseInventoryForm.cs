@@ -120,7 +120,6 @@ namespace WSCATProject.Warehouse
             //调用表格初始化
             superGridControl1.PrimaryGrid.EnsureVisible();
             InitDataGridView();
-
             #region 盘点方案
             WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
             CodingHelper codeh = new CodingHelper();
