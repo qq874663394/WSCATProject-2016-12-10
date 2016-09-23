@@ -48,5 +48,15 @@ namespace InterfaceLayer.Warehouse
         {
             return wol.update(warehouseOut, listModel);
         }
+        /// <summary>
+        /// 上下一单
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="state">状态:0:下一单,1:上一单</param>
+        /// <returns></returns>
+        public WarehouseOut GetPreAndNext(int id, int state)
+        {
+            return wol.GetPreAndNext(id, state);
+        }
     }
 }
