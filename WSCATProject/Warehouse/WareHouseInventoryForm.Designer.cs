@@ -145,7 +145,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1202, 60);
             this.toolStrip1.TabIndex = 50;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolTip1.SetToolTip(this.toolStrip1, "排序");
             this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             // 
             // toolStripButtonnew
@@ -316,7 +315,6 @@
             this.superGridControl1.Size = new System.Drawing.Size(1202, 494);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
-            this.toolTip1.SetToolTip(this.superGridControl1, "添加商品");
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             // 

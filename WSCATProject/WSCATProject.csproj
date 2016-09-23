@@ -164,6 +164,12 @@
     <Compile Include="Warehouse\WareHouseDisassembly.Designer.cs">
       <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
     </Compile>
+    <Compile Include="Warehouse\WareHouseDisassemblyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warehouse\WareHouseDisassemblyForm.Designer.cs">
+      <DependentUpon>WareHouseDisassemblyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Warehouse\WareHouseInMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,12 +193,6 @@
     </Compile>
     <Compile Include="Warehouse\WareHouseInventoryProfit.Designer.cs">
       <DependentUpon>WareHouseInventoryProfit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseInventoryProfitForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Warehouse\WareHouseInventoryProfitForm.Designer.cs">
-      <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Warehouse\WareHouseInventoryReportForm.cs">
       <SubType>Form</SubType>
@@ -270,6 +270,9 @@
     <EmbeddedResource Include="Warehouse\WareHouseDisassembly.resx">
       <DependentUpon>WareHouseDisassembly.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Warehouse\WareHouseDisassemblyForm.resx">
+      <DependentUpon>WareHouseDisassemblyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInMain.resx">
       <DependentUpon>WareHouseInMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,9 +284,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryProfit.resx">
       <DependentUpon>WareHouseInventoryProfit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Warehouse\WareHouseInventoryProfitForm.resx">
-      <DependentUpon>WareHouseInventoryProfitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warehouse\WareHouseInventoryReportForm.resx">
       <DependentUpon>WareHouseInventoryReportForm.cs</DependentUpon>

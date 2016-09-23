@@ -219,10 +219,10 @@ namespace WSCATProject.Warehouse
             //调用合计行数据
             InitDataGridView();
             comboBoxEx2.SelectedIndex = 0;
-            //生成code 和显示条形码
+                //生成code 和显示条形码
 
-                _warehouseincode = BuildCode.ModuleCode("WHI");
-                textBoxOddNumbers.Text = _warehouseincode;
+                _WareHouseInCode = BuildCode.ModuleCode("WHI");
+                textBoxOddNumbers.Text = _WareHouseInCode;
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
@@ -989,6 +989,121 @@ namespace WSCATProject.Warehouse
                 resizablePanel1.Location = new Point(550, 160);
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllSupply);
             }
+        }
+
+        /// <summary>
+        /// 初始化入库明细表格
+        /// </summary>
+        private void InitWarehouseDetail()
+        {
+            GridColumn gc = null;
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialDaima";
+            gc.Name = "materialDaima";
+            gc.HeaderText = "商品代码";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaName";
+            gc.Name = "materiaName";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaModel";
+            gc.Name = "materiaModel";
+            gc.HeaderText = "规格型号";
+            gc.Width = 130;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "barcode";
+            gc.Name = "barcode";
+            gc.HeaderText = "条形码";
+            gc.Width = 150;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaUnit";
+            gc.Name = "materiaUnit";
+            gc.HeaderText = "单位";
+            gc.Width = 70;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "number";
+            gc.Name = "number";
+            gc.HeaderText = "数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "warehouseName";
+            gc.Name = "warehouseName";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "storageRackName";
+            gc.Name = "storageRackName";
+            gc.HeaderText = "区域/排/行/列";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "productionDate";
+            gc.Name = "productionDate";
+            gc.HeaderText = "采购/生产日期";
+            gc.Width = 70;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "qualityDate";
+            gc.Name = "qualityDate";
+            gc.HeaderText = "保质期(天)";
+            gc.Width = 50;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "effectiveDate";
+            gc.Name = "effectiveDate";
+            gc.HeaderText = "有效期至";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "备注";
+            gc.Width = 110;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+        }
+
+        /// <summary>
+        /// 标示那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            this.comboBoxEx2.Enabled = false;
+            this.labtextboxTop6.ReadOnly = true;
+            this.textBoxOddNumbers.ReadOnly = true;
+            this.comboBoxEx1.Enabled = false;
+            this.labtextboxTop9.ReadOnly = true;
+            this.labtextboxBotton1.ReadOnly = true;
+            this.labtextboxBotton3.ReadOnly = true;
+            this.labtextboxBotton4.ReadOnly = true;
+            this.resizablePanel1.Visible = false;
+            this.superGridControl1.PrimaryGrid.ReadOnly = true;
+            this.toolStripButtonsave.Enabled = false;
         }
 
         #endregion
