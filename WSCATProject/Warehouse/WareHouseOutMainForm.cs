@@ -276,7 +276,46 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonqian_Click(object sender, EventArgs e)
         {
+            WarehouseOutInterface warehouseoutterface = new WarehouseOutInterface();
+            try
+            {
+                if (textBoid.Text == "")
+                {
+                    textBoid.Text = "0";
+                }
 
+                WarehouseOut warehouseout = warehouseoutterface.GetPreAndNext(Convert.ToInt32(textBoid.Text), 1);
+                this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseout.type);
+                comboBoxExxiaos.Text = XYEEncoding.strHexDecode(warehouseout.salesCode);//销售单号
+                labtextboxTop2.Text = XYEEncoding.strHexDecode(warehouseout.ClientName);//客户
+                labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseout.SalesPhone);//销售电话
+                comboBoxExsonghuo.Text = XYEEncoding.strHexDecode(warehouseout.delivery);//送货方式
+                labtextboxBotton2.Text = XYEEncoding.strHexDecode(warehouseout.remark);//摘要
+                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseout.operation);
+                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseout.MakeMan);
+                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseout.examine);
+                if (warehouseout.id != 0)
+                {
+                    textBoid.Text = warehouseout.id.ToString();
+                    WarehouseOutDetailInterface widiout = new WarehouseOutDetailInterface();
+                    superGridControl1.PrimaryGrid.DataSource = null;
+                    superGridControl1.PrimaryGrid.Columns.Clear();
+                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                    //DataTable dt = ch.DataTableReCoding(widiout.getListByMainCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)).Tables[0]);
+                    DataTable dt = new DataTable();
+                    superGridControl1.PrimaryGrid.DataSource = dt;
+                    InitWarehouseDetail();
+                    //InitForm();
+                }
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试点击后单数据错误" + ex.Message, "出库单温馨提示");
+            }
         }
         /// <summary>
         /// 后单的点击事件
@@ -292,9 +331,8 @@ namespace WSCATProject.Warehouse
                 {
                     textBoid.Text = "0";
                 }
-
-                WarehouseOut warehouseout = new WarehouseOut();
-                //WarehouseOut warehouseout = warehouseoutterface.GetPreAndNext(Convert.ToInt32(textBoid.Text), 0);
+                
+                WarehouseOut warehouseout = warehouseoutterface.GetPreAndNext(Convert.ToInt32(textBoid.Text), 0);
                 this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseout.type);
                 comboBoxExxiaos.Text = XYEEncoding.strHexDecode(warehouseout.salesCode);//销售单号
                 labtextboxTop2.Text = XYEEncoding.strHexDecode(warehouseout.ClientName);//客户
@@ -307,13 +345,14 @@ namespace WSCATProject.Warehouse
                 if (warehouseout.id != 0)
                 {
                     textBoid.Text = warehouseout.id.ToString();
-                    WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
+                    WarehouseOutDetailInterface widiout = new WarehouseOutDetailInterface();
                     superGridControl1.PrimaryGrid.DataSource = null;
                     superGridControl1.PrimaryGrid.Columns.Clear();
                     superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-                    DataTable dt = ch.DataTableReCoding(widif.getListByMainCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)).Tables[0]);
+                    //DataTable dt = ch.DataTableReCoding(widiout.getListByMainCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)).Tables[0]);
+                    DataTable dt = new DataTable();
                     superGridControl1.PrimaryGrid.DataSource = dt;
-                    //InitWarehouseDetail();
+                    InitWarehouseDetail();
                     //InitForm();
                 }
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
@@ -323,7 +362,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2106-尝试点击后单数据错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：-尝试点击后单数据错误" + ex.Message, "出库单温馨提示");
             }
         }
 
@@ -585,6 +624,103 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllClient);
                 resizablePanel1.Visible = true;
             }
+        }
+
+        /// <summary>
+        /// 初始化入库明细表格
+        /// </summary>
+        private void InitWarehouseDetail()
+        {
+            GridColumn gc = null;
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialDaima";
+            gc.Name = "materialDaima";
+            gc.HeaderText = "商品代码";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaName";
+            gc.Name = "materiaName";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaModel";
+            gc.Name = "materiaModel";
+            gc.HeaderText = "规格型号";
+            gc.Width = 130;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "barcode";
+            gc.Name = "barcode";
+            gc.HeaderText = "条形码";
+            gc.Width = 150;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materiaUnit";
+            gc.Name = "materiaUnit";
+            gc.HeaderText = "单位";
+            gc.Width = 70;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "number";
+            gc.Name = "number";
+            gc.HeaderText = "数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "warehouseName";
+            gc.Name = "warehouseName";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "storageRackName";
+            gc.Name = "storageRackName";
+            gc.HeaderText = "区域/排/行/列";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "productionDate";
+            gc.Name = "productionDate";
+            gc.HeaderText = "采购/生产日期";
+            gc.Width = 70;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "qualityDate";
+            gc.Name = "qualityDate";
+            gc.HeaderText = "保质期(天)";
+            gc.Width = 50;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "effectiveDate";
+            gc.Name = "effectiveDate";
+            gc.HeaderText = "有效期至";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "备注";
+            gc.Width = 110;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
         }
 
         #endregion
