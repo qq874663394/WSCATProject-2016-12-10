@@ -327,6 +327,16 @@ namespace WSCATProject.Warehouse
                 resizablePanel1.Location = new Point(234, 440);
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
                 resizablePanel1.Visible = true;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(220, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 440);
+                    return;
+                }
             }
         }
 
@@ -360,7 +370,7 @@ namespace WSCATProject.Warehouse
                 dgvc.Visible = false;
                 dataGridViewFujia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(550, 160);
+                resizablePanel1.Location = new Point(470, 160);
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllClient);
                 resizablePanel1.Visible = true;
             }

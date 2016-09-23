@@ -26,19 +26,19 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 统计账存数量
         /// </summary>
-        private decimal _Materialzhucun;
+        private decimal _ZhangCunShuLiang;
         /// <summary>
         /// 统计判定数量
         /// </summary>
-        private decimal _Materialpandian;
+        private decimal _PanDianShuLiang;
         /// <summary>
         /// 统计盘盈数量
         /// </summary>
-        private decimal _Materialpanying;
+        private decimal _PanYingShuLiang;
         /// <summary>
         /// 统计盘亏数量
         /// </summary>
-        private decimal _Materialpankui;
+        private decimal _PanKuiShuLiang;
         #endregion
 
         #region 设置窗体无边框可以拖动
@@ -198,20 +198,19 @@ namespace WSCATProject.Warehouse
             gr.Cells["pankuinumber"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
 
-
         #endregion
 
         #region superGridControl单元格验证事件
         private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+            decimal tempAllzhucun = 0;
+            decimal tempAllpandian = 0;
+            decimal tempAllpanying = 0;
+            decimal tempAllpankui = 0;
             //计算盘盈、盘亏的数量
             try
             {
-                decimal tempAllzhucun = 0;
-                decimal tempAllpandian = 0;
-                decimal tempAllpanying = 0;
-                decimal tempAllpankui = 0;
                 decimal zhucunnumber = Convert.ToDecimal(gr.Cells["zhangcunnumber"].FormattedValue);
                 decimal pandiannumber = Convert.ToDecimal(gr.Cells["pandiannumber"].FormattedValue);
                 decimal panying = pandiannumber - zhucunnumber;
@@ -225,7 +224,14 @@ namespace WSCATProject.Warehouse
                     gr.Cells["pankuinumber"].Value = panying;
                     gr.Cells["panyingnumber"].Value = "0.00";
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("计算盘盈，盘亏数量有误！请检查：" + ex.Message);
+            }   
 
+            try
+            {
                 //逐行统计数据总数
                 for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
                 {
@@ -235,19 +241,19 @@ namespace WSCATProject.Warehouse
                     tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
                     tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
                 }
-                _Materialzhucun = tempAllzhucun;
-                _Materialpandian = tempAllpandian;
-                _Materialpanying = tempAllpanying;
-                _Materialpankui = tempAllpankui;
+                _ZhangCunShuLiang = tempAllzhucun;
+                _PanDianShuLiang = tempAllpandian;
+                _PanYingShuLiang = tempAllpanying;
+                _PanKuiShuLiang = tempAllpankui;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                gr["zhangcunnumber"].Value = _Materialzhucun.ToString();
-                gr["pandiannumber"].Value = _Materialpandian.ToString();
-                gr["panyingnumber"].Value = _Materialpanying.ToString();
-                gr["pankuinumber"].Value = _Materialpankui.ToString();
+                gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
+                gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
+                gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("统计数量错误" + ex.Message);
+                MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
             }
         }
         #endregion
