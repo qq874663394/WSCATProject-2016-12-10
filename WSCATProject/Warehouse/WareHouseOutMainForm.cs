@@ -117,7 +117,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2201-初始化数据错误"+ex.Message,"出库单温馨提示");
+                MessageBox.Show("错误代码：2201-初始化数据错误" + ex.Message, "出库单温馨提示");
             }
         }
         /// <summary>
@@ -127,7 +127,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
-         
+
         }
         /// <summary>
         /// 保存按钮的点击事件
@@ -137,7 +137,7 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-           // isNUllValidate();
+            // isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
             //string warehouseIncode = "";
             WarehouseOutInterface warehouseoutinterface = new WarehouseOutInterface();
@@ -148,16 +148,18 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseout.checkState = 0;
-                warehouseout.ClientCode = XYEEncoding.strCodeHex(_clientcode);//客户code
+                warehouseout.clientCode = XYEEncoding.strCodeHex(_clientcode);//客户code
                 warehouseout.code = XYEEncoding.strCodeHex(_warehouseoutcode);//单号
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
-                warehouseout.DefaultType =XYEEncoding.strCodeHex("出库开单");//默认单据类型
-                warehouseout.Delivery =XYEEncoding.strCodeHex(comboBoxExsonghuo.Text);//配送方式
+                warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
+                warehouseout.delivery = XYEEncoding.strCodeHex(comboBoxExsonghuo.Text);//配送方式
                 warehouseout.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
                 warehouseout.MakeMan = XYEEncoding.strCodeHex(labtextboxBotton3.Text);//制单人
-                warehouseout.ExpressMan = "";
-                warehouseout.ExpressOdd = "";
-                warehouseout.ExpressPhone = "";
+                warehouseout.SalesPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//销售电话
+                warehouseout.ClientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户名称
+                warehouseout.expressMan = "";
+                warehouseout.expressOdd = "";
+                warehouseout.expressPhone = "";
                 warehouseout.isClear = 1;
                 warehouseout.operation = XYEEncoding.strCodeHex(labtextboxBotton1.Text);
                 warehouseout.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);
@@ -167,7 +169,7 @@ namespace WSCATProject.Warehouse
                 warehouseout.state = 0;
                 warehouseout.stock = "";
                 warehouseout.type = XYEEncoding.strCodeHex(comboBoxEx1.Text);
-                warehouseout.updateDate = DateTime.Now;  
+                warehouseout.updateDate = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -221,13 +223,13 @@ namespace WSCATProject.Warehouse
 
                         WarehouseOutDetail warehouseoutd = new WarehouseOutDetail();
                         warehouseoutd.barcode = XYEEncoding.strCodeHex(gr[""].Value.ToString());
-                        warehouseoutd.code = XYEEncoding.strCodeHex(_warehouseoutcode+i.ToString());
+                        warehouseoutd.code = XYEEncoding.strCodeHex(_warehouseoutcode + i.ToString());
                         warehouseoutd.date = dateTimePicker1.Value;
-                        warehouseoutd.effectiveDate =Convert.ToDateTime( gr[""].Value.ToString());
+                        warehouseoutd.effectiveDate = Convert.ToDateTime(gr[""].Value.ToString());
                         warehouseoutd.IsArrive = 1;
                         warehouseoutd.isClear = 1;
                         warehouseoutd.MainCode = XYEEncoding.strCodeHex(_warehouseoutcode);
-                        warehouseoutd.materialCode =XYEEncoding.strCodeHex(gr[""].Value.ToString());
+                        warehouseoutd.materialCode = XYEEncoding.strCodeHex(gr[""].Value.ToString());
                         warehouseoutd.materialDaima = XYEEncoding.strCodeHex(gr[""].Value.ToString());
                         warehouseoutd.materiaModel = XYEEncoding.strCodeHex(gr[""].Value.ToString());
                         warehouseoutd.materiaName = XYEEncoding.strCodeHex(gr[""].Value.ToString());
@@ -260,7 +262,7 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-           // object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
+            // object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
             //this.textBoxid.Text = warehouseInResult.ToString();
             //if (warehouseInResult != null)
             //{
@@ -274,7 +276,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonqian_Click(object sender, EventArgs e)
         {
-        
+
         }
         /// <summary>
         /// 后单的点击事件
@@ -283,7 +285,46 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonhou_Click(object sender, EventArgs e)
         {
+            WarehouseOutInterface warehouseoutterface = new WarehouseOutInterface();
+            try
+            {
+                if (textBoid.Text == "")
+                {
+                    textBoid.Text = "0";
+                }
 
+                WarehouseOut warehouseout = new WarehouseOut();
+                //WarehouseOut warehouseout = warehouseoutterface.GetPreAndNext(Convert.ToInt32(textBoid.Text), 0);
+                this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseout.type);
+                comboBoxExxiaos.Text = XYEEncoding.strHexDecode(warehouseout.salesCode);//销售单号
+                labtextboxTop2.Text = XYEEncoding.strHexDecode(warehouseout.ClientName);//客户
+                labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseout.SalesPhone);//销售电话
+                comboBoxExsonghuo.Text = XYEEncoding.strHexDecode(warehouseout.delivery);//送货方式
+                labtextboxBotton2.Text = XYEEncoding.strHexDecode(warehouseout.remark);//摘要
+                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseout.operation);
+                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseout.MakeMan);
+                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseout.examine);
+                if (warehouseout.id != 0)
+                {
+                    textBoid.Text = warehouseout.id.ToString();
+                    WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
+                    superGridControl1.PrimaryGrid.DataSource = null;
+                    superGridControl1.PrimaryGrid.Columns.Clear();
+                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                    DataTable dt = ch.DataTableReCoding(widif.getListByMainCode(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)).Tables[0]);
+                    superGridControl1.PrimaryGrid.DataSource = dt;
+                    //InitWarehouseDetail();
+                    //InitForm();
+                }
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2106-尝试点击后单数据错误" + ex.Message, "入库单温馨提示");
+            }
         }
 
         #region 初始化数据
@@ -373,7 +414,7 @@ namespace WSCATProject.Warehouse
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "number";
             dgvc.Visible = false;
-            dgvc.HeaderText = "number"; 
+            dgvc.HeaderText = "number";
             dgvc.DataPropertyName = "number";
             dataGridView1.Columns.Add(dgvc);
 
@@ -435,7 +476,7 @@ namespace WSCATProject.Warehouse
 
             //货架路径
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "storageRackLocation";  
+            dgvc.Name = "storageRackLocation";
             dgvc.Visible = false;
             dgvc.HeaderText = "storageRackLocation";
             dgvc.DataPropertyName = "storageRackLocation";
@@ -568,13 +609,13 @@ namespace WSCATProject.Warehouse
                 if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
                 {
                     //模糊查询商品列表
-                   // _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                    // _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
                     InitMaterialDataGridView();
                 }
                 else
                 {
                     //绑定商品列表
-                  //  _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim() + ""), "");
+                    //  _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim() + ""), "");
                     InitMaterialDataGridView();
                 }
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
@@ -621,7 +662,7 @@ namespace WSCATProject.Warehouse
             if (SS == "")
             {
                 //模糊查询商品列表
-               // _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+                // _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }
@@ -710,14 +751,14 @@ namespace WSCATProject.Warehouse
                 labtextboxTop9.Text = phone;
                 resizablePanel1.Visible = false;
                 //根据搜索的客户来绑定下拉列表
-                DataTable dt = ch.DataTableReCoding(sales.GetTableByClientCode( _clientcode));
+                DataTable dt = ch.DataTableReCoding(sales.GetTableByClientCode(_clientcode));
                 this.comboBoxExxiaos.DataSource = dt;
                 comboBoxExxiaos.ValueMember = "code";
                 comboBoxExxiaos.DisplayMember = "name";
 
             }
             //业务员
-            if (_Click == 2||_Click==4)
+            if (_Click == 2 || _Click == 4)
             {
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                 labtextboxBotton1.Text = name;
@@ -734,7 +775,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void WareHouseOutMainForm_Activated(object sender, EventArgs e)
         {
-             labtextboxTop2.Focus();
+            labtextboxTop2.Focus();
         }
         /// <summary>
         /// 改变边框颜色
@@ -795,10 +836,10 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询出库员数据错误"+ex.Message,"出库单温馨提示");
+                MessageBox.Show("错误代码：模糊查询出库员数据错误" + ex.Message, "出库单温馨提示");
             }
-     
-        
+
+
         }
         /// <summary>
         /// 客户的模糊查询
@@ -809,7 +850,7 @@ namespace WSCATProject.Warehouse
         {
             try
             {
-                if (this.labtextboxTop2.Text.Trim()=="")
+                if (this.labtextboxTop2.Text.Trim() == "")
                 {
                     InitClient();
                     _Click = 3;
@@ -839,12 +880,12 @@ namespace WSCATProject.Warehouse
 
                 resizablePanel1.Location = new Point(550, 160);
                 string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(client.GetList(0,name));
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询客户数据错误"+ex.Message,"出库单温馨提示");
+                MessageBox.Show("错误代码：模糊查询客户数据错误" + ex.Message, "出库单温馨提示");
             }
         }
         /// <summary>

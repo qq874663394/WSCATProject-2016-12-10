@@ -56,6 +56,7 @@
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.textBoid = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -334,8 +335,17 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panel5.Controls.Add(this.textBoid);
             this.panel5.Location = new System.Drawing.Point(0, 552);
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel5.Controls.SetChildIndex(this.labBotton1, 0);
+            this.panel5.Controls.SetChildIndex(this.labBotton3, 0);
+            this.panel5.Controls.SetChildIndex(this.labBotton4, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton1, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton3, 0);
+            this.panel5.Controls.SetChildIndex(this.labtextboxBotton4, 0);
+            this.panel5.Controls.SetChildIndex(this.pictureBox5, 0);
+            this.panel5.Controls.SetChildIndex(this.textBoid, 0);
             // 
             // pictureBox5
             // 
@@ -670,6 +680,13 @@
             // 
             this.comboItem3.Text = "送货上门";
             // 
+            // textBoid
+            // 
+            this.textBoid.Location = new System.Drawing.Point(1083, 14);
+            this.textBoid.Name = "textBoid";
+            this.textBoid.Size = new System.Drawing.Size(100, 21);
+            this.textBoid.TabIndex = 41;
+            // 
             // WareHouseOutMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -736,5 +753,6 @@
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.Editors.ComboItem comboItem6;
         private DevComponents.Editors.ComboItem comboItem7;
+        private System.Windows.Forms.TextBox textBoid;
     }
 }

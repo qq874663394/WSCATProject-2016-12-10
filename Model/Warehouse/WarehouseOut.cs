@@ -33,6 +33,8 @@ namespace Model
         private string _expressPhone;
         private string _defaultType;
         private string _makeMan;
+        private string _clientName;
+        private string _salesPhone;
 
         /// <summary>
         /// 自增ID
@@ -258,6 +260,22 @@ namespace Model
             {
                 _makeMan = value;
             }
+        }
+        /// <summary>
+        /// 客户Name
+        /// </summary>
+        public string ClientName
+        {
+            get{return _clientName; }
+            set {_clientName = value;}
+        }
+        /// <summary>
+        /// 销售电话
+        /// </summary>
+        public string SalesPhone
+        {
+            get { return _salesPhone;}
+            set{ _salesPhone = value;}
         }
         #endregion Model
 
