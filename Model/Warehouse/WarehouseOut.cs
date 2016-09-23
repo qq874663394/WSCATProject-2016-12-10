@@ -32,6 +32,7 @@ namespace Model
         private string _expressMan;
         private string _expressPhone;
         private string _defaultType;
+        private string _makeMan;
 
         /// <summary>
         /// 自增ID
@@ -241,6 +242,21 @@ namespace Model
             set
             {
                 _defaultType = value;
+            }
+        }
+        /// <summary>
+        /// 操作员
+        /// </summary>
+        public string MakeMan
+        {
+            get
+            {
+                return _makeMan;
+            }
+
+            set
+            {
+                _makeMan = value;
             }
         }
         #endregion Model

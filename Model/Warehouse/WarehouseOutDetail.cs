@@ -37,7 +37,7 @@ namespace Model
         private string _warehouseName;
         private string _materialdaima;
         private DateTime? _productiondate;
-        private DateTime? _qualitydate;
+        private decimal? _qualitydate;
         private DateTime? _effectivedate;
         /// <summary>
         /// 出库编号
@@ -292,7 +292,7 @@ namespace Model
         /// <summary>
 		/// 保质期
 		/// </summary>
-		public DateTime? qualityDate
+		public decimal? qualityDate
         {
             set { _qualitydate = value; }
             get { return _qualitydate; }
