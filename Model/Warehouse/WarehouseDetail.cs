@@ -12,7 +12,7 @@ namespace Model
 		{}
 		#region Model
 		private int _id;
-		private string _warehouseordercode;
+		private string _maincode;
 		private string _code;
 		private decimal? _number;
 		private DateTime? _date;
@@ -33,10 +33,10 @@ namespace Model
 		/// <summary>
 		/// 主表code
 		/// </summary>
-		public string warehouseOrdercode
+		public string mainCode
 		{
-			set{ _warehouseordercode=value;}
-			get{return _warehouseordercode;}
+			set{ _maincode=value;}
+			get{return _maincode;}
 		}
 		/// <summary>
 		/// 物料编码

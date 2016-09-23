@@ -11,9 +11,15 @@ namespace InterfaceLayer.Warehouse
     public class WarehouseOutDetailInterface
     {
         WarehouseOutDetailLogic wodl = new WarehouseOutDetailLogic();
-        public DataSet GetList(string strWhere)
+        /// <summary>
+        /// 复合查询
+        /// </summary>
+        /// <param name="fieldName">0：mainCode</param>
+        /// <param name="fieldValue"></param>
+        /// <returns></returns>
+        public DataSet GetList(int fieldName, string fieldValue)
         {
-            return wodl.GetList(strWhere);
+            return wodl.GetList(fieldName,fieldValue);
         }
     }
 }

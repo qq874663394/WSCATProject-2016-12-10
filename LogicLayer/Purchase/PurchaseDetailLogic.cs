@@ -14,6 +14,24 @@ namespace LogicLayer.Purchase
     public class PurchaseDetailLogic
     {
         PurchaseDetailBase pdl = new PurchaseDetailBase();
+        public DataTable GetList(int fieldName,string fieldValue)
+        {
+            DataTable dt = null;
+            string strWhere = "";
+            switch (fieldName)
+            {
+                case 0:
+                    strWhere += "";
+                    break;
+                case 1:
+
+                    break;
+                default:
+                    break;
+            }
+            dt = pdl.GetList(strWhere);
+            return dt;
+        }
         public DataTable GetList(string purchaseCode, string zhujima)
         {
             DataTable dt = null;

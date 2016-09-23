@@ -56,23 +56,23 @@ namespace BaseLayer
             return dt;
         }
 
+
         /// <summary>
-        /// 添加出库单
+        /// 事务新增
         /// </summary>
-        /// <param name="wo"></param>
-        /// <returns></returns>
-        public int Add(WarehouseOut wo)
+        /// <param name="hashTable">主表的sql和parameter</param>
+        /// <param name="sql">子表sql</param>
+        /// <param name="list">子表的parameter</param>
+        public object Add(WarehouseOut warehouseOut, List<WarehouseOutDetail> warehouseOutDetail)
         {
-            string sql = @"INSERT INTO T_WarehouseOut
-           (code
-           ,type
-           ,stock
-           ,operation
-           ,examine
-           ,isClear
-           ,updateDate
-           ,state
-           ,salesCode
+            List<SqlParameter[]> list = new List<SqlParameter[]>();
+            Hashtable hashTable = new Hashtable();
+            object result = null;
+            string sqlDetail = "";
+            string sqlMain = "";
+            try
+            {
+                sqlMain = @"INSERT INTO T_WarehouseOut (code,type,stock,operation,examine,isClear,updateDate,state,salesCode
            ,date
            ,checkState
            ,remark
@@ -85,92 +85,88 @@ namespace BaseLayer
            ,expressPhone
            ,defaultType)
      VALUES
-           (code,
-           @type,
-           @stock,
-           @operation,
-           @examine,
-           @isClear,
-           @updateDate,
-           @state,
-           @salesCode,
-           @date,
-           @checkState,
-           @remark,
-           @reserved1,
-           @reserved2,
-           @delivey,
-           @clientCode,
-           @expressOdd,
-           @expressMan,
-           @expressPhone,
-           @defaultType,";
-            return 0;
-        }
-        /// <summary>
-        /// 修改出库单
-        /// </summary>
-        /// <param name="wo"></param>
-        /// <returns></returns>
-        public int update(WarehouseOut wo)
-        {
-            string strSql = "";
-            try
-            {
-                strSql = string.Format("update T_WarehouseOut set type='{0}'," +
-                    "stock='{1}',operation='{2}',examine='{3}'," +
-                    "isClear={4},updateDate='{5}',state={6},salesCode='{7}',date='{8}'," +
-                    "checkState={9},remark='{10}',reserved1='{11}',reserved2='{12}'," +
-                    "delivey='{13}',clientCode='{14}',expressOdd='{15}'," +
-                    "expressMan='{16}',expressPhone='{17}',defaultType='{18}' where code='{19}'",
-                    wo.type,
-                    wo.stock,
-                    wo.operation,
-                    wo.examine,
-                    wo.isClear,
-                    wo.updateDate,
-                    wo.state,
-                    wo.salesCode,
-                    wo.date,
-                    wo.checkState,
-                    wo.remark,
-                    wo.reserved1,
-                    wo.reserved2,
-                    wo.Delivery,
-                    wo.ClientCode,
-                    wo.ExpressOdd,
-                    wo.ExpressMan,
-                    wo.ExpressPhone,
-                    wo.DefaultType,
-                    wo.code);
+           (@code,@type,@stock,@operation,@examine,@isClear,@updateDate,@state,@salesCode
+           ,@date
+           ,@checkState
+           ,@remark
+           ,@reserved1
+           ,@reserved2
+           ,@delivey
+           ,@clientCode
+           ,@expressOdd
+           ,@expressMan
+           ,@expressPhone
+           ,@defaultType)";
+                SqlParameter[] spsMain =
+                {
+                    new SqlParameter("@code",warehouseOut.code),
+                    new SqlParameter("@type",warehouseOut.type),
+                    new SqlParameter("@stock",warehouseOut.stock),
+                    new SqlParameter("@operation",warehouseOut.operation),
+                    new SqlParameter("@examine",warehouseOut.examine),
+                    new SqlParameter("@isClear",warehouseOut.isClear),
+                    new SqlParameter("@updateDate",warehouseOut.updateDate),
+                    new SqlParameter("@state",warehouseOut.state),
+                    new SqlParameter("@salesCode",warehouseOut.salesCode),
+                    new SqlParameter("@date",warehouseOut.date),
+                    new SqlParameter("@checkState",warehouseOut.checkState),
+                    new SqlParameter("@remark",warehouseOut.remark),
+                    new SqlParameter("@reserved1",warehouseOut.reserved1),
+                    new SqlParameter("@reserved2",warehouseOut.reserved2),
+                    new SqlParameter("@delivey",warehouseOut.delivery),
+                    new SqlParameter("@clientCode",warehouseOut.clientCode),
+                    new SqlParameter("@expressOdd",warehouseOut.expressOdd),
+                    new SqlParameter("@expressMan",warehouseOut.expressMan),
+                    new SqlParameter("@expressPhone",warehouseOut.expressPhone),
+                    new SqlParameter("@defaultType",warehouseOut.defaultType)
+                };
+                hashTable.Add(sqlMain, spsMain);
+                sqlDetail = @"INSERT INTO T_WarehouseOutDetail(code,materialDaima,materialCode,materiaName,materiaModel,
+materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,reserved1,reserved2,remark,storageRackName,
+storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate)
+VALUES(@code,@materialDaima,@materialCode,@materiaName,@materiaModel,@materiaUnit,@number,@price
+,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@reserved1,@reserved2,@remark,@storageRackName
+,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)";
+
+                foreach (var item in warehouseOutDetail)
+                {
+                    SqlParameter[] spsDetail =
+                    {
+                        new SqlParameter("@code",item.code),
+                        new SqlParameter("@materialDaima",item.code),
+                        new SqlParameter("@materialCode",item.materialCode),
+                        new SqlParameter("@materialName",item.materiaName),
+                        new SqlParameter("@materiaModel",item.materiaModel),
+                        new SqlParameter("@materiaUnit",item.materiaUnit),
+                        new SqlParameter("@number",item.number),
+                        new SqlParameter("@price",item.price),
+                        new SqlParameter("@money",item.money),
+                        new SqlParameter("@barcode",item.barcode),
+                        new SqlParameter("@rfid",item.rfid),
+                        new SqlParameter("@updateDate",item.updateDate),
+                        new SqlParameter("@state",item.state),
+                        new SqlParameter("@date",item.date),
+                        new SqlParameter("@isClear",item.isClear),
+                        new SqlParameter("@reserved1",item.reserved1),
+                        new SqlParameter("@reserved2",item.reserved2),
+                        new SqlParameter("@remark",item.remark),
+                        new SqlParameter("@storageRackName",item.StorageRackName),
+                        new SqlParameter("@storageRackCode",item.StorageRackCode),
+                        new SqlParameter("@isArrive",item.IsArrive),
+                        new SqlParameter("@warehouseCode",item.WarehouseCode),
+                        new SqlParameter("@warehouseName",item.WarehouseName),
+                        new SqlParameter("@mainCode",item.MainCode),
+                        new SqlParameter("@productionDate",item.productionDate),
+                        new SqlParameter("@qualityDate",item.qualityDate),
+                        new SqlParameter("@effectiveDate",item.effectiveDate)
+                    };
+                    list.Add(spsDetail);
+                }
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
             }
-            catch
+            catch (Exception ex)
             {
-                return -1;
-            }
-            int result = 0;
-            try
-            {
-                result = DbHelperSQL.ExecuteSql(strSql);
-            }
-            catch
-            {
-                return -2;
-            }
-            return result;
-        }
-        public int update(string field, int state, string code)
-        {
-            string sql = "";
-            int result = 0;
-            try
-            {
-                sql = string.Format("update T_WarehouseOut set {0}={1} where code='{2}'", field, state, code);
-                result = DbHelperSQL.ExecuteSql(sql);
-            }
-            catch (Exception)
-            {
-                throw new Exception("-1");
+                throw ex;
             }
             return result;
         }
@@ -279,12 +275,12 @@ SET type = @type
                             new SqlParameter("@remark",warehouseOut.remark),
                             new SqlParameter("@reserved1",warehouseOut.reserved1),
                             new SqlParameter("@reserved2",warehouseOut.reserved2),
-                            new SqlParameter("@delivey",warehouseOut.Delivery),
-                            new SqlParameter("@clientCode",warehouseOut.ClientCode),
-                            new SqlParameter("@expressOdd",warehouseOut.ExpressOdd),
-                            new SqlParameter("@expressMan",warehouseOut.ExpressMan),
-                            new SqlParameter("@expressPhone",warehouseOut.ExpressPhone),
-                            new SqlParameter("@defaultType",warehouseOut.DefaultType)
+                            new SqlParameter("@delivey",warehouseOut.delivery),
+                            new SqlParameter("@clientCode",warehouseOut.clientCode),
+                            new SqlParameter("@expressOdd",warehouseOut.expressOdd),
+                            new SqlParameter("@expressMan",warehouseOut.expressMan),
+                            new SqlParameter("@expressPhone",warehouseOut.expressPhone),
+                            new SqlParameter("@defaultType",warehouseOut.defaultType)
             };
             htKey.Add(sql, parameters);//sql语句和主表的参数集合
             try
@@ -298,28 +294,61 @@ SET type = @type
             return result;
         }
 
-        public int delete(string code)
+        /// <summary>
+        /// 上下一单
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="state">状态:0:下一单,1:上一单</param>
+        /// <returns></returns>
+        public WarehouseOut GetPreAndNext(int id, int state)
         {
-            string strSql = "";
+            string sql = "";
             try
             {
-                strSql = string.Format("delete from T_WarehouseOut where code={0}", code);
-            }
-            catch
-            {
-                return -1;
-            }
-            int result = 0;
-            try
-            {
-                result = DbHelperSQL.ExecuteSql(strSql);
-            }
-            catch
-            {
-                return -2;
-            }
+                if (state == 0)
+                {
+                    sql = string.Format("select top 1 * from T_WarehouseOut where id>{0}", id);
+                }
+                else
+                {
+                    sql = string.Format("select top 1 * from T_WarehouseOut where id<{0} order by id desc", id);
+                }
 
-            return result;
+                SqlDataReader read = DbHelperSQL.ExecuteReader(sql);
+                if (read.Read())
+                {
+                    WarehouseOut wo = new WarehouseOut()
+                    {
+                        id = Convert.ToInt32(read["id"]),
+                        code = read["code"].ToString(),
+                        type = read["type"].ToString(),
+                        stock = read["stock"].ToString(),
+                        operation = read["operation"].ToString(),
+                        examine = read["examine"].ToString(),
+                        isClear = Convert.ToInt32(read["isClear"]),
+                        updateDate = Convert.ToDateTime(read["updateDate"]),
+                        state = Convert.ToInt32(read["state"]),
+                        salesCode = read["salesCode"].ToString(),
+                        date = Convert.ToDateTime(read["date"]),
+                        checkState = Convert.ToInt32(read["checkState"]),
+                        remark = read["remark"].ToString(),
+                        reserved1 = read["reserved1"].ToString(),
+                        reserved2 = read["reserved2"].ToString(),
+                        delivery = read["delivery"].ToString(),
+                        clientCode = read["clientCode"].ToString(),
+                        expressOdd = read["expressOdd"].ToString(),
+                        expressMan = read["expressMan"].ToString(),
+                        defaultType = read["defaultType"].ToString(),
+                        expressPhone = read["expressPhone"].ToString()
+                    };
+                    return wo;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return null;
         }
     }
 }

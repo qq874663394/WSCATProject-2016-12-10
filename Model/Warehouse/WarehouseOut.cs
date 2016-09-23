@@ -32,6 +32,9 @@ namespace Model
         private string _expressMan;
         private string _expressPhone;
         private string _defaultType;
+        private string _makeMan;
+        private string _clientName;
+        private string _salesPhone;
 
         /// <summary>
         /// 自增ID
@@ -156,7 +159,7 @@ namespace Model
         /// <summary>
         /// 配送方式
         /// </summary>
-        public string Delivery
+        public string delivery
         {
             get
             {
@@ -171,7 +174,7 @@ namespace Model
         /// <summary>
         /// 客户code
         /// </summary>
-        public string ClientCode
+        public string clientCode
         {
             get
             {
@@ -186,7 +189,7 @@ namespace Model
         /// <summary>
         /// 快递单号
         /// </summary>
-        public string ExpressOdd
+        public string expressOdd
         {
             get
             {
@@ -201,7 +204,7 @@ namespace Model
         /// <summary>
         /// 快递员
         /// </summary>
-        public string ExpressMan
+        public string expressMan
         {
             get
             {
@@ -216,7 +219,7 @@ namespace Model
         /// <summary>
         /// 快递电话
         /// </summary>
-        public string ExpressPhone
+        public string expressPhone
         {
             get
             {
@@ -231,7 +234,7 @@ namespace Model
         /// <summary>
         /// 默认类型
         /// </summary>
-        public string DefaultType
+        public string defaultType
         {
             get
             {
@@ -242,6 +245,37 @@ namespace Model
             {
                 _defaultType = value;
             }
+        }
+        /// <summary>
+        /// 操作员
+        /// </summary>
+        public string MakeMan
+        {
+            get
+            {
+                return _makeMan;
+            }
+
+            set
+            {
+                _makeMan = value;
+            }
+        }
+        /// <summary>
+        /// 客户Name
+        /// </summary>
+        public string ClientName
+        {
+            get{return _clientName; }
+            set {_clientName = value;}
+        }
+        /// <summary>
+        /// 销售电话
+        /// </summary>
+        public string SalesPhone
+        {
+            get { return _salesPhone;}
+            set{ _salesPhone = value;}
         }
         #endregion Model
 

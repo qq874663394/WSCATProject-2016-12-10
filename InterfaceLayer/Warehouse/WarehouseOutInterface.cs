@@ -21,40 +21,42 @@ namespace InterfaceLayer.Warehouse
             return wol.GetListToOut(state);
         }
         /// <summary>
-        /// 根据where条件获取出库单列表
+        /// 获取数据列表
         /// </summary>
-        /// <param name="strWhere"></param>
+        /// <param name="fieldName">字段名</param>
+        /// <param name="fieldValue">0:code,1:type,2:checkState,3:clientCode,4:mainCode</param>
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {
             return wol.GetList(fieldName, fieldValue);
         }
         /// <summary>
-        /// 添加出库单
+        /// 事务新增
         /// </summary>
-        /// <param name="wo"></param>
-        /// <returns></returns>
-        public int Add(WarehouseOut wo)
+        /// <param name="warehouseOut">主表：只有一行数据</param>
+        /// <param name="warehouseOutDetail">从表：多行，用List类型保存多条model的数据</param>
+        public object Add(WarehouseOut warehouseOut, List<WarehouseOutDetail> warehouseOutDetail)
         {
-            return wol.Add(wo);
-        }
-
-        public int update(WarehouseOut wo)
-        {
-            return wol.update(wo);
+            return wol.Add(warehouseOut, warehouseOutDetail);
         }
         /// <summary>
         /// 更新主表和从表
         /// </summary>
         /// <param name="warehouseOut">主表：只有一行数据</param>
         /// <param name="listModel">从表：多行，用List类型保存多条model的数据</param>
-        public void update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
+        public int update(WarehouseOut warehouseOut, List<WarehouseOutDetail> listModel)
         {
-            wol.update(warehouseOut, listModel);
+            return wol.update(warehouseOut, listModel);
         }
-        public int delete(string code)
+        /// <summary>
+        /// 上下一单
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="state">状态:0:下一单,1:上一单</param>
+        /// <returns></returns>
+        public WarehouseOut GetPreAndNext(int id, int state)
         {
-            return wol.delete(code);
+            return wol.GetPreAndNext(id, state);
         }
     }
 }
