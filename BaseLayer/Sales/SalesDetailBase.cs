@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaseLayer.Sales
 {
-    public class SalesDetail
+    public class SalesDetailBase
     {
         public DataTable GetList(string strWhere)
         {
@@ -26,6 +26,12 @@ namespace BaseLayer.Sales
             {
                 throw ex;
             }
+            return dt;
+        }
+        public DataTable GetDetailByMainCode()
+        {
+            string sql = "";
+            DataTable dt = null;
             return dt;
         }
     }

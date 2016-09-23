@@ -248,7 +248,6 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
-
             //非空验证
             isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
@@ -329,7 +328,6 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.zhujima = "";//暂时为空
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseInList.Add(WarehouseIndetail);
-
                     }
                 }
             }

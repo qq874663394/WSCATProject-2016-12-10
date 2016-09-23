@@ -157,7 +157,7 @@ namespace Model
         /// <summary>
         /// 配送方式
         /// </summary>
-        public string Delivery
+        public string delivery
         {
             get
             {
@@ -172,7 +172,7 @@ namespace Model
         /// <summary>
         /// 客户code
         /// </summary>
-        public string ClientCode
+        public string clientCode
         {
             get
             {
@@ -187,7 +187,7 @@ namespace Model
         /// <summary>
         /// 快递单号
         /// </summary>
-        public string ExpressOdd
+        public string expressOdd
         {
             get
             {
@@ -202,7 +202,7 @@ namespace Model
         /// <summary>
         /// 快递员
         /// </summary>
-        public string ExpressMan
+        public string expressMan
         {
             get
             {
@@ -217,7 +217,7 @@ namespace Model
         /// <summary>
         /// 快递电话
         /// </summary>
-        public string ExpressPhone
+        public string expressPhone
         {
             get
             {
@@ -232,7 +232,7 @@ namespace Model
         /// <summary>
         /// 默认类型
         /// </summary>
-        public string DefaultType
+        public string defaultType
         {
             get
             {

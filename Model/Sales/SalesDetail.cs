@@ -14,7 +14,7 @@ namespace Model
 		private int _id;
 		private int? _isclear=1;
 		private string _code;
-		private string _salesordercode;
+		private string _salesmaincode;
 		private string _storagecode;
 		private string _storagename;
 		private string _materialcode;
@@ -63,10 +63,10 @@ namespace Model
 		/// <summary>
 		/// 主表code
 		/// </summary>
-		public string salesOrderCode
+		public string salesMainCode
 		{
-			set{ _salesordercode=value;}
-			get{return _salesordercode;}
+			set{ _salesmaincode = value;}
+			get{return _salesmaincode; }
 		}
 		/// <summary>
 		/// 仓库code
