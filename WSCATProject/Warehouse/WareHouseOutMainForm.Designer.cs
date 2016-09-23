@@ -57,6 +57,7 @@
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.textBoid = new System.Windows.Forms.TextBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -83,6 +85,16 @@
             // labelprie
             // 
             this.labelprie.Location = new System.Drawing.Point(1015, 5);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox10);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBox6, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBox7, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBox8, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBox10, 0);
             // 
             // labelTitle
             // 
@@ -687,6 +699,16 @@
             this.textBoid.Size = new System.Drawing.Size(100, 21);
             this.textBoid.TabIndex = 41;
             // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox10.Location = new System.Drawing.Point(637, 5);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(69, 56);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox10.TabIndex = 46;
+            this.pictureBox10.TabStop = false;
+            // 
             // WareHouseOutMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -718,6 +740,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -754,5 +777,6 @@
         private DevComponents.Editors.ComboItem comboItem6;
         private DevComponents.Editors.ComboItem comboItem7;
         private System.Windows.Forms.TextBox textBoid;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }
