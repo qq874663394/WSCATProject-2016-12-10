@@ -275,7 +275,7 @@ namespace WSCATProject.Warehouse
                 warehouseIn.reserved2 = "";
                 warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx2.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
-                warehouseIn.defaultType = "2C0F5B065B4E5141";
+                warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
                 warehouseIn.stock = "";
             }
@@ -323,7 +323,7 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.reserved1 = "";
                         WarehouseIndetail.rfid = "";
                         WarehouseIndetail.updateDate = nowDataTime;
-                        WarehouseIndetail.state = 1;
+                        WarehouseIndetail.state = 0;
                         WarehouseIndetail.isArrive = 1;
                         WarehouseIndetail.zhujima = "";//暂时为空
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
@@ -383,7 +383,7 @@ namespace WSCATProject.Warehouse
                 warehouseIn.reserved2 = "";
                 warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx2.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
-                warehouseIn.defaultType = "2C0F5B065B4E5141";
+                warehouseIn.defaultType =XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
                 warehouseIn.stock = "";
 
@@ -589,7 +589,6 @@ namespace WSCATProject.Warehouse
                 {
                     newAdd = true;
                 }
-
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
                 gr.Cells["gridColumncode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
                 gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
@@ -599,7 +598,6 @@ namespace WSCATProject.Warehouse
                 gr.Cells["gridColumnprice"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);//单价
                 decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
                 decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
-
                 gr.Cells["gridColumnmoney"].Value = number * price;//金额
                 gr.Cells["gridColumndate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value.ToString();//生产日期
                 gr.Cells["gridColumnbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString();//保质期
