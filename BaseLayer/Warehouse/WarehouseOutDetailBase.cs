@@ -11,6 +11,7 @@ namespace BaseLayer
     {
         public DataSet GetList(string strWhere)
         {
+            DataSet ds = null;
             StringBuilder strSql = new StringBuilder();
             try
             {
@@ -20,19 +21,11 @@ namespace BaseLayer
                 {
                     strSql.Append(" where " + strWhere);
                 }
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            DataSet ds = null;
-            try
-            {
                 ds = DbHelperSQL.Query(strSql.ToString());
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-2");
+                throw ex;
             }
             return ds;
         }

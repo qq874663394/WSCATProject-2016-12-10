@@ -28,16 +28,20 @@ namespace BaseLayer.Sales
             }
             return dt;
         }
-        public DataTable GetDetailByMainCode(string SalesCode)
+        public DataTable GetDetailByMainCode(string SalesCode, string strWhere)
         {
             string sql = "";
             DataTable dt = null;
             try
             {
-                sql = string.Format(@"select sd.id,sd.code,sd.materialCode,sd.unit,sd.needNumber,money,discountAfterPrice,sd.remark,zhujima,materialName,sd.materiaModel,   
+                sql = string.Format(@"select sd.id,sd.code,bm.materialDaima,sd.materialCode,sd.unit,sd.needNumber,whd.storageRackLocation,money,discountAfterPrice,sd.remark,zhujima,materialName,sd.materiaModel,   
 barCode from T_SalesMain sm, T_SalesDetail sd,T_WarehouseMain whm, T_BaseMaterial bm,T_WarehouseDetail whd
 where sm.code = sd.salesMainCode and sd.materialCode = whm.materialCode and sd.materialCode = bm.code and 
-whm.code = whd.mainCode and sd.salesMainCode = '{0}'",SalesCode);
+whm.code = whd.mainCode and sd.salesMainCode = '{0}'", SalesCode);
+                if (!string.IsNullOrWhiteSpace(strWhere))
+                {
+                    sql += " and " + strWhere;
+                }
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)
