@@ -28,10 +28,22 @@ namespace BaseLayer.Sales
             }
             return dt;
         }
-        public DataTable GetDetailByMainCode()
+        public DataTable GetDetailByMainCode(string SalesCode)
         {
             string sql = "";
             DataTable dt = null;
+            try
+            {
+                sql = string.Format(@"select sd.id,sd.code,sd.materialCode,sd.unit,sd.needNumber,money,discountAfterPrice,sd.remark,zhujima,materialName,sd.materiaModel,   
+barCode from T_SalesMain sm, T_SalesDetail sd,T_WarehouseMain whm, T_BaseMaterial bm,T_WarehouseDetail whd
+where sm.code = sd.salesMainCode and sd.materialCode = whm.materialCode and sd.materialCode = bm.code and 
+whm.code = whd.mainCode and sd.salesMainCode = '{0}'",SalesCode);
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return dt;
         }
     }

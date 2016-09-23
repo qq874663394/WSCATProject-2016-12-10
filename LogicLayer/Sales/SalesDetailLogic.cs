@@ -13,7 +13,7 @@ namespace LogicLayer.Sales
 {
     public class SalesDetailLogic
     {
-        private SalesMainBase smb = new SalesMainBase();
+        private SalesDetailBase sdb = new SalesDetailBase();
         public DataTable GetList(int fieldName, string fieldValue)
         {
             string strWhere = "";
@@ -36,7 +36,38 @@ namespace LogicLayer.Sales
                         strWhere += string.Format("salesMainCode='{0}'", fieldValue);
                         break;
                 }
-                dt = smb.GetList(strWhere);
+                dt = sdb.GetList(strWhere);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
+        }
+
+        public DataTable GetDetailByMainCode(string SalesCode)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log model = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesMain",
+                operationTime = DateTime.Now,
+                objective = "查询采购单数据",
+                operationContent = "查询T_SalesDetail表的所有数据,条件:SalesCode=" + SalesCode
+            };
+            try
+            {
+                sdb.GetDetailByMainCode(SalesCode);
                 model.result = 1;
             }
             catch (Exception ex)

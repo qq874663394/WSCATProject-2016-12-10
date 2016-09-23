@@ -12,7 +12,7 @@ namespace InterfaceLayer.Sales
     {
         SalesDetailLogic sdl = new SalesDetailLogic();
         /// <summary>
-        /// 
+        /// 复合查询
         /// </summary>
         /// <param name="fieldName">条件字段：0:salesMainCode</param>
         /// <param name="fieldValue"></param>
@@ -20,6 +20,15 @@ namespace InterfaceLayer.Sales
         public DataTable GetList(int fieldName, string fieldValue)
         {
             return sdl.GetList(fieldName, fieldValue);
+        }
+        /// <summary>
+        /// 根据销售单号查销售明细表,根据明细表code查库存的数据以及商品的具体货架
+        /// </summary>
+        /// <param name="SalesCode"></param>
+        /// <returns></returns>
+        public DataTable GetDetailByMainCode(string SalesCode)
+        {
+            return sdl.GetDetailByMainCode(SalesCode);
         }
     }
 }
