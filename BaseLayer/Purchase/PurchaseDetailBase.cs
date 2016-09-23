@@ -9,6 +9,25 @@ namespace BaseLayer.Purchase
 {
     public class PurchaseDetailBase
     {
+        public DataTable GetList(string strWhere)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = "select * from T_PurechaseDetail";
+                if (!string.IsNullOrWhiteSpace(strWhere))
+                {
+                    sql += " where " + strWhere;
+                }
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
         public DataTable GetList(string purchaseCode, string materialDaima)
         {
             string sql = "";

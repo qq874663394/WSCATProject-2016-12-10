@@ -287,6 +287,7 @@ namespace LogicLayer
         public int updateByCode(WarehouseIn warehouseIn, List<WarehouseInDetail> list)
         {
             WarehouseInBase warehouseInBase = new WarehouseInBase();
+
             int result = 0;
             LogBase lb = new LogBase();
             log logModel = new log()
@@ -301,18 +302,21 @@ namespace LogicLayer
             };
             try
             {
-                if (string.IsNullOrWhiteSpace(warehouseIn.code))
+                if (string.IsNullOrWhiteSpace(warehouseIn.code))//判断单号是否为空
                 {
                     throw new Exception("-2");
                 }
-                if (Exists(warehouseIn.code) == true)
+                foreach (var item in list)
                 {
-                    result = warehouseInBase.updateByCode(warehouseIn.code);
                 }
-                else
-                {
-                    result = Convert.ToInt32(AddWarehouseOrToDetail(warehouseIn, list));
-                }
+                //if (Exists(warehouseIn.code) == true)//判断此入库单是否存在
+                //{
+                //    result = warehouseInBase.updateByCode(warehouseIn.code);
+                //}
+                //else
+                //{
+                //    result = Convert.ToInt32(AddWarehouseOrToDetail(warehouseIn, list));
+                //}
                 if (result <= 0)
                 {
                     throw new Exception("-3");
@@ -370,7 +374,7 @@ namespace LogicLayer
                 logModel.result = 0;
                 throw ex;
             }
-            return warehouseInBase.GetPreAndNext(id, state);
+            return whi;
         }
         /// <summary>
         /// 判断该客户编号判断是否存在

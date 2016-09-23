@@ -207,18 +207,18 @@ namespace WSCATProject.Warehouse
 
 
 
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //调用合计行数据
-            InitDataGridView();
-            comboBoxEx2.SelectedIndex = 0;
+                //禁用自动创建列
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridViewFujia.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //调用合计行数据
+                InitDataGridView();
+                comboBoxEx2.SelectedIndex = 0;
                 //生成code 和显示条形码
 
                 _WareHouseInCode = BuildCode.ModuleCode("WHI");
@@ -243,7 +243,6 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
-
             //非空验证
             isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
@@ -324,7 +323,6 @@ namespace WSCATProject.Warehouse
                         WarehouseIndetail.zhujima = "";//暂时为空
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseInList.Add(WarehouseIndetail);
-
                     }
                 }
             }
@@ -478,7 +476,7 @@ namespace WSCATProject.Warehouse
                 this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
                 this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
                 this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
-                if (warehouseIn.id != null)
+                if (warehouseIn.id != 0)
                 {
                     textBoxid.Text = warehouseIn.id.ToString();
                     WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
@@ -523,7 +521,7 @@ namespace WSCATProject.Warehouse
                 this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
                 this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
                 this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
-                if (warehouseIn.id != null)
+                if (warehouseIn.id != 0)
                 {
                     textBoxid.Text = warehouseIn.id.ToString();
                     WarehouseInDetailInterface widif = new WarehouseInDetailInterface();
@@ -1089,7 +1087,7 @@ namespace WSCATProject.Warehouse
             superGridControl1.PrimaryGrid.Columns.Add(gc);
         }
 
-       /// <summary>
+        /// <summary>
         /// 标示那个控件不可用
         /// </summary>
         private void InitForm()
@@ -1360,9 +1358,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message,"入库单温馨提示");
+                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message, "入库单温馨提示");
             }
-       
+
         }
 
         private void textBoxX2_Enter(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace Model
 		public WarehouseIn()
 		{}
 		#region Model
-		private int _id;
+		private int _id=0;
 		private string _code;
 		private string _type;
 		private string _stock;

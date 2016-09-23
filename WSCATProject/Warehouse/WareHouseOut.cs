@@ -354,7 +354,7 @@ namespace WSCATProject.WareHouse
             try
             {
                 warehouseOut.type = XYEEncoding.strCodeHex(comboBoxEx1.Text.ToString());
-                warehouseOut.ClientCode = XYEEncoding.strCodeHex(_ClientCode == "" ? labtextboxTop2.Text.Trim() : _Operation);
+                warehouseOut.clientCode = XYEEncoding.strCodeHex(_ClientCode == "" ? labtextboxTop2.Text.Trim() : _Operation);
                 warehouseOut.salesCode = XYEEncoding.strCodeHex(labtextboxTop7.Text.Trim());
                 warehouseOut.operation = XYEEncoding.strCodeHex(_Operation == "" ? labtextboxBotton1.Text.Trim() : _Operation);
                 warehouseOut.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text.Trim());
@@ -362,11 +362,11 @@ namespace WSCATProject.WareHouse
                 warehouseOut.date = dateTimePicker1.Value;
                 warehouseOut.checkState = 0;
                 warehouseOut.code = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["code"].Value.ToString());
-                warehouseOut.DefaultType = "57125B065B4E5141";
-                warehouseOut.Delivery = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["transportMathod"].Value.ToString());
-                warehouseOut.ExpressMan = "";//未知快递员
-                warehouseOut.ExpressOdd = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["logisticsOddCode"].Value.ToString());
-                warehouseOut.ExpressPhone = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["logisticsPhone"].Value.ToString());
+                warehouseOut.defaultType = "57125B065B4E5141";
+                warehouseOut.delivery = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["transportMathod"].Value.ToString());
+                warehouseOut.expressMan = "";//未知快递员
+                warehouseOut.expressOdd = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["logisticsOddCode"].Value.ToString());
+                warehouseOut.expressPhone = XYEEncoding.strCodeHex(_wareHouseoutModel.Cells["logisticsPhone"].Value.ToString());
                 warehouseOut.id = 1;
                 warehouseOut.isClear = 1;
                 warehouseOut.reserved1 = "";
@@ -380,7 +380,7 @@ namespace WSCATProject.WareHouse
                 MessageBox.Show("出库单保存失败" + ex.Message);
             }
 
-            int result = woi.update(warehouseOut);
+            //int result = woi.update(warehouseOut);
 
             List<WarehouseOutDetail> wareHouseOutList = new List<WarehouseOutDetail>();
             //获得商品列表数据,准备传给base层新增数据
