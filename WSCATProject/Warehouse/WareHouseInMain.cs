@@ -223,7 +223,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //调用合计行数据
                 InitDataGridView();
-                comboBoxEx2.SelectedIndex = 0;
+                cboInType.SelectedIndex = 0;
                 //生成code 和显示条形码
 
                 _WareHouseInCode = BuildCode.ModuleCode("WHI");
@@ -231,8 +231,8 @@ namespace WSCATProject.Warehouse
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-                pictureBox9.Image = imgTemp;
-                pictureBox10.Parent = pictureBoxtitle;
+                pictureBoxBarCode.Image = imgTemp;
+                picBoxShengHeIn.Parent = pictureBoxtitle;
             }
             catch (Exception ex)
             {
@@ -260,20 +260,20 @@ namespace WSCATProject.Warehouse
             {
                 warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
                 warehouseIn.isClear = 1;
-                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
+                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.cboPurchaseCode.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 1;
                 warehouseIn.supplierCode = _SupplierCode;//供应商code
                 warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
                 warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
-                warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
-                warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton1.Text);//入库员
-                warehouseIn.makeMan = XYEEncoding.strCodeHex(labtextboxBotton3.Text);//制单人
+                warehouseIn.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehouseIn.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//入库员
+                warehouseIn.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
                 warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//摘要
                 warehouseIn.state = 0;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
-                warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx2.Text);//入货类别
+                warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
                 warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
@@ -344,7 +344,7 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("保存和审核入库数据成功");
                 InitForm();
-                this.pictureBox10.Image = Properties.Resources.审核;
+                this.picBoxShengHeIn.Image = Properties.Resources.审核;
             }
         }
 
@@ -368,20 +368,20 @@ namespace WSCATProject.Warehouse
             {
                 warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
                 warehouseIn.isClear = 1;
-                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.comboBoxEx1.Text);//采购单号
+                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.cboPurchaseCode.Text);//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 0;
                 warehouseIn.supplierCode = _SupplierCode;//供应商code
                 warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
                 warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
-                warehouseIn.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
-                warehouseIn.operation = XYEEncoding.strCodeHex(labtextboxBotton1.Text);//入库员
-                warehouseIn.makeMan = XYEEncoding.strCodeHex(labtextboxBotton3.Text);//制单人
+                warehouseIn.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehouseIn.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//入库员
+                warehouseIn.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
                 warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//摘要
                 warehouseIn.state = 0;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
-                warehouseIn.type = XYEEncoding.strCodeHex(comboBoxEx2.Text);//入货类别
+                warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
                 warehouseIn.defaultType =XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
@@ -474,14 +474,14 @@ namespace WSCATProject.Warehouse
                 }
 
                 WarehouseIn warehouseIn = warehouseInterface.GetPreAndNext(Convert.ToInt32(textBoxid.Text), 0);
-                this.comboBoxEx2.Text = XYEEncoding.strHexDecode(warehouseIn.type);
+                this.cboInType.Text = XYEEncoding.strHexDecode(warehouseIn.type);
                 this.labtextboxTop6.Text = XYEEncoding.strHexDecode(warehouseIn.supplierName);
                 this.textBoxOddNumbers.Text = XYEEncoding.strHexDecode(warehouseIn.code);
-                this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseIn.purchaseCode);
+                this.cboPurchaseCode.Text = XYEEncoding.strHexDecode(warehouseIn.purchaseCode);
                 this.labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseIn.supplierPhone);
-                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
-                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
-                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
+                this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
+                this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
+                this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
                 if (warehouseIn.id != 0)
                 {
                     textBoxid.Text = warehouseIn.id.ToString();
@@ -497,7 +497,7 @@ namespace WSCATProject.Warehouse
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-                pictureBox9.Image = imgTemp;
+                pictureBoxBarCode.Image = imgTemp;
             }
             catch (Exception ex)
             {
@@ -519,14 +519,14 @@ namespace WSCATProject.Warehouse
                     textBoxid.Text = "0";
                 }
                 WarehouseIn warehouseIn = warehouseInterface.GetPreAndNext(Convert.ToInt32(textBoxid.Text), 1);
-                this.comboBoxEx2.Text = XYEEncoding.strHexDecode(warehouseIn.type);
+                this.cboInType.Text = XYEEncoding.strHexDecode(warehouseIn.type);
                 this.labtextboxTop6.Text = XYEEncoding.strHexDecode(warehouseIn.supplierName);
                 this.textBoxOddNumbers.Text = XYEEncoding.strHexDecode(warehouseIn.code);
-                this.comboBoxEx1.Text = XYEEncoding.strHexDecode(warehouseIn.purchaseCode);
+                this.cboPurchaseCode.Text = XYEEncoding.strHexDecode(warehouseIn.purchaseCode);
                 this.labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseIn.supplierPhone);
-                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
-                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
-                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
+                this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(warehouseIn.operation);
+                this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(warehouseIn.makeMan);
+                this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(warehouseIn.examine);
                 if (warehouseIn.id != 0)
                 {
                     textBoxid.Text = warehouseIn.id.ToString();
@@ -543,7 +543,7 @@ namespace WSCATProject.Warehouse
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-                pictureBox9.Image = imgTemp;
+                pictureBoxBarCode.Image = imgTemp;
             }
             catch (Exception ex)
             {
@@ -633,9 +633,9 @@ namespace WSCATProject.Warehouse
                     labtextboxTop6.Text = name;
                     resizablePanel1.Visible = false;
                     DataTable dt = ch.DataTableReCoding(supply.GetPurchaseList(_SupplierCode));
-                    this.comboBoxEx1.DataSource = dt;
-                    comboBoxEx1.ValueMember = "code";
-                    comboBoxEx1.DisplayMember = "name";
+                    this.cboPurchaseCode.DataSource = dt;
+                    cboPurchaseCode.ValueMember = "code";
+                    cboPurchaseCode.DisplayMember = "name";
                     dataGridViewFujia.DataSource = _AllSupply;
                     string phone = XYEEncoding.strHexDecode(dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString());
                     labtextboxTop9.Text = phone;//联系电话
@@ -644,7 +644,7 @@ namespace WSCATProject.Warehouse
                 if (_Click == 2 || _Click == 4)
                 {
                     string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    labtextboxBotton1.Text = name;
+                    ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
             }
@@ -881,7 +881,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void isNUllValidate()
         {
-            if (comboBoxEx2.Text.Trim() == null)
+            if (cboInType.Text.Trim() == null)
             {
                 MessageBox.Show("入货类型不能为空！");
             }
@@ -889,7 +889,7 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("供应商不能为空！");
             }
-            if (labtextboxBotton1.Text.Trim() == null)
+            if (ltxtbSalsMan.Text.Trim() == null)
             {
                 MessageBox.Show("业务员不能为空！");
             }
@@ -1080,14 +1080,14 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitForm()
         {
-            this.comboBoxEx2.Enabled = false;
+            this.cboInType.Enabled = false;
             this.labtextboxTop6.ReadOnly = true;
             this.textBoxOddNumbers.ReadOnly = true;
-            this.comboBoxEx1.Enabled = false;
+            this.cboPurchaseCode.Enabled = false;
             this.labtextboxTop9.ReadOnly = true;
-            this.labtextboxBotton1.ReadOnly = true;
-            this.labtextboxBotton3.ReadOnly = true;
-            this.labtextboxBotton4.ReadOnly = true;
+            this.ltxtbSalsMan.ReadOnly = true;
+            this.ltxtbMakeMan.ReadOnly = true;
+            this.ltxtbShengHeMan.ReadOnly = true;
             this.resizablePanel1.Visible = false;
             this.dateTimePicker1.Enabled = false;
             this.superGridControl1.PrimaryGrid.ReadOnly = true;
@@ -1096,10 +1096,10 @@ namespace WSCATProject.Warehouse
             this.panel5.BackColor = Color.FromArgb(240, 240, 240);
             this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
             labtextboxTop9.BackColor = Color.FromArgb(240, 240, 240);
-            comboBoxEx2.BackColor = Color.FromArgb(240, 240, 240);
-            textBoxX2.ReadOnly = true;
-            textBoxX2.Enabled = false;
-            textBoxX2.BackColor= Color.FromArgb(240, 240, 240);
+            cboInType.BackColor = Color.FromArgb(240, 240, 240);
+            txtbSearch.ReadOnly = true;
+            txtbSearch.Enabled = false;
+            txtbSearch.BackColor= Color.FromArgb(240, 240, 240);
         }
         #endregion
 
@@ -1151,7 +1151,7 @@ namespace WSCATProject.Warehouse
                 if (SS == "")
                 {
                     //模糊查询商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + materialDaima + "");
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.cboPurchaseCode.Text.Trim() + ""), "" + materialDaima + "");
                     InitMaterialDataGridView();
                     dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
                 }
@@ -1260,7 +1260,7 @@ namespace WSCATProject.Warehouse
         {
             try
             {
-                if (labtextboxBotton1.Text.Trim() == "")
+                if (ltxtbSalsMan.Text.Trim() == "")
                 {
                     InitEmployee();
                     _Click = 4;
@@ -1282,7 +1282,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)
@@ -1299,7 +1299,7 @@ namespace WSCATProject.Warehouse
 
         private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
         {
-            if (this.comboBoxEx1.Text.Trim() == "")
+            if (this.cboPurchaseCode.Text.Trim() == "")
             {
                 resizablePanelData.Visible = false;
                 MessageBox.Show("请先选择供应商，显示采购单号!");
@@ -1312,13 +1312,13 @@ namespace WSCATProject.Warehouse
                 if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
                 {
                     //模糊查询商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.cboPurchaseCode.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
                     InitMaterialDataGridView();
                 }
                 else
                 {
                     //绑定商品列表
-                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.comboBoxEx1.Text.Trim() + ""), "");
+                    _AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.cboPurchaseCode.Text.Trim() + ""), "");
                     InitMaterialDataGridView();
                 }
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
@@ -1334,7 +1334,7 @@ namespace WSCATProject.Warehouse
         {
             try
             {
-                if (this.comboBoxEx1.Text.Trim() == "")
+                if (this.cboPurchaseCode.Text.Trim() == "")
                 {
                     resizablePanelData.Visible = false;
                     MessageBox.Show("请先选择供应商，显示采购单号!");
@@ -1343,7 +1343,7 @@ namespace WSCATProject.Warehouse
                 resizablePanelData.Location = new Point(91, 193);
                 resizablePanelData.Visible = true;
                 PurchaseDetailInterface pd = new PurchaseDetailInterface();
-                if (string.IsNullOrWhiteSpace(textBoxX2.Text.Trim()))
+                if (string.IsNullOrWhiteSpace(txtbSearch.Text.Trim()))
                 {
                     //模糊查询商品列表
                     _AllMaterial = pd.GetListAndMaterial("");
@@ -1352,7 +1352,7 @@ namespace WSCATProject.Warehouse
                     return;
                 }
                 //模糊查询商品列表
-                _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(textBoxX2.Text.Trim()));
+                _AllMaterial = pd.GetListAndMaterial(XYEEncoding.strCodeHex(txtbSearch.Text.Trim()));
                 InitMaterialDataGridView();
                 dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
             }

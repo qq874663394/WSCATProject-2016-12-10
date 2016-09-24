@@ -143,15 +143,15 @@ namespace WSCATProject.Warehouse
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
                 warehouseout.delivery = XYEEncoding.strCodeHex(comboBoxExsonghuo.Text);//配送方式
-                warehouseout.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
-                warehouseout.MakeMan = XYEEncoding.strCodeHex(labtextboxBotton3.Text);//制单人
+                warehouseout.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehouseout.MakeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
                 warehouseout.SalesPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//销售电话
                 warehouseout.ClientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户名称
                 warehouseout.expressMan = "";
                 warehouseout.expressOdd = "";
                 warehouseout.expressPhone = "";
                 warehouseout.isClear = 1;
-                warehouseout.operation = XYEEncoding.strCodeHex(labtextboxBotton1.Text);//出库员
+                warehouseout.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//出库员
                 warehouseout.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//备注
                 warehouseout.reserved1 = "";
                 warehouseout.reserved2 = "";
@@ -253,15 +253,15 @@ namespace WSCATProject.Warehouse
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
                 warehouseout.delivery = XYEEncoding.strCodeHex(comboBoxExsonghuo.Text);//配送方式
-                warehouseout.examine = XYEEncoding.strCodeHex(labtextboxBotton4.Text);//审核人
-                warehouseout.MakeMan = XYEEncoding.strCodeHex(labtextboxBotton3.Text);//制单人
+                warehouseout.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehouseout.MakeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
                 warehouseout.SalesPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//销售电话
                 warehouseout.ClientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户名称
                 warehouseout.expressMan = "";
                 warehouseout.expressOdd = "";
                 warehouseout.expressPhone = "";
                 warehouseout.isClear = 1;
-                warehouseout.operation = XYEEncoding.strCodeHex(labtextboxBotton1.Text);//出库员
+                warehouseout.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//出库员
                 warehouseout.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//备注
                 warehouseout.reserved1 = "";
                 warehouseout.reserved2 = "";
@@ -359,9 +359,9 @@ namespace WSCATProject.Warehouse
                 labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseout.SalesPhone);//销售电话
                 comboBoxExsonghuo.Text = XYEEncoding.strHexDecode(warehouseout.delivery);//送货方式
                 labtextboxBotton2.Text = XYEEncoding.strHexDecode(warehouseout.remark);//摘要
-                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseout.operation);
-                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseout.MakeMan);
-                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseout.examine);
+                this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(warehouseout.operation);
+                this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(warehouseout.MakeMan);
+                this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(warehouseout.examine);
                 if (warehouseout.id != 0)
                 {
                     textBoid.Text = warehouseout.id.ToString();
@@ -407,9 +407,9 @@ namespace WSCATProject.Warehouse
                 labtextboxTop9.Text = XYEEncoding.strHexDecode(warehouseout.SalesPhone);//销售电话
                 comboBoxExsonghuo.Text = XYEEncoding.strHexDecode(warehouseout.delivery);//送货方式
                 labtextboxBotton2.Text = XYEEncoding.strHexDecode(warehouseout.remark);//摘要
-                this.labtextboxBotton1.Text = XYEEncoding.strHexDecode(warehouseout.operation);
-                this.labtextboxBotton3.Text = XYEEncoding.strHexDecode(warehouseout.MakeMan);
-                this.labtextboxBotton4.Text = XYEEncoding.strHexDecode(warehouseout.examine);
+                this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(warehouseout.operation);
+                this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(warehouseout.MakeMan);
+                this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(warehouseout.examine);
                 if (warehouseout.id != 0)
                 {
                     textBoid.Text = warehouseout.id.ToString();
@@ -763,10 +763,10 @@ namespace WSCATProject.Warehouse
             this.comboBoxExsonghuo.Enabled = false;
             this.textBoxchanpin.ReadOnly = true;
             this.labtextboxTop9.ReadOnly = true;
-            this.labtextboxBotton1.ReadOnly = true;
+            this.ltxtbSalsMan.ReadOnly = true;
             this.labtextboxBotton2.ReadOnly = true;
-            this.labtextboxBotton3.ReadOnly = true;
-            this.labtextboxBotton4.ReadOnly = true;
+            this.ltxtbMakeMan.ReadOnly = true;
+            this.ltxtbShengHeMan.ReadOnly = true;
             this.resizablePanel1.Visible = false;
             this.dateTimePicker1.Enabled = false;
             this.superGridControl1.PrimaryGrid.ReadOnly = true;
@@ -964,7 +964,7 @@ namespace WSCATProject.Warehouse
             if (_Click == 2 || _Click == 4)
             {
                 string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                labtextboxBotton1.Text = name;
+                ltxtbSalsMan.Text = name;
                 resizablePanel1.Visible = false;
             }
         }
@@ -1012,7 +1012,7 @@ namespace WSCATProject.Warehouse
             try
             {
 
-                if (labtextboxBotton1.Text.Trim() == "")
+                if (ltxtbSalsMan.Text.Trim() == "")
                 {
                     InitEmployee();
                     _Click = 4;
@@ -1034,7 +1034,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)

@@ -197,7 +197,7 @@ namespace WSCATProject.Warehouse
             //{
             //    MessageBox.Show("出库类别不能为空！");
             //}
-            if (labtextboxBotton1.Text.Trim() == null)
+            if (ltxtbSalsMan.Text.Trim() == null)
             {
                 MessageBox.Show("业务员不能为空！");
             }
@@ -499,7 +499,7 @@ namespace WSCATProject.Warehouse
                 if (_Click == 1 || _Click == 3)
                 {
                     string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    labtextboxBotton1.Text = name;
+                    ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
                 //仓库信息
@@ -749,7 +749,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
         {
-            if (labtextboxBotton1.Text.Trim() == "")
+            if (ltxtbSalsMan.Text.Trim() == "")
             {
                 _Click = 3;
                 InitEmployee();
@@ -771,7 +771,7 @@ namespace WSCATProject.Warehouse
             dataGridViewFujia.Columns.Add(dgvc);
 
             resizablePanel1.Location = new Point(234, 420);
-            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
             resizablePanel1.Visible = true;
         }
     }

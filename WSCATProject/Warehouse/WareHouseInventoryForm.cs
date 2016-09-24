@@ -69,45 +69,45 @@ namespace WSCATProject.Warehouse
         #endregion
 
         #region 最小化、最大化、关闭的点击事件
-        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        private void pictureBoxMax_MouseEnter(object sender, EventArgs e)
         {
             //当窗体的状态为最大化时，工具提示文本为还原
             if (this.WindowState == FormWindowState.Maximized)
             {
-                toolTip1.SetToolTip(pictureBox6, "还原");
+                toolTip1.SetToolTip(pictureBoxMax, "还原");
                 return;
             }
             //当窗体的状态为正常时时，工具提示文本为最大化
             if (this.WindowState == FormWindowState.Normal)
             {
-                toolTip1.SetToolTip(pictureBox6, "最大化");
+                toolTip1.SetToolTip(pictureBoxMax, "最大化");
                 return;
             }
         }
 
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void pictureBoxMax_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
-                pictureBox6.Image = Properties.Resources.zuidahua1;
+                pictureBoxMax.Image = Properties.Resources.zuidahua1;
                 return;
-            }
+            }   
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                pictureBox6.Image = Properties.Resources.zuidahua;
+                pictureBoxMax.Image = Properties.Resources.zuidahua;
                 return;
             }
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void pictureBoxMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
         //关闭
-        private void pictureBox8_Click(object sender, EventArgs e)
+        private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Close();
             this.Dispose();
@@ -118,11 +118,11 @@ namespace WSCATProject.Warehouse
         {
             CodingHelper ch = new CodingHelper();
             StorageInterface sif = new StorageInterface();
-            comboBoxEx1.DataSource = ch.DataTableReCoding(sif.SelStorage());
+            cbopandianidea.DataSource = ch.DataTableReCoding(sif.SelStorage());
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox6.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox7.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox8.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
 
             //设置盘点数量可输入的最大值和最小值
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
@@ -138,9 +138,9 @@ namespace WSCATProject.Warehouse
             //DataRow dr = dt.NewRow();
             //dr["name"] = "请选择";
             //dt.Rows.InsertAt(dr, 0);
-            comboBoxEx1.DisplayMember = "name";
-            comboBoxEx1.ValueMember = "code";
-            comboBoxEx1.DataSource = dt;
+            cbopandianidea.DisplayMember = "name";
+            cbopandianidea.ValueMember = "code";
+            cbopandianidea.DataSource = dt;
             #endregion
 
             //生成code 和显示条形码
@@ -149,13 +149,13 @@ namespace WSCATProject.Warehouse
             barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBox1.Image = imgTemp;
+            picbpandianBarCode.Image = imgTemp;
 
 
         }
 
         #region  下拉框选择改变事件
-        private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
+        private void cbopandianidea_SelectedValueChanged(object sender, EventArgs e)
         {
             //if (comboBoxEx1.SelectedValue == null || comboBoxEx1.SelectedValue.ToString() == "")
             //{
@@ -273,9 +273,5 @@ namespace WSCATProject.Warehouse
         }
         #endregion
 
-        private void comboBoxEx1_SelectedValueChanged_1(object sender, EventArgs e)
-        {
-            MessageBox.Show("Test");
-        }
     }
 }

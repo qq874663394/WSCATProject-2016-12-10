@@ -51,9 +51,9 @@ namespace WSCATProject
         private void TestForm_Load(object sender, EventArgs e)
         {
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox6.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox7.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox8.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
         }
 
         /// <summary>
@@ -253,13 +253,13 @@ namespace WSCATProject
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
-                pictureBox6.Image = Properties.Resources.zuidahua1;
+                pictureBoxMax.Image = Properties.Resources.zuidahua1;
                 return;
             }
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                pictureBox6.Image = Properties.Resources.zuidahua;
+                pictureBoxMax.Image = Properties.Resources.zuidahua;
                 return;
             }
 
@@ -280,12 +280,12 @@ namespace WSCATProject
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
-                toolTip2.SetToolTip(pictureBox6, "还原");
+                toolTip2.SetToolTip(pictureBoxMax, "还原");
                 return;
             }
             if (this.WindowState == FormWindowState.Normal)
             {
-                toolTip2.SetToolTip(pictureBox6, "最大化");
+                toolTip2.SetToolTip(pictureBoxMax, "最大化");
                 return;
             }
         }

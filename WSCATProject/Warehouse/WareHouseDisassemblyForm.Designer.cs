@@ -55,7 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.resizablePanelData.SuspendLayout();
@@ -63,8 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.panel3.SuspendLayout();
             this.resizablePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
@@ -328,9 +328,9 @@
             this.labTop1.Location = new System.Drawing.Point(34, 30);
             this.labTop1.Visible = false;
             // 
-            // pictureBox8
+            // pictureBoxClose
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBoxClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // panel5
             // 
@@ -341,33 +341,33 @@
             this.pictureBox5.Location = new System.Drawing.Point(237, 17);
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
-            // labtextboxBotton4
+            // ltxtbShengHeMan
             // 
             // 
             // 
             // 
-            this.labtextboxBotton4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton4.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton4.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton4.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton4.Border.Class = "SideNavStrip";
-            this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton4.Location = new System.Drawing.Point(715, 21);
-            this.labtextboxBotton4.Size = new System.Drawing.Size(162, 16);
+            this.ltxtbShengHeMan.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ltxtbShengHeMan.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.ltxtbShengHeMan.Border.BorderBottomWidth = 1;
+            this.ltxtbShengHeMan.Border.BorderGradientAngle = 0;
+            this.ltxtbShengHeMan.Border.Class = "SideNavStrip";
+            this.ltxtbShengHeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbShengHeMan.Location = new System.Drawing.Point(715, 21);
+            this.ltxtbShengHeMan.Size = new System.Drawing.Size(162, 16);
             // 
-            // labtextboxBotton3
-            // 
-            // 
+            // ltxtbMakeMan
             // 
             // 
-            this.labtextboxBotton3.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton3.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton3.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton3.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton3.Border.Class = "SideNavStrip";
-            this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton3.Location = new System.Drawing.Point(409, 21);
-            this.labtextboxBotton3.Size = new System.Drawing.Size(162, 16);
+            // 
+            // 
+            this.ltxtbMakeMan.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ltxtbMakeMan.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.ltxtbMakeMan.Border.BorderBottomWidth = 1;
+            this.ltxtbMakeMan.Border.BorderGradientAngle = 0;
+            this.ltxtbMakeMan.Border.Class = "SideNavStrip";
+            this.ltxtbMakeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbMakeMan.Location = new System.Drawing.Point(409, 21);
+            this.ltxtbMakeMan.Size = new System.Drawing.Size(162, 16);
             // 
             // labtextboxBotton2
             // 
@@ -383,20 +383,20 @@
             this.labtextboxBotton2.Location = new System.Drawing.Point(715, 28);
             this.labtextboxBotton2.Visible = false;
             // 
-            // labtextboxBotton1
+            // ltxtbSalsMan
             // 
             // 
             // 
             // 
-            this.labtextboxBotton1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton1.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton1.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton1.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton1.Border.Class = "SideNavStrip";
-            this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton1.Location = new System.Drawing.Point(91, 21);
-            this.labtextboxBotton1.Size = new System.Drawing.Size(142, 16);
-            this.labtextboxBotton1.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
+            this.ltxtbSalsMan.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ltxtbSalsMan.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.ltxtbSalsMan.Border.BorderBottomWidth = 1;
+            this.ltxtbSalsMan.Border.BorderGradientAngle = 0;
+            this.ltxtbSalsMan.Border.Class = "SideNavStrip";
+            this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbSalsMan.Location = new System.Drawing.Point(91, 21);
+            this.ltxtbSalsMan.Size = new System.Drawing.Size(142, 16);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
             // 
             // labBotton4
             // 
@@ -410,6 +410,10 @@
             // labBotton3
             // 
             this.labBotton3.Location = new System.Drawing.Point(343, 23);
+            // 
+            // labBotton1
+            // 
+            this.labBotton1.Text = "拆 卸 员：";
             // 
             // labeldata
             // 
@@ -454,18 +458,19 @@
             // 
             this.resizablePanel1.Location = new System.Drawing.Point(94, 222);
             // 
-            // pictureBox6
+            // pictureBoxMax
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBoxMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
-            // pictureBox7
+            // pictureBoxMin
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBoxMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // comboBoxEx1
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
             this.comboBoxEx1.Location = new System.Drawing.Point(399, 26);
@@ -626,7 +631,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -637,8 +642,8 @@
             this.panel3.ResumeLayout(false);
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

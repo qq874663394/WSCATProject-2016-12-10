@@ -46,9 +46,9 @@ namespace WSCATProject.Warehouse
         private void WareHouseInventoryReportForm_Load(object sender, EventArgs e)
         {
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox6.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox7.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBox8.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
             //显示行号
             superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
             //不可自动添加列
@@ -61,9 +61,9 @@ namespace WSCATProject.Warehouse
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
 
-            comboBoxEx1.DisplayMember = "name";
-            comboBoxEx1.ValueMember = "code";
-            comboBoxEx1.DataSource = dt;
+            cbopandianidea.DisplayMember = "name";
+            cbopandianidea.ValueMember = "code";
+            cbopandianidea.DataSource = dt;
 
             #endregion
 
@@ -76,7 +76,7 @@ namespace WSCATProject.Warehouse
         #region  下拉框选择改变事件
         private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx1.SelectedValue == null || comboBoxEx1.SelectedValue.ToString() == "")
+            if (cbopandianidea.SelectedValue == null || cbopandianidea.SelectedValue.ToString() == "")
             {
                 //绑定dgv   查询全部数据
                 DataTable dt = codeh.DataTableReCoding(iface.GetTbList(1, ""));
@@ -91,8 +91,8 @@ namespace WSCATProject.Warehouse
             }
             else
             {
-                string a = comboBoxEx1.SelectedValue.ToString();
-                DataTable dts = codeh.DataTableReCoding(iface.GetTbList(2, XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString())));
+                string a = cbopandianidea.SelectedValue.ToString();
+                DataTable dts = codeh.DataTableReCoding(iface.GetTbList(2, XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
                 superGridControl1.PrimaryGrid.DataSource = dts;
                 //调用表格初始化
                 superGridControl1.PrimaryGrid.EnsureVisible();
@@ -208,45 +208,45 @@ namespace WSCATProject.Warehouse
         #endregion
 
         #region 最小化、最大化、关闭的点击事件
-        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        private void pictureBoxMax_MouseEnter(object sender, EventArgs e)
         {
             //当窗体的状态为最大化时，工具提示文本为还原
             if (this.WindowState == FormWindowState.Maximized)
             {
-                toolTip1.SetToolTip(pictureBox6, "还原");
+                toolTip1.SetToolTip(pictureBoxMax, "还原");
                 return;
             }
             //当窗体的状态为正常时时，工具提示文本为最大化
             if (this.WindowState == FormWindowState.Normal)
             {
-                toolTip1.SetToolTip(pictureBox6, "最大化");
+                toolTip1.SetToolTip(pictureBoxMax, "最大化");
                 return;
             }
         }
 
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void pictureBoxMax_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
-                pictureBox6.Image = Properties.Resources.zuidahua1;
+                pictureBoxMax.Image = Properties.Resources.zuidahua1;
                 return;
             }
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                pictureBox6.Image = Properties.Resources.zuidahua;
+                pictureBoxMax.Image = Properties.Resources.zuidahua;
                 return;
             }
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void pictureBoxMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
         //关闭
-        private void pictureBox8_Click(object sender, EventArgs e)
+        private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Close();
             this.Dispose();
