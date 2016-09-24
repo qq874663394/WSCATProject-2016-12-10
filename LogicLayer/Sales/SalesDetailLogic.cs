@@ -80,7 +80,7 @@ namespace LogicLayer.Sales
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format(" bm.name like '%{0}%'", fieldValue);
+                        strWhere += string.Format("bm.name like '%{0}%'", fieldValue);
                         break;
                     case 1:
                         strWhere += string.Format("bm.barCode like'%{0}%'", fieldValue);

@@ -11,25 +11,6 @@ namespace BaseLayer.Base
     public class StorageBase
     {
         /// <summary>
-        /// 获取所有数据
-        /// </summary>
-        /// <returns></returns>
-        public DataTable SelStorage()
-        {
-            string sql = "";
-            DataSet ds = null;
-            try
-            {
-                sql = string.Format("SELECT * FROM T_BaseStorage order by id");
-                ds = DbHelperSQL.Query(sql);
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-            return ds.Tables[0];
-        }
-        /// <summary>
         /// 自定义条件取得列表
         /// </summary>
         /// <param name="strWhere">where后面的条件</param>

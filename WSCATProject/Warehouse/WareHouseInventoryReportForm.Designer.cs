@@ -258,7 +258,7 @@
             this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButton6.Size = new System.Drawing.Size(41, 67);
             this.toolStripButton6.Text = "关闭";
             this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
