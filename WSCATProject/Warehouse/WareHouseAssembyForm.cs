@@ -122,7 +122,7 @@ namespace WSCATProject.Warehouse
         private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-            labtextboxBotton1.Text = name;
+            ltxtbSalsMan.Text = name;
             resizablePanel1.Visible = false;
         }
 
@@ -214,7 +214,7 @@ namespace WSCATProject.Warehouse
             try
             {
 
-                if (labtextboxBotton1.Text.Trim() == "")
+                if (ltxtbSalsMan.Text.Trim() == "")
                 {
                     InitEmployee();
                     return;
@@ -235,7 +235,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(labtextboxBotton1.Text.Trim()) + ""));
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)

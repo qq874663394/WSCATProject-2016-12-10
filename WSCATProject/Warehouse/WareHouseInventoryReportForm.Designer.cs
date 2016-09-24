@@ -31,18 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouseInventoryReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMax = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMin = new System.Windows.Forms.PictureBox();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonnew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonsave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonProfit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLoss = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.storge = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -60,31 +60,31 @@
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.lblzhangcundate = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbopandianidea = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.textBoxpandiancode = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picbpandianBarCode = new System.Windows.Forms.PictureBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbpandianBarCode)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Controls.Add(this.pictureBox7);
+            this.panel1.Controls.Add(this.pictureBoxClose);
+            this.panel1.Controls.Add(this.pictureBoxMax);
+            this.panel1.Controls.Add(this.pictureBoxMin);
             this.panel1.Controls.Add(this.labelTitle);
             this.panel1.Controls.Add(this.pictureBoxtitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -93,53 +93,53 @@
             this.panel1.Size = new System.Drawing.Size(1202, 61);
             this.panel1.TabIndex = 3;
             // 
-            // pictureBox8
+            // pictureBoxClose
             // 
-            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox8.Image = global::WSCATProject.Properties.Resources.clo;
-            this.pictureBox8.Location = new System.Drawing.Point(1144, 28);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 51;
-            this.pictureBox8.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox8, "关闭");
-            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            this.pictureBoxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxClose.BackColor = System.Drawing.Color.White;
+            this.pictureBoxClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxClose.Image = global::WSCATProject.Properties.Resources.clo;
+            this.pictureBoxClose.Location = new System.Drawing.Point(1144, 28);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxClose.TabIndex = 51;
+            this.pictureBoxClose.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxClose, "关闭");
+            this.pictureBoxClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
-            // pictureBox6
+            // pictureBoxMax
             // 
-            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Image = global::WSCATProject.Properties.Resources.zuidahua1;
-            this.pictureBox6.Location = new System.Drawing.Point(1115, 28);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 49;
-            this.pictureBox6.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox6, "最大化");
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
+            this.pictureBoxMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMax.BackColor = System.Drawing.Color.White;
+            this.pictureBoxMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMax.Image = global::WSCATProject.Properties.Resources.zuidahua1;
+            this.pictureBoxMax.Location = new System.Drawing.Point(1115, 28);
+            this.pictureBoxMax.Name = "pictureBoxMax";
+            this.pictureBoxMax.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMax.TabIndex = 49;
+            this.pictureBoxMax.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxMax, "最大化");
+            this.pictureBoxMax.Click += new System.EventHandler(this.pictureBoxMax_Click);
+            this.pictureBoxMax.MouseEnter += new System.EventHandler(this.pictureBoxMax_MouseEnter);
             // 
-            // pictureBox7
+            // pictureBoxMin
             // 
-            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox7.BackColor = System.Drawing.Color.White;
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBox7.Location = new System.Drawing.Point(1088, 28);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 50;
-            this.pictureBox7.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox7, "最小化");
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            this.pictureBoxMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMin.BackColor = System.Drawing.Color.White;
+            this.pictureBoxMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMin.Image = global::WSCATProject.Properties.Resources.small;
+            this.pictureBoxMin.Location = new System.Drawing.Point(1088, 28);
+            this.pictureBoxMin.Name = "pictureBoxMin";
+            this.pictureBoxMin.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMin.TabIndex = 50;
+            this.pictureBoxMin.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxMin, "最小化");
+            this.pictureBoxMin.Click += new System.EventHandler(this.pictureBoxMin_Click);
             // 
             // labelTitle
             // 
@@ -179,41 +179,41 @@
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStrip1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonnew,
-            this.toolStripButtonsave,
+            this.toolStripButtonProfit,
+            this.toolStripButtonLoss,
             this.toolStripButtonshuaixin,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
-            this.toolStripButton6});
+            this.toolStripButtonClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
             this.toolStrip1.TabIndex = 51;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButtonnew
+            // toolStripButtonProfit
             // 
-            this.toolStripButtonnew.Image = global::WSCATProject.Properties.Resources.盘点;
-            this.toolStripButtonnew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonnew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonnew.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtonnew.Name = "toolStripButtonnew";
-            this.toolStripButtonnew.Size = new System.Drawing.Size(55, 66);
-            this.toolStripButtonnew.Text = "盘盈单";
-            this.toolStripButtonnew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonnew.ToolTipText = "输出盘盈单";
+            this.toolStripButtonProfit.Image = global::WSCATProject.Properties.Resources.盘点;
+            this.toolStripButtonProfit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonProfit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonProfit.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtonProfit.Name = "toolStripButtonProfit";
+            this.toolStripButtonProfit.Size = new System.Drawing.Size(55, 66);
+            this.toolStripButtonProfit.Text = "盘盈单";
+            this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonProfit.ToolTipText = "输出盘盈单";
             // 
-            // toolStripButtonsave
+            // toolStripButtonLoss
             // 
-            this.toolStripButtonsave.Image = global::WSCATProject.Properties.Resources.盘点;
-            this.toolStripButtonsave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonsave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonsave.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtonsave.Name = "toolStripButtonsave";
-            this.toolStripButtonsave.Size = new System.Drawing.Size(55, 66);
-            this.toolStripButtonsave.Text = "盘亏单";
-            this.toolStripButtonsave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonsave.ToolTipText = "输出盘亏单";
+            this.toolStripButtonLoss.Image = global::WSCATProject.Properties.Resources.盘点;
+            this.toolStripButtonLoss.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonLoss.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLoss.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtonLoss.Name = "toolStripButtonLoss";
+            this.toolStripButtonLoss.Size = new System.Drawing.Size(55, 66);
+            this.toolStripButtonLoss.Text = "盘亏单";
+            this.toolStripButtonLoss.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonLoss.ToolTipText = "输出盘亏单";
             // 
             // toolStripButtonshuaixin
             // 
@@ -252,16 +252,16 @@
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
             // 
-            // toolStripButton6
+            // toolStripButtonClose
             // 
-            this.toolStripButton6.Image = global::WSCATProject.Properties.Resources.guanbi;
-            this.toolStripButton6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(41, 67);
-            this.toolStripButton6.Text = "关闭";
-            this.toolStripButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
+            this.toolStripButtonClose.Image = global::WSCATProject.Properties.Resources.guanbi;
+            this.toolStripButtonClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonClose.Name = "toolStripButtonClose";
+            this.toolStripButtonClose.Size = new System.Drawing.Size(41, 67);
+            this.toolStripButtonClose.Text = "关闭";
+            this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
             this.toolStripButton6.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // panel2
@@ -420,19 +420,19 @@
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
             // 
-            // labelX4
+            // lblzhangcundate
             // 
-            this.labelX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblzhangcundate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblzhangcundate.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(835, 80);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(75, 23);
-            this.labelX4.TabIndex = 60;
-            this.labelX4.Text = "labelX4";
+            this.lblzhangcundate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblzhangcundate.Location = new System.Drawing.Point(835, 80);
+            this.lblzhangcundate.Name = "lblzhangcundate";
+            this.lblzhangcundate.Size = new System.Drawing.Size(75, 23);
+            this.lblzhangcundate.TabIndex = 60;
+            this.lblzhangcundate.Text = "labelX4";
             // 
             // labelX3
             // 
@@ -448,18 +448,19 @@
             this.labelX3.TabIndex = 59;
             this.labelX3.Text = "账存日期：";
             // 
-            // comboBoxEx1
+            // cbopandianidea
             // 
-            this.comboBoxEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(532, 81);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 58;
+            this.cbopandianidea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbopandianidea.DisplayMember = "Text";
+            this.cbopandianidea.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbopandianidea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbopandianidea.FormattingEnabled = true;
+            this.cbopandianidea.ItemHeight = 15;
+            this.cbopandianidea.Location = new System.Drawing.Point(532, 81);
+            this.cbopandianidea.Name = "cbopandianidea";
+            this.cbopandianidea.Size = new System.Drawing.Size(121, 21);
+            this.cbopandianidea.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbopandianidea.TabIndex = 58;
             // 
             // labelX2
             // 
@@ -478,21 +479,23 @@
             // textBoxpandiancode
             // 
             this.textBoxpandiancode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxpandiancode.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxpandiancode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxpandiancode.Location = new System.Drawing.Point(1023, 65);
             this.textBoxpandiancode.Name = "textBoxpandiancode";
+            this.textBoxpandiancode.ReadOnly = true;
             this.textBoxpandiancode.Size = new System.Drawing.Size(141, 14);
             this.textBoxpandiancode.TabIndex = 64;
             // 
-            // pictureBox1
+            // picbpandianBarCode
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pictureBox1.Location = new System.Drawing.Point(1023, 85);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 40);
-            this.pictureBox1.TabIndex = 63;
-            this.pictureBox1.TabStop = false;
+            this.picbpandianBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picbpandianBarCode.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.picbpandianBarCode.Location = new System.Drawing.Point(1023, 85);
+            this.picbpandianBarCode.Name = "picbpandianBarCode";
+            this.picbpandianBarCode.Size = new System.Drawing.Size(141, 40);
+            this.picbpandianBarCode.TabIndex = 63;
+            this.picbpandianBarCode.TabStop = false;
             // 
             // labelX1
             // 
@@ -515,12 +518,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Controls.Add(this.textBoxpandiancode);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picbpandianBarCode);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.labelX2);
-            this.Controls.Add(this.labelX4);
+            this.Controls.Add(this.lblzhangcundate);
             this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.comboBoxEx1);
+            this.Controls.Add(this.cbopandianidea);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
@@ -530,16 +533,16 @@
             this.Text = "商品盘点报告单";
             this.Load += new System.EventHandler(this.WareHouseInventoryReportForm_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbpandianBarCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -550,16 +553,16 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.PictureBox pictureBoxtitle;
         protected DevComponents.DotNetBar.LabelX labelTitle;
-        protected System.Windows.Forms.PictureBox pictureBox8;
-        public System.Windows.Forms.PictureBox pictureBox6;
-        public System.Windows.Forms.PictureBox pictureBox7;
+        protected System.Windows.Forms.PictureBox pictureBoxClose;
+        public System.Windows.Forms.PictureBox pictureBoxMax;
+        public System.Windows.Forms.PictureBox pictureBoxMin;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonnew;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonsave;
+        protected System.Windows.Forms.ToolStripButton toolStripButtonProfit;
+        protected System.Windows.Forms.ToolStripButton toolStripButtonLoss;
         protected System.Windows.Forms.ToolStripButton toolStripButtonshuaixin;
         protected System.Windows.Forms.ToolStripButton toolStripButtondayin;
         protected System.Windows.Forms.ToolStripButton toolStripButtondaochu;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn storge;
@@ -577,13 +580,13 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
         private System.Windows.Forms.Panel panel3;
         private DevComponents.DotNetBar.Bar bar1;
-        private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.LabelX lblzhangcundate;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbopandianidea;
         private DevComponents.DotNetBar.LabelX labelX2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TextBox textBoxpandiancode;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picbpandianBarCode;
         private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

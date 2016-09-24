@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMin = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMax = new System.Windows.Forms.PictureBox();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -52,7 +52,6 @@
             this.textBoxOddNumbers = new System.Windows.Forms.TextBox();
             this.labelprie = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labtextboxTop6 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labtextboxTop3 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -81,9 +80,9 @@
             this.labtextboxBotton2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.labtextboxBotton4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labtextboxBotton3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labtextboxBotton1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.ltxtbShengHeMan = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.ltxtbMakeMan = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.ltxtbSalsMan = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labBotton4 = new System.Windows.Forms.Label();
             this.labBotton3 = new System.Windows.Forms.Label();
             this.labBotton1 = new System.Windows.Forms.Label();
@@ -98,14 +97,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resizablePanel1 = new HelperUtility.ExUI.ResizablePanel();
             this.panelDataView = new System.Windows.Forms.Panel();
+            this.dataGridViewFujia = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -119,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.resizablePanel1.SuspendLayout();
             this.panelDataView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).BeginInit();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -128,9 +128,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.pictureBox7);
-            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Controls.Add(this.pictureBoxClose);
+            this.panel1.Controls.Add(this.pictureBoxMin);
+            this.panel1.Controls.Add(this.pictureBoxMax);
             this.panel1.Controls.Add(this.labelTitle);
             this.panel1.Controls.Add(this.pictureBoxtitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -139,51 +139,51 @@
             this.panel1.Size = new System.Drawing.Size(1202, 61);
             this.panel1.TabIndex = 2;
             // 
-            // pictureBox8
+            // pictureBoxClose
             // 
-            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox8.Image = global::WSCATProject.Properties.Resources.clo;
-            this.pictureBox8.Location = new System.Drawing.Point(1139, 26);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox8.TabIndex = 45;
-            this.pictureBox8.TabStop = false;
-            this.toolTip2.SetToolTip(this.pictureBox8, "关闭");
-            this.pictureBox8.Click += new System.EventHandler(this.toolStripButton6_Click);
+            this.pictureBoxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxClose.BackColor = System.Drawing.Color.White;
+            this.pictureBoxClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxClose.Image = global::WSCATProject.Properties.Resources.clo;
+            this.pictureBoxClose.Location = new System.Drawing.Point(1139, 26);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxClose.TabIndex = 45;
+            this.pictureBoxClose.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBoxClose, "关闭");
+            this.pictureBoxClose.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // pictureBox7
+            // pictureBoxMin
             // 
-            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox7.BackColor = System.Drawing.Color.White;
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBox7.Location = new System.Drawing.Point(1083, 26);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox7.TabIndex = 43;
-            this.pictureBox7.TabStop = false;
-            this.toolTip2.SetToolTip(this.pictureBox7, "最小化");
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            this.pictureBoxMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMin.BackColor = System.Drawing.Color.White;
+            this.pictureBoxMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMin.Image = global::WSCATProject.Properties.Resources.small;
+            this.pictureBoxMin.Location = new System.Drawing.Point(1083, 26);
+            this.pictureBoxMin.Name = "pictureBoxMin";
+            this.pictureBoxMin.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMin.TabIndex = 43;
+            this.pictureBoxMin.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBoxMin, "最小化");
+            this.pictureBoxMin.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
-            // pictureBox6
+            // pictureBoxMax
             // 
-            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Image = global::WSCATProject.Properties.Resources.zuidahua1;
-            this.pictureBox6.Location = new System.Drawing.Point(1110, 26);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox6.TabIndex = 42;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
+            this.pictureBoxMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMax.BackColor = System.Drawing.Color.White;
+            this.pictureBoxMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMax.Image = global::WSCATProject.Properties.Resources.zuidahua1;
+            this.pictureBoxMax.Location = new System.Drawing.Point(1110, 26);
+            this.pictureBoxMax.Name = "pictureBoxMax";
+            this.pictureBoxMax.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxMax.TabIndex = 42;
+            this.pictureBoxMax.TabStop = false;
+            this.pictureBoxMax.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.pictureBoxMax.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             // 
             // labelTitle
             // 
@@ -374,37 +374,6 @@
             this.toolTip1.AutomaticDelay = 0;
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // dataGridViewFujia
-            // 
-            this.dataGridViewFujia.AllowUserToAddRows = false;
-            this.dataGridViewFujia.AllowUserToDeleteRows = false;
-            this.dataGridViewFujia.AllowUserToResizeColumns = false;
-            this.dataGridViewFujia.AllowUserToResizeRows = false;
-            this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewFujia.MultiSelect = false;
-            this.dataGridViewFujia.Name = "dataGridViewFujia";
-            this.dataGridViewFujia.RowHeadersVisible = false;
-            this.dataGridViewFujia.RowTemplate.Height = 23;
-            this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
-            this.dataGridViewFujia.TabIndex = 0;
-            this.dataGridViewFujia.Leave += new System.EventHandler(this.dataGridViewFujia_Leave);
-            this.dataGridViewFujia.MouseEnter += new System.EventHandler(this.dataGridViewFujia_MouseEnter);
             // 
             // panel2
             // 
@@ -774,9 +743,9 @@
             this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.pictureBox5);
-            this.panel5.Controls.Add(this.labtextboxBotton4);
-            this.panel5.Controls.Add(this.labtextboxBotton3);
-            this.panel5.Controls.Add(this.labtextboxBotton1);
+            this.panel5.Controls.Add(this.ltxtbShengHeMan);
+            this.panel5.Controls.Add(this.ltxtbMakeMan);
+            this.panel5.Controls.Add(this.ltxtbSalsMan);
             this.panel5.Controls.Add(this.labBotton4);
             this.panel5.Controls.Add(this.labBotton3);
             this.panel5.Controls.Add(this.labBotton1);
@@ -798,59 +767,59 @@
             this.pictureBox5.TabIndex = 40;
             this.pictureBox5.TabStop = false;
             // 
-            // labtextboxBotton4
+            // ltxtbShengHeMan
             // 
             // 
             // 
             // 
-            this.labtextboxBotton4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton4.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton4.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton4.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton4.Border.Class = "SideNavStrip";
-            this.labtextboxBotton4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton4.DisabledBackColor = System.Drawing.Color.White;
-            this.labtextboxBotton4.Location = new System.Drawing.Point(616, 21);
-            this.labtextboxBotton4.Name = "labtextboxBotton4";
-            this.labtextboxBotton4.PreventEnterBeep = true;
-            this.labtextboxBotton4.Size = new System.Drawing.Size(130, 16);
-            this.labtextboxBotton4.TabIndex = 35;
+            this.ltxtbShengHeMan.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ltxtbShengHeMan.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.ltxtbShengHeMan.Border.BorderBottomWidth = 1;
+            this.ltxtbShengHeMan.Border.BorderGradientAngle = 0;
+            this.ltxtbShengHeMan.Border.Class = "SideNavStrip";
+            this.ltxtbShengHeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbShengHeMan.DisabledBackColor = System.Drawing.Color.White;
+            this.ltxtbShengHeMan.Location = new System.Drawing.Point(616, 21);
+            this.ltxtbShengHeMan.Name = "ltxtbShengHeMan";
+            this.ltxtbShengHeMan.PreventEnterBeep = true;
+            this.ltxtbShengHeMan.Size = new System.Drawing.Size(130, 16);
+            this.ltxtbShengHeMan.TabIndex = 35;
             // 
-            // labtextboxBotton3
-            // 
-            // 
-            // 
-            // 
-            this.labtextboxBotton3.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton3.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton3.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton3.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton3.Border.Class = "SideNavStrip";
-            this.labtextboxBotton3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton3.DisabledBackColor = System.Drawing.Color.White;
-            this.labtextboxBotton3.Location = new System.Drawing.Point(385, 21);
-            this.labtextboxBotton3.Name = "labtextboxBotton3";
-            this.labtextboxBotton3.PreventEnterBeep = true;
-            this.labtextboxBotton3.Size = new System.Drawing.Size(105, 16);
-            this.labtextboxBotton3.TabIndex = 36;
-            // 
-            // labtextboxBotton1
+            // ltxtbMakeMan
             // 
             // 
             // 
             // 
-            this.labtextboxBotton1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxBotton1.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxBotton1.Border.BorderBottomWidth = 1;
-            this.labtextboxBotton1.Border.BorderGradientAngle = 0;
-            this.labtextboxBotton1.Border.Class = "SideNavStrip";
-            this.labtextboxBotton1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton1.DisabledBackColor = System.Drawing.Color.White;
-            this.labtextboxBotton1.Location = new System.Drawing.Point(99, 19);
-            this.labtextboxBotton1.Name = "labtextboxBotton1";
-            this.labtextboxBotton1.PreventEnterBeep = true;
-            this.labtextboxBotton1.Size = new System.Drawing.Size(130, 16);
-            this.labtextboxBotton1.TabIndex = 38;
+            this.ltxtbMakeMan.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ltxtbMakeMan.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.ltxtbMakeMan.Border.BorderBottomWidth = 1;
+            this.ltxtbMakeMan.Border.BorderGradientAngle = 0;
+            this.ltxtbMakeMan.Border.Class = "SideNavStrip";
+            this.ltxtbMakeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbMakeMan.DisabledBackColor = System.Drawing.Color.White;
+            this.ltxtbMakeMan.Location = new System.Drawing.Point(385, 21);
+            this.ltxtbMakeMan.Name = "ltxtbMakeMan";
+            this.ltxtbMakeMan.PreventEnterBeep = true;
+            this.ltxtbMakeMan.Size = new System.Drawing.Size(105, 16);
+            this.ltxtbMakeMan.TabIndex = 36;
+            // 
+            // ltxtbSalsMan
+            // 
+            // 
+            // 
+            // 
+            this.ltxtbSalsMan.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ltxtbSalsMan.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.ltxtbSalsMan.Border.BorderBottomWidth = 1;
+            this.ltxtbSalsMan.Border.BorderGradientAngle = 0;
+            this.ltxtbSalsMan.Border.Class = "SideNavStrip";
+            this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbSalsMan.DisabledBackColor = System.Drawing.Color.White;
+            this.ltxtbSalsMan.Location = new System.Drawing.Point(99, 19);
+            this.ltxtbSalsMan.Name = "ltxtbSalsMan";
+            this.ltxtbSalsMan.PreventEnterBeep = true;
+            this.ltxtbSalsMan.Size = new System.Drawing.Size(130, 16);
+            this.ltxtbSalsMan.TabIndex = 38;
             // 
             // labBotton4
             // 
@@ -999,6 +968,37 @@
             this.panelDataView.Size = new System.Drawing.Size(248, 132);
             this.panelDataView.TabIndex = 30;
             // 
+            // dataGridViewFujia
+            // 
+            this.dataGridViewFujia.AllowUserToAddRows = false;
+            this.dataGridViewFujia.AllowUserToDeleteRows = false;
+            this.dataGridViewFujia.AllowUserToResizeColumns = false;
+            this.dataGridViewFujia.AllowUserToResizeRows = false;
+            this.dataGridViewFujia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewFujia.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewFujia.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewFujia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewFujia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewFujia.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dataGridViewFujia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewFujia.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewFujia.MultiSelect = false;
+            this.dataGridViewFujia.Name = "dataGridViewFujia";
+            this.dataGridViewFujia.RowHeadersVisible = false;
+            this.dataGridViewFujia.RowTemplate.Height = 23;
+            this.dataGridViewFujia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewFujia.Size = new System.Drawing.Size(248, 132);
+            this.dataGridViewFujia.TabIndex = 0;
+            this.dataGridViewFujia.Leave += new System.EventHandler(this.dataGridViewFujia_Leave);
+            this.dataGridViewFujia.MouseEnter += new System.EventHandler(this.dataGridViewFujia_MouseEnter);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1033,13 +1033,12 @@
             this.Load += new System.EventHandler(this.TestForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -1057,6 +1056,7 @@
             this.resizablePanel1.ResumeLayout(false);
             this.resizablePanel1.PerformLayout();
             this.panelDataView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFujia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1097,13 +1097,13 @@
         protected System.Windows.Forms.Label labTop3;
         protected System.Windows.Forms.Label labTop2;
         protected System.Windows.Forms.Label labTop1;
-        protected System.Windows.Forms.PictureBox pictureBox8;
+        protected System.Windows.Forms.PictureBox pictureBoxClose;
         protected System.Windows.Forms.Panel panel5;
         protected System.Windows.Forms.PictureBox pictureBox5;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton4;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton3;
+        protected DevComponents.DotNetBar.Controls.TextBoxX ltxtbShengHeMan;
+        protected DevComponents.DotNetBar.Controls.TextBoxX ltxtbMakeMan;
         protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton2;
-        protected DevComponents.DotNetBar.Controls.TextBoxX labtextboxBotton1;
+        protected DevComponents.DotNetBar.Controls.TextBoxX ltxtbSalsMan;
         protected System.Windows.Forms.Label labBotton4;
         protected System.Windows.Forms.Label labBotton2;
         protected System.Windows.Forms.Label labBotton3;
@@ -1129,7 +1129,7 @@
         protected System.Windows.Forms.Panel panelDataView;
         protected System.Windows.Forms.DataGridView dataGridViewFujia;
         protected System.Windows.Forms.Label label1;
-        protected System.Windows.Forms.PictureBox pictureBox6;
-        protected System.Windows.Forms.PictureBox pictureBox7;
+        protected System.Windows.Forms.PictureBox pictureBoxMax;
+        protected System.Windows.Forms.PictureBox pictureBoxMin;
     }
 }
