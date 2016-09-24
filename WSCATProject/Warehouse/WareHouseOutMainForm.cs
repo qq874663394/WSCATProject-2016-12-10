@@ -514,6 +514,28 @@ namespace WSCATProject.Warehouse
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "productionDate";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "productionDate";
+            dgvc.DataPropertyName = "productionDate";
+            dataGridView1.Columns.Add(dgvc);
+
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "qualityDate";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "qualityDate";
+            dgvc.DataPropertyName = "qualityDate";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "effectiveDate";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "effectiveDate";
+            dgvc.DataPropertyName = "effectiveDate";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "remark";
             dgvc.Visible = false;
             dgvc.HeaderText = "remark";
@@ -884,14 +906,22 @@ namespace WSCATProject.Warehouse
             {
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
                 gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
+                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materiaModel"].Value;//规格型号
                 gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
                 gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                gr.Cells["gridColumnprice"].Value = dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value;//单价
-                gr.Cells["griCoulumcangku"].Value = "";//仓库
-                gr.Cells["griCoulumhuojia"].Value = "";//货架
-                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
-                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
+                gr.Cells["gridColumnprice"].Value = dataGridView1.Rows[e.RowIndex].Cells["discountAfterPrice"].Value;//单价
+                string storageRackLocation = dataGridView1.Rows[e.RowIndex].Cells["storageRackLocation"].Value.ToString();
+                string[] sArray = storageRackLocation.Split('/');
+                string Location = sArray[1] + "/" + sArray[2] + "/" + sArray[3] + "/" + sArray[4];
+                gr.Cells["griCoulumcangku"].Value =sArray[0];//仓库
+                gr.Cells["griCoulumhuojia"].Value = Location;//货架
+                gr.Cells["gridColumndate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value == null ? "" : Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value).ToString("yyyy-MM-dd");//生产和采购日期
+                gr.Cells["gridColumnbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
+                gr.Cells["gridColumnyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value==null?"":Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value).ToString("yyyy-MM-dd");//有效期
+                gr.Cells["gridColumnremark"].Value = dataGridView1.Rows[e.RowIndex].Cells["remark"].Value;//备注
+                gr.Cells["gridColumnmaterialcode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品code
+                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["needNumber"].Value);
+                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountAfterPrice"].Value);
                 gr.Cells["gridColumnmoney"].Value = number * price;//金额
                 resizablePanelData.Visible = false;
                 //新增一行 
