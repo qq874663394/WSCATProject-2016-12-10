@@ -31,7 +31,7 @@ namespace Model
 		private string _reserved1;
 		private string _reserved2;
 		private string _remark;
-		private DateTime? _detail_updatedate;
+		private DateTime? _updatedate;
         private string _materialdaima;
         private DateTime? _productiondate;
         private DateTime? _qualitydate;
@@ -199,10 +199,10 @@ namespace Model
 		/// <summary>
 		/// 更改时间
 		/// </summary>
-		public DateTime? detail_UpdateDate
+		public DateTime? updateDate
 		{
-			set{ _detail_updatedate=value;}
-			get{return _detail_updatedate;}
+			set{ _updatedate=value;}
+			get{return _updatedate;}
 		}
         /// <summary>
         /// 商品代码

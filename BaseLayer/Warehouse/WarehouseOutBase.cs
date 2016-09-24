@@ -83,7 +83,10 @@ namespace BaseLayer
            ,expressOdd
            ,expressMan
            ,expressPhone
-           ,defaultType)
+           ,defaultType
+            ,makeMan
+            ,clientName
+            ,salesPhone)
      VALUES
            (@code,@type,@stock,@operation,@examine,@isClear,@updateDate,@state,@salesCode
            ,@date
@@ -96,7 +99,10 @@ namespace BaseLayer
            ,@expressOdd
            ,@expressMan
            ,@expressPhone
-           ,@defaultType)";
+           ,@defaultType
+            ,@makeMan
+            ,@clientName
+            ,@salesPhone)";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseOut.code),
@@ -118,7 +124,10 @@ namespace BaseLayer
                     new SqlParameter("@expressOdd",warehouseOut.expressOdd),
                     new SqlParameter("@expressMan",warehouseOut.expressMan),
                     new SqlParameter("@expressPhone",warehouseOut.expressPhone),
-                    new SqlParameter("@defaultType",warehouseOut.defaultType)
+                    new SqlParameter("@defaultType",warehouseOut.defaultType),
+                    new SqlParameter("@makeMan",warehouseOut.MakeMan),
+                    new SqlParameter("@clientName",warehouseOut.ClientName),
+                    new SqlParameter("@salesPhone",warehouseOut.SalesPhone)
                 };
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail = @"INSERT INTO T_WarehouseOutDetail(code,materialDaima,materialCode,materiaName,materiaModel,
@@ -202,7 +211,10 @@ VALUES(@code,@materialDaima,@materialCode,@materiaName,@materiaModel,@materiaUni
       , isArrive = @isArrive
       , warehouseCode = @warehouseCode
       , warehouseName = @warehouseName
-      , mainCode = @mainCode";
+      , productionDate = @productionDate
+      , qualityDate = @qualityDate
+      , effectiveDate = @effectiveDate where 
+       mainCode = @mainCode";
             //多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
             List<SqlParameter[]> listParameter = new List<SqlParameter[]>();//存储参数集合的list
             SqlParameter[] sps;  //定义一个参数集合
@@ -232,6 +244,9 @@ VALUES(@code,@materialDaima,@materialCode,@materiaName,@materiaModel,@materiaUni
                         new SqlParameter("@isArrive",item.StorageRackCode),
                         new SqlParameter("@warehouseCode",item.WarehouseCode),
                         new SqlParameter("@warehouseName",item.WarehouseName),
+                        new SqlParameter("@productionDate",item.productionDate),
+                        new SqlParameter("@qualityDate",item.qualityDate),
+                        new SqlParameter("@effectiveDate",item.effectiveDate),
                         new SqlParameter("@mainCode",item.MainCode)
                 };
                 listParameter.Add(sps);
@@ -258,7 +273,10 @@ SET type = @type
 ,expressMan = @expressMan
 ,expressPhone = @expressPhone
 ,defaultType = @defaultType
- WHERE code = @code";  //主表的
+,makeMan=@makeMan
+,clientName=@clientName
+,salesPhone=@salesPhone
+WHERE code = @code";  //主表的
             SqlParameter[] parameters = //主表参数
             {
                             new SqlParameter("@code",warehouseOut.code),
@@ -280,7 +298,10 @@ SET type = @type
                             new SqlParameter("@expressOdd",warehouseOut.expressOdd),
                             new SqlParameter("@expressMan",warehouseOut.expressMan),
                             new SqlParameter("@expressPhone",warehouseOut.expressPhone),
-                            new SqlParameter("@defaultType",warehouseOut.defaultType)
+                            new SqlParameter("@defaultType",warehouseOut.defaultType),
+                            new SqlParameter("@makeMan",warehouseOut.MakeMan),
+                            new SqlParameter("@clientName",warehouseOut.ClientName),
+                            new SqlParameter("@salesPhone",warehouseOut.SalesPhone)
             };
             htKey.Add(sql, parameters);//sql语句和主表的参数集合
             try
@@ -339,7 +360,10 @@ SET type = @type
                         expressOdd = read["expressOdd"].ToString(),
                         expressMan = read["expressMan"].ToString(),
                         defaultType = read["defaultType"].ToString(),
-                        expressPhone = read["expressPhone"].ToString()
+                        expressPhone = read["expressPhone"].ToString(),
+                        ClientName = read["clientName"].ToString(),
+                        MakeMan = read["makeMan"].ToString(),
+                        SalesPhone = read["salesPhone"].ToString()
                     };
                     return wo;
                 }

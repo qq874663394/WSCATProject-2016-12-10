@@ -107,6 +107,9 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseInventoryForm_Load(object sender, EventArgs e)
         {
+            CodingHelper ch = new CodingHelper();
+            StorageInterface sif = new StorageInterface();
+            comboBoxEx1.DataSource = ch.DataTableReCoding(sif.SelStorage());
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBox6.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBox7.BackColor = Color.FromArgb(85, 177, 238);
@@ -228,7 +231,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("计算盘盈，盘亏数量有误！请检查：" + ex.Message);
-            }   
+            }
 
             try
             {
@@ -258,5 +261,9 @@ namespace WSCATProject.Warehouse
         }
         #endregion
 
+        private void comboBoxEx1_SelectedValueChanged_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
     }
 }

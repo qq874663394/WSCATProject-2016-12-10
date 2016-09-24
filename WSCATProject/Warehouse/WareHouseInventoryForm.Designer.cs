@@ -275,6 +275,7 @@
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 52;
+            this.comboBoxEx1.SelectedValueChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged_1);
             // 
             // labelX2
             // 
