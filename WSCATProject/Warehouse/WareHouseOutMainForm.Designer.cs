@@ -58,6 +58,7 @@
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.textBoid = new System.Windows.Forms.TextBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -469,6 +470,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnbaozhe);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 345);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
@@ -712,6 +714,11 @@
             this.pictureBox10.TabIndex = 46;
             this.pictureBox10.TabStop = false;
             // 
+            // gridColumnmaterialcode
+            // 
+            this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
+            this.gridColumnmaterialcode.Visible = false;
+            // 
             // WareHouseOutMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -781,5 +788,6 @@
         private DevComponents.Editors.ComboItem comboItem7;
         private System.Windows.Forms.TextBox textBoid;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
     }
 }
