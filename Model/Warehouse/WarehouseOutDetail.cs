@@ -203,60 +203,37 @@ namespace Model
         /// </summary>
         public string StorageRackCode
         {
-            get
-            {
-                return _storageRackCode;
-            }
+            get{ return _storageRackCode;}
 
-            set
-            {
-                _storageRackCode = value;
-            }
+            set{_storageRackCode = value; }
         }
         /// <summary>
         /// 主表code
         /// </summary>
         public string MainCode
         {
-            get
-            {
-                return _mainCode;
-            }
+            get{ return _mainCode;}
 
-            set
-            {
-                _mainCode = value;
-            }
+            set{ _mainCode = value;}
         }
         /// <summary>
         /// 是否出库
         /// </summary>
         public int IsArrive
         {
-            get
-            {
-                return _isArrive;
-            }
+            get{ return _isArrive; }
 
-            set
-            {
-                _isArrive = value;
-            }
+            set{ _isArrive = value;}
         }
         /// <summary>
         /// 仓库code
         /// </summary>
         public string WarehouseCode
         {
-            get
-            {
-                return _warehouseCode;
-            }
+            get{ return _warehouseCode;}
 
             set
-            {
-                _warehouseCode = value;
-            }
+            { _warehouseCode = value;}
         }
         /// <summary>
         /// 仓库名
