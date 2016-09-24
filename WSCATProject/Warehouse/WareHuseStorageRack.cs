@@ -131,7 +131,7 @@ namespace WSCATProject.Warehouse
                 {
                     //是临时存放
                     whi.StorageCode = comboBoxEx1.SelectedValue == null ? "" : comboBoxEx1.SelectedValue.ToString();
-                    whi.Storage = comboBoxEx1.Text;
+                    whi.Storage ="临时存放地";
                     whi.StorageQuyu = "临时存放地";
                     Close();
                     Dispose();

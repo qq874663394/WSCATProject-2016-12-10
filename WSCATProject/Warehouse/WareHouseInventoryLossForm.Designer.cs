@@ -430,6 +430,10 @@
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labeldata.Location = new System.Drawing.Point(985, 83);
             // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            // 
             // pictureBoxtitle
             // 
             this.pictureBoxtitle.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -513,6 +517,7 @@
             this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
+            this.tiaoxingma.ReadOnly = true;
             this.tiaoxingma.Width = 150;
             // 
             // storge

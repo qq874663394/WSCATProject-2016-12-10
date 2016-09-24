@@ -275,7 +275,7 @@ namespace WSCATProject.Warehouse
 
         private void comboBoxEx1_SelectedValueChanged_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
+           // MessageBox.Show("Test");
         }
     }
 }

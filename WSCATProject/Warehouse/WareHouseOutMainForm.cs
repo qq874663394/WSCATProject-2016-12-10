@@ -138,7 +138,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseout.checkState = 0;
-                warehouseout.clientCode = XYEEncoding.strCodeHex(_clientcode);//客户code
+                warehouseout.clientCode =_clientcode;//客户code
                 warehouseout.code = XYEEncoding.strCodeHex(_warehouseoutcode);//单号
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
@@ -248,7 +248,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseout.checkState = 0;
-                warehouseout.clientCode = XYEEncoding.strCodeHex(_clientcode);//客户code
+                warehouseout.clientCode = _clientcode;//客户code
                 warehouseout.code = XYEEncoding.strCodeHex(_warehouseoutcode);//单号
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
@@ -848,7 +848,11 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("统计数量出错！请检查：" + ex.Message);
             }
         }
-
+        /// <summary>
+        /// 第一个框的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             string SS = "";
