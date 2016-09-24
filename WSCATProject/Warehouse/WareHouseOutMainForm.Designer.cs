@@ -701,6 +701,7 @@
             this.textBoid.Name = "textBoid";
             this.textBoid.Size = new System.Drawing.Size(100, 21);
             this.textBoid.TabIndex = 41;
+            this.textBoid.Visible = false;
             // 
             // pictureBox10
             // 
@@ -763,7 +764,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnunit;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnnumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumcangku;
         private DevComponents.DotNetBar.SuperGrid.GridColumn griCoulumhuojia;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
@@ -781,5 +781,6 @@
         private DevComponents.Editors.ComboItem comboItem7;
         private System.Windows.Forms.TextBox textBoid;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmoney;
     }
 }
