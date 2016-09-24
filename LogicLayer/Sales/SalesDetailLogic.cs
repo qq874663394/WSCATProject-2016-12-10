@@ -109,7 +109,7 @@ namespace LogicLayer.Sales
         public DataTable GetWhereList(string fieldValue,string salesCode)
         {
             DataTable dt = null;
-            dt = GetList(0, salesCode);
+            dt = GetDetailByMainCode(salesCode, 999, fieldValue);
             DataView view = null;
             view = new DataView();
             view.Table = dt;
