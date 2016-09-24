@@ -11,25 +11,15 @@ namespace InterfaceLayer.Warehouse
     public class WarehouseInventoryInterface
     {
         WarehouseInventoryLogic iface = new WarehouseInventoryLogic();
-
         /// <summary>
-        /// 获取仓库列表
+        /// 复合查询
         /// </summary>
+        /// <param name="fieldName">0:code,1:stockName,2:checkMan,3:stockCode</param>
+        /// <param name="fieldValue"></param>
         /// <returns></returns>
-        public DataTable GetList()
+        public DataTable GetList(int fieldName, string fieldValue)
         {
-            return iface.GetList();
-        }
-
-        /// <summary>
-        /// 商品盘点表 read
-        /// </summary>
-        /// <param name="num">1为全部数据，2为对仓库数据</param>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        public DataTable GetTbList(int num,string code)
-        {
-            return iface.GetTbList(num,code);
+            return iface.GetList(fieldName, fieldValue);
         }
     }
 }

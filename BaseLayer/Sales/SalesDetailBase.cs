@@ -35,9 +35,9 @@ namespace BaseLayer.Sales
             try
             {
                 sql = string.Format(@"select sd.productionDate,sd.qualityDate,sd.effectiveDate,sd.id,sd.code,bm.materialDaima,sd.materialCode,sd.unit,sd.needNumber,whd.storageRackLocation,money,discountAfterPrice,sd.remark,bm.zhujima,materialName,sd.materiaModel,   
-            bm.barCode from T_SalesMain sm, T_SalesDetail sd,T_WarehouseMain whm, T_BaseMaterial bm,T_WarehouseDetail whd
-            where sm.code = sd.salesMainCode and sd.materialCode = whm.materialCode and sd.materialCode = bm.code and 
-            whm.code = whd.mainCode and sd.salesMainCode = '{0}'", SalesCode);
+bm.barCode from T_SalesMain sm, T_SalesDetail sd,T_WarehouseMain whm, T_BaseMaterial bm,T_WarehouseDetail whd
+where sm.code = sd.salesMainCode and sd.materialCode = whm.materialCode and sd.materialCode = bm.code and 
+whm.code = whd.mainCode and sd.salesMainCode = '{0}'", SalesCode);
                 if (!string.IsNullOrWhiteSpace(strWhere))
                 {
                     sql += " and " + strWhere;

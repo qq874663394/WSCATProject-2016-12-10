@@ -30,7 +30,7 @@ namespace WSCATProject.Warehouse
             comboBoxEx5.SelectedIndex = 0;
             //绑定仓库下拉框
             StorageInterface sif = new StorageInterface();
-            DataTable dt = ch.DataTableReCoding(sif.SelStorage());
+            DataTable dt = ch.DataTableReCoding(sif.GetList(999,""));
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);

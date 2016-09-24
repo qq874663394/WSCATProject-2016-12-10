@@ -56,7 +56,7 @@ namespace WSCATProject.Warehouse
             //显示行号
             superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
             #region 加载盘点方案的数据
-            DataTable dt = codeh.DataTableReCoding(iface.GetList());
+            DataTable dt = null;//codeh.DataTableReCoding(iface.GetList());
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
@@ -79,7 +79,7 @@ namespace WSCATProject.Warehouse
             if (comboBoxEx1.SelectedValue == null || comboBoxEx1.SelectedValue.ToString() == "")
             {
                 //绑定dgv   查询全部数据
-                DataTable dt = codeh.DataTableReCoding(iface.GetTbList(1, ""));
+                DataTable dt = codeh.DataTableReCoding(iface.GetList(999,""));
                 if (dt == null)
                 {
                     superGridControl1.PrimaryGrid.DataSource = null;
@@ -92,7 +92,7 @@ namespace WSCATProject.Warehouse
             else
             {
                 string a = comboBoxEx1.SelectedValue.ToString();
-                DataTable dts = codeh.DataTableReCoding(iface.GetTbList(2, XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString())));
+                DataTable dts = codeh.DataTableReCoding(iface.GetList(3, XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString())));
                 superGridControl1.PrimaryGrid.DataSource = dts;
                 //调用表格初始化
                 superGridControl1.PrimaryGrid.EnsureVisible();

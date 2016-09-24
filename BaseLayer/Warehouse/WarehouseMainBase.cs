@@ -25,9 +25,9 @@ namespace BaseLayer.Warehouse
                 sql = string.Format("update T_WarehouseMain set enaNumber=enaNumber-{0} where code='{1}'", number, code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return result;
         }
@@ -46,11 +46,10 @@ namespace BaseLayer.Warehouse
                 sql = string.Format("update T_WarehouseMain set enaNumber=enaNumber+{0} where code='{1}'", number, code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
-            }
-                
+                throw ex;
+            }                
             return result;
         }
         /// <summary>
@@ -58,7 +57,7 @@ namespace BaseLayer.Warehouse
         /// </summary>
         /// <param name="strWhere"></param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetMaterialDetail(string fieldValue)
         {
             string sql = "";
             DataSet ds = null;
@@ -66,15 +65,15 @@ namespace BaseLayer.Warehouse
             {
                 sql = @"select * from T_BaseMaterial bm,T_WarehouseMain tw,T_WarehouseDetail td 
                     where tw.materialCode=bm.code and tw.code=td.warehouseOrdercode";
-                if (strWhere.Trim() != "")
+                if (fieldValue.Trim() != "")
                 {
-                    sql += " and tw.storageCode='"+ strWhere + "' ";
+                    sql += " and tw.storageCode='"+ fieldValue + "' ";
                 }
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
             return ds.Tables[0];
         }

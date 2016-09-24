@@ -10,36 +10,6 @@ namespace LogicLayer.Base
     public class StorageLogic
     {
         StorageBase srb = new StorageBase();
-        public DataTable SelStorage()
-        {
-            DataTable dt = null;
-            LogBase lb = new LogBase();
-            log log = new log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                operationCode = "操作人code",
-                operationName = "操作人名",
-                operationTable = "T_StorageRack",
-                operationTime = DateTime.Now,
-                objective = "查询仓库信息",
-                operationContent = "查询T_Storage表的所有数据"
-            };
-            try
-            {
-                dt = srb.SelStorage();
-                log.result = 1;
-            }
-            catch (Exception ex)
-            {
-                log.result = 0;
-                throw ex;
-            }
-            finally
-            {
-                lb.Add(log);
-            }
-            return dt;
-        }
         public DataTable GetList(int fieldName, string fieldValue)
         {
             string strWhere = "";

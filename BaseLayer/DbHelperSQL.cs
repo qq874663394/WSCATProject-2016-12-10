@@ -523,6 +523,11 @@ namespace BaseLayer
                                     string cmdText = myDE.Key.ToString();
                                     SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    for (int i = 0; i < cmdParms.Length; i++)
+                                    {
+                                        Console.WriteLine("declare " + cmdParms[i]);
+                                        Console.WriteLine("set " + cmdParms[i] + " = '" + cmdParms[i].Value + "'");
+                                    }
                                     val1 += cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
                                 }
@@ -610,7 +615,7 @@ namespace BaseLayer
                                 {
                                     string cmdText = sqlstr;
                                     SqlParameter[] cmdParms = para;
-                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                                     cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
                                 }
@@ -798,7 +803,7 @@ namespace BaseLayer
                         parameter.Value = DBNull.Value;
                     }
                     cmd.Parameters.Add(parameter);
-                }
+                }                
             }
         }
 
