@@ -60,7 +60,7 @@ namespace LogicLayer.Warehouse
 
                 return result;
             }
-         
+
         }
         /// <summary>
         /// 增加库存
@@ -83,7 +83,7 @@ namespace LogicLayer.Warehouse
                     operationTime = DateTime.Now,
                     objective = "增加库存",
                     result = result,
-                    operationContent = "增加T_WarehouseMain表的数据,number为"+number+"，code为:" + code
+                    operationContent = "增加T_WarehouseMain表的数据,number为" + number + "，code为:" + code
                 };
                 lb.Add(log);
 
@@ -107,14 +107,14 @@ namespace LogicLayer.Warehouse
 
                 return result;
             }
-            
+
         }
         /// <summary>
         /// 自定义条件获取列表
         /// </summary>
-        /// <param name="strWhere"></param>
+        /// <param name="fieldValue"></param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetMaterialDetail(string fieldValue)
         {
             DataTable dt = null;
 
@@ -127,20 +127,23 @@ namespace LogicLayer.Warehouse
                 operationTable = "T_BaseStorage",
                 operationTime = DateTime.Now,
                 objective = "商品盘点报告表",
-                operationContent = "查询T_BaseMaterial、T_WarehouseMain、T_WarehouseDetail表的数据,条件strWhere为"+ strWhere
+                operationContent = "查询T_BaseMaterial、T_WarehouseMain、T_WarehouseDetail表的数据,条件:storageCode=" + fieldValue
             };
             try
             {
-                dt = wo.GetList(strWhere);
-                logModel.result = 1;//rz
+                dt = wo.GetMaterialDetail(fieldValue);
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                logModel.result = 0;//rz
+                logModel.result = 0;
                 throw ex;
 
             }
-            lb.Add(logModel);//rz
+            finally
+            {
+                lb.Add(logModel);
+            }
             return dt;
         }
     }

@@ -510,18 +510,21 @@
             // 
             this.gridColumn2.HeaderText = "商品名称";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.ReadOnly = true;
             this.gridColumn2.Width = 130;
             // 
             // gridColumn3
             // 
             this.gridColumn3.HeaderText = "规格型号";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.ReadOnly = true;
             this.gridColumn3.Width = 80;
             // 
             // gridColumn4
             // 
             this.gridColumn4.HeaderText = "条形码";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.ReadOnly = true;
             this.gridColumn4.Width = 150;
             // 
             // gridColumn5
@@ -533,6 +536,7 @@
             // 
             this.gridColumn6.HeaderText = "单位";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.ReadOnly = true;
             this.gridColumn6.Width = 80;
             // 
             // gridColumn7

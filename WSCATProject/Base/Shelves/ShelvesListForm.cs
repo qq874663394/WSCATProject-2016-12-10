@@ -95,7 +95,7 @@ namespace WSCATProject.Base.Shelves
         {
             comboBoxck.SelectedItem = 0;
             StorageInterface sif = new StorageInterface();
-            DataTable dt = sif.SelStorage();
+            DataTable dt = sif.GetList(999,"");
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);

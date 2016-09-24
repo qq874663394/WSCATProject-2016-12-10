@@ -58,15 +58,22 @@ namespace BaseLayer
         /// <returns></returns>
         public DataSet GetList(string strWhere)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
-            strSql.Append(" FROM T_WarehouseIn ");
-            if (strWhere.Trim() != "")
-            {
-                strSql.Append(" where " + strWhere);
-            }
             DataSet ds = null;
-            ds = DbHelperSQL.Query(strSql.ToString());
+            StringBuilder strSql = new StringBuilder();
+            try
+            {
+                strSql.Append("select id,code,goodsCode,defaultType,type,stock,operation,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark ");
+                strSql.Append(" FROM T_WarehouseIn ");
+                if (strWhere.Trim() != "")
+                {
+                    strSql.Append(" where " + strWhere);
+                }
+                ds = DbHelperSQL.Query(strSql.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return ds;
         }
 

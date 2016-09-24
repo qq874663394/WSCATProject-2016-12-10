@@ -610,7 +610,7 @@ namespace WSCATProject.Warehouse
             }
             if (e.GridCell.GridColumn.Name == "material")
             {
-                _AllMaterial = waremain.GetList("" + XYEEncoding.strCodeHex(_OutStorage) + "");
+                _AllMaterial = waremain.GetMaterialDetail(XYEEncoding.strCodeHex(_OutStorage));
                 InitMaterialDataGridView();
                 _StorageState = 3;
             }

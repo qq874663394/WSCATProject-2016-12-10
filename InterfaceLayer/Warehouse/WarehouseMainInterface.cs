@@ -34,11 +34,11 @@ namespace InterfaceLayer.Warehouse
         /// <summary>
         /// 自定义条件获取列表
         /// </summary>
-        /// <param name="strWhere"></param>
+        /// <param name="fieldValue"></param>
         /// <returns></returns>
-        public DataTable GetList(string strWhere)
+        public DataTable GetMaterialDetail(string fieldValue)
         {
-            return wo.GetList(strWhere);
+            return wo.GetMaterialDetail(fieldValue);
         }
     }
 }

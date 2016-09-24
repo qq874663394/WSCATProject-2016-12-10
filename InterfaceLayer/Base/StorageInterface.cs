@@ -7,14 +7,6 @@ namespace InterfaceLayer.Base
     {
         StorageLogic sl = new StorageLogic();
         /// <summary>
-        /// 获取所有数据
-        /// </summary>
-        /// <returns></returns>
-        public DataTable SelStorage()
-        {
-            return sl.SelStorage();
-        }
-        /// <summary>
         /// 模糊查询
         /// </summary>
         /// <param name="fieldName">需要查询的列：0：模糊查询name,1：模糊查询address,2:name,3:code</param>

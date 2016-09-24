@@ -14,73 +14,56 @@ namespace LogicLayer.Warehouse
     public class WarehouseInventoryLogic
     {
         WarehouseInventoryBase bs = new WarehouseInventoryBase();
-
         /// <summary>
-        /// 获取仓库列表
+        /// 获取数据列表
         /// </summary>
+        /// <param name="strWhere"></param>
         /// <returns></returns>
-        public DataTable GetList()
+        public DataTable GetList(int fieldName, string fieldValue)
         {
             DataTable dt = null;
-
+            string strWhere = "";
             LogBase lb = new LogBase();
-            log logModel = new log()
+            log model = new log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_BaseStorage",
+                operationTable = "T_WarehouseInventory",
                 operationTime = DateTime.Now,
-                objective = "查询仓库列表",
-                operationContent = "查询T_BaseStorage表的数据"
+                objective = "查询盘点列表"
             };
             try
             {
-                dt= bs.GetList();
-                logModel.result = 1;//rz
-            }
-            catch(Exception ex)
-            {
-                logModel.result = 0;//rz
-                throw ex;
-            }
-            lb.Add(logModel);//rz
-            return dt;
-        }
-
-        /// <summary>
-        /// 商品盘点表 read
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        public DataTable GetTbList(int num, string code)
-        {
-            DataTable dt = null;
-
-            LogBase lb = new LogBase();
-            log logModel = new log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                operationCode = "操作人code",
-                operationName = "操作人名",
-                operationTable = "T_BaseStorage",
-                operationTime = DateTime.Now,
-                objective = "商品盘点报告表",
-                operationContent = "查询T_WarehouseMain、T_BaseMaterial、T_WarehouseInventoryDetail表的数据,条件为code"+code
-            };
-            try
-            {
-                dt = bs.GetTbList(num, code);
-                logModel.result = 1;//rz
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += string.Format("code='{0}'", fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("stockName='{0}'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("checkMan='{0}'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("stockCode='{0}'", fieldValue);
+                        break;
+                }
+                model.operationContent = "查询T_WarehouseInventory表数据,条件：where " + strWhere;
+                dt = bs.GetList(strWhere).Tables[0];
+                model.result = 1;
+                return dt;
             }
             catch (Exception ex)
             {
-                logModel.result = 0;//rz
+                model.result = 0;
                 throw ex;
-
             }
-            lb.Add(logModel);//rz
-            return dt;
+            finally
+            {
+                lb.Add(model);
+            }
         }
     }
 }

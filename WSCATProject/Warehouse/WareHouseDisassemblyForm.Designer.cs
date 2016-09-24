@@ -142,6 +142,7 @@
             this.labtextboxTop6.Location = new System.Drawing.Point(91, 28);
             this.labtextboxTop6.MaxLength = 3427;
             this.labtextboxTop6.Size = new System.Drawing.Size(162, 16);
+            this.labtextboxTop6.Text = "0.0";
             this.labtextboxTop6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.labtextboxTop6_KeyPress);
             // 
@@ -419,6 +420,10 @@
             // 
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labeldata.Location = new System.Drawing.Point(980, 86);
+            // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // panel3
             // 

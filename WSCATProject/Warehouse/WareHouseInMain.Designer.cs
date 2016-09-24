@@ -582,6 +582,7 @@
             this.gridColumnname.DataPropertyName = "materiaName";
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
+            this.gridColumnname.ReadOnly = true;
             this.gridColumnname.Width = 140;
             // 
             // gridColumnmodel
@@ -591,6 +592,7 @@
             this.gridColumnmodel.DataPropertyName = "materiaModel";
             this.gridColumnmodel.HeaderText = "规格类型";
             this.gridColumnmodel.Name = "gridColumnmodel";
+            this.gridColumnmodel.ReadOnly = true;
             this.gridColumnmodel.Width = 130;
             // 
             // gridColumnunit
@@ -599,6 +601,7 @@
             this.gridColumnunit.DataPropertyName = "materiaUnit";
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
+            this.gridColumnunit.ReadOnly = true;
             this.gridColumnunit.Width = 70;
             // 
             // gridColumntiaoxingma
@@ -608,6 +611,7 @@
             this.gridColumntiaoxingma.DataPropertyName = "barcode";
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
+            this.gridColumntiaoxingma.ReadOnly = true;
             this.gridColumntiaoxingma.Width = 150;
             // 
             // gridColumnnumber
@@ -624,6 +628,7 @@
             this.gridColumnprice.DataPropertyName = "price";
             this.gridColumnprice.HeaderText = "单价";
             this.gridColumnprice.Name = "gridColumnprice";
+            this.gridColumnprice.ReadOnly = true;
             this.gridColumnprice.Visible = false;
             this.gridColumnprice.Width = 50;
             // 
@@ -632,6 +637,7 @@
             this.gridColumnmoney.DataPropertyName = "money";
             this.gridColumnmoney.HeaderText = "金额";
             this.gridColumnmoney.Name = "gridColumnmoney";
+            this.gridColumnmoney.ReadOnly = true;
             this.gridColumnmoney.Visible = false;
             this.gridColumnmoney.Width = 50;
             // 
@@ -676,6 +682,7 @@
             this.gridColumndate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumndate.HeaderText = "生产/采购日期";
             this.gridColumndate.Name = "gridColumndate";
+            this.gridColumndate.ReadOnly = true;
             this.gridColumndate.Width = 75;
             // 
             // gridColumnbaozhe
@@ -686,6 +693,7 @@
             this.gridColumnbaozhe.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnbaozhe.HeaderText = "保质期（天）";
             this.gridColumnbaozhe.Name = "gridColumnbaozhe";
+            this.gridColumnbaozhe.ReadOnly = true;
             this.gridColumnbaozhe.Width = 50;
             // 
             // gridColumnyouxiao
@@ -694,6 +702,7 @@
             this.gridColumnyouxiao.DataPropertyName = "effectiveDate";
             this.gridColumnyouxiao.HeaderText = "有效期至";
             this.gridColumnyouxiao.Name = "gridColumnyouxiao";
+            this.gridColumnyouxiao.ReadOnly = true;
             this.gridColumnyouxiao.Width = 80;
             // 
             // pictureBoxBarCode

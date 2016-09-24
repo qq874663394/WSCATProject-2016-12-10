@@ -603,7 +603,7 @@ namespace WSCATProject.Warehouse
             if (e.GridCell.GridColumn.Name == "material")
             {
                 //绑定商品列表
-                _AllMaterial = waremain.GetList("" + XYEEncoding.strCodeHex(_Storage) + "");
+                _AllMaterial = waremain.GetMaterialDetail(XYEEncoding.strCodeHex(_Storage));
                 InitMaterialDataGridView();
                 _StorageState = 2;
             }

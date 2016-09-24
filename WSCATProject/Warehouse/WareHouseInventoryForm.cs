@@ -117,8 +117,13 @@ namespace WSCATProject.Warehouse
         private void WareHouseInventoryForm_Load(object sender, EventArgs e)
         {
             CodingHelper ch = new CodingHelper();
+            WarehouseInventoryInterface wii = new WarehouseInventoryInterface();
             StorageInterface sif = new StorageInterface();
-            cbopandianidea.DataSource = ch.DataTableReCoding(sif.SelStorage());
+            //DataTable dts = ;
+            //DataRow dr = dts.NewRow();
+            //dr["name"] = "请选择";
+            //dts.Rows.InsertAt(dr, 0);
+            comboBoxEx1.DataSource = ch.DataTableReCoding(sif.GetList(999, ""));
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
@@ -134,10 +139,10 @@ namespace WSCATProject.Warehouse
             InitDataGridView();
 
             #region 盘点方案
-            DataTable dt = codeh.DataTableReCoding(si.SelStorage());
-            //DataRow dr = dt.NewRow();
-            //dr["name"] = "请选择";
-            //dt.Rows.InsertAt(dr, 0);
+            DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
+            DataRow dr = dt.NewRow();
+            dr["name"] = "请选择";
+            dt.Rows.InsertAt(dr, 0);
             cbopandianidea.DisplayMember = "name";
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
@@ -150,8 +155,7 @@ namespace WSCATProject.Warehouse
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
             picbpandianBarCode.Image = imgTemp;
-
-
+            superGridControl1.PrimaryGrid.DataSource = wii.GetList(999, "");
         }
 
         #region  下拉框选择改变事件
@@ -273,5 +277,14 @@ namespace WSCATProject.Warehouse
         }
         #endregion
 
+        private void comboBoxEx1_SelectedValueChanged_1(object sender, EventArgs e)
+        {
+            WarehouseInventoryInterface wii = new WarehouseInventoryInterface();
+            if (comboBoxEx1.SelectedText == "" && comboBoxEx1.Text == "请选择")
+            {
+                return;
+            }
+            superGridControl1.PrimaryGrid.DataSource = wii.GetList(1, XYEEncoding.strCodeHex(comboBoxEx1.Text));
+        }
     }
 }

@@ -10,56 +10,29 @@ namespace BaseLayer.Warehouse
     public class WarehouseInventoryBase
     {
         /// <summary>
-        /// 获取仓库列表
+        /// 获取数据列表
         /// </summary>
+        /// <param name="strWhere"></param>
         /// <returns></returns>
-        public DataTable GetList()
+        public DataSet GetList(string strWhere)
         {
-            string sql = "";
             DataSet ds = null;
+            string sql = "";
             try
             {
-                sql = "select code,name from T_BaseStorage";
+                sql = "select * from T_WarehouseInventory";
+                if (!string.IsNullOrWhiteSpace(strWhere))
+                {
+                    strWhere += " where " + sql;
+                }
+                sql += " order by id";
                 ds = DbHelperSQL.Query(sql);
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("-1");
+                throw ex;
             }
-            return ds.Tables[0];
-        }
-
-        public DataTable GetTbList(int num, string code)
-        {
-            string sql = "";
-            DataSet ds = null;
-            try
-            {
-                if (code != null || code != " ")
-                {
-                    switch (num)
-                    {
-                        // 1 查全部
-                        case 1:
-                            sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode ";
-                            break;
-                        case 2:
-                            sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.storageCode='" + code + "' and  mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode";
-                            break;
-
-                    }
-                }
-                else
-                {
-                    sql = "select mains.name, mat.code,mat.name as shopname,mat.model,mat.unit,mains.allNumber,mingx.remark,mat.barCode from T_WarehouseMain mains,T_BaseMaterial mat,T_WarehouseInventoryDetail mingx where mains.storageCode=" + code + "and  mains.materialCode=mat.code and mingx.materialCode=mat.code and mains.materialCode = mingx.materialCode";
-                }
-                ds = DbHelperSQL.Query(sql);
-            }
-            catch
-            {
-                throw new Exception("-1");
-            }
-            return ds.Tables[0];
+            return ds;
         }
     }
 }

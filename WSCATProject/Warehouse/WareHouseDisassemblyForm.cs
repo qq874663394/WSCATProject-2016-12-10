@@ -304,7 +304,5 @@ namespace WSCATProject.Warehouse
 
 
         }
-
-        
     }
 }
