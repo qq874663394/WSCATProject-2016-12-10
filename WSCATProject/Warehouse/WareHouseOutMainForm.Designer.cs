@@ -44,7 +44,6 @@
             this.gridColumnunit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.griCoulumcangku = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.griCoulumhuojia = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -59,6 +58,7 @@
             this.textBoid = new System.Windows.Forms.TextBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -462,7 +462,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumcangku);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.griCoulumhuojia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
@@ -471,6 +470,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 345);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
@@ -610,13 +610,6 @@
             this.gridColumnprice.Name = "gridColumnprice";
             this.gridColumnprice.Visible = false;
             // 
-            // gridColumnmoney
-            // 
-            this.gridColumnmoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumnmoney.HeaderText = "金额";
-            this.gridColumnmoney.Name = "gridColumnmoney";
-            this.gridColumnmoney.Visible = false;
-            // 
             // griCoulumcangku
             // 
             this.griCoulumcangku.HeaderText = "仓库";
@@ -720,6 +713,12 @@
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
             this.gridColumnmaterialcode.Visible = false;
             // 
+            // gridColumnmoney
+            // 
+            this.gridColumnmoney.HeaderText = "金额";
+            this.gridColumnmoney.Name = "gridColumnmoney";
+            this.gridColumnmoney.Visible = false;
+            // 
             // WareHouseOutMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -789,5 +788,6 @@
         private System.Windows.Forms.TextBox textBoid;
         private System.Windows.Forms.PictureBox pictureBox10;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmoney;
     }
 }
