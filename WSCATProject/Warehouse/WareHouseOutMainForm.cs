@@ -297,7 +297,7 @@ namespace WSCATProject.Warehouse
                         warehouseoutd.IsArrive = 1;
                         warehouseoutd.isClear = 1;
                         warehouseoutd.MainCode = XYEEncoding.strCodeHex(_warehouseoutcode);//主表Code
-                        warehouseoutd.materialCode = XYEEncoding.strCodeHex("");//物料code
+                        warehouseoutd.materialCode = XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//物料code
                         warehouseoutd.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料编码
                         warehouseoutd.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
                         warehouseoutd.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
@@ -310,14 +310,14 @@ namespace WSCATProject.Warehouse
                         warehouseoutd.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value == null ?
                         "" : gr["gridColumnremark"].Value.ToString());//备注;
                         warehouseoutd.reserved1 = "";
-                        warehouseoutd.reserved2 = "";
+                        warehouseoutd.reserved2 = ""; 
                         warehouseoutd.rfid = "";
                         warehouseoutd.state = 0;
                         warehouseoutd.StorageRackCode = "";
-                        warehouseoutd.StorageRackName = gr[""].Value.ToString();
+                        warehouseoutd.StorageRackName = XYEEncoding.strCodeHex(gr["griCoulumhuojia"].Value.ToString());
                         warehouseoutd.updateDate = DateTime.Now;
                         warehouseoutd.WarehouseCode = "";
-                        warehouseoutd.WarehouseName = "";
+                        warehouseoutd.WarehouseName = XYEEncoding.strCodeHex(gr["griCoulumcangku"].Value.ToString());
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseOutList.Add(warehouseoutd);
                     }
