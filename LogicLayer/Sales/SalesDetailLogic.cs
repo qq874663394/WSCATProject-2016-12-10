@@ -80,19 +80,19 @@ namespace LogicLayer.Sales
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format(" bm.name = '{0}'", fieldValue);
+                        strWhere += string.Format(" bm.name like '%{0}%'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("bm.barCode='{0}'", fieldValue);
+                        strWhere += string.Format("bm.barCode like'%{0}%'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format("bm.zhujima='{0}'", fieldValue);
+                        strWhere += string.Format("bm.zhujima like '%{0}%'", fieldValue);
                         break;
                     case 3:
-                        strWhere += string.Format("bm.materialDaima='{0}'", fieldValue);
+                        strWhere += string.Format("bm.materialDaima like '%{0}%'", fieldValue);
                         break;
                 }
-                sdb.GetDetailByMainCode(SalesCode, strWhere);
+                dt = sdb.GetDetailByMainCode(SalesCode, strWhere);
                 model.result = 1;
             }
             catch (Exception ex)
@@ -106,5 +106,37 @@ namespace LogicLayer.Sales
             }
             return dt;
         }
+        public DataTable GetWhereList(string fieldValue,string salesCode)
+        {
+            DataTable dt = null;
+            dt = GetList(0, salesCode);
+            DataView view = null;
+            view = new DataView();
+            view.Table = dt;
+            view.RowFilter = string.Format("materialName like '%{0}%'", fieldValue);//itemType是A中的一个字段
+            DataTable dt1 = view.ToTable();
+
+            view = new DataView();
+            view.Table = dt;
+            view.RowFilter = string.Format("zhujima like '%{0}%'", fieldValue);//itemType是A中的一个字段
+            DataTable dt2 = view.ToTable();
+
+            view = new DataView();
+            view.Table = dt;
+            view.RowFilter = string.Format("materialDaima like '%{0}%'", fieldValue);//itemType是A中的一个字段
+            DataTable dt3 = view.ToTable();
+
+            view = new DataView();
+            view.Table = dt;
+            view.RowFilter = string.Format("barCode like '%{0}%'", fieldValue);//itemType是A中的一个字段
+            DataTable dt4 = view.ToTable();
+
+            dt1.Merge(dt2);
+            dt1.Merge(dt3);
+            dt = dt1;
+            return dt;
+        }
     }
+
 }
+

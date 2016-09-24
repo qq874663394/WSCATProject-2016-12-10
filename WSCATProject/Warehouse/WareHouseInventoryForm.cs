@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
@@ -21,6 +22,10 @@ namespace WSCATProject.Warehouse
         {
             InitializeComponent();
         }
+        #region 调用接口以及加密解密的方法
+        StorageInterface si = new StorageInterface();
+        CodingHelper codeh = new CodingHelper();
+        #endregion
 
         #region  数据字段
         /// <summary>
@@ -39,6 +44,10 @@ namespace WSCATProject.Warehouse
         /// 统计盘亏数量
         /// </summary>
         private decimal _PanKuiShuLiang;
+        /// <summary>
+        /// 盘点code
+        /// </summary>
+        private string _PanDianCode;
         #endregion
 
         #region 设置窗体无边框可以拖动
@@ -123,28 +132,31 @@ namespace WSCATProject.Warehouse
             //调用表格初始化
             superGridControl1.PrimaryGrid.EnsureVisible();
             InitDataGridView();
+
             #region 盘点方案
-            WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
-            CodingHelper codeh = new CodingHelper();
-
-            DataTable dt = codeh.DataTableReCoding(iface.GetList());
-            DataRow dr = dt.NewRow();
-            dr["name"] = "请选择";
-            dt.Rows.InsertAt(dr, 0);
-
+            DataTable dt = codeh.DataTableReCoding(si.SelStorage());
+            //DataRow dr = dt.NewRow();
+            //dr["name"] = "请选择";
+            //dt.Rows.InsertAt(dr, 0);
             comboBoxEx1.DisplayMember = "name";
             comboBoxEx1.ValueMember = "code";
             comboBoxEx1.DataSource = dt;
             #endregion
+
+            //生成code 和显示条形码
+            _PanDianCode = BuildCode.ModuleCode("WII");
+            textBoxpandiancode.Text = _PanDianCode;
+            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+            _Code.ValueFont = new Font("微软雅黑", 20);
+            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
+            pictureBox1.Image = imgTemp;
+
 
         }
 
         #region  下拉框选择改变事件
         private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
         {
-            //WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
-            //CodingHelper codeh = new CodingHelper();
-
             //if (comboBoxEx1.SelectedValue == null || comboBoxEx1.SelectedValue.ToString() == "")
             //{
             //    //绑定dgv   查询全部数据

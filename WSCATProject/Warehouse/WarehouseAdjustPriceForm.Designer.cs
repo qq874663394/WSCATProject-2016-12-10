@@ -68,8 +68,9 @@
             // 
             // textBoxOddNumbers
             // 
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 1);
-            this.textBoxOddNumbers.Size = new System.Drawing.Size(139, 21);
+            this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 3);
+            this.textBoxOddNumbers.Size = new System.Drawing.Size(139, 14);
             // 
             // labelprie
             // 
@@ -424,6 +425,7 @@
             // labBotton1
             // 
             this.labBotton1.Location = new System.Drawing.Point(34, 21);
+            this.labBotton1.Text = "调 价 人：";
             // 
             // labeldata
             // 
@@ -506,6 +508,7 @@
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
             this.gridColumnname.ReadOnly = true;
+            this.gridColumnname.Width = 120;
             // 
             // gridColumnmodel
             // 
@@ -519,7 +522,7 @@
             this.gridColumntiaoma.HeaderText = "条形码";
             this.gridColumntiaoma.Name = "gridColumntiaoma";
             this.gridColumntiaoma.ReadOnly = true;
-            this.gridColumntiaoma.Width = 150;
+            this.gridColumntiaoma.Width = 180;
             // 
             // gridColumnStock
             // 
@@ -532,7 +535,7 @@
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.ReadOnly = true;
-            this.gridColumnunit.Width = 50;
+            this.gridColumnunit.Width = 80;
             // 
             // gridColumnbeforeprice
             // 
@@ -540,7 +543,6 @@
             this.gridColumnbeforeprice.HeaderText = "调前单价";
             this.gridColumnbeforeprice.Name = "gridColumnbeforeprice";
             this.gridColumnbeforeprice.ReadOnly = true;
-            this.gridColumnbeforeprice.Width = 80;
             // 
             // gridColumnbeforemoney
             // 
@@ -548,14 +550,12 @@
             this.gridColumnbeforemoney.HeaderText = "调前金额";
             this.gridColumnbeforemoney.Name = "gridColumnbeforemoney";
             this.gridColumnbeforemoney.ReadOnly = true;
-            this.gridColumnbeforemoney.Width = 80;
             // 
             // gridColumnafterprice
             // 
             this.gridColumnafterprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnafterprice.HeaderText = "调后单价";
             this.gridColumnafterprice.Name = "gridColumnafterprice";
-            this.gridColumnafterprice.Width = 80;
             // 
             // gridColumnaftermoney
             // 
@@ -563,7 +563,6 @@
             this.gridColumnaftermoney.HeaderText = "调后金额";
             this.gridColumnaftermoney.Name = "gridColumnaftermoney";
             this.gridColumnaftermoney.ReadOnly = true;
-            this.gridColumnaftermoney.Width = 80;
             // 
             // gridColumnmoneyadj
             // 
@@ -571,7 +570,6 @@
             this.gridColumnmoneyadj.HeaderText = "调价金额";
             this.gridColumnmoneyadj.Name = "gridColumnmoneyadj";
             this.gridColumnmoneyadj.ReadOnly = true;
-            this.gridColumnmoneyadj.Width = 80;
             // 
             // gridColumnremark
             // 
@@ -585,7 +583,7 @@
             this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
-            this.gridColumnnumber.Width = 50;
+            this.gridColumnnumber.Width = 80;
             // 
             // gridColumnid
             // 

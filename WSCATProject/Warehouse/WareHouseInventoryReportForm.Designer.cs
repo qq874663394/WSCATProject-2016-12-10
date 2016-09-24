@@ -65,6 +65,9 @@
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.textBoxpandiancode = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -74,6 +77,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,7 +100,7 @@
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox8.Image = global::WSCATProject.Properties.Resources.clo;
-            this.pictureBox8.Location = new System.Drawing.Point(1141, 28);
+            this.pictureBox8.Location = new System.Drawing.Point(1144, 28);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(20, 20);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,7 +116,7 @@
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::WSCATProject.Properties.Resources.zuidahua1;
-            this.pictureBox6.Location = new System.Drawing.Point(1112, 28);
+            this.pictureBox6.Location = new System.Drawing.Point(1115, 28);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(20, 20);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -128,7 +132,7 @@
             this.pictureBox7.BackColor = System.Drawing.Color.White;
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBox7.Location = new System.Drawing.Point(1085, 28);
+            this.pictureBox7.Location = new System.Drawing.Point(1088, 28);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(20, 20);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -183,7 +187,7 @@
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1202, 60);
+            this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
             this.toolStrip1.TabIndex = 51;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -192,8 +196,9 @@
             this.toolStripButtonnew.Image = global::WSCATProject.Properties.Resources.盘点;
             this.toolStripButtonnew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonnew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonnew.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonnew.Name = "toolStripButtonnew";
-            this.toolStripButtonnew.Size = new System.Drawing.Size(55, 57);
+            this.toolStripButtonnew.Size = new System.Drawing.Size(55, 66);
             this.toolStripButtonnew.Text = "盘盈单";
             this.toolStripButtonnew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonnew.ToolTipText = "输出盘盈单";
@@ -203,8 +208,9 @@
             this.toolStripButtonsave.Image = global::WSCATProject.Properties.Resources.盘点;
             this.toolStripButtonsave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonsave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonsave.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonsave.Name = "toolStripButtonsave";
-            this.toolStripButtonsave.Size = new System.Drawing.Size(55, 57);
+            this.toolStripButtonsave.Size = new System.Drawing.Size(55, 66);
             this.toolStripButtonsave.Text = "盘亏单";
             this.toolStripButtonsave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonsave.ToolTipText = "输出盘亏单";
@@ -215,8 +221,9 @@
             this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
             this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonshuaixin.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
-            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 67);
             this.toolStripButtonshuaixin.Text = "刷新";
             this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
@@ -226,8 +233,9 @@
             this.toolStripButtondayin.Image = global::WSCATProject.Properties.Resources.daying1;
             this.toolStripButtondayin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondayin.Name = "toolStripButtondayin";
-            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 66);
             this.toolStripButtondayin.Text = "打印";
             this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondayin.ToolTipText = "打印盘点表(Ctrl+P)";
@@ -237,8 +245,9 @@
             this.toolStripButtondaochu.Image = global::WSCATProject.Properties.Resources.countExc;
             this.toolStripButtondaochu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondaochu.Name = "toolStripButtondaochu";
-            this.toolStripButtondaochu.Size = new System.Drawing.Size(75, 57);
+            this.toolStripButtondaochu.Size = new System.Drawing.Size(75, 66);
             this.toolStripButtondaochu.Text = "导出Excel";
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
@@ -259,9 +268,9 @@
             // 
             this.panel2.Controls.Add(this.superGridControl1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 121);
+            this.panel2.Location = new System.Drawing.Point(0, 131);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1202, 521);
+            this.panel2.Size = new System.Drawing.Size(1202, 511);
             this.panel2.TabIndex = 52;
             // 
             // superGridControl1
@@ -286,7 +295,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 521);
+            this.superGridControl1.Size = new System.Drawing.Size(1202, 511);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
             this.superGridControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
@@ -317,6 +326,7 @@
             // 
             // tiaoxingma
             // 
+            this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
             this.tiaoxingma.ReadOnly = true;
@@ -418,7 +428,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(1088, 80);
+            this.labelX4.Location = new System.Drawing.Point(835, 80);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 60;
@@ -432,7 +442,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(1023, 80);
+            this.labelX3.Location = new System.Drawing.Point(770, 80);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(70, 23);
             this.labelX3.TabIndex = 59;
@@ -445,7 +455,7 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(785, 81);
+            this.comboBoxEx1.Location = new System.Drawing.Point(532, 81);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -459,17 +469,54 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(715, 80);
+            this.labelX2.Location = new System.Drawing.Point(462, 80);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(67, 23);
             this.labelX2.TabIndex = 61;
             this.labelX2.Text = "盘点方案：";
+            // 
+            // textBoxpandiancode
+            // 
+            this.textBoxpandiancode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxpandiancode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxpandiancode.Location = new System.Drawing.Point(1023, 65);
+            this.textBoxpandiancode.Name = "textBoxpandiancode";
+            this.textBoxpandiancode.Size = new System.Drawing.Size(141, 14);
+            this.textBoxpandiancode.TabIndex = 64;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pictureBox1.Location = new System.Drawing.Point(1023, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(141, 40);
+            this.pictureBox1.TabIndex = 63;
+            this.pictureBox1.TabStop = false;
+            // 
+            // labelX1
+            // 
+            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(977, 61);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(43, 23);
+            this.labelX1.TabIndex = 62;
+            this.labelX1.Text = "单号：";
+            this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // WareHouseInventoryReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 642);
+            this.Controls.Add(this.textBoxpandiancode);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX3);
@@ -492,7 +539,9 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -533,5 +582,8 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox textBoxpandiancode;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

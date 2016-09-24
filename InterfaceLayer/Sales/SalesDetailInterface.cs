@@ -30,5 +30,9 @@ namespace InterfaceLayer.Sales
         {
             return sdl.GetDetailByMainCode(SalesCode, fieldName, fieldValue);
         }
+        public DataTable GetWhereList(string fieldValue,string salesCode)
+        {
+            return sdl.GetWhereList(fieldValue,salesCode);
+        }
     }
 }
