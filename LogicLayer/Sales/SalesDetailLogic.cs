@@ -80,7 +80,7 @@ namespace LogicLayer.Sales
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format(" bm.name like '%{0}%'", fieldValue);
+                        strWhere += string.Format("bm.name like '%{0}%'", fieldValue);
                         break;
                     case 1:
                         strWhere += string.Format("bm.barCode like'%{0}%'", fieldValue);
@@ -109,7 +109,7 @@ namespace LogicLayer.Sales
         public DataTable GetWhereList(string fieldValue,string salesCode)
         {
             DataTable dt = null;
-            dt = GetList(0, salesCode);
+            dt = GetDetailByMainCode(salesCode, 999, fieldValue);
             DataView view = null;
             view = new DataView();
             view.Table = dt;
