@@ -56,7 +56,7 @@ namespace WSCATProject.Warehouse
             //显示行号
             superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
             #region 加载盘点方案的数据
-            DataTable dt = codeh.DataTableReCoding(iface.GetList());
+            DataTable dt = null;//codeh.DataTableReCoding(iface.GetList());
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);

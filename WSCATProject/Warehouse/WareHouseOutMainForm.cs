@@ -138,7 +138,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseout.checkState = 0;
-                warehouseout.clientCode = XYEEncoding.strCodeHex(_clientcode);//客户code
+                warehouseout.clientCode = _clientcode;//客户code
                 warehouseout.code = XYEEncoding.strCodeHex(_warehouseoutcode);//单号
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
@@ -189,12 +189,12 @@ namespace WSCATProject.Warehouse
                         warehouseoutd.MainCode = XYEEncoding.strCodeHex(_warehouseoutcode);//主表Code
                         warehouseoutd.materialCode = XYEEncoding.strCodeHex("gridColumnmaterialcode");//物料code
                         warehouseoutd.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料编码
-                        warehouseoutd.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        warehouseoutd.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseoutd.materialModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseoutd.materialName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
                         warehouseoutd.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//物料单位
-                        warehouseoutd.money = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//金额
-                        warehouseoutd.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
-                        warehouseoutd.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString());//价格
+                        warehouseoutd.money = gr["gridColumnmoney"].Value == null ? 0 : Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//金额
+                        warehouseoutd.number = gr["gridColumnnumber"].Value == null ? 0 : Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
+                        warehouseoutd.price = gr["gridColumnprice"].Value == null ? 0 : Convert.ToDecimal(gr["gridColumnprice"].Value.ToString());//价格
                         warehouseoutd.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString());//生产日期
                         warehouseoutd.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString());//保质期
                         warehouseoutd.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value == null ?
@@ -248,7 +248,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseout.checkState = 0;
-                warehouseout.clientCode = XYEEncoding.strCodeHex(_clientcode);//客户code
+                warehouseout.clientCode = _clientcode;//客户code
                 warehouseout.code = XYEEncoding.strCodeHex(_warehouseoutcode);//单号
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
@@ -299,22 +299,22 @@ namespace WSCATProject.Warehouse
                         warehouseoutd.MainCode = XYEEncoding.strCodeHex(_warehouseoutcode);//主表Code
                         warehouseoutd.materialCode = XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//物料code
                         warehouseoutd.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料编码
-                        warehouseoutd.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        warehouseoutd.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseoutd.materialModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseoutd.materialName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
                         warehouseoutd.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//物料单位
                         warehouseoutd.money = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//金额
-                        warehouseoutd.number = gr["gridColumnnumber"].Value==null?0:Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
+                        warehouseoutd.number = gr["gridColumnnumber"].Value == null ? 0 : Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
                         warehouseoutd.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString());//价格
                         warehouseoutd.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString());//生产日期
                         warehouseoutd.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString());//保质期
                         warehouseoutd.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value == null ?
                         "" : gr["gridColumnremark"].Value.ToString());//备注;
                         warehouseoutd.reserved1 = "";
-                        warehouseoutd.reserved2 = ""; 
+                        warehouseoutd.reserved2 = "";
                         warehouseoutd.rfid = "";
                         warehouseoutd.state = 0;
                         warehouseoutd.StorageRackCode = "";
-                        warehouseoutd.StorageRackName = gr["griCoulumhuojia"].Value.ToString();
+                        warehouseoutd.StorageRackName = XYEEncoding.strCodeHex(gr["griCoulumhuojia"].Value.ToString());
                         warehouseoutd.updateDate = DateTime.Now;
                         warehouseoutd.WarehouseCode = "";
                         warehouseoutd.WarehouseName = XYEEncoding.strCodeHex(gr["griCoulumcangku"].Value.ToString());
@@ -898,7 +898,7 @@ namespace WSCATProject.Warehouse
             bool newAdd = false;
             GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[superGridControl1.PrimaryGrid.Rows.Count - 2];
             //id字段为空 说明是没有数据的行 不是修改而是新增
-            if (gr.Cells["gridColumnid"].Value == null)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+            if (gr.Cells["gridColumnid"].Value == null)
             {
                 newAdd = true;
             }
@@ -915,9 +915,9 @@ namespace WSCATProject.Warehouse
                 string Location = sArray[1] + "/" + sArray[2] + "/" + sArray[3] + "/" + sArray[4];
                 gr.Cells["griCoulumcangku"].Value = sArray[0];//仓库
                 gr.Cells["griCoulumhuojia"].Value = Location;//货架
-                gr.Cells["gridColumndate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value.ToString()==""?"":Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value).ToString("yyyy-MM-dd");
+                gr.Cells["gridColumndate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value.ToString() == "" ? "" : Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value).ToString("yyyy-MM-dd");
                 gr.Cells["gridColumnbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
-                gr.Cells["gridColumnyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value.ToString()==""?"":Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value).ToString("yyyy-MM-dd");
+                gr.Cells["gridColumnyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value.ToString() == "" ? "" : Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value).ToString("yyyy-MM-dd");
                 gr.Cells["gridColumnremark"].Value = dataGridView1.Rows[e.RowIndex].Cells["remark"].Value;//备注
                 gr.Cells["gridColumnmaterialcode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品code
                 decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["needNumber"].Value);

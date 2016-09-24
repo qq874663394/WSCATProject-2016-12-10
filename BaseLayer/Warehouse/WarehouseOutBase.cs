@@ -102,7 +102,7 @@ namespace BaseLayer
            ,@defaultType
             ,@makeMan
             ,@clientName
-            ,@salesPhone)";
+            ,@salesPhone)select SCOPE_IDENTITY()";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseOut.code),
@@ -130,13 +130,18 @@ namespace BaseLayer
                     new SqlParameter("@salesPhone",warehouseOut.SalesPhone)
                 };
                 hashTable.Add(sqlMain, spsMain);
-                sqlDetail = @"INSERT INTO T_WarehouseOutDetail(code,materialDaima,materialCode,materiaName,materiaModel,
-materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,reserved1,reserved2,remark,storageRackName,
-storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate)
-VALUES(@code,@materialDaima,@materialCode,@materiaName,@materiaModel,@materiaUnit,@number,@price
-,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@reserved1,@reserved2,@remark,@storageRackName
-,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)";
-
+                sqlDetail = @"INSERT INTO T_WarehouseOutDetail(code,materialDaima,materialCode,materialName,materialModel,
+                materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,reserved1,reserved2,remark,storageRackName,
+                storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate)
+                VALUES(@code,@materialDaima,@materialCode,@materialName,@materialModel,@materiaUnit,@number,@price
+                ,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@reserved1,@reserved2,@remark,@storageRackName
+                ,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)select SCOPE_IDENTITY()";
+                //sqlDetail = @"INSERT INTO T_WarehouseOutDetail(code,materialDaima,materialCode,materiaName,materiaModel,
+                //materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,reserved1,reserved2,remark,storageRackName,
+                //storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate)
+                //VALUES('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7}
+                //,{8},'{9}','{10}','{11}',{12},'{13}','{14}','{15}','{16}','{17}','{18}'
+                //,'{19}',{20},'{21}','{22}','{23}','{24}','{25}','{26}')";
                 foreach (var item in warehouseOutDetail)
                 {
                     SqlParameter[] spsDetail =
@@ -144,8 +149,8 @@ VALUES(@code,@materialDaima,@materialCode,@materiaName,@materiaModel,@materiaUni
                         new SqlParameter("@code",item.code),
                         new SqlParameter("@materialDaima",item.code),
                         new SqlParameter("@materialCode",item.materialCode),
-                        new SqlParameter("@materialName",item.materiaName),
-                        new SqlParameter("@materiaModel",item.materiaModel),
+                        new SqlParameter("@materialName",item.materialName),
+                        new SqlParameter("@materialModel",item.materialModel),
                         new SqlParameter("@materiaUnit",item.materiaUnit),
                         new SqlParameter("@number",item.number),
                         new SqlParameter("@price",item.price),
@@ -224,8 +229,8 @@ VALUES(@code,@materialDaima,@materialCode,@materiaName,@materiaModel,@materiaUni
                 {
                         new SqlParameter("@code",item.code),
                         new SqlParameter("@materialCode",item.WarehouseCode),
-                        new SqlParameter("@materiaName",item.materiaName),
-                        new SqlParameter("@materiaModel",item.materiaModel),
+                        new SqlParameter("@materiaName",item.materialName),
+                        new SqlParameter("@materiaModel",item.materialModel),
                         new SqlParameter("@materiaUnit",item.materiaUnit),
                         new SqlParameter("@number",item.number),
                         new SqlParameter("@price",item.price),
