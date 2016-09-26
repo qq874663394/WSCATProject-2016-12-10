@@ -115,7 +115,6 @@ namespace LogicLayer.Warehouse
         /// <returns></returns>
         public int Modify(WarehouseInventoryDetail wid)
         {
-            string sql = "";
             int result = 0;
             LogBase lb = new LogBase();
             log logModel = new log()
@@ -130,46 +129,11 @@ namespace LogicLayer.Warehouse
             };
             try
             {
-                sql = @"UPDATE T_WarehouseInventoryDetail
-                        SET materialCode = @materialCode
-                        ,materialName = @materialName
-                        ,materialModel = @materialModel
-                        ,materialUnit = @materialUnit
-                        ,curNumber = @curNumber
-                        ,checkNumber = @checkNumber
-                        ,lostNumber = @lostNumber
-                        ,price = @price
-                        ,lostMoney = @lostMoney
-                        ,cause = @cause
-                        ,isClear = @isClear
-                        ,updateDate = @updateDate
-                        ,reserved1 = @reserved1
-                        ,reserved2 = @reserved2
-                        ,remark = @remark where code = @code";
-                SqlParameter[] sps =
-                {
-                new SqlParameter("@code",wid.code),
-                new SqlParameter("@materialCode",wid.materialCode),
-                new SqlParameter("@materialName",wid.materialName),
-                new SqlParameter("@materialModel",wid.materialModel),
-                new SqlParameter("@materialUnit",wid.materialUnit),
-                new SqlParameter("@curNumber",wid.curNumber),
-                new SqlParameter("@checkNumber",wid.checkNumber),
-                new SqlParameter("@lostNumber",wid.lostNumber),
-                new SqlParameter("@price",wid.price),
-                new SqlParameter("@lostMoney",wid.lostMoney),
-                new SqlParameter("@cause",wid.cause),
-                new SqlParameter("@isClear",wid.isClear),
-                new SqlParameter("@updateDate",wid.updateDate),
-                new SqlParameter("@reserved1",wid.reserved1),
-                new SqlParameter("@reserved2",wid.reserved2),
-                new SqlParameter("@remark",wid.remark)
-                };
                 if (wid == null)
                 {
                     throw new Exception("-2");
                 }
-                result = DbHelperSQL.ExecuteSql(sql);
+                result = widb.Modify(wid);
                 if (result <= 0)
                 {
                     throw new Exception("-3");
