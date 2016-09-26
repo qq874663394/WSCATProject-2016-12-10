@@ -22,6 +22,7 @@ namespace BaseLayer.Warehouse
                 {
                     sql += " where " + strWhere;
                 }
+                sql += " order by id";
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)
@@ -86,6 +87,7 @@ namespace BaseLayer.Warehouse
             }
             return result;
         }
+
         public int Modify(WarehouseInventoryLoss wil)
         {
             string sql = "";
@@ -127,6 +129,27 @@ namespace BaseLayer.Warehouse
                 throw ex;
             }
             return result;
+        }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_WarehouseInventoryLoss where code='{0}'",code);
+                isflag = DbHelperSQL.Exists(sql);
+            }
+            catch (Exception ex)
+            {
+                isflag = false;
+                throw ex;
+            }
+            return false;
         }
     }
 }
