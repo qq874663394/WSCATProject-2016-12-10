@@ -55,7 +55,6 @@ namespace LogicLayer.Warehouse
                         strWhere += string.Format("mainCode='{0}'", fieldValue);
                         break;
                 }
-                strWhere += " order by id";
                 logModel.operationContent = "查询T_WarehouseInventoryDetail表的数据,条件：where=" + strWhere;
                 dt = widb.Search(strWhere);
             }
