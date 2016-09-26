@@ -2,6 +2,8 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using LogicLayer.Warehouse;
+using Model.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +26,7 @@ namespace WSCATProject.Warehouse
         #region 调用接口以及加密解密方法
         CodingHelper ch = new CodingHelper();
         EmpolyeeInterface employee = new EmpolyeeInterface();
+        WarehouseInventoryDetailLogic warehouseinv = new WarehouseInventoryDetailLogic();
         #endregion
 
         #region  数据字段
@@ -55,6 +58,15 @@ namespace WSCATProject.Warehouse
         /// 统计盘亏金额
         /// </summary>
         private decimal _AllPanKuiMoney;
+        /// <summary>
+        /// 仓库code
+        /// </summary>
+        private string _storageCode;
+        public string StorageCode
+        {
+            get { return _storageCode; }
+            set { _storageCode = value; }
+        }
         #endregion
 
         private void WareHouseInventoryLossForm_Load(object sender, EventArgs e)
@@ -76,6 +88,8 @@ namespace WSCATProject.Warehouse
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
+            toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
             //调用合计行数据
             InitDataGridView();
             //生成code 和显示条形码
@@ -85,6 +99,109 @@ namespace WSCATProject.Warehouse
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
             pictureBox9.Image = imgTemp;
+
+
+        }
+        /// <summary>
+        /// 审核按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 保存按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        {
+            //非空验证
+            isNUllValidate();
+            //获得界面上的数据,准备传给base层新增数据
+
+            //盘亏单
+            // WarehouseIn warehouseIn = new WarehouseIn();
+            WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
+            //盘亏商品列表
+            List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
+            try
+            {
+                warehouseloss.checkState = 0;
+                warehouseloss.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                warehouseloss.date = dateTimePicker1.Value;
+                warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseloss.isClear = 1;
+                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
+                warehouseloss.reserved1 = "";
+                warehouseloss.reserved2 = "";
+                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                warehouseloss.updatetime = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+                        i++;
+                        WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
+                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString()==""?"":XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
+                        warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
+                        warehouselossDetail.effectiveDate =  Convert.ToDateTime( gr["youxiaoqi"].Value.ToString());
+                        warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
+                        warehouselossDetail.isClear = 1;
+                        warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
+                        warehouselossDetail.lossNumber =  Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
+                        warehouselossDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehouselossDetail.materialCode = gr["materialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["materialcode"].Value.ToString());
+                        warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
+                        warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
+                        warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
+                        warehouselossDetail.materiaUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
+                        warehouselossDetail.number =Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
+                        warehouselossDetail.price =  Convert.ToDecimal(gr["price"].Value.ToString());
+                        warehouselossDetail.productionDate =Convert.ToDateTime(gr["shengchandate"].Value.ToString());
+                        warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
+                        warehouselossDetail.reserved1 = "";
+                        warehouselossDetail.reserved2 = "";
+                        warehouselossDetail.updateDate = DateTime.Now;
+                        warehouselossDetail.warehouseCode = "";
+                        warehouselossDetail.warehouseName = "";
+                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouselossList.Add(warehouselossDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2105-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                return;
+            }
+
+            //增加一条入库单和入库单详细数据
+            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
+            //this.textBoxid.Text = warehouseInResult.ToString();
+            //if (warehouseInResult != null)
+            //{
+            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
+            //}
         }
 
         #region  初始化数据
@@ -289,8 +406,8 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
-                //最后一行做统计行
-                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+            //最后一行做统计行
+            GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //try
             //{
             //    decimal zhucunshu = Convert.ToDecimal(gr.Cells["zhangcunnumber"].FormattedValue);

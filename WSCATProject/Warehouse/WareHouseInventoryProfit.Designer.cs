@@ -446,7 +446,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 371);
-            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             // 
             // pictureBoxMax
             // 

@@ -60,6 +60,16 @@ namespace WSCATProject.Warehouse
         /// 统计盘盈金额
         /// </summary>
         private decimal _AllPanYingMoney;
+
+        /// <summary>
+        /// 仓库code
+        /// </summary>
+        private string _storageCode;
+        public string StorageCode
+        {
+            get { return _storageCode; }
+            set { _storageCode = value; }
+        }
         #endregion
 
         /// <summary>
@@ -71,15 +81,6 @@ namespace WSCATProject.Warehouse
         {
             //业务员
             _AllEmployee = employee.SelSupplierTable(false);
-
-            //数量
-            GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnzhangmianshu"].EditControl as GridDoubleInputEditControl;
-            gdiecNumber.MinValue = 0;
-            gdiecNumber.MaxValue = 999999999;
-
-            GridDoubleInputEditControl gdiecpandianNumber = superGridControl1.PrimaryGrid.Columns["gridColumnpandianshu"].EditControl as GridDoubleInputEditControl;
-            gdiecpandianNumber.MinValue = 0;
-            gdiecpandianNumber.MaxValue = 999999999;
 
             //禁用自动创建列
             dataGridView1.AutoGenerateColumns = false;
@@ -99,6 +100,8 @@ namespace WSCATProject.Warehouse
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
             pictureBox9.Image = imgTemp;
+
+              
 
         }
 
@@ -288,41 +291,6 @@ namespace WSCATProject.Warehouse
             resizablePanel1.Visible = true;
         }
 
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
-        {
-            //最后一行做统计行
-            GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-            try
-            {
-                //逐行统计数据总数
-                decimal tempAllzhucun = 0;
-                decimal tempAllpandian = 0;
-                decimal tempAllpanying = 0;
-                decimal tempAllpanyingmoney = 0;
-                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
-                {
-                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllzhucun += Convert.ToDecimal(tempGR["gridColumnzhangmianshu"].FormattedValue);
-                    tempAllpandian += Convert.ToDecimal(tempGR["gridColumnpandianshu"].FormattedValue);
-                    tempAllpanying += Convert.ToDecimal(tempGR["gridColumnpanyingshu"].FormattedValue);
-                    tempAllpanyingmoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
-                }
-                _AllZhuCunShuLiang = tempAllzhucun;
-                _AllPanDianShuLiang = tempAllpandian;
-                _AllPanYingShuLiang = tempAllpanying;
-                _AllPanYingMoney = tempAllpanyingmoney;
-                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                gr["gridColumnzhangmianshu"].Value = _AllZhuCunShuLiang.ToString();
-                gr["gridColumnpandianshu"].Value = _AllPanDianShuLiang.ToString();
-                gr["gridColumnpanyingshu"].Value = _AllPanYingShuLiang.ToString();
-                gr["gridColumnmoney"].Value = _AllPanYingMoney.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("统计出错！请检查：" + ex.Message);
-            }
-        }
-
         /// <summary>
         /// 按下ESC按钮关闭子窗体
         /// </summary>
@@ -335,5 +303,7 @@ namespace WSCATProject.Warehouse
                 this.resizablePanel1.Visible = false;
             }
         }
+
+
     }
 }

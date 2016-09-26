@@ -44,7 +44,8 @@
             this.youxiaoqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.model = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -455,7 +456,7 @@
             // 
             this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.name);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.model);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.tiaoxingma);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.storge);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.unit);
@@ -468,6 +469,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.baozhiqi);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.youxiaoqi);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.materialcode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 409);
             this.superGridControl1.Text = "单号:";
@@ -602,12 +604,18 @@
             this.pictureBox9.TabIndex = 54;
             this.pictureBox9.TabStop = false;
             // 
-            // gridColumn1
+            // model
             // 
-            this.gridColumn1.HeaderText = "规格型号";
-            this.gridColumn1.Name = "model";
-            this.gridColumn1.ReadOnly = true;
-            this.gridColumn1.Width = 70;
+            this.model.HeaderText = "规格型号";
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            this.model.Width = 70;
+            // 
+            // materialcode
+            // 
+            this.materialcode.HeaderText = "商品Code";
+            this.materialcode.Name = "materialcode";
+            this.materialcode.Visible = false;
             // 
             // WareHouseInventoryLossForm
             // 
@@ -662,6 +670,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn youxiaoqi;
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn model;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialcode;
     }
 }

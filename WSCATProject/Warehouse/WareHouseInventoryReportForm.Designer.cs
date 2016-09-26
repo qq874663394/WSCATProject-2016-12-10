@@ -58,9 +58,9 @@
             this.panyingnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pankuinumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.price = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.profitmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.lossmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.panyingMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pankuiMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.lblzhangcundate = new DevComponents.DotNetBar.LabelX();
@@ -71,6 +71,7 @@
             this.textBoxpandiancode = new System.Windows.Forms.TextBox();
             this.picbpandianBarCode = new System.Windows.Forms.PictureBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -208,6 +209,7 @@
             this.toolStripButtonProfit.Text = "盘盈单";
             this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonProfit.ToolTipText = "输出盘盈单";
+            this.toolStripButtonProfit.Click += new System.EventHandler(this.toolStripButtonProfit_Click);
             // 
             // toolStripButtonLoss
             // 
@@ -220,6 +222,7 @@
             this.toolStripButtonLoss.Text = "盘亏单";
             this.toolStripButtonLoss.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonLoss.ToolTipText = "输出盘亏单";
+            this.toolStripButtonLoss.Click += new System.EventHandler(this.toolStripButtonLoss_Click);
             // 
             // toolStripButtonshuaixin
             // 
@@ -301,9 +304,10 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.price);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.profitmoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.lossmoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingMoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuiMoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControl1.Size = new System.Drawing.Size(1202, 511);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
@@ -416,26 +420,29 @@
             this.remark.ReadOnly = true;
             this.remark.Width = 90;
             // 
-            // price
+            // gridColumnprice
             // 
-            this.price.DataPropertyName = "price";
-            this.price.HeaderText = "单价";
-            this.price.Name = "price";
-            this.price.Visible = false;
+            this.gridColumnprice.DataPropertyName = "price";
+            this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnprice.HeaderText = "单价";
+            this.gridColumnprice.Name = "gridColumnprice";
+            this.gridColumnprice.Visible = false;
             // 
-            // profitmoney
+            // panyingMoney
             // 
-            this.profitmoney.DataPropertyName = "profitMoney";
-            this.profitmoney.HeaderText = "盘盈金额";
-            this.profitmoney.Name = "profitmoney";
-            this.profitmoney.Visible = false;
+            this.panyingMoney.DataPropertyName = "profitMoney";
+            this.panyingMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.panyingMoney.HeaderText = "盘盈金额";
+            this.panyingMoney.Name = "panyingMoney";
+            this.panyingMoney.Visible = false;
             // 
-            // lossmoney
+            // pankuiMoney
             // 
-            this.lossmoney.DataPropertyName = "lossMoney";
-            this.lossmoney.HeaderText = "盘亏金额";
-            this.lossmoney.Name = "lossmoney";
-            this.lossmoney.Visible = false;
+            this.pankuiMoney.DataPropertyName = "lossMoney";
+            this.pankuiMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.pankuiMoney.HeaderText = "盘亏金额";
+            this.pankuiMoney.Name = "pankuiMoney";
+            this.pankuiMoney.Visible = false;
             // 
             // panel3
             // 
@@ -477,6 +484,7 @@
             this.lblzhangcundate.Size = new System.Drawing.Size(75, 23);
             this.lblzhangcundate.TabIndex = 60;
             this.lblzhangcundate.Text = "labelX4";
+            this.lblzhangcundate.Visible = false;
             // 
             // labelX3
             // 
@@ -491,6 +499,7 @@
             this.labelX3.Size = new System.Drawing.Size(70, 23);
             this.labelX3.TabIndex = 59;
             this.labelX3.Text = "账存日期：";
+            this.labelX3.Visible = false;
             // 
             // cbopandianidea
             // 
@@ -555,6 +564,13 @@
             this.labelX1.TabIndex = 62;
             this.labelX1.Text = "单号：";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // gridColumncode
+            // 
+            this.gridColumncode.DataPropertyName = "materialCode";
+            this.gridColumncode.HeaderText = "商品code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
             // 
             // WareHouseInventoryReportForm
             // 
@@ -632,8 +648,9 @@
         private System.Windows.Forms.TextBox textBoxpandiancode;
         private System.Windows.Forms.PictureBox picbpandianBarCode;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn price;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn profitmoney;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn lossmoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn panyingMoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn pankuiMoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
     }
 }
