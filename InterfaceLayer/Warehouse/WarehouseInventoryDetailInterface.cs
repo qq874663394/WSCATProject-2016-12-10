@@ -1,0 +1,44 @@
+﻿using LogicLayer.Warehouse;
+using Model;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InterfaceLayer.Warehouse
+{
+    public class WarehouseInventoryDetailInterface
+    {
+        WarehouseInventoryDetailLogic widl = new WarehouseInventoryDetailLogic();
+        /// <summary>
+        /// 复合查询
+        /// </summary>
+        /// <param name="fieldName">1:code,2:商品代码,3:stockCode,4:barCode,5:mainCode</param>
+        /// <param name="fieldValue">字段值</param>
+        /// <returns></returns>
+        public DataTable Search(int fieldName, string fieldValue)
+        {
+            return widl.Search(fieldName, fieldValue);
+        }
+        /// <summary>
+        /// 新增数据
+        /// </summary>
+        /// <param name="wid"></param>
+        /// <returns></returns>
+        public int Add(WarehouseInventoryDetail wid)
+        {
+            return widl.Add(wid);
+        }
+        /// <summary>
+        /// 修改数据
+        /// </summary>
+        /// <param name="wid"></param>
+        /// <returns></returns>
+        public int Modify(WarehouseInventoryDetail wid)
+        {
+            return widl.Modify(wid);
+        }
+    }
+}
