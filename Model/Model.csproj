@@ -94,6 +94,10 @@
     <Compile Include="Warehouse\WarehouseAllotDetailDetail.cs" />
     <Compile Include="Warehouse\WarehouseInventory.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetail.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryLoss.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryLossDetail.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryProfit.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryProfitDetail.cs" />
     <Compile Include="Warehouse\WarehouseMain.cs" />
     <Compile Include="Warehouse\WarehouseAdjPriceDetail.cs" />
     <Compile Include="Warehouse\WarehouseAdjustPrice.cs" />

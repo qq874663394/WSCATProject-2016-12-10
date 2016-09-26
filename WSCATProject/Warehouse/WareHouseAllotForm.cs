@@ -147,7 +147,7 @@ namespace WSCATProject.Warehouse
             superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             //调用合计行数据
             InitDataGridView();
-            comboBoxEx1.SelectedIndex = 0;
+            cbotype.SelectedIndex = 0;
             //生成code 和显示条形码
             _WareHouseAllotCode = BuildCode.ModuleCode("WIA");
             textBoxOddNumbers.Text = _WareHouseAllotCode;
@@ -658,7 +658,7 @@ namespace WSCATProject.Warehouse
                     decimal tempAllNumber = 0;//统计数量
                     decimal tempAllMoney = 0;//调出金额
                     decimal temAllInMoney = 0;//调入金额
-                    if (comboBoxEx1.Text == "同价调拨")
+                    if (cbotype.Text == "同价调拨")
                     {
                         number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].FormattedValue);
                         decimal priceout = Convert.ToDecimal(gr.Cells["gridColumnpriceout"].FormattedValue);
@@ -678,7 +678,7 @@ namespace WSCATProject.Warehouse
                         gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
                         gr["gridColumnmoneyout"].Value = _MaterialMoney.ToString();
                     }
-                    if (comboBoxEx1.Text == "异价调拨")
+                    if (cbotype.Text == "异价调拨")
                     {
                         number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].FormattedValue);
                         decimal pricein = Convert.ToDecimal(gr.Cells["gridColumnpricein"].FormattedValue);
@@ -713,7 +713,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBoxEx1.Text.Trim())
+            switch (cbotype.Text.Trim())
             {
                 case "同价调拨":
                     superGridControl1.PrimaryGrid.Columns["gridColumnpricein"].Visible = false;
