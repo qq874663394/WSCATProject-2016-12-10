@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Warehouse;
 using LogicLayer.Warehouse;
 using Model.Warehouse;
 using System;
@@ -26,7 +27,7 @@ namespace WSCATProject.Warehouse
         #region 调用接口以及加密解密方法
         CodingHelper ch = new CodingHelper();
         EmpolyeeInterface employee = new EmpolyeeInterface();
-        WarehouseInventoryDetailLogic warehouseinv = new WarehouseInventoryDetailLogic();
+        WarehouseInventoryDetailInterface warehouseinv = new WarehouseInventoryDetailInterface();
         #endregion
 
         #region  数据字段
@@ -67,40 +68,62 @@ namespace WSCATProject.Warehouse
             get { return _storageCode; }
             set { _storageCode = value; }
         }
+
+        /// <summary>
+        /// 仓库code
+        /// </summary>
+        private string _storageName;
+        public string StorageName
+        {
+            get { return _storageName; }
+            set { _storageName = value; }
+        }
         #endregion
 
         private void WareHouseInventoryLossForm_Load(object sender, EventArgs e)
         {
-            //业务员
-            _AllEmployee = employee.SelSupplierTable(false);
+            try
+            {
+                //业务员
+                _AllEmployee = employee.SelSupplierTable(false);
 
-            //数量
-            GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
-            gdiecNumber.MinValue = 0;
-            gdiecNumber.MaxValue = 999999999;
+                //数量
+                GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
+                gdiecNumber.MinValue = 0;
+                gdiecNumber.MaxValue = 999999999;
 
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
-            toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
-            //调用合计行数据
-            InitDataGridView();
-            //生成code 和显示条形码
-            _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
-            textBoxOddNumbers.Text = _WareHousePanKuiCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBox9.Image = imgTemp;
+                //禁用自动创建列
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridViewFujia.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
+                toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
 
-
+                //生成code 和显示条形码
+                _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
+                textBoxOddNumbers.Text = _WareHousePanKuiCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
+                superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;//设置内容居中
+                superGridControl1.PrimaryGrid.DataSource = ch.DataTableReCoding(warehouseinv.Search(5, XYEEncoding.strCodeHex(_storageCode)));
+                superGridControl1.PrimaryGrid.EnsureVisible();
+                //调用合计行数据
+                InitDataGridView();
+                labtextboxTop7.Text = "由[" + _storageName + "]生成";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码- ：初始化数据错误，没有仓库code"+ex.Message);
+            }
         }
         /// <summary>
         /// 审核按钮事件
@@ -122,7 +145,7 @@ namespace WSCATProject.Warehouse
             //非空验证
             isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
-
+            WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
             //盘亏单
             // WarehouseIn warehouseIn = new WarehouseIn();
             WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
@@ -158,13 +181,13 @@ namespace WSCATProject.Warehouse
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
                 {
-                    if (gr["gridColumnname"].Value != null)
+                    if (gr["name"].Value != null)
                     {
                         i++;
                         WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
                         warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString()==""?"":XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
                         warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehouselossDetail.effectiveDate =  Convert.ToDateTime( gr["youxiaoqi"].Value.ToString());
+                        warehouselossDetail.effectiveDate = Convert.ToDateTime( gr["youxiaoqi"].Value.ToString()==""?null:gr["youxiaoqi"].Value);
                         warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
                         warehouselossDetail.isClear = 1;
                         warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
@@ -195,13 +218,13 @@ namespace WSCATProject.Warehouse
                 return;
             }
 
-            //增加一条入库单和入库单详细数据
-            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
-            //this.textBoxid.Text = warehouseInResult.ToString();
-            //if (warehouseInResult != null)
-            //{
-            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
-            //}
+           // //增加一条入库单和入库单详细数据
+           // object Result = warehouseinvloss.Add(warehouseloss, wareHouselossList);
+           //// this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
+           // if (Result != null)
+           // {
+           //     MessageBox.Show("新增入库数据成功", "入库单温馨提示");
+           // }
         }
 
         #region  初始化数据
@@ -406,6 +429,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
+          
             //最后一行做统计行
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //try

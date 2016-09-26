@@ -19,11 +19,6 @@ E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\2016年9月5日092343\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\2016年9月5日092343\HelperUtility\obj\Debug\HelperUtility.pdb
-E:\619项目\2016年9月14日085327\HelperUtility\bin\Debug\HelperUtility.dll
-E:\619项目\2016年9月14日085327\HelperUtility\bin\Debug\HelperUtility.pdb
-E:\619项目\2016年9月14日085327\HelperUtility\bin\Debug\NPOI.dll
-E:\619项目\2016年9月14日085327\HelperUtility\obj\Debug\HelperUtility.dll
-E:\619项目\2016年9月14日085327\HelperUtility\obj\Debug\HelperUtility.pdb
 C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\bin\Debug\HelperUtility.dll
 C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\bin\Debug\HelperUtility.pdb
 C:\Users\Administrator.USER-20160704SV\Desktop\619\HelperUtility\bin\Debug\NPOI.dll
@@ -45,3 +40,8 @@ E:\619项目\619项目20160924\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\619项目20160924\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\619项目20160924\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\619项目20160924\HelperUtility\obj\Debug\HelperUtility.pdb
+E:\619项目\2016年9月14日085327\HelperUtility\bin\Debug\HelperUtility.dll
+E:\619项目\2016年9月14日085327\HelperUtility\bin\Debug\HelperUtility.pdb
+E:\619项目\2016年9月14日085327\HelperUtility\bin\Debug\NPOI.dll
+E:\619项目\2016年9月14日085327\HelperUtility\obj\Debug\HelperUtility.dll
+E:\619项目\2016年9月14日085327\HelperUtility\obj\Debug\HelperUtility.pdb

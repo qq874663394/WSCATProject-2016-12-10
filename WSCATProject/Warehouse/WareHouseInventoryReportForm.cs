@@ -303,6 +303,7 @@ namespace WSCATProject.Warehouse
         {
             WareHouseInventoryLossForm wareinventloss = new WareHouseInventoryLossForm();
             wareinventloss.StorageCode = _storageCode;
+            wareinventloss.StorageName = _storageName;
             wareinventloss.ShowDialog();
         }
         /// <summary>
