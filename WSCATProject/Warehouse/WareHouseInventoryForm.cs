@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
 
 namespace WSCATProject.Warehouse
 {
@@ -92,7 +93,7 @@ namespace WSCATProject.Warehouse
                 this.WindowState = FormWindowState.Normal;
                 pictureBoxMax.Image = Properties.Resources.zuidahua1;
                 return;
-            }   
+            }
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
@@ -118,12 +119,6 @@ namespace WSCATProject.Warehouse
         {
             CodingHelper ch = new CodingHelper();
             WarehouseInventoryInterface wii = new WarehouseInventoryInterface();
-            StorageInterface sif = new StorageInterface();
-            //DataTable dts = ;
-            //DataRow dr = dts.NewRow();
-            //dr["name"] = "请选择";
-            //dts.Rows.InsertAt(dr, 0);
-            cbopandianidea.DataSource = ch.DataTableReCoding(sif.GetList(999, ""));
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
@@ -135,17 +130,21 @@ namespace WSCATProject.Warehouse
             gdiecNumber.MaxValue = 999999999;
 
             //调用表格初始化
-            superGridControl1.PrimaryGrid.EnsureVisible();
+
+            superGridControl1.HScrollBarVisible = true;
+            superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+            superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
+         DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             InitDataGridView();
 
             #region 盘点方案
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
             DataRow dr = dt.NewRow();
-            dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
             cbopandianidea.DisplayMember = "name";
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
+            cbopandianidea.SelectedItem = 0;
             #endregion
 
             //生成code 和显示条形码
@@ -161,25 +160,53 @@ namespace WSCATProject.Warehouse
         #region  下拉框选择改变事件
         private void cbopandianidea_SelectedValueChanged(object sender, EventArgs e)
         {
-            //if (comboBoxEx1.SelectedValue == null || comboBoxEx1.SelectedValue.ToString() == "")
-            //{
-            //    //绑定dgv   查询全部数据
-            //    DataTable dt = codeh.DataTableReCoding(iface.GetTbList(1, ""));
-            //    if (dt == null)
-            //    {
-            //        superGridControl1.PrimaryGrid.DataSource = null;
-            //    }
-            //    else
-            //    {
-            //        superGridControl1.PrimaryGrid.DataSource = dt;
-            //    }
-            //}
-            //else
-            //{
-            //    string a = comboBoxEx1.SelectedValue.ToString();
-            //    DataTable dts = codeh.DataTableReCoding(iface.GetTbList(2, XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString())));
-            //    superGridControl1.PrimaryGrid.DataSource = dts;
-            //}
+            WarehouseMainInterface warehousemain = new WarehouseMainInterface();
+
+            if (cbopandianidea.Text == "请选择" || cbopandianidea.Text == "")
+            {
+                return;
+            }
+
+            if (cbopandianidea.Text != "请选择" || cbopandianidea.Text != "")
+            {
+                string code = cbopandianidea.SelectedValue.ToString();
+                this.superGridControl1.PrimaryGrid.DataSource = null;
+                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
+                superGridControl1.PrimaryGrid.EnsureVisible();
+                InitDataGridView();
+                //计算数量
+                try
+                {
+                    GridRow gr = new GridRow();
+                    decimal tempAllzhucun = 0;
+                    decimal tempAllpandian = 0;
+                    decimal tempAllpanying = 0;
+                    decimal tempAllpankui = 0;
+                    //逐行统计数据总数
+                    for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                    {
+                        GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                        tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
+                        tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
+                        tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
+                        tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                    }
+                    _ZhangCunShuLiang = tempAllzhucun;
+                    _PanDianShuLiang = tempAllpandian;
+                    _PanYingShuLiang = tempAllpanying;
+                    _PanKuiShuLiang = tempAllpankui;
+                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
+                    gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
+                    gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                    gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+                }
+            }
         }
         #endregion
 
@@ -215,6 +242,93 @@ namespace WSCATProject.Warehouse
             gr.Cells["pankuinumber"].Value = 0;
             gr.Cells["pankuinumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["pankuinumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+        }
+
+        private void InitSupGrid()
+        {
+            GridColumn gc = null;
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "storageName";
+            gc.Name = "storageName";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialDaima";
+            gc.Name = "materialDaima";
+            gc.HeaderText = "商品代码";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "name";
+            gc.Name = "name";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "model";
+            gc.Name = "model";
+            gc.HeaderText = "规格型号";
+            gc.Width = 130;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "barcode";
+            gc.Name = "barcode";
+            gc.HeaderText = "条形码";
+            gc.Width = 150;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "productionDate";
+            gc.Name = "productionDate";
+            gc.HeaderText = "采购/生产日期";
+            gc.Width = 70;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "qualityDate";
+            gc.Name = "qualityDate";
+            gc.HeaderText = "保质期(天)";
+            gc.Width = 50;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "unit";
+            gc.Name = "unit";
+            gc.HeaderText = "单位";
+            gc.Width = 70;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "number";
+            gc.Name = "number";
+            gc.HeaderText = "账面数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "effectiveDate";
+            gc.HeaderText = "盘点数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "备注";
+            gc.Width = 110;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
         }
 
         #endregion
@@ -269,6 +383,26 @@ namespace WSCATProject.Warehouse
                 gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
                 gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
                 gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
+
+                //获取一行数据，添加进数据库
+                GridRow gr1 = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                WarehouseInventoryDetail warehouseinv = new WarehouseInventoryDetail();
+                //warehouseinv.cause = "";
+                //warehouseinv.checkNumber = "";
+                //warehouseinv.code = "";
+                //warehouseinv.curNumber = "";
+                //warehouseinv.isClear = 1;
+                //warehouseinv.lostMoney = "";
+                //warehouseinv.lostNumber = "";
+                //warehouseinv.materialCode = "";
+                //warehouseinv.materiaModel = "";
+                //warehouseinv.materiaName = "";
+                //warehouseinv.materiaUnit = "";
+                //warehouseinv.price = "";
+                //warehouseinv.remark = "";
+                //warehouseinv.reserved1 = "";
+                //warehouseinv.reserved2 = "";
+                //warehouseinv.updateDate = "";
             }
             catch (Exception ex)
             {
@@ -277,14 +411,5 @@ namespace WSCATProject.Warehouse
         }
         #endregion
 
-        private void comboBoxEx1_SelectedValueChanged_1(object sender, EventArgs e)
-        {
-            WarehouseInventoryInterface wii = new WarehouseInventoryInterface();
-            if (cbopandianidea.SelectedText == "" && cbopandianidea.Text == "请选择")
-            {
-                return;
-            }
-            superGridControl1.PrimaryGrid.DataSource = wii.GetList(1, XYEEncoding.strCodeHex(cbopandianidea.Text));
-        }
     }
 }

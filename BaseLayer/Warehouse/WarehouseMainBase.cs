@@ -88,7 +88,7 @@ namespace BaseLayer.Warehouse
             DataTable dt = null;
             try
             {
-                sql = string.Format("select * from T_WarehouseMain wm,T_BaseMaterial bm where storageCode='{0}' and wm.materialCode=bm.code",code);
+                sql = string.Format("select * from T_WarehouseMain wm,T_BaseMaterial bm,T_WarehouseDetail wd  where  wm.materialCode=bm.code and wd.mainCode=wm.code and storageCode='{0}'", code);
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)

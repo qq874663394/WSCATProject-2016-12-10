@@ -35,6 +35,7 @@ namespace Model
         private DateTime? _productiondate;
         private decimal? _qualitydate;
         private DateTime? _effectivedate;
+        private string _maincode;
         /// <summary>
         /// 盘点编号
         /// </summary>
@@ -227,6 +228,14 @@ namespace Model
         {
             set { _effectivedate = value; }
             get { return _effectivedate; }
+        }
+        /// <summary>
+        /// 主表code
+        /// </summary>
+        public string  mainCode
+        {
+            set { _maincode = value; }
+            get { return _maincode; }
         }
         #endregion Model
 
