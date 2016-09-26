@@ -126,8 +126,6 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseInventoryForm_Load(object sender, EventArgs e)
         {
-            CodingHelper ch = new CodingHelper();
-            WarehouseInventoryInterface wii = new WarehouseInventoryInterface();
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
@@ -137,16 +135,12 @@ namespace WSCATProject.Warehouse
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
             gdiecNumber.MinValue = 0;
             gdiecNumber.MaxValue = 999999999;
-            //设置盘点数量可输入的最大值和最小值
-            GridDoubleInputEditControl gdiecpanyingMoney = superGridControl1.PrimaryGrid.Columns["panyingMoney"].EditControl as GridDoubleInputEditControl;
-            gdiecpanyingMoney.MinValue = 0;
-            gdiecpanyingMoney.MaxValue = 999999999;
-            //调用表格初始化
+
             superGridControl1.HScrollBarVisible = true;
-            superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+            superGridControl1.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
             superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            InitDataGridView();
+            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;//设置内容居中
+            InitDataGridView(); //调用表格初始化
 
             //生成code 和显示条形码
             _PanDianCode = BuildCode.ModuleCode("WII");
@@ -170,33 +164,24 @@ namespace WSCATProject.Warehouse
                 GridRow gr = new GridRow();
                 decimal tempAllzhucun = 0;
                 decimal tempAllpandian = 0;
-                //decimal tempAllpanying = 0;
-                //decimal tempAllpankui = 0;
                 //逐行统计数据总数
                 for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
                 {
                     GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
                     tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                     tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
-                    //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
-                    //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
                 }
                 _ZhangCunShuLiang = tempAllzhucun;
                 _PanDianShuLiang = tempAllpandian;
-                //_PanYingShuLiang = tempAllpanying;
-                //_PanKuiShuLiang = tempAllpankui;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                 gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                 gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
-                //gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
-                //gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
             }
             #endregion
-
         }
 
         #region  下拉框选择改变事件
@@ -215,32 +200,23 @@ namespace WSCATProject.Warehouse
                 superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
                 superGridControl1.PrimaryGrid.EnsureVisible();
                 InitDataGridView();
-                //计算数量
                 try
                 {
                     GridRow gr = new GridRow();
                     decimal tempAllzhucun = 0;
                     decimal tempAllpandian = 0;
-                    //decimal tempAllpanying = 0;
-                    //decimal tempAllpankui = 0;
                     //逐行统计数据总数
                     for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
                     {
                         GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
                         tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                         tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
-                        //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
-                        //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
                     }
                     _ZhangCunShuLiang = tempAllzhucun;
                     _PanDianShuLiang = tempAllpandian;
-                    //_PanYingShuLiang = tempAllpanying;
-                    //_PanKuiShuLiang = tempAllpankui;
                     gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                     gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                     gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
-                    //gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
-                    //gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -274,14 +250,6 @@ namespace WSCATProject.Warehouse
             gr.Cells["pandiannumber"].Value = 0;
             gr.Cells["pandiannumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["pandiannumber"].CellStyles.Default.Background.Color1 = Color.Orange;
-            //盘盈数量
-            gr.Cells["panyingnumber"].Value = 0;
-            gr.Cells["panyingnumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["panyingnumber"].CellStyles.Default.Background.Color1 = Color.Orange;
-            //盘亏数量
-            gr.Cells["pankuinumber"].Value = 0;
-            gr.Cells["pankuinumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["pankuinumber"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
 
         private void InitSupGrid()
@@ -379,17 +347,13 @@ namespace WSCATProject.Warehouse
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             decimal tempAllzhucun = 0;//账面数
             decimal tempAllpandian = 0;//盘点数
-            decimal tempAllpanying = 0;//盘盈数
-            decimal tempAllpankui = 0;//盘亏数
-            decimal tempAllpanyingMoney=0;//盘盈金额
-            decimal tempAllpankuiMoney=0;//盘亏金额
             //计算盘盈、盘亏的数量
             try
             {
-                decimal zhucunnumber = Convert.ToDecimal(gr.Cells["zhangcunnumber"].FormattedValue);
-                decimal pandiannumber = Convert.ToDecimal(gr.Cells["pandiannumber"].FormattedValue);
-                decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);
-                decimal panying = pandiannumber - zhucunnumber;
+                decimal zhucunnumber = Convert.ToDecimal(gr.Cells["zhangcunnumber"].FormattedValue);//账存数量
+                decimal pandiannumber = Convert.ToDecimal(gr.Cells["pandiannumber"].FormattedValue);//盘点数量
+                decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);//单价
+                decimal panying = pandiannumber - zhucunnumber;//盘盈数量
                 if (panying > 0)
                 {
                     gr.Cells["panyingnumber"].Value = panying;
@@ -421,24 +385,12 @@ namespace WSCATProject.Warehouse
                     GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
                     tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                     tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
-                    //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
-                    //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
-                    tempAllpanyingMoney += Convert.ToDecimal(tempGR["panyingMoney"].FormattedValue);
-                    tempAllpankuiMoney += Convert.ToDecimal(tempGR["pankuiMoney"].FormattedValue);
                 }
                 _ZhangCunShuLiang = tempAllzhucun;
                 _PanDianShuLiang = tempAllpandian;
-                //_PanYingShuLiang = tempAllpanying;
-                //_PanKuiShuLiang = tempAllpankui;
-                _PanYingMoney = tempAllpanyingMoney;
-                _PankuiMoney = tempAllpankuiMoney;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                 gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                 gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
-                gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
-                gr["pankuinumber"].Value = _PanKuiShuLiang.ToString().Replace("-", "");
-                gr["panyingMoney"].Value = _PanYingMoney.ToString();
-                gr["pankuiMoney"].Value = _PankuiMoney.ToString();
                 //获取一行数据，添加进数据库
                 try
                 {
