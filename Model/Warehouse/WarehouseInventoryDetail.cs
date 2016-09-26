@@ -14,9 +14,9 @@ namespace Model
 		private string _code;
 		private int _id;
 		private string _materialcode;
-		private string _materianame;
-		private string _materiamodel;
-		private string _materiaunit;
+		private string _materialname;
+		private string _materialmodel;
+		private string _materialunit;
 		private decimal? _curnumber;
 		private decimal? _checknumber;
 		private decimal? _lostnumber;
@@ -55,26 +55,26 @@ namespace Model
 		/// <summary>
 		/// 物料名称
 		/// </summary>
-		public string materiaName
+		public string materialName
 		{
-			set{ _materianame=value;}
-			get{return _materianame;}
+			set{ _materialname=value;}
+			get{return _materialname;}
 		}
 		/// <summary>
 		/// 规格型号
 		/// </summary>
-		public string materiaModel
+		public string materialModel
 		{
-			set{ _materiamodel=value;}
-			get{return _materiamodel;}
+			set{ _materialmodel=value;}
+			get{return _materialmodel;}
 		}
 		/// <summary>
 		/// 单位
 		/// </summary>
-		public string materiaUnit
+		public string materialUnit
 		{
-			set{ _materiaunit=value;}
-			get{return _materiaunit;}
+			set{ _materialunit=value;}
+			get{return _materialunit;}
 		}
 		/// <summary>
 		/// 账面数量
