@@ -262,7 +262,8 @@
             this.toolStripButtonClose.Text = "关闭";
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
-            this.toolStripButton6.Click += new System.EventHandler(this.pictureBox8_Click);            // 
+            this.toolStripButtonClose.Click += new System.EventHandler(this.pictureBoxClose_Click);           
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.superGridControl1);

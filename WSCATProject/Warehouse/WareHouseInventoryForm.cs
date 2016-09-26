@@ -140,11 +140,11 @@ namespace WSCATProject.Warehouse
             #region 盘点方案
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
             DataRow dr = dt.NewRow();
-            dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
             cbopandianidea.DisplayMember = "name";
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
+            cbopandianidea.SelectedItem = 0;
             #endregion
 
             //生成code 和显示条形码
