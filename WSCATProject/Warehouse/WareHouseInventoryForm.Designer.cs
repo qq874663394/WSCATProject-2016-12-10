@@ -61,6 +61,10 @@
             this.panyingnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pankuinumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.panyingMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pankuiMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -70,8 +74,6 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.picbpandianBarCode = new System.Windows.Forms.PictureBox();
             this.textBoxpandiancode = new System.Windows.Forms.TextBox();
-            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -336,6 +338,8 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingMoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuiMoney);
             this.superGridControl1.Size = new System.Drawing.Size(1202, 484);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
@@ -445,6 +449,35 @@
             this.remark.Name = "remark";
             this.remark.ReadOnly = true;
             this.remark.Width = 90;
+            // 
+            // gridColumncode
+            // 
+            this.gridColumncode.DataPropertyName = "code";
+            this.gridColumncode.HeaderText = "商品code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
+            // 
+            // gridColumnprice
+            // 
+            this.gridColumnprice.DataPropertyName = "price";
+            this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnprice.HeaderText = "单价";
+            this.gridColumnprice.Name = "gridColumnprice";
+            this.gridColumnprice.Visible = false;
+            // 
+            // panyingMoney
+            // 
+            this.panyingMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.panyingMoney.HeaderText = "盘盈金额";
+            this.panyingMoney.Name = "panyingMoney";
+            this.panyingMoney.Visible = false;
+            // 
+            // pankuiMoney
+            // 
+            this.pankuiMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.pankuiMoney.HeaderText = "盘亏金额";
+            this.pankuiMoney.Name = "pankuiMoney";
+            this.pankuiMoney.Visible = false;
             // 
             // panel3
             // 
@@ -557,20 +590,6 @@
             this.textBoxpandiancode.Size = new System.Drawing.Size(141, 14);
             this.textBoxpandiancode.TabIndex = 60;
             // 
-            // gridColumncode
-            // 
-            this.gridColumncode.DataPropertyName = "code";
-            this.gridColumncode.HeaderText = "商品code";
-            this.gridColumncode.Name = "gridColumncode";
-            this.gridColumncode.Visible = false;
-            // 
-            // gridColumnprice
-            // 
-            this.gridColumnprice.DataPropertyName = "price";
-            this.gridColumnprice.HeaderText = "单价";
-            this.gridColumnprice.Name = "gridColumnprice";
-            this.gridColumnprice.Visible = false;
-            // 
             // WareHouseInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -656,5 +675,7 @@
         private System.Windows.Forms.TextBox textBoxpandiancode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn panyingMoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn pankuiMoney;
     }
 }
