@@ -10,12 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UpdateManagerLayer;
+
 namespace LogicLayer.Warehouse
 {
-    public class WarehouseInventoryLossLogic
+    public class WareHouseInventoryProfitLogic
     {
-        WarehouseInventoryLossBase wilb = new WarehouseInventoryLossBase();
         WarehouseUpdataManager wum = new WarehouseUpdataManager();
+        WareHouseInventoryProfitBase whipb = new WareHouseInventoryProfitBase();
         public DataTable Search(int fieldName, string fieldValue)
         {
             string strWhere = "";
@@ -26,9 +27,9 @@ namespace LogicLayer.Warehouse
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryLoss",
+                operationTable = "T_WareHouseInventoryProfit",
                 operationTime = DateTime.Now,
-                objective = "新增盘亏信息"
+                objective = "新增盘盈信息"
             };
             try
             {
@@ -44,8 +45,9 @@ namespace LogicLayer.Warehouse
                         strWhere += string.Format("isClear={0}", fieldValue);
                         break;
                 }
-                dt = wilb.Search(strWhere);
-                model.operationContent = "查询T_WarehouseInventoryLoss表的数据,条件为：where"+strWhere;
+                dt = whipb.Search(strWhere);
+                model.operationContent = "新增T_WarehouseInventoryProfit表的数据,条件为：where=" + strWhere;
+                wum.add("", model.operationTable, dt.Rows.Count, "", model.operationTime);
                 model.result = 1;
             }
             catch (Exception ex)
@@ -59,7 +61,7 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public int Add(WarehouseInventoryLoss wil)
+        public int Add(WarehouseInventoryProfit Model)
         {
             int result = 0;
             LogBase lb = new LogBase();
@@ -68,31 +70,32 @@ namespace LogicLayer.Warehouse
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryLoss",
+                operationTable = "T_WarehouseInventoryProfit",
                 operationTime = DateTime.Now,
-                objective = "新增盘亏信息",
-                operationContent = "新增T_WarehouseInventoryLoss表的数据,条件为：code=" + wil.code
+                objective = "新增盘盈信息",
+                operationContent = "新增T_WarehouseInventoryProfit表的数据,条件为：code=" + Model.code
             };
             try
             {
-                if (wil == null)
+                if (Model == null)
                 {
                     throw new Exception("-2");
                 }
-                if (wilb.Exists(wil.code)==true)
+                if (whipb.Exists(Model.code) == true)
                 {
-                    result=Modify(wil);
+                    result = Modify(Model);
                 }
                 else
                 {
-                    result = wilb.Add(wil);
+                    result = whipb.Add(Model);
                 }
+                result = whipb.Add(Model);
                 if (result <= 0)
                 {
                     throw new Exception("-3");
                 }
                 model.result = 1;
-                wum.add(wil.code, model.operationTable, result, "", model.operationTime);
+                wum.add(Model.code, model.operationTable, result, "", model.operationTime);
             }
             catch (Exception ex)
             {
@@ -105,7 +108,7 @@ namespace LogicLayer.Warehouse
             }
             return result;
         }
-        public int Modify(WarehouseInventoryLoss wil)
+        public int Modify(WarehouseInventoryProfit Model)
         {
             int result = 0;
             LogBase lb = new LogBase();
@@ -114,31 +117,32 @@ namespace LogicLayer.Warehouse
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryLoss",
+                operationTable = "T_WarehouseInventoryProfit",
                 operationTime = DateTime.Now,
-                objective = "新增盘亏信息",
-                operationContent = "新增T_WarehouseInventoryLoss表的数据,条件为：code=" + wil.code
+                objective = "修改盘盈信息",
+                operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + Model.code
             };
             try
             {
-                if (wil == null)
+                if (Model == null)
                 {
                     throw new Exception("-2");
                 }
-                if (wilb.Exists(wil.code) == true)
+                if (whipb.Exists(Model.code) == true)
                 {
-                    result = Modify(wil);
+                    result = Modify(Model);
                 }
                 else
                 {
-                    result = wilb.Add(wil);
+                    result = whipb.Add(Model);
                 }
+                result = whipb.Add(Model);
                 if (result <= 0)
                 {
                     throw new Exception("-3");
                 }
                 model.result = 1;
-                wum.add(wil.code, model.operationTable, result, "", model.operationTime);
+                wum.add(Model.code, model.operationTable, result, "", model.operationTime);
             }
             catch (Exception ex)
             {
