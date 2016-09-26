@@ -36,6 +36,7 @@ namespace LogicLayer.Sales
                         strWhere += string.Format("clientCode='{0}'", fieldValue);
                         break;
                 }
+                model.operationContent = "查询T_SalesMain表的数据,条件：where="+strWhere;
                 dt = smb.GetList(strWhere);
                 model.result = 1;
             }
@@ -65,6 +66,7 @@ namespace LogicLayer.Sales
             };
             try
             {
+                model.operationContent = "查询T_SalesMain表的数据,条件：where=" + strWhere;
                 dt = smb.GetTableByClientCode(clientCode);
                 model.result = 1;
             }
