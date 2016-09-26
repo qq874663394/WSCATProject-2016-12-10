@@ -272,7 +272,6 @@
             // 
             // cbopandianidea
             // 
-            this.comboBoxEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbopandianidea.DisplayMember = "Text";
             this.cbopandianidea.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbopandianidea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

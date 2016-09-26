@@ -23,44 +23,40 @@ namespace LogicLayer.Warehouse
         /// <returns></returns>
         public int updateReduce(int number, string code)
         {
-            int result = wo.updateReduce(number, code);
-            if (result > 0)
+            int result = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseMain",
-                    operationTime = DateTime.Now,
-                    objective = "减少库存",
-                    result = result,
-                    operationContent = "减少T_WarehouseMain表的数据,number为" + number + "，code为:" + code
-                };
-                lb.Add(log);
-
-                return result;
-            }
-            else
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseMain",
+                operationTime = DateTime.Now,
+                objective = "减少库存",
+                operationContent = "修改T_WarehouseMain表的数据,number为" + number + "，code为:" + code
+            };
+            try
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                if (string.IsNullOrWhiteSpace(code))
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseMain",
-                    operationTime = DateTime.Now,
-                    objective = "减少库存信息失败",
-                    result = result,
-                    operationContent = "减少T_WarehouseMain数据失败,number为" + number + "，code为:" + code
-                };
-                lb.Add(log);
-
-                return result;
+                    throw new Exception("2");
+                }
+                result = wo.updateReduce(number, code);
+                if (result <= 0)
+                {
+                    throw new Exception("-3");
+                }
             }
-
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
         }
         /// <summary>
         /// 增加库存
@@ -70,44 +66,41 @@ namespace LogicLayer.Warehouse
         /// <returns></returns>
         public int updateAug(int number, string code)
         {
-            int result = wo.updateAug(number, code);
-            if (result > 0)
+            int result = 0;
+            LogBase lb = new LogBase();
+            log logModel = new log()
             {
-                LogBase lb = new LogBase();
-                log log = new log()
-                {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseMain",
-                    operationTime = DateTime.Now,
-                    objective = "增加库存",
-                    result = result,
-                    operationContent = "增加T_WarehouseMain表的数据,number为" + number + "，code为:" + code
-                };
-                lb.Add(log);
-
-                return result;
-            }
-            else
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseMain",
+                operationTime = DateTime.Now,
+                objective = "增加库存",
+                operationContent = "修改T_WarehouseMain表的数据,number为" + number + "，code为:" + code
+            };
+            try
             {
-                LogBase lb = new LogBase();
-                log log = new log()
+                if (string.IsNullOrWhiteSpace(code))
                 {
-                    code = BuildCode.ModuleCode("log"),
-                    operationCode = "操作人code",
-                    operationName = "操作人名",
-                    operationTable = "T_WarehouseMain",
-                    operationTime = DateTime.Now,
-                    objective = "增加库存信息失败",
-                    result = result,
-                    operationContent = "增加T_WarehouseMain数据失败,number为" + number + "，code为:" + code
-                };
-                lb.Add(log);
-
-                return result;
+                    throw new Exception("2");
+                }
+                result = wo.updateAug(number, code);
+                if (result <= 0)
+                {
+                    throw new Exception("-3");
+                }
+                logModel.result = 1;
             }
-
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
         }
         /// <summary>
         /// 自定义条件获取列表
@@ -139,6 +132,46 @@ namespace LogicLayer.Warehouse
                 logModel.result = 0;
                 throw ex;
 
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// 根据查出来的仓库code查库存表，再根据库存表的商品code查物料信息表
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public DataTable GetMaterialByMain(string code)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseStorage",
+                operationTime = DateTime.Now,
+                objective = "查询盘点表中List数据",
+                operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:code=" + code
+            };
+            try
+            {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
+                dt = wo.GetMaterialByMain(code);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
             }
             finally
             {
