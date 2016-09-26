@@ -26,6 +26,7 @@ namespace WSCATProject.Warehouse
         #region 调用接口以及加密解密的方法
         StorageInterface si = new StorageInterface();
         CodingHelper codeh = new CodingHelper();
+        WarehouseMainInterface warehousemain = new WarehouseMainInterface();
         #endregion
 
         #region  数据字段
@@ -139,12 +140,13 @@ namespace WSCATProject.Warehouse
 
             #region 盘点方案
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
-            DataRow dr = dt.NewRow();
-            dt.Rows.InsertAt(dr, 0);
+            //DataRow dr = dt.NewRow();
+            //dt.Rows.InsertAt(dr, 0);
             cbopandianidea.DisplayMember = "name";
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
             cbopandianidea.SelectedItem = 0;
+
             #endregion
 
             //生成code 和显示条形码
@@ -160,14 +162,13 @@ namespace WSCATProject.Warehouse
         #region  下拉框选择改变事件
         private void cbopandianidea_SelectedValueChanged(object sender, EventArgs e)
         {
-            WarehouseMainInterface warehousemain = new WarehouseMainInterface();
 
-            if (cbopandianidea.Text == "请选择" || cbopandianidea.Text == "")
+            if (cbopandianidea.Text == "")
             {
                 return;
             }
 
-            if (cbopandianidea.Text != "请选择" || cbopandianidea.Text != "")
+            else if (cbopandianidea.Text != "")
             {
                 string code = cbopandianidea.SelectedValue.ToString();
                 this.superGridControl1.PrimaryGrid.DataSource = null;
@@ -403,6 +404,17 @@ namespace WSCATProject.Warehouse
                 //warehouseinv.reserved1 = "";
                 //warehouseinv.reserved2 = "";
                 //warehouseinv.updateDate = "";
+                //warehouseinv.barCode = "";
+                //warehouseinv.effectiveDate = "";
+                //warehouseinv.lostMoney = "";
+                //warehouseinv.lostNumber = "";
+                //warehouseinv.mainCode = "";
+                //warehouseinv.materialDaima = "";
+                //warehouseinv.productionDate = "";
+                //warehouseinv.qualityDate = "";
+                //warehouseinv.stockCode = "";
+                //warehouseinv.stockName = "";
+              
             }
             catch (Exception ex)
             {

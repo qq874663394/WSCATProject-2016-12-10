@@ -70,6 +70,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.picbpandianBarCode = new System.Windows.Forms.PictureBox();
             this.textBoxpandiancode = new System.Windows.Forms.TextBox();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -332,6 +334,8 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
             this.superGridControl1.Size = new System.Drawing.Size(1202, 484);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
@@ -553,6 +557,20 @@
             this.textBoxpandiancode.Size = new System.Drawing.Size(141, 14);
             this.textBoxpandiancode.TabIndex = 60;
             // 
+            // gridColumncode
+            // 
+            this.gridColumncode.DataPropertyName = "code";
+            this.gridColumncode.HeaderText = "商品code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
+            // 
+            // gridColumnprice
+            // 
+            this.gridColumnprice.DataPropertyName = "price";
+            this.gridColumnprice.HeaderText = "单价";
+            this.gridColumnprice.Name = "gridColumnprice";
+            this.gridColumnprice.Visible = false;
+            // 
             // WareHouseInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -636,5 +654,7 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private System.Windows.Forms.PictureBox picbpandianBarCode;
         private System.Windows.Forms.TextBox textBoxpandiancode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
     }
 }
