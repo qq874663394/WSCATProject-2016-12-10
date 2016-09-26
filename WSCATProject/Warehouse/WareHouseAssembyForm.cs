@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar.Controls;
 using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using System;
@@ -26,8 +27,38 @@ namespace WSCATProject.Warehouse
         /// 所有业务员
         /// </summary>
         private DataTable _AllEmployee = null;
+        /// <summary>
+        /// 组装单单号
+        /// </summary>
+        private string _WareHouseAssembyCode;
         #endregion
 
+        #region 修改Panel的边框颜色
+        /// <summary>
+        /// 修改Panel的边框颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                               this.panel2.ClientRectangle,
+                               Color.White,
+                               1,
+                               ButtonBorderStyle.Solid,
+                               Color.FromArgb(85, 177, 238),
+                               1,
+                               ButtonBorderStyle.Solid,
+                               Color.White,
+                               1,
+                               ButtonBorderStyle.Solid,
+                               Color.White,
+                               1,
+                               ButtonBorderStyle.Solid);
+        }
+
+
+        #endregion
         #region 实例化接口层 以及解密方法
 
         CodingHelper ch = new CodingHelper();
@@ -110,6 +141,13 @@ namespace WSCATProject.Warehouse
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
             InitDataGridView();
+            //生成code 和显示条形码
+            _WareHouseAssembyCode = BuildCode.ModuleCode("WAP");
+            textBoxOddNumbers.Text = _WareHouseAssembyCode;
+            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+            _Code.ValueFont = new Font("微软雅黑", 20);
+            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+            pictureBox9.Image = imgTemp;
         }
 
         #region 两个副框的双击事件和下拉箭头的点击事件

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -74,12 +74,12 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1026, 3);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1028, 3);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(986, 3);
+            this.labelprie.Location = new System.Drawing.Point(988, 3);
             // 
             // dateTimePicker1
             // 
@@ -97,8 +97,9 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.pictureBox9);
-            this.panel2.Controls.Add(this.comboBoxEx1);
+            this.panel2.Controls.Add(this.cbotype);
             this.panel2.Size = new System.Drawing.Size(1202, 70);
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -129,7 +130,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop7, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxEx1, 0);
+            this.panel2.Controls.SetChildIndex(this.cbotype, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox9, 0);
             // 
             // labtextboxTop6
@@ -342,6 +343,7 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Location = new System.Drawing.Point(0, 552);
             this.panel5.Click += new System.EventHandler(this.panel2_Click);
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -436,7 +438,9 @@
             // 
             // bar1
             // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.bar1.Location = new System.Drawing.Point(0, 616);
+            this.bar1.SingleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // panel3
             // 
@@ -488,21 +492,22 @@
             this.pictureBoxMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.pictureBoxMin.Location = new System.Drawing.Point(1097, 27);
             // 
-            // comboBoxEx1
+            // cbotype
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.cbotype.DisplayMember = "Text";
+            this.cbotype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotype.FormattingEnabled = true;
+            this.cbotype.ItemHeight = 15;
+            this.cbotype.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2});
-            this.comboBoxEx1.Location = new System.Drawing.Point(91, 22);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(192, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 53;
-            this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
+            this.cbotype.Location = new System.Drawing.Point(91, 22);
+            this.cbotype.Name = "cbotype";
+            this.cbotype.Size = new System.Drawing.Size(192, 21);
+            this.cbotype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbotype.TabIndex = 53;
+            this.cbotype.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
             // 
             // comboItem1
             // 
@@ -711,7 +716,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox9;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbotype;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStockIn;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
