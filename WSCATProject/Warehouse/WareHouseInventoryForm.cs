@@ -47,6 +47,14 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private decimal _PanKuiShuLiang;
         /// <summary>
+        /// 盘盈金额
+        /// </summary>
+        private decimal _PanYingMoney;
+        /// <summary>
+        /// 盘亏金额
+        /// </summary>
+        private decimal _PankuiMoney;
+        /// <summary>
         /// 盘点code
         /// </summary>
         private string _PanDianCode;
@@ -129,7 +137,10 @@ namespace WSCATProject.Warehouse
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
             gdiecNumber.MinValue = 0;
             gdiecNumber.MaxValue = 999999999;
-
+            //设置盘点数量可输入的最大值和最小值
+            GridDoubleInputEditControl gdiecpanyingMoney = superGridControl1.PrimaryGrid.Columns["panyingMoney"].EditControl as GridDoubleInputEditControl;
+            gdiecpanyingMoney.MinValue = 0;
+            gdiecpanyingMoney.MaxValue = 999999999;
             //调用表格初始化
             superGridControl1.HScrollBarVisible = true;
             superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
@@ -366,31 +377,41 @@ namespace WSCATProject.Warehouse
         private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-            decimal tempAllzhucun = 0;
-            decimal tempAllpandian = 0;
-            //decimal tempAllpanying = 0;
-            //decimal tempAllpankui = 0;
+            decimal tempAllzhucun = 0;//账面数
+            decimal tempAllpandian = 0;//盘点数
+            decimal tempAllpanying = 0;//盘盈数
+            decimal tempAllpankui = 0;//盘亏数
+            decimal tempAllpanyingMoney=0;//盘盈金额
+            decimal tempAllpankuiMoney=0;//盘亏金额
             //计算盘盈、盘亏的数量
             try
             {
                 decimal zhucunnumber = Convert.ToDecimal(gr.Cells["zhangcunnumber"].FormattedValue);
                 decimal pandiannumber = Convert.ToDecimal(gr.Cells["pandiannumber"].FormattedValue);
+                decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);
                 decimal panying = pandiannumber - zhucunnumber;
                 if (panying > 0)
                 {
                     gr.Cells["panyingnumber"].Value = panying;
                     gr.Cells["pankuinumber"].Value = "0.00";
+                    decimal panyingnumber =Convert.ToDecimal(gr.Cells["panyingnumber"].FormattedValue);
+                    gr.Cells["panyingMoney"].Value = panyingnumber * price;
+                    gr.Cells["pankuiMoney"].Value = "0.00";
                 }
                 if (panying < 0)
                 {
-                    gr.Cells["pankuinumber"].Value = panying;
+                    gr.Cells["pankuinumber"].Value = panying.ToString().Replace("-", "");
                     gr.Cells["panyingnumber"].Value = "0.00";
+                    decimal pankuinumber = Convert.ToDecimal(gr.Cells["pankuinumber"].FormattedValue.Replace("-", ""));
+                    gr.Cells["pankuiMoney"].Value = (pankuinumber * price).ToString().Replace("-", "");
+                    gr.Cells["panyingMoney"].Value = "0.00";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("计算盘盈，盘亏数量有误！请检查：" + ex.Message);
             }
+
 
             try
             {
@@ -402,36 +423,64 @@ namespace WSCATProject.Warehouse
                     tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
                     //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
                     //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                    tempAllpanyingMoney += Convert.ToDecimal(tempGR["panyingMoney"].FormattedValue);
+                    tempAllpankuiMoney += Convert.ToDecimal(tempGR["pankuiMoney"].FormattedValue);
                 }
                 _ZhangCunShuLiang = tempAllzhucun;
                 _PanDianShuLiang = tempAllpandian;
                 //_PanYingShuLiang = tempAllpanying;
                 //_PanKuiShuLiang = tempAllpankui;
+                _PanYingMoney = tempAllpanyingMoney;
+                _PankuiMoney = tempAllpankuiMoney;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                 gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                 gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
-                //gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
-                //gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
-
+                gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                gr["pankuinumber"].Value = _PanKuiShuLiang.ToString().Replace("-", "");
+                gr["panyingMoney"].Value = _PanYingMoney.ToString();
+                gr["pankuiMoney"].Value = _PankuiMoney.ToString();
                 //获取一行数据，添加进数据库
-                GridRow gr1 = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-                WarehouseInventoryDetail warehouseinv = new WarehouseInventoryDetail();
-                //warehouseinv.cause = "";
-                //warehouseinv.checkNumber = "";
-                //warehouseinv.code = "";
-                //warehouseinv.curNumber = "";
-                //warehouseinv.isClear = 1;
-                //warehouseinv.lostMoney = "";
-                //warehouseinv.lostNumber = "";
-                //warehouseinv.materialCode = "";
-                //warehouseinv.materiaModel = "";
-                //warehouseinv.materiaName = "";
-                //warehouseinv.materiaUnit = "";
-                //warehouseinv.price = "";
-                //warehouseinv.remark = "";
-                //warehouseinv.reserved1 = "";
-                //warehouseinv.reserved2 = "";
-                //warehouseinv.updateDate = "";
+                try
+                {
+                    GridRow gr1 = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                    WarehouseInventoryDetail warehouseinv = new WarehouseInventoryDetail();
+                    warehouseinv.cause = "";
+                    warehouseinv.checkNumber = gr1.Cells["pandiannumber"].FormattedValue == null ? 0.0M : Convert.ToDecimal(gr1.Cells["pandiannumber"].FormattedValue.ToString());
+                    warehouseinv.code = XYEEncoding.strCodeHex(textBoxpandiancode.Text);
+                    warehouseinv.curNumber = gr1.Cells["zhangcunnumber"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["zhangcunnumber"].Value.ToString());
+                    warehouseinv.isClear = 1;
+                    warehouseinv.lossMoney = gr1.Cells["pankuiMoney"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["pankuiMoney"].Value.ToString());
+                    warehouseinv.lossNumber = gr1.Cells["pankuinumber"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["pankuinumber"].Value.ToString());
+                    warehouseinv.materialCode = gr1.Cells["gridColumncode"].Value == null? "" : XYEEncoding.strCodeHex(gr1.Cells["gridColumncode"].Value.ToString());
+                    warehouseinv.materialModel = gr1.Cells["model"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["model"].Value.ToString());
+                    warehouseinv.materialName = gr1.Cells["name"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["name"].Value.ToString());
+                    warehouseinv.materialUnit = gr1.Cells["unit"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["unit"].Value.ToString());
+                    warehouseinv.price = gr1.Cells["gridColumnprice"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["gridColumnprice"].Value);
+                    warehouseinv.remark = gr1.Cells["remark"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["remark"].Value.ToString());
+                    warehouseinv.updateDate = DateTime.Now;
+                    warehouseinv.barCode = gr1.Cells["tiaoxingma"].Value== null ? "" : XYEEncoding.strCodeHex(gr1.Cells["tiaoxingma"].Value.ToString());
+                    warehouseinv.effectiveDate = DateTime.Now;
+                    warehouseinv.profitNumber = gr1.Cells["panyingnumber"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["panyingnumber"].Value.ToString());
+                    warehouseinv.profitMoney = gr1.Cells["panyingMoney"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["panyingMoney"].Value.ToString());
+                    warehouseinv.mainCode = XYEEncoding.strCodeHex(textBoxpandiancode.Text);
+                    warehouseinv.materialDaima = gr1.Cells["daima"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["daima"].Value.ToString());
+                    warehouseinv.productionDate = gr1.Cells["shengchandate"].Value.ToString() == "" ? DateTime.Now : Convert.ToDateTime(gr1.Cells["shengchandate"].Value);
+                    warehouseinv.qualityDate = gr1.Cells["baozhiqi"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr1.Cells["baozhiqi"].Value.ToString());
+                    warehouseinv.stockCode = XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString());
+                    warehouseinv.stockName = XYEEncoding.strCodeHex(cbopandianidea.Text);
+                    warehouseinv.reserved1 = "";
+                    warehouseinv.reserved2 = "";
+                    WarehouseInventoryDetailInterface wareinvent = new WarehouseInventoryDetailInterface();
+                    int result = wareinvent.Add(warehouseinv);
+                    if (result == 1)
+                    {
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码-绑定盘点数据错误"+ex.Message);
+                }
             }
             catch (Exception ex)
             {
