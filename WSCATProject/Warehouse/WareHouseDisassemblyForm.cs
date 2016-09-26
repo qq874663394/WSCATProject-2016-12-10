@@ -243,9 +243,9 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 修改Panel的边框颜色
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        /// <param name = "sender" ></ param >
+        /// < param name="e"></param>
+        private  void panel2_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics,
                                this.panel2.ClientRectangle,

@@ -28,10 +28,17 @@ namespace Model
 		private string _reserved1;
 		private string _reserved2;
 		private string _remark;
-		/// <summary>
-		/// 盘点编号
-		/// </summary>
-		public string code
+        private string _stockcode;
+        private string _stockname;
+        private string _materiadaima;
+        private string _barcode;
+        private DateTime? _productiondate;
+        private decimal? _qualitydate;
+        private DateTime? _effectivedate;
+        /// <summary>
+        /// 盘点编号
+        /// </summary>
+        public string code
 		{
 			set{ _code=value;}
 			get{return _code;}
@@ -164,8 +171,65 @@ namespace Model
 			set{ _remark=value;}
 			get{return _remark;}
 		}
-		#endregion Model
 
-	}
+        /// <summary>
+		/// 仓库
+		/// </summary>
+		public string stockCode
+        {
+            set { _stockcode = value; }
+            get { return _stockcode; }
+        }
+        /// <summary>
+		/// 仓库名称
+		/// </summary>
+		public string stockName
+        {
+            set { _stockname = value; }
+            get { return _stockname; }
+        }
+        /// <summary>
+		/// 物料代码
+		/// </summary>
+		public string materialDaima
+        {
+            set { _materiadaima = value; }
+            get { return _materiadaima; }
+        }
+        /// <summary>
+		/// 条形码
+		/// </summary>
+		public string barCode
+        {
+            set { _barcode = value; }
+            get { return _barcode; }
+        }
+        /// <summary>
+		/// 生产日期
+		/// </summary>
+		public DateTime? productionDate
+        {
+            set { _productiondate = value; }
+            get { return _productiondate; }
+        }
+        /// <summary>
+		/// 保质期
+		/// </summary>
+		public decimal? qualityDate
+        {
+            set {  _qualitydate= value; }
+            get { return _qualitydate; }
+        }
+        /// <summary>
+		/// 有效期至
+		/// </summary>
+		public DateTime? effectiveDate
+        {
+            set { _effectivedate = value; }
+            get { return _effectivedate; }
+        }
+        #endregion Model
+
+    }
 }
 
