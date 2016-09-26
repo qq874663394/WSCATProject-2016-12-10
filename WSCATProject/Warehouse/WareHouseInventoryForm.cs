@@ -135,7 +135,7 @@ namespace WSCATProject.Warehouse
             superGridControl1.HScrollBarVisible = true;
             superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
             superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
-         DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             InitDataGridView();
 
             #region 盘点方案
@@ -146,7 +146,10 @@ namespace WSCATProject.Warehouse
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
             cbopandianidea.SelectedItem = 0;
-
+            string code = cbopandianidea.SelectedValue.ToString();
+            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
+            superGridControl1.PrimaryGrid.EnsureVisible();
+            InitDataGridView();
             #endregion
 
             //生成code 和显示条形码
@@ -162,13 +165,13 @@ namespace WSCATProject.Warehouse
         #region  下拉框选择改变事件
         private void cbopandianidea_SelectedValueChanged(object sender, EventArgs e)
         {
-
+            WarehouseMainInterface warehousemain = new WarehouseMainInterface();
             if (cbopandianidea.Text == "")
             {
                 return;
             }
 
-            else if (cbopandianidea.Text != "")
+            if (cbopandianidea.Text != "")
             {
                 string code = cbopandianidea.SelectedValue.ToString();
                 this.superGridControl1.PrimaryGrid.DataSource = null;
