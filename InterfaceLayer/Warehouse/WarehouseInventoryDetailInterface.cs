@@ -15,7 +15,7 @@ namespace InterfaceLayer.Warehouse
         /// <summary>
         /// 复合查询
         /// </summary>
-        /// <param name="fieldName">1:code,2:商品代码,3:stockCode,4:barCode,5:mainCode</param>
+        /// <param name="fieldName">0:code,1:materialDaima,2:stockCode,3:barCode,4:mainCode,5:盘亏,6:盘盈</param>
         /// <param name="fieldValue">字段值</param>
         /// <returns></returns>
         public DataTable Search(int fieldName, string fieldValue)

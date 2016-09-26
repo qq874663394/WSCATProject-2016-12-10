@@ -86,6 +86,7 @@ namespace BaseLayer.Warehouse
             }
             return result;
         }
+
         public int Modify(WarehouseInventoryLoss wil)
         {
             string sql = "";
