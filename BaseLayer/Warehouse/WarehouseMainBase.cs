@@ -25,7 +25,7 @@ namespace BaseLayer.Warehouse
                 sql = string.Format("update T_WarehouseMain set enaNumber=enaNumber-{0} where code='{1}'", number, code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -37,7 +37,7 @@ namespace BaseLayer.Warehouse
         /// <param name="number"></param>
         /// <param name="code"></param>
         /// <returns></returns>
-        public int updateAug(int number,string code)
+        public int updateAug(int number, string code)
         {
             string sql = "";
             int result = 0;
@@ -46,10 +46,10 @@ namespace BaseLayer.Warehouse
                 sql = string.Format("update T_WarehouseMain set enaNumber=enaNumber+{0} where code='{1}'", number, code);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
-            }                
+            }
             return result;
         }
         /// <summary>
@@ -67,15 +67,35 @@ namespace BaseLayer.Warehouse
                     where tw.materialCode=bm.code and tw.code=td.warehouseOrdercode";
                 if (fieldValue.Trim() != "")
                 {
-                    sql += " and tw.storageCode='"+ fieldValue + "' ";
+                    sql += " and tw.storageCode='" + fieldValue + "' ";
                 }
                 ds = DbHelperSQL.Query(sql);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
             return ds.Tables[0];
+        }
+        /// <summary>
+        /// 根据查出来的仓库code查库存表，再根据库存表的商品code查物料信息表
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public DataTable GetMaterialByMain(string code)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = string.Format("select * from T_WarehouseMain wm,T_BaseMaterial bm where storageCode='{0}' and wm.materialCode=bm.code",code);
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
         }
     }
 }

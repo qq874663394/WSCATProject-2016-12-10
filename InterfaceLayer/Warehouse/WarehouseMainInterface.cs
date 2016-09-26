@@ -40,5 +40,14 @@ namespace InterfaceLayer.Warehouse
         {
             return wo.GetMaterialDetail(fieldValue);
         }
+        /// <summary>
+        /// 根据查出来的仓库code查库存表，再根据库存表的商品code查物料信息表
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public DataTable GetMaterialByMain(string code)
+        {
+            return wo.GetMaterialByMain(code);
+        }
     }
 }
