@@ -19,9 +19,11 @@ namespace Model
 		private string _materiaunit;
 		private decimal? _curnumber;
 		private decimal? _checknumber;
-		private decimal? _lostnumber;
+        private decimal? _profitnumber;
+		private decimal? _lossnumber;
 		private decimal? _price;
-		private decimal? _lostmoney;
+		private decimal? _lossmoney;
+        private decimal? _profitmoney;
 		private string _cause;
 		private int? _isclear=1;
 		private DateTime? _updatedate;
@@ -100,13 +102,21 @@ namespace Model
 			set{ _checknumber=value;}
 			get{return _checknumber;}
 		}
-		/// <summary>
-		/// 盈亏数量
-		/// </summary>
-		public decimal? lostNumber
+        /// <summary>
+        /// 盘盈数量
+        /// </summary>
+        public decimal? profitNumber
+        {
+            set { _profitnumber = value; }
+            get { return _profitnumber; }
+        }
+        /// <summary>
+        /// 盘亏数量
+        /// </summary>
+        public decimal? lossNumber
 		{
-			set{ _lostnumber=value;}
-			get{return _lostnumber;}
+			set{ _lossnumber=value;}
+			get{return _lossnumber;}
 		}
 		/// <summary>
 		/// 单价
@@ -116,13 +126,21 @@ namespace Model
 			set{ _price=value;}
 			get{return _price;}
 		}
-		/// <summary>
-		/// 盈亏金额
+        /// <summary>
+		/// 盘盈金额
 		/// </summary>
-		public decimal? lostMoney
+		public decimal? profitMoney
+        {
+            set { _profitmoney = value; }
+            get { return _profitmoney; }
+        }
+        /// <summary>
+        /// 盘亏金额
+        /// </summary>
+        public decimal? lossMoney
 		{
-			set{ _lostmoney=value;}
-			get{return _lostmoney;}
+			set{ _lossmoney=value;}
+			get{return _lossmoney;}
 		}
 		/// <summary>
 		/// 原因
