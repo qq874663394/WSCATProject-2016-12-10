@@ -187,6 +187,7 @@ namespace BaseLayer.Warehouse
                 new SqlParameter("@qualityDate",wid.qualityDate),
                 new SqlParameter("@mainCode",wid.mainCode)
                 };
+                result = DbHelperSQL.ExecuteSql(sql, sps);
             }
             catch (Exception ex)
             {

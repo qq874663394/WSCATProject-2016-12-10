@@ -64,6 +64,7 @@
     <Compile Include="Warehouse\WarehouseInProcessBase.cs" />
     <Compile Include="Warehouse\WarehouseInventoryBase.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetailBase.cs" />
+    <Compile Include="Warehouse\WarehouseInventoryLossBase.cs" />
     <Compile Include="Warehouse\WarehouseMainBase.cs" />
     <Compile Include="Warehouse\WarehouseOutBase.cs" />
     <Compile Include="Warehouse\WarehouseOutDetailBase.cs" />
