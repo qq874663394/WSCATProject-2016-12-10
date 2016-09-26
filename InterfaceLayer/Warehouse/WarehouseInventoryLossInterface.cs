@@ -27,9 +27,9 @@ namespace InterfaceLayer.Warehouse
         /// </summary>
         /// <param name="wil"></param>
         /// <returns></returns>
-        public int Add(WarehouseInventoryLoss wil)
+        public object Add(WarehouseInventoryLoss warehouseInventoryLoss, List<WarehouseInventoryLossDetail> warehouseInventoryLossDetail)
         {
-            return will.Add(wil);
+            return will.Add(warehouseInventoryLoss,warehouseInventoryLossDetail);
         }
         /// <summary>
         /// 修改
