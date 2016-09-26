@@ -1,5 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
 using System;
 using System.Collections.Generic;
@@ -22,25 +24,58 @@ namespace WSCATProject.Warehouse
         }
         #region  数据字段
         /// <summary>
-        /// 统计贮存数量
+        /// 统计账存数量
         /// </summary>
-        private decimal _Materialzhucun;
+        private decimal _ZhangCunShuLiang;
         /// <summary>
         /// 统计判定数量
         /// </summary>
-        private decimal _Materialpandian;
+        private decimal _PanDianShuLiang;
         /// <summary>
         /// 统计盘盈数量
         /// </summary>
-        private decimal _Materialpanying;
+        private decimal _PanYingShuLiang;
         /// <summary>
         /// 统计盘亏数量
         /// </summary>
-        private decimal _Materialpankui;
+        private decimal _PanKuiShuLiang;
+
+        /// <summary>
+        /// 盘点Code
+        /// </summary>
+        private string _inventoryCode;
+        public string InventoryCode
+        {
+            get {return _inventoryCode;}
+            set { _inventoryCode = value;}
+        }
+        /// <summary>
+        /// 仓库Code
+        /// </summary>
+        private string _storageCode;
+        public string StorageCode
+        {
+            get{  return _storageCode; }
+            set { _storageCode = value; }
+        }
+
+        /// <summary>
+        /// 仓库Name
+        /// </summary>
+        private string _storageName;
+        public string StorageName
+        {
+            get{ return _storageName;}
+            set {  _storageName = value; }
+        }
+
         #endregion
 
-        WarehouseInventoryInterface iface = new WarehouseInventoryInterface();
+        #region 调用接口以及加密解密的方法
+        StorageInterface si = new StorageInterface();
+        WarehouseInventoryDetailInterface whidi = new WarehouseInventoryDetailInterface();
         CodingHelper codeh = new CodingHelper();
+        #endregion
 
         #region  窗体加载事件
         private void WareHouseInventoryReportForm_Load(object sender, EventArgs e)
@@ -55,49 +90,78 @@ namespace WSCATProject.Warehouse
             this.superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
             //显示行号
             superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
-            #region 加载盘点方案的数据
-            DataTable dt = null;//codeh.DataTableReCoding(iface.GetList());
-            DataRow dr = dt.NewRow();
-            dr["name"] = "请选择";
-            dt.Rows.InsertAt(dr, 0);
-
-            cbopandianidea.DisplayMember = "name";
-            cbopandianidea.ValueMember = "code";
-            cbopandianidea.DataSource = dt;
-
-            #endregion
 
             //调用表格初始化
             superGridControl1.PrimaryGrid.EnsureVisible();
             InitDataGridView();
+          
+            this.cbopandianidea.Text = _storageName;
+            this.textBoxpandiancode.Text = _inventoryCode;
+            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+            _Code.ValueFont = new Font("微软雅黑", 20);
+            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
+            picbpandianBarCode.Image = imgTemp;
+
+            #region 加载盘点方案的数据
+            DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
+            cbopandianidea.DisplayMember = "name";
+            cbopandianidea.ValueMember = "code";
+            cbopandianidea.DataSource = dt;
+            string code = cbopandianidea.SelectedValue.ToString();
+            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(3, (XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString()))));
+            superGridControl1.PrimaryGrid.EnsureVisible();
+            InitDataGridView();
+            try
+            {
+                GridRow gr = new GridRow();
+                decimal tempAllzhucun = 0;
+                decimal tempAllpandian = 0;
+                decimal tempAllpanying = 0;
+                decimal tempAllpankui = 0;
+                //逐行统计数据总数
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
+                    tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
+                    tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
+                    tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                }
+                _ZhangCunShuLiang = tempAllzhucun;
+                _PanDianShuLiang = tempAllpandian;
+                _PanYingShuLiang = tempAllpanying;
+                _PanKuiShuLiang = tempAllpankui;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
+                gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
+                gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+            }
+            #endregion
+
         }
         #endregion
 
         #region  下拉框选择改变事件
         private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbopandianidea.SelectedValue == null || cbopandianidea.SelectedValue.ToString() == "")
+            if (cbopandianidea.Text == "")
             {
-                //绑定dgv   查询全部数据
-                DataTable dt = codeh.DataTableReCoding(iface.GetList(999,""));
-                if (dt == null)
-                {
-                    superGridControl1.PrimaryGrid.DataSource = null;
-                }
-                else
-                {
-                    superGridControl1.PrimaryGrid.DataSource = dt;
-                }
+                return;
             }
-            else
+
+            if (cbopandianidea.Text != "")
             {
-                string a = cbopandianidea.SelectedValue.ToString();
-                DataTable dts = codeh.DataTableReCoding(iface.GetList(3, XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
-                superGridControl1.PrimaryGrid.DataSource = dts;
-                //调用表格初始化
+                string code = cbopandianidea.SelectedValue.ToString();
+                this.superGridControl1.PrimaryGrid.DataSource = null;
+                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(3,(XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString()))));
                 superGridControl1.PrimaryGrid.EnsureVisible();
                 InitDataGridView();
-
             }
         }
         #endregion
@@ -191,6 +255,8 @@ namespace WSCATProject.Warehouse
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+
+
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);

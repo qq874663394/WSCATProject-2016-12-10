@@ -187,6 +187,7 @@
             this.toolStripButtonbianzhi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonbianzhi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonbianzhi.ToolTipText = "编制盘点报告";
+            this.toolStripButtonbianzhi.Click += new System.EventHandler(this.toolStripButtonbianzhi_Click);
             // 
             // toolStripButtonshuaixin
             // 

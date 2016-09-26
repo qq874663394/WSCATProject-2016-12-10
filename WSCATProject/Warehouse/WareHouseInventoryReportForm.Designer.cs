@@ -58,6 +58,9 @@
             this.panyingnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pankuinumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.price = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.profitmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.lossmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.lblzhangcundate = new DevComponents.DotNetBar.LabelX();
@@ -158,6 +161,7 @@
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "商品盘点报告单";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -172,6 +176,7 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // toolStrip1
             // 
@@ -190,6 +195,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
             this.toolStrip1.TabIndex = 51;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -262,7 +268,7 @@
             this.toolStripButtonClose.Text = "关闭";
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
-            this.toolStripButtonClose.Click += new System.EventHandler(this.pictureBoxClose_Click);           
+            this.toolStripButtonClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
             // panel2
             // 
@@ -295,6 +301,9 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.price);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.profitmoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.lossmoney);
             this.superGridControl1.Size = new System.Drawing.Size(1202, 511);
             this.superGridControl1.TabIndex = 1;
             this.superGridControl1.Text = "superGridControl1";
@@ -302,24 +311,28 @@
             // 
             // storge
             // 
+            this.storge.DataPropertyName = "stockName";
             this.storge.HeaderText = "仓库";
             this.storge.Name = "storge";
             this.storge.ReadOnly = true;
             // 
             // daima
             // 
+            this.daima.DataPropertyName = "materialDaima";
             this.daima.HeaderText = "商品代码";
             this.daima.Name = "daima";
             this.daima.ReadOnly = true;
             // 
             // name
             // 
+            this.name.DataPropertyName = "materialName";
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
             // model
             // 
+            this.model.DataPropertyName = "materialModel";
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
             this.model.ReadOnly = true;
@@ -327,6 +340,7 @@
             // tiaoxingma
             // 
             this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.tiaoxingma.DataPropertyName = "barCode";
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
             this.tiaoxingma.ReadOnly = true;
@@ -334,6 +348,7 @@
             // 
             // shengchandate
             // 
+            this.shengchandate.DataPropertyName = "productionDate";
             this.shengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengchandate.HeaderText = "生产/采购日期";
             this.shengchandate.Name = "shengchandate";
@@ -342,6 +357,7 @@
             // 
             // baozhiqi
             // 
+            this.baozhiqi.DataPropertyName = "qualityDate";
             this.baozhiqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.baozhiqi.HeaderText = "保质期（天 ）";
             this.baozhiqi.Name = "baozhiqi";
@@ -350,6 +366,7 @@
             // 
             // unit
             // 
+            this.unit.DataPropertyName = "materialUnit";
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
             this.unit.ReadOnly = true;
@@ -357,6 +374,7 @@
             // 
             // zhangcunnumber
             // 
+            this.zhangcunnumber.DataPropertyName = "curNumber";
             this.zhangcunnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.zhangcunnumber.HeaderText = "账存数量";
             this.zhangcunnumber.Name = "zhangcunnumber";
@@ -365,6 +383,7 @@
             // 
             // pandiannumber
             // 
+            this.pandiannumber.DataPropertyName = "checkNumber";
             this.pandiannumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pandiannumber.HeaderText = "盘点数量";
             this.pandiannumber.Name = "pandiannumber";
@@ -373,6 +392,7 @@
             // 
             // panyingnumber
             // 
+            this.panyingnumber.DataPropertyName = "profitNumber";
             this.panyingnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.panyingnumber.HeaderText = "盘盈数量";
             this.panyingnumber.Name = "panyingnumber";
@@ -381,6 +401,7 @@
             // 
             // pankuinumber
             // 
+            this.pankuinumber.DataPropertyName = "lossNumber";
             this.pankuinumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuinumber.HeaderText = "盘亏数量";
             this.pankuinumber.Name = "pankuinumber";
@@ -389,10 +410,32 @@
             // 
             // remark
             // 
+            this.remark.DataPropertyName = "remark";
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
             this.remark.ReadOnly = true;
             this.remark.Width = 90;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "单价";
+            this.price.Name = "price";
+            this.price.Visible = false;
+            // 
+            // profitmoney
+            // 
+            this.profitmoney.DataPropertyName = "profitMoney";
+            this.profitmoney.HeaderText = "盘盈金额";
+            this.profitmoney.Name = "profitmoney";
+            this.profitmoney.Visible = false;
+            // 
+            // lossmoney
+            // 
+            this.lossmoney.DataPropertyName = "lossMoney";
+            this.lossmoney.HeaderText = "盘亏金额";
+            this.lossmoney.Name = "lossmoney";
+            this.lossmoney.Visible = false;
             // 
             // panel3
             // 
@@ -419,6 +462,7 @@
             this.bar1.TabIndex = 55;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
+            this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // lblzhangcundate
             // 
@@ -588,5 +632,8 @@
         private System.Windows.Forms.TextBox textBoxpandiancode;
         private System.Windows.Forms.PictureBox picbpandianBarCode;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn price;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn profitmoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn lossmoney;
     }
 }

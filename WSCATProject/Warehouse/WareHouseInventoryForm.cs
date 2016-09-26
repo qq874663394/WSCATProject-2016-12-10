@@ -123,7 +123,7 @@ namespace WSCATProject.Warehouse
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
+            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);    
 
             //设置盘点数量可输入的最大值和最小值
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
@@ -131,26 +131,11 @@ namespace WSCATProject.Warehouse
             gdiecNumber.MaxValue = 999999999;
 
             //调用表格初始化
-
             superGridControl1.HScrollBarVisible = true;
             superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
             superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             InitDataGridView();
-
-            #region 盘点方案
-            DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
-            //DataRow dr = dt.NewRow();
-            //dt.Rows.InsertAt(dr, 0);
-            cbopandianidea.DisplayMember = "name";
-            cbopandianidea.ValueMember = "code";
-            cbopandianidea.DataSource = dt;
-            cbopandianidea.SelectedItem = 0;
-            string code = cbopandianidea.SelectedValue.ToString();
-            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
-            superGridControl1.PrimaryGrid.EnsureVisible();
-            InitDataGridView();
-            #endregion
 
             //生成code 和显示条形码
             _PanDianCode = BuildCode.ModuleCode("WII");
@@ -159,14 +144,53 @@ namespace WSCATProject.Warehouse
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
             picbpandianBarCode.Image = imgTemp;
-            superGridControl1.PrimaryGrid.DataSource = wii.GetList(999, "");
+
+            #region 盘点方案
+            DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
+            cbopandianidea.DisplayMember = "name";
+            cbopandianidea.ValueMember = "code";
+            cbopandianidea.DataSource = dt;
+            string code = cbopandianidea.SelectedValue.ToString();
+            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
+            superGridControl1.PrimaryGrid.EnsureVisible();
+            InitDataGridView();
+            try
+            {
+                GridRow gr = new GridRow();
+                decimal tempAllzhucun = 0;
+                decimal tempAllpandian = 0;
+                //decimal tempAllpanying = 0;
+                //decimal tempAllpankui = 0;
+                //逐行统计数据总数
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
+                    tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
+                    //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
+                    //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                }
+                _ZhangCunShuLiang = tempAllzhucun;
+                _PanDianShuLiang = tempAllpandian;
+                //_PanYingShuLiang = tempAllpanying;
+                //_PanKuiShuLiang = tempAllpankui;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
+                gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
+                //gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                //gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+            }
+            #endregion
+
         }
 
         #region  下拉框选择改变事件
         private void cbopandianidea_SelectedValueChanged(object sender, EventArgs e)
         {
-           
-
             if (cbopandianidea.Text == "")
             {
                 return;
@@ -186,26 +210,26 @@ namespace WSCATProject.Warehouse
                     GridRow gr = new GridRow();
                     decimal tempAllzhucun = 0;
                     decimal tempAllpandian = 0;
-                    decimal tempAllpanying = 0;
-                    decimal tempAllpankui = 0;
+                    //decimal tempAllpanying = 0;
+                    //decimal tempAllpankui = 0;
                     //逐行统计数据总数
                     for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
                     {
                         GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
                         tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                         tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
-                        tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
-                        tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                        //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
+                        //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
                     }
                     _ZhangCunShuLiang = tempAllzhucun;
                     _PanDianShuLiang = tempAllpandian;
-                    _PanYingShuLiang = tempAllpanying;
-                    _PanKuiShuLiang = tempAllpankui;
+                    //_PanYingShuLiang = tempAllpanying;
+                    //_PanKuiShuLiang = tempAllpankui;
                     gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                     gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                     gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
-                    gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
-                    gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
+                    //gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                    //gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -344,8 +368,8 @@ namespace WSCATProject.Warehouse
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             decimal tempAllzhucun = 0;
             decimal tempAllpandian = 0;
-            decimal tempAllpanying = 0;
-            decimal tempAllpankui = 0;
+            //decimal tempAllpanying = 0;
+            //decimal tempAllpankui = 0;
             //计算盘盈、盘亏的数量
             try
             {
@@ -376,18 +400,18 @@ namespace WSCATProject.Warehouse
                     GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
                     tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                     tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
-                    tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
-                    tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
+                    //tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
+                    //tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
                 }
                 _ZhangCunShuLiang = tempAllzhucun;
                 _PanDianShuLiang = tempAllpandian;
-                _PanYingShuLiang = tempAllpanying;
-                _PanKuiShuLiang = tempAllpankui;
+                //_PanYingShuLiang = tempAllpanying;
+                //_PanKuiShuLiang = tempAllpankui;
                 gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                 gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                 gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
-                gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
-                gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
+                //gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
+                //gr["pankuinumber"].Value = _PanKuiShuLiang.ToString();
 
                 //获取一行数据，添加进数据库
                 GridRow gr1 = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
@@ -416,5 +440,18 @@ namespace WSCATProject.Warehouse
         }
         #endregion
 
+        /// <summary>
+        /// 盘点编制的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonbianzhi_Click(object sender, EventArgs e)
+        {
+            WareHouseInventoryReportForm warehouseinvent = new WareHouseInventoryReportForm();
+            warehouseinvent.StorageCode = cbopandianidea.SelectedValue.ToString();
+            warehouseinvent.StorageName = cbopandianidea.Text;
+            warehouseinvent.InventoryCode = this.textBoxpandiancode.Text;
+            warehouseinvent.Show();
+        }
     }
 }
