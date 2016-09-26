@@ -123,7 +123,7 @@ namespace WSCATProject.Warehouse
             //DataRow dr = dts.NewRow();
             //dr["name"] = "请选择";
             //dts.Rows.InsertAt(dr, 0);
-            comboBoxEx1.DataSource = ch.DataTableReCoding(sif.GetList(999, ""));
+            cbopandianidea.DataSource = ch.DataTableReCoding(sif.GetList(999, ""));
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
@@ -280,11 +280,11 @@ namespace WSCATProject.Warehouse
         private void comboBoxEx1_SelectedValueChanged_1(object sender, EventArgs e)
         {
             WarehouseInventoryInterface wii = new WarehouseInventoryInterface();
-            if (comboBoxEx1.SelectedText == "" && comboBoxEx1.Text == "请选择")
+            if (cbopandianidea.SelectedText == "" && cbopandianidea.Text == "请选择")
             {
                 return;
             }
-            superGridControl1.PrimaryGrid.DataSource = wii.GetList(1, XYEEncoding.strCodeHex(comboBoxEx1.Text));
+            superGridControl1.PrimaryGrid.DataSource = wii.GetList(1, XYEEncoding.strCodeHex(cbopandianidea.Text));
         }
     }
 }

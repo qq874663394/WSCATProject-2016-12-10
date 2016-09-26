@@ -92,7 +92,7 @@ namespace WSCATProject.Warehouse
             else
             {
                 string a = cbopandianidea.SelectedValue.ToString();
-                DataTable dts = codeh.DataTableReCoding(iface.GetTbList(3, XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
+                DataTable dts = codeh.DataTableReCoding(iface.GetList(3, XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
                 superGridControl1.PrimaryGrid.DataSource = dts;
                 //调用表格初始化
                 superGridControl1.PrimaryGrid.EnsureVisible();
