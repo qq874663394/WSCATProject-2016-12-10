@@ -60,6 +60,16 @@ namespace WSCATProject.Warehouse
         /// 统计盘盈金额
         /// </summary>
         private decimal _AllPanYingMoney;
+
+        /// <summary>
+        /// 仓库code
+        /// </summary>
+        private string _storageCode;
+        public string StorageCode
+        {
+            get { return _storageCode; }
+            set { _storageCode = value; }
+        }
         #endregion
 
         /// <summary>

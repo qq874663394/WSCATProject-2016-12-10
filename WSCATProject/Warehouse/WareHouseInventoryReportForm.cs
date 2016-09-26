@@ -318,5 +318,27 @@ namespace WSCATProject.Warehouse
             this.Dispose();
         }
         #endregion
+        /// <summary>
+        /// 生成盘亏单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonLoss_Click(object sender, EventArgs e)
+        {
+            WareHouseInventoryLossForm wareinventloss = new WareHouseInventoryLossForm();
+            wareinventloss.StorageCode = _storageCode;
+            wareinventloss.ShowDialog();
+        }
+        /// <summary>
+        /// 生成盘盈单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonProfit_Click(object sender, EventArgs e)
+        {
+            WareHouseInventoryProfit warehouseprofit = new WareHouseInventoryProfit();
+            warehouseprofit.StorageCode = _storageCode;
+            warehouseprofit.ShowDialog();
+        }
     }
 }

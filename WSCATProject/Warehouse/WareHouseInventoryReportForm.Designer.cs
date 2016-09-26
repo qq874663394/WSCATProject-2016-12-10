@@ -208,6 +208,7 @@
             this.toolStripButtonProfit.Text = "盘盈单";
             this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonProfit.ToolTipText = "输出盘盈单";
+            this.toolStripButtonProfit.Click += new System.EventHandler(this.toolStripButtonProfit_Click);
             // 
             // toolStripButtonLoss
             // 
@@ -220,6 +221,7 @@
             this.toolStripButtonLoss.Text = "盘亏单";
             this.toolStripButtonLoss.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonLoss.ToolTipText = "输出盘亏单";
+            this.toolStripButtonLoss.Click += new System.EventHandler(this.toolStripButtonLoss_Click);
             // 
             // toolStripButtonshuaixin
             // 
