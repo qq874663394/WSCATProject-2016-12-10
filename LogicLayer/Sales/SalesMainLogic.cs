@@ -54,6 +54,7 @@ namespace LogicLayer.Sales
         public DataTable GetTableByClientCode(string clientCode)
         {
             DataTable dt = null;
+            string strWhere = "";
             LogBase lb = new LogBase();
             log model = new log()
             {
