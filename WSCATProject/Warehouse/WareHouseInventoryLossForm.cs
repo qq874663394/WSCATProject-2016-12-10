@@ -181,7 +181,7 @@ namespace WSCATProject.Warehouse
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
                 {
-                    if (gr["name"].Value != null)
+                    if (gr["name"].FormattedValue != "")
                     {
                         i++;
                         WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
@@ -218,13 +218,13 @@ namespace WSCATProject.Warehouse
                 return;
             }
 
-           // //增加一条入库单和入库单详细数据
-           // object Result = warehouseinvloss.Add(warehouseloss, wareHouselossList);
-           //// this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
-           // if (Result != null)
-           // {
-           //     MessageBox.Show("新增入库数据成功", "入库单温馨提示");
-           // }
+            //增加一条入库单和入库单详细数据
+            object Result = warehouseinvloss.Add(warehouseloss, wareHouselossList);
+            // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
+            if (Result != null)
+            {
+                MessageBox.Show("新盘亏单数据成功", "盘亏单温馨提示");
+            }
         }
 
         #region  初始化数据

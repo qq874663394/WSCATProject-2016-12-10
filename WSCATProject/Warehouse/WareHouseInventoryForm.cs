@@ -27,6 +27,7 @@ namespace WSCATProject.Warehouse
         StorageInterface si = new StorageInterface();
         CodingHelper codeh = new CodingHelper();
         WarehouseMainInterface warehousemain = new WarehouseMainInterface();
+        WarehouseInventoryDetailInterface warehousinvdet = new WarehouseInventoryDetailInterface();
         #endregion
 
         #region  数据字段
@@ -129,7 +130,7 @@ namespace WSCATProject.Warehouse
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);    
+            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
 
             //设置盘点数量可输入的最大值和最小值
             GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
@@ -150,15 +151,26 @@ namespace WSCATProject.Warehouse
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
             picbpandianBarCode.Image = imgTemp;
 
-            #region 盘点方案
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
             cbopandianidea.DisplayMember = "name";
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
             string code = cbopandianidea.SelectedValue.ToString();
-            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
-            superGridControl1.PrimaryGrid.EnsureVisible();
-            InitDataGridView();
+            DataTable dtdateil = codeh.DataTableReCoding(warehousinvdet.Search(2, XYEEncoding.strCodeHex(code)));
+            if (dtdateil.Rows.Count > 0)
+            {
+                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousinvdet.Search(2, XYEEncoding.strCodeHex(code)));
+                superGridControl1.PrimaryGrid.EnsureVisible();
+                InitSupGridInventoru();
+                InitDataGridView();
+            }
+            #region 盘点方案
+            else
+            {
+                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
+                superGridControl1.PrimaryGrid.EnsureVisible();
+                InitDataGridView();
+            }
             try
             {
                 GridRow gr = new GridRow();
@@ -194,14 +206,15 @@ namespace WSCATProject.Warehouse
 
             if (cbopandianidea.Text != "")
             {
-                string code = cbopandianidea.SelectedValue.ToString();
-                this.superGridControl1.PrimaryGrid.DataSource = null;
-                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
-                superGridControl1.PrimaryGrid.EnsureVisible();
-                InitDataGridView();
                 try
                 {
+                    string code = cbopandianidea.SelectedValue.ToString();
+                    this.superGridControl1.PrimaryGrid.DataSource = null;
+                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                    superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString())));
+                    superGridControl1.PrimaryGrid.EnsureVisible();
+                    InitDataGridView();
+
                     GridRow gr = new GridRow();
                     decimal tempAllzhucun = 0;
                     decimal tempAllpandian = 0;
@@ -251,16 +264,26 @@ namespace WSCATProject.Warehouse
             gr.Cells["pandiannumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["pandiannumber"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
-
-        private void InitSupGrid()
+        /// <summary>
+        /// 如果盘点有这个商品就显示上次盘点的数量和账面数量
+        /// </summary>
+        private void InitSupGridInventoru()
         {
             GridColumn gc = null;
 
             gc = new GridColumn();
-            gc.DataPropertyName = "storageName";
-            gc.Name = "storageName";
+            gc.DataPropertyName = "stockName";
+            gc.Name = "stockName";
             gc.HeaderText = "仓库";
             gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "stockCode";
+            gc.Name = "stockCode";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -272,24 +295,33 @@ namespace WSCATProject.Warehouse
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "name";
-            gc.Name = "name";
+            gc.DataPropertyName = "materialName";
+            gc.Name = "materialName";
             gc.HeaderText = "商品名称";
             gc.Width = 140;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "model";
-            gc.Name = "model";
+            gc.DataPropertyName = "materialCode";
+            gc.Name = "materialCode";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialModel";
+            gc.Name = "materialModel";
             gc.HeaderText = "规格型号";
             gc.Width = 130;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "barcode";
-            gc.Name = "barcode";
+            gc.DataPropertyName = "barCode";
+            gc.Name = "barCode";
             gc.HeaderText = "条形码";
             gc.Width = 150;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -312,21 +344,22 @@ namespace WSCATProject.Warehouse
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "unit";
-            gc.Name = "unit";
+            gc.DataPropertyName = "materialUnit";
+            gc.Name = "materialUnit";
             gc.HeaderText = "单位";
             gc.Width = 70;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "number";
-            gc.Name = "number";
+            gc.DataPropertyName = "curNumber";
+            gc.Name = "curNumber";
             gc.HeaderText = "账面数量";
             gc.Width = 80;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.Name = "effectiveDate";
+            gc.Name = "checkNumber";
+            gc.DataPropertyName = "checkNumber";
             gc.HeaderText = "盘点数量";
             gc.Width = 80;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
@@ -339,6 +372,110 @@ namespace WSCATProject.Warehouse
             superGridControl1.PrimaryGrid.Columns.Add(gc);
         }
 
+        private void InitSupGrid()
+        {
+            GridColumn gc = null;
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "stockName";
+            gc.Name = "stockName";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "stockCode";
+            gc.Name = "stockCode";
+            gc.HeaderText = "仓库";
+            gc.Width = 80;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialDaima";
+            gc.Name = "materialDaima";
+            gc.HeaderText = "商品代码";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialName";
+            gc.Name = "materialName";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialCode";
+            gc.Name = "materialCode";
+            gc.HeaderText = "商品名称";
+            gc.Width = 140;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialModel";
+            gc.Name = "materialModel";
+            gc.HeaderText = "规格型号";
+            gc.Width = 130;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "barCode";
+            gc.Name = "barCode";
+            gc.HeaderText = "条形码";
+            gc.Width = 150;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "productionDate";
+            gc.Name = "productionDate";
+            gc.HeaderText = "采购/生产日期";
+            gc.Width = 70;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "qualityDate";
+            gc.Name = "qualityDate";
+            gc.HeaderText = "保质期(天)";
+            gc.Width = 50;
+            gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "materialUnit";
+            gc.Name = "materialUnit";
+            gc.HeaderText = "单位";
+            gc.Width = 70;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "curNumber";
+            gc.Name = "curNumber";
+            gc.HeaderText = "账面数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "checkNumber";
+            gc.DataPropertyName = "checkNumber";
+            gc.HeaderText = "盘点数量";
+            gc.Width = 80;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "备注";
+            gc.Width = 110;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+        }
         #endregion
 
         #region superGridControl单元格验证事件
@@ -358,7 +495,7 @@ namespace WSCATProject.Warehouse
                 {
                     gr.Cells["panyingnumber"].Value = panying;
                     gr.Cells["pankuinumber"].Value = "0.00";
-                    decimal panyingnumber =Convert.ToDecimal(gr.Cells["panyingnumber"].FormattedValue);
+                    decimal panyingnumber = Convert.ToDecimal(gr.Cells["panyingnumber"].FormattedValue);
                     gr.Cells["panyingMoney"].Value = panyingnumber * price;
                     gr.Cells["pankuiMoney"].Value = "0.00";
                 }
@@ -399,21 +536,21 @@ namespace WSCATProject.Warehouse
                     warehouseinv.cause = "";
                     warehouseinv.checkNumber = gr1.Cells["pandiannumber"].FormattedValue == null ? 0.0M : Convert.ToDecimal(gr1.Cells["pandiannumber"].FormattedValue.ToString());
                     warehouseinv.code = XYEEncoding.strCodeHex(textBoxpandiancode.Text);
-                    warehouseinv.curNumber = gr1.Cells["zhangcunnumber"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["zhangcunnumber"].Value.ToString());
+                    warehouseinv.curNumber = gr1.Cells["zhangcunnumber"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["zhangcunnumber"].Value.ToString());
                     warehouseinv.isClear = 1;
-                    warehouseinv.lossMoney = gr1.Cells["pankuiMoney"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["pankuiMoney"].Value.ToString());
+                    warehouseinv.lossMoney = gr1.Cells["pankuiMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["pankuiMoney"].Value.ToString());
                     warehouseinv.lossNumber = gr1.Cells["pankuinumber"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["pankuinumber"].Value.ToString());
-                    warehouseinv.materialCode = gr1.Cells["gridColumncode"].Value == null? "" : XYEEncoding.strCodeHex(gr1.Cells["gridColumncode"].Value.ToString());
+                    warehouseinv.materialCode = gr1.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["gridColumncode"].Value.ToString());
                     warehouseinv.materialModel = gr1.Cells["model"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["model"].Value.ToString());
                     warehouseinv.materialName = gr1.Cells["name"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["name"].Value.ToString());
                     warehouseinv.materialUnit = gr1.Cells["unit"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["unit"].Value.ToString());
                     warehouseinv.price = gr1.Cells["gridColumnprice"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["gridColumnprice"].Value);
                     warehouseinv.remark = gr1.Cells["remark"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["remark"].Value.ToString());
                     warehouseinv.updateDate = DateTime.Now;
-                    warehouseinv.barCode = gr1.Cells["tiaoxingma"].Value== null ? "" : XYEEncoding.strCodeHex(gr1.Cells["tiaoxingma"].Value.ToString());
+                    warehouseinv.barCode = gr1.Cells["tiaoxingma"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["tiaoxingma"].Value.ToString());
                     warehouseinv.effectiveDate = DateTime.Now;
-                    warehouseinv.profitNumber = gr1.Cells["panyingnumber"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["panyingnumber"].Value.ToString());
-                    warehouseinv.profitMoney = gr1.Cells["panyingMoney"].Value== null ? 0.0M : Convert.ToDecimal(gr1.Cells["panyingMoney"].Value.ToString());
+                    warehouseinv.profitNumber = gr1.Cells["panyingnumber"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["panyingnumber"].Value.ToString());
+                    warehouseinv.profitMoney = gr1.Cells["panyingMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr1.Cells["panyingMoney"].Value.ToString());
                     warehouseinv.mainCode = XYEEncoding.strCodeHex(textBoxpandiancode.Text);
                     warehouseinv.materialDaima = gr1.Cells["daima"].Value == null ? "" : XYEEncoding.strCodeHex(gr1.Cells["daima"].Value.ToString());
                     warehouseinv.productionDate = gr1.Cells["shengchandate"].Value.ToString() == "" ? DateTime.Now : Convert.ToDateTime(gr1.Cells["shengchandate"].Value);
@@ -431,7 +568,7 @@ namespace WSCATProject.Warehouse
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("错误代码-绑定盘点数据错误"+ex.Message);
+                    MessageBox.Show("错误代码-绑定盘点数据错误" + ex.Message);
                 }
             }
             catch (Exception ex)
