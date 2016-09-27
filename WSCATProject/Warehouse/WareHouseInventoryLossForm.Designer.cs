@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.cboOutType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.name = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.tiaoxingma = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -497,11 +500,27 @@
             this.cboOutType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOutType.FormattingEnabled = true;
             this.cboOutType.ItemHeight = 15;
+            this.cboOutType.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3});
             this.cboOutType.Location = new System.Drawing.Point(89, 25);
             this.cboOutType.Name = "cboOutType";
             this.cboOutType.Size = new System.Drawing.Size(162, 21);
             this.cboOutType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboOutType.TabIndex = 53;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "盘亏出库";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "费用类型科目";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "借出商品";
             // 
             // material
             // 
@@ -687,5 +706,8 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private DevComponents.DotNetBar.SuperGrid.GridColumn model;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialcode;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
     }
 }

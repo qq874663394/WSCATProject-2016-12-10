@@ -118,7 +118,7 @@ namespace WSCATProject.Warehouse
         private void WareHouseAdjustPriceForm_Load(object sender, EventArgs e)
         {
             //业务员
-            _AllEmployee = employee.SelSupplierTable(false);
+            //_AllEmployee = employee.SelSupplierTable(false);
             //仓库
             _AllStorage = storage.GetList(00, "");
 

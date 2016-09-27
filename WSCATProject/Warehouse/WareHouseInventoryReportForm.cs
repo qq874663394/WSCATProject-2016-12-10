@@ -46,8 +46,8 @@ namespace WSCATProject.Warehouse
         private string _inventoryCode;
         public string InventoryCode
         {
-            get {return _inventoryCode;}
-            set { _inventoryCode = value;}
+            get { return _inventoryCode; }
+            set { _inventoryCode = value; }
         }
         /// <summary>
         /// 仓库Code
@@ -55,7 +55,7 @@ namespace WSCATProject.Warehouse
         private string _storageCode;
         public string StorageCode
         {
-            get{  return _storageCode; }
+            get { return _storageCode; }
             set { _storageCode = value; }
         }
 
@@ -65,8 +65,8 @@ namespace WSCATProject.Warehouse
         private string _storageName;
         public string StorageName
         {
-            get{ return _storageName;}
-            set {  _storageName = value; }
+            get { return _storageName; }
+            set { _storageName = value; }
         }
 
         #endregion
@@ -80,25 +80,35 @@ namespace WSCATProject.Warehouse
         #region  窗体加载事件
         private void WareHouseInventoryReportForm_Load(object sender, EventArgs e)
         {
-            this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
-            //显示行号
-            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
-            //不可自动添加列
-            this.superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
-            //表格内容居中
-            superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            InitDataGridView();//表格初始化
-            
-            this.textBoxpandiancode.Text = _inventoryCode;//盘点单号
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
-            picbpandianBarCode.Image = imgTemp;//条形码
+            try
+            {
+                this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
+                //显示行号
+                superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+                toolStripButtonLoss.Enabled = false;
+                toolStripButtonProfit.Enabled = false;
+                //不可自动添加列
+                this.superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
+                //表格内容居中
+                superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                InitDataGridView();//表格初始化
+
+                this.textBoxpandiancode.Text = _inventoryCode;//盘点单号
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
+                picbpandianBarCode.Image = imgTemp;//条形码
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-初始化盘点报告表数据错误"+ex.Message);
+            }
+   
 
             #region 加载盘点方案的数据
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
@@ -139,6 +149,29 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
             }
+            //设置盘盈,盘亏按钮是否可用
+            GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+            int y = 0;
+            int k = 0;
+            foreach (GridRow gr in grs)
+            {
+                if (gr["pankuinumber"].FormattedValue != "0.00")
+                {
+                    k++;
+                }
+                if (gr["panyingnumber"].FormattedValue != "0.00")
+                {
+                    y++;
+                }
+            }
+            if (k > 0)
+            {
+                toolStripButtonLoss.Enabled = true;
+            }
+            if (y>0)
+            {
+                toolStripButtonProfit.Enabled = true;
+            }
             #endregion
 
         }
@@ -154,14 +187,15 @@ namespace WSCATProject.Warehouse
 
             if (cbopandianidea.Text != "")
             {
-                string code = cbopandianidea.SelectedValue.ToString();
-                this.superGridControl1.PrimaryGrid.DataSource = null;
-                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2,(XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString()))));
-                superGridControl1.PrimaryGrid.EnsureVisible();
-                InitDataGridView();
                 try
                 {
+                    string code = cbopandianidea.SelectedValue.ToString();
+                    this.superGridControl1.PrimaryGrid.DataSource = null;
+                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                    superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2, (XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString()))));
+                    superGridControl1.PrimaryGrid.EnsureVisible();
+                    InitDataGridView();
+
                     GridRow gr = new GridRow();
                     decimal tempAllzhucun = 0;
                     decimal tempAllpandian = 0;
@@ -301,10 +335,10 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripButtonLoss_Click(object sender, EventArgs e)
         {
-            WareHouseInventoryLossForm wareinventloss = new WareHouseInventoryLossForm();
-            wareinventloss.StorageCode = _storageCode;
-            wareinventloss.StorageName = _storageName;
-            wareinventloss.ShowDialog();
+                WareHouseInventoryLossForm wareinventloss = new WareHouseInventoryLossForm();
+                wareinventloss.StorageCode = _storageCode;
+                wareinventloss.StorageName = _storageName;
+                wareinventloss.ShowDialog();
         }
         /// <summary>
         /// 生成盘盈单的点击事件
