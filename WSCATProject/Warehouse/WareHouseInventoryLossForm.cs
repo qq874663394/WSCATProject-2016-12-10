@@ -149,7 +149,7 @@ namespace WSCATProject.Warehouse
                 {
                     MessageBox.Show("统计出错！请检查：" + ex.Message);
                 }
-
+                //绑定盘亏摘要
                 labtextboxTop7.Text = "由【" + _storageName + "】生成";
             }
             catch (Exception ex)
@@ -169,7 +169,6 @@ namespace WSCATProject.Warehouse
             //获得界面上的数据,准备传给base层新增数据
             WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
             //盘亏单
-            // WarehouseIn warehouseIn = new WarehouseIn();
             WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
             //盘亏商品列表
             List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
@@ -260,7 +259,6 @@ namespace WSCATProject.Warehouse
             //获得界面上的数据,准备传给base层新增数据
             WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
             //盘亏单
-            // WarehouseIn warehouseIn = new WarehouseIn();
             WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
             //盘亏商品列表
             List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
