@@ -51,6 +51,7 @@
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnstockcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -469,6 +470,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnstockcode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 351);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
@@ -499,20 +501,20 @@
             // 
             // cboadjType
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.cboadjType.DisplayMember = "Text";
+            this.cboadjType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboadjType.FormattingEnabled = true;
+            this.cboadjType.ItemHeight = 15;
+            this.cboadjType.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2,
             this.comboItem3,
             this.comboItem4});
-            this.comboBoxEx1.Location = new System.Drawing.Point(94, 25);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 54;
+            this.cboadjType.Location = new System.Drawing.Point(94, 25);
+            this.cboadjType.Name = "cboadjType";
+            this.cboadjType.Size = new System.Drawing.Size(162, 21);
+            this.cboadjType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboadjType.TabIndex = 54;
             // 
             // comboItem1
             // 
@@ -560,6 +562,7 @@
             // 
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
+            this.gridColumnStock.Visible = false;
             this.gridColumnStock.Width = 80;
             // 
             // gridColumnunit
@@ -629,6 +632,11 @@
             this.gridColumnstockcode.Name = "gridColumnstockcode";
             this.gridColumnstockcode.Visible = false;
             // 
+            // gridColumnmaterialcode
+            // 
+            this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
+            this.gridColumnmaterialcode.Visible = false;
+            // 
             // WareHouseAdjustPriceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -688,5 +696,6 @@
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
     }
 }
