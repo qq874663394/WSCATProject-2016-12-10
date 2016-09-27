@@ -106,6 +106,7 @@ namespace WSCATProject.Warehouse
                 toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
                 toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
 
+                picBoxShengHeProfit.Parent = labelTitle;
                 cboInType.SelectedIndex = 0;
                 //绑定摘要
                 labtextboxBotton2.Text = "由【" + _storageName + "】生成";
@@ -442,7 +443,7 @@ namespace WSCATProject.Warehouse
         private void InitForm()
         {
             this.cboInType.Enabled = false;
-            this.labtextboxTop2.ReadOnly = true;
+            this.labtextboxBotton2.ReadOnly = true;
             this.textBoxOddNumbers.ReadOnly = true;
             this.ltxtbSalsMan.ReadOnly = true;
             this.ltxtbMakeMan.ReadOnly = true;
@@ -454,8 +455,9 @@ namespace WSCATProject.Warehouse
             this.panel2.BackColor = Color.FromArgb(240, 240, 240);
             this.panel5.BackColor = Color.FromArgb(240, 240, 240);
             this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
-            labtextboxTop2.BackColor = Color.FromArgb(240, 240, 240);
+            labtextboxBotton2.BackColor = Color.FromArgb(240, 240, 240);
             cboInType.BackColor = Color.FromArgb(240, 240, 240);
+            textBoxOddNumbers.BackColor = Color.FromArgb(240, 240, 240);
         }
 
         #endregion
