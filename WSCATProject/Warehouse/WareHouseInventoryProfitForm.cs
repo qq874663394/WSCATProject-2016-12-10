@@ -122,9 +122,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("窗体加载数据失败！请检查："+ex.Message);
+                MessageBox.Show("窗体加载数据失败！请检查：" + ex.Message);
             }
-
             //调用合计行数据
             InitDataGridView();
             try
@@ -165,7 +164,90 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //非空验证
+            isNUllValidate();
+            //获得界面上的数据,准备传给base层新增数据
+            WareHouseInventoryProfitInterface warehouseProfitinterface = new WareHouseInventoryProfitInterface();
+            //盘盈单
+            WarehouseInventoryProfit warehouseprofit = new WarehouseInventoryProfit();
+            //盘盈商品列表
+            List<WarehouseInventoryProfitDetail> wareHouseprofitList = new List<WarehouseInventoryProfitDetail>();
+            try
+            {
+                warehouseprofit.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
+                warehouseprofit.date = dateTimePicker1.Value;
+                warehouseprofit.type = cboInType.Text == "" ? "" : XYEEncoding.strCodeHex(cboInType.Text);//入库类别
+                warehouseprofit.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//盘盈员
+                warehouseprofit.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
+                warehouseprofit.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehouseprofit.remark = labtextboxBotton2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxBotton2.Text);//摘要
+                warehouseprofit.checkState = 1;//审核状态
+                warehouseprofit.isClear = 1;//是否删除
+                warehouseprofit.updatetime = DateTime.Now;
+                warehouseprofit.reserved1 = "";
+                warehouseprofit.reserved2 = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:；尝试创建盘盈单商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+                        i++;
+                        WarehouseInventoryProfitDetail warehouseprofitDetail = new WarehouseInventoryProfitDetail();
+                        warehouseprofitDetail.barCode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
+                        warehouseprofitDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
+                        warehouseprofitDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        warehouseprofitDetail.materialCode = gr["gridColumnmaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//物料code
+                        warehouseprofitDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
+                        warehouseprofitDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseprofitDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseprofitDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
+                        warehouseprofitDetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString() == "" ? null : gr["gridColumnprice"].Value);//单价
+                        warehouseprofitDetail.number = Convert.ToDecimal(gr["gridColumnzhangmianshu"].Value.ToString());//账面数量
+                        warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());//盘点数量
+                        warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());//盘盈数量
+                        warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//盘盈金额
+                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? null : gr["gridColumndate"].Value);//生产日期
+                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? null : gr["gridColumnbaozhe"].Value);//保质期
+                        warehouseprofitDetail.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
+                        warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
+                        warehouseprofitDetail.isClear = 1;
+                        warehouseprofitDetail.reserved1 = "";
+                        warehouseprofitDetail.reserved2 = "";
+                        warehouseprofitDetail.updateDate = DateTime.Now;
+                        warehouseprofitDetail.warehouseCode = _storageCode;//仓库code
+                        warehouseprofitDetail.warehouseName = _storageName;//仓库名称
+                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouseprofitList.Add(warehouseprofitDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2105-尝试创建盘盈单详商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                return;
+            }
+
+            //增加一条盘盈单和盘盈详细数据
+            object warehouseProfitResult = warehouseProfitinterface.AddAndModify(warehouseprofit, wareHouseprofitList);
+            //this.textBoxid.Text = warehouseProfitResult.ToString();
+            if (warehouseProfitResult != null)
+            {
+                MessageBox.Show("新增并审核盘盈单数据成功", "盘盈单温馨提示");
+                this.picBoxShengHeProfit.Image = Properties.Resources.审核;
+            }
         }
 
         /// <summary>
@@ -217,29 +299,29 @@ namespace WSCATProject.Warehouse
                     {
                         i++;
                         WarehouseInventoryProfitDetail warehouseprofitDetail = new WarehouseInventoryProfitDetail();
-                        warehouseprofitDetail.barCode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());
-                        warehouseprofitDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehouseprofitDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehouseprofitDetail.materialCode = gr["gridColumnmaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());
-                        warehouseprofitDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
-                        warehouseprofitDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
-                        warehouseprofitDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
-                        warehouseprofitDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
-                        warehouseprofitDetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString());
-                        warehouseprofitDetail.number = Convert.ToDecimal(gr["gridColumnzhangmianshu"].Value.ToString());
-                        warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());
-                        warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());
-                        warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());
-                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString());
-                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString());
-                        warehouseprofitDetail.effectiveDate = Convert.ToDateTime(gr["gridColumnyouxiao"].Value.ToString() == "" ? null : gr["gridColumnyouxiao"].Value);
-                        warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());
+                        warehouseprofitDetail.barCode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
+                        warehouseprofitDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
+                        warehouseprofitDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        warehouseprofitDetail.materialCode = gr["gridColumnmaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//物料code
+                        warehouseprofitDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
+                        warehouseprofitDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseprofitDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseprofitDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
+                        warehouseprofitDetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString() == "" ? null : gr["gridColumnprice"].Value);//单价
+                        warehouseprofitDetail.number = Convert.ToDecimal(gr["gridColumnzhangmianshu"].Value.ToString());//账面数量
+                        warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());//盘点数量
+                        warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());//盘盈数量
+                        warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//盘盈金额
+                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? null : gr["gridColumndate"].Value);//生产日期
+                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? null : gr["gridColumnbaozhe"].Value);//保质期
+                        warehouseprofitDetail.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
+                        warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseprofitDetail.isClear = 1;
                         warehouseprofitDetail.reserved1 = "";
                         warehouseprofitDetail.reserved2 = "";
                         warehouseprofitDetail.updateDate = DateTime.Now;
-                        warehouseprofitDetail.warehouseCode = "";
-                        warehouseprofitDetail.warehouseName = "";
+                        warehouseprofitDetail.warehouseCode = _storageCode;//仓库code
+                        warehouseprofitDetail.warehouseName = _storageName;//仓库名称
                         GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseprofitList.Add(warehouseprofitDetail);
                     }
@@ -252,13 +334,12 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条盘盈单和盘盈详细数据
-            //object warehouseProfitResult= warehouseProfitinterface
-            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
-            //this.textBoxid.Text = warehouseInResult.ToString();
-            //if (warehouseInResult != null)
-            //{
-            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
-            //}
+            object warehouseProfitResult = warehouseProfitinterface.AddAndModify(warehouseprofit, wareHouseprofitList);
+            //this.textBoxid.Text = warehouseProfitResult.ToString();
+            if (warehouseProfitResult != null)
+            {
+                MessageBox.Show("新增盘盈单数据成功", "盘盈单温馨提示");
+            }
         }
 
         #region 初始化数据
@@ -390,11 +471,6 @@ namespace WSCATProject.Warehouse
 
         #endregion
 
-        private void WareHouseInventoryProfit_Activated(object sender, EventArgs e)
-        {
-            cboInType.Focus();
-        }
-
         #region 修改Panel的边框颜色
         /// <summary>
         /// 修改Panel的边框颜色
@@ -419,6 +495,11 @@ namespace WSCATProject.Warehouse
                               ButtonBorderStyle.Solid);
         }
         #endregion
+
+        private void WareHouseInventoryProfit_Activated(object sender, EventArgs e)
+        {
+            cboInType.Focus();
+        }
 
         /// <summary>
         /// 盘盈员模糊查询
