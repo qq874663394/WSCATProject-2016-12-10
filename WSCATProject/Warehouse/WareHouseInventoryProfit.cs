@@ -224,7 +224,7 @@ namespace WSCATProject.Warehouse
                         warehouseprofitDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
                         warehouseprofitDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
                         warehouseprofitDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
-                        warehouseprofitDetail.materiaUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
+                        warehouseprofitDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
                         warehouseprofitDetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString());
                         warehouseprofitDetail.number = Convert.ToDecimal(gr["gridColumnzhangmianshu"].Value.ToString());
                         warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());
