@@ -657,7 +657,7 @@
             this.picBoxShengHeProfit.BackColor = System.Drawing.Color.Transparent;
             this.picBoxShengHeProfit.Location = new System.Drawing.Point(638, 3);
             this.picBoxShengHeProfit.Name = "picBoxShengHeProfit";
-            this.picBoxShengHeProfit.Size = new System.Drawing.Size(64, 64);
+            this.picBoxShengHeProfit.Size = new System.Drawing.Size(64, 55);
             this.picBoxShengHeProfit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBoxShengHeProfit.TabIndex = 59;
             this.picBoxShengHeProfit.TabStop = false;

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboadjType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmodel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -97,7 +97,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.panel2.Controls.Add(this.comboBoxEx1);
+            this.panel2.Controls.Add(this.cboadjType);
             this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Size = new System.Drawing.Size(1202, 80);
             this.panel2.Click += new System.EventHandler(this.panel6_Click);
@@ -130,7 +130,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox9, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxEx1, 0);
+            this.panel2.Controls.SetChildIndex(this.cboadjType, 0);
             // 
             // labtextboxTop6
             // 
@@ -469,6 +469,10 @@
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
+            // resizablePanel1
+            // 
+            this.resizablePanel1.Location = new System.Drawing.Point(95, 240);
+            // 
             // pictureBoxMax
             // 
             this.pictureBoxMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
@@ -487,17 +491,17 @@
             this.pictureBox9.TabIndex = 53;
             this.pictureBox9.TabStop = false;
             // 
-            // comboBoxEx1
+            // cboadjType
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(94, 25);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 54;
+            this.cboadjType.DisplayMember = "Text";
+            this.cboadjType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboadjType.FormattingEnabled = true;
+            this.cboadjType.ItemHeight = 15;
+            this.cboadjType.Location = new System.Drawing.Point(94, 25);
+            this.cboadjType.Name = "cboadjType";
+            this.cboadjType.Size = new System.Drawing.Size(162, 21);
+            this.cboadjType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboadjType.TabIndex = 54;
             // 
             // material
             // 
@@ -634,7 +638,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox9;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboadjType;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;

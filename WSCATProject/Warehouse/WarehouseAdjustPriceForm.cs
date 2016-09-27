@@ -3,6 +3,8 @@ using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using InterfaceLayer.Warehouse;
+using Model;
+using Model.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -134,6 +136,8 @@ namespace WSCATProject.Warehouse
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+            toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
+            toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
 
             // 将dataGridView中的内容居中显示
             dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -150,6 +154,107 @@ namespace WSCATProject.Warehouse
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
             pictureBox9.Image = imgTemp;
+        }
+
+        /// <summary>
+        /// 审核按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// 保存按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        {
+            //非空验证
+            isNUllValidate();
+            //获得界面上的数据,准备传给base层新增数据
+            //WareHouseInventoryProfitInterface warehouseProfitinterface = new WareHouseInventoryProfitInterface();
+            //调价单
+            WarehouseAdjustPrice warehouseADJprice = new WarehouseAdjustPrice();
+            //调价单商品列表
+            List<WarehouseAdjPriceDetail> warehouseADJpriceList = new List<WarehouseAdjPriceDetail>();
+            try
+            {
+                warehouseADJprice.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
+                warehouseADJprice.date = dateTimePicker1.Value;//单据日期
+                warehouseADJprice.type = cboadjType.Text == "" ? "" : XYEEncoding.strCodeHex(cboadjType.Text);//调价类别
+                warehouseADJprice.operationMan = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//调价员
+                warehouseADJprice.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
+                warehouseADJprice.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehouseADJprice.remark = labtextboxTop9.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
+                warehouseADJprice.checkState = 0; //审核状态
+                warehouseADJprice.isClear = 1;
+                warehouseADJprice.updateData = DateTime.Now;
+                warehouseADJprice.reserved1 = "";
+                warehouseADJprice.reserved2 = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:；尝试创建调价单商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+                        i++;
+                        WarehouseAdjPriceDetail warehouseAdjDetail = new WarehouseAdjPriceDetail();
+                        warehouseAdjDetail.stockcode = _StorageCode;//仓库code
+                        warehouseAdjDetail.stockName = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//仓库名称
+                        warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
+                        warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        warehouseAdjDetail.materiaDaima = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//商品代码
+                        warehouseAdjDetail.materialCode= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//商品code
+                        warehouseAdjDetail.barCode= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//条形码
+                        warehouseAdjDetail.materiaName= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料名称
+                        warehouseAdjDetail.materiaunitmodel = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//规格型号
+                        warehouseAdjDetail.materiaunitunit= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
+                        warehouseAdjDetail.number= Convert.ToDecimal(gr[""].Value.ToString());//数量
+                        warehouseAdjDetail.curPrice= Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调前单价
+                        warehouseAdjDetail.curMoney = Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调前金额
+                        warehouseAdjDetail.price = Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调后单价
+                        warehouseAdjDetail.money = Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调后金额
+                        warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调价差额
+                        warehouseAdjDetail.remark= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
+                        warehouseAdjDetail.isClear = 1;
+                        warehouseAdjDetail.updateData = DateTime.Now;
+                        warehouseAdjDetail.reserved1 = "";
+                        warehouseAdjDetail.reserved2 = "";
+                        warehouseAdjDetail.scale = 1;
+                        warehouseAdjDetail.cause = "";
+                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        warehouseADJpriceList.Add(warehouseAdjDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2105-尝试创建调价单详情商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
+                return;
+            }
+
+            //增加一条盘盈单和盘盈详细数据       
+            //object warehouseProfitResult = warehouseProfitinterface.AddAndModify(warehouseprofit, wareHouseprofitList);
+            //this.textBoxid.Text = warehouseProfitResult.ToString();
+            //if (warehouseProfitResult != null)
+            //{
+            //    MessageBox.Show("新增调价单数据成功", "调价单温馨提示");
+            //}
         }
 
         #region  初始化数据
@@ -192,13 +297,13 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void isNUllValidate()
         {
-            if (comboBoxEx1.Text.Trim() == null)
+            if (cboadjType.Text.Trim() == null)
             {
                 MessageBox.Show("调价科目不能为空！");
             }
             if (ltxtbSalsMan.Text.Trim() == null)
             {
-                MessageBox.Show("业务员不能为空！");
+                MessageBox.Show("调价员不能为空！");
             }
             GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
                Rows[superGridControl1.PrimaryGrid.Rows.Count];
