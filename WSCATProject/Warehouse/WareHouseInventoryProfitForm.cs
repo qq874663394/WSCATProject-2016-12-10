@@ -246,6 +246,7 @@ namespace WSCATProject.Warehouse
             if (warehouseProfitResult != null)
             {
                 MessageBox.Show("新增并审核盘盈单数据成功", "盘盈单温馨提示");
+                InitForm();
                 this.picBoxShengHeProfit.Image = Properties.Resources.审核;
             }
         }
@@ -434,6 +435,29 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("初始化盘盈员失败！请检查：" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// 标示那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            this.cboInType.Enabled = false;
+            this.labtextboxTop2.ReadOnly = true;
+            this.textBoxOddNumbers.ReadOnly = true;
+            this.ltxtbSalsMan.ReadOnly = true;
+            this.ltxtbMakeMan.ReadOnly = true;
+            this.ltxtbShengHeMan.ReadOnly = true;
+            this.resizablePanel1.Visible = false;
+            this.dateTimePicker1.Enabled = false;
+            this.superGridControl1.PrimaryGrid.ReadOnly = true;
+            this.toolStripButtonsave.Enabled = false;
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
+            labtextboxTop2.BackColor = Color.FromArgb(240, 240, 240);
+            cboInType.BackColor = Color.FromArgb(240, 240, 240);
+        }
+
         #endregion
 
         #region 小箭头图标和表格数据的点击事件
