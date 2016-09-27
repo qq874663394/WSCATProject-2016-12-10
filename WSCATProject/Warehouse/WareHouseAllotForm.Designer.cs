@@ -51,6 +51,7 @@
             this.gridColumnincode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnoutcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnMaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -472,6 +473,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnincode);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnoutcode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnMaterialcode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 361);
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
@@ -664,6 +666,7 @@
             // gridColumnincode
             // 
             this.gridColumnincode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.gridColumnincode.HeaderText = "调入仓库code";
             this.gridColumnincode.Name = "gridColumnincode";
             this.gridColumnincode.Visible = false;
             // 
@@ -676,8 +679,15 @@
             // gridColumnoutcode
             // 
             this.gridColumnoutcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.gridColumnoutcode.HeaderText = "调出仓库code";
             this.gridColumnoutcode.Name = "gridColumnoutcode";
             this.gridColumnoutcode.Visible = false;
+            // 
+            // gridColumnMaterialcode
+            // 
+            this.gridColumnMaterialcode.HeaderText = "商品code";
+            this.gridColumnMaterialcode.Name = "gridColumnMaterialcode";
+            this.gridColumnMaterialcode.Visible = false;
             // 
             // WareHouseAllotForm
             // 
@@ -738,5 +748,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnincode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnoutcode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnMaterialcode;
     }
 }

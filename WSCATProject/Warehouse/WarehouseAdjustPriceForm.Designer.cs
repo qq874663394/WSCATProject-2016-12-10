@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmodel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -448,11 +452,11 @@
             // 
             // 
             // 
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStock);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnname);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmodel);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntiaoma);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStock);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnnumber);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnbeforeprice);
@@ -493,11 +497,32 @@
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
+            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4});
             this.comboBoxEx1.Location = new System.Drawing.Point(94, 25);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 54;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "盘盈入库";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "调拨差额科目";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "调价科目";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "借品归还";
             // 
             // material
             // 
@@ -523,7 +548,7 @@
             this.gridColumntiaoma.HeaderText = "条形码";
             this.gridColumntiaoma.Name = "gridColumntiaoma";
             this.gridColumntiaoma.ReadOnly = true;
-            this.gridColumntiaoma.Width = 180;
+            this.gridColumntiaoma.Width = 160;
             // 
             // gridColumnStock
             // 
@@ -536,7 +561,7 @@
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.ReadOnly = true;
-            this.gridColumnunit.Width = 80;
+            this.gridColumnunit.Width = 70;
             // 
             // gridColumnbeforeprice
             // 
@@ -574,6 +599,7 @@
             // 
             // gridColumnremark
             // 
+            this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             this.gridColumnremark.ReadOnly = true;
@@ -584,6 +610,7 @@
             this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
+            this.gridColumnnumber.Visible = false;
             this.gridColumnnumber.Width = 80;
             // 
             // gridColumnid
@@ -651,5 +678,9 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnstockcode;
         private System.Windows.Forms.ToolTip toolTip1;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
     }
 }

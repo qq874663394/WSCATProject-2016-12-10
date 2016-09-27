@@ -118,7 +118,7 @@ namespace WSCATProject.Warehouse
         private void WareHouseAdjustPriceForm_Load(object sender, EventArgs e)
         {
             //业务员
-            //_AllEmployee = employee.SelSupplierTable(false);
+            _AllEmployee = employee.SelSupplierTable(false);
             //仓库
             _AllStorage = storage.GetList(00, "");
 
@@ -150,6 +150,7 @@ namespace WSCATProject.Warehouse
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
             pictureBox9.Image = imgTemp;
+            comboBoxEx1.SelectedItem = 0;
         }
 
         #region  初始化数据
@@ -296,178 +297,67 @@ namespace WSCATProject.Warehouse
         private void InitMaterialDataGridView()
         {
             DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "id";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "maid";
-            dgvc.DataPropertyName = "id";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "picName";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "pic";
-            dgvc.DataPropertyName = "picName";
-            dataGridView1.Columns.Add(dgvc);
-
-            //dgvc = new DataGridViewTextBoxColumn();
-            //dgvc.Name = "Ma_RFID";
-            //dgvc.Visible = false;
-            //dgvc.HeaderText = "rfid";
-            //dgvc.DataPropertyName = "Ma_RFID";
-            //dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "code";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "code";
-            dgvc.DataPropertyName = "code";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "typeID";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "TypeID";
-            dgvc.DataPropertyName = "typeID";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "typeName";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "TypeName";
-            dgvc.DataPropertyName = "typeName";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "price";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "price";
-            dgvc.DataPropertyName = "price";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "peiceA";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "priceA";
-            dgvc.DataPropertyName = "peiceA";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "priceB";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "priceB";
-            dgvc.DataPropertyName = "priceB";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "priceC";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "priceC";
-            dgvc.DataPropertyName = "priceC";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "priceD";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "priceD";
-            dgvc.DataPropertyName = "priceD";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "priceE";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "priceE";
-            dgvc.DataPropertyName = "priceE";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "createDate";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "CreateDate";
-            dgvc.DataPropertyName = "createDate";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "supplierName";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "Supplier";
-            dgvc.DataPropertyName = "supplierName";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "supplierCode";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "SupID";
-            dgvc.DataPropertyName = "supplierCode";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "unit";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "Unit";
-            dgvc.DataPropertyName = "unit";
-            dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "inPrice";
             dgvc.Visible = false;
-            dgvc.HeaderText = "InPrice";
+            dgvc.HeaderText = "备注";
             dgvc.DataPropertyName = "inPrice";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "inDate";
             dgvc.Visible = false;
-            dgvc.HeaderText = "InDate";
+            dgvc.HeaderText = "单价";
             dgvc.DataPropertyName = "inDate";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "remark";
             dgvc.Visible = false;
-            dgvc.HeaderText = "Remark";
+            dgvc.HeaderText = "数量";
             dgvc.DataPropertyName = "remark";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "isEnable";
             dgvc.Visible = false;
-            dgvc.HeaderText = "Enable";
+            dgvc.HeaderText = "单位";
             dgvc.DataPropertyName = "isEnable";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "isClear";
             dgvc.Visible = false;
-            dgvc.HeaderText = "Clear";
+            dgvc.HeaderText = "商品code";
             dgvc.DataPropertyName = "isClear";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "reserved1";
             dgvc.Visible = false;
-            dgvc.HeaderText = "Safeyone";
+            dgvc.HeaderText = "仓库code";
             dgvc.DataPropertyName = "reserved1";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "reserved2";
             dgvc.Visible = false;
-            dgvc.HeaderText = "Safetytwo";
+            dgvc.HeaderText = "仓库名称";
             dgvc.DataPropertyName = "reserved2";
             dataGridView1.Columns.Add(dgvc);
 
-
-            //dgvc = new DataGridViewTextBoxColumn();
-            //dgvc.Name = "Ma_zhujima";
-            //dgvc.Visible = true;
-            //dgvc.HeaderText = "助记码";
-            //dgvc.DataPropertyName = "Ma_zhujima";
-            //dataGridView1.Columns.Add(dgvc);
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "Ma_zhujima";
+            dgvc.Visible = true;
+            dgvc.HeaderText = "商品代码";
+            dgvc.DataPropertyName = "Ma_zhujima";
+            dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "name";
             dgvc.Visible = true;
-            dgvc.HeaderText = "物料名称";
+            dgvc.HeaderText = "商品名称";
             dgvc.DataPropertyName = "name";
             dataGridView1.Columns.Add(dgvc);
 
@@ -496,7 +386,6 @@ namespace WSCATProject.Warehouse
             if (_Click != 1)
             {
                 InitEmployee();
-                
             }
             _Click = 3;
         }
@@ -597,15 +486,13 @@ namespace WSCATProject.Warehouse
             if (e.GridCell.GridColumn.Name == "gridColumnStock")
             {
                 InitStorageList();
-                _StorageState = 1;
                 return;
             }
             if (e.GridCell.GridColumn.Name == "material")
             {
                 //绑定商品列表
-                _AllMaterial = waremain.GetMaterialDetail(XYEEncoding.strCodeHex(_Storage));
+               // _AllMaterial = waremain.GetMaterialDetail(XYEEncoding.strCodeHex(_Storage));
                 InitMaterialDataGridView();
-                _StorageState = 2;
             }
         }
 

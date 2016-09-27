@@ -49,6 +49,7 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.model = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBoxshenghe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -66,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -87,6 +89,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.pictureBoxshenghe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxshenghe, 0);
             // 
             // labelTitle
             // 
@@ -651,6 +660,16 @@
             this.materialcode.Name = "materialcode";
             this.materialcode.Visible = false;
             // 
+            // pictureBoxshenghe
+            // 
+            this.pictureBoxshenghe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxshenghe.Location = new System.Drawing.Point(611, 0);
+            this.pictureBoxshenghe.Name = "pictureBoxshenghe";
+            this.pictureBoxshenghe.Size = new System.Drawing.Size(58, 61);
+            this.pictureBoxshenghe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxshenghe.TabIndex = 46;
+            this.pictureBoxshenghe.TabStop = false;
+            // 
             // WareHouseInventoryLossForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -681,6 +700,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,5 +729,6 @@
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
+        private System.Windows.Forms.PictureBox pictureBoxshenghe;
     }
 }

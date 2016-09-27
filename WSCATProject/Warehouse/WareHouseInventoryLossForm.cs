@@ -151,6 +151,9 @@ namespace WSCATProject.Warehouse
                 }
                 //绑定盘亏摘要
                 labtextboxTop7.Text = "由【" + _storageName + "】生成";
+                pictureBoxshenghe.Parent = pictureBoxtitle;
+                cboOutType.SelectedItem = 0;
+
             }
             catch (Exception ex)
             {
@@ -189,7 +192,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
             try
@@ -207,7 +210,7 @@ namespace WSCATProject.Warehouse
                         WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
                         warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
                         warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value); ;
+                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value);
                         warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
                         warehouselossDetail.isClear = 1;
                         warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
@@ -220,7 +223,7 @@ namespace WSCATProject.Warehouse
                         warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
                         warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
                         warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
-                        warehouselossDetail.productionDate = Convert.ToDateTime(gr["shengchandate"].Value.ToString());
+                        warehouselossDetail.productionDate = gr["shengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["shengchandate"].Value);
                         warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
                         warehouselossDetail.reserved1 = "";
                         warehouselossDetail.reserved2 = "";
@@ -234,7 +237,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：-尝试创建盘亏单详商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
 
@@ -243,7 +246,9 @@ namespace WSCATProject.Warehouse
             // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
             if (Result != null)
             {
-                MessageBox.Show("新盘亏单数据成功", "盘亏单温馨提示");
+                MessageBox.Show("审核盘亏单数据成功", "盘亏单温馨提示");
+                pictureBoxshenghe.Image = Properties.Resources.审核;
+                InitForm();
             }
         }
 
@@ -279,7 +284,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
 
@@ -311,7 +316,7 @@ namespace WSCATProject.Warehouse
                         warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
                         warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
                         warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
-                        warehouselossDetail.productionDate = Convert.ToDateTime(gr["shengchandate"].Value.ToString());
+                        warehouselossDetail.productionDate = gr["shengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["shengchandate"].Value);
                         warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
                         warehouselossDetail.reserved1 = "";
                         warehouselossDetail.reserved2 = "";
@@ -326,7 +331,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：-尝试创建盘亏单详商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
             //增加一条入库单和入库单详细数据
@@ -334,7 +339,7 @@ namespace WSCATProject.Warehouse
             // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
             if (Result != null)
             {
-                MessageBox.Show("新盘亏单数据成功", "盘亏单温馨提示");
+                MessageBox.Show("新增盘亏单数据成功", "盘亏单温馨提示");
             }
         }
 
@@ -423,6 +428,24 @@ namespace WSCATProject.Warehouse
                     return;
                 }
             }
+        }
+
+        /// <summary>
+        /// 设置盘点
+        /// </summary>
+        private void InitForm()
+        {
+            cboOutType.Enabled = false;
+            labtextboxTop7.ReadOnly = true;
+            superGridControl1.PrimaryGrid.ReadOnly = true;
+            ltxtbMakeMan.ReadOnly = true;
+            ltxtbSalsMan.ReadOnly = true;
+            ltxtbShengHeMan.ReadOnly = true;
+            toolStripButtonsave.Enabled = false;
+            toolStripButtonshen.Enabled = false;
+            pictureBox5.Enabled = false;
+            dateTimePicker1.Enabled = false;
+            textBoxOddNumbers.ReadOnly = true;
         }
 
         #endregion
