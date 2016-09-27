@@ -122,7 +122,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码- ：初始化数据错误，没有仓库code"+ex.Message);
+                MessageBox.Show("错误代码- ：初始化数据错误，没有仓库code" + ex.Message);
             }
         }
         /// <summary>
@@ -185,22 +185,22 @@ namespace WSCATProject.Warehouse
                     {
                         i++;
                         WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
-                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString()==""?"":XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
+                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
                         warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehouselossDetail.effectiveDate = Convert.ToDateTime( gr["youxiaoqi"].Value.ToString()==""?null:gr["youxiaoqi"].Value);
+                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value);
                         warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
                         warehouselossDetail.isClear = 1;
                         warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
-                        warehouselossDetail.lossNumber =  Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
+                        warehouselossDetail.lossNumber = Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
                         warehouselossDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
                         warehouselossDetail.materialCode = gr["materialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["materialcode"].Value.ToString());
                         warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
                         warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
                         warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
                         warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
-                        warehouselossDetail.number =Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
-                        warehouselossDetail.price =  Convert.ToDecimal(gr["price"].Value.ToString());
-                        warehouselossDetail.productionDate =Convert.ToDateTime(gr["shengchandate"].Value.ToString());
+                        warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
+                        warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
+                        warehouselossDetail.productionDate = Convert.ToDateTime(gr["shengchandate"].Value.ToString());
                         warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
                         warehouselossDetail.reserved1 = "";
                         warehouselossDetail.reserved2 = "";
@@ -211,6 +211,7 @@ namespace WSCATProject.Warehouse
                         wareHouselossList.Add(warehouselossDetail);
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -219,7 +220,7 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            object Result = warehouseinvloss.Add(warehouseloss, wareHouselossList);
+            object Result = warehouseinvloss.AddAndModify(warehouseloss, wareHouselossList);
             // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
             if (Result != null)
             {
@@ -429,7 +430,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
-          
+
             //最后一行做统计行
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //try

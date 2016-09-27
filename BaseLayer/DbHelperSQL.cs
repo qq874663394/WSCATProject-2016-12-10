@@ -583,7 +583,8 @@ namespace BaseLayer
         /// <param name="isState">是否新增</param>
         public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
         {
-            object val1 = 0;
+            int result = 0;
+            object val1 = null;
             using (SqlConnection conn = Conn)
             {
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -602,6 +603,11 @@ namespace BaseLayer
                                     SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                                     val1 = cmd.ExecuteScalar();
+                                    if (val1 == null || val1 == DBNull.Value)
+                                    {
+                                        throw new Exception("-3");
+                                    }
+                                    result++;
                                     cmd.Parameters.Clear();
                                 }
                             }
@@ -616,7 +622,35 @@ namespace BaseLayer
                                     string cmdText = sqlstr;
                                     SqlParameter[] cmdParms = para;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    for (int i = 0; i < cmdParms.Length; i++)
+                                    {
+                                        string str1 = "declare " + cmdParms[i];
+                                        string str2 = "set " + cmdParms[i] + " = ";
+                                        if (cmdParms[i].SqlDbType == SqlDbType.NVarChar)
+                                        {
+                                            str1 += " Nvarchar(MAX)";
+                                            str2 += "'" + cmdParms[i].Value + "'";
+                                        }
+                                        if (cmdParms[i].SqlDbType == SqlDbType.DateTime)
+                                        {
+                                            str1 += " DateTime";
+                                            str2 += "'" + cmdParms[i].Value + "'";
+                                        }
+                                        if (cmdParms[i].SqlDbType == SqlDbType.Int)
+                                        {
+                                            str1 += " Int";
+                                            str2 += cmdParms[i].Value;
+                                        }
+                                        if (cmdParms[i].SqlDbType == SqlDbType.Decimal)
+                                        {
+                                            str1 += " Decimal(18,2)";
+                                            str2 += cmdParms[i].Value;
+                                        }
+                                        Console.WriteLine(str1);
+                                        Console.WriteLine(str2);
+                                    }
                                     cmd.ExecuteNonQuery();
+                                    result++;
                                     cmd.Parameters.Clear();
                                 }
                             }
@@ -624,17 +658,20 @@ namespace BaseLayer
                             {
                                 throw new Exception("7.2");
                             }
-                            trans.Commit();
                         }
-                        if (val1 == null)
+                        if (val1 == null || val1 == DBNull.Value)
                         {
                             throw new Exception("-3");
                         }
+                        if (result != paraList.Count + 1)
+                        {
+                            throw new Exception("-3");
+                        }
+                        trans.Commit();
                         return val1;
                     }
                     catch (Exception ex)
                     {
-                        trans.Rollback();
                         throw ex;
                     }
                 }
@@ -803,7 +840,7 @@ namespace BaseLayer
                         parameter.Value = DBNull.Value;
                     }
                     cmd.Parameters.Add(parameter);
-                }                
+                }
             }
         }
 

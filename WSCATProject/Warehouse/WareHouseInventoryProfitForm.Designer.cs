@@ -1,6 +1,6 @@
 ﻿namespace WSCATProject.Warehouse
 {
-    partial class WareHouseInventoryProfit
+    partial class WareHouseInventoryProfitForm
     {
         /// <summary>
         /// Required designer variable.

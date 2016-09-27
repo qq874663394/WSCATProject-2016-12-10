@@ -129,7 +129,7 @@ namespace BaseLayer.Warehouse
            ,@isClear
            ,@updateDate
            ,@reserved1
-           ,@reserved2";
+           ,@reserved2);select SCOPE_IDENTITY();";
 
                 foreach (var item in warehouseInventoryLossDetail)
                 {
@@ -190,7 +190,7 @@ namespace BaseLayer.Warehouse
                 , reserved1 = @reserved1
                 , reserved2 = @reserved2
                 , updatetime = @updatetime
-                WHERE  code = @code";
+                WHERE  code = @code;select SCOPE_IDENTITY();";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseInventoryLoss.code),
@@ -208,9 +208,7 @@ namespace BaseLayer.Warehouse
                 };
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail = @"UPDATE T_WarehouseInventoryLossDetail
-SET code=@code
-,mainCode=@mainCode
-,barCode=@barCode
+SET barCode=@barCode
 ,materialDaima=@materialDaima
 ,materialCode=@materialCode
 ,materialName=@materialName
@@ -229,7 +227,7 @@ SET code=@code
 ,isClear=@isClear
 ,updateDate=@updateDate
 ,reserved1=@reserved1
-,reserved2=@reserved2";
+,reserved2=@reserved2 where mainCode=@mainCode and code=@code;select SCOPE_IDENTITY();";
 
                 foreach (var item in warehouseInventoryLossDetail)
                 {
@@ -246,6 +244,7 @@ SET code=@code
                         new SqlParameter("@warehouseCode",item.warehouseCode),
                         new SqlParameter("@warehouseName",item.warehouseName),
                         new SqlParameter("@price",item.price),
+                        new SqlParameter("@number",item.number),
                         new SqlParameter("@inventoryNumber",item.inventoryNumber),
                         new SqlParameter("@lossNumber",item.lossNumber),
                         new SqlParameter("@lossMoney",item.lossMoney),

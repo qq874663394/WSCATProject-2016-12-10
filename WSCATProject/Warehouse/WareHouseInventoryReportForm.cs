@@ -313,7 +313,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripButtonProfit_Click(object sender, EventArgs e)
         {
-            WareHouseInventoryProfit warehouseprofit = new WareHouseInventoryProfit();
+            WareHouseInventoryProfitForm warehouseprofit = new WareHouseInventoryProfitForm();
             warehouseprofit.StorageCode = _storageCode;
             warehouseprofit.StorageName = _storageName;
             warehouseprofit.ShowDialog();
