@@ -29,6 +29,7 @@ namespace WSCATProject.Warehouse
         EmpolyeeInterface employee = new EmpolyeeInterface();
         StorageInterface storage = new StorageInterface();
         WarehouseMainInterface waremain = new WarehouseMainInterface();
+        WarehouseAdjustPriceInterface warehouseAdjust = new WarehouseAdjustPriceInterface();
         #endregion
 
         #region  数据字段
@@ -88,6 +89,10 @@ namespace WSCATProject.Warehouse
         ///// 保存仓库状态 1、仓库 2、商品列表
         ///// </summary>
         private int _StorageState;
+        /// <summary>
+        /// 统计调前金额
+        /// </summary>
+        private decimal _beforeMoney;
         #endregion
 
         #region 修改Panel的边框颜色
@@ -176,7 +181,7 @@ namespace WSCATProject.Warehouse
             //调价单
             WarehouseAdjustPrice warehouseADJprice = new WarehouseAdjustPrice();
             //调价单商品列表
-            List<WarehouseAdjPriceDetail> warehouseADJpriceList = new List<WarehouseAdjPriceDetail>();
+            List<WarehouseAdjustPriceDetail> warehouseADJpriceList = new List<WarehouseAdjustPriceDetail>();
             try
             {
                 warehouseADJprice.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
@@ -188,7 +193,7 @@ namespace WSCATProject.Warehouse
                 warehouseADJprice.remark = labtextboxTop9.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
                 warehouseADJprice.checkState = 1; //审核状态
                 warehouseADJprice.isClear = 1;
-                warehouseADJprice.updateData = DateTime.Now;
+                warehouseADJprice.updateDate = DateTime.Now;
                 warehouseADJprice.reserved1 = "";
                 warehouseADJprice.reserved2 = "";
             }
@@ -210,17 +215,17 @@ namespace WSCATProject.Warehouse
                     if (gr["gridColumnname"].Value != null)
                     {
                         i++;
-                        WarehouseAdjPriceDetail warehouseAdjDetail = new WarehouseAdjPriceDetail();
-                        warehouseAdjDetail.stockcode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString()); ;//仓库code
+                        WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
+                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString()); ;//仓库code
                         warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
                         warehouseAdjDetail.materiaDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
                         warehouseAdjDetail.materialCode = "";//商品code
                         warehouseAdjDetail.barCode = gr["gridColumntiaoma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoma"].Value.ToString());//条形码
-                        warehouseAdjDetail.materiaName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
-                        warehouseAdjDetail.materiaunitmodel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        warehouseAdjDetail.materiaunitunit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
+                        warehouseAdjDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseAdjDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseAdjDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
                         warehouseAdjDetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
                         warehouseAdjDetail.curPrice = Convert.ToDecimal(gr["gridColumnbeforeprice"].Value.ToString() == "" ? null : gr["gridColumnbeforeprice"].Value);//调前单价
                         warehouseAdjDetail.curMoney = Convert.ToDecimal(gr["gridColumnbeforemoney"].Value.ToString() == "" ? null : gr["gridColumnbeforemoney"].Value);//调前金额
@@ -229,7 +234,7 @@ namespace WSCATProject.Warehouse
                         warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr["gridColumnmoneyadj"].Value.ToString() == "" ? null : gr["gridColumnmoneyadj"].Value);//调价差额
                         warehouseAdjDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseAdjDetail.isClear = 1;
-                        warehouseAdjDetail.updateData = DateTime.Now;
+                        warehouseAdjDetail.updateDate = DateTime.Now;
                         warehouseAdjDetail.reserved1 = "";
                         warehouseAdjDetail.reserved2 = "";
                         warehouseAdjDetail.scale = 1;
@@ -251,7 +256,7 @@ namespace WSCATProject.Warehouse
             //{
             //    MessageBox.Show("新增调价单数据成功", "调价单温馨提示");
             //}
-            comboBoxEx1.SelectedItem = 0;
+            cboadjType.SelectedItem = 0;
         }
 
         /// <summary>
@@ -302,18 +307,17 @@ namespace WSCATProject.Warehouse
                     if (gr["gridColumnname"].Value != null)
                     {
                         i++;
-
-                        WarehouseAdjPriceDetail warehouseAdjDetail = new WarehouseAdjPriceDetail();
-                        warehouseAdjDetail.stockcode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString()); ;//仓库code
+                        WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
+                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString()); ;//仓库code
                         warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
                         warehouseAdjDetail.materiaDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
                         warehouseAdjDetail.materialCode = "";//商品code
                         warehouseAdjDetail.barCode = gr["gridColumntiaoma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoma"].Value.ToString());//条形码
-                        warehouseAdjDetail.materiaName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
-                        warehouseAdjDetail.materiaunitmodel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        warehouseAdjDetail.materiaunitunit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
+                        warehouseAdjDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseAdjDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseAdjDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
                         warehouseAdjDetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
                         warehouseAdjDetail.curPrice = Convert.ToDecimal(gr["gridColumnbeforeprice"].Value.ToString() == "" ? null : gr["gridColumnbeforeprice"].Value);//调前单价
                         warehouseAdjDetail.curMoney = Convert.ToDecimal(gr["gridColumnbeforemoney"].Value.ToString() == "" ? null : gr["gridColumnbeforemoney"].Value);//调前金额
@@ -504,62 +508,64 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitMaterialDataGridView()
         {
+            dataGridView1.DataSource = null;
+            dataGridView1.Columns.Clear();
+
             DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "inPrice";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "备注";
-            dgvc.DataPropertyName = "inPrice";
-            dataGridView1.Columns.Add(dgvc);
-
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "inDate";
-            dgvc.Visible = false;
-            dgvc.HeaderText = "单价";
-            dgvc.DataPropertyName = "inDate";
-            dataGridView1.Columns.Add(dgvc);
-
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "remark";
             dgvc.Visible = false;
-            dgvc.HeaderText = "数量";
+            dgvc.HeaderText = "备注";
             dgvc.DataPropertyName = "remark";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "isEnable";
+            dgvc.Name = "price";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "单价";
+            dgvc.DataPropertyName = "price";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "currentNumber";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "数量";
+            dgvc.DataPropertyName = "currentNumber";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "unit";
             dgvc.Visible = false;
             dgvc.HeaderText = "单位";
-            dgvc.DataPropertyName = "isEnable";
+            dgvc.DataPropertyName = "unit";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "isClear";
+            dgvc.Name = "code";
             dgvc.Visible = false;
             dgvc.HeaderText = "商品code";
-            dgvc.DataPropertyName = "isClear";
+            dgvc.DataPropertyName = "code";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "reserved1";
+            dgvc.Name = "storageCode";
             dgvc.Visible = false;
             dgvc.HeaderText = "仓库code";
-            dgvc.DataPropertyName = "reserved1";
+            dgvc.DataPropertyName = "storageCode";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "reserved2";
+            dgvc.Name = "storageName";
             dgvc.Visible = false;
             dgvc.HeaderText = "仓库名称";
-            dgvc.DataPropertyName = "reserved2";
+            dgvc.DataPropertyName = "storageName";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "Ma_zhujima";
+            dgvc.Name = "materialDaima";
             dgvc.Visible = true;
             dgvc.HeaderText = "商品代码";
-            dgvc.DataPropertyName = "Ma_zhujima";
+            dgvc.DataPropertyName = "materialDaima";
             dataGridView1.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
@@ -652,14 +658,20 @@ namespace WSCATProject.Warehouse
                 {
                     newAdd = true;
                 }
-                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;//编号
+                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
                 gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["name"].Value;//商品名称
                 gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
                 gr.Cells["gridColumntiaoma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);//数量
+                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                gr.Cells["gridColumnnumber"].Value = dataGridView1.Rows[e.RowIndex].Cells["currentNumber"].Value;//商品数量
+                gr.Cells["gridColumnbeforeprice"].Value = dataGridView1.Rows[e.RowIndex].Cells["price"].Value;//单价
+                gr.Cells["gridColumnremark"].Value = dataGridView1.Rows[e.RowIndex].Cells["remark"].Value;//备注
+                gr.Cells["gridColumnmaterialcode"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;//商品code
+
+                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["currentNumber"].Value);//数量
                 decimal beforeprice = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["price"].Value);//调前单价
-                gr.Cells["gridColumnbeforemoney"].Value = number * beforeprice;//调前金额
+                _MaterialBeforeMoney = number * beforeprice;
+                gr.Cells["gridColumnbeforemoney"].Value = _MaterialBeforeMoney;//调前金额
 
                 //当上一次有选择仓库时 默认本次也为上次选择仓库
                 if (!string.IsNullOrEmpty(_ClickStorageList.Value) && !string.IsNullOrEmpty(_ClickStorageList.Key))
@@ -674,9 +686,9 @@ namespace WSCATProject.Warehouse
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
                     _MaterialNumber += 1;
-                    _MaterialBeforeMoney += beforeprice;
+                    _beforeMoney += _MaterialBeforeMoney;
                     gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-                    gr.Cells["gridColumnbeforemoney"].Value = _MaterialBeforeMoney;
+                    gr.Cells["gridColumnbeforemoney"].Value = _beforeMoney;
                 }
                 superGridControl1.Focus();
                 SendKeys.Send("^{End}{Home}");
@@ -704,7 +716,7 @@ namespace WSCATProject.Warehouse
             if (e.GridCell.GridColumn.Name == "material")
             {
                 //查询商品列表
-               // _AllMaterial = waremain.GetMaterialDetail(XYEEncoding.strCodeHex(_Storage));
+                _AllMaterial = waremain.GetWMainAndMaterialByWMCode(XYEEncoding.strCodeHex(_StorageCode));
                 InitMaterialDataGridView();
             }
         }
