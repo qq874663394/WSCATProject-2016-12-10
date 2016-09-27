@@ -25,7 +25,7 @@ namespace LogicLayer.Warehouse
         {
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -68,7 +68,7 @@ namespace LogicLayer.Warehouse
         {
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -112,7 +112,7 @@ namespace LogicLayer.Warehouse
             DataTable dt = null;
 
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -149,12 +149,12 @@ namespace LogicLayer.Warehouse
         {
             DataTable dt = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_BaseMaterial\T_WarehouseMain",
+                operationTable = "T_BaseMaterial/T_WarehouseMain",
                 operationTime = DateTime.Now,
                 objective = "查询盘点表中List数据",
                 operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:code=" + code
@@ -183,7 +183,7 @@ namespace LogicLayer.Warehouse
         {
             DataTable dt = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",

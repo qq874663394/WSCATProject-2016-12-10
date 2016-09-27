@@ -26,7 +26,7 @@ namespace LogicLayer.Warehouse
             string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -79,7 +79,7 @@ namespace LogicLayer.Warehouse
         {
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -122,7 +122,7 @@ namespace LogicLayer.Warehouse
         {
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -159,7 +159,7 @@ namespace LogicLayer.Warehouse
         {
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",

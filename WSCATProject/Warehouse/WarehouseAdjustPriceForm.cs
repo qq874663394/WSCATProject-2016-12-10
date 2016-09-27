@@ -179,7 +179,7 @@ namespace WSCATProject.Warehouse
             //调价单
             WarehouseAdjustPrice warehouseADJprice = new WarehouseAdjustPrice();
             //调价单商品列表
-            List<WarehouseAdjPriceDetail> warehouseADJpriceList = new List<WarehouseAdjPriceDetail>();
+            List<WarehouseAdjustPriceDetail> warehouseADJpriceList = new List<WarehouseAdjustPriceDetail>();
             try
             {
                 warehouseADJprice.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
@@ -191,7 +191,7 @@ namespace WSCATProject.Warehouse
                 warehouseADJprice.remark = labtextboxTop9.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
                 warehouseADJprice.checkState = 0; //审核状态
                 warehouseADJprice.isClear = 1;
-                warehouseADJprice.updateData = DateTime.Now;
+                warehouseADJprice.updateDate = DateTime.Now;
                 warehouseADJprice.reserved1 = "";
                 warehouseADJprice.reserved2 = "";
             }
@@ -213,17 +213,17 @@ namespace WSCATProject.Warehouse
                     if (gr["gridColumnname"].Value != null)
                     {
                         i++;
-                        WarehouseAdjPriceDetail warehouseAdjDetail = new WarehouseAdjPriceDetail();
-                        warehouseAdjDetail.stockcode = _StorageCode;//仓库code
+                        WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
+                        warehouseAdjDetail.stockCode = _StorageCode;//仓库code
                         warehouseAdjDetail.stockName = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
                         warehouseAdjDetail.materiaDaima = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//商品代码
                         warehouseAdjDetail.materialCode= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//商品code
                         warehouseAdjDetail.barCode= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//条形码
-                        warehouseAdjDetail.materiaName= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料名称
-                        warehouseAdjDetail.materiaunitmodel = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//规格型号
-                        warehouseAdjDetail.materiaunitunit= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
+                        warehouseAdjDetail.materialName= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料名称
+                        warehouseAdjDetail.materialModel = gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//规格型号
+                        warehouseAdjDetail.materialUnit= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
                         warehouseAdjDetail.number= Convert.ToDecimal(gr[""].Value.ToString());//数量
                         warehouseAdjDetail.curPrice= Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调前单价
                         warehouseAdjDetail.curMoney = Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调前金额
@@ -232,7 +232,7 @@ namespace WSCATProject.Warehouse
                         warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr[""].Value.ToString() == "" ? null : gr[""].Value);//调价差额
                         warehouseAdjDetail.remark= gr[""].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
                         warehouseAdjDetail.isClear = 1;
-                        warehouseAdjDetail.updateData = DateTime.Now;
+                        warehouseAdjDetail.updateDate = DateTime.Now;
                         warehouseAdjDetail.reserved1 = "";
                         warehouseAdjDetail.reserved2 = "";
                         warehouseAdjDetail.scale = 1;

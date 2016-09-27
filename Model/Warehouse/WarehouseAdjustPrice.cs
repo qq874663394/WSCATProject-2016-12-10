@@ -20,7 +20,7 @@ namespace Model
         private string _checkman;
         private int? _checkstate;
         private int? _isclear = 1;
-        private DateTime? _updatedata;
+        private DateTime? _updatedate;
         private string _remark;
         private string _reserved1;
         private string _reserved2;
@@ -99,10 +99,10 @@ namespace Model
         /// <summary>
         /// 更改时间
         /// </summary>
-        public DateTime? updateData
+        public DateTime? updateDate
         {
-            set { _updatedata = value; }
-            get { return _updatedata; }
+            set { _updatedate = value; }
+            get { return _updatedate; }
         }
         /// <summary>
         /// 备注

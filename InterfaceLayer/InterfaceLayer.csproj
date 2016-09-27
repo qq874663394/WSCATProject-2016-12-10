@@ -55,6 +55,7 @@
     <Compile Include="Purchase\PurchaseInterface.cs" />
     <Compile Include="Sales\SalesDetailInterface.cs" />
     <Compile Include="Sales\SalesMainInterface.cs" />
+    <Compile Include="Warehouse\WarehouseAdjustPriceInterface.cs" />
     <Compile Include="Warehouse\WarehouseInDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInInterface.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetailInterface.cs" />
