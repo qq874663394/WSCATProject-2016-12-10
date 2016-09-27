@@ -52,6 +52,7 @@
     <Compile Include="Purchase\PurchaseLogic.cs" />
     <Compile Include="Sales\SalesDetailLogic.cs" />
     <Compile Include="Sales\SalesMainLogic.cs" />
+    <Compile Include="Warehouse\WarehouseAdjustPriceLogic.cs" />
     <Compile Include="Warehouse\WarehouseInDetailLogic.cs" />
     <Compile Include="Warehouse\WarehouseInLogic.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetailLogic.cs" />

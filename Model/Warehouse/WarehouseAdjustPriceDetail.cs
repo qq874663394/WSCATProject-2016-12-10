@@ -6,9 +6,9 @@ namespace Model
     /// 销售订单明细表
     /// </summary>
     [Serializable]
-    public partial class WarehouseAdjPriceDetail
+    public partial class WarehouseAdjustPriceDetail
     {
-        public WarehouseAdjPriceDetail()
+        public WarehouseAdjustPriceDetail()
         { }
         #region Model
         private int _id;
@@ -17,9 +17,9 @@ namespace Model
         private string _materialdaima;
         private string _barcode;
         private string _materialcode;
-        private string _materianame;
-        private string _materiaunitmodel;
-        private string _materiaunitunit;
+        private string _materialname;
+        private string _materialmodel;
+        private string _materialunit;
         private string _stockcode;
         private string _stockname;
         private decimal? _number;
@@ -31,7 +31,7 @@ namespace Model
         private decimal? _lostmoney;
         private string _cause;
         private int? _isclear;
-        private DateTime? _updatedata;
+        private DateTime? _updatedate;
         private string _reserved1;
         private string _reserved2;
         private string _remark;
@@ -86,31 +86,31 @@ namespace Model
         /// <summary>
         /// 物料名称
         /// </summary>
-        public string materiaName
+        public string materialName
         {
-            set { _materianame = value; }
-            get { return _materianame; }
+            set { _materialname = value; }
+            get { return _materialname; }
         }
         /// <summary>
         /// 规格型号
         /// </summary>
-        public string materiaunitmodel
+        public string materialModel
         {
-            set { _materiaunitmodel = value; }
-            get { return _materiaunitmodel; }
+            set { _materialmodel = value; }
+            get { return _materialmodel; }
         }
         /// <summary>
         /// 单位
         /// </summary>
-        public string materiaunitunit
+        public string materialUnit
         {
-            set { _materiaunitunit = value; }
-            get { return _materiaunitunit; }
+            set { _materialunit = value; }
+            get { return _materialunit; }
         }
         /// <summary>
         /// 仓库编号
         /// </summary>
-        public string stockcode
+        public string stockCode
         {
             set { _stockcode = value; }
             get { return _stockcode; }
@@ -198,10 +198,10 @@ namespace Model
         /// <summary>
         /// 更改时间
         /// </summary>
-        public DateTime? updateData
+        public DateTime? updateDate
         {
-            set { _updatedata = value; }
-            get { return _updatedata; }
+            set { _updatedate = value; }
+            get { return _updatedate; }
         }
         /// <summary>
         /// 预留字段

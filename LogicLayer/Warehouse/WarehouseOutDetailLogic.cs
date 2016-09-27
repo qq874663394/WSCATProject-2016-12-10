@@ -19,7 +19,7 @@ namespace LogicLayer.Warehouse
             DataSet ds = null;
             string strWhere = "";
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",

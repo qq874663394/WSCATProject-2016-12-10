@@ -27,7 +27,7 @@ namespace LogicLayer
             DataSet ds = null;
 
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -63,7 +63,7 @@ namespace LogicLayer
         {
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -107,7 +107,7 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             DataSet ds = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -150,7 +150,7 @@ namespace LogicLayer
         {
             object result = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -197,7 +197,7 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -243,7 +243,7 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             //添加日志
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -290,7 +290,7 @@ namespace LogicLayer
 
             int result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -346,7 +346,7 @@ namespace LogicLayer
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             WarehouseIn whi = new WarehouseIn();
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -386,7 +386,7 @@ namespace LogicLayer
             bool result = false;
             WarehouseInBase warehouseInBase = new WarehouseInBase();
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",

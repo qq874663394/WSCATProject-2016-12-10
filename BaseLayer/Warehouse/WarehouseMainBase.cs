@@ -88,7 +88,24 @@ namespace BaseLayer.Warehouse
             DataTable dt = null;
             try
             {
-                sql = string.Format("select * from T_WarehouseMain wm,T_BaseMaterial bm,T_WarehouseDetail wd ,T_WarehouseInventoryDetail  wi  where  wm.materialCode=bm.code and wd.mainCode=wm.code  and wm.storageCode=wi.stockCode and storageCode='{0}'", code);
+                sql = string.Format(@"select * from T_WarehouseMain wm,T_BaseMaterial bm,T_WarehouseDetail wd ,T_WarehouseInventoryDetail  wi  
+                    where  wm.materialCode=bm.code and wd.mainCode=wm.code  and wm.storageCode=wi.stockCode and storageCode='{0}'", code);
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
+        public DataTable GetWMainAndMaterialByWMCode(string code)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = string.Format(@"select * from T_BaseMaterial,T_WarehouseMain
+where T_WarehouseMain.materialCode = T_BaseMaterial.code and T_WarehouseMain.storageCode = '{0}'", code);
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)

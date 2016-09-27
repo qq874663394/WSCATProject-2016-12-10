@@ -267,7 +267,7 @@ namespace WSCATProject.Warehouse
             //调价单
             WarehouseAdjustPrice warehouseADJprice = new WarehouseAdjustPrice();
             //调价单商品列表
-            List<WarehouseAdjPriceDetail> warehouseADJpriceList = new List<WarehouseAdjPriceDetail>();
+            List<WarehouseAdjustPriceDetail> warehouseADJpriceList = new List<WarehouseAdjustPriceDetail>();
             try
             {
                 warehouseADJprice.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
@@ -279,7 +279,7 @@ namespace WSCATProject.Warehouse
                 warehouseADJprice.remark = labtextboxTop9.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
                 warehouseADJprice.checkState = 0; //审核状态
                 warehouseADJprice.isClear = 1;
-                warehouseADJprice.updateData = DateTime.Now;
+                warehouseADJprice.updateDate = DateTime.Now;
                 warehouseADJprice.reserved1 = "";
                 warehouseADJprice.reserved2 = "";
             }
@@ -301,6 +301,7 @@ namespace WSCATProject.Warehouse
                     if (gr["gridColumnname"].Value != null)
                     {
                         i++;
+
                         WarehouseAdjPriceDetail warehouseAdjDetail = new WarehouseAdjPriceDetail();
                         warehouseAdjDetail.stockcode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString()); ;//仓库code
                         warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
@@ -320,7 +321,7 @@ namespace WSCATProject.Warehouse
                         warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr["gridColumnmoneyadj"].Value.ToString() == "" ? null : gr["gridColumnmoneyadj"].Value);//调价差额
                         warehouseAdjDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseAdjDetail.isClear = 1;
-                        warehouseAdjDetail.updateData = DateTime.Now;
+                        warehouseAdjDetail.updateDate = DateTime.Now;
                         warehouseAdjDetail.reserved1 = "";
                         warehouseAdjDetail.reserved2 = "";
                         warehouseAdjDetail.scale = 1;

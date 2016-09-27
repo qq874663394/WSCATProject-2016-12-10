@@ -6,9 +6,9 @@ namespace Model
 	/// 上下班时刻表
 	/// </summary>
 	[Serializable]
-	public partial class log
+	public partial class Log
 	{
-		public log()
+		public Log()
 		{}
 		#region Model
 		private int _id;
