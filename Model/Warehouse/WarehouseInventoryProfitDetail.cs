@@ -38,6 +38,7 @@ namespace Model.Warehouse
         private DateTime? _updatedate;
         private string _reserved1;
         private string _reserved2;
+        private string _remark;
         /// <summary>
         /// 自增ID
         /// </summary>
@@ -222,6 +223,14 @@ namespace Model.Warehouse
         {
             set { _reserved2 = value; }
             get { return _reserved2; }
+        }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string remark
+        {
+            set { _remark = value; }
+            get { return _remark; }
         }
         #endregion Model
     }

@@ -2,6 +2,8 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Warehouse;
+using Model.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,11 +25,8 @@ namespace WSCATProject.Warehouse
 
         #region 调用接口以及加密解密方法
         CodingHelper ch = new CodingHelper();
-        InterfaceLayer.Warehouse.WarehouseInDetailInterface waredeta = new InterfaceLayer.Warehouse.WarehouseInDetailInterface();
-        SupplierInterface supply = new SupplierInterface();
         EmpolyeeInterface employee = new EmpolyeeInterface();
-        InterfaceLayer.Purchase.PurchaseDetailInterface pdi = new InterfaceLayer.Purchase.PurchaseDetailInterface();
-
+        WarehouseInventoryDetailInterface warehouseinv = new WarehouseInventoryDetailInterface();
         #endregion
 
         #region 数据字段
@@ -47,19 +46,19 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 统计贮存数量
         /// </summary>
-        private decimal _AllZhuCunShuLiang;
+        private decimal _ZhangCunShuLiang;
         /// <summary>
         /// 统计盘点数量
         /// </summary>
-        private decimal _AllPanDianShuLiang;
+        private decimal _PanDianShuLiang;
         /// <summary>
         /// 统计盘盈数量
         /// </summary>
-        private decimal _AllPanYingShuLiang;
+        private decimal _PanYingShuLiang;
         /// <summary>
         /// 统计盘盈金额
         /// </summary>
-        private decimal _AllPanYingMoney;
+        private decimal _PanYingMoney;
 
         /// <summary>
         /// 仓库code
@@ -70,6 +69,15 @@ namespace WSCATProject.Warehouse
             get { return _storageCode; }
             set { _storageCode = value; }
         }
+        /// <summary>
+        /// 仓库名称
+        /// </summary>
+        private string _storageName;
+        public string StorageName
+        {
+            get { return _storageName; }
+            set { _storageName = value; }
+        }
         #endregion
 
         /// <summary>
@@ -79,30 +87,178 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void WareHouseInventoryProfit_Load(object sender, EventArgs e)
         {
-            //业务员
-            _AllEmployee = employee.SelSupplierTable(false);
+            try
+            {
+                //业务员
+                _AllEmployee = employee.SelSupplierTable(false);
+                //显示行号
+                superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+                //禁用自动创建列
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridViewFujia.AutoGenerateColumns = false;
+                this.superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
+                toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
 
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                cboInType.SelectedIndex = 0;
+                //绑定摘要
+                labtextboxBotton2.Text = "由【" + _storageName + "】生成";
+                //生成code 和显示条形码
+                _WareHousePanYingCode = BuildCode.ModuleCode("WIP");
+                textBoxOddNumbers.Text = _WareHousePanYingCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
+
+                superGridControl1.PrimaryGrid.DataSource = ch.DataTableReCoding(warehouseinv.Search(6, XYEEncoding.strCodeHex(_storageCode)));
+                superGridControl1.PrimaryGrid.EnsureVisible();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("窗体加载数据失败！请检查："+ex.Message);
+            }
+
             //调用合计行数据
             InitDataGridView();
-            //生成code 和显示条形码
-            _WareHousePanYingCode = BuildCode.ModuleCode("WIP");
-            textBoxOddNumbers.Text = _WareHousePanYingCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBox9.Image = imgTemp;
+            try
+            {
+                GridRow gr = new GridRow();
+                decimal tempAllzhucun = 0;//账面数量
+                decimal tempAllpandian = 0;//盘点数量
+                decimal tempAllpanying = 0;//盘盈数量
+                decimal tempAllpanyingmoney = 0;//盘盈金额
+                //逐行统计数据总数
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllzhucun += Convert.ToDecimal(tempGR["gridColumnzhangmianshu"].FormattedValue);
+                    tempAllpandian += Convert.ToDecimal(tempGR["gridColumnpandianshu"].FormattedValue);
+                    tempAllpanying += Convert.ToDecimal(tempGR["gridColumnpanyingshu"].FormattedValue);
+                    tempAllpanyingmoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
+                }
+                _ZhangCunShuLiang = tempAllzhucun;
+                _PanDianShuLiang = tempAllpandian;
+                _PanYingShuLiang = tempAllpanying;
+                _PanYingMoney = tempAllpanyingmoney;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["gridColumnzhangmianshu"].Value = _ZhangCunShuLiang.ToString();
+                gr["gridColumnpandianshu"].Value = _PanDianShuLiang.ToString();
+                gr["gridColumnpanyingshu"].Value = _PanYingShuLiang.ToString();
+                gr["gridColumnmoney"].Value = _PanYingMoney.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("盘盈单统计数量失败！请检查：" + ex.Message);
+            }
+        }
+        /// <summary>
+        /// 审核按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
-              
+        /// <summary>
+        /// 保存按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        {
+            //非空验证
+            isNUllValidate();
+            //获得界面上的数据,准备传给base层新增数据
+            WareHouseInventoryProfitInterface warehouseProfitinterface = new WareHouseInventoryProfitInterface();
+            //盘盈单
+            WarehouseInventoryProfit warehouseprofit = new WarehouseInventoryProfit();
+            //盘盈商品列表
+            List<WarehouseInventoryProfitDetail> wareHouseprofitList = new List<WarehouseInventoryProfitDetail>();
+            try
+            {
+                warehouseprofit.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                warehouseprofit.date = dateTimePicker1.Value;
+                warehouseprofit.type = cboInType.Text == "" ? "" : XYEEncoding.strCodeHex(cboInType.Text);
+                warehouseprofit.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseprofit.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseprofit.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseprofit.remark = labtextboxBotton2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxBotton2.Text);
+                warehouseprofit.checkState = 0;
+                warehouseprofit.isClear = 1;
+                warehouseprofit.updatetime = DateTime.Now;
+                warehouseprofit.reserved1 = "";
+                warehouseprofit.reserved2 = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:；尝试创建盘盈单商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                return;
+            }
 
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+                        i++;
+                        WarehouseInventoryProfitDetail warehouseprofitDetail = new WarehouseInventoryProfitDetail();
+                        warehouseprofitDetail.barCode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());
+                        warehouseprofitDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
+                        warehouseprofitDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehouseprofitDetail.materialCode = gr["gridColumnmaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());
+                        warehouseprofitDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
+                        warehouseprofitDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
+                        warehouseprofitDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
+                        warehouseprofitDetail.materiaUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
+                        warehouseprofitDetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString());
+                        warehouseprofitDetail.number = Convert.ToDecimal(gr["gridColumnzhangmianshu"].Value.ToString());
+                        warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());
+                        warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());
+                        warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());
+                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString());
+                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString());
+                        warehouseprofitDetail.effectiveDate = Convert.ToDateTime(gr["gridColumnyouxiao"].Value.ToString() == "" ? null : gr["gridColumnyouxiao"].Value);
+                        warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());
+                        warehouseprofitDetail.isClear = 1;
+                        warehouseprofitDetail.reserved1 = "";
+                        warehouseprofitDetail.reserved2 = "";
+                        warehouseprofitDetail.updateDate = DateTime.Now;
+                        warehouseprofitDetail.warehouseCode = "";
+                        warehouseprofitDetail.warehouseName = "";
+                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouseprofitList.Add(warehouseprofitDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2105-尝试创建盘盈单详商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                return;
+            }
+
+            //增加一条盘盈单和盘盈详细数据
+            //object warehouseProfitResult= warehouseProfitinterface
+            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
+            //this.textBoxid.Text = warehouseInResult.ToString();
+            //if (warehouseInResult != null)
+            //{
+            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
+            //}
         }
 
         #region 初始化数据
@@ -152,46 +308,53 @@ namespace WSCATProject.Warehouse
         }
 
         /// <summary>
-        /// 初始化业务员
+        /// 初始化盘盈员
         /// </summary>
         private void InitEmployee()
         {
-            if (_Click != 1)
+            try
             {
-                _Click = 1;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "员工工号";
-                dgvc.DataPropertyName = "员工工号";
-                dataGridViewFujia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "姓名";
-                dgvc.DataPropertyName = "姓名";
-                dataGridViewFujia.Columns.Add(dgvc);
-
-                resizablePanel1.Location = new Point(234, 420);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
-                resizablePanel1.Visible = true;
-
-                if (this.WindowState == FormWindowState.Maximized)
+                if (_Click != 1)
                 {
-                    resizablePanel1.Location = new Point(230, 650);
-                    return;
-                }
-                if (this.WindowState == FormWindowState.Normal)
-                {
+                    _Click = 1;
+                    dataGridViewFujia.DataSource = null;
+                    dataGridViewFujia.Columns.Clear();
+
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "员工工号";
+                    dgvc.DataPropertyName = "员工工号";
+                    dataGridViewFujia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.HeaderText = "姓名";
+                    dgvc.DataPropertyName = "姓名";
+                    dataGridViewFujia.Columns.Add(dgvc);
+
                     resizablePanel1.Location = new Point(234, 420);
-                    return;
+                    dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                    resizablePanel1.Visible = true;
+
+                    if (this.WindowState == FormWindowState.Maximized)
+                    {
+                        resizablePanel1.Location = new Point(230, 650);
+                        return;
+                    }
+                    if (this.WindowState == FormWindowState.Normal)
+                    {
+                        resizablePanel1.Location = new Point(234, 420);
+                        return;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("初始化盘盈员失败！请检查：" + ex.Message);
             }
         }
         #endregion
-        
+
         #region 小箭头图标和表格数据的点击事件
         private void pictureBox5_Click(object sender, EventArgs e)
         {
@@ -216,7 +379,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定业务员员数据错误！请检查：" + ex.Message);
+                MessageBox.Show("双击绑定盘盈员数据出错！请检查：" + ex.Message);
             }
         }
 
@@ -226,7 +389,6 @@ namespace WSCATProject.Warehouse
         }
 
         #endregion
-
 
         private void WareHouseInventoryProfit_Activated(object sender, EventArgs e)
         {
@@ -259,7 +421,7 @@ namespace WSCATProject.Warehouse
         #endregion
 
         /// <summary>
-        /// 业务员模糊查询
+        /// 盘盈员模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -271,24 +433,31 @@ namespace WSCATProject.Warehouse
                 InitEmployee();
                 return;
             }
-            dataGridViewFujia.DataSource = null;
-            dataGridViewFujia.Columns.Clear();
+            try
+            {
+                dataGridViewFujia.DataSource = null;
+                dataGridViewFujia.Columns.Clear();
 
-            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "code";
-            dgvc.HeaderText = "员工工号";
-            dgvc.DataPropertyName = "code";
-            dataGridViewFujia.Columns.Add(dgvc);
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFujia.Columns.Add(dgvc);
 
-            dgvc = new DataGridViewTextBoxColumn();
-            dgvc.Name = "name";
-            dgvc.HeaderText = "姓名";
-            dgvc.DataPropertyName = "name";
-            dataGridViewFujia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFujia.Columns.Add(dgvc);
 
-            resizablePanel1.Location = new Point(234, 440);
-            dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
-            resizablePanel1.Visible = true;
+                resizablePanel1.Location = new Point(234, 440);
+                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("盘盈员模糊查询出错！请检查：" + ex.Message);
+            }
         }
 
         /// <summary>
@@ -303,7 +472,6 @@ namespace WSCATProject.Warehouse
                 this.resizablePanel1.Visible = false;
             }
         }
-
 
     }
 }

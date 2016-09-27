@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.cboInType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -45,6 +49,7 @@
             this.gridColumnyouxiao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -68,13 +73,13 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1036, 2);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1038, 2);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
             this.labelprie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelprie.Location = new System.Drawing.Point(995, 2);
+            this.labelprie.Location = new System.Drawing.Point(997, 2);
             // 
             // dateTimePicker1
             // 
@@ -92,6 +97,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.cboInType);
             this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Size = new System.Drawing.Size(1202, 70);
@@ -321,6 +327,7 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Location = new System.Drawing.Point(0, 562);
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -444,7 +451,7 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnbaozhe);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
-            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControl1.Size = new System.Drawing.Size(1202, 371);
             // 
             // pictureBoxMax
@@ -464,16 +471,37 @@
             this.cboInType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboInType.FormattingEnabled = true;
             this.cboInType.ItemHeight = 15;
+            this.cboInType.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4});
             this.cboInType.Location = new System.Drawing.Point(100, 22);
             this.cboInType.Name = "cboInType";
             this.cboInType.Size = new System.Drawing.Size(162, 21);
             this.cboInType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboInType.TabIndex = 54;
             // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "盘盈入库";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "调拨差额科目";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "调价科目";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "借品归还";
+            // 
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Location = new System.Drawing.Point(1037, 17);
+            this.pictureBox9.Location = new System.Drawing.Point(1039, 17);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(140, 50);
             this.pictureBox9.TabIndex = 55;
@@ -481,18 +509,21 @@
             // 
             // material
             // 
+            this.material.DataPropertyName = "materialDaima";
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             this.material.Width = 80;
             // 
             // gridColumnname
             // 
+            this.gridColumnname.DataPropertyName = "materialName";
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
             this.gridColumnname.ReadOnly = true;
             // 
             // gridColumnmodel
             // 
+            this.gridColumnmodel.DataPropertyName = "materialModel";
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
             this.gridColumnmodel.ReadOnly = true;
@@ -501,6 +532,7 @@
             // gridColumntiaoxingma
             // 
             this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumntiaoxingma.DataPropertyName = "barCode";
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
             this.gridColumntiaoxingma.ReadOnly = true;
@@ -508,11 +540,13 @@
             // 
             // gridColumnStock
             // 
+            this.gridColumnStock.DataPropertyName = "stockName";
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.DataPropertyName = "materialUnit";
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.ReadOnly = true;
@@ -520,6 +554,7 @@
             // 
             // gridColumnzhangmianshu
             // 
+            this.gridColumnzhangmianshu.DataPropertyName = "curNumber";
             this.gridColumnzhangmianshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnzhangmianshu.HeaderText = "账面数量";
             this.gridColumnzhangmianshu.Name = "gridColumnzhangmianshu";
@@ -528,6 +563,7 @@
             // 
             // gridColumnpandianshu
             // 
+            this.gridColumnpandianshu.DataPropertyName = "checkNumber";
             this.gridColumnpandianshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnpandianshu.HeaderText = "盘点数量";
             this.gridColumnpandianshu.Name = "gridColumnpandianshu";
@@ -535,6 +571,7 @@
             // 
             // gridColumnprice
             // 
+            this.gridColumnprice.DataPropertyName = "price";
             this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnprice.HeaderText = "单价";
             this.gridColumnprice.Name = "gridColumnprice";
@@ -543,6 +580,7 @@
             // 
             // gridColumnmoney
             // 
+            this.gridColumnmoney.DataPropertyName = "profitMoney";
             this.gridColumnmoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnmoney.HeaderText = "盘盈金额";
             this.gridColumnmoney.Name = "gridColumnmoney";
@@ -551,6 +589,7 @@
             // 
             // gridColumndate
             // 
+            this.gridColumndate.DataPropertyName = "productionDate";
             this.gridColumndate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumndate.HeaderText = "生产/采购日期";
             this.gridColumndate.Name = "gridColumndate";
@@ -559,6 +598,7 @@
             // 
             // gridColumnbaozhe
             // 
+            this.gridColumnbaozhe.DataPropertyName = "qualityDate";
             this.gridColumnbaozhe.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnbaozhe.HeaderText = "保质期（天）";
             this.gridColumnbaozhe.Name = "gridColumnbaozhe";
@@ -567,6 +607,7 @@
             // 
             // gridColumnyouxiao
             // 
+            this.gridColumnyouxiao.DataPropertyName = "effectiveDate";
             this.gridColumnyouxiao.HeaderText = "有效期至";
             this.gridColumnyouxiao.Name = "gridColumnyouxiao";
             this.gridColumnyouxiao.ReadOnly = true;
@@ -574,6 +615,7 @@
             // 
             // gridColumnremark
             // 
+            this.gridColumnremark.DataPropertyName = "remark";
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             this.gridColumnremark.ReadOnly = true;
@@ -581,11 +623,18 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.DataPropertyName = "profitNumber";
             this.gridColumn1.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumn1.HeaderText = "盘盈数量";
             this.gridColumn1.Name = "gridColumnpanyingshu";
             this.gridColumn1.ReadOnly = true;
             this.gridColumn1.Width = 80;
+            // 
+            // gridColumnmaterialcode
+            // 
+            this.gridColumnmaterialcode.DataPropertyName = "materialCode";
+            this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
+            this.gridColumnmaterialcode.Visible = false;
             // 
             // WareHouseInventoryProfit
             // 
@@ -641,5 +690,10 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyouxiao;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnremark;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
     }
 }

@@ -314,6 +314,7 @@ namespace WSCATProject.Warehouse
         {
             WareHouseInventoryProfit warehouseprofit = new WareHouseInventoryProfit();
             warehouseprofit.StorageCode = _storageCode;
+            warehouseprofit.StorageName = _storageName;
             warehouseprofit.ShowDialog();
         }
     }
