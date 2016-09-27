@@ -219,7 +219,7 @@ namespace WSCATProject.Warehouse
                         warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());//盘点数量
                         warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());//盘盈数量
                         warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//盘盈金额
-                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? null : gr["gridColumndate"].Value);//生产日期
+                        warehouseprofitDetail.productionDate = gr["gridColumndate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumndate"].Value);//生产日期
                         warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? null : gr["gridColumnbaozhe"].Value);//保质期
                         warehouseprofitDetail.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
                         warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
@@ -312,7 +312,7 @@ namespace WSCATProject.Warehouse
                         warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());//盘点数量
                         warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());//盘盈数量
                         warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//盘盈金额
-                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? null : gr["gridColumndate"].Value);//生产日期
+                        warehouseprofitDetail.productionDate = gr["gridColumndate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumndate"].Value);//生产日期
                         warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? null : gr["gridColumnbaozhe"].Value);//保质期
                         warehouseprofitDetail.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
                         warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注

@@ -661,13 +661,14 @@
             this.picBoxShengHeProfit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBoxShengHeProfit.TabIndex = 59;
             this.picBoxShengHeProfit.TabStop = false;
+            this.picBoxShengHeProfit.Visible = false;
             // 
-            // WareHouseInventoryProfit
+            // WareHouseInventoryProfitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 652);
-            this.Name = "WareHouseInventoryProfit";
+            this.Name = "WareHouseInventoryProfitForm";
             this.Text = "WareHouseInventoryProfit";
             this.Activated += new System.EventHandler(this.WareHouseInventoryProfit_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryProfit_Load);
