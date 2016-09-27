@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboadjType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
@@ -73,8 +73,8 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 3);
-            this.textBoxOddNumbers.Size = new System.Drawing.Size(139, 14);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 6);
+            this.textBoxOddNumbers.Size = new System.Drawing.Size(135, 14);
             // 
             // labelprie
             // 
@@ -101,7 +101,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.panel2.Controls.Add(this.comboBoxEx1);
+            this.panel2.Controls.Add(this.cboadjType);
             this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Size = new System.Drawing.Size(1202, 80);
             this.panel2.Click += new System.EventHandler(this.panel6_Click);
@@ -134,7 +134,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox9, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxEx1, 0);
+            this.panel2.Controls.SetChildIndex(this.cboadjType, 0);
             // 
             // labtextboxTop6
             // 
@@ -181,6 +181,8 @@
             this.labtextboxTop7.Location = new System.Drawing.Point(376, 27);
             this.labtextboxTop7.ReadOnly = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(162, 16);
+            this.labtextboxTop7.Text = "0.00";
+            this.labtextboxTop7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labtextboxTop9
             // 
@@ -473,6 +475,10 @@
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             this.superGridControl1.Click += new System.EventHandler(this.panel6_Click);
             // 
+            // resizablePanel1
+            // 
+            this.resizablePanel1.Location = new System.Drawing.Point(95, 240);
+            // 
             // pictureBoxMax
             // 
             this.pictureBoxMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
@@ -485,13 +491,13 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(1026, 25);
+            this.pictureBox9.Location = new System.Drawing.Point(1026, 24);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(139, 50);
+            this.pictureBox9.Size = new System.Drawing.Size(139, 55);
             this.pictureBox9.TabIndex = 53;
             this.pictureBox9.TabStop = false;
             // 
-            // comboBoxEx1
+            // cboadjType
             // 
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -661,7 +667,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox9;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboadjType;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;

@@ -2,7 +2,6 @@
 using BaseLayer.Warehouse;
 using HelperUtility;
 using Model;
-using Model.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,25 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UpdateManagerLayer;
+
 namespace LogicLayer.Warehouse
 {
-    public class WarehouseInventoryLossLogic
+    public class WarehouseAdjustPriceLogic
     {
-        WarehouseInventoryLossBase wilb = new WarehouseInventoryLossBase();
-        WarehouseUpdataManager wum = new WarehouseUpdataManager();
+        LogBase lb = new LogBase();
+        WarehouseAdjustPriceBase dal = new WarehouseAdjustPriceBase();
+        WarehouseUpdataManager warehouseUpdate = new WarehouseUpdataManager();
         public DataTable Search(int fieldName, string fieldValue)
         {
-            string strWhere = "";
             DataTable dt = null;
-            LogBase lb = new LogBase();
+            string strWhere = "";
             Log model = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryLoss",
+                operationTable = "T_WarehouseAdjustPrice",
                 operationTime = DateTime.Now,
-                objective = "新增盘亏信息"
+                objective = "查询调价单信息"
             };
             try
             {
@@ -38,14 +38,17 @@ namespace LogicLayer.Warehouse
                         strWhere += string.Format("code='{0}'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("checkState={0}", fieldValue);
+                        strWhere += string.Format("MainCode='{0}'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format("isClear={0}", fieldValue);
+                        strWhere += string.Format("materialDaima like '%{0}%'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("materialName like '%{0}%'", fieldValue);
                         break;
                 }
-                dt = wilb.Search(strWhere);
-                model.operationContent = "查询T_WarehouseInventoryLoss表的数据,条件为：where" + strWhere;
+                model.operationContent = "查询T_WarehouseAdjustPrice表的数据,条件为：where=" + strWhere;
+                dt = dal.Search(strWhere);
                 model.result = 1;
             }
             catch (Exception ex)
@@ -59,51 +62,51 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public object AddAndModify(WarehouseInventoryLoss warehouseInventoryLoss, List<WarehouseInventoryLossDetail> warehouseInventoryLossDetail)
+        public object AddAndModify(WarehouseAdjustPrice model, List<WarehouseAdjustPriceDetail> listModel)
         {
             object result = null;
             LogBase lb = new LogBase();
-            Log model = new Log()
+            Log LogModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryLoss",
+                operationTable = "T_WarehouseAdjustPrice",
                 operationTime = DateTime.Now,
-                objective = "新增盘亏信息",
-                operationContent = "新增T_WarehouseInventoryLoss表的数据,条件为：code=" + warehouseInventoryLoss.code
             };
             try
             {
-                if (warehouseInventoryLoss == null || warehouseInventoryLossDetail==null)
+                if (model == null || listModel == null)
                 {
                     throw new Exception("-2");
                 }
-                 if (wilb.Exists(warehouseInventoryLoss.code) == false)
+                if (dal.Exists(model.code) == false)
                 {
-                    result = wilb.Add(warehouseInventoryLoss, warehouseInventoryLossDetail);
-                    model.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + warehouseInventoryLoss.code;
+                    result = dal.Add(model, listModel);
+                    LogModel.objective = "新增盘亏信息";
+                    LogModel.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + model.code;
                 }
                 else
                 {
-                    result = wilb.Modify(warehouseInventoryLoss, warehouseInventoryLossDetail);
-                    model.operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + warehouseInventoryLoss.code;
+                    result = dal.Modify(model, listModel);
+                    LogModel.objective = "修改盘亏信息";
+                    LogModel.operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + model.code;
                 }
-                if (result == null || result==DBNull.Value)
+                if (result == null || result == DBNull.Value)
                 {
                     throw new Exception("-3");
                 }
-                model.result = 1;
-                wum.add(warehouseInventoryLoss.code, model.operationTable, warehouseInventoryLossDetail.Count, "", model.operationTime);
+                LogModel.result = 1;
+                warehouseUpdate.add(model.code, LogModel.operationTable, listModel.Count, "", LogModel.operationTime);
             }
             catch (Exception ex)
             {
-                model.result = 0;
+                LogModel.result = 0;
                 throw ex;
             }
             finally
             {
-                lb.Add(model);
+                lb.Add(LogModel);
             }
             return result;
         }

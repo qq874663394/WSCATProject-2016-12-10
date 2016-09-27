@@ -106,6 +106,7 @@ namespace WSCATProject.Warehouse
                 toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
                 toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
 
+                picBoxShengHeProfit.Parent = labelTitle;
                 cboInType.SelectedIndex = 0;
                 //绑定摘要
                 labtextboxBotton2.Text = "由【" + _storageName + "】生成";
@@ -219,8 +220,8 @@ namespace WSCATProject.Warehouse
                         warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());//盘点数量
                         warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());//盘盈数量
                         warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//盘盈金额
-                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? null : gr["gridColumndate"].Value);//生产日期
-                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? null : gr["gridColumnbaozhe"].Value);//保质期
+                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? "1990-01-01" : gr["gridColumndate"].Value);//生产日期
+                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? 0 : gr["gridColumnbaozhe"].Value);//保质期
                         warehouseprofitDetail.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
                         warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseprofitDetail.isClear = 1;
@@ -246,6 +247,7 @@ namespace WSCATProject.Warehouse
             if (warehouseProfitResult != null)
             {
                 MessageBox.Show("新增并审核盘盈单数据成功", "盘盈单温馨提示");
+                InitForm();
                 this.picBoxShengHeProfit.Image = Properties.Resources.审核;
             }
         }
@@ -312,8 +314,8 @@ namespace WSCATProject.Warehouse
                         warehouseprofitDetail.inventoryNumber = Convert.ToDecimal(gr["gridColumnpandianshu"].Value.ToString());//盘点数量
                         warehouseprofitDetail.profitNumber = Convert.ToDecimal(gr["gridColumnpanyingshu"].Value.ToString());//盘盈数量
                         warehouseprofitDetail.profitMoney = Convert.ToDecimal(gr["gridColumnmoney"].Value.ToString());//盘盈金额
-                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? null : gr["gridColumndate"].Value);//生产日期
-                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? null : gr["gridColumnbaozhe"].Value);//保质期
+                        warehouseprofitDetail.productionDate = Convert.ToDateTime(gr["gridColumndate"].Value.ToString() == "" ? "1990-01-01" : gr["gridColumndate"].Value);//生产日期
+                        warehouseprofitDetail.qualityDate = Convert.ToDecimal(gr["gridColumnbaozhe"].Value.ToString() == "" ? 0 : gr["gridColumnbaozhe"].Value);//保质期
                         warehouseprofitDetail.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);//有效期至
                         warehouseprofitDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseprofitDetail.isClear = 1;
@@ -434,6 +436,30 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("初始化盘盈员失败！请检查：" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// 标示那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            this.cboInType.Enabled = false;
+            this.labtextboxBotton2.ReadOnly = true;
+            this.textBoxOddNumbers.ReadOnly = true;
+            this.ltxtbSalsMan.ReadOnly = true;
+            this.ltxtbMakeMan.ReadOnly = true;
+            this.ltxtbShengHeMan.ReadOnly = true;
+            this.resizablePanel1.Visible = false;
+            this.dateTimePicker1.Enabled = false;
+            this.superGridControl1.PrimaryGrid.ReadOnly = true;
+            this.toolStripButtonsave.Enabled = false;
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
+            labtextboxBotton2.BackColor = Color.FromArgb(240, 240, 240);
+            cboInType.BackColor = Color.FromArgb(240, 240, 240);
+            textBoxOddNumbers.BackColor = Color.FromArgb(240, 240, 240);
+        }
+
         #endregion
 
         #region 小箭头图标和表格数据的点击事件

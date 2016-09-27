@@ -11,7 +11,7 @@ namespace BaseLayer
 {
     public class LogBase
     {
-        public int Add(log log)
+        public int Add(Log log)
         {
             string sql = "";
             try

@@ -78,7 +78,7 @@
     <Compile Include="Finance\FinanceOtherExpensesOutDetail.cs" />
     <Compile Include="Finance\FinancePayment.cs" />
     <Compile Include="Finance\FinancePaymentWait.cs" />
-    <Compile Include="log.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\PurchaseCancel.cs" />
     <Compile Include="Purchase\PurchaseCancelDetail.cs" />
@@ -99,7 +99,7 @@
     <Compile Include="Warehouse\WarehouseInventoryProfit.cs" />
     <Compile Include="Warehouse\WarehouseInventoryProfitDetail.cs" />
     <Compile Include="Warehouse\WarehouseMain.cs" />
-    <Compile Include="Warehouse\WarehouseAdjPriceDetail.cs" />
+    <Compile Include="Warehouse\WarehouseAdjustPriceDetail.cs" />
     <Compile Include="Warehouse\WarehouseAdjustPrice.cs" />
     <Compile Include="Warehouse\WarehouseBreakageDetail.cs" />
     <Compile Include="Warehouse\WarehouseDetail.cs" />

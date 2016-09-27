@@ -36,7 +36,7 @@ namespace LogicLayer.Purchase
         {
             DataTable dt = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -66,7 +66,7 @@ namespace LogicLayer.Purchase
         {
             decimal result = 0;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
@@ -100,7 +100,7 @@ namespace LogicLayer.Purchase
         {
             DataTable dt = null;
             LogBase lb = new LogBase();
-            log logModel = new log()
+            Log logModel = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",

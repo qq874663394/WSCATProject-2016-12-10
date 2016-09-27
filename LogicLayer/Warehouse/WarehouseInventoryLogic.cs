@@ -24,7 +24,7 @@ namespace LogicLayer.Warehouse
             DataTable dt = null;
             string strWhere = "";
             LogBase lb = new LogBase();
-            log model = new log()
+            Log model = new Log()
             {
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
