@@ -82,7 +82,7 @@ namespace LogicLayer.Warehouse
                 {
                     throw new Exception("-2");
                 }
-                if (whipb.Exists(warehouseInventoryProfit.code) == true)
+                if (whipb.Exists(warehouseInventoryProfit.code) == false)
                 {
                     result = whipb.Add(warehouseInventoryProfit, warehouseInventoryProfitDetail);
                     model.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + warehouseInventoryProfit.code;

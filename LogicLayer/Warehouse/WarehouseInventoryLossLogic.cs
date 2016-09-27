@@ -79,7 +79,7 @@ namespace LogicLayer.Warehouse
                 {
                     throw new Exception("-2");
                 }
-                if (wilb.Exists(warehouseInventoryLoss.code) == true)
+                 if (wilb.Exists(warehouseInventoryLoss.code) == false)
                 {
                     result = wilb.Add(warehouseInventoryLoss, warehouseInventoryLossDetail);
                     model.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + warehouseInventoryLoss.code;
@@ -89,7 +89,7 @@ namespace LogicLayer.Warehouse
                     result = wilb.Modify(warehouseInventoryLoss, warehouseInventoryLossDetail);
                     model.operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + warehouseInventoryLoss.code;
                 }
-                if (result == null)
+                if (result == null || result==DBNull.Value)
                 {
                     throw new Exception("-3");
                 }

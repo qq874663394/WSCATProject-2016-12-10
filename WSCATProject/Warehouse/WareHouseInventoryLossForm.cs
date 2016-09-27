@@ -322,6 +322,7 @@ namespace WSCATProject.Warehouse
                         wareHouselossList.Add(warehouselossDetail);
                     }
                 }
+
             }
             catch (Exception ex)
             {
