@@ -154,7 +154,7 @@ namespace LogicLayer.Warehouse
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_BaseStorage",
+                operationTable = "T_BaseMaterial\T_WarehouseMain",
                 operationTime = DateTime.Now,
                 objective = "查询盘点表中List数据",
                 operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:code=" + code
@@ -166,6 +166,40 @@ namespace LogicLayer.Warehouse
                     throw new Exception("-2");
                 }
                 dt = wo.GetMaterialByMain(code);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return dt;
+        }
+        public DataTable GetWMainAndMaterialByWMCode(string code)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            log logModel = new log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseStorage",
+                operationTime = DateTime.Now,
+                objective = "查询盘点表中List数据",
+                operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:code=" + code
+            };
+            try
+            {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
+                dt = wo.GetWMainAndMaterialByWMCode(code);
                 logModel.result = 1;
             }
             catch (Exception ex)
