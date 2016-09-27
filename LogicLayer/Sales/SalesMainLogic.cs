@@ -55,7 +55,6 @@ namespace LogicLayer.Sales
         {
             string strWhere = "";
             DataTable dt = null;
-            string strWhere = "";
             LogBase lb = new LogBase();
             log model = new log()
             {

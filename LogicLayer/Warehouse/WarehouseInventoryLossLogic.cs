@@ -59,7 +59,7 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public object Add(WarehouseInventoryLoss warehouseInventoryLoss, List<WarehouseInventoryLossDetail> warehouseInventoryLossDetail)
+        public object AddAndModify(WarehouseInventoryLoss warehouseInventoryLoss, List<WarehouseInventoryLossDetail> warehouseInventoryLossDetail)
         {
             object result = null;
             LogBase lb = new LogBase();
@@ -75,17 +75,19 @@ namespace LogicLayer.Warehouse
             };
             try
             {
-                if (warehouseInventoryLoss == null)
+                if (warehouseInventoryLoss == null || warehouseInventoryLossDetail==null)
                 {
                     throw new Exception("-2");
                 }
                 if (wilb.Exists(warehouseInventoryLoss.code) == true)
                 {
-                    result = Modify(warehouseInventoryLoss);
+                    result = wilb.Add(warehouseInventoryLoss, warehouseInventoryLossDetail);
+                    model.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + warehouseInventoryLoss.code;
                 }
                 else
                 {
-                    result = wilb.Add(warehouseInventoryLoss, warehouseInventoryLossDetail);
+                    result = wilb.Modify(warehouseInventoryLoss, warehouseInventoryLossDetail);
+                    model.operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + warehouseInventoryLoss.code;
                 }
                 if (result == null)
                 {
@@ -93,48 +95,6 @@ namespace LogicLayer.Warehouse
                 }
                 model.result = 1;
                 wum.add(warehouseInventoryLoss.code, model.operationTable, warehouseInventoryLossDetail.Count, "", model.operationTime);
-            }
-            catch (Exception ex)
-            {
-                model.result = 0;
-                throw ex;
-            }
-            finally
-            {
-                lb.Add(model);
-            }
-            return result;
-        }
-        public int Modify(WarehouseInventoryLoss wil)
-        {
-            int result = 0;
-            LogBase lb = new LogBase();
-            log model = new log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                operationCode = "操作人code",
-                operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryLoss",
-                operationTime = DateTime.Now,
-                objective = "新增盘亏信息",
-                operationContent = "新增T_WarehouseInventoryLoss表的数据,条件为：code=" + wil.code
-            };
-            try
-            {
-                if (wil == null)
-                {
-                    throw new Exception("-2");
-                }
-                if (wilb.Exists(wil.code) == true)
-                {
-                    result = Modify(wil);
-                }
-                if (result <= 0)
-                {
-                    throw new Exception("-3");
-                }
-                model.result = 1;
-                wum.add(wil.code, model.operationTable, result, "", model.operationTime);
             }
             catch (Exception ex)
             {

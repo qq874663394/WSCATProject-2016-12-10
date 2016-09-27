@@ -92,7 +92,7 @@ namespace BaseLayer.Warehouse
            ,materialCode
            ,materialName
            ,materialModel
-           ,materiaUnit
+           ,materialUnit
            ,warehouseCode
            ,warehouseName
            ,price
@@ -115,7 +115,7 @@ namespace BaseLayer.Warehouse
            ,@materialCode
            ,@materialName
            ,@materialModel
-           ,@materiaUnit
+           ,@materialUnit
            ,@warehouseCode
            ,@warehouseName
            ,@price
@@ -142,7 +142,7 @@ namespace BaseLayer.Warehouse
                         new SqlParameter("@materialCode",item.materialCode),
                         new SqlParameter("@materialName",item.materialName),
                         new SqlParameter("@materialModel",item.materialModel),
-                        new SqlParameter("@materiaUnit",item.materiaUnit),
+                        new SqlParameter("@materialUnit",item.materialUnit),
                         new SqlParameter("@warehouseCode",item.warehouseCode),
                         new SqlParameter("@warehouseName",item.warehouseName),
                         new SqlParameter("@price",item.price),
@@ -169,13 +169,16 @@ namespace BaseLayer.Warehouse
             return result;
         }
 
-        public int Modify(WarehouseInventoryLoss wil)
+        public object Modify(WarehouseInventoryLoss warehouseInventoryLoss, List<WarehouseInventoryLossDetail> warehouseInventoryLossDetail)
         {
-            string sql = "";
-            int result = 0;
+            List<SqlParameter[]> list = new List<SqlParameter[]>();
+            Hashtable hashTable = new Hashtable();
+            object result = null;
+            string sqlDetail = "";
+            string sqlMain = "";
             try
             {
-                sql = @"UPDATE T_WarehouseInventoryLoss
+                sqlMain = @"UPDATE T_WarehouseInventoryLoss
                 SET type = @type
                 , date = @date
                 , checkState = @checkState
@@ -188,22 +191,75 @@ namespace BaseLayer.Warehouse
                 , reserved2 = @reserved2
                 , updatetime = @updatetime
                 WHERE  code = @code";
-                SqlParameter[] sps =
+                SqlParameter[] spsMain =
                 {
-                    new SqlParameter("@code",wil.code),
-                    new SqlParameter("@type",wil.type),
-                    new SqlParameter("@date",wil.date),
-                    new SqlParameter("@checkState",wil.checkState),
-                    new SqlParameter("@operation",wil.operation),
-                    new SqlParameter("@makeMan",wil.makeMan),
-                    new SqlParameter("@examine",wil.makeMan),
-                    new SqlParameter("@isClear",wil.isClear),
-                    new SqlParameter("@remark",wil.remark),
-                    new SqlParameter("@reserved1",wil.reserved1),
-                    new SqlParameter("@reserved2",wil.reserved2),
-                    new SqlParameter("@updatetime",wil.updatetime)
+                    new SqlParameter("@code",warehouseInventoryLoss.code),
+                    new SqlParameter("@type",warehouseInventoryLoss.type),
+                    new SqlParameter("@date",warehouseInventoryLoss.date),
+                    new SqlParameter("@checkState",warehouseInventoryLoss.checkState),
+                    new SqlParameter("@operation",warehouseInventoryLoss.operation),
+                    new SqlParameter("@makeMan",warehouseInventoryLoss.makeMan),
+                    new SqlParameter("@examine",warehouseInventoryLoss.makeMan),
+                    new SqlParameter("@isClear",warehouseInventoryLoss.isClear),
+                    new SqlParameter("@remark",warehouseInventoryLoss.remark),
+                    new SqlParameter("@reserved1",warehouseInventoryLoss.reserved1),
+                    new SqlParameter("@reserved2",warehouseInventoryLoss.reserved2),
+                    new SqlParameter("@updatetime",warehouseInventoryLoss.updatetime)
                 };
-                result = DbHelperSQL.ExecuteSql(sql);
+                hashTable.Add(sqlMain, spsMain);
+                sqlDetail = @"UPDATE T_WarehouseInventoryLossDetail
+SET code=@code
+,mainCode=@mainCode
+,barCode=@barCode
+,materialDaima=@materialDaima
+,materialCode=@materialCode
+,materialName=@materialName
+,materialModel=@materialModel
+,materialUnit=@materialUnit
+,warehouseCode=@warehouseCode
+,warehouseName=@warehouseName
+,price=@price
+,number=@number
+,inventoryNumber=@inventoryNumber
+,lossNumber=@lossNumber
+,lossMoney=@lossMoney
+,productionDate=@productionDate
+,qualityDate=@qualityDate
+,effectiveDate=@effectiveDate
+,isClear=@isClear
+,updateDate=@updateDate
+,reserved1=@reserved1
+,reserved2=@reserved2";
+
+                foreach (var item in warehouseInventoryLossDetail)
+                {
+                    SqlParameter[] spsDetail =
+                    {
+                        new SqlParameter("@code",item.code),
+                        new SqlParameter("@mainCode",item.mainCode),
+                        new SqlParameter("@barCode",item.barCode),
+                        new SqlParameter("@materialDaima",item.materialDaima),
+                        new SqlParameter("@materialCode",item.materialCode),
+                        new SqlParameter("@materialName",item.materialName),
+                        new SqlParameter("@materialModel",item.materialModel),
+                        new SqlParameter("@materialUnit",item.materialUnit),
+                        new SqlParameter("@warehouseCode",item.warehouseCode),
+                        new SqlParameter("@warehouseName",item.warehouseName),
+                        new SqlParameter("@price",item.price),
+                        new SqlParameter("@inventoryNumber",item.inventoryNumber),
+                        new SqlParameter("@lossNumber",item.lossNumber),
+                        new SqlParameter("@lossMoney",item.lossMoney),
+                        new SqlParameter("@productionDate",item.productionDate),
+                        new SqlParameter("@qualityDate",item.qualityDate),
+                        new SqlParameter("@effectiveDate",item.effectiveDate),
+                        new SqlParameter("@isClear",item.isClear),
+                        new SqlParameter("@updateDate",item.updateDate),
+                        new SqlParameter("@reserved1",item.reserved1),
+                        new SqlParameter("@reserved2",item.reserved2),
+                    };
+                    list.Add(spsDetail);
+                }
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
             }
             catch (Exception ex)
             {

@@ -63,145 +63,9 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public object Add(WarehouseInventoryProfit warehouseInventoryProfit, List<WarehouseInventoryProfitDetail> warehouseInventoryProfitDetail)
+        public object AddAndModify(WarehouseInventoryProfit warehouseInventoryProfit, List<WarehouseInventoryProfitDetail> warehouseInventoryProfitDetail)
         {
-            List<SqlParameter[]> list = new List<SqlParameter[]>();
-            Hashtable hashTable = new Hashtable();
-            object result = null;
-            string sqlDetail = "";
-            string sqlMain = "";
-            try
-            {
-                sqlMain = @"INSERT INTO T_WareHouseInventoryProfit
-               (code
-               , type
-               , date
-               , checkState
-               , operation
-               , makeMan
-               , examine
-               , isClear
-               , remark
-               , reserved1
-               , reserved2
-               , updatetime)
-                VALUES
-               (@code
-               , @type
-               , @date
-               , @checkState
-               , @operation
-               , @makeMan
-               , @examine
-               , @isClear
-               , @remark
-               , @reserved1
-               , @reserved2
-               , @updatetime);select scope_identity()";
-                SqlParameter[] spsMain =
-                {
-                new SqlParameter("@code",warehouseInventoryProfit.code),
-                new SqlParameter("@type",warehouseInventoryProfit.type),
-                new SqlParameter("@date",warehouseInventoryProfit.date),
-                new SqlParameter("@checkState",warehouseInventoryProfit.checkState),
-                new SqlParameter("@operation",warehouseInventoryProfit.operation),
-                new SqlParameter("@makeMan",warehouseInventoryProfit.makeMan),
-                new SqlParameter("@examine",warehouseInventoryProfit.makeMan),
-                new SqlParameter("@isClear",warehouseInventoryProfit.isClear),
-                new SqlParameter("@remark",warehouseInventoryProfit.remark),
-                new SqlParameter("@reserved1",warehouseInventoryProfit.reserved1),
-                new SqlParameter("@reserved2",warehouseInventoryProfit.reserved2),
-                new SqlParameter("@updatetime",warehouseInventoryProfit.updatetime)
-                };
-                hashTable.Add(sqlMain, spsMain);
-                sqlDetail = @"INSERT INTO T_WarehouseInventoryProfitDetail
-           (code
-           ,mainCode
-           ,barCode
-           ,materialDaima
-           ,materialCode
-           ,materialName
-           ,materialModel
-           ,materiaUnit
-           ,warehouseCode
-           ,warehouseName
-           ,price
-           ,number
-           ,inventoryNumber
-           ,profitNumber
-           ,profitMoney
-           ,productionDate
-           ,qualityDate
-           ,effectiveDate
-           ,isClear
-           ,updateDate
-           ,reserved1
-           ,reserved2)
-     VALUES
-           (@code
-           ,@mainCode
-           ,@barCode
-           ,@materialDaima
-           ,@materialCode
-           ,@materialName
-           ,@materialModel
-           ,@materiaUnit
-           ,@warehouseCode
-           ,@warehouseName
-           ,@price
-           ,@number
-           ,@inventoryNumber
-           ,@profitNumber
-           ,@profitMoney
-           ,@productionDate
-           ,@qualityDate
-           ,@effectiveDate
-           ,@isClear
-           ,@updateDate
-           ,@reserved1
-           ,@reserved2";
-
-                foreach (var item in warehouseInventoryProfitDetail)
-                {
-                    SqlParameter[] spsDetail =
-                    {
-                        new SqlParameter("@code",item.code),
-                        new SqlParameter("@mainCode",item.mainCode),
-                        new SqlParameter("@barCode",item.barCode),
-                        new SqlParameter("@materialDaima",item.materialDaima),
-                        new SqlParameter("@materialCode",item.materialCode),
-                        new SqlParameter("@materialName",item.materialName),
-                        new SqlParameter("@materialModel",item.materialModel),
-                        new SqlParameter("@materiaUnit",item.materiaUnit),
-                        new SqlParameter("@warehouseCode",item.warehouseCode),
-                        new SqlParameter("@warehouseName",item.warehouseName),
-                        new SqlParameter("@price",item.price),
-                        new SqlParameter("@number",item.number),
-                        new SqlParameter("@inventoryNumber",item.inventoryNumber),
-                        new SqlParameter("@lossNumber",item.profitNumber),
-                        new SqlParameter("@lossMoney",item.profitMoney),
-                        new SqlParameter("@productionDate",item.productionDate),
-                        new SqlParameter("@qualityDate",item.qualityDate),
-                        new SqlParameter("@effectiveDate",item.effectiveDate),
-                        new SqlParameter("@isClear",item.isClear),
-                        new SqlParameter("@updateDate",item.updateDate),
-                        new SqlParameter("@reserved1",item.reserved1),
-                        new SqlParameter("@reserved2",item.reserved2)
-                    };
-                    list.Add(spsDetail);
-                }
-                result = BaseLayer.DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
-        }
-
-        public int Modify(WarehouseInventoryProfit warehouseInventoryProfit, List<WarehouseInventoryProfitDetail> warehouseInventoryProfitDetail)
-        {
-            int result = 0;
+            object result = 0;
             LogBase lb = new LogBase();
             log model = new log()
             {
@@ -210,30 +74,30 @@ namespace LogicLayer.Warehouse
                 operationName = "操作人名",
                 operationTable = "T_WarehouseInventoryProfit",
                 operationTime = DateTime.Now,
-                objective = "修改盘盈信息",
-                operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + Model.code
+                objective = "修改盘盈信息"
             };
             try
             {
-                if (Model == null)
+                if (warehouseInventoryProfit == null || warehouseInventoryProfitDetail == null)
                 {
                     throw new Exception("-2");
                 }
-                if (whipb.Exists(Model.code) == true)
+                if (whipb.Exists(warehouseInventoryProfit.code) == true)
                 {
-                    result = Modify(Model);
+                    result = whipb.Add(warehouseInventoryProfit, warehouseInventoryProfitDetail);
+                    model.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + warehouseInventoryProfit.code;
                 }
                 else
                 {
-                    result = whipb.Add(Model);
+                    result = whipb.Modify(warehouseInventoryProfit, warehouseInventoryProfitDetail);
+                    model.operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + warehouseInventoryProfit.code;
                 }
-                result = whipb.Add(Model);
-                if (result <= 0)
+                if (result == null)
                 {
                     throw new Exception("-3");
                 }
                 model.result = 1;
-                wum.add(Model.code, model.operationTable, result, "", model.operationTime);
+                wum.add(warehouseInventoryProfit.code, model.operationTable, warehouseInventoryProfitDetail.Count + 1, "", model.operationTime);
             }
             catch (Exception ex)
             {
