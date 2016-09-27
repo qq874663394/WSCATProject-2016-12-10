@@ -23,7 +23,7 @@ namespace Model.Warehouse
         private string _materialcode;
         private string _materialname;
         private string _materialmodel;
-        private string _materiaunit;
+        private string _materialunit;
         private string _warehousecode;
         private string _warehousename;
         private decimal? _price;
@@ -106,10 +106,10 @@ namespace Model.Warehouse
         /// <summary>
         /// 物料单位
         /// </summary>
-        public string materiaUnit
+        public string materialUnit
         {
-            set { _materiaunit = value; }
-            get { return _materiaunit; }
+            set { _materialunit = value; }
+            get { return _materialunit; }
         }
         /// <summary>
         /// 仓库code

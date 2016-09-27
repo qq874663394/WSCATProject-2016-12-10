@@ -23,22 +23,14 @@ namespace InterfaceLayer.Warehouse
             return will.Search(fieldName, fieldValue);
         }
         /// <summary>
-        /// 新增
+        /// 新增和修改
         /// </summary>
-        /// <param name="wil"></param>
+        /// <param name="warehouseInventoryProfit"></param>
+        /// <param name="warehouseInventoryProfitDetail"></param>
         /// <returns></returns>
-        public int Add(WarehouseInventoryLoss wil)
+        public object AddAndModify(WarehouseInventoryLoss warehouseInventoryLoss, List<WarehouseInventoryLossDetail> warehouseInventoryLossDetail)
         {
-            return will.Add(wil);
-        }
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="wil"></param>
-        /// <returns></returns>
-        public int Modify(WarehouseInventoryLoss wil)
-        {
-            return will.Modify(wil);
+            return will.AddAndModify(warehouseInventoryLoss, warehouseInventoryLossDetail);
         }
     }
 }

@@ -23,22 +23,14 @@ namespace InterfaceLayer.Warehouse
             return wipl.Search(fieldName, fieldValue);
         }
         /// <summary>
-        /// 新增
+        /// 新增和修改
         /// </summary>
-        /// <param name="Model"></param>
+        /// <param name="warehouseInventoryProfit"></param>
+        /// <param name="warehouseInventoryProfitDetail"></param>
         /// <returns></returns>
-        public int Add(WarehouseInventoryProfit Model)
+        public object AddAndModify(WarehouseInventoryProfit warehouseInventoryProfit, List<WarehouseInventoryProfitDetail> warehouseInventoryProfitDetail)
         {
-            return wipl.Add(Model);
-        }
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="Model"></param>
-        /// <returns></returns>
-        public int Modify(WarehouseInventoryProfit Model)
-        {
-            return wipl.Modify(Model);
+            return wipl.AddAndModify(warehouseInventoryProfit, warehouseInventoryProfitDetail);
         }
     }
 }

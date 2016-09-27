@@ -470,7 +470,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.youxiaoqi);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.materialcode);
-            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 409);
             this.superGridControl1.Text = "单号:";
             this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
@@ -506,18 +505,21 @@
             // 
             // material
             // 
+            this.material.DataPropertyName = "materialDaima";
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             this.material.Width = 80;
             // 
             // name
             // 
+            this.name.DataPropertyName = "materialName";
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
             // 
             // tiaoxingma
             // 
             this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.tiaoxingma.DataPropertyName = "barCode";
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
             this.tiaoxingma.ReadOnly = true;
@@ -525,17 +527,20 @@
             // 
             // storge
             // 
+            this.storge.DataPropertyName = "stockName";
             this.storge.HeaderText = "仓库";
             this.storge.Name = "storge";
             // 
             // unit
             // 
+            this.unit.DataPropertyName = "materialUnit";
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
             this.unit.Width = 60;
             // 
             // zhangcunnumber
             // 
+            this.zhangcunnumber.DataPropertyName = "curNumber";
             this.zhangcunnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.zhangcunnumber.HeaderText = "账存数量";
             this.zhangcunnumber.Name = "zhangcunnumber";
@@ -543,6 +548,7 @@
             // 
             // pandiannumber
             // 
+            this.pandiannumber.DataPropertyName = "checkNumber";
             this.pandiannumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pandiannumber.HeaderText = "盘点数量";
             this.pandiannumber.Name = "pandiannumber";
@@ -550,6 +556,7 @@
             // 
             // pankuinumber
             // 
+            this.pankuinumber.DataPropertyName = "lossNumber";
             this.pankuinumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuinumber.HeaderText = "盘亏数量";
             this.pankuinumber.Name = "pankuinumber";
@@ -557,6 +564,7 @@
             // 
             // price
             // 
+            this.price.DataPropertyName = "price";
             this.price.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.price.HeaderText = "单价";
             this.price.Name = "price";
@@ -564,6 +572,7 @@
             // 
             // pankuimoney
             // 
+            this.pankuimoney.DataPropertyName = "lossMoney";
             this.pankuimoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuimoney.HeaderText = "盘亏金额";
             this.pankuimoney.Name = "pankuimoney";
@@ -571,6 +580,7 @@
             // 
             // shengchandate
             // 
+            this.shengchandate.DataPropertyName = "productionDate";
             this.shengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengchandate.HeaderText = "生产/采购日期";
             this.shengchandate.Name = "shengchandate";
@@ -578,6 +588,7 @@
             // 
             // baozhiqi
             // 
+            this.baozhiqi.DataPropertyName = "qualityDate";
             this.baozhiqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.baozhiqi.HeaderText = "保质期（天）";
             this.baozhiqi.Name = "baozhiqi";
@@ -585,12 +596,14 @@
             // 
             // youxiaoqi
             // 
+            this.youxiaoqi.DataPropertyName = "effectiveDate";
             this.youxiaoqi.HeaderText = "有效期至";
             this.youxiaoqi.Name = "youxiaoqi";
             this.youxiaoqi.Width = 80;
             // 
             // remark
             // 
+            this.remark.DataPropertyName = "remark";
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
             this.remark.Width = 80;
@@ -606,6 +619,7 @@
             // 
             // model
             // 
+            this.model.DataPropertyName = "materialModel";
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
             this.model.ReadOnly = true;
@@ -613,6 +627,7 @@
             // 
             // materialcode
             // 
+            this.materialcode.DataPropertyName = "materialCode";
             this.materialcode.HeaderText = "商品Code";
             this.materialcode.Name = "materialcode";
             this.materialcode.Visible = false;

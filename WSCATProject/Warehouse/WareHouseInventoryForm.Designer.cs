@@ -422,6 +422,7 @@
             // 
             // pandiannumber
             // 
+            this.pandiannumber.DataPropertyName = "checkNumber";
             this.pandiannumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pandiannumber.HeaderText = "盘点数量";
             this.pandiannumber.Name = "pandiannumber";
