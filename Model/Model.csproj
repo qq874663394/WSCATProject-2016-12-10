@@ -91,7 +91,7 @@
     <Compile Include="Sales\SalesMain.cs" />
     <Compile Include="Sales\SalesProcess.cs" />
     <Compile Include="Warehouse\WarehouseAllot.cs" />
-    <Compile Include="Warehouse\WarehouseAllotDetailDetail.cs" />
+    <Compile Include="Warehouse\WarehouseAllotDetail.cs" />
     <Compile Include="Warehouse\WarehouseInventory.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetail.cs" />
     <Compile Include="Warehouse\WarehouseInventoryLoss.cs" />
