@@ -69,8 +69,8 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 3);
-            this.textBoxOddNumbers.Size = new System.Drawing.Size(139, 14);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 6);
+            this.textBoxOddNumbers.Size = new System.Drawing.Size(135, 14);
             // 
             // labelprie
             // 
@@ -177,6 +177,8 @@
             this.labtextboxTop7.Location = new System.Drawing.Point(376, 27);
             this.labtextboxTop7.ReadOnly = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(162, 16);
+            this.labtextboxTop7.Text = "0.00";
+            this.labtextboxTop7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labtextboxTop9
             // 
@@ -485,9 +487,9 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(1026, 25);
+            this.pictureBox9.Location = new System.Drawing.Point(1026, 24);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(139, 50);
+            this.pictureBox9.Size = new System.Drawing.Size(139, 55);
             this.pictureBox9.TabIndex = 53;
             this.pictureBox9.TabStop = false;
             // 
@@ -495,6 +497,7 @@
             // 
             this.cboadjType.DisplayMember = "Text";
             this.cboadjType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboadjType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboadjType.FormattingEnabled = true;
             this.cboadjType.ItemHeight = 15;
             this.cboadjType.Location = new System.Drawing.Point(94, 25);
