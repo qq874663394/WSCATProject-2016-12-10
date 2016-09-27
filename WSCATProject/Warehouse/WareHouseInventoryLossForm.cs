@@ -197,7 +197,7 @@ namespace WSCATProject.Warehouse
                         warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
                         warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
                         warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
-                        warehouselossDetail.materiaUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
+                        warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
                         warehouselossDetail.number =Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
                         warehouselossDetail.price =  Convert.ToDecimal(gr["price"].Value.ToString());
                         warehouselossDetail.productionDate =Convert.ToDateTime(gr["shengchandate"].Value.ToString());
