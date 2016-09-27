@@ -40,5 +40,14 @@ namespace InterfaceLayer.Warehouse
         {
             return widl.Modify(wid);
         }
+        /// <summary>
+        /// 新增和修改同时进行
+        /// </summary>
+        /// <param name="wid"></param>
+        /// <returns></returns>
+        public int AddAndModify(WarehouseInventoryDetail wid)
+        {
+            return widl.AddAndModify(wid);
+        }
     }
 }
