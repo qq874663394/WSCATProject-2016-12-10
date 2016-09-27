@@ -130,7 +130,7 @@ namespace BaseLayer.Warehouse
            ,@isClear
            ,@updateDate
            ,@reserved1
-           ,@reserved2";
+           ,@reserved2);select SCOPE_IDENTITY();";
 
                 foreach (var item in warehouseInventoryProfitDetail)
                 {
@@ -191,7 +191,7 @@ namespace BaseLayer.Warehouse
                 , reserved1 = @reserved1
                 , reserved2 = @reserved2
                 , updatetime = @updatetime
-                WHERE  code = @code";
+                WHERE  code = @code;select SCOPE_IDENTITY();";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseInventoryProfit.code),
@@ -230,7 +230,7 @@ SET code=@code
 ,isClear=@isClear
 ,updateDate=@updateDate
 ,reserved1=@reserved1
-,reserved2=@reserved2";
+,reserved2=@reserved2;select SCOPE_IDENTITY();";
 
                 foreach (var item in warehouseInventoryProfitDetail)
                 {

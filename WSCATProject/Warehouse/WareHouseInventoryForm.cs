@@ -137,6 +137,7 @@ namespace WSCATProject.Warehouse
             gdiecNumber.MinValue = 0;
             gdiecNumber.MaxValue = 999999999;
 
+            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
             superGridControl1.HScrollBarVisible = true;
             superGridControl1.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
             superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
@@ -151,26 +152,15 @@ namespace WSCATProject.Warehouse
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
             picbpandianBarCode.Image = imgTemp;
 
+            #region 盘点方案
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
             cbopandianidea.DisplayMember = "name";
             cbopandianidea.ValueMember = "code";
             cbopandianidea.DataSource = dt;
             string code = cbopandianidea.SelectedValue.ToString();
-            DataTable dtdateil = codeh.DataTableReCoding(warehousinvdet.Search(2, XYEEncoding.strCodeHex(code)));
-            if (dtdateil.Rows.Count > 0)
-            {
-                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousinvdet.Search(2, XYEEncoding.strCodeHex(code)));
-                superGridControl1.PrimaryGrid.EnsureVisible();
-                InitSupGridInventoru();
-                InitDataGridView();
-            }
-            #region 盘点方案
-            else
-            {
-                superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
-                superGridControl1.PrimaryGrid.EnsureVisible();
-                InitDataGridView();
-            }
+            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
+            superGridControl1.PrimaryGrid.EnsureVisible();
+            InitDataGridView();
             try
             {
                 GridRow gr = new GridRow();
@@ -265,7 +255,7 @@ namespace WSCATProject.Warehouse
             gr.Cells["pandiannumber"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
         /// <summary>
-        /// 如果盘点有这个商品就显示上次盘点的数量和账面数量
+        /// 如果盘点单有这个商品就显示上次盘点的数量和账面数量
         /// </summary>
         private void InitSupGridInventoru()
         {
@@ -273,22 +263,14 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "stockName";
-            gc.Name = "stockName";
+            gc.Name = "storge";
             gc.HeaderText = "仓库";
             gc.Width = 80;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "stockCode";
-            gc.Name = "stockCode";
-            gc.HeaderText = "仓库";
-            gc.Width = 80;
-            gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
             gc.DataPropertyName = "materialDaima";
-            gc.Name = "materialDaima";
+            gc.Name = "daima";
             gc.HeaderText = "商品代码";
             gc.Width = 120;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -296,7 +278,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "materialName";
-            gc.Name = "materialName";
+            gc.Name = "name";
             gc.HeaderText = "商品名称";
             gc.Width = 140;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -304,7 +286,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "materialCode";
-            gc.Name = "materialCode";
+            gc.Name = "gridColumncode";
             gc.HeaderText = "商品名称";
             gc.Width = 140;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -313,7 +295,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "materialModel";
-            gc.Name = "materialModel";
+            gc.Name = "model";
             gc.HeaderText = "规格型号";
             gc.Width = 130;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -321,7 +303,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "barCode";
-            gc.Name = "barCode";
+            gc.Name = "tiaoxingma";
             gc.HeaderText = "条形码";
             gc.Width = 150;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -329,7 +311,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "productionDate";
-            gc.Name = "productionDate";
+            gc.Name = "shengchandate";
             gc.HeaderText = "采购/生产日期";
             gc.Width = 70;
             gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
@@ -337,7 +319,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "qualityDate";
-            gc.Name = "qualityDate";
+            gc.Name = "baozhiqi";
             gc.HeaderText = "保质期(天)";
             gc.Width = 50;
             gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
@@ -345,20 +327,20 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "materialUnit";
-            gc.Name = "materialUnit";
+            gc.Name = "unit";
             gc.HeaderText = "单位";
             gc.Width = 70;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
             gc.DataPropertyName = "curNumber";
-            gc.Name = "curNumber";
+            gc.Name = "zhangcunnumber";
             gc.HeaderText = "账面数量";
             gc.Width = 80;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.Name = "checkNumber";
+            gc.Name = "pandiannumber";
             gc.DataPropertyName = "checkNumber";
             gc.HeaderText = "盘点数量";
             gc.Width = 80;
@@ -369,6 +351,42 @@ namespace WSCATProject.Warehouse
             gc.Name = "remark";
             gc.HeaderText = "备注";
             gc.Width = 110;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "panyingnumber";
+            gc.HeaderText = "盘盈数量";
+            gc.Width = 70;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "pankuinumber";
+            gc.HeaderText = "盘亏数量";
+            gc.Width = 80;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "gridColumnprice";
+            gc.DataPropertyName = "price";
+            gc.HeaderText = "单价";
+            gc.Width = 80;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "panyingMoney";
+            gc.HeaderText = "盘盈金额";
+            gc.Width = 110;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "pankuiMoney";
+            gc.HeaderText = "盘亏金额";
+            gc.Width = 80;
+            gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
         }
 
@@ -377,39 +395,31 @@ namespace WSCATProject.Warehouse
             GridColumn gc = null;
 
             gc = new GridColumn();
-            gc.DataPropertyName = "stockName";
-            gc.Name = "stockName";
+            gc.DataPropertyName = "storageName";
+            gc.Name = "storge";
             gc.HeaderText = "仓库";
             gc.Width = 80;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "stockCode";
-            gc.Name = "stockCode";
-            gc.HeaderText = "仓库";
-            gc.Width = 80;
-            gc.Visible = false;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
             gc.DataPropertyName = "materialDaima";
-            gc.Name = "materialDaima";
+            gc.Name = "daima";
             gc.HeaderText = "商品代码";
             gc.Width = 120;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "materialName";
-            gc.Name = "materialName";
+            gc.DataPropertyName = "name";
+            gc.Name = "name";
             gc.HeaderText = "商品名称";
             gc.Width = 140;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "materialCode";
-            gc.Name = "materialCode";
+            gc.DataPropertyName = "code";
+            gc.Name = "gridColumncode";
             gc.HeaderText = "商品名称";
             gc.Width = 140;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -417,16 +427,16 @@ namespace WSCATProject.Warehouse
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "materialModel";
-            gc.Name = "materialModel";
+            gc.DataPropertyName = "model";
+            gc.Name = "model";
             gc.HeaderText = "规格型号";
             gc.Width = 130;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "barCode";
-            gc.Name = "barCode";
+            gc.DataPropertyName = "barcode";
+            gc.Name = "tiaoxingma";
             gc.HeaderText = "条形码";
             gc.Width = 150;
             gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
@@ -434,7 +444,7 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "productionDate";
-            gc.Name = "productionDate";
+            gc.Name = "shengchandate";
             gc.HeaderText = "采购/生产日期";
             gc.Width = 70;
             gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
@@ -442,29 +452,28 @@ namespace WSCATProject.Warehouse
 
             gc = new GridColumn();
             gc.DataPropertyName = "qualityDate";
-            gc.Name = "qualityDate";
+            gc.Name = "baozhiqi";
             gc.HeaderText = "保质期(天)";
             gc.Width = 50;
             gc.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "materialUnit";
-            gc.Name = "materialUnit";
+            gc.DataPropertyName = "unit";
+            gc.Name = "unit";
             gc.HeaderText = "单位";
             gc.Width = 70;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "curNumber";
-            gc.Name = "curNumber";
+            gc.DataPropertyName = "number";
+            gc.Name = "zhangcunnumber";
             gc.HeaderText = "账面数量";
             gc.Width = 80;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.Name = "checkNumber";
-            gc.DataPropertyName = "checkNumber";
+            gc.Name = "pandiannumber";
             gc.HeaderText = "盘点数量";
             gc.Width = 80;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
@@ -475,6 +484,43 @@ namespace WSCATProject.Warehouse
             gc.HeaderText = "备注";
             gc.Width = 110;
             superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "panyingnumber";
+            gc.HeaderText = "盘盈数量";
+            gc.Width = 70;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "pankuinumber";
+            gc.HeaderText = "盘亏数量";
+            gc.Width = 80;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "gridColumnprice";
+            gc.DataPropertyName = "price";
+            gc.HeaderText = "单价";
+            gc.Width = 80;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.Name = "panyingMoney";
+            gc.HeaderText = "盘盈金额";
+            gc.Width = 110;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "pankuiMoney";
+            gc.HeaderText = "盘亏金额";
+            gc.Width = 80;
+            gc.Visible = false;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+
         }
         #endregion
 

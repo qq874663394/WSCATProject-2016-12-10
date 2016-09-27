@@ -16,9 +16,9 @@ using System.Windows.Forms;
 
 namespace WSCATProject.Warehouse
 {
-    public partial class WareHouseInventoryProfit : TestForm
+    public partial class WareHouseInventoryProfitForm : TestForm
     {
-        public WareHouseInventoryProfit()
+        public WareHouseInventoryProfitForm()
         {
             InitializeComponent();
         }

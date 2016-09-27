@@ -61,6 +61,7 @@
             this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panyingMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pankuiMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.lblzhangcundate = new DevComponents.DotNetBar.LabelX();
@@ -71,7 +72,6 @@
             this.textBoxpandiancode = new System.Windows.Forms.TextBox();
             this.picbpandianBarCode = new System.Windows.Forms.PictureBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -444,6 +444,13 @@
             this.pankuiMoney.Name = "pankuiMoney";
             this.pankuiMoney.Visible = false;
             // 
+            // gridColumncode
+            // 
+            this.gridColumncode.DataPropertyName = "materialCode";
+            this.gridColumncode.HeaderText = "商品code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.bar1);
@@ -564,13 +571,6 @@
             this.labelX1.TabIndex = 62;
             this.labelX1.Text = "单号：";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // gridColumncode
-            // 
-            this.gridColumncode.DataPropertyName = "materialCode";
-            this.gridColumncode.HeaderText = "商品code";
-            this.gridColumncode.Name = "gridColumncode";
-            this.gridColumncode.Visible = false;
             // 
             // WareHouseInventoryReportForm
             // 
