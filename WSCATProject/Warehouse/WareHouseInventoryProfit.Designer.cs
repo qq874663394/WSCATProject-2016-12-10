@@ -50,6 +50,7 @@
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.picBoxShengHeProfit = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -67,23 +68,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxShengHeProfit)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1038, 2);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1038, 6);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
             this.labelprie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelprie.Location = new System.Drawing.Point(997, 2);
+            this.labelprie.Location = new System.Drawing.Point(997, 7);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1037, 82);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.picBoxShengHeProfit);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.picBoxShengHeProfit, 0);
             // 
             // labelTitle
             // 
@@ -501,9 +513,9 @@
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Location = new System.Drawing.Point(1039, 17);
+            this.pictureBox9.Location = new System.Drawing.Point(1039, 24);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(140, 50);
+            this.pictureBox9.Size = new System.Drawing.Size(140, 43);
             this.pictureBox9.TabIndex = 55;
             this.pictureBox9.TabStop = false;
             // 
@@ -512,6 +524,7 @@
             this.material.DataPropertyName = "materialDaima";
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
+            this.material.ReadOnly = true;
             this.material.Width = 80;
             // 
             // gridColumnname
@@ -543,6 +556,7 @@
             this.gridColumnStock.DataPropertyName = "stockName";
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
+            this.gridColumnStock.ReadOnly = true;
             // 
             // gridColumnunit
             // 
@@ -567,6 +581,7 @@
             this.gridColumnpandianshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnpandianshu.HeaderText = "盘点数量";
             this.gridColumnpandianshu.Name = "gridColumnpandianshu";
+            this.gridColumnpandianshu.ReadOnly = true;
             this.gridColumnpandianshu.Width = 80;
             // 
             // gridColumnprice
@@ -634,7 +649,18 @@
             // 
             this.gridColumnmaterialcode.DataPropertyName = "materialCode";
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
+            this.gridColumnmaterialcode.ReadOnly = true;
             this.gridColumnmaterialcode.Visible = false;
+            // 
+            // picBoxShengHeProfit
+            // 
+            this.picBoxShengHeProfit.BackColor = System.Drawing.Color.Transparent;
+            this.picBoxShengHeProfit.Location = new System.Drawing.Point(638, 3);
+            this.picBoxShengHeProfit.Name = "picBoxShengHeProfit";
+            this.picBoxShengHeProfit.Size = new System.Drawing.Size(64, 64);
+            this.picBoxShengHeProfit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBoxShengHeProfit.TabIndex = 59;
+            this.picBoxShengHeProfit.TabStop = false;
             // 
             // WareHouseInventoryProfit
             // 
@@ -667,6 +693,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxShengHeProfit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,5 +722,6 @@
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
+        private System.Windows.Forms.PictureBox picBoxShengHeProfit;
     }
 }

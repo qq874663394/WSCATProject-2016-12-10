@@ -219,7 +219,7 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条入库单和入库单详细数据
-            object Result = warehouseinvloss.Add(warehouseloss, wareHouselossList);
+            object Result = warehouseinvloss.AddAndModify(warehouseloss, wareHouselossList);
             // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
             if (Result != null)
             {
