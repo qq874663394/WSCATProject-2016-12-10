@@ -61,6 +61,7 @@
     <Compile Include="Sales\SalesDetailBase.cs" />
     <Compile Include="Sales\SalesMainBase.cs" />
     <Compile Include="Warehouse\WarehouseAdjustPriceBase.cs" />
+    <Compile Include="Warehouse\WarehouseAllotBase.cs" />
     <Compile Include="Warehouse\WarehouseInBase.cs" />
     <Compile Include="Warehouse\WarehouseInDetailBase.cs" />
     <Compile Include="Warehouse\WarehouseInProcessBase.cs" />
