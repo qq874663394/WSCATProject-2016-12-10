@@ -104,6 +104,8 @@ namespace WSCATProject.Warehouse
                 dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
                 dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
+                comboBoxEx1.SelectedIndex = 0;
+                comboBoxExsonghuo.SelectedIndex = 0;
                 InitDataGridView();
                 toolStripButtonhou.Click += ToolStripButtonhou_Click;//前单
                 toolStripButtonqian.Click += ToolStripButtonqian_Click;//后单
@@ -130,6 +132,11 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             WarehouseOutInterface warehouseoutinterface = new WarehouseOutInterface();
             //入库单
             WarehouseOut warehouseout = new WarehouseOut();
@@ -237,7 +244,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-            // isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             //string warehouseIncode = "";
             WarehouseOutInterface warehouseoutinterface = new WarehouseOutInterface();
@@ -779,6 +789,35 @@ namespace WSCATProject.Warehouse
             comboBoxExxiaos.BackColor = Color.FromArgb(240, 240, 240);
             comboBoxEx1.BackColor = Color.FromArgb(240, 240, 240);
             comboBoxExsonghuo.BackColor = Color.FromArgb(240, 240, 240);
+        }
+
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private bool isNUllValidate()
+        {
+            if (comboBoxEx1.Text.Trim() == null)
+            {
+                MessageBox.Show("出库类型不能为空！");
+                return false;
+            }
+            if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
+            {
+                MessageBox.Show("客户不能为空！");
+                return false;
+            }
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            {
+                MessageBox.Show("商品代码不能为空！");
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("出库员不能为空！");
+                return false;
+            }
+            return true;
         }
 
         #endregion

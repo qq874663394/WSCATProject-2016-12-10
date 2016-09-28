@@ -166,7 +166,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WareHouseInventoryProfitInterface warehouseProfitinterface = new WareHouseInventoryProfitInterface();
             //盘盈单
@@ -260,7 +263,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WareHouseInventoryProfitInterface warehouseProfitinterface = new WareHouseInventoryProfitInterface();
             //盘盈单
@@ -377,17 +383,19 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 非空验证
         /// </summary>
-        private void isNUllValidate()
+        private bool isNUllValidate()
         {
             if (cboInType.Text.Trim() == null)
             {
-                MessageBox.Show("出库类别不能为空！");
+                MessageBox.Show("入库类别不能为空！");
+                return false;
             }
-            if (ltxtbSalsMan.Text.Trim() == null)
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
             {
-                MessageBox.Show("业务员不能为空！");
+                MessageBox.Show("盘点员不能为空！");
+                return false;
             }
-
+            return true;
         }
 
         /// <summary>

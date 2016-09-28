@@ -43,6 +43,7 @@ namespace Model
         private DateTime? _productiondate;
         private DateTime? _qualitydate;
         private DateTime? _effectivedate;
+        private int? _isassembly;
         /// <summary>
         /// 
         /// </summary>
@@ -298,6 +299,14 @@ namespace Model
         {
             set { _effectivedate = value; }
             get { return _effectivedate; }
+        }
+        /// <summary>
+        /// 是否可组装或拆卸
+        /// </summary>
+        public int? isAssembly
+        {
+            set { _isassembly = value; }
+            get { return _isassembly; }
         }
         #endregion Model
 

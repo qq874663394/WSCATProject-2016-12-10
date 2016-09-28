@@ -118,8 +118,6 @@ namespace WSCATProject.Warehouse
                                1,
                                ButtonBorderStyle.Solid);
         }
-
-
         #endregion
 
         private void WareHouseAdjustPriceForm_Load(object sender, EventArgs e)
@@ -176,7 +174,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseAdjustPriceInterface warehouseAdjpriceinterface = new WarehouseAdjustPriceInterface();
             //调价单
@@ -268,7 +269,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseAdjustPriceInterface warehouseAdjpriceinterface = new WarehouseAdjustPriceInterface();
             //调价单
@@ -390,31 +394,30 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 非空验证
         /// </summary>
-        private void isNUllValidate()
+        private bool isNUllValidate()
         {
             if (cboadjType.Text.Trim() == null)
             {
                 MessageBox.Show("调价科目不能为空！");
-                return;
-            } 
-            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
-            {
-                MessageBox.Show("调价员不能为空！");
-                return;
+                return false;
             }
             GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库不能为空！");
-                return;
+                return false;
             }
             if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");
-                return;
+                return false;
             }
-
-
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("调价员不能为空！");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>

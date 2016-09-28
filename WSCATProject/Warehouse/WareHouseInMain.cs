@@ -249,7 +249,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseInInterface warehouseInterface = new WarehouseInInterface();
             //入库单
@@ -356,7 +359,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             //string warehouseIncode = "";
             WarehouseInInterface warehouseInterface = new WarehouseInInterface();
@@ -383,7 +389,7 @@ namespace WSCATProject.Warehouse
                 warehouseIn.reserved2 = "";
                 warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
-                warehouseIn.defaultType =XYEEncoding.strCodeHex("入库开单");
+                warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
                 warehouseIn.stock = "";
 
@@ -879,27 +885,40 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 非空验证
         /// </summary>
-        private void isNUllValidate()
+        private bool isNUllValidate()
         {
             if (cboInType.Text.Trim() == null)
             {
                 MessageBox.Show("入货类型不能为空！");
+                return false;
             }
-            if (labtextboxTop3.Text.Trim() == null)
+            if (labtextboxTop6.Text.Trim() == null || labtextboxTop6.Text == "")
             {
                 MessageBox.Show("供应商不能为空！");
+                return false;
             }
-            if (ltxtbSalsMan.Text.Trim() == null)
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
             {
-                MessageBox.Show("业务员不能为空！");
+                MessageBox.Show("商品代码不能为空！");
+                return false;
             }
-            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-            //   Rows[superGridControl1.PrimaryGrid.Rows.Count];
-            //if (gr.Cells["griCoulumcangku"].Value == null && gr.Cells["griCoulumhuojia"].Value == null)
-            //{
-            //    MessageBox.Show("仓库和货架不能为空！");
-            //}
-
+            if (gr.Cells["griCoulumcangku"].Value == null || gr.Cells["griCoulumcangku"].Value.ToString() == "")
+            {
+                MessageBox.Show("仓库不能为空！");
+                return false;
+            }
+            if (gr.Cells["griCoulumhuojia"].Value == null || gr.Cells["griCoulumhuojia"].Value.ToString() == "")
+            {
+                MessageBox.Show("货架不能为空！");
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("入库员不能为空！");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -1099,7 +1118,7 @@ namespace WSCATProject.Warehouse
             cboInType.BackColor = Color.FromArgb(240, 240, 240);
             txtbSearch.ReadOnly = true;
             txtbSearch.Enabled = false;
-            txtbSearch.BackColor= Color.FromArgb(240, 240, 240);
+            txtbSearch.BackColor = Color.FromArgb(240, 240, 240);
         }
         #endregion
 

@@ -152,7 +152,7 @@ namespace WSCATProject.Warehouse
                 //绑定盘亏摘要
                 labtextboxTop7.Text = "由【" + _storageName + "】生成";
                 pictureBoxshenghe.Parent = pictureBoxtitle;
-                cboOutType.SelectedItem = 0;
+                cboOutType.SelectedIndex = 0;
 
             }
             catch (Exception ex)
@@ -168,7 +168,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
             //盘亏单
@@ -260,7 +263,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
             //盘亏单
@@ -377,17 +383,19 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 非空验证
         /// </summary>
-        private void isNUllValidate()
+        private bool isNUllValidate()
         {
             if (cboOutType.Text.Trim() == null)
             {
                 MessageBox.Show("出库类别不能为空！");
+                return false;
             }
-            if (ltxtbSalsMan.Text.Trim() == null)
+            if (ltxtbSalsMan.Text.Trim() == null||ltxtbSalsMan.Text=="")
             {
-                MessageBox.Show("业务员不能为空！");
+                MessageBox.Show("盘点员不能为空！");
+                return false;
             }
-
+            return true;
         }
 
         /// <summary>

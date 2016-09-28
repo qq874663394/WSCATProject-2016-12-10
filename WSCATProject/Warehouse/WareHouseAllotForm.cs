@@ -227,7 +227,6 @@ namespace WSCATProject.Warehouse
                 {
                     if (gr["gridColumnname"].Value != null)
                     {
-
                         i++;
                         WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
                         warehousealld.allotInPrice = gr["unit"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["unit"].Value.ToString());
