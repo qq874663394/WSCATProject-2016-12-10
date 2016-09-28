@@ -217,7 +217,6 @@ namespace WSCATProject.Warehouse
                 {
                     if (gr["gridColumnname"].Value != null)
                     {
-
                         i++;
                         WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
                         warehousealld.allotInPrice = gr["gridColumnpricein"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpricein"].Value.ToString());
@@ -354,7 +353,7 @@ namespace WSCATProject.Warehouse
             }
             //增加一条入库单和入库单详细数据
             //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
-            //this.textBoxid.Text = warehouseInResult.ToString();
+            ////this.textBoxid.Text = warehouseInResult.ToString();
             //if (warehouseInResult != null)
             //{
             //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
