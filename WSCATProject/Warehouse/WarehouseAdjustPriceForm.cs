@@ -715,9 +715,18 @@ namespace WSCATProject.Warehouse
             }
             if (e.GridCell.GridColumn.Name == "material")
             {
-                //查询商品列表
-                _AllMaterial = waremain.GetWMainAndMaterialByWMCode(XYEEncoding.strCodeHex(_StorageCode));
-                InitMaterialDataGridView();
+                if (_StorageCode!="")
+                {
+                    //查询商品列表
+                    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(XYEEncoding.strCodeHex(_StorageCode));
+                    InitMaterialDataGridView();
+                }
+                else
+                {
+                    this.resizablePanelData.Visible = false;
+                    MessageBox.Show("请先选择仓库！");
+                }
+
             }
         }
 
