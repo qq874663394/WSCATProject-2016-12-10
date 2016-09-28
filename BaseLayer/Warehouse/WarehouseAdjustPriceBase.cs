@@ -153,8 +153,6 @@ VALUES
                         new SqlParameter("@price",item.price),
                         new SqlParameter("@money",item.money),
                         new SqlParameter("@lostMoney",item.lostMoney),
-                        new SqlParameter("@money",item.money),
-                        new SqlParameter("@lostMoney",item.lostMoney),
                         new SqlParameter("@cause",item.cause),
                         new SqlParameter("@isClear",item.isClear),
                         new SqlParameter("@updateDate",item.updateDate),

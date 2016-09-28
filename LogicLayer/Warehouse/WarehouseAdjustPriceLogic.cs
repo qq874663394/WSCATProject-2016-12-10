@@ -1,6 +1,7 @@
 ﻿using BaseLayer;
 using BaseLayer.Warehouse;
 using HelperUtility;
+using LogicLayer.Base;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace LogicLayer.Warehouse
         LogBase lb = new LogBase();
         WarehouseAdjustPriceBase dal = new WarehouseAdjustPriceBase();
         WarehouseUpdataManager warehouseUpdate = new WarehouseUpdataManager();
+        MaterialLogic materialLogic = new MaterialLogic();
         public DataTable Search(int fieldName, string fieldValue)
         {
             DataTable dt = null;
@@ -65,6 +67,7 @@ namespace LogicLayer.Warehouse
         public object AddAndModify(WarehouseAdjustPrice model, List<WarehouseAdjustPriceDetail> listModel)
         {
             object result = null;
+            int priceResult = 0;
             LogBase lb = new LogBase();
             Log LogModel = new Log()
             {
@@ -72,7 +75,7 @@ namespace LogicLayer.Warehouse
                 operationCode = "操作人code",
                 operationName = "操作人名",
                 operationTable = "T_WarehouseAdjustPrice",
-                operationTime = DateTime.Now,
+                operationTime = DateTime.Now
             };
             try
             {
@@ -83,14 +86,25 @@ namespace LogicLayer.Warehouse
                 if (dal.Exists(model.code) == false)
                 {
                     result = dal.Add(model, listModel);
-                    LogModel.objective = "新增盘亏信息";
-                    LogModel.operationContent = "新增T_WarehouseInventoryProfit表的数据,主键为：code=" + model.code;
+                    LogModel.objective = "新增调价信息";
+                    LogModel.operationContent = "新增T_WarehouseAdjustPrice表的数据,主键为：code=" + model.code;
                 }
                 else
                 {
                     result = dal.Modify(model, listModel);
-                    LogModel.objective = "修改盘亏信息";
-                    LogModel.operationContent = "修改T_WarehouseInventoryProfit表的数据,条件为：code=" + model.code;
+                    LogModel.objective = "修改调价信息";
+                    LogModel.operationContent = "修改T_WarehouseAdjustPrice表的数据,条件为：code=" + model.code;
+                }
+                if (result != null && model.checkState != 0)
+                {
+                    foreach (var item in listModel)
+                    {
+                        priceResult = materialLogic.SetMaterialNumber(item.materialCode, item.price.ToString());
+                        if (priceResult <= 0)
+                        {
+                            throw new Exception("-3");
+                        }
+                    }
                 }
                 if (result == null || result == DBNull.Value)
                 {
