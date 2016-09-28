@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Base\ClientInterface.cs" />
     <Compile Include="Base\EmpolyeeInterface.cs" />
+    <Compile Include="Base\MaterialInterface.cs" />
     <Compile Include="Base\OrderTypeInterface.cs" />
     <Compile Include="Base\StorageInterface.cs" />
     <Compile Include="Base\StorageRackInterface.cs" />

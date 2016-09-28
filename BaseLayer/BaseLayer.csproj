@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Base\EmpolyeeBase.cs" />
+    <Compile Include="Base\MaterialBase.cs" />
     <Compile Include="Base\OrderTypeBase.cs" />
     <Compile Include="Base\StorageBase.cs" />
     <Compile Include="Base\StorageRackBase.cs" />
