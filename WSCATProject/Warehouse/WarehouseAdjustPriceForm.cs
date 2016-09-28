@@ -217,23 +217,23 @@ namespace WSCATProject.Warehouse
                     {
                         i++;
                         WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
-                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString());//仓库code
-                        warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
+                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString());//仓库code
+                        warehouseAdjDetail.stockName = gr["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
-                        warehouseAdjDetail.materiaDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
-                        warehouseAdjDetail.materialCode = gr["gridColumnmaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//商品code
-                        warehouseAdjDetail.barCode = gr["gridColumntiaoma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoma"].Value.ToString());//条形码
-                        warehouseAdjDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
-                        warehouseAdjDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        warehouseAdjDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
-                        warehouseAdjDetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
-                        warehouseAdjDetail.curPrice = Convert.ToDecimal(gr["gridColumnbeforeprice"].Value.ToString() == "" ? null : gr["gridColumnbeforeprice"].Value);//调前单价
-                        warehouseAdjDetail.curMoney = Convert.ToDecimal(gr["gridColumnbeforemoney"].Value.ToString() == "" ? null : gr["gridColumnbeforemoney"].Value);//调前金额
-                        warehouseAdjDetail.price = Convert.ToDecimal(gr["gridColumnafterprice"].Value.ToString() == "" ? null : gr["gridColumnafterprice"].Value);//调后单价
-                        warehouseAdjDetail.money = Convert.ToDecimal(gr["gridColumnaftermoney"].Value.ToString() == "" ? null : gr["gridColumnaftermoney"].Value);//调后金额
-                        warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr["gridColumnmoneyadj"].Value.ToString() == "" ? null : gr["gridColumnmoneyadj"].Value);//调价差额
-                        warehouseAdjDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
+                        warehouseAdjDetail.materiaDaima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
+                        warehouseAdjDetail.materialCode = gr["gridColumnmaterialcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//商品code
+                        warehouseAdjDetail.barCode = gr["gridColumntiaoma"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoma"].Value.ToString());//条形码
+                        warehouseAdjDetail.materialName = gr["gridColumnname"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseAdjDetail.materialModel = gr["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseAdjDetail.materialUnit = gr["gridColumnunit"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
+                        warehouseAdjDetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value == null ? 0 : gr["gridColumnnumber"].Value);//数量
+                        warehouseAdjDetail.curPrice = Convert.ToDecimal(gr["gridColumnbeforeprice"].Value == null ? 0 : gr["gridColumnbeforeprice"].Value);//调前单价
+                        warehouseAdjDetail.curMoney = Convert.ToDecimal(gr["gridColumnbeforemoney"].Value == null ? 0 : gr["gridColumnbeforemoney"].Value);//调前金额
+                        warehouseAdjDetail.price = Convert.ToDecimal(gr["gridColumnafterprice"].Value == null ? 0 : gr["gridColumnafterprice"].Value);//调后单价
+                        warehouseAdjDetail.money = Convert.ToDecimal(gr["gridColumnaftermoney"].Value == null ? 0 : gr["gridColumnaftermoney"].Value);//调后单价//
+                        warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr["gridColumnmoneyadj"].Value == null ? 0 : gr["gridColumnmoneyadj"].Value);//调价差额
+                        warehouseAdjDetail.remark = gr["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseAdjDetail.isClear = 1;
                         warehouseAdjDetail.updateDate = DateTime.Now;
                         warehouseAdjDetail.reserved1 = "";
@@ -309,23 +309,23 @@ namespace WSCATProject.Warehouse
                     {
                         i++;
                         WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
-                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString());//仓库code
-                        warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
+                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString());//仓库code
+                        warehouseAdjDetail.stockName = gr["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
-                        warehouseAdjDetail.materiaDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
-                        warehouseAdjDetail.materialCode = gr["gridColumnmaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//商品code
-                        warehouseAdjDetail.barCode = gr["gridColumntiaoma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoma"].Value.ToString());//条形码
-                        warehouseAdjDetail.materialName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
-                        warehouseAdjDetail.materialModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        warehouseAdjDetail.materialUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
-                        warehouseAdjDetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());//数量
-                        warehouseAdjDetail.curPrice = Convert.ToDecimal(gr["gridColumnbeforeprice"].Value.ToString() == "" ? null : gr["gridColumnbeforeprice"].Value);//调前单价
-                        warehouseAdjDetail.curMoney = Convert.ToDecimal(gr["gridColumnbeforemoney"].Value.ToString() == "" ? null : gr["gridColumnbeforemoney"].Value);//调前金额
-                        warehouseAdjDetail.price = Convert.ToDecimal(gr["gridColumnafterprice"].Value.ToString() == "" ? null : gr["gridColumnafterprice"].Value);//调后单价
-                        warehouseAdjDetail.money = Convert.ToDecimal(gr["gridColumnaftermoney"].Value.ToString() == "" ? null : gr["gridColumnaftermoney"].Value);//调后金额
-                        warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr["gridColumnmoneyadj"].Value.ToString() == "" ? null : gr["gridColumnmoneyadj"].Value);//调价差额
-                        warehouseAdjDetail.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
+                        warehouseAdjDetail.materiaDaima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
+                        warehouseAdjDetail.materialCode = gr["gridColumnmaterialcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialcode"].Value.ToString());//商品code
+                        warehouseAdjDetail.barCode = gr["gridColumntiaoma"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoma"].Value.ToString());//条形码
+                        warehouseAdjDetail.materialName = gr["gridColumnname"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//物料名称
+                        warehouseAdjDetail.materialModel = gr["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
+                        warehouseAdjDetail.materialUnit = gr["gridColumnunit"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
+                        warehouseAdjDetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value == null ? 0 : gr["gridColumnnumber"].Value);//数量
+                        warehouseAdjDetail.curPrice = Convert.ToDecimal(gr["gridColumnbeforeprice"].Value == null ? 0 : gr["gridColumnbeforeprice"].Value);//调前单价
+                        warehouseAdjDetail.curMoney = Convert.ToDecimal(gr["gridColumnbeforemoney"].Value == null ? 0 : gr["gridColumnbeforemoney"].Value);//调前金额
+                        warehouseAdjDetail.price = Convert.ToDecimal(gr["gridColumnafterprice"].Value == null ? 0 : gr["gridColumnafterprice"].Value);//调后单价
+                        warehouseAdjDetail.money = Convert.ToDecimal(gr["gridColumnaftermoney"].Value == null ? 0 : gr["gridColumnaftermoney"].Value);//调后单价//
+                        warehouseAdjDetail.lostMoney = Convert.ToDecimal(gr["gridColumnmoneyadj"].Value == null ? 0 : gr["gridColumnmoneyadj"].Value);//调价差额
+                        warehouseAdjDetail.remark = gr["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         warehouseAdjDetail.isClear = 1;
                         warehouseAdjDetail.updateDate = DateTime.Now;
                         warehouseAdjDetail.reserved1 = "";
