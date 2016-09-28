@@ -562,7 +562,6 @@
             // 
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
-            this.gridColumnStock.Visible = false;
             this.gridColumnStock.Width = 80;
             // 
             // gridColumnunit

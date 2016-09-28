@@ -215,6 +215,8 @@ namespace WSCATProject.Warehouse
                     if (gr["gridColumnname"].Value != null)
                     {
                         i++;
+                        WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
+                        warehouseAdjDetail.stockCode = gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString());//仓库code
                         warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
@@ -306,6 +308,8 @@ namespace WSCATProject.Warehouse
                     if (gr["gridColumnname"].Value != null)
                     {
                         i++;
+                        WarehouseAdjustPriceDetail warehouseAdjDetail = new WarehouseAdjustPriceDetail();
+                        warehouseAdjDetail.stockCode= gr["gridColumnstockcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnstockcode"].Value.ToString());//仓库code
                         warehouseAdjDetail.stockName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());//仓库名称
                         warehouseAdjDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();//单据code
                         warehouseAdjDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
@@ -396,16 +400,16 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("调价员不能为空！");
             }
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-               Rows[superGridControl1.PrimaryGrid.Rows.Count];
-            if (gr.Cells["material"].Value == null)
-            {
-                MessageBox.Show("商品代码不能为空！");
-            }
-            if (gr.Cells["gridColumnStock"].Value == null)
-            {
-                MessageBox.Show("仓库不能为空！");
-            }
+            //GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+            //   Rows[superGridControl1.PrimaryGrid.Rows.Count];
+            //if (gr.Cells["material"].Value == null)
+            //{
+            //    MessageBox.Show("商品代码不能为空！");
+            //}
+            //if (gr.Cells["gridColumnStock"].Value == null)
+            //{
+            //    MessageBox.Show("仓库不能为空！");
+            //}
 
         }
 
