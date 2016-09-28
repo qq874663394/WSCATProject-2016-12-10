@@ -116,10 +116,10 @@ namespace BaseLayer.Warehouse
                     {
                         new SqlParameter("@code",item.code),
                         new SqlParameter("@mainCode",item.mainCode),
-                        new SqlParameter("@barCode",item.barCode),
+                        new SqlParameter("@barCode",item.barcode),
                         new SqlParameter("@materialDaima",item.materialDaima),
                         new SqlParameter("@materialCode",item.materialCode),
-                        new SqlParameter("@materialName",item.materialName),
+                        new SqlParameter("@materialName",item.materiaName),
                         new SqlParameter("@materialModel",item.materialModel),
                         new SqlParameter("@materialUnit",item.materialUnit),
                         new SqlParameter("@warehouseCode",item.warehouseCode),
