@@ -14,7 +14,7 @@ namespace BaseLayer.Base
             int result = 0;
             try
             {
-                sql = string.Format(@"update T_BaseMaterial set price={0} where code='{1}')", number, materialCode);
+                sql = string.Format(@"update T_BaseMaterial set price={0} where code='{1}'", price, materialCode);
                 result = DbHelperSQL.ExecuteSql(sql);
             }
             catch (Exception ex)
