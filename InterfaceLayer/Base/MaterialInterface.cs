@@ -10,9 +10,9 @@ namespace InterfaceLayer.Base
     public class MaterialInterface
     {
         MaterialLogic _dal = new MaterialLogic();
-        public int SetMaterialNumber(string materialCode, string number)
+        public int SetMaterialNumber(string materialCode, string price)
         {
-            return _dal.SetMaterialNumber(materialCode, number);
+            return _dal.SetMaterialNumber(materialCode, price);
         }
     }
 }

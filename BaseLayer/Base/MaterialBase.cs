@@ -8,7 +8,7 @@ namespace BaseLayer.Base
 {
     public class MaterialBase
     {
-        public int SetMaterialNumber(string materialCode, string number)
+        public int SetMaterialNumber(string materialCode, string price)
         {
             string sql = "";
             int result = 0;

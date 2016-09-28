@@ -16,7 +16,7 @@ namespace LogicLayer.Base
         MaterialBase _dal = new MaterialBase();
         LogBase _logDal = new LogBase();
         BaseUpdataManager baseUpdate = new BaseUpdataManager();
-        public int SetMaterialNumber(string materialCode, string number)
+        public int SetMaterialNumber(string materialCode, string price)
         {
             int result = 0;
             Log model = new Log()
@@ -31,11 +31,11 @@ namespace LogicLayer.Base
             };
             try
             {
-                if ((materialCode == null || materialCode == "") && string.IsNullOrWhiteSpace(number))
+                if ((materialCode == null || materialCode == "") && string.IsNullOrWhiteSpace(price))
                 {
                     throw new Exception("-2");
                 }
-                result = _dal.SetMaterialNumber(materialCode, number);
+                result = _dal.SetMaterialNumber(materialCode, price);
                 if (result <= 0)
                 {
                     throw new Exception("-3");
