@@ -52,6 +52,7 @@
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnoutcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnMaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -85,6 +87,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1027, 82);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBox6, 0);
             // 
             // labelTitle
             // 
@@ -689,6 +701,16 @@
             this.gridColumnMaterialcode.Name = "gridColumnMaterialcode";
             this.gridColumnMaterialcode.Visible = false;
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Location = new System.Drawing.Point(649, 5);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(53, 56);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox6.TabIndex = 46;
+            this.pictureBox6.TabStop = false;
+            // 
             // WareHouseAllotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -718,6 +740,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -749,5 +772,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnoutcode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnMaterialcode;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
