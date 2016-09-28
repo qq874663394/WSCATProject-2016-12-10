@@ -50,17 +50,17 @@ namespace BaseLayer.Warehouse
                 SqlParameter[] spsMain =
                 {
                 new SqlParameter("@code",model.code),
-                new SqlParameter("@type",model.type),
+                new SqlParameter("@type",model.allotType),
                 new SqlParameter("@date",model.date),
                 new SqlParameter("@checkState",model.checkState),
-                new SqlParameter("@operation",model.operation),
+                new SqlParameter("@operation",model.operationMan),
                 new SqlParameter("@makeMan",model.makeMan),
                 new SqlParameter("@examine",model.makeMan),
                 new SqlParameter("@isClear",model.isClear),
                 new SqlParameter("@remark",model.remark),
                 new SqlParameter("@reserved1",model.reserved1),
                 new SqlParameter("@reserved2",model.reserved2),
-                new SqlParameter("@updatetime",model.updatetime)
+                new SqlParameter("@updatetime",model.updateDate)
                 };
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail = @"INSERT INTO T_WarehouseInventoryLossDetail
@@ -110,7 +110,7 @@ namespace BaseLayer.Warehouse
            ,@reserved1
            ,@reserved2);select SCOPE_IDENTITY();";
 
-                foreach (var item in warehouseInventoryLossDetail)
+                foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
                     {

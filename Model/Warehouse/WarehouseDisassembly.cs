@@ -158,7 +158,7 @@ namespace Model
 		/// <summary>
 		/// 摘要
 		/// </summary>
-		public string abstract
+		public string Abstract
 		{
 			set{ _abstract=value;}
 			get{return _abstract;}
