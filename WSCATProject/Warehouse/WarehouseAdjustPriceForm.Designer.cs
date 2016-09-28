@@ -503,6 +503,7 @@
             // 
             this.cboadjType.DisplayMember = "Text";
             this.cboadjType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboadjType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboadjType.FormattingEnabled = true;
             this.cboadjType.ItemHeight = 15;
             this.cboadjType.Items.AddRange(new object[] {
@@ -534,11 +535,13 @@
             // 
             // material
             // 
+            this.material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             // 
             // gridColumnname
             // 
+            this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
             this.gridColumnname.ReadOnly = true;
@@ -546,6 +549,7 @@
             // 
             // gridColumnmodel
             // 
+            this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
             this.gridColumnmodel.ReadOnly = true;
@@ -553,6 +557,7 @@
             // 
             // gridColumntiaoma
             // 
+            this.gridColumntiaoma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumntiaoma.HeaderText = "条形码";
             this.gridColumntiaoma.Name = "gridColumntiaoma";
             this.gridColumntiaoma.ReadOnly = true;
@@ -560,12 +565,14 @@
             // 
             // gridColumnStock
             // 
+            this.gridColumnStock.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
             this.gridColumnStock.Width = 80;
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.ReadOnly = true;
@@ -573,6 +580,7 @@
             // 
             // gridColumnbeforeprice
             // 
+            this.gridColumnbeforeprice.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbeforeprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnbeforeprice.HeaderText = "调前单价";
             this.gridColumnbeforeprice.Name = "gridColumnbeforeprice";
@@ -580,6 +588,7 @@
             // 
             // gridColumnbeforemoney
             // 
+            this.gridColumnbeforemoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbeforemoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnbeforemoney.HeaderText = "调前金额";
             this.gridColumnbeforemoney.Name = "gridColumnbeforemoney";
@@ -587,12 +596,14 @@
             // 
             // gridColumnafterprice
             // 
+            this.gridColumnafterprice.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnafterprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnafterprice.HeaderText = "调后单价";
             this.gridColumnafterprice.Name = "gridColumnafterprice";
             // 
             // gridColumnaftermoney
             // 
+            this.gridColumnaftermoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnaftermoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnaftermoney.HeaderText = "调后金额";
             this.gridColumnaftermoney.Name = "gridColumnaftermoney";
@@ -600,6 +611,7 @@
             // 
             // gridColumnmoneyadj
             // 
+            this.gridColumnmoneyadj.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmoneyadj.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnmoneyadj.HeaderText = "调价金额";
             this.gridColumnmoneyadj.Name = "gridColumnmoneyadj";
@@ -608,6 +620,7 @@
             // gridColumnremark
             // 
             this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             this.gridColumnremark.ReadOnly = true;
@@ -615,6 +628,7 @@
             // 
             // gridColumnnumber
             // 
+            this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
@@ -623,16 +637,19 @@
             // 
             // gridColumnid
             // 
+            this.gridColumnid.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.Visible = false;
             // 
             // gridColumnstockcode
             // 
+            this.gridColumnstockcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnstockcode.Name = "gridColumnstockcode";
             this.gridColumnstockcode.Visible = false;
             // 
             // gridColumnmaterialcode
             // 
+            this.gridColumnmaterialcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmaterialcode.HeaderText = "商品code";
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
             this.gridColumnmaterialcode.Visible = false;
