@@ -178,7 +178,7 @@ namespace WSCATProject.Warehouse
             //非空验证
             isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
-            //WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
             //调拨单
             WarehouseAllot warehouseallot = new WarehouseAllot();
             //调拨商品列表
@@ -203,7 +203,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2104;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2104;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             try
@@ -217,7 +217,6 @@ namespace WSCATProject.Warehouse
                 {
                     if (gr["gridColumnname"].Value != null)
                     {
-
                         i++;
                         WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
                         warehousealld.allotInPrice = gr["gridColumnpricein"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpricein"].Value.ToString());
@@ -253,16 +252,16 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2105-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             //增加一条入库单和入库单详细数据
-            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
-            //this.textBoxid.Text = warehouseInResult.ToString();
-            //if (warehouseInResult != null)
-            //{
-            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
-            //}
+            object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
+           // this.textBoxid.Text = warehouseInResult.ToString();
+            if (warehouseInResult != null)
+            {
+                MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
+            }
         }
 
         /// <summary>
@@ -275,7 +274,7 @@ namespace WSCATProject.Warehouse
             //非空验证
             isNUllValidate();
             //获得界面上的数据,准备传给base层新增数据
-            //WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
             //调拨单
             WarehouseAllot warehouseallot = new WarehouseAllot();
             //调拨商品列表
@@ -300,7 +299,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2104;尝试创建入库单商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2104;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             try
@@ -349,16 +348,16 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建入库单详商品数据出错,请检查输入" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2105-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             //增加一条入库单和入库单详细数据
-            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
+            object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
             //this.textBoxid.Text = warehouseInResult.ToString();
-            //if (warehouseInResult != null)
-            //{
-            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
-            //}
+            if (warehouseInResult != null)
+            {
+                MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
+            }
         }
 
         #region  初始化数据
