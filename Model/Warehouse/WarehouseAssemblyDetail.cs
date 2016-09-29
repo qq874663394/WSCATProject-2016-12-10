@@ -6,9 +6,9 @@ namespace Model
 	/// WarehosueAssemblyDetail:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
-	public partial class WarehosueAssemblyDetail
+	public partial class WarehouseAssemblyDetail
 	{
-		public WarehosueAssemblyDetail()
+		public WarehouseAssemblyDetail()
 		{}
 		#region Model
 		private int _id;
