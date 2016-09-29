@@ -705,12 +705,13 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Location = new System.Drawing.Point(649, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(624, 5);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(53, 56);
+            this.pictureBox6.Size = new System.Drawing.Size(59, 56);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox6.TabIndex = 46;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Visible = false;
             // 
             // WareHouseAllotForm
             // 

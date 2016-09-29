@@ -210,8 +210,7 @@ namespace LogicLayer.Warehouse
                         strWhere += string.Format("zhujima like '%{0}%'",fieldValue);
                         break;
                 }
-                strWhere += string.Format(" and T_WarehouseMain.storageCode = '{0}'",storageCode);
-                dt = wo.GetWMainAndMaterialByWMCode(strWhere);
+                dt = wo.GetWMainAndMaterialByWMCode(strWhere, storageCode);
                 logModel.operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:where=" + strWhere;
                 logModel.result = 1;
             }

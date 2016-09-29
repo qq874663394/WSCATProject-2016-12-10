@@ -254,10 +254,10 @@ namespace WSCATProject.Warehouse
 
             //增加一条调价单和调价详细数据
             object warehouseAdjResult = warehouseAdjpriceinterface.AddAndModify(warehouseADJprice, warehouseADJpriceList);
-
             if (warehouseAdjResult != null)
             {
-                MessageBox.Show("新增或审核调价单数据成功", "调价单温馨提示");
+                MessageBox.Show("新增并审核调价单数据成功", "调价单温馨提示");
+                InitForm();
             }
         }
 
@@ -599,6 +599,35 @@ namespace WSCATProject.Warehouse
 
             dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
 
+        }
+
+        /// <summary>
+        /// 初始化窗体控件可用不可用
+        /// </summary>
+        private void InitForm()
+        {
+            cboadjType.Enabled = false;
+            labtextboxTop9.ReadOnly = true;
+            superGridControl1.PrimaryGrid.ReadOnly = true;
+            dateTimePicker1.Enabled = false;
+            textBoxOddNumbers.ReadOnly = true;
+            ltxtbSalsMan.ReadOnly = true;
+            pictureBox5.Enabled = false;
+            ltxtbMakeMan.ReadOnly = true;
+            ltxtbShengHeMan.ReadOnly = true;
+            this.picAdj.Parent = pictureBoxtitle;
+            this.picAdj.Image = Properties.Resources.审核;
+            picAdj.Visible = true;
+            this.toolStripButtonnew.Enabled = false;
+            this.toolStripButtonsave.Enabled = false;
+            this.toolStripButtonshen.Enabled = false;
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
+            this.labtextboxTop9.BackColor = Color.FromArgb(240, 240, 240);
+            this.ltxtbSalsMan.BackColor = Color.FromArgb(240, 240, 240);
+            this.ltxtbMakeMan.BackColor = Color.FromArgb(240, 240, 240);
+            this.ltxtbShengHeMan.BackColor = Color.FromArgb(240, 240, 240);
         }
         #endregion
 

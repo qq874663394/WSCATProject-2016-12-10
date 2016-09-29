@@ -196,10 +196,17 @@ namespace WSCATProject.Warehouse
             this.panel2.BackColor = Color.FromArgb(240, 240, 240);
             this.panel5.BackColor = Color.FromArgb(240, 240, 240);
             this.ltxtbSalsMan.ReadOnly = true;
+            this.ltxtbSalsMan.BackColor = Color.FromArgb(240, 240, 240);
             this.ltxtbMakeMan.ReadOnly = true;
+            this.ltxtbMakeMan.BackColor = Color.FromArgb(240, 240, 240);
             this.ltxtbShengHeMan.ReadOnly = true;
+            this.ltxtbShengHeMan.BackColor = Color.FromArgb(240, 240, 240);
             this.resizablePanel1.Visible = false;
             this.dateTimePicker1.Enabled = false;
+            pictureBoxshenghe.Parent = pictureBoxtitle;
+            pictureBoxshenghe.Image = Properties.Resources.审核;
+            pictureBoxshenghe.Visible = true;
+
         }
         #endregion
 
