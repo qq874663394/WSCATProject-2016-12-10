@@ -757,7 +757,7 @@ namespace WSCATProject.Warehouse
                     if (_StorageCode != "")
                     {
                         //查询商品列表
-                        _AllMaterial = waremain.GetWMainAndMaterialByWMCode(XYEEncoding.strCodeHex(_StorageCode));
+                        _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999,"",XYEEncoding.strCodeHex(_StorageCode));
                         InitMaterialDataGridView();
                     }
                     else
@@ -773,7 +773,7 @@ namespace WSCATProject.Warehouse
                 if (_StorageCode!="")
                 {
                     //查询商品列表
-                    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(XYEEncoding.strCodeHex(_StorageCode));
+                    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999,"",XYEEncoding.strCodeHex(_StorageCode));
                     InitMaterialDataGridView();
                 }
                 else

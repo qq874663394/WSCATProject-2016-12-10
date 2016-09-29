@@ -179,8 +179,9 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public DataTable GetWMainAndMaterialByWMCode(string code)
+        public DataTable GetWMainAndMaterialByWMCode(int fieldName, string fieldValue,string storageCode)
         {
+            string strWhere = "";
             DataTable dt = null;
             LogBase lb = new LogBase();
             Log logModel = new Log()
@@ -190,16 +191,28 @@ namespace LogicLayer.Warehouse
                 operationName = "操作人名",
                 operationTable = "T_BaseStorage",
                 operationTime = DateTime.Now,
-                objective = "查询盘点表中List数据",
-                operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:code=" + code
+                objective = "查询盘点表中List数据"
             };
             try
             {
-                if (string.IsNullOrWhiteSpace(code))
+                switch (fieldName)
                 {
-                    throw new Exception("-2");
+                    case 0:
+                        strWhere += string.Format("materialDaima like '%{0}%'",fieldValue);
+                        break;
+                    case 1:
+                        strWhere += string.Format("name like '%{0}%'",fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("barCode like '%{0}%'",fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("zhujima like '%{0}%'",fieldValue);
+                        break;
                 }
-                dt = wo.GetWMainAndMaterialByWMCode(code);
+                strWhere += string.Format(" and T_WarehouseMain.storageCode = '{0}' order by id",storageCode);
+                dt = wo.GetWMainAndMaterialByWMCode(strWhere);
+                logModel.operationContent = "查询T_BaseMaterial、T_WarehouseMain表的数据,条件:where=" + strWhere;
                 logModel.result = 1;
             }
             catch (Exception ex)
