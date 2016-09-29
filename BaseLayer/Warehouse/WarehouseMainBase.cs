@@ -98,14 +98,14 @@ namespace BaseLayer.Warehouse
             }
             return dt;
         }
-        public DataTable GetWMainAndMaterialByWMCode(string strWhere)
+        public DataTable GetWMainAndMaterialByWMCode(string strWhere,string storageCode)
         {
             string sql = "";
             DataTable dt = null;
             try
             {
                 sql = string.Format(@"select * from T_BaseMaterial,T_WarehouseMain
-where T_WarehouseMain.materialCode = T_BaseMaterial.code");
+where T_WarehouseMain.materialCode = T_BaseMaterial.code and T_WarehouseMain.storageCode = '{0}'", storageCode);
                 if (!string.IsNullOrWhiteSpace(strWhere))
                 {
                     sql += string.Format(" and {0}",strWhere);
