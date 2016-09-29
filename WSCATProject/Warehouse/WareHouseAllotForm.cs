@@ -769,7 +769,7 @@ namespace WSCATProject.Warehouse
                 {
                     if (_OutStorage != null || _InStorage != null)
                     {
-                        _AllMaterial = waremain.GetWMainAndMaterialByWMCode(XYEEncoding.strCodeHex(_OutStorage));
+                        _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999,"",XYEEncoding.strCodeHex(_OutStorage));
                         InitMaterialDataGridView();
                         _StorageState = 3;
                     }

@@ -52,11 +52,13 @@ namespace InterfaceLayer.Warehouse
         /// <summary>
         /// 根据仓库code查询库存里面的商品再根据商品code找出物料的信息
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="fieldName">0:模糊materialDaima,1:name,2:barCode,3:zhujima</param>
+        /// <param name="fieldValue"></param>
+        /// <param name="storageCode"></param>
         /// <returns></returns>
-        public DataTable GetWMainAndMaterialByWMCode(string code)
+        public DataTable GetWMainAndMaterialByWMCode(int fieldName, string fieldValue, string storageCode)
         {
-            return wo.GetWMainAndMaterialByWMCode(code);
+            return wo.GetWMainAndMaterialByWMCode(fieldName, fieldValue, storageCode);
         }
     }
 }

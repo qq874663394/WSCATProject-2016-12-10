@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseLayer.Warehouse
 {
-    class WarehouseDisassemblyBase
+    public class WarehouseDisassemblyBase
     {
     }
 }
