@@ -25,7 +25,7 @@ namespace WSCATProject.Warehouse
 
         #region 数据字段
         /// <summary>
-        /// 所有业务员
+        /// 所有组装员
         /// </summary>
         private DataTable _AllEmployee = null;
         /// <summary>
@@ -70,11 +70,12 @@ namespace WSCATProject.Warehouse
 
         #region 初始化数据
         /// <summary>
-        /// 初始化业务员
+        /// 初始化组装员
         /// </summary>
         private void InitEmployee()
         {
-            
+            try
+            {
                 dataGridViewFujia.DataSource = null;
                 dataGridViewFujia.Columns.Clear();
 
@@ -104,7 +105,12 @@ namespace WSCATProject.Warehouse
                     resizablePanel1.Location = new Point(230, 450);
                     return;
                 }
-            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("初始化组装员错误！请检查：" + ex.Message,"组装单温馨提示");
+            }
+
         }
 
         /// <summary>
@@ -169,33 +175,67 @@ namespace WSCATProject.Warehouse
             }
             return true;
         }
+
+        /// <summary>
+        /// 标识那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            this.cbotype.Enabled = false;
+            cbotype.BackColor = Color.FromArgb(240, 240, 240);
+            this.labtextboxTop1.ReadOnly = true;
+            labtextboxTop1.BackColor = Color.FromArgb(240, 240, 240);
+            this.labtextboxTop2.ReadOnly = true;
+            labtextboxTop2.BackColor = Color.FromArgb(240, 240, 240);
+            this.textBoxOddNumbers.ReadOnly = true;    
+            this.superGridControl1.PrimaryGrid.ReadOnly = true;
+            this.superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControl2.PrimaryGrid.ReadOnly = true;
+            this.superGridControl2.BackColor = Color.FromArgb(240, 240, 240);
+            this.toolStripButtonsave.Enabled = false;
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
+            this.ltxtbSalsMan.ReadOnly = true;
+            this.ltxtbMakeMan.ReadOnly = true;
+            this.ltxtbShengHeMan.ReadOnly = true;
+            this.resizablePanel1.Visible = false;
+            this.dateTimePicker1.Enabled = false;
+        }
         #endregion
 
         private void WareHouseAssembyForm_Load(object sender, EventArgs e)
         {
-            //业务员
-            _AllEmployee = employee.SelSupplierTable(false);
+            try
+            {
+                //业务员
+                _AllEmployee = employee.SelSupplierTable(false);
 
-            //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
+                //禁用自动创建列
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridViewFujia.AutoGenerateColumns = false;
+                superGridControl1.HScrollBarVisible = true;
 
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
-            InitDataGridView();
-            //生成code 和显示条形码
-            _WareHouseAssembyCode = BuildCode.ModuleCode("WAP");
-            textBoxOddNumbers.Text = _WareHouseAssembyCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBox9.Image = imgTemp;
+                InitDataGridView();
+                //生成code 和显示条形码
+                _WareHouseAssembyCode = BuildCode.ModuleCode("WAP");
+                textBoxOddNumbers.Text = _WareHouseAssembyCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBox9.Image = imgTemp;
 
-            toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
-            toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
+                toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
+                toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("窗体初始化数据错误！请检查："+ex.Message,"组装单温馨提示");
+            }
         }
 
         /// <summary>
@@ -297,6 +337,8 @@ namespace WSCATProject.Warehouse
             //if (warehouseAdjResult != null)
             //{
             //    MessageBox.Show("新增调价单数据成功", "调价单温馨提示");
+                //pictureBoxshenghe.Image = Properties.Resources.审核;
+                //InitForm();
             //}
         }
 
@@ -317,7 +359,7 @@ namespace WSCATProject.Warehouse
             //组装单
             WarehouseAssembly warehouseassembly = new WarehouseAssembly();
             //组装单商品列表
-            List<WarehouseAssemblyDetail> warehouseassemblydetailList  = new List<WarehouseAssemblyDetail>();
+            List<WarehouseAssemblyDetail> warehouseassemblydetailList = new List<WarehouseAssemblyDetail>();
             try
             {
                 warehouseassembly.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
@@ -496,7 +538,7 @@ namespace WSCATProject.Warehouse
         }
 
         /// <summary>
-        /// 出库员模糊查询
+        /// 组装员模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -504,7 +546,6 @@ namespace WSCATProject.Warehouse
         {
             try
             {
-
                 if (ltxtbSalsMan.Text.Trim() == "")
                 {
                     InitEmployee();
@@ -531,7 +572,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询出库员数据错误" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码：模糊查询组装员数据错误" + ex.Message, "组装单温馨提示");
             }
 
 

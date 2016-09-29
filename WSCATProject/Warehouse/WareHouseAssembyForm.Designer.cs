@@ -47,6 +47,7 @@
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.cbotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.sup1material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBoxshenghe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -75,6 +77,16 @@
             // labelprie
             // 
             this.labelprie.Location = new System.Drawing.Point(1015, 5);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBoxshenghe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxshenghe, 0);
             // 
             // labelTitle
             // 
@@ -595,6 +607,16 @@
             this.sup1material.Name = "sup1material";
             this.sup1material.Width = 120;
             // 
+            // pictureBoxshenghe
+            // 
+            this.pictureBoxshenghe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxshenghe.Location = new System.Drawing.Point(643, 0);
+            this.pictureBoxshenghe.Name = "pictureBoxshenghe";
+            this.pictureBoxshenghe.Size = new System.Drawing.Size(58, 61);
+            this.pictureBoxshenghe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxshenghe.TabIndex = 47;
+            this.pictureBoxshenghe.TabStop = false;
+            // 
             // WareHouseAssembyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -624,6 +646,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -650,5 +673,6 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbotype;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn sup1material;
+        private System.Windows.Forms.PictureBox pictureBoxshenghe;
     }
 }
