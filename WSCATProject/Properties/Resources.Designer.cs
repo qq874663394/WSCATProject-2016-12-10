@@ -693,6 +693,16 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap login_1_ {
+            get {
+                object obj = ResourceManager.GetObject("login_1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap loginBKI {
             get {
                 object obj = ResourceManager.GetObject("loginBKI", resourceCulture);

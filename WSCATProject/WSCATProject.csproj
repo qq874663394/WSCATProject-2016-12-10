@@ -89,6 +89,12 @@
     <Compile Include="GridStateEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Base\Shelves\ShelvesListForm.resx">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -374,6 +383,7 @@
     <Content Include="Resources\jindutiaotubiao_4253210.png" />
     <Content Include="Resources\loadedtruck.png" />
     <Content Include="Resources\locationBannel.jpg" />
+    <None Include="Resources\login%281%29.png" />
     <Content Include="Resources\loginBKI.png" />
     <Content Include="Resources\maintainAll.png" />
     <Content Include="Resources\maintainToTheDay.png" />
