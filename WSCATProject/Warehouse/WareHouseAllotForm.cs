@@ -961,5 +961,30 @@ namespace WSCATProject.Warehouse
             }
 
         }
+        /// <summary>
+        /// 表格里面模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        {
+            try
+            {
+                string SS = "";
+                GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+                if (SS == "")
+                {
+                    //模糊查询商品列表
+                    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(0, "" + materialDaima + "","" + XYEEncoding.strCodeHex(_OutStorage + ""));
+                    InitMaterialDataGridView();
+                    dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2111-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
+            }
+        }
     }
 }
