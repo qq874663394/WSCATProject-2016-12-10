@@ -58,6 +58,7 @@
     <Compile Include="Sales\SalesMainInterface.cs" />
     <Compile Include="Warehouse\WarehouseAdjustPriceInterface.cs" />
     <Compile Include="Warehouse\WarehouseAllotInterface.cs" />
+    <Compile Include="Warehouse\WarehouseAssemblyInterface.cs" />
     <Compile Include="Warehouse\WarehouseInDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInInterface.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetailInterface.cs" />
@@ -69,6 +70,10 @@
     <Compile Include="Warehouse\WarehouseOutInterface.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">
+      <Project>{C4541CB9-F997-409A-801A-545A5FB60CF5}</Project>
+      <Name>BaseLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelperUtility\HelperUtility.csproj">
       <Project>{317561b1-bfc4-45cd-880f-7f7db14e76bf}</Project>
       <Name>HelperUtility</Name>
