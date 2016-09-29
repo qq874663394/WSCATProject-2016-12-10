@@ -90,7 +90,7 @@
     <Compile Include="Sales\SalesDetail.cs" />
     <Compile Include="Sales\SalesMain.cs" />
     <Compile Include="Sales\SalesProcess.cs" />
-    <Compile Include="Warehouse\WarehosueAssemblyDetail.cs" />
+    <Compile Include="Warehouse\WarehouseAssemblyDetail.cs" />
     <Compile Include="Warehouse\WarehouseAllot.cs" />
     <Compile Include="Warehouse\WarehouseAllotDetail.cs" />
     <Compile Include="Warehouse\WarehouseAssembly.cs" />

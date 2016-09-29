@@ -45,8 +45,9 @@
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.sup1material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBoxshenghe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -75,6 +77,16 @@
             // labelprie
             // 
             this.labelprie.Location = new System.Drawing.Point(1015, 5);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBoxshenghe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxshenghe, 0);
             // 
             // labelTitle
             // 
@@ -88,7 +100,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.panel2.Controls.Add(this.comboBoxEx1);
+            this.panel2.Controls.Add(this.cbotype);
             this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Size = new System.Drawing.Size(1202, 75);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -120,7 +132,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox9, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxEx1, 0);
+            this.panel2.Controls.SetChildIndex(this.cbotype, 0);
             // 
             // labtextboxTop6
             // 
@@ -575,18 +587,18 @@
             this.gridColumn8.HeaderText = "备注";
             this.gridColumn8.Name = "gridColumn8";
             // 
-            // comboBoxEx1
+            // cbotype
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(426, 26);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(162, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 54;
+            this.cbotype.DisplayMember = "Text";
+            this.cbotype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotype.FormattingEnabled = true;
+            this.cbotype.ItemHeight = 15;
+            this.cbotype.Location = new System.Drawing.Point(426, 26);
+            this.cbotype.Name = "cbotype";
+            this.cbotype.Size = new System.Drawing.Size(162, 21);
+            this.cbotype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbotype.TabIndex = 54;
             // 
             // sup1material
             // 
@@ -594,6 +606,16 @@
             this.sup1material.HeaderText = "商品代码";
             this.sup1material.Name = "sup1material";
             this.sup1material.Width = 120;
+            // 
+            // pictureBoxshenghe
+            // 
+            this.pictureBoxshenghe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxshenghe.Location = new System.Drawing.Point(643, 0);
+            this.pictureBoxshenghe.Name = "pictureBoxshenghe";
+            this.pictureBoxshenghe.Size = new System.Drawing.Size(58, 61);
+            this.pictureBoxshenghe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxshenghe.TabIndex = 47;
+            this.pictureBoxshenghe.TabStop = false;
             // 
             // WareHouseAssembyForm
             // 
@@ -624,6 +646,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,8 +670,9 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbotype;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn sup1material;
+        private System.Windows.Forms.PictureBox pictureBoxshenghe;
     }
 }
