@@ -384,6 +384,9 @@
     <Content Include="Resources\loadedtruck.png" />
     <Content Include="Resources\locationBannel.jpg" />
     <None Include="Resources\login%281%29.png" />
+    <None Include="Resources\Login1.png" />
+    <None Include="Resources\LOGIN.png" />
+    <None Include="Resources\LOGIN1 %282%29.png" />
     <Content Include="Resources\loginBKI.png" />
     <Content Include="Resources\maintainAll.png" />
     <Content Include="Resources\maintainToTheDay.png" />

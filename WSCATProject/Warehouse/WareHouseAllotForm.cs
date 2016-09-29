@@ -176,7 +176,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonshen_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
             //调拨单
@@ -257,10 +260,10 @@ namespace WSCATProject.Warehouse
             }
             //增加一条入库单和入库单详细数据
             object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
-           // this.textBoxid.Text = warehouseInResult.ToString();
             if (warehouseInResult != null)
             {
-                MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
+                MessageBox.Show("新增并保存调拨数据成功", "调拨单温馨提示");
+                InitForm();
             }
         }
 
@@ -272,7 +275,10 @@ namespace WSCATProject.Warehouse
         private void ToolStripButtonsave_Click(object sender, EventArgs e)
         {
             //非空验证
-            isNUllValidate();
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             //获得界面上的数据,准备传给base层新增数据
             WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
             //调拨单
@@ -357,6 +363,7 @@ namespace WSCATProject.Warehouse
             if (warehouseInResult != null)
             {
                 MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
+                this.toolStripButtonsave.Enabled = false;
             }
         }
 
@@ -394,17 +401,35 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 非空验证
         /// </summary>
-        private void isNUllValidate()
+        private bool isNUllValidate()
         {
-            //if (comboBoxEx1.Text.Trim() == null)
-            //{
-            //    MessageBox.Show("出库类别不能为空！");
-            //}
-            if (ltxtbSalsMan.Text.Trim() == null)
+            if (cbotype.Text.Trim() == null)
             {
-                MessageBox.Show("业务员不能为空！");
+                MessageBox.Show("出库类别不能为空！");
+                return false;
             }
-
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
+            {
+                MessageBox.Show("调出仓库不能为空！");
+                return false;
+            }
+            if (gr.Cells["gridColumnStockIn"].Value == null || gr.Cells["gridColumnStockIn"].Value.ToString() == "")
+            {
+                MessageBox.Show("调入仓库不能为空！");
+                return false;
+            }
+            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            {
+                MessageBox.Show("商品代码不能为空！");
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("调拨员不能为空！");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -606,15 +631,28 @@ namespace WSCATProject.Warehouse
         private void InitForm()
         {
             cbotype.Enabled = false;
+            cbotype.BackColor = Color.FromArgb(240, 240, 240);
             labtextboxTop6.ReadOnly = true;
+            labtextboxTop6.BackColor = Color.FromArgb(240, 240, 240);
             superGridControl1.PrimaryGrid.ReadOnly = true;
+            superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
             dateTimePicker1.Enabled = false;
             textBoxOddNumbers.ReadOnly = true;
             ltxtbSalsMan.ReadOnly = true;
+            ltxtbSalsMan.BackColor = Color.FromArgb(240, 240, 240);
             pictureBox5.Enabled = false;
             ltxtbMakeMan.ReadOnly = true;
+            ltxtbMakeMan.BackColor = Color.FromArgb(240, 240, 240);
             ltxtbShengHeMan.ReadOnly = true;
+            ltxtbShengHeMan.BackColor = Color.FromArgb(240, 240, 240);
+            this.pictureBox6.Parent = pictureBoxtitle;
             this.pictureBox6.Image = Properties.Resources.审核;
+            pictureBox6.Visible = true;
+            this.toolStripButtonshen.Enabled = false;
+            this.toolStripButtonsave.Enabled = false;
+            this.toolStripButtonnew.Enabled = false;
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
         }
         #endregion
 
