@@ -52,6 +52,7 @@
             this.gridColumnstockcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.picAdj = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAdj)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -87,7 +89,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.picAdj);
             this.panel1.Click += new System.EventHandler(this.panel6_Click);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.picAdj, 0);
             // 
             // labelTitle
             // 
@@ -654,6 +663,16 @@
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
             this.gridColumnmaterialcode.Visible = false;
             // 
+            // picAdj
+            // 
+            this.picAdj.BackColor = System.Drawing.Color.Transparent;
+            this.picAdj.Location = new System.Drawing.Point(618, 2);
+            this.picAdj.Name = "picAdj";
+            this.picAdj.Size = new System.Drawing.Size(66, 50);
+            this.picAdj.TabIndex = 46;
+            this.picAdj.TabStop = false;
+            this.picAdj.Visible = false;
+            // 
             // WareHouseAdjustPriceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -684,6 +703,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAdj)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -714,5 +734,6 @@
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
+        private System.Windows.Forms.PictureBox picAdj;
     }
 }
