@@ -34,11 +34,15 @@ namespace LogicLayer.Warehouse
             {
                 switch (fieldName)
                 {
+
                     case 0:
                         strWhere += string.Format("code='{0}'", fieldValue);
                         break;
-                    case 1:
-                        strWhere += string.Format("MainCode='{0}'", fieldValue);
+                    case 2:
+                        strWhere += string.Format("materialDaima like '%{0}%'", fieldValue);
+                        break;
+                    case 3:
+                        strWhere += string.Format("materialName like '%{0}%'", fieldValue);
                         break;
                 }
                 model.operationContent = "查询T_WarehouseDisassembly表的数据,条件为：where=" + strWhere;
