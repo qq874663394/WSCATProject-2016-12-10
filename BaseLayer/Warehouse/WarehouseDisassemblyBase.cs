@@ -174,7 +174,7 @@ namespace BaseLayer.Warehouse
 
                 SqlParameter[] parameters = {
                     new SqlParameter("@code", SqlDbType.NVarChar,-1)};
-                parameters[11].Value = code;
+                parameters[0].Value = code;
                 isflag = DbHelperSQL.Exists(strSql.ToString(), parameters);
             }
             catch (Exception ex)

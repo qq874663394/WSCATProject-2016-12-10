@@ -29,27 +29,35 @@
         private void InitializeComponent()
         {
             this.cbotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.superGridControl2 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmodel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumntiaoma = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumncangku = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnbarcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnunit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnremark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnstockCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.sup1material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.name = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.model = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.barcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnStockIn = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.unit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.number = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.price = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.money = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pictureBoxshenghe = new System.Windows.Forms.PictureBox();
+            this.stockInCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.code = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -459,19 +467,24 @@
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnname);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmodel);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntiaoma);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncangku);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnunit);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnnumber);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStockIn);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.sup1material);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.name);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.model);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.barcode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.unit);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.number);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.price);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.money);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.stockInCode);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.code);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 304);
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
             this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
             // resizablePanel1
             // 
@@ -492,11 +505,27 @@
             this.cbotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotype.FormattingEnabled = true;
             this.cbotype.ItemHeight = 15;
+            this.cbotype.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3});
             this.cbotype.Location = new System.Drawing.Point(399, 26);
             this.cbotype.Name = "cbotype";
             this.cbotype.Size = new System.Drawing.Size(162, 21);
             this.cbotype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbotype.TabIndex = 53;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "盘亏出库";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "费用类型科目";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "借出商品";
             // 
             // pictureBox9
             // 
@@ -517,19 +546,28 @@
             // 
             // 
             // 
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnStock);
             this.superGridControl2.PrimaryGrid.Columns.Add(this.material);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn2);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn3);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn4);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn5);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumn8);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnname);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnmodel);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnbarcode);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnunit);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnnumber);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControl2.PrimaryGrid.Columns.Add(this.gridColumnstockCode);
             this.superGridControl2.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl2.Size = new System.Drawing.Size(1202, 77);
             this.superGridControl2.TabIndex = 3;
             this.superGridControl2.Text = "superGridControl2";
             this.superGridControl2.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl2_BeginEdit);
+            this.superGridControl2.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl2_EditorValueChanged);
+            // 
+            // gridColumnStock
+            // 
+            this.gridColumnStock.HeaderText = "仓库";
+            this.gridColumnStock.Name = "gridColumnStock";
+            this.gridColumnStock.Width = 120;
             // 
             // material
             // 
@@ -537,55 +575,6 @@
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             this.material.Width = 140;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumn2.HeaderText = "商品名称";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Width = 140;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.HeaderText = "规格型号";
-            this.gridColumn3.Name = "gridColumn3";
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumn4.HeaderText = "条形码";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Width = 180;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.HeaderText = "仓库";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Width = 120;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.HeaderText = "单位";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Width = 80;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.HeaderText = "数量";
-            this.gridColumn7.Name = "gridColumn7";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumn8.HeaderText = "备注";
-            this.gridColumn8.Name = "gridColumn8";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumn1.HeaderText = "商品代码";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Width = 140;
             // 
             // gridColumnname
             // 
@@ -601,44 +590,26 @@
             this.gridColumnmodel.Name = "gridColumnmodel";
             this.gridColumnmodel.ReadOnly = true;
             // 
-            // gridColumntiaoma
+            // gridColumnbarcode
             // 
-            this.gridColumntiaoma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumntiaoma.HeaderText = "条形码";
-            this.gridColumntiaoma.Name = "gridColumntiaoma";
-            this.gridColumntiaoma.ReadOnly = true;
-            this.gridColumntiaoma.Width = 180;
-            // 
-            // gridColumncangku
-            // 
-            this.gridColumncangku.HeaderText = "仓库";
-            this.gridColumncangku.Name = "gridColumncangku";
-            this.gridColumncangku.Width = 120;
+            this.gridColumnbarcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.gridColumnbarcode.HeaderText = "条形码";
+            this.gridColumnbarcode.Name = "gridColumnbarcode";
+            this.gridColumnbarcode.ReadOnly = true;
+            this.gridColumnbarcode.Width = 180;
             // 
             // gridColumnunit
             // 
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
+            this.gridColumnunit.ReadOnly = true;
             this.gridColumnunit.Width = 80;
             // 
             // gridColumnnumber
             // 
-            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
-            // 
-            // gridColumnprice
-            // 
-            this.gridColumnprice.HeaderText = "单价";
-            this.gridColumnprice.Name = "gridColumnprice";
-            this.gridColumnprice.Visible = false;
-            // 
-            // gridColumnmoney
-            // 
-            this.gridColumnmoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumnmoney.HeaderText = "金额";
-            this.gridColumnmoney.Name = "gridColumnmoney";
-            this.gridColumnmoney.Visible = false;
+            this.gridColumnnumber.ReadOnly = true;
             // 
             // gridColumnremark
             // 
@@ -646,6 +617,101 @@
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             this.gridColumnremark.ReadOnly = true;
+            // 
+            // gridColumncode
+            // 
+            this.gridColumncode.HeaderText = "商品code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.ReadOnly = true;
+            this.gridColumncode.Visible = false;
+            // 
+            // gridColumnstockCode
+            // 
+            this.gridColumnstockCode.HeaderText = "仓库code";
+            this.gridColumnstockCode.Name = "gridColumnstockCode";
+            this.gridColumnstockCode.ReadOnly = true;
+            this.gridColumnstockCode.Visible = false;
+            // 
+            // sup1material
+            // 
+            this.sup1material.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.sup1material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.sup1material.HeaderText = "商品代码";
+            this.sup1material.Name = "sup1material";
+            this.sup1material.Width = 140;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.name.HeaderText = "商品名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 140;
+            // 
+            // model
+            // 
+            this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.model.HeaderText = "规格型号";
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            // 
+            // barcode
+            // 
+            this.barcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.barcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.barcode.HeaderText = "条形码";
+            this.barcode.Name = "barcode";
+            this.barcode.ReadOnly = true;
+            this.barcode.Width = 180;
+            // 
+            // gridColumnStockIn
+            // 
+            this.gridColumnStockIn.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.gridColumnStockIn.HeaderText = "仓库";
+            this.gridColumnStockIn.Name = "gridColumnStockIn";
+            this.gridColumnStockIn.Width = 120;
+            // 
+            // unit
+            // 
+            this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.unit.HeaderText = "单位";
+            this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
+            this.unit.Width = 80;
+            // 
+            // number
+            // 
+            this.number.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.number.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.number.HeaderText = "数量";
+            this.number.Name = "number";
+            // 
+            // price
+            // 
+            this.price.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.price.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.price.HeaderText = "单价";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Visible = false;
+            // 
+            // money
+            // 
+            this.money.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.money.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.money.HeaderText = "金额";
+            this.money.Name = "money";
+            this.money.ReadOnly = true;
+            this.money.Visible = false;
+            // 
+            // remark
+            // 
+            this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.remark.HeaderText = "备注";
+            this.remark.Name = "remark";
+            this.remark.ReadOnly = true;
             // 
             // pictureBoxshenghe
             // 
@@ -656,6 +722,30 @@
             this.pictureBoxshenghe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxshenghe.TabIndex = 47;
             this.pictureBoxshenghe.TabStop = false;
+            this.pictureBoxshenghe.Visible = false;
+            // 
+            // stockInCode
+            // 
+            this.stockInCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.stockInCode.HeaderText = "仓库code";
+            this.stockInCode.Name = "stockInCode";
+            this.stockInCode.ReadOnly = true;
+            this.stockInCode.Visible = false;
+            // 
+            // code
+            // 
+            this.code.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.code.HeaderText = "商品code";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            this.code.Visible = false;
+            // 
+            // gridColumnid
+            // 
+            this.gridColumnid.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.ReadOnly = true;
+            this.gridColumnid.Visible = false;
             // 
             // WareHouseDisassemblyForm
             // 
@@ -699,23 +789,31 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbotype;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumntiaoma;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncangku;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnbarcode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnunit;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnnumber;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmoney;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnremark;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn sup1material;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn name;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn model;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn barcode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStockIn;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn unit;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn number;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn price;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn money;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
         private System.Windows.Forms.PictureBox pictureBoxshenghe;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnremark;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnstockCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn stockInCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn code;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
     }
 }

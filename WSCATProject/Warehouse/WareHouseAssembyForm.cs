@@ -931,6 +931,7 @@ namespace WSCATProject.Warehouse
         }
 
         #region 表格模糊查询
+
         private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
@@ -972,7 +973,6 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
             }
         }
-
 
         #endregion
 
