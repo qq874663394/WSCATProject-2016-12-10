@@ -161,9 +161,9 @@
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop6.Location = new System.Drawing.Point(91, 28);
-            this.labtextboxTop6.MaxLength = 3427;
+            this.labtextboxTop6.MaxLength = 999999999;
             this.labtextboxTop6.Size = new System.Drawing.Size(162, 16);
-            this.labtextboxTop6.Text = "0.0";
+            this.labtextboxTop6.Text = "0.00";
             this.labtextboxTop6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.labtextboxTop6_KeyPress);
             // 

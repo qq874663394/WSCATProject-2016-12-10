@@ -22,6 +22,7 @@ namespace WSCATProject.Warehouse
         {
             InitializeComponent();
         }
+
         #region 数据字段
         /// <summary>
         /// 所有拆卸员
