@@ -15,7 +15,7 @@ namespace InterfaceLayer.Warehouse
         /// <summary>
         /// 复合查询
         /// </summary>
-        /// <param name="fieldName">0:code,1:mainCode,2:materialDaima,3:materialName</param>
+        /// <param name="fieldName">0:code,2:materialDaima,3:materialName</param>
         /// <param name="fieldValue"></param>
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
