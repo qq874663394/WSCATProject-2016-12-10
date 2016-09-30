@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayer.Warehouse
 {
-    public class WarehouseAssemblyInterface
+    public class WarehouseDisassemblyInterface
     {
-        WarehouseAssemblyLogic _dal = new WarehouseAssemblyLogic();
+        WarehouseDisassemblyLogic _dal = new WarehouseDisassemblyLogic();
         /// <summary>
         /// 复合查询
         /// </summary>
-        /// <param name="fieldName">0:code,2:materialDaima,3:materialName</param>
+        /// <param name="fieldName">0:code,1:mainCode,2:materialDaima,3:materialName</param>
         /// <param name="fieldValue"></param>
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
@@ -28,7 +28,7 @@ namespace InterfaceLayer.Warehouse
         /// <param name="model"></param>
         /// <param name="listModel"></param>
         /// <returns></returns>
-        public object AddAndModify(WarehouseAssembly model, List<WarehouseAssemblyDetail> listModel)
+        public object AddAndModify(WarehouseDisassembly model, List<WarehouseDisassemblyDetail> listModel)
         {
             return _dal.AddAndModify(model, listModel);
         }

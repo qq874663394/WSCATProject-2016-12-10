@@ -56,6 +56,7 @@
     <Compile Include="Warehouse\WarehouseAdjustPriceLogic.cs" />
     <Compile Include="Warehouse\WarehouseAllotLogic.cs" />
     <Compile Include="Warehouse\WarehouseAssemblyLogic.cs" />
+    <Compile Include="Warehouse\WarehouseDisassemblyLogic.cs" />
     <Compile Include="Warehouse\WarehouseInDetailLogic.cs" />
     <Compile Include="Warehouse\WarehouseInLogic.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetailLogic.cs" />

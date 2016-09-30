@@ -59,6 +59,7 @@
     <Compile Include="Warehouse\WarehouseAdjustPriceInterface.cs" />
     <Compile Include="Warehouse\WarehouseAllotInterface.cs" />
     <Compile Include="Warehouse\WarehouseAssemblyInterface.cs" />
+    <Compile Include="Warehouse\WarehouseDisassemblyInterface.cs" />
     <Compile Include="Warehouse\WarehouseInDetailInterface.cs" />
     <Compile Include="Warehouse\WarehouseInInterface.cs" />
     <Compile Include="Warehouse\WarehouseInventoryDetailInterface.cs" />
