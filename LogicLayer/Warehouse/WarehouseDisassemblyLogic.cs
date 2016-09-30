@@ -12,10 +12,10 @@ using UpdateManagerLayer;
 
 namespace LogicLayer.Warehouse
 {
-    public class WarehouseAssemblyLogic
+    public class WarehouseDisassemblyLogic
     {
         LogBase lb = new LogBase();
-        WarehouseAssemblyBase dal = new WarehouseAssemblyBase();
+        WarehouseDisassemblyBase dal = new WarehouseDisassemblyBase();
         WarehouseUpdataManager warehouseUpdate = new WarehouseUpdataManager();
         public DataTable GetList(int fieldName, string fieldValue)
         {
@@ -26,9 +26,9 @@ namespace LogicLayer.Warehouse
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseAssembly",
+                operationTable = "T_WarehouseDisassembly",
                 operationTime = DateTime.Now,
-                objective = "查询拆卸信息"
+                objective = "查询组装信息"
             };
             try
             {
@@ -37,14 +37,11 @@ namespace LogicLayer.Warehouse
                     case 0:
                         strWhere += string.Format("code='{0}'", fieldValue);
                         break;
-                    case 2:
-                        strWhere += string.Format("materialDaima like '%{0}%'", fieldValue);
-                        break;
-                    case 3:
-                        strWhere += string.Format("materialName like '%{0}%'", fieldValue);
+                    case 1:
+                        strWhere += string.Format("MainCode='{0}'", fieldValue);
                         break;
                 }
-                model.operationContent = "查询T_WarehouseAssembly表的数据,条件为：where=" + strWhere;
+                model.operationContent = "查询T_WarehouseDisassembly表的数据,条件为：where=" + strWhere;
                 dt = dal.GetList(strWhere);
                 model.result = 1;
             }
@@ -59,7 +56,7 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public object AddAndModify(WarehouseAssembly model, List<WarehouseAssemblyDetail> listModel)
+        public object AddAndModify(WarehouseDisassembly model, List<WarehouseDisassemblyDetail> listModel)
         {
             object result = null;
             LogBase lb = new LogBase();
@@ -68,7 +65,7 @@ namespace LogicLayer.Warehouse
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_WarehouseAssembly",
+                operationTable = "T_WarehouseDisassembly",
                 operationTime = DateTime.Now
             };
             try
@@ -80,14 +77,14 @@ namespace LogicLayer.Warehouse
                 if (dal.Exists(model.code) == false)
                 {
                     result = dal.Add(model, listModel);
-                    LogModel.objective = "新增拆卸信息";
-                    LogModel.operationContent = "新增T_WarehouseAssembly表的数据,主键为：code=" + model.code;
+                    LogModel.objective = "新增组装信息";
+                    LogModel.operationContent = "新增T_WarehouseDisassembly表的数据,主键为：code=" + model.code;
                 }
                 else
                 {
                     result = dal.Modify(model, listModel);
-                    LogModel.objective = "修改拆卸信息";
-                    LogModel.operationContent = "修改T_WarehouseAssembly表的数据,条件为：code=" + model.code;
+                    LogModel.objective = "修改组装信息";
+                    LogModel.operationContent = "修改T_WarehouseDisassembly表的数据,条件为：code=" + model.code;
                 }
                 if (result == null || result == DBNull.Value)
                 {
