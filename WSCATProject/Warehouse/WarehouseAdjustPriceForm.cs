@@ -29,7 +29,7 @@ namespace WSCATProject.Warehouse
         EmpolyeeInterface employee = new EmpolyeeInterface();
         StorageInterface storage = new StorageInterface();
         WarehouseMainInterface waremain = new WarehouseMainInterface();
-        WarehouseAdjustPriceInterface warehouseAdjust = new WarehouseAdjustPriceInterface();
+        WarehouseAdjustPriceInterface warehouseAdjust = new WarehouseAdjustPriceInterface();       
         #endregion
 
         #region  数据字段
