@@ -28,29 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(307, 221);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "登录门店：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(379, 219);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(124, 20);
+            this.comboBox1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(307, 254);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "登 录 名 ：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(379, 252);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(124, 21);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(307, 286);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "密      码：";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(379, 284);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(124, 21);
+            this.textBox2.TabIndex = 6;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogin.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnLogin.Location = new System.Drawing.Point(310, 317);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(65, 25);
+            this.btnLogin.TabIndex = 7;
+            this.btnLogin.Text = "登录";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnClose.Location = new System.Drawing.Point(438, 317);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(65, 25);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "退出";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Image = global::WSCATProject.Properties.Resources._5;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(809, 503);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
             // LoginForm
             // 
             this.ClientSize = new System.Drawing.Size(809, 503);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -58,5 +157,13 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnClose;
     }
 }

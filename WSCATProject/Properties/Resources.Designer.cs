@@ -63,6 +63,16 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _5 {
+            get {
+                object obj = ResourceManager.GetObject("_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap _new {
             get {
                 object obj = ResourceManager.GetObject("_new", resourceCulture);
@@ -693,16 +703,6 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap LOGIN1__2_ {
-            get {
-                object obj = ResourceManager.GetObject("LOGIN1__2_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap loginBKI {
             get {
                 object obj = ResourceManager.GetObject("loginBKI", resourceCulture);
@@ -1296,16 +1296,6 @@ namespace WSCATProject.Properties {
         internal static System.Drawing.Bitmap tianjia副本 {
             get {
                 object obj = ResourceManager.GetObject("tianjia副本", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap tiaoma {
-            get {
-                object obj = ResourceManager.GetObject("tiaoma", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
