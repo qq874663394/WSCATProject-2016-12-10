@@ -272,6 +272,14 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
+            this.sideBarPanelItemSto = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.buttonItem27 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem28 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem29 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem30 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem31 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem32 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem33 = new DevComponents.DotNetBar.ButtonItem();
             this.sideBarPanelItem1 = new DevComponents.DotNetBar.SideBarPanelItem();
             this.sideBarPanelItemRe = new DevComponents.DotNetBar.SideBarPanelItem();
             this.buttonItem14 = new DevComponents.DotNetBar.ButtonItem();
@@ -287,14 +295,6 @@
             this.buttonItem23 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem24 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem25 = new DevComponents.DotNetBar.ButtonItem();
-            this.sideBarPanelItemSto = new DevComponents.DotNetBar.SideBarPanelItem();
-            this.buttonItem27 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem28 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem29 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem30 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem31 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem32 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem33 = new DevComponents.DotNetBar.ButtonItem();
             this.sideBarPanelItemFin = new DevComponents.DotNetBar.SideBarPanelItem();
             this.buttonItem34 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem35 = new DevComponents.DotNetBar.ButtonItem();
@@ -1369,14 +1369,14 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
             this.superTabControl1.Controls.Add(this.superTabControlPanel5);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
             this.superTabControl1.Name = "superTabControl1";
@@ -1686,7 +1686,7 @@
             // 
             this.pbWarehomeIn.BackgroundImage = global::WSCATProject.Properties.Resources.warehomeIn;
             this.pbWarehomeIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbWarehomeIn.Location = new System.Drawing.Point(281, 66);
+            this.pbWarehomeIn.Location = new System.Drawing.Point(154, 27);
             this.pbWarehomeIn.Name = "pbWarehomeIn";
             this.pbWarehomeIn.Size = new System.Drawing.Size(74, 85);
             this.pbWarehomeIn.TabIndex = 17;
@@ -3138,7 +3138,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(870, 470);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(870, 468);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItemRe;
             // 
@@ -3151,7 +3151,7 @@
             this.maintainControlBottomPanel.Controls.Add(this.btnMaintainToday);
             this.maintainControlBottomPanel.Controls.Add(this.btnMaintainAll);
             this.maintainControlBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.maintainControlBottomPanel.Location = new System.Drawing.Point(0, 383);
+            this.maintainControlBottomPanel.Location = new System.Drawing.Point(0, 381);
             this.maintainControlBottomPanel.Name = "maintainControlBottomPanel";
             this.maintainControlBottomPanel.Size = new System.Drawing.Size(870, 87);
             this.maintainControlBottomPanel.TabIndex = 10;
@@ -3252,9 +3252,8 @@
             this.panel4.Controls.Add(this.pictureBox7);
             this.panel4.Controls.Add(this.pictureBox6);
             this.panel4.Controls.Add(this.labelX1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.ForeColor = System.Drawing.Color.Red;
-            this.panel4.Location = new System.Drawing.Point(129, 250);
+            this.panel4.Location = new System.Drawing.Point(129, 224);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(870, 26);
             this.panel4.TabIndex = 17;
@@ -3381,6 +3380,71 @@
             this.sideBar1.Text = "sideBar1";
             this.sideBar1.Click += new System.EventHandler(this.superTabItemOut_Click);
             // 
+            // sideBarPanelItemSto
+            // 
+            this.sideBarPanelItemSto.FontBold = true;
+            this.sideBarPanelItemSto.Image = global::WSCATProject.Properties.Resources.仓库小;
+            this.sideBarPanelItemSto.Name = "sideBarPanelItemSto";
+            this.sideBarPanelItemSto.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem27,
+            this.buttonItem28,
+            this.buttonItem29,
+            this.buttonItem30,
+            this.buttonItem31,
+            this.buttonItem32,
+            this.buttonItem33});
+            this.sideBarPanelItemSto.Text = "仓库系统";
+            this.sideBarPanelItemSto.Click += new System.EventHandler(this.sideBarPanelItemSto_Click);
+            // 
+            // buttonItem27
+            // 
+            this.buttonItem27.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem27.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem27.Name = "buttonItem27";
+            this.buttonItem27.Text = "物料入库单";
+            // 
+            // buttonItem28
+            // 
+            this.buttonItem28.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem28.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem28.Name = "buttonItem28";
+            this.buttonItem28.Text = "物料出库单";
+            // 
+            // buttonItem29
+            // 
+            this.buttonItem29.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem29.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem29.Name = "buttonItem29";
+            this.buttonItem29.Text = "物料盘点";
+            // 
+            // buttonItem30
+            // 
+            this.buttonItem30.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem30.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem30.Name = "buttonItem30";
+            this.buttonItem30.Text = "物料报损";
+            // 
+            // buttonItem31
+            // 
+            this.buttonItem31.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem31.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem31.Name = "buttonItem31";
+            this.buttonItem31.Text = "物料调价";
+            // 
+            // buttonItem32
+            // 
+            this.buttonItem32.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem32.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem32.Name = "buttonItem32";
+            this.buttonItem32.Text = "物料报损";
+            // 
+            // buttonItem33
+            // 
+            this.buttonItem33.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.buttonItem33.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem33.Name = "buttonItem33";
+            this.buttonItem33.Text = "仓库领料";
+            // 
             // sideBarPanelItem1
             // 
             this.sideBarPanelItem1.FontBold = true;
@@ -3503,71 +3567,6 @@
             this.buttonItem25.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.buttonItem25.Name = "buttonItem25";
             this.buttonItem25.Text = "销售退货";
-            // 
-            // sideBarPanelItemSto
-            // 
-            this.sideBarPanelItemSto.FontBold = true;
-            this.sideBarPanelItemSto.Image = global::WSCATProject.Properties.Resources.仓库小;
-            this.sideBarPanelItemSto.Name = "sideBarPanelItemSto";
-            this.sideBarPanelItemSto.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem27,
-            this.buttonItem28,
-            this.buttonItem29,
-            this.buttonItem30,
-            this.buttonItem31,
-            this.buttonItem32,
-            this.buttonItem33});
-            this.sideBarPanelItemSto.Text = "仓库系统";
-            this.sideBarPanelItemSto.Click += new System.EventHandler(this.sideBarPanelItemSto_Click);
-            // 
-            // buttonItem27
-            // 
-            this.buttonItem27.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem27.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem27.Name = "buttonItem27";
-            this.buttonItem27.Text = "物料入库单";
-            // 
-            // buttonItem28
-            // 
-            this.buttonItem28.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem28.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem28.Name = "buttonItem28";
-            this.buttonItem28.Text = "物料出库单";
-            // 
-            // buttonItem29
-            // 
-            this.buttonItem29.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem29.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem29.Name = "buttonItem29";
-            this.buttonItem29.Text = "物料盘点";
-            // 
-            // buttonItem30
-            // 
-            this.buttonItem30.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem30.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem30.Name = "buttonItem30";
-            this.buttonItem30.Text = "物料报损";
-            // 
-            // buttonItem31
-            // 
-            this.buttonItem31.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem31.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem31.Name = "buttonItem31";
-            this.buttonItem31.Text = "物料调价";
-            // 
-            // buttonItem32
-            // 
-            this.buttonItem32.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem32.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem32.Name = "buttonItem32";
-            this.buttonItem32.Text = "物料报损";
-            // 
-            // buttonItem33
-            // 
-            this.buttonItem33.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.buttonItem33.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem33.Name = "buttonItem33";
-            this.buttonItem33.Text = "仓库领料";
             // 
             // sideBarPanelItemFin
             // 

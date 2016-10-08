@@ -184,7 +184,6 @@
             // 
             // toolStripButton6
             // 
-            this.toolStripButton6.Image = global::WSCATProject.Properties.Resources.tiaoma;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(52, 22);

@@ -78,3 +78,13 @@ E:\619项目\2016年9月14日085327\BaseLayer\bin\Debug\Model.pdb
 E:\619项目\2016年9月14日085327\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache
 E:\619项目\2016年9月14日085327\BaseLayer\obj\Debug\BaseLayer.dll
 E:\619项目\2016年9月14日085327\BaseLayer\obj\Debug\BaseLayer.pdb
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\BaseLayer.dll
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\BaseLayer.pdb
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\HelperUtility.dll
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\Model.dll
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\NPOI.dll
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\HelperUtility.pdb
+E:\619项目\2016年10月8日090841\BaseLayer\bin\Debug\Model.pdb
+E:\619项目\2016年10月8日090841\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache
+E:\619项目\2016年10月8日090841\BaseLayer\obj\Debug\BaseLayer.dll
+E:\619项目\2016年10月8日090841\BaseLayer\obj\Debug\BaseLayer.pdb
