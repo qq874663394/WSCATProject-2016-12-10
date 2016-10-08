@@ -52,7 +52,7 @@ namespace WSCATProject.Warehouse
         /// <summary>
         /// 保存商品Code
         /// </summary>
-        private string _MaterialCode = "";
+        private string B = "";
         /// <summary>
         /// 所有仓库
         /// </summary>
@@ -768,7 +768,7 @@ namespace WSCATProject.Warehouse
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (_StorageCode!="")
                 {
