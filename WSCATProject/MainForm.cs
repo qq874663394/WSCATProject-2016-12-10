@@ -1746,5 +1746,10 @@ namespace WSCATProject
                 MessageBox.Show("请先选中要查看的数据所在行");
             }
         }
+
+        private void buttonItem27_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
