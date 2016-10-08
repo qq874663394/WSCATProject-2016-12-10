@@ -342,6 +342,7 @@
     <Content Include="Resources\cangkuxinxi.png" />
     <Content Include="Resources\cangkuxitong.png" />
     <None Include="Resources\caozuo.png" />
+    <None Include="Resources\chaixie.png" />
     <Content Include="Resources\changePassword.png" />
     <Content Include="Resources\checkMore.png" />
     <Content Include="Resources\clientData.png" />
@@ -412,6 +413,8 @@
     <Content Include="Resources\outUpdate.png" />
     <Content Include="Resources\pandian.PNG" />
     <None Include="Resources\Paste.png" />
+    <None Include="Resources\panyin.png" />
+    <None Include="Resources\pankui.png" />
     <Content Include="Resources\payment.png" />
     <None Include="Resources\red.PNG" />
     <None Include="Resources\red.jpg" />
@@ -430,6 +433,7 @@
     <None Include="Resources\shanchu副本.png" />
     <None Include="Resources\shenghe.png" />
     <None Include="Resources\shanchu.png" />
+    <None Include="Resources\shangjiantuo.png" />
     <Content Include="Resources\shoukuan.png" />
     <None Include="Resources\shuaxin.PNG" />
     <None Include="Resources\small.PNG" />
@@ -466,6 +470,7 @@
     <Content Include="Resources\warehomeOut.png" />
     <Content Include="Resources\warehomeShift.png" />
     <Content Include="Resources\wuliuxinxi.png" />
+    <None Include="Resources\xiajiantuo.png" />
     <Content Include="Resources\xiaoshou.png" />
     <Content Include="Resources\xitongweihu.png" />
     <None Include="Resources\yellow.PNG" />
@@ -475,6 +480,7 @@
     <Content Include="Resources\zijinzhanghu.png" />
     <None Include="Resources\zuidahua1.png" />
     <None Include="Resources\zuidahua.jpg" />
+    <None Include="Resources\zuzhuang.png" />
     <Content Include="Resources\人事大.png" />
     <Content Include="Resources\人事小.png" />
     <Content Include="Resources\仓库大.png" />

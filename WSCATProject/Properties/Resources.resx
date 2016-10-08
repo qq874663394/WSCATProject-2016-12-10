@@ -637,4 +637,22 @@
   <data name="_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="chaixie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chaixie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pankui" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pankui.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="panyin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panyin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shangjiantuo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shangjiantuo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xiajiantuo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xiajiantuo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zuzhuang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zuzhuang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
