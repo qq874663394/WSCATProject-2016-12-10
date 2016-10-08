@@ -81,5 +81,26 @@ namespace BaseLayer.Base
             }
             return ds.Tables[0];
         }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool Exists(string name, string pwd)
+        {
+            bool isflag = false;
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_BaseEmpolyee where name='{0}' and password='{1}'", name, pwd);
+                isflag = DbHelperSQL.Exists(sql);
+            }
+            catch (Exception ex)
+            {
+                isflag = false;
+                throw ex;
+            }
+            return false;
+        }
     }
 }

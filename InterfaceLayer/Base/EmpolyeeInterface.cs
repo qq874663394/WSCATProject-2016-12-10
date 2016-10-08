@@ -23,7 +23,11 @@ namespace InterfaceLayer.Base
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {
-            return el.GetList(fieldName,fieldValue);
+            return el.GetList(fieldName, fieldValue);
+        }
+        public bool Exists(string name, string pwd)
+        {
+            return el.Exists(name, pwd);
         }
     }
 }

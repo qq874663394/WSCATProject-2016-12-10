@@ -92,5 +92,45 @@ namespace LogicLayer.Base
             }
             return dt;
         }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string name, string pwd)
+        {
+            bool result = false;
+            EmpolyeeBase EmpolyeeBase = new EmpolyeeBase();
+            LogBase lb = new LogBase();
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseEmpolyee",
+                operationTime = DateTime.Now,
+                objective = "判断入库单是否存在",
+                operationContent = "查询T_BaseEmpolyee表的数据是否存在,条件code为:" + name
+            };
+            try
+            {
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    throw new Exception("-2");
+                }
+                result = EmpolyeeBase.Exists(name, pwd);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
+        }
     }
 }
