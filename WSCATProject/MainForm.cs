@@ -1518,7 +1518,7 @@ namespace WSCATProject
             //sle.SelectForm = "出库开单";
             //sle.ShowDialog();
             WareHouseOutMainForm warehouseout = new WareHouseOutMainForm();
-            warehouseout.ShowDialog();
+            warehouseout.Show();
         }
         /// <summary>
         /// 其他收货单点击事件
@@ -1531,7 +1531,7 @@ namespace WSCATProject
             //sel.SelectForm = "入库开单";
             //sel.ShowDialog();
             Warehouse.WareHouseInMain warein = new Warehouse.WareHouseInMain();
-            warein.ShowDialog();           
+            warein.Show();           
         }
         /// <summary>
         /// 盘点单的事件
@@ -1540,16 +1540,18 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeClearing_Click_1(object sender, EventArgs e)
         {
-
+            WareHouseInventoryForm warehouseinv = new Warehouse.WareHouseInventoryForm();
+            warehouseinv.Show();
         }
         /// <summary>
-        /// 报损单
+        /// 组装单
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void pbWarehomeDamage_Click_1(object sender, EventArgs e)
         {
-
+            WareHouseAssembyForm warehouseass = new WareHouseAssembyForm();
+            warehouseass.Show();
         }
         /// <summary>
         /// 调价单
@@ -1558,7 +1560,8 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeAdjust_Click_1(object sender, EventArgs e)
         {
-
+            WareHouseAdjustPriceForm warehouseAdj = new WareHouseAdjustPriceForm();
+            warehouseAdj.Show();
         }
         /// <summary>
         /// 调拨单
@@ -1567,10 +1570,11 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeChange_Click_1(object sender, EventArgs e)
         {
-
+            WareHouseAllotForm warehouseall = new WareHouseAllotForm();
+            warehouseall.Show();
         }
         /// <summary>
-        /// 领料单
+        /// 盘盈单
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1740,6 +1744,16 @@ namespace WSCATProject
             {
                 MessageBox.Show("请先选中要查看的数据所在行");
             }
+        }
+        /// <summary>
+        /// 拆卸单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxdiaassembly_Click(object sender, EventArgs e)
+        {
+            WareHouseDisassemblyForm warehousedis = new Warehouse.WareHouseDisassemblyForm();
+            warehousedis.Show();
         }
     }
 }
