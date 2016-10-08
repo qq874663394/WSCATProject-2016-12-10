@@ -271,6 +271,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.microChartItem1 = new DevComponents.DotNetBar.MicroChartItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
             this.sideBarPanelItemSto = new DevComponents.DotNetBar.SideBarPanelItem();
@@ -1687,7 +1688,6 @@
             this.panel12.Controls.Add(this.pbWarehomeAdjust);
             this.panel12.Controls.Add(this.pbWarehomeClearing);
             this.panel12.Controls.Add(this.pbWarehomeChange);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(0, 0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(745, 381);
@@ -3355,6 +3355,10 @@
             this.labelX1.Size = new System.Drawing.Size(211, 23);
             this.labelX1.TabIndex = 0;
             // 
+            // microChartItem1
+            // 
+            this.microChartItem1.Name = "microChartItem1";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -4043,7 +4047,6 @@
             this.superTabControlPanel4.ResumeLayout(false);
             this.storageControlAllPanel.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxdiaassembly)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeDamage)).EndInit();
@@ -4439,6 +4442,8 @@
         private System.Windows.Forms.PictureBox pbWarehomeAdjust;
         private System.Windows.Forms.PictureBox pbWarehomeClearing;
         private System.Windows.Forms.PictureBox pbWarehomeChange;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private DevComponents.DotNetBar.MicroChartItem microChartItem1;
     }
 }
 
