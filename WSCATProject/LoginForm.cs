@@ -1,8 +1,10 @@
-﻿using System;
+﻿using InterfaceLayer.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,7 +19,7 @@ namespace WSCATProject
         {
             InitializeComponent();
         }
-
+        private string strFilePath = Application.StartupPath + "\\FileConfig.txt";//获取INI文件路径
         private void LoginForm_Load(object sender, EventArgs e)
         {
             #region 初始化窗体
@@ -38,6 +40,18 @@ namespace WSCATProject
             btnClose.FlatAppearance.BorderColor = btnClose.BackColor;
             btnClose.ForeColor = Color.White;
             #endregion
+
+            StreamReader st;
+            st = new StreamReader(strFilePath, Encoding.UTF8);//UTF8为编码
+            string strContent = st.ReadToEnd();
+            comboBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            strContent = strContent.Replace("\r\n", ",");
+            strContent = strContent.Replace("\n\r",",");
+            strContent = strContent.Remove(strContent.IndexOf(","), 1);
+            strContent = strContent.Remove(strContent.LastIndexOf(","), 1);
+            string[] strContentsps = strContent.Split(',');
+            comboBox2.AutoCompleteCustomSource.AddRange(strContentsps);
+            st.Close();
         }
 
         #region 设置窗体无边框可以拖动
@@ -68,6 +82,29 @@ namespace WSCATProject
         {
             this.Close();
             this.Dispose();
+        }
+        /// <summary>
+        /// 登录按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            EmpolyeeInterface EmpInter = new EmpolyeeInterface();
+            if (EmpInter.Exists(comboBox2.Text.Trim(), textBox2.Text)==false)
+            {
+                StreamWriter sw = new StreamWriter(strFilePath, true);//流写写入 new建取一个缓存区
+                sw.WriteLine(comboBox2.Text.Trim());
+                sw.Flush();
+                sw.Close();
+
+                MainForm mf = new MainForm();
+                mf.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("用户名或密码错误，请重新输入！");
+            }
         }
     }
 }
