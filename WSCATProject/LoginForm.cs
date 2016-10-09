@@ -1,4 +1,5 @@
-﻿using InterfaceLayer.Base;
+﻿using HelperUtility;
+using InterfaceLayer.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace WSCATProject
         {
             InitializeComponent();
         }
+        public string[] strContentsps;
         private string strFilePath = Application.StartupPath + "\\FileConfig.txt";//获取INI文件路径
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -39,21 +41,39 @@ namespace WSCATProject
             btnClose.BackColor = Color.FromArgb(74, 77, 110);
             btnClose.FlatAppearance.BorderColor = btnClose.BackColor;
             btnClose.ForeColor = Color.White;
-            comboBox1.SelectedIndex= 0;
-            comboBox2.SelectedIndex = 0;
             #endregion
 
+            if (File.Exists(strFilePath) == false)
+            {
+                MessageBox.Show("记录文件不存在");
+                return;
+            }
             StreamReader st;
+            string[] strContentspsTemp=null;
             st = new StreamReader(strFilePath, Encoding.UTF8);//UTF8为编码
             string strContent = st.ReadToEnd();
             comboBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
             strContent = strContent.Replace("\r\n", ",");
-            strContent = strContent.Replace("\n\r",",");
-            strContent = strContent.Remove(strContent.IndexOf(","), 1);
-            strContent = strContent.Remove(strContent.LastIndexOf(","), 1);
-            string[] strContentsps = strContent.Split(',');
-            comboBox2.AutoCompleteCustomSource.AddRange(strContentsps);
-            st.Close();
+            strContent = strContent.Replace("\n\r", ",");
+            try
+            {
+                strContent = strContent.Remove(strContent.IndexOf(","), 1);
+                strContent = strContent.Remove(strContent.LastIndexOf(","), 1);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                strContentsps = strContent.Split(',');
+                strContentspsTemp = strContentsps.Distinct().ToArray();
+
+                comboBox2.AutoCompleteCustomSource.AddRange(strContentspsTemp);
+                comboBox2.Items.AddRange(strContentspsTemp);
+                st.Dispose();
+                st.Close();
+            }
         }
 
         #region 设置窗体无边框可以拖动
@@ -92,22 +112,48 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            StreamWriter sw;
             EmpolyeeInterface EmpInter = new EmpolyeeInterface();
-            if (EmpInter.Exists(comboBox2.Text.Trim(), textBox2.Text)==false)
+            if (EmpInter.Exists(comboBox2.Text.Trim(), textBox2.Text) == true)
+                return;
+            sw = new StreamWriter(strFilePath, true);//流写写入 new建取一个缓存区
+            if (File.Exists(strFilePath) == false)
             {
-                StreamWriter sw = new StreamWriter(strFilePath, true);//流写写入 new建取一个缓存区
-                sw.WriteLine(comboBox2.Text.Trim());
+                sw = new StreamWriter(strFilePath, false);
+            }
+            try
+            {
+                if (strContentsps == null)
+                {
+                    sw.WriteLine(comboBox2.Text.Trim());    //写入
+                }
+                else
+                {
+                    for (int i = 0; i < strContentsps.Length - 1; i++)
+                    {
+                        if (strContentsps[i].Equals(comboBox2.Text.Trim()) == false && i == strContentsps.Length - 1)
+                        {
+                            sw.WriteLine(comboBox2.Text.Trim());    //写入
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
                 sw.Flush();
                 sw.Close();
+            }
 
-                MainForm mf = new MainForm();                   
-                mf.ShowDialog();
-    
-            }
-            else
-            {
-                MessageBox.Show("用户名或密码错误，请重新输入！");
-            }
+            LoginInfomation.getInstance().UserName = comboBox2.Text.Trim();
+            Close();
+            Dispose();
+            MainForm mf = new MainForm();
+            mf._ShowOrHide = false;
+            mf.Show();
         }
     }
 }

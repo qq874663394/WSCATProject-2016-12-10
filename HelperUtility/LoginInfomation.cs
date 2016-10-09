@@ -10,7 +10,7 @@ namespace HelperUtility
     {
         private static LoginInfomation instance = new LoginInfomation();
 
-        private LoginInfomation() { }
+        public LoginInfomation() { }
 
         public static LoginInfomation getInstance()
         {
