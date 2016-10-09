@@ -105,7 +105,9 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelTitle.Text = "组装单";
+            this.labelTitle.Location = new System.Drawing.Point(517, 5);
+            this.labelTitle.Size = new System.Drawing.Size(139, 30);
+            this.labelTitle.Text = "组   装   单";
             // 
             // panel2
             // 
@@ -675,7 +677,7 @@
             // pictureBoxshenghe
             // 
             this.pictureBoxshenghe.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxshenghe.Location = new System.Drawing.Point(643, 0);
+            this.pictureBoxshenghe.Location = new System.Drawing.Point(663, 0);
             this.pictureBoxshenghe.Name = "pictureBoxshenghe";
             this.pictureBoxshenghe.Size = new System.Drawing.Size(58, 61);
             this.pictureBoxshenghe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

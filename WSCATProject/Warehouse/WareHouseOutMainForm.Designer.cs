@@ -104,7 +104,9 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelTitle.Text = "出库单";
+            this.labelTitle.Location = new System.Drawing.Point(495, 5);
+            this.labelTitle.Size = new System.Drawing.Size(142, 30);
+            this.labelTitle.Text = "出   库   单";
             // 
             // panel2
             // 

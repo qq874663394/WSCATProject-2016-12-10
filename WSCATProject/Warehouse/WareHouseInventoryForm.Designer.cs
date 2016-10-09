@@ -101,7 +101,7 @@
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(210, 30);
             this.labelTitle.TabIndex = 3;
-            this.labelTitle.Text = "商品盘点表";
+            this.labelTitle.Text = "商  品  盘  点  表";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             // 

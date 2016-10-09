@@ -104,11 +104,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.cs" />
-    <Compile Include="Sales\SalesTicketForm.cs">
+    <Compile Include="Sales\SalesOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sales\SalesTicketForm.Designer.cs">
-      <DependentUpon>SalesTicketForm.cs</DependentUpon>
+    <Compile Include="Sales\SalesOrderForm.Designer.cs">
+      <DependentUpon>SalesOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScheduleForm.cs">
       <SubType>Form</SubType>
@@ -234,8 +234,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Sales\SalesTicketForm.resx">
-      <DependentUpon>SalesTicketForm.cs</DependentUpon>
+    <EmbeddedResource Include="Sales\SalesOrderForm.resx">
+      <DependentUpon>SalesOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
@@ -341,8 +341,6 @@
     <Content Include="Resources\banner.jpg" />
     <Content Include="Resources\banner.png" />
     <None Include="Resources\big.PNG" />
-    <None Include="Resources\black.png" />
-    <None Include="Resources\blue.png" />
     <Content Include="Resources\bottomBtnBackgroup.png" />
     <Content Include="Resources\btnRightBackgroup.png" />
     <Content Include="Resources\btn_enter.png" />
@@ -441,7 +439,6 @@
     <Content Include="Resources\reSelect.png" />
     <None Include="Resources\search.PNG" />
     <None Include="Resources\save.PNG" />
-    <None Include="Resources\sales.png" />
     <Content Include="Resources\setterManager.png" />
     <Content Include="Resources\sff.png" />
     <None Include="Resources\shanchu副本.png" />
@@ -483,7 +480,6 @@
     <Content Include="Resources\warehomeIn.png" />
     <Content Include="Resources\warehomeOut.png" />
     <Content Include="Resources\warehomeShift.png" />
-    <None Include="Resources\white.png" />
     <Content Include="Resources\wuliuxinxi.png" />
     <None Include="Resources\xiajiantuo.png" />
     <Content Include="Resources\xiaoshou.png" />

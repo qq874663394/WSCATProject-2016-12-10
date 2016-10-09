@@ -105,8 +105,9 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelTitle.Size = new System.Drawing.Size(97, 30);
-            this.labelTitle.Text = "调拨单";
+            this.labelTitle.Location = new System.Drawing.Point(503, 5);
+            this.labelTitle.Size = new System.Drawing.Size(135, 30);
+            this.labelTitle.Text = "调   拨   单";
             // 
             // panel2
             // 
@@ -705,7 +706,7 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Location = new System.Drawing.Point(624, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(654, 5);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(59, 56);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
