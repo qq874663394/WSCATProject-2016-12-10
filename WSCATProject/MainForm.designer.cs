@@ -108,6 +108,8 @@
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.storageControlAllPanel = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBoxdiaassembly = new System.Windows.Forms.PictureBox();
             this.pbWarehomeIn = new System.Windows.Forms.PictureBox();
             this.pbWarehomeOut = new System.Windows.Forms.PictureBox();
@@ -343,8 +345,6 @@
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
@@ -355,6 +355,8 @@
             this.superTabControlPanel4.SuspendLayout();
             this.storageControlAllPanel.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxdiaassembly)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeOut)).BeginInit();
@@ -434,8 +436,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // 菜单1ToolStripMenuItem
@@ -1376,8 +1376,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel8);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
@@ -1442,6 +1442,26 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(745, 381);
             this.panel12.TabIndex = 22;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = global::WSCATProject.Properties.Resources.arrows2;
+            this.pictureBox12.Location = new System.Drawing.Point(393, 150);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox12.TabIndex = 31;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::WSCATProject.Properties.Resources.arrows2;
+            this.pictureBox8.Location = new System.Drawing.Point(162, 150);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox8.TabIndex = 30;
+            this.pictureBox8.TabStop = false;
             // 
             // pictureBoxdiaassembly
             // 
@@ -1717,9 +1737,9 @@
             this.expandablePanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.expandablePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expandablePanel2.HideControlsWhenCollapsed = true;
-            this.expandablePanel2.Location = new System.Drawing.Point(0, 26);
+            this.expandablePanel2.Location = new System.Drawing.Point(0, 239);
             this.expandablePanel2.Name = "expandablePanel2";
-            this.expandablePanel2.Size = new System.Drawing.Size(745, 355);
+            this.expandablePanel2.Size = new System.Drawing.Size(745, 142);
             this.expandablePanel2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.expandablePanel2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1749,9 +1769,10 @@
             // 
             // 
             this.superGridControlhandl.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlhandl.Size = new System.Drawing.Size(745, 329);
+            this.superGridControlhandl.Size = new System.Drawing.Size(745, 116);
             this.superGridControlhandl.TabIndex = 4;
             this.superGridControlhandl.Text = "superGridControl2";
+            this.superGridControlhandl.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlhandl_CellDoubleClick);
             // 
             // expandablePanel1
             // 
@@ -1760,12 +1781,10 @@
             this.expandablePanel1.Controls.Add(this.superGridControlSetback);
             this.expandablePanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.expandablePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandablePanel1.Expanded = false;
-            this.expandablePanel1.ExpandedBounds = new System.Drawing.Rectangle(0, 0, 745, 239);
             this.expandablePanel1.HideControlsWhenCollapsed = true;
             this.expandablePanel1.Location = new System.Drawing.Point(0, 0);
             this.expandablePanel1.Name = "expandablePanel1";
-            this.expandablePanel1.Size = new System.Drawing.Size(745, 26);
+            this.expandablePanel1.Size = new System.Drawing.Size(745, 239);
             this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.expandablePanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -1794,7 +1813,7 @@
             // 
             // 
             this.superGridControlSetback.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlSetback.Size = new System.Drawing.Size(745, 0);
+            this.superGridControlSetback.Size = new System.Drawing.Size(745, 213);
             this.superGridControlSetback.TabIndex = 4;
             this.superGridControlSetback.Text = "superGridControl1";
             // 
@@ -4019,26 +4038,6 @@
             this.toolStripButton15.Size = new System.Drawing.Size(23, 37);
             this.toolStripButton15.Text = "toolStripButton15";
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::WSCATProject.Properties.Resources.arrows2;
-            this.pictureBox8.Location = new System.Drawing.Point(162, 150);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox8.TabIndex = 30;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Image = global::WSCATProject.Properties.Resources.arrows2;
-            this.pictureBox12.Location = new System.Drawing.Point(393, 150);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox12.TabIndex = 31;
-            this.pictureBox12.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4067,6 +4066,8 @@
             this.superTabControlPanel4.ResumeLayout(false);
             this.storageControlAllPanel.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxdiaassembly)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarehomeOut)).EndInit();
@@ -4154,8 +4155,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
 
         }

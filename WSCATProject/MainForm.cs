@@ -111,6 +111,7 @@ namespace WSCATProject
             BDStorage();
             this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
             superGridControlSetback.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+            superGridControlhandl.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
             superTabControl1.SelectedTab = superTabItem1;
             this.sideBarPanelItem1.Image = Properties.Resources.日志大;
             this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
@@ -1333,6 +1334,7 @@ namespace WSCATProject
             gc.Name = "code";
             gc.HeaderText = "单据编号";
             gc.Visible = true;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlSetback.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -1340,6 +1342,7 @@ namespace WSCATProject
             gc.Name = "defaultType";
             gc.HeaderText = "单据类型";
             gc.Visible = true;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlSetback.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -1347,6 +1350,7 @@ namespace WSCATProject
             gc.Name = "mainCode";
             gc.HeaderText = "采购/销售单号";
             gc.Visible = true;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlSetback.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -1354,6 +1358,7 @@ namespace WSCATProject
             gc.Name = "date";
             gc.HeaderText = "开单日期";
             gc.Visible = true;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlSetback.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -1368,6 +1373,7 @@ namespace WSCATProject
             gc.Name = "operation";
             gc.HeaderText = "开单人";
             gc.Visible = true;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlSetback.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -1375,6 +1381,7 @@ namespace WSCATProject
             gc.Name = "examine";
             gc.HeaderText = "审核人";
             gc.Visible = true;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlSetback.PrimaryGrid.Columns.Add(gc);
 
             DataTable dtin = ch.DataTableReCoding(warehousein.GetListToIn(1).Tables[0]);
@@ -1382,6 +1389,13 @@ namespace WSCATProject
             dtin.Merge(dtout);
             superGridControlSetback.PrimaryGrid.DataSource = dtin;
 
+            superGridControlSetback.PrimaryGrid.EnsureVisible();
+            GridItemsCollection cols = superGridControlSetback.PrimaryGrid.Rows;
+            foreach (GridRow item in cols)
+            {
+                //获取进度的行数
+                _Jindushu++;
+            }
             #endregion
             #region 待处理事件 查询未审核的
             GridColumn gc1 = null;
@@ -1390,6 +1404,7 @@ namespace WSCATProject
             gc1.Name = "code";
             gc1.HeaderText = "单据编号";
             gc1.Visible = true;
+            gc1.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
 
             gc1 = new GridColumn();
@@ -1397,6 +1412,7 @@ namespace WSCATProject
             gc1.Name = "defaultType";
             gc1.HeaderText = "单据类型";
             gc1.Visible = true;
+            gc1.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
 
             gc1 = new GridColumn();
@@ -1404,6 +1420,7 @@ namespace WSCATProject
             gc1.Name = "mainCode";
             gc1.HeaderText = "采购/销售单号";
             gc1.Visible = true;
+            gc1.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
 
             gc1 = new GridColumn();
@@ -1411,6 +1428,7 @@ namespace WSCATProject
             gc1.Name = "date";
             gc1.HeaderText = "开单日期";
             gc1.Visible = true;
+            gc1.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
 
             gc1 = new GridColumn();
@@ -1425,6 +1443,7 @@ namespace WSCATProject
             gc1.Name = "operation";
             gc1.HeaderText = "开单人";
             gc1.Visible = true;
+            gc1.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
 
             gc1 = new GridColumn();
@@ -1432,12 +1451,20 @@ namespace WSCATProject
             gc1.Name = "examine";
             gc1.HeaderText = "审核人";
             gc1.Visible = true;
+            gc1.AutoSizeMode = ColumnAutoSizeMode.Fill;
             superGridControlhandl.PrimaryGrid.Columns.Add(gc1);
 
             DataTable dt1 = ch.DataTableReCoding(warehousein.GetListToIn(0).Tables[0]);
             DataTable dt2 = ch.DataTableReCoding(warehouseout.GetListToOut(0).Tables[0]);
             dt1.Merge(dt2);
             superGridControlhandl.PrimaryGrid.DataSource = dt1;
+            superGridControlhandl.PrimaryGrid.EnsureVisible();
+            GridItemsCollection col = superGridControlhandl.PrimaryGrid.Rows;
+            foreach (GridRow item in col)
+            {
+                //获取进度的行数
+                _Daichuli++;
+            }
             #endregion
         }
         /// <summary>
@@ -1519,9 +1546,7 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeOut_Click_1(object sender, EventArgs e)
         {
-            //Buys.PayBuySelect sle = new Buys.PayBuySelect();
-            //sle.SelectForm = "出库开单";
-            //sle.ShowDialog();
+
             WareHouseOutMainForm warehouseout = new WareHouseOutMainForm();
             warehouseout.Show();
         }
@@ -1532,9 +1557,6 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void pbWarehomeIn_Click_1(object sender, EventArgs e)
         {
-            //Buys.PayBuySelect sel = new Buys.PayBuySelect();
-            //sel.SelectForm = "入库开单";
-            //sel.ShowDialog();
             Warehouse.WareHouseInMain warein = new Warehouse.WareHouseInMain();
             warein.Show();           
         }
@@ -1759,6 +1781,70 @@ namespace WSCATProject
         {
             WareHouseDisassemblyForm warehousedis = new Warehouse.WareHouseDisassemblyForm();
             warehousedis.Show();
+        }
+        /// <summary>
+        /// 待处理事项的双击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlhandl_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
+        {
+            if (superGridControlhandl.PrimaryGrid.GetSelectedRows() != null)
+            {
+                SelectedElementCollection cols = superGridControlhandl.PrimaryGrid.GetSelectedRows();
+                if (cols.Count > 0)
+                {
+                    GridRow rows = cols[0] as GridRow;
+                    string comtext = comboBoxEx1.Text;
+                    switch (comtext)
+                    {
+                        case "用户资料":
+                            break;
+                        case "权限分配":
+                            break;
+                        case "仓库资料":
+                            break;
+                        case "货品资料":
+                            break;
+                        case "供应商资料":
+                            break;
+                        case "物料信息":
+                            break;
+                        case "仓库系统":
+                            string shengh = rows.Cells["state"].Value.ToString();
+                            string type = rows.Cells["defaultType"].Value.ToString();
+                            if (type == "入库开单")
+                            {
+                           
+                            }
+                            if (type == "出库开单")
+                            {
+                              
+                            }
+                            break;
+                        case "销售系统":
+                            break;
+                        case "售后系统":
+                            break;
+                        case "采购系统":
+                            break;
+                        case "财务系统":
+                            break;
+                        case "考勤系统":
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择要审核的数据行！");
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先选中要查看的数据所在行");
+            }
         }
     }
 }

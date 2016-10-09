@@ -39,6 +39,8 @@ namespace WSCATProject
             btnClose.BackColor = Color.FromArgb(74, 77, 110);
             btnClose.FlatAppearance.BorderColor = btnClose.BackColor;
             btnClose.ForeColor = Color.White;
+            comboBox1.SelectedIndex= 0;
+            comboBox2.SelectedIndex = 0;
             #endregion
 
             StreamReader st;
@@ -100,6 +102,7 @@ namespace WSCATProject
 
                 MainForm mf = new MainForm();
                 mf.ShowDialog();
+    
             }
             else
             {
