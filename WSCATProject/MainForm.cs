@@ -32,6 +32,8 @@ namespace WSCATProject
 
         private int _Jindushu;//进度条数
         private int _Daichuli;//待处理的条数
+
+        public bool _ShowOrHide = false;
         WarehouseInInterface warehousein = new WarehouseInInterface();
         WarehouseOutInterface warehouseout = new WarehouseOutInterface();
         CodingHelper ch = new CodingHelper();
@@ -91,22 +93,19 @@ namespace WSCATProject
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoginInfomation loginInf = LoginInfomation.getInstance();
+            if (_ShowOrHide == false)
+            {
+                if (string.IsNullOrWhiteSpace(loginInf.UserName))
+                {
+                    Hide();
+                    LoginForm lf = new LoginForm();
+                    lf.ShowDialog();
+                    _ShowOrHide = true;
+                }
+            }
+            List<string> Writ = new List<string>();
 
-            //LoginForm lf = new LoginForm();
-            //lf.ShowDialog();
-            //LoginInfomation loginInf = LoginInfomation.getInstance();
-            //List<string> Writ = new List<string>();
-            ////写入权限
-            //foreach (var writ in loginInf.WritePermission)
-            //{
-            //    Writ.Add(writ);
-            //}
-            //this.comboBoxEx1.DataSource = Writ;
-
-            //if (string.IsNullOrWhiteSpace(loginInf.UserName))
-            //{
-            //    Close();
-            //}
             //现在没有登录所以没有权限，就显示仓库模块的东西
             BDStorage();
             this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
@@ -1531,7 +1530,7 @@ namespace WSCATProject
             //sel.SelectForm = "入库开单";
             //sel.ShowDialog();
             Warehouse.WareHouseInMain warein = new Warehouse.WareHouseInMain();
-            warein.ShowDialog();           
+            warein.ShowDialog();
         }
         /// <summary>
         /// 盘点单的事件
