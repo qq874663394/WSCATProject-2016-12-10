@@ -156,11 +156,11 @@
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelTitle.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(496, 8);
+            this.labelTitle.Location = new System.Drawing.Point(452, 8);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(210, 30);
+            this.labelTitle.Size = new System.Drawing.Size(287, 30);
             this.labelTitle.TabIndex = 4;
-            this.labelTitle.Text = "商品盘点报告单";
+            this.labelTitle.Text = "商  品  盘  点  报  告  单";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 

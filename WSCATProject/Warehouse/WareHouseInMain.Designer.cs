@@ -111,7 +111,9 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelTitle.Text = "入库单";
+            this.labelTitle.Location = new System.Drawing.Point(508, 5);
+            this.labelTitle.Size = new System.Drawing.Size(129, 30);
+            this.labelTitle.Text = "入   库   单";
             // 
             // panel2
             // 
@@ -749,7 +751,7 @@
             // picBoxShengHeIn
             // 
             this.picBoxShengHeIn.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxShengHeIn.Location = new System.Drawing.Point(636, 0);
+            this.picBoxShengHeIn.Location = new System.Drawing.Point(641, 0);
             this.picBoxShengHeIn.Name = "picBoxShengHeIn";
             this.picBoxShengHeIn.Size = new System.Drawing.Size(64, 64);
             this.picBoxShengHeIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

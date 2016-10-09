@@ -105,8 +105,9 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelTitle.Size = new System.Drawing.Size(93, 30);
-            this.labelTitle.Text = "调价单";
+            this.labelTitle.Location = new System.Drawing.Point(494, 5);
+            this.labelTitle.Size = new System.Drawing.Size(146, 30);
+            this.labelTitle.Text = "调   价   单";
             // 
             // panel2
             // 
@@ -667,7 +668,7 @@
             // picAdj
             // 
             this.picAdj.BackColor = System.Drawing.Color.Transparent;
-            this.picAdj.Location = new System.Drawing.Point(618, 2);
+            this.picAdj.Location = new System.Drawing.Point(642, 2);
             this.picAdj.Name = "picAdj";
             this.picAdj.Size = new System.Drawing.Size(66, 50);
             this.picAdj.TabIndex = 46;

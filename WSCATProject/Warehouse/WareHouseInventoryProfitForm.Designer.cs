@@ -104,8 +104,9 @@
             // 
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelTitle.Size = new System.Drawing.Size(125, 30);
-            this.labelTitle.Text = "盘盈单";
+            this.labelTitle.Location = new System.Drawing.Point(508, 5);
+            this.labelTitle.Size = new System.Drawing.Size(145, 30);
+            this.labelTitle.Text = "盘   盈   单";
             // 
             // panel2
             // 
@@ -655,7 +656,7 @@
             // picBoxShengHeProfit
             // 
             this.picBoxShengHeProfit.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxShengHeProfit.Location = new System.Drawing.Point(638, 3);
+            this.picBoxShengHeProfit.Location = new System.Drawing.Point(659, 3);
             this.picBoxShengHeProfit.Name = "picBoxShengHeProfit";
             this.picBoxShengHeProfit.Size = new System.Drawing.Size(64, 55);
             this.picBoxShengHeProfit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
