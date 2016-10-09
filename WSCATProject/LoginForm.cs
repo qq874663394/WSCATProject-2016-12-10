@@ -29,6 +29,8 @@ namespace WSCATProject
             label2.ForeColor = Color.White;
             label3.Parent = pictureBox2;
             label3.ForeColor = Color.White;
+            label4.Parent = pictureBox2;
+            label4.ForeColor = Color.White;
             btnLogin.Parent = pictureBox2;
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.BackColor = Color.FromArgb(74, 77, 110);
@@ -41,6 +43,7 @@ namespace WSCATProject
             btnClose.ForeColor = Color.White;
             comboBox1.SelectedIndex= 0;
             comboBox2.SelectedIndex = 0;
+
             #endregion
 
             StreamReader st;
