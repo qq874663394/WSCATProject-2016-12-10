@@ -100,7 +100,7 @@ namespace WSCATProject
                 sw.Flush();
                 sw.Close();
 
-                MainForm mf = new MainForm();
+                MainForm mf = new MainForm();                   
                 mf.ShowDialog();
     
             }

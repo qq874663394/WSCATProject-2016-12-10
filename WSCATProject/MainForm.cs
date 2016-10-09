@@ -91,7 +91,6 @@ namespace WSCATProject
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
             //LoginForm lf = new LoginForm();
             //lf.ShowDialog();
             //LoginInfomation loginInf = LoginInfomation.getInstance();
