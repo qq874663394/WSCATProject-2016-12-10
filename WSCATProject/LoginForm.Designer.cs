@@ -55,6 +55,8 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "福田门店"});
             this.comboBox1.Location = new System.Drawing.Point(379, 219);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(124, 20);
@@ -86,6 +88,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(379, 284);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(124, 21);
             this.textBox2.TabIndex = 6;
             // 
@@ -135,6 +138,8 @@
             this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "linmusi"});
             this.comboBox2.Location = new System.Drawing.Point(379, 253);
             this.comboBox2.MaxDropDownItems = 5;
             this.comboBox2.Name = "comboBox2";
@@ -143,6 +148,7 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btnLogin;
             this.ClientSize = new System.Drawing.Size(809, 503);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.btnClose);
