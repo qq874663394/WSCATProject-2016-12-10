@@ -33,7 +33,7 @@
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.superGridControlZuZhuang = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.superGridControlChaiXei = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -82,12 +82,13 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1021, 6);
+            this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1028, 60);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(989, 7);
+            this.labelprie.Location = new System.Drawing.Point(980, 7);
             // 
             // dateTimePicker1
             // 
@@ -451,11 +452,11 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.superGridControlZuZhuang);
+            this.panel3.Controls.Add(this.superGridControlChaiXei);
             this.panel3.Location = new System.Drawing.Point(0, 201);
             this.panel3.Size = new System.Drawing.Size(1202, 399);
             this.panel3.Controls.SetChildIndex(this.superGridControlShangPing, 0);
-            this.panel3.Controls.SetChildIndex(this.superGridControlZuZhuang, 0);
+            this.panel3.Controls.SetChildIndex(this.superGridControlChaiXei, 0);
             // 
             // superGridControlShangPing
             // 
@@ -532,38 +533,38 @@
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Location = new System.Drawing.Point(1020, 27);
+            this.pictureBox9.Location = new System.Drawing.Point(1026, 5);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(141, 50);
             this.pictureBox9.TabIndex = 54;
             this.pictureBox9.TabStop = false;
             // 
-            // superGridControlZuZhuang
+            // superGridControlChaiXei
             // 
-            this.superGridControlZuZhuang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.superGridControlChaiXei.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.superGridControlZuZhuang.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControlZuZhuang.Location = new System.Drawing.Point(0, 0);
-            this.superGridControlZuZhuang.Name = "superGridControlZuZhuang";
+            this.superGridControlChaiXei.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlChaiXei.Location = new System.Drawing.Point(0, 0);
+            this.superGridControlChaiXei.Name = "superGridControlChaiXei";
             // 
             // 
             // 
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnStock);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.material);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnname);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnmodel);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnbarcode);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnunit);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnnumber);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnremark);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumncode);
-            this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnstockCode);
-            this.superGridControlZuZhuang.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlZuZhuang.Size = new System.Drawing.Size(1202, 77);
-            this.superGridControlZuZhuang.TabIndex = 3;
-            this.superGridControlZuZhuang.Text = "superGridControlZuZhuang";
-            this.superGridControlZuZhuang.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlZuZhuang_BeginEdit);
-            this.superGridControlZuZhuang.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlZuZhuang_EditorValueChanged);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnStock);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.material);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnname);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnmodel);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnbarcode);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnunit);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnnumber);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnstockCode);
+            this.superGridControlChaiXei.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlChaiXei.Size = new System.Drawing.Size(1202, 77);
+            this.superGridControlChaiXei.TabIndex = 3;
+            this.superGridControlChaiXei.Text = "superGridControlChaiXei";
+            this.superGridControlChaiXei.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlChaiXei_BeginEdit);
+            this.superGridControlChaiXei.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlChaiXei_EditorValueChanged);
             // 
             // gridColumnStock
             // 
@@ -790,7 +791,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox9;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cbotype;
-        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlZuZhuang;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlChaiXei;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;

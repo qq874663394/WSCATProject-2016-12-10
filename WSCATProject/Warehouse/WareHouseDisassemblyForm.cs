@@ -150,7 +150,7 @@ namespace WSCATProject.Warehouse
                 return false;
             }
 
-            GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库1不能为空！");
@@ -197,8 +197,8 @@ namespace WSCATProject.Warehouse
             textBoxOddNumbers.BackColor = Color.FromArgb(240, 240, 240);
             this.superGridControlShangPing.PrimaryGrid.ReadOnly = true;
             this.superGridControlShangPing.BackColor = Color.FromArgb(240, 240, 240);
-            this.superGridControlZuZhuang.PrimaryGrid.ReadOnly = true;
-            this.superGridControlZuZhuang.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControlChaiXei.PrimaryGrid.ReadOnly = true;
+            this.superGridControlChaiXei.BackColor = Color.FromArgb(240, 240, 240);
             this.toolStripBtnSave.Enabled = false;
             this.panel2.BackColor = Color.FromArgb(240, 240, 240);
             this.panel5.BackColor = Color.FromArgb(240, 240, 240);
@@ -353,13 +353,14 @@ namespace WSCATProject.Warehouse
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
-
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 cbotype.SelectedIndex = 0;
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
                 dataGridViewFuJia.AutoGenerateColumns = false;
                 this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
-                this.superGridControlZuZhuang.PrimaryGrid.AutoGenerateColumns = false;
+                this.superGridControlChaiXei.PrimaryGrid.AutoGenerateColumns = false;
                 superGridControlShangPing.HScrollBarVisible = true;
                 // 内容居中显示
                 dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -369,7 +370,7 @@ namespace WSCATProject.Warehouse
                 superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
                 //内容居中
                 superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                superGridControlZuZhuang.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlChaiXei.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
 
 
                 //绑定事件 双击事填充内容并隐藏列表
@@ -428,7 +429,7 @@ namespace WSCATProject.Warehouse
                 warehousedisassembly.updatetime = DateTime.Now;
                 warehousedisassembly.reserved1 = "";
                 warehousedisassembly.reserved2 = "";
-                GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[0];
+                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
                 warehousedisassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
                 warehousedisassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
                 warehousedisassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
@@ -530,7 +531,7 @@ namespace WSCATProject.Warehouse
                 warehousedisassembly.updatetime = DateTime.Now;
                 warehousedisassembly.reserved1 = "";
                 warehousedisassembly.reserved2 = "";
-                GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[0];
+                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
                 warehousedisassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
                 warehousedisassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
                 warehousedisassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
@@ -606,7 +607,7 @@ namespace WSCATProject.Warehouse
             {
                 if (_Material == 2)
                 {
-                    GridRow grs = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
+                    GridRow grs = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
                     grs.Cells["gridColumncode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
                     grs.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
                     grs.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
@@ -622,10 +623,39 @@ namespace WSCATProject.Warehouse
                     ////是否要新增一行的标记
                     bool newAdd = false;
                     GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                     //id字段为空 说明是没有数据的行 不是修改而是新增
                     if (gr.Cells["gridColumnid"].Value == null)
                     {
                         newAdd = true;
+                    }
+                    foreach (GridRow g in grs)
+                    {
+                        if (g.Cells["code"].Value == null)
+                        {
+                            newAdd = true;
+                            continue;
+                        }
+                        if (g.Cells["code"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value))
+                        {
+                            decimal shuliang = Convert.ToDecimal(g.Cells["number"].Value);
+                            decimal needNumber = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
+                            shuliang += needNumber;
+                            g.Cells["number"].Value = shuliang;
+                            //逐行统计数据总数
+                            decimal tempAllNumber = 0;
+                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                            {
+                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                                tempAllNumber += Convert.ToDecimal(tempGR["number"].FormattedValue);
+                            }
+                            _MaterialNumber = tempAllNumber;
+                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                            gr["number"].Value = _MaterialNumber.ToString();
+                            resizablePanelData.Visible = false;
+                            return;
+                        }
+                        continue;
                     }
                     gr.Cells["code"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
                     gr.Cells["sup1material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
@@ -683,7 +713,7 @@ namespace WSCATProject.Warehouse
                 {
                     if (_WareHouse == 2)
                     {
-                        GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
+                        GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
                         string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                         string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                         gr.Cells["gridColumnstockCode"].Value = code;
@@ -770,7 +800,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void superGridControlZuZhuang_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlChaiXei_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -936,12 +966,12 @@ namespace WSCATProject.Warehouse
         }
 
         #region  表格模糊查询
-        private void superGridControlZuZhuang_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlChaiXei_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
             {
                 string SS = "";
-                GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
+                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
                 string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
                 if (SS == "")
                 {
@@ -1016,7 +1046,7 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseDisassemblyForm_Activated(object sender, EventArgs e)
         {
-            cbotype.Focus();
+            superGridControlChaiXei.Focus();
         }
     }
 }

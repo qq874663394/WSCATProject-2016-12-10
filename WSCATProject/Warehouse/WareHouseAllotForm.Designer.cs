@@ -77,7 +77,8 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1028, 3);
+            this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1030, 52);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
@@ -535,7 +536,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(1026, 21);
+            this.pictureBox9.Location = new System.Drawing.Point(1030, 3);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(140, 45);
             this.pictureBox9.TabIndex = 54;

@@ -128,7 +128,8 @@ namespace WSCATProject.Warehouse
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
-
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 //调后单价
                 GridDoubleInputEditControl diaoruprice = superGridControlShangPing.PrimaryGrid.Columns["gridColumnafterprice"].EditControl as GridDoubleInputEditControl;
                 diaoruprice.MinValue = 0;
@@ -370,8 +371,8 @@ namespace WSCATProject.Warehouse
                 Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["material"].Value = "合计";
-            gr.Cells["material"].CellStyles.Default.Alignment =
+            gr.Cells["gridColumnStock"].Value = "合计";
+            gr.Cells["gridColumnStock"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             //数量
             gr.Cells["gridColumnnumber"].Value = 0;
@@ -932,7 +933,7 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseAdjustPriceForm_Activated(object sender, EventArgs e)
         {
-            cboadjType.Focus();
+            superGridControlShangPing.Focus();
         }
     }
 }
