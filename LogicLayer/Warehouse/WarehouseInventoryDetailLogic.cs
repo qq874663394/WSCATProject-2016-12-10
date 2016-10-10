@@ -9,12 +9,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UpdateManagerLayer;
 
 namespace LogicLayer.Warehouse
 {
     public class WarehouseInventoryDetailLogic
     {
         WarehouseInventoryDetailBase widb = new WarehouseInventoryDetailBase();
+        WarehouseUpdataManager wum = new WarehouseUpdataManager();
         /// <summary>
         /// 复合查询
         /// </summary>
@@ -101,6 +103,7 @@ namespace LogicLayer.Warehouse
                     throw new Exception("-3");
                 }
                 logModel.result = 1;
+                wum.add(wid.code, logModel.operationTable, result, "", logModel.operationTime);
             }
             catch (Exception ex)
             {
@@ -144,6 +147,7 @@ namespace LogicLayer.Warehouse
                     throw new Exception("-3");
                 }
                 logModel.result = 1;
+                wum.add(wid.code, logModel.operationTable, result, "", logModel.operationTime);
             }
             catch (Exception ex)
             {
@@ -158,15 +162,6 @@ namespace LogicLayer.Warehouse
         public int AddAndModify(WarehouseInventoryDetail wid)
         {
             int result = 0;
-            LogBase lb = new LogBase();
-            Log logModel = new Log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                operationCode = "操作人code",
-                operationName = "操作人名",
-                operationTable = "T_WarehouseInventoryDetail",
-                operationTime = DateTime.Now,
-            };
             try
             {
                 if (wid == null)
@@ -176,28 +171,19 @@ namespace LogicLayer.Warehouse
                 if (widb.Exists(wid.code)==false)
                 {
                     result=Add(wid);
-                    logModel.objective = "新增盘点明细单";
-                    logModel.operationContent = "新增T_WarehouseInventoryDetail表的数据,条件：code=" + wid.code;
                 }
                 else
                 {
                     result = Modify(wid);
-                    logModel.objective = "修改盘点明细单";
-                    logModel.operationContent = "修改T_WarehouseInventoryDetail表的数据,条件：code=" + wid.code;
                 };
                 if (result <= 0)
                 {
                     throw new Exception("-3");
                 }
-                logModel.result = 1;
             }
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                lb.Add(logModel);
             }
             return result;
         }

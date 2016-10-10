@@ -60,6 +60,7 @@
     <Compile Include="Purchase\PurchaseDetailBase.cs" />
     <Compile Include="Sales\SalesDetailBase.cs" />
     <Compile Include="Sales\SalesMainBase.cs" />
+    <Compile Include="Sales\SalesOrderBase.cs" />
     <Compile Include="Warehouse\WarehouseAdjustPriceBase.cs" />
     <Compile Include="Warehouse\WarehouseAllotBase.cs" />
     <Compile Include="Warehouse\WarehouseAllotDetailBase.cs" />
