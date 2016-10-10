@@ -55,10 +55,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDanJuType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).BeginInit();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
@@ -112,12 +112,12 @@
             this.panel2.Controls.SetChildIndex(this.labTop7, 0);
             this.panel2.Controls.SetChildIndex(this.labTop8, 0);
             this.panel2.Controls.SetChildIndex(this.labTop9, 0);
-            this.panel2.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBoxDanJuType, 0);
             this.panel2.Controls.SetChildIndex(this.checkBox1, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox2, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox3, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox4, 0);
-            this.panel2.Controls.SetChildIndex(this.labtextboxTop1, 0);
+            this.panel2.Controls.SetChildIndex(this.labtxtDanJuType, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop2, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop4, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop5, 0);
@@ -251,14 +251,14 @@
             // 
             // 
             // 
-            this.labtextboxTop1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxTop1.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxTop1.Border.BorderBottomWidth = 1;
-            this.labtextboxTop1.Border.BorderGradientAngle = 0;
-            this.labtextboxTop1.Border.Class = "SideNavStrip";
-            this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop1.Size = new System.Drawing.Size(130, 16);
-            this.labtextboxTop1.TextChanged += new System.EventHandler(this.labtextboxTop1_TextChanged);
+            this.labtxtDanJuType.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtxtDanJuType.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtxtDanJuType.Border.BorderBottomWidth = 1;
+            this.labtxtDanJuType.Border.BorderGradientAngle = 0;
+            this.labtxtDanJuType.Border.Class = "SideNavStrip";
+            this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtxtDanJuType.Size = new System.Drawing.Size(130, 16);
+            this.labtxtDanJuType.TextChanged += new System.EventHandler(this.labtextboxTop1_TextChanged);
             // 
             // pictureBox4
             // 
@@ -281,8 +281,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(223, 12);
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBoxDanJuType.Location = new System.Drawing.Point(223, 12);
+            this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // labTop9
             // 
@@ -339,8 +339,8 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(223, 15);
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Location = new System.Drawing.Point(223, 15);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -425,30 +425,30 @@
             // 
             // superGridControl1
             // 
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.name);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.model);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.barcode);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.unit);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.dinggouNumber);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.price);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.money);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.DiscountRate);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.DiscountMoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.TaxRate);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.TaxMoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.priceANDtax);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.materialCode);
-            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.material);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.name);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.model);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.barcode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.unit);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.dinggouNumber);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.price);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.money);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DiscountRate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DiscountMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.TaxRate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.TaxMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.priceANDtax);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
+            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
             // resizablePanel1
             // 
@@ -661,11 +661,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDanJuType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).EndInit();
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();

@@ -79,10 +79,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDanJuType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).BeginInit();
             this.resizablePanelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
@@ -148,12 +148,12 @@
             this.panel2.Controls.SetChildIndex(this.labTop7, 0);
             this.panel2.Controls.SetChildIndex(this.labTop8, 0);
             this.panel2.Controls.SetChildIndex(this.labTop9, 0);
-            this.panel2.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBoxDanJuType, 0);
             this.panel2.Controls.SetChildIndex(this.checkBox1, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox2, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox3, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox4, 0);
-            this.panel2.Controls.SetChildIndex(this.labtextboxTop1, 0);
+            this.panel2.Controls.SetChildIndex(this.labtxtDanJuType, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop2, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop4, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop5, 0);
@@ -295,15 +295,15 @@
             // 
             // 
             // 
-            this.labtextboxTop1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxTop1.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.labtextboxTop1.Border.BorderBottomWidth = 1;
-            this.labtextboxTop1.Border.BorderGradientAngle = 0;
-            this.labtextboxTop1.Border.Class = "SideNavStrip";
-            this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop1.Location = new System.Drawing.Point(97, 15);
-            this.labtextboxTop1.Size = new System.Drawing.Size(135, 16);
-            this.labtextboxTop1.Visible = false;
+            this.labtxtDanJuType.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.labtxtDanJuType.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtxtDanJuType.Border.BorderBottomWidth = 1;
+            this.labtxtDanJuType.Border.BorderGradientAngle = 0;
+            this.labtxtDanJuType.Border.Class = "SideNavStrip";
+            this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtxtDanJuType.Location = new System.Drawing.Point(97, 15);
+            this.labtxtDanJuType.Size = new System.Drawing.Size(135, 16);
+            this.labtxtDanJuType.Visible = false;
             // 
             // pictureBox4
             // 
@@ -327,8 +327,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(214, 11);
-            this.pictureBox1.Visible = false;
+            this.pictureBoxDanJuType.Location = new System.Drawing.Point(214, 11);
+            this.pictureBoxDanJuType.Visible = false;
             // 
             // labTop9
             // 
@@ -380,8 +380,8 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(212, 15);
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Location = new System.Drawing.Point(212, 15);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -485,36 +485,36 @@
             // 
             // superGridControl1
             // 
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnStock);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.material);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmaterialname);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmodel);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntiaoxingma);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumndanwei);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumndinggoushu);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnfahuoshu);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnzhekoul);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnzengzhishui);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnzhekoue);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnshuie);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnjiashuiheji);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnchengbeidanjia);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnchengbenjine);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnshengchanrqi);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnbaozhiqi);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiaoqi);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntuihuoshu);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyuandandanhao);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
-            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1202, 389);
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnStock);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.material);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialname);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmodel);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumntiaoxingma);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumndanwei);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumndinggoushu);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnfahuoshu);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnprice);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnzhekoul);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnzengzhishui);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnzhekoue);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnshuie);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnjiashuiheji);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnchengbeidanjia);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnchengbenjine);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnshengchanrqi);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbaozhiqi);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyouxiaoqi);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumntuihuoshu);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyuandandanhao);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 389);
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             // 
             // resizablePanel1
             // 
@@ -937,11 +937,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDanJuType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).EndInit();
             this.resizablePanelData.ResumeLayout(false);
             this.resizablePanelData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();

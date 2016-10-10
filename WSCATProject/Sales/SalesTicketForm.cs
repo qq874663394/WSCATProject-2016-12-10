@@ -79,10 +79,10 @@ namespace WSCATProject.Sales
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            superGridControl1.PrimaryGrid.NewRow(true);
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
             //最后一行做统计行
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
             gr.Cells["material"].Value = "合计";
@@ -119,44 +119,44 @@ namespace WSCATProject.Sales
             if (_Click != 1)
             {
                 _Click = 1;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "客户编号";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "客户姓名";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "mobilePhone";
                 dgvc.HeaderText = "电话";
                 dgvc.DataPropertyName = "mobilePhone";
                 dgvc.Visible = false;
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "linkMan";
                 dgvc.HeaderText = "联系人";
                 dgvc.DataPropertyName = "linkMan";
                 dgvc.Visible = false;
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "fax";
                 dgvc.HeaderText = "传真";
                 dgvc.DataPropertyName = "fax";
                 dgvc.Visible = false;
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(460, 160);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllClient);
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
                 resizablePanel1.Visible = true;
             }
         }
@@ -169,22 +169,22 @@ namespace WSCATProject.Sales
             if (_Click != 2)
             {
                 _Click = 2;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "员工工号";
                 dgvc.DataPropertyName = "员工工号";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
                 resizablePanel1.Visible = true;
                 if (this.WindowState == FormWindowState.Maximized)
                 {
@@ -207,32 +207,32 @@ namespace WSCATProject.Sales
             if (_Click != 3)
             {
                 _Click = 3;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.Visible = true;
                 dgvc.HeaderText = "仓库编号";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.Visible = true;
                 dgvc.HeaderText = "仓库名称";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "address";
                 dgvc.Visible = false;
                 dgvc.HeaderText = "仓库地址";
                 dgvc.DataPropertyName = "address";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 //查询仓库的方法
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllStorage);
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
                 resizablePanel1.Visible = true;
             }
         }
@@ -249,8 +249,8 @@ namespace WSCATProject.Sales
             _AllStorage = storage.GetList(00, "");
 
             //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+            dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+            dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
 
             #region 初始化窗体
 
@@ -258,15 +258,15 @@ namespace WSCATProject.Sales
             comboBoxfapiaotype.SelectedIndex = 0;//发票类型
 
             //禁用自动创建列
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridViewFujia.AutoGenerateColumns = false;
-            superGridControl1.HScrollBarVisible = true;
+            dataGridViewShangPing.AutoGenerateColumns = false;
+            dataGridViewFuJia.AutoGenerateColumns = false;
+            superGridControlShangPing.HScrollBarVisible = true;
             // 将dataGridView中的内容居中显示
-            dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //显示行号
-            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+            superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
             //内容居中
-            superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             //调用合计行数据
             InitDataGridView();
 
@@ -288,11 +288,11 @@ namespace WSCATProject.Sales
                 //客户
                 if (_Click == 1 || _Click == 4)
                 {
-                    _clientCode = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();//客户code
-                    string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();//客户名称
-                    string linkman = dataGridViewFujia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
-                    string phone = dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
-                    string fax = dataGridViewFujia.Rows[e.RowIndex].Cells["fax"].Value.ToString();//传真
+                    _clientCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//客户code
+                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//客户名称
+                    string linkman = dataGridViewFuJia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
+                    string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
+                    string fax = dataGridViewFuJia.Rows[e.RowIndex].Cells["fax"].Value.ToString();//传真
                     labtextboxTop2.Text = name;
                     labtextboxTop8.Text = linkman;
                     labtextboxTop3.Text = phone;
@@ -302,16 +302,16 @@ namespace WSCATProject.Sales
                 //销售员
                 if (_Click == 2 || _Click == 5)
                 {
-                    _employeeCode = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();//销售员code
-                    string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();//销售员
+                    _employeeCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//销售员code
+                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//销售员
                     ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
                 if (_Click == 3 || _Click == 6)
                 {
-                    GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-                    string code = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                    string Name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                    string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     gr.Cells["gridColumnStock"].Value = Name;
                     //gr.Cells["gridColumncode"].Value = code;
                     // _ClickStorageList = new KeyValuePair<string, string>(code, Name);
@@ -420,51 +420,51 @@ namespace WSCATProject.Sales
         {
             try
             {
-                if (this.labtextboxTop1.Text.Trim() == "")
+                if (this.labtxtDanJuType.Text.Trim() == "")
                 {
                     InitClient();
                     _Click = 4;
                     return;
                 }
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "客户编号";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "客户姓名";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "mobilePhone";
                 dgvc.HeaderText = "电话";
                 dgvc.DataPropertyName = "mobilePhone";
                 dgvc.Visible = false;
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "linkMan";
                 dgvc.HeaderText = "联系人";
                 dgvc.DataPropertyName = "linkMan";
                 dgvc.Visible = false;
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "fax";
                 dgvc.HeaderText = "传真";
                 dgvc.DataPropertyName = "fax";
                 dgvc.Visible = false;
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(230, 160);
-                string name = XYEEncoding.strCodeHex(this.labtextboxTop1.Text.Trim());
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
+                string name = XYEEncoding.strCodeHex(this.labtxtDanJuType.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)
@@ -487,22 +487,22 @@ namespace WSCATProject.Sales
                     InitEmployee();
                     return;
                 }
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "员工工号";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
                 if (this.WindowState == FormWindowState.Maximized)
                 {
@@ -547,12 +547,12 @@ namespace WSCATProject.Sales
                 switch (comboBoxtype.Text.Trim())
                 {
                     case "销售发货":
-                        superGridControl1.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
-                        superGridControl1.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = true;
                         break;
                     case "销售退货":
-                        superGridControl1.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = false;
-                        superGridControl1.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
                         break;
                     case "委托退货":
                         break;

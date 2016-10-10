@@ -180,13 +180,7 @@ namespace WSCATProject
         }
 
 
-        protected virtual void dataGridViewFujia_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             if (e.GridCell.GridColumn.Name == "material")
             {
@@ -214,33 +208,16 @@ namespace WSCATProject
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
 
-            if(e.GridCell.GridColumn.Name== "sup1material")
+            if (e.GridCell.GridColumn.Name == "sup1material")
             {
                 ClickRowIndex = e.GridCell.RowIndex;
                 resizablePanelData.Visible = true;
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
-        }
-
-        private void toolStripButton3_MouseEnter(object sender, EventArgs e)
-        {
-            //ToolTip p = new ToolTip();
-            //p.ShowAlways = true;
-            //this.toolStripButton3.AutoToolTip = false;
-            //this.toolStripButton3.ToolTipText = "打印(Ctrl+P)";
-            //this.toolStripButton4.AutoToolTip = false;
-            //this.toolStripButton4.ToolTipText = "导出Excel(Ctrl+T)";
-            //this.toolStripButton6.AutoToolTip = false;
-            //this.toolStripButton6.ToolTipText = "关闭(Ctrl+X)";
-            //this.toolStripButton5.AutoToolTip = false;
-            //this.toolStripButton5.ToolTipText = "新增(Ctrl+N)";
-            //this.toolStripButton7.AutoToolTip = false;
-            //this.toolStripButton7.ToolTipText = "保存(Ctrl+S)";
-            //this.toolStripButton8.AutoToolTip = false;
-            //this.toolStripButton8.ToolTipText = "审核(F4)";
 
         }
+
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
@@ -270,7 +247,7 @@ namespace WSCATProject
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        private void toolStripBtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
             this.Dispose();
@@ -290,36 +267,28 @@ namespace WSCATProject
             }
         }
 
-        private void dataGridViewFujia_MouseEnter(object sender, EventArgs e)
+        private void dataGridViewFuJia_MouseEnter(object sender, EventArgs e)
         {
             ToolTip p = new ToolTip();
             p.ShowAlways = true;
-            dataGridViewFujia.ShowCellToolTips = true;
+            dataGridViewFuJia.ShowCellToolTips = true;
             p.SetToolTip(resizablePanel1, "按Esc键关闭");
         }
 
-   private void dataGridView1_Leave(object sender, EventArgs e)
+        private void dataGridViewShangPing_Leave(object sender, EventArgs e)
         {
             resizablePanelData.Visible = false;
         }
 
-
-
-
-        private void dataGridViewFujia_Leave(object sender, EventArgs e)
+        private void dataGridViewFuJia_Leave(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
         }        //获取鼠标的位置
-        //[DllImport("User32.dll")]
-        //public static extern int GetCursorPos(out Point point);//得到光标在屏幕上的位置
-        //public static Point ScreenCursorPosition //获取光标相对于显示器的位置 
-        //{
-        //    get
-        //    {
-        //        Point showPoint = new Point();
-        //        GetCursorPos(out showPoint);
-        //        return showPoint;
-        //    }
-        //}
+
+        private void pictureBoxClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            this.Dispose();
+        }
     }
 }
