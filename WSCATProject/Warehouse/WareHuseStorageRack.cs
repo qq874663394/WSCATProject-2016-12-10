@@ -24,10 +24,10 @@ namespace WSCATProject.Warehouse
 
         private void WareHuseStorageRack_Load(object sender, EventArgs e)
         {
-            comboBoxEx2.SelectedIndex = 0;
-            comboBoxEx3.SelectedIndex = 0;
-            comboBoxEx4.SelectedIndex = 0;
-            comboBoxEx5.SelectedIndex = 0;
+            cboQuYu.SelectedIndex = 0;
+            cboHuoJia.SelectedIndex = 0;
+            cboPai.SelectedIndex = 0;
+           cboLie.SelectedIndex = 0;
             //绑定仓库下拉框
             StorageInterface sif = new StorageInterface();
             DataTable dt = ch.DataTableReCoding(sif.GetList(999,""));
@@ -35,85 +35,85 @@ namespace WSCATProject.Warehouse
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
 
-            comboBoxEx1.DisplayMember = "name";
-            comboBoxEx1.ValueMember = "code";
-            comboBoxEx1.DataSource = dt;
+            cboCangKu.DisplayMember = "name";
+            cboCangKu.ValueMember = "code";
+            cboCangKu.DataSource = dt;
         }
 
-        private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
+        private void cboCangKu_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx1.SelectedValue == null || comboBoxEx1.Text=="请选择")
+            if (cboCangKu.SelectedValue == null || cboCangKu.Text=="请选择")
             {
-                comboBoxEx2.DataSource = null;
+                cboQuYu.DataSource = null;
                 return;
             }
             //根据仓库code绑定货架下拉框
             StorageRackInterface srif = new StorageRackInterface();
-            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx1.SelectedValue.ToString())));
+            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(cboCangKu.SelectedValue.ToString())));
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
 
-            comboBoxEx2.DisplayMember = "name";
-            comboBoxEx2.ValueMember = "code";
-            comboBoxEx2.DataSource = dt;
+            cboQuYu.DisplayMember = "name";
+            cboQuYu.ValueMember = "code";
+            cboQuYu.DataSource = dt;
         }
 
-        private void comboBoxEx2_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboQuYu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx2.SelectedValue == null || comboBoxEx2.Text == "请选择")
+            if (cboQuYu.SelectedValue == null || cboQuYu.Text == "请选择")
             {
-                comboBoxEx3.DataSource = null;
+                cboHuoJia.DataSource = null;
                 return;
             }
             //根据货架code绑定排的下拉框
             StorageRackInterface srif = new StorageRackInterface();
-            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx2.SelectedValue.ToString())));
+            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(cboQuYu.SelectedValue.ToString())));
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
 
-            comboBoxEx3.DisplayMember = "name";
-            comboBoxEx3.ValueMember = "code";
-            comboBoxEx3.DataSource = dt;
+            cboHuoJia.DisplayMember = "name";
+            cboHuoJia.ValueMember = "code";
+            cboHuoJia.DataSource = dt;
         }
 
-        private void comboBoxEx3_SelectedValueChanged(object sender, EventArgs e)
+        private void cboHuoJia_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx3.SelectedValue == null || comboBoxEx3.Text == "请选择")
+            if (cboHuoJia.SelectedValue == null || cboHuoJia.Text == "请选择")
             {
-                comboBoxEx4.DataSource = null;
+                cboPai.DataSource = null;
                 return;
             }
             //根据排的code绑定格的下拉框
             StorageRackInterface srif = new StorageRackInterface();
-            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx3.SelectedValue.ToString())));
+            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(cboHuoJia.SelectedValue.ToString())));
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
 
-            comboBoxEx4.DisplayMember = "name";
-            comboBoxEx4.ValueMember = "code";
-            comboBoxEx4.DataSource = dt;
+            cboPai.DisplayMember = "name";
+            cboPai.ValueMember = "code";
+            cboPai.DataSource = dt;
         }
 
-        private void comboBoxEx4_SelectedValueChanged(object sender, EventArgs e)
+        private void cboPai_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxEx4.SelectedValue == null || comboBoxEx4.Text == "请选择")
+            if (cboPai.SelectedValue == null || cboPai.Text == "请选择")
             {
-                comboBoxEx5.DataSource = null;
+               cboLie.DataSource = null;
                 return;
             }
             //根据排的code绑定格的下拉框
             StorageRackInterface srif = new StorageRackInterface();
-            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(comboBoxEx4.SelectedValue.ToString())));
+            DataTable dt = ch.DataTableReCoding(srif.SelStorageRackByCode(XYEEncoding.strCodeHex(cboPai.SelectedValue.ToString())));
             DataRow dr = dt.NewRow();
             dr["name"] = "请选择";
             dt.Rows.InsertAt(dr, 0);
 
-            comboBoxEx5.DisplayMember = "name";
-            comboBoxEx5.ValueMember = "code";
-            comboBoxEx5.DataSource = dt;
+           cboLie.DisplayMember = "name";
+           cboLie.ValueMember = "code";
+           cboLie.DataSource = dt;
         }
         #endregion
 
@@ -122,15 +122,15 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonX1_Click(object sender, EventArgs e)
+        private void btnQueDing_Click(object sender, EventArgs e)
         {
             WareHouseInMain whi = (WareHouseInMain)this.Owner;
-            if (checkBoxX1.Checked == false || comboBoxEx2.Text == "请选择")
+            if (checkBoxX1.Checked == false || cboQuYu.Text == "请选择")
             {
                 if (MessageBox.Show(Owner, "是否临时存放", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.OK)
                 {
                     //是临时存放
-                    whi.StorageCode = comboBoxEx1.SelectedValue == null ? "" : comboBoxEx1.SelectedValue.ToString();
+                    whi.StorageCode = cboCangKu.SelectedValue == null ? "" : cboCangKu.SelectedValue.ToString();
                     whi.Storage ="临时存放地";
                     whi.StorageQuyu = "临时存放地";
                     Close();
@@ -140,31 +140,31 @@ namespace WSCATProject.Warehouse
                 else
                 {
                     //不是临时存放
-                    whi.StorageCode = comboBoxEx1.SelectedValue == null ? "" : comboBoxEx1.SelectedValue.ToString();
-                    whi.Storage = comboBoxEx1.Text;
-                    whi.StorageQuyuCode = comboBoxEx2.SelectedValue == null ? "" : comboBoxEx2.SelectedValue.ToString();
-                    whi.StorageQuyu = comboBoxEx2.Text;
-                    whi.StorageRackCode = comboBoxEx3.SelectedValue == null ? "" : comboBoxEx3.SelectedValue.ToString();
-                    whi.StorageRack = comboBoxEx3.Text;
-                    whi.StoragePaiCode = comboBoxEx4.SelectedValue == null ? "" : comboBoxEx4.SelectedValue.ToString();
-                    whi.StoragePai = comboBoxEx4.Text;
-                    whi.StorageGeCode = comboBoxEx5.SelectedValue == null ? "" : comboBoxEx5.SelectedValue.ToString();
-                    whi.StorageGe = comboBoxEx5.Text;
+                    whi.StorageCode = cboCangKu.SelectedValue == null ? "" : cboCangKu.SelectedValue.ToString();
+                    whi.Storage = cboCangKu.Text;
+                    whi.StorageQuyuCode = cboQuYu.SelectedValue == null ? "" : cboQuYu.SelectedValue.ToString();
+                    whi.StorageQuyu = cboQuYu.Text;
+                    whi.StorageRackCode = cboHuoJia.SelectedValue == null ? "" : cboHuoJia.SelectedValue.ToString();
+                    whi.StorageRack = cboHuoJia.Text;
+                    whi.StoragePaiCode = cboPai.SelectedValue == null ? "" : cboPai.SelectedValue.ToString();
+                    whi.StoragePai = cboPai.Text;
+                    whi.StorageGeCode =cboLie.SelectedValue == null ? "" :cboLie.SelectedValue.ToString();
+                    whi.StorageGe =cboLie.Text;
                     Close();
                     Dispose();
                     return;
                 }
             }
-            whi.StorageCode = comboBoxEx1.SelectedValue == null ? "" : comboBoxEx1.SelectedValue.ToString();
-            whi.Storage = comboBoxEx1.Text;
-            whi.StorageQuyuCode = comboBoxEx2.SelectedValue == null ? "" : comboBoxEx2.SelectedValue.ToString();
-            whi.StorageQuyu = comboBoxEx2.Text;
-            whi.StorageRackCode = comboBoxEx3.SelectedValue == null ? "" : comboBoxEx3.SelectedValue.ToString();
-            whi.StorageRack = comboBoxEx3.Text;
-            whi.StoragePaiCode = comboBoxEx4.SelectedValue == null ? "" : comboBoxEx4.SelectedValue.ToString();
-            whi.StoragePai = comboBoxEx4.Text;
-            whi.StorageGeCode = comboBoxEx5.SelectedValue == null ? "" : comboBoxEx5.SelectedValue.ToString();
-            whi.StorageGe = comboBoxEx5.Text;
+            whi.StorageCode = cboCangKu.SelectedValue == null ? "" : cboCangKu.SelectedValue.ToString();
+            whi.Storage = cboCangKu.Text;
+            whi.StorageQuyuCode = cboQuYu.SelectedValue == null ? "" : cboQuYu.SelectedValue.ToString();
+            whi.StorageQuyu = cboQuYu.Text;
+            whi.StorageRackCode = cboHuoJia.SelectedValue == null ? "" : cboHuoJia.SelectedValue.ToString();
+            whi.StorageRack = cboHuoJia.Text;
+            whi.StoragePaiCode = cboPai.SelectedValue == null ? "" : cboPai.SelectedValue.ToString();
+            whi.StoragePai = cboPai.Text;
+            whi.StorageGeCode =cboLie.SelectedValue == null ? "" :cboLie.SelectedValue.ToString();
+            whi.StorageGe =cboLie.Text;
             Close();
             Dispose();
         }
@@ -174,10 +174,15 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonX2_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
             Dispose();
+        }
+
+        private void WareHuseStorageRack_Activated(object sender, EventArgs e)
+        {
+            cboCangKu.Focus();
         }
     }
 }

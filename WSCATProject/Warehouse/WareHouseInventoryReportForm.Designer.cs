@@ -593,6 +593,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WareHouseInventoryReportForm";
             this.Text = "商品盘点报告单";
+            this.Activated += new System.EventHandler(this.WareHouseInventoryReportForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryReportForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

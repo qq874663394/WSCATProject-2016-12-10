@@ -31,19 +31,19 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboCangKu = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboQuYu = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.comboBoxEx3 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboHuoJia = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboBoxEx4 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboPai = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnQueDing = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboLie = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
@@ -85,108 +85,109 @@
             this.labelX4.Tag = "";
             this.labelX4.Text = "排：";
             // 
-            // comboBoxEx1
+            // cboCangKu
             // 
-            this.comboBoxEx1.DisplayMember = "Text";
-            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx1.FormattingEnabled = true;
-            this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Items.AddRange(new object[] {
+            this.cboCangKu.DisplayMember = "Text";
+            this.cboCangKu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboCangKu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCangKu.FormattingEnabled = true;
+            this.cboCangKu.ItemHeight = 15;
+            this.cboCangKu.Items.AddRange(new object[] {
             this.comboItem1});
-            this.comboBoxEx1.Location = new System.Drawing.Point(63, 24);
-            this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(85, 21);
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx1.TabIndex = 4;
-            this.comboBoxEx1.SelectedValueChanged += new System.EventHandler(this.comboBoxEx1_SelectedValueChanged);
+            this.cboCangKu.Location = new System.Drawing.Point(63, 24);
+            this.cboCangKu.Name = "cboCangKu";
+            this.cboCangKu.Size = new System.Drawing.Size(85, 21);
+            this.cboCangKu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboCangKu.TabIndex = 4;
+            this.cboCangKu.SelectedValueChanged += new System.EventHandler(this.cboCangKu_SelectedValueChanged);
             // 
             // comboItem1
             // 
             this.comboItem1.Text = "请选择";
             // 
-            // comboBoxEx2
+            // cboQuYu
             // 
-            this.comboBoxEx2.DisplayMember = "Text";
-            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx2.FormattingEnabled = true;
-            this.comboBoxEx2.ItemHeight = 15;
-            this.comboBoxEx2.Items.AddRange(new object[] {
+            this.cboQuYu.DisplayMember = "Text";
+            this.cboQuYu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboQuYu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboQuYu.FormattingEnabled = true;
+            this.cboQuYu.ItemHeight = 15;
+            this.cboQuYu.Items.AddRange(new object[] {
             this.comboItem2});
-            this.comboBoxEx2.Location = new System.Drawing.Point(205, 24);
-            this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(85, 21);
-            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx2.TabIndex = 5;
-            this.comboBoxEx2.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx2_SelectedIndexChanged);
+            this.cboQuYu.Location = new System.Drawing.Point(205, 24);
+            this.cboQuYu.Name = "cboQuYu";
+            this.cboQuYu.Size = new System.Drawing.Size(85, 21);
+            this.cboQuYu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboQuYu.TabIndex = 5;
+            this.cboQuYu.SelectedIndexChanged += new System.EventHandler(this.cboQuYu_SelectedIndexChanged);
             // 
             // comboItem2
             // 
             this.comboItem2.Text = "请选择";
             // 
-            // comboBoxEx3
+            // cboHuoJia
             // 
-            this.comboBoxEx3.DisplayMember = "Text";
-            this.comboBoxEx3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx3.FormattingEnabled = true;
-            this.comboBoxEx3.ItemHeight = 15;
-            this.comboBoxEx3.Items.AddRange(new object[] {
+            this.cboHuoJia.DisplayMember = "Text";
+            this.cboHuoJia.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboHuoJia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHuoJia.FormattingEnabled = true;
+            this.cboHuoJia.ItemHeight = 15;
+            this.cboHuoJia.Items.AddRange(new object[] {
             this.comboItem3});
-            this.comboBoxEx3.Location = new System.Drawing.Point(360, 24);
-            this.comboBoxEx3.Name = "comboBoxEx3";
-            this.comboBoxEx3.Size = new System.Drawing.Size(85, 21);
-            this.comboBoxEx3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx3.TabIndex = 6;
-            this.comboBoxEx3.SelectedValueChanged += new System.EventHandler(this.comboBoxEx3_SelectedValueChanged);
+            this.cboHuoJia.Location = new System.Drawing.Point(360, 24);
+            this.cboHuoJia.Name = "cboHuoJia";
+            this.cboHuoJia.Size = new System.Drawing.Size(85, 21);
+            this.cboHuoJia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboHuoJia.TabIndex = 6;
+            this.cboHuoJia.SelectedValueChanged += new System.EventHandler(this.cboHuoJia_SelectedValueChanged);
             // 
             // comboItem3
             // 
             this.comboItem3.Text = "请选择";
             // 
-            // comboBoxEx4
+            // cboPai
             // 
-            this.comboBoxEx4.DisplayMember = "Text";
-            this.comboBoxEx4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx4.FormattingEnabled = true;
-            this.comboBoxEx4.ItemHeight = 15;
-            this.comboBoxEx4.Items.AddRange(new object[] {
+            this.cboPai.DisplayMember = "Text";
+            this.cboPai.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPai.FormattingEnabled = true;
+            this.cboPai.ItemHeight = 15;
+            this.cboPai.Items.AddRange(new object[] {
             this.comboItem4});
-            this.comboBoxEx4.Location = new System.Drawing.Point(495, 24);
-            this.comboBoxEx4.Name = "comboBoxEx4";
-            this.comboBoxEx4.Size = new System.Drawing.Size(85, 21);
-            this.comboBoxEx4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx4.TabIndex = 7;
+            this.cboPai.Location = new System.Drawing.Point(495, 24);
+            this.cboPai.Name = "cboPai";
+            this.cboPai.Size = new System.Drawing.Size(85, 21);
+            this.cboPai.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboPai.TabIndex = 7;
+            this.cboPai.SelectedValueChanged += new System.EventHandler(this.cboPai_SelectedValueChanged);
             // 
             // comboItem4
             // 
             this.comboItem4.Text = "请选择";
             // 
-            // buttonX1
+            // btnQueDing
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(268, 108);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 8;
-            this.buttonX1.Text = "确定";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.btnQueDing.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnQueDing.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnQueDing.Location = new System.Drawing.Point(268, 108);
+            this.btnQueDing.Name = "btnQueDing";
+            this.btnQueDing.Size = new System.Drawing.Size(75, 23);
+            this.btnQueDing.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnQueDing.TabIndex = 8;
+            this.btnQueDing.Text = "确定";
+            this.btnQueDing.Click += new System.EventHandler(this.btnQueDing_Click);
             // 
-            // buttonX2
+            // btnCancel
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(373, 108);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(75, 23);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 9;
-            this.buttonX2.Text = "取消";
-            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(373, 108);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // checkBoxX1
             // 
@@ -213,20 +214,20 @@
             this.labelX5.TabIndex = 1;
             this.labelX5.Text = "列：";
             // 
-            // comboBoxEx5
+            // cboLie
             // 
-            this.comboBoxEx5.DisplayMember = "Text";
-            this.comboBoxEx5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEx5.FormattingEnabled = true;
-            this.comboBoxEx5.ItemHeight = 15;
-            this.comboBoxEx5.Items.AddRange(new object[] {
+            this.cboLie.DisplayMember = "Text";
+            this.cboLie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboLie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLie.FormattingEnabled = true;
+            this.cboLie.ItemHeight = 15;
+            this.cboLie.Items.AddRange(new object[] {
             this.comboItem5});
-            this.comboBoxEx5.Location = new System.Drawing.Point(650, 24);
-            this.comboBoxEx5.Name = "comboBoxEx5";
-            this.comboBoxEx5.Size = new System.Drawing.Size(85, 21);
-            this.comboBoxEx5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx5.TabIndex = 5;
+            this.cboLie.Location = new System.Drawing.Point(650, 24);
+            this.cboLie.Name = "cboLie";
+            this.cboLie.Size = new System.Drawing.Size(85, 21);
+            this.cboLie.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboLie.TabIndex = 5;
             // 
             // comboItem5
             // 
@@ -250,13 +251,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 146);
             this.Controls.Add(this.checkBoxX1);
-            this.Controls.Add(this.buttonX2);
-            this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.comboBoxEx4);
-            this.Controls.Add(this.comboBoxEx3);
-            this.Controls.Add(this.comboBoxEx5);
-            this.Controls.Add(this.comboBoxEx2);
-            this.Controls.Add(this.comboBoxEx1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnQueDing);
+            this.Controls.Add(this.cboPai);
+            this.Controls.Add(this.cboHuoJia);
+            this.Controls.Add(this.cboLie);
+            this.Controls.Add(this.cboQuYu);
+            this.Controls.Add(this.cboCangKu);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.labelX5);
             this.Controls.Add(this.labelX3);
@@ -264,6 +265,7 @@
             this.Controls.Add(this.labelX1);
             this.Name = "WareHuseStorageRack";
             this.Text = "仓库";
+            this.Activated += new System.EventHandler(this.WareHuseStorageRack_Activated);
             this.Load += new System.EventHandler(this.WareHuseStorageRack_Load);
             this.ResumeLayout(false);
 
@@ -274,19 +276,19 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx4;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboCangKu;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboQuYu;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboHuoJia;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboPai;
+        private DevComponents.DotNetBar.ButtonX btnQueDing;
+        private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
         private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboLie;
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.DotNetBar.LabelX labelX3;
     }

@@ -97,12 +97,12 @@ namespace WSCATProject.Warehouse
                 dataGridViewFuJia.AutoGenerateColumns = false;
                 superGridControlShangPing.HScrollBarVisible = true;
                 //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 // 将dataGridView中的内容居中显示
                 dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                toolStripBtnSave.Click += ToolStripButtonsave_Click;//保存按钮
-                toolStripBtnShengHe.Click += ToolStripButtonshen_Click;//审核按钮
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
                 //生成code 和显示条形码
                 _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
@@ -160,12 +160,14 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("错误代码- ：初始化数据错误，没有仓库code" + ex.Message);
             }
         }
+
+
         /// <summary>
         /// 审核按钮事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -260,7 +262,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -459,7 +461,7 @@ namespace WSCATProject.Warehouse
         #endregion
 
         #region 小箭头图标和表格数据的点击事件
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -469,7 +471,7 @@ namespace WSCATProject.Warehouse
         }
 
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -487,7 +489,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //表的点击事件
         }
@@ -523,7 +525,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
         {
             if (ltxtbSalsMan.Text.Trim() == "")
             {
@@ -577,7 +579,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             //最后一行做统计行
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
@@ -610,6 +612,11 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("统计出错！请检查：" + ex.Message);
             }
+        }
+
+        private void WareHouseInventoryLossForm_Activated(object sender, EventArgs e)
+        {
+            cboOutType.Focus();
         }
     }
 }

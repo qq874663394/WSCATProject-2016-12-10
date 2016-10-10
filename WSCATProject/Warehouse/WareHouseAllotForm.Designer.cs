@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cboType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -113,7 +113,7 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.pictureBox9);
-            this.panel2.Controls.Add(this.cbotype);
+            this.panel2.Controls.Add(this.cboType);
             this.panel2.Size = new System.Drawing.Size(1202, 70);
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -144,7 +144,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop7, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
-            this.panel2.Controls.SetChildIndex(this.cbotype, 0);
+            this.panel2.Controls.SetChildIndex(this.cboType, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBox9, 0);
             // 
             // labtextboxTop6
@@ -264,7 +264,7 @@
             this.labtextboxTop2.Location = new System.Drawing.Point(649, 24);
             this.labtextboxTop2.Visible = false;
             // 
-            // labtextboxTop1
+            // labtxtDanJuType
             // 
             // 
             // 
@@ -298,7 +298,7 @@
             this.checkBox1.Location = new System.Drawing.Point(491, 27);
             this.checkBox1.Visible = false;
             // 
-            // pictureBox1
+            // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(196, 22);
             this.pictureBoxDanJuType.Visible = false;
@@ -362,10 +362,10 @@
             this.panel5.Click += new System.EventHandler(this.panel2_Click);
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // pictureBox5
+            // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(263, 15);
-            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -421,7 +421,7 @@
             this.ltxtbSalsMan.Border.Class = "SideNavStrip";
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ltxtbSalsMan.Size = new System.Drawing.Size(162, 16);
-            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
             // labBotton4
             // 
@@ -461,7 +461,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 191);
             this.panel3.Size = new System.Drawing.Size(1202, 361);
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
@@ -489,9 +489,9 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMaterialcode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 361);
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
-            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
+            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             this.superGridControlShangPing.Click += new System.EventHandler(this.panel2_Click);
             // 
             // resizablePanel1
@@ -508,22 +508,22 @@
             this.pictureBoxMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             this.pictureBoxMin.Location = new System.Drawing.Point(1097, 27);
             // 
-            // cbotype
+            // cboType
             // 
-            this.cbotype.DisplayMember = "Text";
-            this.cbotype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotype.FormattingEnabled = true;
-            this.cbotype.ItemHeight = 15;
-            this.cbotype.Items.AddRange(new object[] {
+            this.cboType.DisplayMember = "Text";
+            this.cboType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.FormattingEnabled = true;
+            this.cboType.ItemHeight = 15;
+            this.cboType.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2});
-            this.cbotype.Location = new System.Drawing.Point(91, 22);
-            this.cbotype.Name = "cbotype";
-            this.cbotype.Size = new System.Drawing.Size(192, 21);
-            this.cbotype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbotype.TabIndex = 53;
-            this.cbotype.SelectedIndexChanged += new System.EventHandler(this.comboBoxEx1_SelectedIndexChanged);
+            this.cboType.Location = new System.Drawing.Point(91, 22);
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(192, 21);
+            this.cboType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboType.TabIndex = 53;
+            this.cboType.SelectedIndexChanged += new System.EventHandler(this.cboType_SelectedIndexChanged);
             // 
             // comboItem1
             // 
@@ -721,6 +721,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Name = "WareHouseAllotForm";
             this.Text = "WareHouseAllotForm";
+            this.Activated += new System.EventHandler(this.WareHouseAllotForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseAllotForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -752,7 +753,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox9;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cbotype;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboType;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStockIn;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;

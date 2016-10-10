@@ -637,5 +637,10 @@ namespace WSCATProject.Warehouse
             warehouseinvent.InventoryCode = this.textBoxpandiancode.Text;
             warehouseinvent.Show();
         }
+
+        private void WareHouseInventoryForm_Activated(object sender, EventArgs e)
+        {
+            cboPanDianIdea.Focus();
+        }
     }
 }
