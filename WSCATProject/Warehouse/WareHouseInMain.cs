@@ -1422,7 +1422,7 @@ namespace WSCATProject.Warehouse
 
         private void txtbSearch_Leave(object sender, EventArgs e)
         {
-            if (ActiveControl.Name == "dataGridViewShangPing")//如果当前活动控件是dataGridView1
+            if (ActiveControl.Name == "dataGridViewShangPing")//如果当前活动控件是dataGridViewShangPing
             {
                 resizablePanelData.Visible = true;
                 return;

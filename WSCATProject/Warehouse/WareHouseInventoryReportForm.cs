@@ -352,5 +352,10 @@ namespace WSCATProject.Warehouse
             warehouseprofit.StorageName = _storageName;
             warehouseprofit.ShowDialog();
         }
+
+        private void WareHouseInventoryReportForm_Activated(object sender, EventArgs e)
+        {
+            cboPanDianIdea.Focus();
+        }
     }
 }

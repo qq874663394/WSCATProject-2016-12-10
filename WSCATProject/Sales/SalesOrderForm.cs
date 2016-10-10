@@ -358,8 +358,8 @@ namespace WSCATProject.Sales
             #endregion
 
             //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
+            dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+            dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
 
             //订购数量
             GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["dinggouNumber"].EditControl as GridDoubleInputEditControl;
@@ -382,7 +382,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBoxDanJuType_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -396,7 +396,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 2)
             {
@@ -410,7 +410,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBoxAddress_Click(object sender, EventArgs e)
         {
             if (_Click != 3)
             {
@@ -424,7 +424,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             if (e.GridCell.GridColumn.Name == "material")
             {
@@ -451,7 +451,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -497,7 +497,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -637,7 +637,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxTop1_TextChanged(object sender, EventArgs e)
+        private void labtxtDanJuType_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -699,7 +699,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_EditorValueChanged(object sender, GridEditEventArgs e)
         {
 
         }
@@ -725,7 +725,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             try
             {
@@ -775,5 +775,9 @@ namespace WSCATProject.Sales
             }
         }
 
+        private void SalesOrderForm_Activated(object sender, EventArgs e)
+        {
+            labtxtDanJuType.Focus();
+        }
     }
 }

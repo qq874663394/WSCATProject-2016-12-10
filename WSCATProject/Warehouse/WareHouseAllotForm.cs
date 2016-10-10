@@ -140,8 +140,8 @@ namespace WSCATProject.Warehouse
                 dataGridViewFuJia.AutoGenerateColumns = false;
                 superGridControlShangPing.HScrollBarVisible = true;
                 //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 // 将dataGridView中的内容居中显示
                 dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //显示行号
@@ -150,7 +150,7 @@ namespace WSCATProject.Warehouse
                 superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
                 //调用合计行数据
                 InitDataGridView();
-                cbotype.SelectedIndex = 0;
+                cboType.SelectedIndex = 0;
                 //生成code 和显示条形码
                 _WareHouseAllotCode = BuildCode.ModuleCode("WIA");
                 textBoxOddNumbers.Text = _WareHouseAllotCode;
@@ -159,8 +159,8 @@ namespace WSCATProject.Warehouse
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBox9.Image = imgTemp;
 
-                toolStripBtnSave.Click += ToolStripButtonsave_Click;//保存按钮
-                toolStripBtnShengHe.Click += ToolStripButtonshen_Click;//审核按钮
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
             }
             catch (Exception ex)
@@ -173,7 +173,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -189,7 +189,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
-                warehouseallot.allotType = XYEEncoding.strCodeHex(cbotype.Text);
+                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
                 warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
                 warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseallot.checkState = 1;
@@ -272,7 +272,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -288,7 +288,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
-                warehouseallot.allotType = XYEEncoding.strCodeHex(cbotype.Text);
+                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
                 warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
                 warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseallot.checkState = 0;
@@ -403,7 +403,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private bool isNUllValidate()
         {
-            if (cbotype.Text.Trim() == null)
+            if (cboType.Text.Trim() == null)
             {
                 MessageBox.Show("出库类别不能为空！");
                 return false;
@@ -630,8 +630,8 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitForm()
         {
-            cbotype.Enabled = false;
-            cbotype.BackColor = Color.FromArgb(240, 240, 240);
+            cboType.Enabled = false;
+            cboType.BackColor = Color.FromArgb(240, 240, 240);
             labtextboxTop6.ReadOnly = true;
             labtextboxTop6.BackColor = Color.FromArgb(240, 240, 240);
             superGridControlShangPing.PrimaryGrid.ReadOnly = true;
@@ -657,7 +657,7 @@ namespace WSCATProject.Warehouse
         #endregion
 
         #region 小箭头图标和表格数据的点击事件
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -666,7 +666,7 @@ namespace WSCATProject.Warehouse
             _Click = 3;
         }
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -711,7 +711,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -785,7 +785,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -830,7 +830,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //若是没数据的行则不做处理
@@ -867,7 +867,7 @@ namespace WSCATProject.Warehouse
                     decimal tempAllNumber = 0;//统计数量
                     decimal tempAllMoney = 0;//调出金额
                     decimal temAllInMoney = 0;//调入金额
-                    if (cbotype.Text == "同价调拨")
+                    if (cboType.Text == "同价调拨")
                     {
                         number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].FormattedValue);
                         decimal priceout = Convert.ToDecimal(gr.Cells["gridColumnpriceout"].FormattedValue);
@@ -887,7 +887,7 @@ namespace WSCATProject.Warehouse
                         gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
                         gr["gridColumnmoneyout"].Value = _MaterialMoney.ToString();
                     }
-                    if (cbotype.Text == "异价调拨")
+                    if (cboType.Text == "异价调拨")
                     {
                         number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].FormattedValue);
                         decimal pricein = Convert.ToDecimal(gr.Cells["gridColumnpricein"].FormattedValue);
@@ -920,11 +920,11 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                switch (cbotype.Text.Trim())
+                switch (cboType.Text.Trim())
                 {
                     case "同价调拨":
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumnpricein"].Visible = false;
@@ -964,7 +964,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1004,7 +1004,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -1023,6 +1023,11 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("错误代码:2111-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
             }
+        }
+
+        private void WareHouseAllotForm_Activated(object sender, EventArgs e)
+        {
+            cboType.Focus();
         }
     }
 }

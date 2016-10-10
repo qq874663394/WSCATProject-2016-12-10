@@ -265,7 +265,7 @@
             this.labtextboxTop2.Location = new System.Drawing.Point(374, 27);
             this.labtextboxTop2.Visible = false;
             // 
-            // labtextboxTop1
+            // labtxtDanJuType
             // 
             // 
             // 
@@ -300,7 +300,7 @@
             this.checkBox1.Location = new System.Drawing.Point(199, 30);
             this.checkBox1.Visible = false;
             // 
-            // pictureBox1
+            // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(196, 22);
             this.pictureBoxDanJuType.Visible = false;
@@ -364,10 +364,10 @@
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // pictureBox5
+            // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(258, 17);
-            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -424,7 +424,7 @@
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ltxtbSalsMan.Location = new System.Drawing.Point(94, 19);
             this.ltxtbSalsMan.Size = new System.Drawing.Size(162, 16);
-            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
             // labBotton4
             // 
@@ -459,7 +459,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 201);
             this.panel3.Size = new System.Drawing.Size(1202, 351);
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
@@ -483,9 +483,9 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 351);
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
-            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
+            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             this.superGridControlShangPing.Click += new System.EventHandler(this.panel6_Click);
             // 
             // resizablePanel1
@@ -682,6 +682,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 642);
             this.Name = "WareHouseAdjustPriceForm";
             this.Text = "WareHouseAdjustPriceForm";
+            this.Activated += new System.EventHandler(this.WareHouseAdjustPriceForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseAdjustPriceForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseAdjustPriceForm_KeyPress);
             this.panel1.ResumeLayout(false);

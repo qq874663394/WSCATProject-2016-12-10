@@ -138,10 +138,10 @@ namespace WSCATProject.Warehouse
                 dataGridViewFuJia.AutoGenerateColumns = false;
                 superGridControlShangPing.HScrollBarVisible = true;
                 //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
-                toolStripBtnSave.Click += ToolStripButtonsave_Click;//保存按钮
-                toolStripBtnShengHe.Click += ToolStripButtonshen_Click;//审核按钮
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
                 cboadjType.SelectedIndex = 0;
                 // 将dataGridView中的内容居中显示
@@ -171,7 +171,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -266,7 +266,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -633,7 +633,7 @@ namespace WSCATProject.Warehouse
 
         #region 小箭头图标和表格数据的点击事件
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -647,7 +647,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -683,7 +683,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -743,7 +743,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -789,7 +789,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //计算调后金额以及调价金额
@@ -846,7 +846,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
         {
             if (ltxtbSalsMan.Text.Trim() == "")
             {
@@ -909,7 +909,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -928,6 +928,11 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "调价单温馨提示");
             }
+        }
+
+        private void WareHouseAdjustPriceForm_Activated(object sender, EventArgs e)
+        {
+            cboadjType.Focus();
         }
     }
 }

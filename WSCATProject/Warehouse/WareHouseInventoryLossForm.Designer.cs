@@ -258,7 +258,7 @@
             this.labtextboxTop2.Location = new System.Drawing.Point(415, 27);
             this.labtextboxTop2.Visible = false;
             // 
-            // labtextboxTop1
+            // labtxtDanJuType
             // 
             // 
             // 
@@ -292,7 +292,7 @@
             this.checkBox1.Location = new System.Drawing.Point(197, 31);
             this.checkBox1.Visible = false;
             // 
-            // pictureBox1
+            // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(194, 26);
             this.pictureBoxDanJuType.Visible = false;
@@ -354,10 +354,10 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // pictureBox5
+            // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(243, 15);
-            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -414,7 +414,7 @@
             this.ltxtbSalsMan.Border.Class = "SideNavStrip";
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ltxtbSalsMan.Size = new System.Drawing.Size(142, 16);
-            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.labtextboxBotton1_TextChanged);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
             // labBotton4
             // 
@@ -460,7 +460,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 190);
             this.panel3.Size = new System.Drawing.Size(1202, 409);
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
@@ -484,7 +484,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialcode);
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 409);
             this.superGridControlShangPing.Text = "单号:";
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             // 
             // resizablePanel1
             // 
@@ -677,6 +677,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 690);
             this.Name = "WareHouseInventoryLossForm";
             this.Text = "盘亏单";
+            this.Activated += new System.EventHandler(this.WareHouseInventoryLossForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryLossForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInventoryLossForm_KeyPress);
             this.panel1.ResumeLayout(false);

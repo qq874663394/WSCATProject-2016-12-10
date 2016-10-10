@@ -617,6 +617,7 @@
             this.Name = "WareHouseInventoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "录入盘点数据";
+            this.Activated += new System.EventHandler(this.WareHouseInventoryForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             this.panel1.ResumeLayout(false);
