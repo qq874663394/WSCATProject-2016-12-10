@@ -949,7 +949,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码:-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
             }
         }
 
