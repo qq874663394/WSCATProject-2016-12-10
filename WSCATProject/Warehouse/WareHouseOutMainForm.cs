@@ -57,8 +57,6 @@ namespace WSCATProject.Warehouse
        // private GridRow _wareHouseModel;
         // private decimal _MaterialMoney;
         private decimal _MaterialNumber;
-        private int _rukushu;//入库数量
-
         /// <summary>
         /// 所有商品列表
         /// </summary>
@@ -75,6 +73,10 @@ namespace WSCATProject.Warehouse
         /// 出库code
         /// </summary>
         private string _warehouseoutcode;
+        /// <summary>
+        /// 计算数量
+        /// </summary>
+        private decimal _beforeNumber;
         #endregion
 
         /// <summary>
@@ -91,6 +93,9 @@ namespace WSCATProject.Warehouse
                 //业务员
                 _AllEmployee = employee.SelSupplierTable(false);
 
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 //数量
                 GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 0;
@@ -939,7 +944,8 @@ namespace WSCATProject.Warehouse
         {
             //是否要新增一行的标记
             bool newAdd = false;
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
             //id字段为空 说明是没有数据的行 不是修改而是新增
             if (gr.Cells["gridColumnid"].Value == null)
             {
@@ -947,35 +953,72 @@ namespace WSCATProject.Warehouse
             }
             try
             {
-                gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
-                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materiaModel"].Value;//规格型号
-                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                gr.Cells["gridColumnprice"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["discountAfterPrice"].Value;//单价
-                string storageRackLocation = dataGridViewShangPing.Rows[e.RowIndex].Cells["storageRackLocation"].Value.ToString();
-                string[] sArray = storageRackLocation.Split('/');
-                string Location = sArray[1] + "/" + sArray[2] + "/" + sArray[3] + "/" + sArray[4];
-                gr.Cells["griCoulumcangku"].Value = sArray[0];//仓库
-                gr.Cells["griCoulumhuojia"].Value = Location;//货架
-                gr.Cells["gridColumndate"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value.ToString() == "" ? "" : Convert.ToDateTime(dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value).ToString("yyyy-MM-dd");
-                gr.Cells["gridColumnbaozhe"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
-                gr.Cells["gridColumnyouxiao"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value.ToString() == "" ? "" : Convert.ToDateTime(dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value).ToString("yyyy-MM-dd");
-                gr.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注
-                gr.Cells["gridColumnmaterialcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value;//商品code
-                decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["needNumber"].Value);
-                decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountAfterPrice"].Value);
-                gr.Cells["gridColumnmoney"].Value = number * price;//金额
-                resizablePanelData.Visible = false;
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnmaterialcode"].Value == null)
+                    {
+                        newAdd = true;
+                        continue;
+                    }
+                    if (g.Cells["gridColumnmaterialcode"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value))
+                    {
+                        decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnnumber"].Value);
+                        shuliang += 1;
+                        g.Cells["gridColumnnumber"].Value = shuliang;
+
+                        //逐行统计数据总数
+                        decimal tempAllNumber = 0;
+                        for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                        {
+                            GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                            tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
+                        }
+                        _MaterialNumber = tempAllNumber;
+                        gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                        gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
+                        resizablePanelData.Visible = false;
+                        return;
+                    }
+                    continue;
+                }
                 //新增一行 
                 if (newAdd)
                 {
-                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
+
+                    string storageRackLocation = dataGridViewShangPing.Rows[e.RowIndex].Cells["storageRackLocation"].Value.ToString();
+                    string[] sArray = storageRackLocation.Split('/');
+                    string Location = sArray[1] + "/" + sArray[2] + "/" + sArray[3] + "/" + sArray[4];
+                    decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["needNumber"].Value);
+                    decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountAfterPrice"].Value);
+                    decimal JinE = number * price;//金额
+                    GridRow gr1 = new GridRow();
+                    //无法保证每次都对应
+                    superGridControlShangPing.PrimaryGrid.Rows.Insert(0,
+                        new GridRow(
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["zhujima"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["materialName"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["materiaModel"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value,
+                       1.ToString(),
+                      Convert.ToDecimal( dataGridViewShangPing.Rows[e.RowIndex].Cells["discountAfterPrice"].Value),
+                       sArray[0],
+                       Location,
+                         "",
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value.ToString(),
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString(),
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value,
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value,
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value,
+                        JinE
+                        )
+                        );
+                    // superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                    _Materialnumber += 0;
-                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-
+                    _Materialnumber += 1;
+                    gr.Cells["gridColumnnumber"].Value = _Materialnumber;
+                    resizablePanelData.Visible = false;
                 }
             }
             catch (Exception ex)

@@ -730,6 +730,7 @@
             // 
             // gridColumnmaterialcode
             // 
+            this.gridColumnmaterialcode.HeaderText = "商品code";
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
             this.gridColumnmaterialcode.Visible = false;
             // 

@@ -84,7 +84,7 @@
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(969, 68);
+            this.labelprie.Location = new System.Drawing.Point(969, 7);
             // 
             // dateTimePicker1
             // 
@@ -806,8 +806,6 @@
       private DevComponents.DotNetBar.Controls.ComboBoxEx cboInType;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboPurchaseCode;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        //private new System.Windows.Forms.PictureBox pictureBox8;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmodel;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnunit;
@@ -832,5 +830,6 @@
         private DevComponents.Editors.ComboItem comboItem5;
         private System.Windows.Forms.TextBox textBoxid;
         private System.Windows.Forms.PictureBox picBoxShengHeIn;
+        public DevComponents.DotNetBar.SuperGrid.GridColumn material;
     }
 }
