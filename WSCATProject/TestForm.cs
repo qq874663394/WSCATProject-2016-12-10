@@ -298,14 +298,11 @@ namespace WSCATProject
             p.SetToolTip(resizablePanel1, "按Esc键关闭");
         }
 
-   private void dataGridView1_Leave(object sender, EventArgs e)
+        private void dataGridView1_Leave(object sender, EventArgs e)
         {
             resizablePanelData.Visible = false;
         }
-
-
-
-
+        
         private void dataGridViewFujia_Leave(object sender, EventArgs e)
         {
             resizablePanel1.Visible = false;
