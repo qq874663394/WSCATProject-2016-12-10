@@ -364,6 +364,7 @@
     <Content Include="Resources\btn_enter.png" />
     <Content Include="Resources\btn_hover.png" />
     <Content Include="Resources\btn_None.png" />
+    <None Include="Resources\business.png" />
     <Content Include="Resources\businessQuery.png" />
     <Content Include="Resources\caigou.PNG" />
     <Content Include="Resources\caigouxitong.png" />

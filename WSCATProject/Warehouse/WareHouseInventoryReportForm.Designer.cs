@@ -162,7 +162,7 @@
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "商  品  盘  点  报  告  单";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControlShangPing_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -177,7 +177,7 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
-            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControlShangPing_MouseDown);
             // 
             // toolStrip1
             // 
@@ -196,7 +196,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
             this.toolStrip1.TabIndex = 51;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControlShangPing_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -311,7 +311,7 @@
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 511);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControlShangPing";
-            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControlShangPing_MouseDown);
             // 
             // storge
             // 
@@ -476,7 +476,7 @@
             this.bar1.TabIndex = 55;
             this.bar1.TabStop = false;
             this.bar1.Text = "bar1";
-            this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControlShangPing_MouseDown);
             // 
             // lblzhangcundate
             // 

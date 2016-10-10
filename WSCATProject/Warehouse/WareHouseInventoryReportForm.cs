@@ -273,7 +273,7 @@ namespace WSCATProject.Warehouse
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void superGridControl1_MouseDown(object sender, MouseEventArgs e)
+        private void superGridControlShangPing_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {

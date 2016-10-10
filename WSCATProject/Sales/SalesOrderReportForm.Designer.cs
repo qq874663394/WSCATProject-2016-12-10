@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesOrderReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
@@ -42,27 +43,47 @@
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.storge = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.daima = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.name = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.model = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.tiaoxingma = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.shengchandate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.baozhiqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.unit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.zhangcunnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.pandiannumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.panyingnumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.pankuinumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnprice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.panyingMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.pankuiMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.superGridControlShangPing = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.DanJuCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.DanJuDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.ClientCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.ClientName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.LinkMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.MobilPhone = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.fax = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.JiaoHuoMethod = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.JiaoHuoAddress = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.JiaoHuoDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.YiShouDingJin = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.SaleMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.makeMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.shengheMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.ZhaiYao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.shengheState = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialDaiMa = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialModel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialBarCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialUnit = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.discountRate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.discountMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.shiJiPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.taxRate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.taxMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.priceANDtax = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.shiJiTaxPrice = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.fahuoNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.ZongKuCun = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.CaiGouZaiDingNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.SaleZaiDingNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.materialRemark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -98,6 +119,8 @@
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxClose.TabIndex = 51;
             this.pictureBoxClose.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxClose, "关闭");
+            this.pictureBoxClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
             // pictureBoxMax
             // 
@@ -112,6 +135,9 @@
             this.pictureBoxMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMax.TabIndex = 49;
             this.pictureBoxMax.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxMax, "最大化");
+            this.pictureBoxMax.Click += new System.EventHandler(this.pictureBoxMax_Click);
+            this.pictureBoxMax.MouseEnter += new System.EventHandler(this.pictureBoxMax_MouseEnter);
             // 
             // pictureBoxMin
             // 
@@ -125,6 +151,8 @@
             this.pictureBoxMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMin.TabIndex = 50;
             this.pictureBoxMin.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxMin, "最小化");
+            this.pictureBoxMin.Click += new System.EventHandler(this.pictureBoxMin_Click);
             // 
             // labelTitle
             // 
@@ -141,7 +169,7 @@
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(271, 30);
             this.labelTitle.TabIndex = 4;
-            this.labelTitle.Text = "销  售  订  单  报  告";
+            this.labelTitle.Text = "销  售  订  单  序  时  薄";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // pictureBoxtitle
@@ -177,7 +205,7 @@
             // 
             // toolStripButtonProfit
             // 
-            this.toolStripButtonProfit.Image = global::WSCATProject.Properties.Resources.盘点;
+            this.toolStripButtonProfit.Image = global::WSCATProject.Properties.Resources.business;
             this.toolStripButtonProfit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonProfit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonProfit.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -185,7 +213,7 @@
             this.toolStripButtonProfit.Size = new System.Drawing.Size(41, 66);
             this.toolStripButtonProfit.Text = "查看";
             this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonProfit.ToolTipText = "输出盘盈单";
+            this.toolStripButtonProfit.ToolTipText = "查看销售订单";
             // 
             // toolStripButtonshuaixin
             // 
@@ -210,7 +238,7 @@
             this.toolStripButtondayin.Size = new System.Drawing.Size(41, 66);
             this.toolStripButtondayin.Text = "打印";
             this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtondayin.ToolTipText = "打印盘点表(Ctrl+P)";
+            this.toolStripButtondayin.ToolTipText = "打印(Ctrl+P)";
             // 
             // toolStripButtondaochu
             // 
@@ -237,183 +265,290 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.superGridControl1);
+            this.panel2.Controls.Add(this.superGridControlShangPing);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 131);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1186, 473);
             this.panel2.TabIndex = 53;
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
-            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.superGridControl1.Name = "superGridControl1";
+            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlShangPing.Location = new System.Drawing.Point(0, 0);
+            this.superGridControlShangPing.Name = "superGridControlShangPing";
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.storge);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.daima);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.name);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.model);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.tiaoxingma);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.shengchandate);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.baozhiqi);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.unit);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.zhangcunnumber);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.pandiannumber);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingMoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuiMoney);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
-            this.superGridControl1.Size = new System.Drawing.Size(1186, 473);
-            this.superGridControl1.TabIndex = 1;
-            this.superGridControl1.Text = "superGridControl1";
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DanJuCode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DanJuDate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ClientCode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ClientName);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.LinkMan);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.MobilPhone);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.fax);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.JiaoHuoMethod);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.JiaoHuoAddress);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.JiaoHuoDate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiShouDingJin);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SaleMan);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.makeMan);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shengheMan);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZhaiYao);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shengheState);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialDaiMa);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialName);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialModel);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialBarCode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialUnit);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialNumber);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialPrice);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountRate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shiJiPrice);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.taxRate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.taxMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.priceANDtax);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shiJiTaxPrice);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.fahuoNumber);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongKuCun);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.CaiGouZaiDingNumber);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SaleZaiDingNumber);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialRemark);
+            this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
+            this.superGridControlShangPing.TabIndex = 1;
+            this.superGridControlShangPing.Text = "superGridControl1";
             // 
-            // storge
+            // DanJuCode
             // 
-            this.storge.DataPropertyName = "stockName";
-            this.storge.HeaderText = "仓库";
-            this.storge.Name = "storge";
-            this.storge.ReadOnly = true;
+            this.DanJuCode.HeaderText = "单据编号";
+            this.DanJuCode.Name = "DanJuCode";
             // 
-            // daima
+            // DanJuDate
             // 
-            this.daima.DataPropertyName = "materialDaima";
-            this.daima.HeaderText = "商品代码";
-            this.daima.Name = "daima";
-            this.daima.ReadOnly = true;
+            this.DanJuDate.HeaderText = "单据日期";
+            this.DanJuDate.Name = "DanJuDate";
             // 
-            // name
+            // ClientCode
             // 
-            this.name.DataPropertyName = "materialName";
-            this.name.HeaderText = "商品名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
+            this.ClientCode.HeaderText = "客户编号";
+            this.ClientCode.Name = "ClientCode";
             // 
-            // model
+            // ClientName
             // 
-            this.model.DataPropertyName = "materialModel";
-            this.model.HeaderText = "规格型号";
-            this.model.Name = "model";
-            this.model.ReadOnly = true;
+            this.ClientName.HeaderText = "客户名称";
+            this.ClientName.Name = "ClientName";
+            this.ClientName.Width = 80;
             // 
-            // tiaoxingma
+            // LinkMan
             // 
-            this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.tiaoxingma.DataPropertyName = "barCode";
-            this.tiaoxingma.HeaderText = "条形码";
-            this.tiaoxingma.Name = "tiaoxingma";
-            this.tiaoxingma.ReadOnly = true;
-            this.tiaoxingma.Width = 150;
+            this.LinkMan.HeaderText = "联系人";
+            this.LinkMan.Name = "LinkMan";
+            this.LinkMan.Width = 60;
             // 
-            // shengchandate
+            // MobilPhone
             // 
-            this.shengchandate.DataPropertyName = "productionDate";
-            this.shengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
-            this.shengchandate.HeaderText = "生产/采购日期";
-            this.shengchandate.Name = "shengchandate";
-            this.shengchandate.ReadOnly = true;
-            this.shengchandate.Width = 80;
+            this.MobilPhone.HeaderText = "电话";
+            this.MobilPhone.Name = "MobilPhone";
+            this.MobilPhone.Width = 80;
             // 
-            // baozhiqi
+            // fax
             // 
-            this.baozhiqi.DataPropertyName = "qualityDate";
-            this.baozhiqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
-            this.baozhiqi.HeaderText = "保质期（天 ）";
-            this.baozhiqi.Name = "baozhiqi";
-            this.baozhiqi.ReadOnly = true;
-            this.baozhiqi.Width = 50;
+            this.fax.HeaderText = "传真";
+            this.fax.Name = "fax";
+            this.fax.Width = 80;
             // 
-            // unit
+            // JiaoHuoMethod
             // 
-            this.unit.DataPropertyName = "materialUnit";
-            this.unit.HeaderText = "单位";
-            this.unit.Name = "unit";
-            this.unit.ReadOnly = true;
-            this.unit.Width = 60;
+            this.JiaoHuoMethod.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.JiaoHuoMethod.HeaderText = "交货方式";
+            this.JiaoHuoMethod.Name = "JiaoHuoMethod";
+            this.JiaoHuoMethod.Width = 50;
             // 
-            // zhangcunnumber
+            // JiaoHuoAddress
             // 
-            this.zhangcunnumber.DataPropertyName = "curNumber";
-            this.zhangcunnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.zhangcunnumber.HeaderText = "账存数量";
-            this.zhangcunnumber.Name = "zhangcunnumber";
-            this.zhangcunnumber.ReadOnly = true;
-            this.zhangcunnumber.Width = 80;
+            this.JiaoHuoAddress.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.JiaoHuoAddress.HeaderText = "交货地点";
+            this.JiaoHuoAddress.Name = "JiaoHuoAddress";
+            this.JiaoHuoAddress.Width = 80;
             // 
-            // pandiannumber
+            // JiaoHuoDate
             // 
-            this.pandiannumber.DataPropertyName = "checkNumber";
-            this.pandiannumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.pandiannumber.HeaderText = "盘点数量";
-            this.pandiannumber.Name = "pandiannumber";
-            this.pandiannumber.ReadOnly = true;
-            this.pandiannumber.Width = 80;
+            this.JiaoHuoDate.HeaderText = "交货日期";
+            this.JiaoHuoDate.Name = "JiaoHuoDate";
+            this.JiaoHuoDate.Width = 80;
             // 
-            // panyingnumber
+            // YiShouDingJin
             // 
-            this.panyingnumber.DataPropertyName = "profitNumber";
-            this.panyingnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.panyingnumber.HeaderText = "盘盈数量";
-            this.panyingnumber.Name = "panyingnumber";
-            this.panyingnumber.ReadOnly = true;
-            this.panyingnumber.Width = 80;
+            this.YiShouDingJin.HeaderText = "已收订金";
+            this.YiShouDingJin.Name = "YiShouDingJin";
+            this.YiShouDingJin.Width = 70;
             // 
-            // pankuinumber
+            // SaleMan
             // 
-            this.pankuinumber.DataPropertyName = "lossNumber";
-            this.pankuinumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.pankuinumber.HeaderText = "盘亏数量";
-            this.pankuinumber.Name = "pankuinumber";
-            this.pankuinumber.ReadOnly = true;
-            this.pankuinumber.Width = 80;
+            this.SaleMan.HeaderText = "销售员";
+            this.SaleMan.Name = "SaleMan";
+            this.SaleMan.Width = 60;
             // 
-            // remark
+            // makeMan
             // 
-            this.remark.DataPropertyName = "remark";
-            this.remark.HeaderText = "备注";
-            this.remark.Name = "remark";
-            this.remark.ReadOnly = true;
-            this.remark.Width = 90;
+            this.makeMan.HeaderText = "制单人";
+            this.makeMan.Name = "makeMan";
+            this.makeMan.Width = 60;
             // 
-            // gridColumnprice
+            // shengheMan
             // 
-            this.gridColumnprice.DataPropertyName = "price";
-            this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumnprice.HeaderText = "单价";
-            this.gridColumnprice.Name = "gridColumnprice";
-            this.gridColumnprice.Visible = false;
+            this.shengheMan.HeaderText = "审核人";
+            this.shengheMan.Name = "shengheMan";
+            this.shengheMan.Width = 60;
             // 
-            // panyingMoney
+            // ZhaiYao
             // 
-            this.panyingMoney.DataPropertyName = "profitMoney";
-            this.panyingMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.panyingMoney.HeaderText = "盘盈金额";
-            this.panyingMoney.Name = "panyingMoney";
-            this.panyingMoney.Visible = false;
+            this.ZhaiYao.HeaderText = "摘要";
+            this.ZhaiYao.Name = "ZhaiYao";
+            this.ZhaiYao.Width = 60;
             // 
-            // pankuiMoney
+            // shengheState
             // 
-            this.pankuiMoney.DataPropertyName = "lossMoney";
-            this.pankuiMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.pankuiMoney.HeaderText = "盘亏金额";
-            this.pankuiMoney.Name = "pankuiMoney";
-            this.pankuiMoney.Visible = false;
+            this.shengheState.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.shengheState.HeaderText = "审核状态";
+            this.shengheState.Name = "shengheState";
+            this.shengheState.Width = 60;
             // 
-            // gridColumncode
+            // materialDaiMa
             // 
-            this.gridColumncode.DataPropertyName = "materialCode";
-            this.gridColumncode.HeaderText = "商品code";
-            this.gridColumncode.Name = "gridColumncode";
-            this.gridColumncode.Visible = false;
+            this.materialDaiMa.HeaderText = "商品代码";
+            this.materialDaiMa.Name = "materialDaiMa";
+            // 
+            // materialName
+            // 
+            this.materialName.HeaderText = "商品名称";
+            this.materialName.Name = "materialName";
+            // 
+            // materialModel
+            // 
+            this.materialModel.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.materialModel.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.materialModel.HeaderText = "规格型号";
+            this.materialModel.Name = "materialModel";
+            this.materialModel.Width = 50;
+            // 
+            // materialBarCode
+            // 
+            this.materialBarCode.HeaderText = "条形码";
+            this.materialBarCode.Name = "materialBarCode";
+            this.materialBarCode.Width = 150;
+            // 
+            // materialUnit
+            // 
+            this.materialUnit.HeaderText = "单位";
+            this.materialUnit.Name = "materialUnit";
+            this.materialUnit.Width = 50;
+            // 
+            // materialNumber
+            // 
+            this.materialNumber.HeaderText = "数量";
+            this.materialNumber.Name = "materialNumber";
+            this.materialNumber.Width = 80;
+            // 
+            // materialPrice
+            // 
+            this.materialPrice.HeaderText = "单价";
+            this.materialPrice.Name = "materialPrice";
+            this.materialPrice.Width = 80;
+            // 
+            // materialMoney
+            // 
+            this.materialMoney.HeaderText = "金额";
+            this.materialMoney.Name = "materialMoney";
+            // 
+            // discountRate
+            // 
+            this.discountRate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.discountRate.HeaderText = "折扣率%";
+            this.discountRate.Name = "discountRate";
+            this.discountRate.Width = 50;
+            // 
+            // discountMoney
+            // 
+            this.discountMoney.HeaderText = "折扣额";
+            this.discountMoney.Name = "discountMoney";
+            this.discountMoney.Width = 80;
+            // 
+            // shiJiPrice
+            // 
+            this.shiJiPrice.HeaderText = "实际单价";
+            this.shiJiPrice.Name = "shiJiPrice";
+            this.shiJiPrice.Width = 80;
+            // 
+            // taxRate
+            // 
+            this.taxRate.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.taxRate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.taxRate.HeaderText = " 增值税  税率%";
+            this.taxRate.Name = "taxRate";
+            this.taxRate.Width = 60;
+            // 
+            // taxMoney
+            // 
+            this.taxMoney.HeaderText = "税额";
+            this.taxMoney.Name = "taxMoney";
+            this.taxMoney.Width = 70;
+            // 
+            // priceANDtax
+            // 
+            this.priceANDtax.HeaderText = "价税合计";
+            this.priceANDtax.Name = "priceANDtax";
+            this.priceANDtax.Width = 70;
+            // 
+            // shiJiTaxPrice
+            // 
+            this.shiJiTaxPrice.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.shiJiTaxPrice.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.shiJiTaxPrice.HeaderText = "实际含税单价";
+            this.shiJiTaxPrice.Name = "shiJiTaxPrice";
+            this.shiJiTaxPrice.Width = 60;
+            // 
+            // fahuoNumber
+            // 
+            this.fahuoNumber.HeaderText = "发货数量";
+            this.fahuoNumber.Name = "fahuoNumber";
+            this.fahuoNumber.Width = 60;
+            // 
+            // ZongKuCun
+            // 
+            this.ZongKuCun.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.False;
+            this.ZongKuCun.HeaderText = "总库存";
+            this.ZongKuCun.Name = "ZongKuCun";
+            this.ZongKuCun.Width = 60;
+            // 
+            // CaiGouZaiDingNumber
+            // 
+            this.CaiGouZaiDingNumber.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.CaiGouZaiDingNumber.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.CaiGouZaiDingNumber.HeaderText = "采购在订量";
+            this.CaiGouZaiDingNumber.Name = "CaiGouZaiDingNumber";
+            this.CaiGouZaiDingNumber.Width = 50;
+            // 
+            // SaleZaiDingNumber
+            // 
+            this.SaleZaiDingNumber.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.SaleZaiDingNumber.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.SaleZaiDingNumber.HeaderText = "销售在订量";
+            this.SaleZaiDingNumber.Name = "SaleZaiDingNumber";
+            this.SaleZaiDingNumber.Width = 50;
+            // 
+            // materialRemark
+            // 
+            this.materialRemark.HeaderText = "备注";
+            this.materialRemark.Name = "materialRemark";
+            this.materialRemark.Width = 80;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -426,6 +561,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -438,6 +574,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -462,6 +599,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SalesOrderReportForm";
             this.Text = "销售订单报告";
+            this.Load += new System.EventHandler(this.SalesOrderReportForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
@@ -490,26 +629,46 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtondaochu;
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private System.Windows.Forms.Panel panel2;
-        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn storge;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn daima;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn name;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn model;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn tiaoxingma;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn shengchandate;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn baozhiqi;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn unit;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn zhangcunnumber;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn pandiannumber;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn panyingnumber;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn pankuinumber;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn panyingMoney;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn pankuiMoney;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlShangPing;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn DanJuCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn DanJuDate;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn ClientCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn ClientName;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn LinkMan;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn MobilPhone;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn fax;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn JiaoHuoMethod;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn JiaoHuoAddress;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn JiaoHuoDate;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn YiShouDingJin;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn SaleMan;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn makeMan;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn shengheMan;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn ZhaiYao;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn shengheState;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialDaiMa;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialName;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialModel;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialBarCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialUnit;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialNumber;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialPrice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialMoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn discountRate;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn discountMoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn shiJiPrice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn taxRate;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn taxMoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn priceANDtax;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn shiJiTaxPrice;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn fahuoNumber;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn ZongKuCun;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn CaiGouZaiDingNumber;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn SaleZaiDingNumber;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialRemark;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

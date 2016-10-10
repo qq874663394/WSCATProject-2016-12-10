@@ -104,19 +104,19 @@ namespace WSCATProject.Warehouse
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics,
-                               this.panel2.ClientRectangle,
-                               Color.White,
-                               1,
-                               ButtonBorderStyle.Solid,
-                               Color.FromArgb(85, 177, 238),
-                               1,
-                               ButtonBorderStyle.Solid,
-                               Color.White,
-                               1,
-                               ButtonBorderStyle.Solid,
-                               Color.White,
-                               1,
-                               ButtonBorderStyle.Solid);
+                                this.panel2.ClientRectangle,
+                                Color.FromArgb(85, 177, 238),
+                                2,
+                                ButtonBorderStyle.Solid,
+                                Color.FromArgb(85, 177, 238),
+                                1,
+                                ButtonBorderStyle.Solid,
+                                Color.FromArgb(85, 177, 238),
+                                2,
+                                ButtonBorderStyle.Solid,
+                                Color.White,
+                                1,
+                                ButtonBorderStyle.Solid);
         }
         #endregion
 
