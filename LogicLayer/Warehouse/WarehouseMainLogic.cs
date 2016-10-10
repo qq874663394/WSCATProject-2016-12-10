@@ -9,12 +9,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UpdateManagerLayer;
 
 namespace LogicLayer.Warehouse
 {
     public class WarehouseMainLogic
     {
         WarehouseMainBase wo = new WarehouseMainBase();
+        WarehouseUpdataManager wum = new WarehouseUpdataManager();
         /// <summary>
         /// 减少库存
         /// </summary>
@@ -46,6 +48,7 @@ namespace LogicLayer.Warehouse
                 {
                     throw new Exception("-3");
                 }
+                wum.add(code, logModel.operationTable, result, "", logModel.operationTime);
             }
             catch (Exception ex)
             {
@@ -90,6 +93,7 @@ namespace LogicLayer.Warehouse
                     throw new Exception("-3");
                 }
                 logModel.result = 1;
+                wum.add(code, logModel.operationTable, result, "", logModel.operationTime);
             }
             catch (Exception ex)
             {

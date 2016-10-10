@@ -89,6 +89,8 @@
     <Compile Include="Sales\SalesCancelDetail.cs" />
     <Compile Include="Sales\SalesDetail.cs" />
     <Compile Include="Sales\SalesMain.cs" />
+    <Compile Include="Sales\SalesOrder.cs" />
+    <Compile Include="Sales\SalesOrderDetail.cs" />
     <Compile Include="Sales\SalesProcess.cs" />
     <Compile Include="Warehouse\WarehouseAssemblyDetail.cs" />
     <Compile Include="Warehouse\WarehouseAllot.cs" />
