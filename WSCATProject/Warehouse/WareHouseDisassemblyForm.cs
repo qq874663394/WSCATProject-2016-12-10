@@ -1013,5 +1013,10 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("统计数量错误！请检查：" + ex.Message);
             }
         }
+
+        private void WareHouseDisassemblyForm_Activated(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -356,6 +356,7 @@
             this.textBoxOddNumbers.ReadOnly = true;
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 21);
             this.textBoxOddNumbers.TabIndex = 8;
+            this.textBoxOddNumbers.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelprie
             // 

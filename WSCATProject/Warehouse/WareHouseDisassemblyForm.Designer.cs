@@ -268,7 +268,7 @@
             this.labtextboxTop2.Location = new System.Drawing.Point(399, 28);
             this.labtextboxTop2.Visible = false;
             // 
-            // labtextboxTop1
+            // labtxtDanJuType
             // 
             // 
             // 
@@ -302,7 +302,7 @@
             this.checkBox1.Location = new System.Drawing.Point(199, 31);
             this.checkBox1.Visible = false;
             // 
-            // pictureBox1
+            // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(196, 26);
             this.pictureBoxDanJuType.Visible = false;
@@ -361,7 +361,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // pictureBox5
+            // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(237, 17);
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
@@ -457,7 +457,7 @@
             this.panel3.Controls.SetChildIndex(this.superGridControlShangPing, 0);
             this.panel3.Controls.SetChildIndex(this.superGridControl2, 0);
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
             this.superGridControlShangPing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -756,6 +756,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 690);
             this.Name = "WareHouseDisassemblyForm";
             this.Text = "WareHouseDisassemblyForm";
+            this.Activated += new System.EventHandler(this.WareHouseDisassemblyForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseDisassemblyForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseDisassemblyForm_KeyPress);
             this.panel1.ResumeLayout(false);

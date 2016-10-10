@@ -81,12 +81,13 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.textBoxOddNumbers.Location = new System.Drawing.Point(1055, 58);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(135, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(1015, 58);
+            this.labelprie.Location = new System.Drawing.Point(1013, 3);
             // 
             // panel1
             // 
@@ -479,7 +480,7 @@
             // 
             // pictureBoxTiaoXingMa
             // 
-            this.pictureBoxTiaoXingMa.Location = new System.Drawing.Point(1055, 1);
+            this.pictureBoxTiaoXingMa.Location = new System.Drawing.Point(1055, 4);
             this.pictureBoxTiaoXingMa.Name = "pictureBoxTiaoXingMa";
             this.pictureBoxTiaoXingMa.Size = new System.Drawing.Size(137, 49);
             this.pictureBoxTiaoXingMa.TabIndex = 53;
