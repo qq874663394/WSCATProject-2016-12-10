@@ -181,7 +181,7 @@ namespace WSCATProject.Warehouse
                 return false;
             }
 
-            GridRow gr = (GridRow)superGridControl2.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[0];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库1不能为空！");
@@ -227,8 +227,8 @@ namespace WSCATProject.Warehouse
             this.textBoxOddNumbers.ReadOnly = true;
             this.superGridControlShangPing.PrimaryGrid.ReadOnly = true;
             this.superGridControlShangPing.BackColor = Color.FromArgb(240, 240, 240);
-            this.superGridControl2.PrimaryGrid.ReadOnly = true;
-            this.superGridControl2.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControlZuZhuang.PrimaryGrid.ReadOnly = true;
+            this.superGridControlZuZhuang.BackColor = Color.FromArgb(240, 240, 240);
             this.toolStripBtnSave.Enabled = false;
             this.panel2.BackColor = Color.FromArgb(240, 240, 240);
             this.panel5.BackColor = Color.FromArgb(240, 240, 240);
@@ -399,7 +399,7 @@ namespace WSCATProject.Warehouse
                 superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
                 //内容居中
                 superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                superGridControl2.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlZuZhuang.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
 
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
@@ -407,8 +407,8 @@ namespace WSCATProject.Warehouse
                 superGridControlShangPing.HScrollBarVisible = true;
 
                 //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
 
                 InitDataGridView();
                 //生成code 和显示条形码
@@ -417,10 +417,10 @@ namespace WSCATProject.Warehouse
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-                pictureBox9.Image = imgTemp;
+                pictureBoxTiaoXingMa.Image = imgTemp;
 
-                toolStripBtnSave.Click += ToolStripButtonsave_Click;//保存按钮
-                toolStripBtnShengHe.Click += ToolStripButtonshen_Click;//审核按钮
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
             }
             catch (Exception ex)
@@ -434,7 +434,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -462,7 +462,7 @@ namespace WSCATProject.Warehouse
                 warehouseassembly.updatetime = DateTime.Now;
                 warehouseassembly.reserved1 = "";
                 warehouseassembly.reserved2 = "";
-                GridRow gr = (GridRow)superGridControl2.PrimaryGrid.Rows[0];
+                GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[0];
                 warehouseassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
                 warehouseassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
                 warehouseassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
@@ -536,7 +536,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -564,7 +564,7 @@ namespace WSCATProject.Warehouse
                 warehouseassembly.updatetime = DateTime.Now;
                 warehouseassembly.reserved1 = "";
                 warehouseassembly.reserved2 = "";
-                GridRow gr = (GridRow)superGridControl2.PrimaryGrid.Rows[0];
+                GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[0];
                 warehouseassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
                 warehouseassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
                 warehouseassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
@@ -634,13 +634,13 @@ namespace WSCATProject.Warehouse
 
         #region 两个副框的双击事件和下拉箭头的点击事件
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (_Material == 2)
                 {
-                    GridRow grs = (GridRow)superGridControl2.PrimaryGrid.Rows[ClickRowIndex];
+                    GridRow grs = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
                     grs.Cells["gridColumncode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
                     grs.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
                     grs.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
@@ -701,7 +701,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -717,7 +717,7 @@ namespace WSCATProject.Warehouse
                 {
                     if (_WareHouse == 2)
                     {
-                    GridRow gr = (GridRow)superGridControl2.PrimaryGrid.Rows[ClickRowIndex];
+                    GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
                     string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     gr.Cells["gridColumnstockCode"].Value = code;
@@ -759,7 +759,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxTop1_KeyPress(object sender, KeyPressEventArgs e)
+        private void labtxtDanJuType_KeyPress(object sender, KeyPressEventArgs e)
         {
             //判断按键是不是要输入的类型。
             if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
@@ -787,7 +787,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void superGridControl2_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlZuZhuang_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -839,7 +839,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -894,7 +894,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -932,7 +932,7 @@ namespace WSCATProject.Warehouse
 
         #region 表格模糊查询
 
-        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -953,12 +953,12 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void superGridControl2_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlZuZhuang_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
             {
                 string SS = "";
-                GridRow gr = (GridRow)superGridControl2.PrimaryGrid.Rows[ClickRowIndex];
+                GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
                 string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
                 if (SS == "")
                 {
@@ -981,7 +981,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //计算金额及统计数量
@@ -1011,6 +1011,11 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("统计数量错误！请检查：" + ex.Message);
             }
+        }
+
+        private void WareHouseAssembyForm_Activated(object sender, EventArgs e)
+        {
+            superGridControlZuZhuang.Focus();
         }
     }
 }
