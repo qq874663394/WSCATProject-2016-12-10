@@ -232,6 +232,7 @@ namespace WSCATProject
                 this.WindowState = FormWindowState.Normal;
                 pictureBoxMax.Image = Properties.Resources.zuidahua1;
                 return;
+                
             }
             if (this.WindowState == FormWindowState.Normal)
             {
@@ -290,5 +291,7 @@ namespace WSCATProject
             this.Close();
             this.Dispose();
         }
+
+
     }
 }

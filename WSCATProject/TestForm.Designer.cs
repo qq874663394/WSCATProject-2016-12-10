@@ -43,6 +43,7 @@
             this.toolStripBtnHouDan = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnInsert = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonXuanYuanDan = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnShengHe = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnDaYing = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnDaoChu = new System.Windows.Forms.ToolStripButton();
@@ -228,6 +229,7 @@
             this.toolStripBtnHouDan,
             this.toolStripBtnInsert,
             this.toolStripBtnSave,
+            this.toolStripButtonXuanYuanDan,
             this.toolStripBtnShengHe,
             this.toolStripBtnDaYing,
             this.toolStripBtnDaoChu,
@@ -282,6 +284,17 @@
             this.toolStripBtnSave.Text = "保存";
             this.toolStripBtnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnSave.ToolTipText = "保存(Ctrl+S)";
+            // 
+            // toolStripButtonXuanYuanDan
+            // 
+            this.toolStripButtonXuanYuanDan.Image = global::WSCATProject.Properties.Resources.business;
+            this.toolStripButtonXuanYuanDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonXuanYuanDan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonXuanYuanDan.Name = "toolStripButtonXuanYuanDan";
+            this.toolStripButtonXuanYuanDan.Size = new System.Drawing.Size(55, 57);
+            this.toolStripButtonXuanYuanDan.Text = "选源单";
+            this.toolStripButtonXuanYuanDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonXuanYuanDan.Visible = false;
             // 
             // toolStripBtnShengHe
             // 
@@ -1130,5 +1143,6 @@
         protected System.Windows.Forms.Label label1;
         protected System.Windows.Forms.PictureBox pictureBoxMax;
         protected System.Windows.Forms.PictureBox pictureBoxMin;
+        public System.Windows.Forms.ToolStripButton toolStripButtonXuanYuanDan;
     }
 }

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -241,6 +242,7 @@ namespace WSCATProject.Sales
 
         private void SalesTicketForm_Load(object sender, EventArgs e)
         {
+            toolStripButtonXuanYuanDan.Visible = true;
             //客户
             _AllClient = client.GetClientByBool(false);
             //销售员
@@ -249,12 +251,12 @@ namespace WSCATProject.Sales
             _AllStorage = storage.GetList(00, "");
 
             //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
+            dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+            dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
 
             #region 初始化窗体
 
-            comboBoxtype.SelectedIndex = 0;//单据类型
+            comboBoxType.SelectedIndex = 0;//单据类型
             comboBoxfapiaotype.SelectedIndex = 0;//发票类型
 
             //禁用自动创建列
@@ -281,7 +283,7 @@ namespace WSCATProject.Sales
             pictureBoxtiaoxingma.Image = imgTemp;
         }
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -330,7 +332,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -339,7 +341,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBoxClient_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -352,7 +354,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 2)
             {
@@ -366,7 +368,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -416,7 +418,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxTop2_TextChanged(object sender, EventArgs e)
+        private void labtextboxTopClient_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -540,11 +542,11 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBoxtype_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                switch (comboBoxtype.Text.Trim())
+                switch (comboBoxType.Text.Trim())
                 {
                     case "销售发货":
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
@@ -564,6 +566,34 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("错误代码：-选择调拨类型数据错误" + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 修改边框 的颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                             this.panel2.ClientRectangle,
+                             Color.FromArgb(85, 177, 238),
+                             2,
+                             ButtonBorderStyle.Solid,
+                             Color.FromArgb(85, 177, 238),
+                             1,
+                             ButtonBorderStyle.Solid,
+                             Color.FromArgb(85, 177, 238),
+                             2,
+                             ButtonBorderStyle.Solid,
+                             Color.White,
+                             1,
+                             ButtonBorderStyle.Solid);
+        }
+
+        private void SalesTicketForm_Activated(object sender, EventArgs e)
+        {
+            labtextboxTop2.Focus();//焦点在客户上
         }
     }
 }

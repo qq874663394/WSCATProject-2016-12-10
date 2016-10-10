@@ -94,19 +94,19 @@ namespace WSCATProject.Sales
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics,
-                           this.panel2.ClientRectangle,
-                           Color.White,
-                           1,
-                           ButtonBorderStyle.Solid,
-                           Color.FromArgb(85, 177, 238),
-                           1,
-                           ButtonBorderStyle.Solid,
-                           Color.White,
-                           1,
-                           ButtonBorderStyle.Solid,
-                           Color.White,
-                           1,
-                           ButtonBorderStyle.Solid);
+                                 this.panel2.ClientRectangle,
+                                 Color.FromArgb(85, 177, 238),
+                                 2,
+                                 ButtonBorderStyle.Solid,
+                                 Color.FromArgb(85, 177, 238),
+                                 1,
+                                 ButtonBorderStyle.Solid,
+                                 Color.FromArgb(85, 177, 238),
+                                 2,
+                                 ButtonBorderStyle.Solid,
+                                 Color.White,
+                                 1,
+                                 ButtonBorderStyle.Solid);
         }
         #endregion
 
@@ -779,5 +779,72 @@ namespace WSCATProject.Sales
         {
             labtxtDanJuType.Focus();
         }
+
+        #region 验证只能输入数字和小数点
+        /// <summary>
+        /// 验证只能输入数字和小数点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtTopYiShouDingJin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //判断按键是不是要输入的类型。
+            if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
+                e.Handled = true;
+            //小数点的处理。
+            if ((int)e.KeyChar == 46)//小数点
+            {
+                if (labtextboxTop7.Text.Length < 0)
+                    e.Handled = true;   //小数点不能在第一位
+                else
+                {
+                    float f;
+                    float oldf;
+                    bool b1 = false, b2 = false;
+                    b1 = float.TryParse(labtextboxTop7.Text, out oldf);
+                    b2 = float.TryParse(labtextboxTop7.Text + e.KeyChar.ToString(), out f);
+                    if (b2 == false)
+                    {
+                        if (b1 == true)
+                            e.Handled = true;
+                        else
+                            e.Handled = false;
+                    }
+                }
+            }
+
+        }
+
+        private void labtextboxTop7_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(labtextboxTop7.Text)) return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
+            //labtextboxTop7.Text = string.Format("{0:#,#}", d);
+            labtextboxTop7.Text = string.Format("{0:#,#}", d);
+            // 确保输入光标在最右侧
+            labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
+        }
+        private string skipComma(string str)
+        {
+            string[] ss = null;
+            string strnew = "";
+            if (str == "")
+            {
+                strnew = "0";
+            }
+            else
+            {
+                ss = str.Split(',');
+                for (int i = 0; i < ss.Length; i++)
+                {
+                    strnew += ss[i];
+                }
+            }
+            return strnew;
+        }
+        #endregion
     }
 }

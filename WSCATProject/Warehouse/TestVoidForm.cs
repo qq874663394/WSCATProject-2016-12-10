@@ -24,6 +24,21 @@ namespace WSCATProject.Warehouse
 {
     public partial class TestVoidForm : Form
     {
+        private int _clickRowIndex;
+
+        public int ClickRowIndex
+        {
+            get
+            {
+                return _clickRowIndex;
+            }
+
+            set
+            {
+                _clickRowIndex = value;
+            }
+        }
+
         public TestVoidForm()
         {
             InitializeComponent();
@@ -31,6 +46,20 @@ namespace WSCATProject.Warehouse
 
         private void TestVoidForm_Load(object sender, EventArgs e)
         {
+            //name.SortMode = DataGridViewColumnSortMode.NotSortable; //排序模式
+            superGridControl1.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+            superGridControl1.PrimaryGrid.AddSort(superGridControl1.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+
+            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;//显示行号
+            InitColumns();  //初始化列
+            InitDataGridView(); //统计行
+
+            //DGV数据源
+            ClientInterface ci = new ClientInterface();
+            dataGridView1.DataSource = ci.GetList(999, "");
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView2.DataSource = ci.GetList(999, "");
+            dataGridView2.AutoGenerateColumns = false;
         }
         public string ExSwitch(string warehouseInResult)
         {
@@ -54,129 +83,105 @@ namespace WSCATProject.Warehouse
                     return "未知错误";
             }
         }
-        public void main()
+        /// <summary>
+        /// 初始化列
+        /// </summary>
+        public void InitColumns()
         {
-            MessageBox.Show(Void1().ToString());
-        }
-        public int Void1()
-        {
-            try
-            {
-                return 1;
-            }
-            catch (Exception)
-            {
+            GridColumn gc = null;
+            gc = new GridColumn();
+            gc.DataPropertyName = "name";
+            gc.Name = "name";
+            gc.HeaderText = "name";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
 
-                throw new Exception("-1");
+            gc = new GridColumn();
+            gc.DataPropertyName = "code";
+            gc.Name = "code";
+            gc.HeaderText = "code";
+            gc.Width = 120;
+            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
+            superGridControl1.PrimaryGrid.Columns.Add(gc);
+        }
+        private void InitDataGridView()
+        {
+            //新增一行 用于给客户操作
+            superGridControl1.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
+                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["name"].Value = "99999";
+            gr.Cells["code"].Value = "99999";
+        }
+
+
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            bool newAdd = false;
+            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+            GridItemsCollection _gridItemCollection = superGridControl1.PrimaryGrid.Rows;//获取所有行
+
+            foreach (GridRow item in _gridItemCollection)
+            {
+                if (item.Cells["code"].Value == null)
+                {
+                    newAdd = true;
+                    continue;
+                }
+                if (item.Cells["code"].Value.Equals(dataGridView1.Rows[e.RowIndex].Cells["code"].Value))//双击code和所有行的code相同时
+                {
+                    item.Cells["name"].Value = dataGridView1.Rows[e.RowIndex].Cells["name"].Value;  //修改
+                    item.Cells["code"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;
+                    newAdd = false;
+                    break;
+                }
+                else
+                {
+                    newAdd = true;
+                }
+            }
+            if (newAdd == true)
+            {
+                GridRow gr1 = new GridRow();
+                //无法保证每次都对应
+                superGridControl1.PrimaryGrid.Rows.Insert(0, 
+                    new GridRow(
+                    dataGridView1.Rows[e.RowIndex].Cells["name"].Value, 
+                    dataGridView1.Rows[e.RowIndex].Cells["code"].Value
+
+                    )
+                    );
             }
         }
-        public int Void2()
+
+        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
         {
-            try
-            {
-                return 000;
-            }
-            catch (Exception)
-            {
-                throw new Exception("-2");
-            }
+            ClickRowIndex = e.GridCell.RowIndex;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(BuildCode.ModuleCode("asd"));
-            PurchaseDetailLogic pdl = new PurchaseDetailLogic();
-            dataGridView1.DataSource = pdl.GetListAndMaterial("123");
-            #region 查询
-            //ClientInterface ba = new ClientInterface();
-            //try
-            //{
-            //    DataTable dt = ba.GetList(8,"");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ExSwitch(ex.Message));
-            //}
-            #endregion
-
-            #region 事物新增和更新示例
-            //            //多条数据的
-            //            string sqlToList = "insert into T_BaseArea(code,name,parentId,isEnable) values(@code, @name, @parentId,@isEnable)";
-            //            //多条数据的值  要添加到list里   就像普通的参数集  不过最后添加到list里了
-            //            List<SqlParameter[]> list = new List<SqlParameter[]>();//存储参数集合的list
-            //            SqlParameter[] sps;  //定义一个参数集合
-            //            sps = new SqlParameter[]
-            //            {
-            //                            new SqlParameter("@code","duotiao"),
-            //                            new SqlParameter("@name","duotiao"),
-            //                            new SqlParameter("@parentId","duotiao"),
-            //                            new SqlParameter("@isEnable",1)
-            //            };
-            //            list.Add(sps);
-            //            sps = new SqlParameter[]
-            //{
-            //                            new SqlParameter("@code","duotiao"),
-            //                            new SqlParameter("@name","duotiao"),
-            //                            new SqlParameter("@parentId","duotiao"),
-            //                            new SqlParameter("@isEnable",1)
-            //};
-            //            list.Add(sps);
-            //            sps = new SqlParameter[]
-            //{
-            //                            new SqlParameter("@code","duotiao"),
-            //                            new SqlParameter("@name","duotiao"),
-            //                            new SqlParameter("@parentId","duotiao"),
-            //                            new SqlParameter("@isEnable",1)
-            //};
-            //            list.Add(sps);
-
-            //            Hashtable htKey = new Hashtable();  //参数要求
-
-            //            string sql = @"insert into T_BaseArea(code,name,parentId) 
-            //            values(@code,@name,@parentId)";  //主表的
-            //            SqlParameter[] parameters = //主表参数
-            //            {
-            //                            new SqlParameter("@code","duotiao"),
-            //                            new SqlParameter("@name","duotiao"),
-            //                            new SqlParameter("@parentId","duotiao")
-            //                        };
-
-
-            //            htKey.Add(sql, parameters);//sql语句和主表的参数集合
-
-
-            //            try
-            //            {
-            //                DictionaryEntry de = new DictionaryEntry();
-            //                foreach (DictionaryEntry de1 in htKey)
-            //                {
-            //                    de.Key = de1.Key;
-            //                    de.Value = de1.Value;
-            //                }
-            //                List<log> listlog = new List<log>();
-            //                log logmodel = new log() { code = "123", operationCode = "321" };
-            //                listlog.Add(logmodel);
-            //                DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, list);
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MessageBox.Show(ExSwitch(ex.Message));
-            //            }
-            #endregion
-
-            #region Table合并
-            //WarehouseInInterface wi = new WarehouseInInterface();
-            //WarehouseOutInterface wo = new WarehouseOutInterface();
-            //DataTable widt = wi.GetListToIn(0).Tables[0];
-            //DataTable wodt = wo.GetListToOut(0).Tables[0];
-            //wodt.Merge(widt); 
-            #endregion
         }
-        //当单元格编辑器值更改后发生
-        private void superGridControl1_EditorValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridEditEventArgs e)
+
+        private void superGridControl1_CellClick(object sender, GridCellClickEventArgs e)
         {
-            string text = e.EditControl.EditorValue.ToString();
-            MessageBox.Show(text);
         }
+        //    #region Table合并
+        //    //WarehouseInInterface wi = new WarehouseInInterface();
+        //    //WarehouseOutInterface wo = new WarehouseOutInterface();
+        //    //DataTable widt = wi.GetListToIn(0).Tables[0];
+        //    //DataTable wodt = wo.GetListToOut(0).Tables[0];
+        //    //wodt.Merge(widt); 
+        //    #endregion
+        ////当单元格编辑器值更改后发生
+        //private void superGridControl1_EditorValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridEditEventArgs e)
+        //{
+        //    string text = e.EditControl.EditorValue.ToString();
+        //}
     }
 }

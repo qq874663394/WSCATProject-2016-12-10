@@ -151,11 +151,6 @@ namespace LogicLayer.Warehouse
             }
             return result;
         }
-
-        public int update(WarehouseOut wo)
-        {
-            return 0;
-        }
         /// <summary>
         /// 事务修改
         /// </summary>
@@ -181,6 +176,7 @@ namespace LogicLayer.Warehouse
             {
                 result = wob.update(warehouseOut, listModel);
                 logModel.result = 1;
+                wum.add(warehouseOut.code, logModel.operationTable, listModel.Count + 1, "", logModel.operationTime);
             }
             catch (Exception ex)
             {

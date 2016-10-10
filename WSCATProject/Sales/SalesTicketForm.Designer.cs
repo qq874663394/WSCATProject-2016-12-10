@@ -30,16 +30,15 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtBank = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtZhaiYao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
-            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtYiKaiPiao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtWeiKaiPiao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label4 = new System.Windows.Forms.Label();
             this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -64,7 +63,7 @@
             this.gridColumnyouxiaoqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumntuihuoshu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnyuandandanhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.comboBoxtype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboBoxType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
@@ -74,6 +73,7 @@
             this.comboItem6 = new DevComponents.Editors.ComboItem();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.comboItem8 = new DevComponents.Editors.ComboItem();
+            this.txtYouHuiKeMu = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -95,11 +95,15 @@
             // 
             // textBoxOddNumbers
             // 
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1037, 6);
+            this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1039, 108);
+            this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
+            this.textBoxOddNumbers.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(997, 10);
+            this.labelprie.Location = new System.Drawing.Point(999, 17);
             // 
             // dateTimePicker1
             // 
@@ -117,26 +121,37 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.comboBoxfapiaotype);
-            this.panel2.Controls.Add(this.comboBoxtype);
-            this.panel2.Controls.Add(this.textBoxX5);
+            this.panel2.Controls.Add(this.comboBoxType);
+            this.panel2.Controls.Add(this.txtYiKaiPiao);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.textBoxX2);
+            this.panel2.Controls.Add(this.txtWeiKaiPiao);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.pictureBoxtiaoxingma);
-            this.panel2.Controls.Add(this.textBoxX4);
+            this.panel2.Controls.Add(this.txtZhaiYao);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBoxX3);
-            this.panel2.Controls.Add(this.textBoxX1);
+            this.panel2.Controls.Add(this.txtYouHuiKeMu);
+            this.panel2.Controls.Add(this.txtBank);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Size = new System.Drawing.Size(1202, 150);
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.Controls.SetChildIndex(this.label3, 0);
             this.panel2.Controls.SetChildIndex(this.label5, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxX1, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxX3, 0);
+            this.panel2.Controls.SetChildIndex(this.txtBank, 0);
+            this.panel2.Controls.SetChildIndex(this.txtYouHuiKeMu, 0);
+            this.panel2.Controls.SetChildIndex(this.label6, 0);
+            this.panel2.Controls.SetChildIndex(this.dateTimePicker2, 0);
+            this.panel2.Controls.SetChildIndex(this.label7, 0);
+            this.panel2.Controls.SetChildIndex(this.txtZhaiYao, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBoxtiaoxingma, 0);
+            this.panel2.Controls.SetChildIndex(this.label4, 0);
+            this.panel2.Controls.SetChildIndex(this.txtWeiKaiPiao, 0);
+            this.panel2.Controls.SetChildIndex(this.label8, 0);
+            this.panel2.Controls.SetChildIndex(this.txtYiKaiPiao, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
@@ -164,16 +179,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop7, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
-            this.panel2.Controls.SetChildIndex(this.label6, 0);
-            this.panel2.Controls.SetChildIndex(this.dateTimePicker2, 0);
-            this.panel2.Controls.SetChildIndex(this.label7, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxX4, 0);
-            this.panel2.Controls.SetChildIndex(this.pictureBoxtiaoxingma, 0);
-            this.panel2.Controls.SetChildIndex(this.label4, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxX2, 0);
-            this.panel2.Controls.SetChildIndex(this.label8, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxX5, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxtype, 0);
+            this.panel2.Controls.SetChildIndex(this.comboBoxType, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxfapiaotype, 0);
             // 
             // labtextboxTop6
@@ -187,7 +193,7 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(97, 50);
+            this.labtextboxTop6.Location = new System.Drawing.Point(98, 50);
             this.labtextboxTop6.Size = new System.Drawing.Size(135, 16);
             // 
             // labtextboxTop3
@@ -217,6 +223,7 @@
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.Location = new System.Drawing.Point(597, 85);
             this.labtextboxTop7.Size = new System.Drawing.Size(135, 16);
+            this.labtextboxTop7.Text = "0.00";
             // 
             // labtextboxTop9
             // 
@@ -231,6 +238,7 @@
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop9.Location = new System.Drawing.Point(844, 85);
             this.labtextboxTop9.Size = new System.Drawing.Size(135, 16);
+            this.labtextboxTop9.Text = "0.00";
             // 
             // labtextboxTop8
             // 
@@ -271,7 +279,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(345, 50);
+            this.labtextboxTop4.Location = new System.Drawing.Point(345, 48);
             this.labtextboxTop4.Size = new System.Drawing.Size(115, 16);
             this.labtextboxTop4.Visible = false;
             // 
@@ -288,7 +296,7 @@
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop2.Location = new System.Drawing.Point(345, 15);
             this.labtextboxTop2.Size = new System.Drawing.Size(115, 16);
-            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTop2_TextChanged);
+            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTopClient_TextChanged);
             // 
             // labtxtDanJuType
             // 
@@ -301,7 +309,7 @@
             this.labtxtDanJuType.Border.BorderGradientAngle = 0;
             this.labtxtDanJuType.Border.Class = "SideNavStrip";
             this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtxtDanJuType.Location = new System.Drawing.Point(97, 15);
+            this.labtxtDanJuType.Location = new System.Drawing.Point(100, 15);
             this.labtxtDanJuType.Size = new System.Drawing.Size(135, 16);
             this.labtxtDanJuType.Visible = false;
             // 
@@ -318,7 +326,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(461, 11);
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBoxClient_Click);
             // 
             // checkBox1
             // 
@@ -376,12 +384,14 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Location = new System.Drawing.Point(0, 660);
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(212, 15);
-            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -514,7 +524,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 389);
-            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             // 
             // resizablePanel1
             // 
@@ -551,52 +561,31 @@
             this.label5.TabIndex = 55;
             this.label5.Text = "优惠科目：";
             // 
-            // textBoxX1
+            // txtBank
             // 
-            this.textBoxX1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxX1.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.textBoxX1.Border.BorderBottomWidth = 1;
-            this.textBoxX1.Border.BorderGradientAngle = 0;
-            this.textBoxX1.Border.Class = "SideNavStrip";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxX1.Location = new System.Drawing.Point(345, 85);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.Size = new System.Drawing.Size(135, 16);
-            this.textBoxX1.TabIndex = 56;
-            // 
-            // textBoxX3
-            // 
-            this.textBoxX3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtBank.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             // 
             // 
             // 
-            this.textBoxX3.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxX3.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.textBoxX3.Border.BorderBottomWidth = 1;
-            this.textBoxX3.Border.BorderGradientAngle = 0;
-            this.textBoxX3.Border.Class = "SideNavStrip";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX3.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxX3.Location = new System.Drawing.Point(597, 119);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.PreventEnterBeep = true;
-            this.textBoxX3.ReadOnly = true;
-            this.textBoxX3.Size = new System.Drawing.Size(135, 16);
-            this.textBoxX3.TabIndex = 58;
+            this.txtBank.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtBank.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.txtBank.Border.BorderBottomWidth = 1;
+            this.txtBank.Border.BorderGradientAngle = 0;
+            this.txtBank.Border.Class = "SideNavStrip";
+            this.txtBank.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBank.DisabledBackColor = System.Drawing.Color.White;
+            this.txtBank.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtBank.Location = new System.Drawing.Point(345, 85);
+            this.txtBank.Name = "txtBank";
+            this.txtBank.PreventEnterBeep = true;
+            this.txtBank.ReadOnly = true;
+            this.txtBank.Size = new System.Drawing.Size(135, 16);
+            this.txtBank.TabIndex = 56;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(781, 49);
+            this.label6.Location = new System.Drawing.Point(781, 52);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 59;
@@ -604,7 +593,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(844, 45);
+            this.dateTimePicker2.Location = new System.Drawing.Point(844, 48);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(135, 21);
             this.dateTimePicker2.TabIndex = 60;
@@ -618,54 +607,55 @@
             this.label7.TabIndex = 61;
             this.label7.Text = "摘    要：";
             // 
-            // textBoxX4
+            // txtZhaiYao
             // 
             // 
             // 
             // 
-            this.textBoxX4.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxX4.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.textBoxX4.Border.BorderBottomWidth = 1;
-            this.textBoxX4.Border.BorderGradientAngle = 0;
-            this.textBoxX4.Border.Class = "SideNavStrip";
-            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX4.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX4.Location = new System.Drawing.Point(844, 119);
-            this.textBoxX4.Name = "textBoxX4";
-            this.textBoxX4.PreventEnterBeep = true;
-            this.textBoxX4.Size = new System.Drawing.Size(135, 16);
-            this.textBoxX4.TabIndex = 62;
+            this.txtZhaiYao.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtZhaiYao.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.txtZhaiYao.Border.BorderBottomWidth = 1;
+            this.txtZhaiYao.Border.BorderGradientAngle = 0;
+            this.txtZhaiYao.Border.Class = "SideNavStrip";
+            this.txtZhaiYao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtZhaiYao.DisabledBackColor = System.Drawing.Color.White;
+            this.txtZhaiYao.Location = new System.Drawing.Point(844, 119);
+            this.txtZhaiYao.Name = "txtZhaiYao";
+            this.txtZhaiYao.PreventEnterBeep = true;
+            this.txtZhaiYao.Size = new System.Drawing.Size(135, 16);
+            this.txtZhaiYao.TabIndex = 62;
             // 
             // pictureBoxtiaoxingma
             // 
             this.pictureBoxtiaoxingma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxtiaoxingma.Location = new System.Drawing.Point(999, 44);
+            this.pictureBoxtiaoxingma.Location = new System.Drawing.Point(1040, 15);
             this.pictureBoxtiaoxingma.Name = "pictureBoxtiaoxingma";
-            this.pictureBoxtiaoxingma.Size = new System.Drawing.Size(178, 78);
+            this.pictureBoxtiaoxingma.Size = new System.Drawing.Size(141, 78);
             this.pictureBoxtiaoxingma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtiaoxingma.TabIndex = 65;
             this.pictureBoxtiaoxingma.TabStop = false;
             // 
-            // textBoxX5
+            // txtYiKaiPiao
             // 
-            this.textBoxX5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtYiKaiPiao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
-            this.textBoxX5.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxX5.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.textBoxX5.Border.BorderBottomWidth = 1;
-            this.textBoxX5.Border.BorderGradientAngle = 0;
-            this.textBoxX5.Border.Class = "SideNavStrip";
-            this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX5.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX5.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxX5.Location = new System.Drawing.Point(345, 119);
-            this.textBoxX5.Name = "textBoxX5";
-            this.textBoxX5.PreventEnterBeep = true;
-            this.textBoxX5.ReadOnly = true;
-            this.textBoxX5.Size = new System.Drawing.Size(135, 16);
-            this.textBoxX5.TabIndex = 69;
+            this.txtYiKaiPiao.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtYiKaiPiao.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.txtYiKaiPiao.Border.BorderBottomWidth = 1;
+            this.txtYiKaiPiao.Border.BorderGradientAngle = 0;
+            this.txtYiKaiPiao.Border.Class = "SideNavStrip";
+            this.txtYiKaiPiao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtYiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
+            this.txtYiKaiPiao.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtYiKaiPiao.Location = new System.Drawing.Point(345, 119);
+            this.txtYiKaiPiao.Name = "txtYiKaiPiao";
+            this.txtYiKaiPiao.PreventEnterBeep = true;
+            this.txtYiKaiPiao.ReadOnly = true;
+            this.txtYiKaiPiao.Size = new System.Drawing.Size(135, 16);
+            this.txtYiKaiPiao.TabIndex = 69;
+            this.txtYiKaiPiao.Text = "0.00";
             // 
             // label8
             // 
@@ -677,26 +667,27 @@
             this.label8.TabIndex = 68;
             this.label8.Text = "已开票金额：";
             // 
-            // textBoxX2
+            // txtWeiKaiPiao
             // 
-            this.textBoxX2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtWeiKaiPiao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
-            this.textBoxX2.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxX2.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.textBoxX2.Border.BorderBottomWidth = 1;
-            this.textBoxX2.Border.BorderGradientAngle = 0;
-            this.textBoxX2.Border.Class = "SideNavStrip";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxX2.Location = new System.Drawing.Point(97, 119);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.ReadOnly = true;
-            this.textBoxX2.Size = new System.Drawing.Size(135, 16);
-            this.textBoxX2.TabIndex = 67;
+            this.txtWeiKaiPiao.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtWeiKaiPiao.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.txtWeiKaiPiao.Border.BorderBottomWidth = 1;
+            this.txtWeiKaiPiao.Border.BorderGradientAngle = 0;
+            this.txtWeiKaiPiao.Border.Class = "SideNavStrip";
+            this.txtWeiKaiPiao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtWeiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
+            this.txtWeiKaiPiao.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtWeiKaiPiao.Location = new System.Drawing.Point(97, 119);
+            this.txtWeiKaiPiao.Name = "txtWeiKaiPiao";
+            this.txtWeiKaiPiao.PreventEnterBeep = true;
+            this.txtWeiKaiPiao.ReadOnly = true;
+            this.txtWeiKaiPiao.Size = new System.Drawing.Size(135, 16);
+            this.txtWeiKaiPiao.TabIndex = 67;
+            this.txtWeiKaiPiao.Text = "0.00";
             // 
             // label4
             // 
@@ -855,23 +846,23 @@
             this.gridColumnyuandandanhao.HeaderText = "源单编号";
             this.gridColumnyuandandanhao.Name = "gridColumnyuandandanhao";
             // 
-            // comboBoxtype
+            // comboBoxType
             // 
-            this.comboBoxtype.DisplayMember = "Text";
-            this.comboBoxtype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxtype.FormattingEnabled = true;
-            this.comboBoxtype.ItemHeight = 15;
-            this.comboBoxtype.Items.AddRange(new object[] {
+            this.comboBoxType.DisplayMember = "Text";
+            this.comboBoxType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.ItemHeight = 15;
+            this.comboBoxType.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2,
             this.comboItem3,
             this.comboItem4});
-            this.comboBoxtype.Location = new System.Drawing.Point(96, 10);
-            this.comboBoxtype.Name = "comboBoxtype";
-            this.comboBoxtype.Size = new System.Drawing.Size(135, 21);
-            this.comboBoxtype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxtype.TabIndex = 70;
-            this.comboBoxtype.SelectedIndexChanged += new System.EventHandler(this.comboBoxtype_SelectedIndexChanged);
+            this.comboBoxType.Location = new System.Drawing.Point(98, 12);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(135, 21);
+            this.comboBoxType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxType.TabIndex = 70;
+            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             // 
             // comboItem1
             // 
@@ -922,6 +913,27 @@
             // 
             this.comboItem8.Text = "其他";
             // 
+            // txtYouHuiKeMu
+            // 
+            this.txtYouHuiKeMu.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            // 
+            // 
+            // 
+            this.txtYouHuiKeMu.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.txtYouHuiKeMu.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.txtYouHuiKeMu.Border.BorderBottomWidth = 1;
+            this.txtYouHuiKeMu.Border.BorderGradientAngle = 0;
+            this.txtYouHuiKeMu.Border.Class = "SideNavStrip";
+            this.txtYouHuiKeMu.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtYouHuiKeMu.DisabledBackColor = System.Drawing.Color.White;
+            this.txtYouHuiKeMu.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtYouHuiKeMu.Location = new System.Drawing.Point(597, 119);
+            this.txtYouHuiKeMu.Name = "txtYouHuiKeMu";
+            this.txtYouHuiKeMu.PreventEnterBeep = true;
+            this.txtYouHuiKeMu.ReadOnly = true;
+            this.txtYouHuiKeMu.Size = new System.Drawing.Size(135, 16);
+            this.txtYouHuiKeMu.TabIndex = 58;
+            // 
             // SalesTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -929,6 +941,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 750);
             this.Name = "SalesTicketForm";
             this.Text = "SalesTicketForm";
+            this.Activated += new System.EventHandler(this.SalesTicketForm_Activated);
             this.Load += new System.EventHandler(this.SalesTicketForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SalesTicketForm_KeyPress);
             this.panel1.ResumeLayout(false);
@@ -961,16 +974,15 @@
 
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        protected DevComponents.DotNetBar.Controls.TextBoxX txtBank;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label6;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
+        protected DevComponents.DotNetBar.Controls.TextBoxX txtZhaiYao;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBoxtiaoxingma;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
+        protected DevComponents.DotNetBar.Controls.TextBoxX txtYiKaiPiao;
         private System.Windows.Forms.Label label8;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        protected DevComponents.DotNetBar.Controls.TextBoxX txtWeiKaiPiao;
         private System.Windows.Forms.Label label4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
@@ -995,7 +1007,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyouxiaoqi;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumntuihuoshu;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyuandandanhao;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxtype;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxType;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
@@ -1005,5 +1017,6 @@
         private DevComponents.Editors.ComboItem comboItem6;
         private DevComponents.Editors.ComboItem comboItem7;
         private DevComponents.Editors.ComboItem comboItem8;
+        protected DevComponents.DotNetBar.Controls.TextBoxX txtYouHuiKeMu;
     }
 }

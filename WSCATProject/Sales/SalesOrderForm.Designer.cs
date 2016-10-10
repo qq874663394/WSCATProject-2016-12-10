@@ -79,7 +79,7 @@
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(979, 11);
+            this.labelprie.Location = new System.Drawing.Point(977, 11);
             // 
             // dateTimePicker1
             // 
@@ -175,7 +175,11 @@
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.Location = new System.Drawing.Point(91, 78);
+            this.labtextboxTop7.MaxLength = 11;
             this.labtextboxTop7.Size = new System.Drawing.Size(130, 16);
+            this.labtextboxTop7.Text = "0.00";
+            this.labtextboxTop7.TextChanged += new System.EventHandler(this.labtextboxTop7_TextChanged);
+            this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ltxtTopYiShouDingJin_KeyPress);
             // 
             // labtextboxTop9
             // 
@@ -424,6 +428,10 @@
             // 
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labeldata.Location = new System.Drawing.Point(977, 86);
+            // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // superGridControlShangPing
             // 
