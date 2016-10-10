@@ -36,7 +36,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
             this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -64,6 +64,16 @@
             this.gridColumnyouxiaoqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumntuihuoshu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnyuandandanhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.comboBoxtype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboBoxfapiaotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem5 = new DevComponents.Editors.ComboItem();
+            this.comboItem6 = new DevComponents.Editors.ComboItem();
+            this.comboItem7 = new DevComponents.Editors.ComboItem();
+            this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -80,7 +90,7 @@
             this.resizablePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtiaoxingma)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -107,11 +117,13 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBoxfapiaotype);
+            this.panel2.Controls.Add(this.comboBoxtype);
             this.panel2.Controls.Add(this.textBoxX5);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.textBoxX2);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.pictureBox6);
+            this.panel2.Controls.Add(this.pictureBoxtiaoxingma);
             this.panel2.Controls.Add(this.textBoxX4);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.dateTimePicker2);
@@ -156,11 +168,13 @@
             this.panel2.Controls.SetChildIndex(this.dateTimePicker2, 0);
             this.panel2.Controls.SetChildIndex(this.label7, 0);
             this.panel2.Controls.SetChildIndex(this.textBoxX4, 0);
-            this.panel2.Controls.SetChildIndex(this.pictureBox6, 0);
+            this.panel2.Controls.SetChildIndex(this.pictureBoxtiaoxingma, 0);
             this.panel2.Controls.SetChildIndex(this.label4, 0);
             this.panel2.Controls.SetChildIndex(this.textBoxX2, 0);
             this.panel2.Controls.SetChildIndex(this.label8, 0);
             this.panel2.Controls.SetChildIndex(this.textBoxX5, 0);
+            this.panel2.Controls.SetChildIndex(this.comboBoxtype, 0);
+            this.panel2.Controls.SetChildIndex(this.comboBoxfapiaotype, 0);
             // 
             // labtextboxTop6
             // 
@@ -259,6 +273,7 @@
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop4.Location = new System.Drawing.Point(345, 50);
             this.labtextboxTop4.Size = new System.Drawing.Size(115, 16);
+            this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
             // 
@@ -273,6 +288,7 @@
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop2.Location = new System.Drawing.Point(345, 15);
             this.labtextboxTop2.Size = new System.Drawing.Size(115, 16);
+            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTop2_TextChanged);
             // 
             // labtextboxTop1
             // 
@@ -286,7 +302,8 @@
             this.labtextboxTop1.Border.Class = "SideNavStrip";
             this.labtextboxTop1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop1.Location = new System.Drawing.Point(97, 15);
-            this.labtextboxTop1.Size = new System.Drawing.Size(115, 16);
+            this.labtextboxTop1.Size = new System.Drawing.Size(135, 16);
+            this.labtextboxTop1.Visible = false;
             // 
             // pictureBox4
             // 
@@ -296,10 +313,12 @@
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(463, 46);
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(461, 11);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // checkBox1
             // 
@@ -309,6 +328,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(214, 11);
+            this.pictureBox1.Visible = false;
             // 
             // labTop9
             // 
@@ -361,6 +381,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Location = new System.Drawing.Point(212, 15);
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -419,6 +440,7 @@
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ltxtbSalsMan.Location = new System.Drawing.Point(97, 19);
             this.ltxtbSalsMan.Size = new System.Drawing.Size(115, 16);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
             // labBotton4
             // 
@@ -434,12 +456,17 @@
             // 
             this.labBotton3.Location = new System.Drawing.Point(286, 23);
             // 
+            // labBotton1
+            // 
+            this.labBotton1.Text = "销 售 员：";
+            // 
             // resizablePanelData
             // 
             this.resizablePanelData.Location = new System.Drawing.Point(517, 305);
             // 
             // labeldata
             // 
+            this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labeldata.Location = new System.Drawing.Point(997, 84);
             // 
             // bar1
@@ -477,7 +504,6 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnmoney);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnshuie);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnjiashuiheji);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnchengbeidanjia);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnchengbenjine);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnshengchanrqi);
@@ -485,7 +511,10 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyouxiaoqi);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumntuihuoshu);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnyuandandanhao);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
             this.superGridControl1.Size = new System.Drawing.Size(1202, 389);
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
             // 
             // resizablePanel1
             // 
@@ -607,13 +636,15 @@
             this.textBoxX4.Size = new System.Drawing.Size(135, 16);
             this.textBoxX4.TabIndex = 62;
             // 
-            // pictureBox6
+            // pictureBoxtiaoxingma
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(999, 44);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(178, 78);
-            this.pictureBox6.TabIndex = 65;
-            this.pictureBox6.TabStop = false;
+            this.pictureBoxtiaoxingma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxtiaoxingma.Location = new System.Drawing.Point(999, 44);
+            this.pictureBoxtiaoxingma.Name = "pictureBoxtiaoxingma";
+            this.pictureBoxtiaoxingma.Size = new System.Drawing.Size(178, 78);
+            this.pictureBoxtiaoxingma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxtiaoxingma.TabIndex = 65;
+            this.pictureBoxtiaoxingma.TabStop = false;
             // 
             // textBoxX5
             // 
@@ -726,6 +757,7 @@
             // 
             // gridColumnprice
             // 
+            this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnprice.HeaderText = "单价";
             this.gridColumnprice.Name = "gridColumnprice";
             this.gridColumnprice.Width = 60;
@@ -738,6 +770,8 @@
             // 
             // gridColumnzengzhishui
             // 
+            this.gridColumnzengzhishui.CellStyles.Default.TextColor = System.Drawing.Color.Red;
+            this.gridColumnzengzhishui.FilterRowStyles.Default.TextColor = System.Drawing.Color.White;
             this.gridColumnzengzhishui.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnzengzhishui.HeaderText = "增值税税率%";
             this.gridColumnzengzhishui.Name = "gridColumnzengzhishui";
@@ -751,18 +785,21 @@
             // 
             // gridColumnmoney
             // 
+            this.gridColumnmoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnmoney.HeaderText = "金额";
             this.gridColumnmoney.Name = "gridColumnmoney";
             this.gridColumnmoney.Width = 60;
             // 
             // gridColumnshuie
             // 
+            this.gridColumnshuie.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnshuie.HeaderText = "税额";
             this.gridColumnshuie.Name = "gridColumnshuie";
             this.gridColumnshuie.Width = 60;
             // 
             // gridColumnjiashuiheji
             // 
+            this.gridColumnjiashuiheji.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnjiashuiheji.HeaderText = "价税合计";
             this.gridColumnjiashuiheji.Name = "gridColumnjiashuiheji";
             this.gridColumnjiashuiheji.Width = 80;
@@ -775,12 +812,14 @@
             // 
             // gridColumnchengbeidanjia
             // 
+            this.gridColumnchengbeidanjia.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnchengbeidanjia.HeaderText = "成本单价";
             this.gridColumnchengbeidanjia.Name = "gridColumnchengbeidanjia";
             this.gridColumnchengbeidanjia.Width = 60;
             // 
             // gridColumnchengbenjine
             // 
+            this.gridColumnchengbenjine.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnchengbenjine.HeaderText = "成本金额";
             this.gridColumnchengbenjine.Name = "gridColumnchengbenjine";
             this.gridColumnchengbenjine.Width = 60;
@@ -806,6 +845,7 @@
             // 
             // gridColumntuihuoshu
             // 
+            this.gridColumntuihuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumntuihuoshu.HeaderText = "退货数量";
             this.gridColumntuihuoshu.Name = "gridColumntuihuoshu";
             this.gridColumntuihuoshu.Width = 60;
@@ -815,6 +855,73 @@
             this.gridColumnyuandandanhao.HeaderText = "源单编号";
             this.gridColumnyuandandanhao.Name = "gridColumnyuandandanhao";
             // 
+            // comboBoxtype
+            // 
+            this.comboBoxtype.DisplayMember = "Text";
+            this.comboBoxtype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxtype.FormattingEnabled = true;
+            this.comboBoxtype.ItemHeight = 15;
+            this.comboBoxtype.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3,
+            this.comboItem4});
+            this.comboBoxtype.Location = new System.Drawing.Point(96, 10);
+            this.comboBoxtype.Name = "comboBoxtype";
+            this.comboBoxtype.Size = new System.Drawing.Size(135, 21);
+            this.comboBoxtype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxtype.TabIndex = 70;
+            this.comboBoxtype.SelectedIndexChanged += new System.EventHandler(this.comboBoxtype_SelectedIndexChanged);
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "销售发货";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "销售退货";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "委托退货";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "委托结算退货";
+            // 
+            // comboBoxfapiaotype
+            // 
+            this.comboBoxfapiaotype.DisplayMember = "Text";
+            this.comboBoxfapiaotype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxfapiaotype.FormattingEnabled = true;
+            this.comboBoxfapiaotype.ItemHeight = 15;
+            this.comboBoxfapiaotype.Items.AddRange(new object[] {
+            this.comboItem5,
+            this.comboItem6,
+            this.comboItem7,
+            this.comboItem8});
+            this.comboBoxfapiaotype.Location = new System.Drawing.Point(346, 46);
+            this.comboBoxfapiaotype.Name = "comboBoxfapiaotype";
+            this.comboBoxfapiaotype.Size = new System.Drawing.Size(135, 21);
+            this.comboBoxfapiaotype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxfapiaotype.TabIndex = 71;
+            // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "增值税发票";
+            // 
+            // comboItem6
+            // 
+            this.comboItem6.Text = "普通发票";
+            // 
+            // comboItem7
+            // 
+            this.comboItem7.Text = "收据";
+            // 
+            // comboItem8
+            // 
+            this.comboItem8.Text = "其他";
+            // 
             // SalesTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -823,6 +930,7 @@
             this.Name = "SalesTicketForm";
             this.Text = "SalesTicketForm";
             this.Load += new System.EventHandler(this.SalesTicketForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SalesTicketForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -843,7 +951,7 @@
             this.resizablePanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtiaoxingma)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -859,7 +967,7 @@
         private System.Windows.Forms.Label label6;
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBoxtiaoxingma;
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
         private System.Windows.Forms.Label label8;
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
@@ -887,5 +995,15 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyouxiaoqi;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumntuihuoshu;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyuandandanhao;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxtype;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxfapiaotype;
+        private DevComponents.Editors.ComboItem comboItem5;
+        private DevComponents.Editors.ComboItem comboItem6;
+        private DevComponents.Editors.ComboItem comboItem7;
+        private DevComponents.Editors.ComboItem comboItem8;
     }
 }

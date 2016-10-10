@@ -781,7 +781,6 @@ namespace WSCATProject.Warehouse
                     this.resizablePanelData.Visible = false;
                     MessageBox.Show("请先选择仓库！");
                 }
-
             }
         }
 
