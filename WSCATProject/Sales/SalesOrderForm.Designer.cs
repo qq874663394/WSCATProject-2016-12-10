@@ -49,6 +49,7 @@
             this.money = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.materialCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -443,7 +444,11 @@
             this.superGridControl1.PrimaryGrid.Columns.Add(this.priceANDtax);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.materialCode);
             this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControl1.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
+            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.superGridControl1.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
             // 
             // resizablePanel1
             // 
@@ -552,15 +557,16 @@
             // 
             this.price.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
             this.price.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.price.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.price.HeaderText = "单价";
             this.price.Name = "price";
-            this.price.ReadOnly = true;
             this.price.Width = 60;
             // 
             // DiscountRate
             // 
             this.DiscountRate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
             this.DiscountRate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.DiscountRate.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.DiscountRate.HeaderText = "折扣率%";
             this.DiscountRate.Name = "DiscountRate";
             this.DiscountRate.Width = 60;
@@ -569,6 +575,7 @@
             // 
             this.DiscountMoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
             this.DiscountMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.DiscountMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.DiscountMoney.HeaderText = "折扣额";
             this.DiscountMoney.Name = "DiscountMoney";
             this.DiscountMoney.ReadOnly = true;
@@ -578,10 +585,10 @@
             // 
             this.TaxRate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
             this.TaxRate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.TaxRate.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.TaxRate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.TaxRate.HeaderText = "  增值税   税率%";
             this.TaxRate.Name = "TaxRate";
-            this.TaxRate.ReadOnly = true;
             this.TaxRate.Width = 60;
             // 
             // TaxMoney
@@ -591,7 +598,6 @@
             this.TaxMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.TaxMoney.HeaderText = "税额";
             this.TaxMoney.Name = "TaxMoney";
-            this.TaxMoney.ReadOnly = true;
             this.TaxMoney.Width = 80;
             // 
             // priceANDtax
@@ -620,7 +626,6 @@
             this.money.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.money.HeaderText = "金额";
             this.money.Name = "money";
-            this.money.ReadOnly = true;
             this.money.Width = 80;
             // 
             // gridColumnid
@@ -634,6 +639,12 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(130, 21);
             this.dateTimePicker2.TabIndex = 58;
+            // 
+            // materialCode
+            // 
+            this.materialCode.HeaderText = "商品code";
+            this.materialCode.Name = "materialCode";
+            this.materialCode.Visible = false;
             // 
             // SalesOrderForm
             // 
@@ -693,5 +704,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn money;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn materialCode;
     }
 }

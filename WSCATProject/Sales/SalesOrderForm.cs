@@ -66,6 +66,19 @@ namespace WSCATProject.Sales
         /// 统计数量
         /// </summary>
         private decimal _Materialnumber;
+        private decimal _MaterialNumber;
+        /// <summary>
+        /// 统计金额
+        /// </summary>
+        private decimal _Money;
+        /// <summary>
+        /// 统计税额
+        /// </summary>
+        private decimal _TaxMoney;
+        /// <summary>
+        /// 统计价税合计
+        /// </summary>
+        private decimal _PriceAndTaxMoney;
         /// <summary>
         /// 销售订单code
         /// </summary>
@@ -254,6 +267,62 @@ namespace WSCATProject.Sales
             }
         }
 
+        /// <summary>
+        /// 初始化商品下拉别表的数据
+        /// </summary>
+        private void InitMaterialDataGridView()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Columns.Clear();
+            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "code";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "code";
+            dgvc.DataPropertyName = "code";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "materialDaima";
+            dgvc.HeaderText = "商品代码";
+            dgvc.DataPropertyName = "materialDaima";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "name";
+            dgvc.HeaderText = "商品名称";
+            dgvc.DataPropertyName = "name";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "model";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "规格型号";
+            dgvc.DataPropertyName = "model";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "barCode";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "条形码";
+            dgvc.DataPropertyName = "barCode";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "unit";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "单位";
+            dgvc.DataPropertyName = "unit";
+            dataGridView1.Columns.Add(dgvc);
+
+            dgvc = new DataGridViewTextBoxColumn();
+            dgvc.Name = "remark";
+            dgvc.Visible = false;
+            dgvc.HeaderText = "备注";
+            dgvc.DataPropertyName = "remark";
+            dataGridView1.Columns.Add(dgvc);
+
+        }
+
         #endregion
 
         /// <summary>
@@ -269,10 +338,6 @@ namespace WSCATProject.Sales
             _AllEmployee = employee.SelSupplierTable(false);
             //仓库
             _AllStorage = storage.GetList(00, "");
-
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
             #region 初始化窗体
 
@@ -292,6 +357,15 @@ namespace WSCATProject.Sales
 
             #endregion
 
+            //绑定事件 双击事填充内容并隐藏列表
+            dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+
+            //订购数量
+            GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["dinggouNumber"].EditControl as GridDoubleInputEditControl;
+            gdiecNumber.MinValue = 0;
+            gdiecNumber.MaxValue = 999999999;
+
             //生成销售订单code和显示条形码
             _SalesOrderCode = BuildCode.ModuleCode("SO");
             textBoxOddNumbers.Text = _SalesOrderCode;
@@ -301,7 +375,7 @@ namespace WSCATProject.Sales
             pictureBoxBarCode.Image = imgTemp;
         }
 
-        #region 小箭头点击事件
+        #region 小箭头和表格点击事件以及两个表格双击绑定数据
 
         /// <summary>
         /// 客户
@@ -346,6 +420,33 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
+        /// 查询商品
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            if (e.GridCell.GridColumn.Name == "material")
+            {
+                SelectedElementCollection ge = superGridControl1.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                {
+                    //模糊查询商品列表
+                    //_AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.cboPurchaseCode.Text.Trim() + ""), "" + XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()) + "");
+                    InitMaterialDataGridView();
+                }
+                else
+                {
+                    //绑定商品列表
+                    //_AllMaterial = pdi.GetList("" + XYEEncoding.strCodeHex(this.cboPurchaseCode.Text.Trim() + ""), "");
+                    InitMaterialDataGridView();
+                }
+                dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            }
+        }
+
+        /// <summary>
         /// 双击绑定客户、销售员、仓库数据
         /// </summary>
         /// <param name="sender"></param>
@@ -359,9 +460,9 @@ namespace WSCATProject.Sales
                 {
                     _clientCode = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();//客户code
                     string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();//客户名称
-                    string  linkman= dataGridViewFujia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
-                    string phone= dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
-                    string fax= dataGridViewFujia.Rows[e.RowIndex].Cells["fax"].Value.ToString();//传真
+                    string linkman = dataGridViewFujia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
+                    string phone = dataGridViewFujia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
+                    string fax = dataGridViewFujia.Rows[e.RowIndex].Cells["fax"].Value.ToString();//传真
                     labtextboxTop1.Text = name;
                     labtextboxTop2.Text = linkman;
                     labtextboxTop3.Text = phone;
@@ -376,6 +477,7 @@ namespace WSCATProject.Sales
                     ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
+                //仓库
                 if (_Click == 3 || _Click == 6)
                 {
                     _storgeCode = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();//仓库code
@@ -407,35 +509,66 @@ namespace WSCATProject.Sales
                 {
                     newAdd = true;
                 }
+                gr.Cells["materialCode"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;//商品code 
                 gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
-                gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["name"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
-                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumnnumber"].Value = dataGridView1.Rows[e.RowIndex].Cells["currentNumber"].Value;//数量
-                gr.Cells["gridColumnpriceout"].Value = dataGridView1.Rows[e.RowIndex].Cells["price"].Value;//单价
-                gr.Cells["gridColumnremark"].Value = dataGridView1.Rows[e.RowIndex].Cells["remark"].Value;//备注
-                gr.Cells["gridColumnMaterialcode"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;//商品code 
+                gr.Cells["name"].Value = dataGridView1.Rows[e.RowIndex].Cells["name"].Value;//商品名称
+                gr.Cells["model"].Value = dataGridView1.Rows[e.RowIndex].Cells["model"].Value;//规格型号
+                gr.Cells["barcode"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
+                gr.Cells["unit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                gr.Cells["dinggouNumber"].Value = 1.00;//数量
+                gr.Cells["price"].Value = 0.00;//单价
+                gr.Cells["discountRate"].Value = 100.00;//折扣率
+                gr.Cells["taxRate"].Value = 17.00;//增值税税率
+                gr.Cells["remark"].Value = dataGridView1.Rows[e.RowIndex].Cells["remark"].Value;//备注
 
-                gr.Cells["gridColumnnumber"].Value = 1;
-
-                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["price"].Value.Equals("") ?
-                    0 : dataGridView1.Rows[e.RowIndex].Cells["price"].Value);
-                gr.Cells["gridColumnpriceout"].Value = price;
-                gr.Cells["gridColumnmoneyout"].Value = price;
+                ////计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["dinggouNumber"].FormattedValue);//订购数量
+                decimal price = Convert.ToDecimal(gr.Cells["price"].FormattedValue);//单价               
+                decimal money = number * price;//金额
+                gr.Cells["money"].Value = money;
+                decimal discountRate = Convert.ToDecimal(gr.Cells["DiscountRate"].FormattedValue);//折扣率
+                decimal discountAfter = money * (discountRate / 100);
+                decimal discountMoney = money - discountAfter;//折扣额
+                gr.Cells["DiscountMoney"].Value = discountMoney;
+                decimal taxRate = Convert.ToDecimal(gr.Cells["TaxRate"].FormattedValue);//增值税税率
+                decimal rateMoney = money * (taxRate / 100);//税额
+                gr.Cells["TaxMoney"].Value = rateMoney;
+                decimal priceAndtax = money + rateMoney;//价税合计
+                gr.Cells["priceANDtax"].Value = priceAndtax;
                 resizablePanelData.Visible = false;
 
-                //新增一行 
-                //if (newAdd)
-                //{
-                //    superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
-                //    //递增数量和金额 默认为1和单价 
-                //    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
-                //    _MaterialNumber += 1;
-                //    _MaterialMoney += price;
-                //    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-                //    gr.Cells["gridColumnmoneyout"].Value = _MaterialMoney;
-                //}
+                //逐行统计数据总数
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                decimal tempAllTaxMoney = 0;
+                decimal tempAllPriceAndTax = 0;
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
+                    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
+                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
+                }
+                _Materialnumber = tempAllNumber;
+                _Money = tempAllMoney;
+                _TaxMoney = tempAllTaxMoney;
+                _PriceAndTaxMoney = tempAllPriceAndTax;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["dinggouNumber"].Value = _Materialnumber.ToString();
+                gr["money"].Value = _Money.ToString();
+                gr["TaxMoney"].Value = _TaxMoney.ToString();
+                gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+
+                //新增一行
+                if (newAdd)
+                {
+                    superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
+                    //递增数量和金额 默认为1和单价 
+                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    _MaterialNumber += 1;
+                    gr.Cells["dinggouNumber"].Value = _Materialnumber;
+                }
             }
             catch (Exception ex)
             {
@@ -447,6 +580,8 @@ namespace WSCATProject.Sales
         }
 
         #endregion
+
+        #region 模糊查询
 
         /// <summary>
         /// 销售员模糊查询
@@ -477,7 +612,7 @@ namespace WSCATProject.Sales
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "name";
                 dataGridViewFujia.Columns.Add(dgvc);
-           
+
                 dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
                 if (this.WindowState == FormWindowState.Maximized)
@@ -560,6 +695,18 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
+        /// 商品代码模糊搜索
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        /// <summary>
         /// 按ESC关闭副表格
         /// </summary>
         /// <param name="sender"></param>
@@ -572,5 +719,61 @@ namespace WSCATProject.Sales
                 this.resizablePanelData.Visible = false;
             }
         }
+
+        /// <summary>
+        /// 验证和统计数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                //最后一行做统计行
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                ////计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["dinggouNumber"].FormattedValue);//订购数量
+                decimal price = Convert.ToDecimal(gr.Cells["price"].FormattedValue);//单价               
+                decimal money = number * price;//金额
+                gr.Cells["money"].Value = money;
+                decimal discountRate = Convert.ToDecimal(gr.Cells["DiscountRate"].FormattedValue);//折扣率
+                decimal discountAfter = money * (discountRate / 100);
+                decimal discountMoney = money - discountAfter;//折扣额
+                gr.Cells["DiscountMoney"].Value = discountMoney;
+                decimal taxRate = Convert.ToDecimal(gr.Cells["TaxRate"].FormattedValue);//增值税税率
+                decimal rateMoney = money * (taxRate / 100);//税额
+                gr.Cells["TaxMoney"].Value = rateMoney;
+                decimal priceAndtax = money + rateMoney;//价税合计
+                gr.Cells["priceANDtax"].Value = priceAndtax;
+
+                //逐行统计数据总数
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                decimal tempAllTaxMoney = 0;
+                decimal tempAllPriceAndTax = 0;
+                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
+                    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
+                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
+                }
+                _Materialnumber = tempAllNumber;
+                _Money = tempAllMoney;
+                _TaxMoney = tempAllTaxMoney;
+                _PriceAndTaxMoney = tempAllPriceAndTax;
+                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr["dinggouNumber"].Value = _Materialnumber.ToString();
+                gr["money"].Value = _Money.ToString();
+                gr["TaxMoney"].Value = _TaxMoney.ToString();
+                gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
+            }
+        }
+
     }
 }
