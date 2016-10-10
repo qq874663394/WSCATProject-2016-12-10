@@ -290,7 +290,7 @@
             this.labtextboxTop2.Size = new System.Drawing.Size(115, 16);
             this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTop2_TextChanged);
             // 
-            // labtextboxTop1
+            // labtxtDanJuType
             // 
             // 
             // 
@@ -325,7 +325,7 @@
             this.checkBox1.Location = new System.Drawing.Point(956, 20);
             this.checkBox1.Visible = false;
             // 
-            // pictureBox1
+            // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(214, 11);
             this.pictureBoxDanJuType.Visible = false;
@@ -378,7 +378,7 @@
             // 
             this.panel5.Location = new System.Drawing.Point(0, 660);
             // 
-            // pictureBox5
+            // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(212, 15);
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
@@ -483,7 +483,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 271);
             this.panel3.Size = new System.Drawing.Size(1202, 389);
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 

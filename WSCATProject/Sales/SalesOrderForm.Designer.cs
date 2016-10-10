@@ -72,12 +72,14 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1021, 6);
+            this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1021, 87);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
+            this.textBoxOddNumbers.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(979, 7);
+            this.labelprie.Location = new System.Drawing.Point(979, 11);
             // 
             // dateTimePicker1
             // 
@@ -246,7 +248,7 @@
             this.labtextboxTop2.Location = new System.Drawing.Point(424, 15);
             this.labtextboxTop2.Size = new System.Drawing.Size(130, 16);
             // 
-            // labtextboxTop1
+            // labtxtDanJuType
             // 
             // 
             // 
@@ -258,7 +260,7 @@
             this.labtxtDanJuType.Border.Class = "SideNavStrip";
             this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtxtDanJuType.Size = new System.Drawing.Size(130, 16);
-            this.labtxtDanJuType.TextChanged += new System.EventHandler(this.labtextboxTop1_TextChanged);
+            this.labtxtDanJuType.TextChanged += new System.EventHandler(this.labtxtDanJuType_TextChanged);
             // 
             // pictureBox4
             // 
@@ -273,16 +275,16 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(554, 46);
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBoxAddress_Click);
             // 
             // checkBox1
             // 
             this.checkBox1.Location = new System.Drawing.Point(859, 16);
             // 
-            // pictureBox1
+            // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(223, 12);
-            this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBoxDanJuType_Click);
             // 
             // labTop9
             // 
@@ -337,10 +339,10 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // pictureBox5
+            // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(223, 15);
-            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBox5_Click);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -423,7 +425,7 @@
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labeldata.Location = new System.Drawing.Point(977, 86);
             // 
-            // superGridControl1
+            // superGridControlShangPing
             // 
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
@@ -446,9 +448,9 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControl1_CellValidated);
-            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
-            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_EditorValueChanged);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
+            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             // 
             // resizablePanel1
             // 
@@ -493,7 +495,7 @@
             // pictureBoxBarCode
             // 
             this.pictureBoxBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxBarCode.Location = new System.Drawing.Point(1021, 27);
+            this.pictureBoxBarCode.Location = new System.Drawing.Point(1021, 9);
             this.pictureBoxBarCode.Name = "pictureBoxBarCode";
             this.pictureBoxBarCode.Size = new System.Drawing.Size(140, 70);
             this.pictureBoxBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -653,6 +655,7 @@
             this.ClientSize = new System.Drawing.Size(1202, 690);
             this.Name = "SalesOrderForm";
             this.Text = "销售订单";
+            this.Activated += new System.EventHandler(this.SalesOrderForm_Activated);
             this.Load += new System.EventHandler(this.SalesOrderForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SalesOrderForm_KeyPress);
             this.panel1.ResumeLayout(false);
