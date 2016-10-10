@@ -87,14 +87,14 @@ namespace WSCATProject.Warehouse
                 this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
                 this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
                 //显示行号
-                superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
                 toolStripButtonLoss.Enabled = false;
                 toolStripButtonProfit.Enabled = false;
                 //不可自动添加列
-                this.superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-                superGridControl1.HScrollBarVisible = true;
+                this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
                 //表格内容居中
-                superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
                 InitDataGridView();//表格初始化
 
@@ -112,12 +112,12 @@ namespace WSCATProject.Warehouse
 
             #region 加载盘点方案的数据
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
-            cbopandianidea.DisplayMember = "name";
-            cbopandianidea.ValueMember = "code";
-            cbopandianidea.DataSource = dt;
-            this.cbopandianidea.Text = _storageName;//仓库名称
-            superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2, (XYEEncoding.strCodeHex(_storageCode))));
-            superGridControl1.PrimaryGrid.EnsureVisible();
+            cboPanDianIdea.DisplayMember = "name";
+            cboPanDianIdea.ValueMember = "code";
+            cboPanDianIdea.DataSource = dt;
+            this.cboPanDianIdea.Text = _storageName;//仓库名称
+            superGridControlShangPing.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2, (XYEEncoding.strCodeHex(_storageCode))));
+            superGridControlShangPing.PrimaryGrid.EnsureVisible();
             InitDataGridView();
             try
             {
@@ -127,9 +127,9 @@ namespace WSCATProject.Warehouse
                 decimal tempAllpanying = 0;
                 decimal tempAllpankui = 0;
                 //逐行统计数据总数
-                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                 {
-                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                     tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                     tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
                     tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
@@ -139,7 +139,7 @@ namespace WSCATProject.Warehouse
                 _PanDianShuLiang = tempAllpandian;
                 _PanYingShuLiang = tempAllpanying;
                 _PanKuiShuLiang = tempAllpankui;
-                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                 gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                 gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
                 gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
@@ -150,7 +150,7 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
             }
             //设置盘盈,盘亏按钮是否可用
-            GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+            GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
             int y = 0;
             int k = 0;
             foreach (GridRow gr in grs)
@@ -178,22 +178,22 @@ namespace WSCATProject.Warehouse
         #endregion
 
         #region  下拉框选择改变事件
-        private void comboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
+        private void cboPanDianIdea_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbopandianidea.Text == "")
+            if (cboPanDianIdea.Text == "")
             {
                 return;
             }
 
-            if (cbopandianidea.Text != "")
+            if (cboPanDianIdea.Text != "")
             {
                 try
                 {
-                    string code = cbopandianidea.SelectedValue.ToString();
-                    this.superGridControl1.PrimaryGrid.DataSource = null;
-                    superGridControl1.PrimaryGrid.AutoGenerateColumns = false;
-                    superGridControl1.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2, (XYEEncoding.strCodeHex(cbopandianidea.SelectedValue.ToString()))));
-                    superGridControl1.PrimaryGrid.EnsureVisible();
+                    string code = cboPanDianIdea.SelectedValue.ToString();
+                    this.superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
+                    superGridControlShangPing.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2, (XYEEncoding.strCodeHex(cboPanDianIdea.SelectedValue.ToString()))));
+                    superGridControlShangPing.PrimaryGrid.EnsureVisible();
                     InitDataGridView();
 
                     GridRow gr = new GridRow();
@@ -202,9 +202,9 @@ namespace WSCATProject.Warehouse
                     decimal tempAllpanying = 0;
                     decimal tempAllpankui = 0;
                     //逐行统计数据总数
-                    for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                    for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                     {
-                        GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                        GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                         tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                         tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
                         tempAllpanying += Convert.ToDecimal(tempGR["panyingnumber"].FormattedValue);
@@ -214,7 +214,7 @@ namespace WSCATProject.Warehouse
                     _PanDianShuLiang = tempAllpandian;
                     _PanYingShuLiang = tempAllpanying;
                     _PanKuiShuLiang = tempAllpankui;
-                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                     gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
                     gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
                     gr["panyingnumber"].Value = _PanYingShuLiang.ToString();
@@ -236,10 +236,10 @@ namespace WSCATProject.Warehouse
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            superGridControl1.PrimaryGrid.NewRow(true);
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
             //最后一行做统计行
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
             gr.Cells["name"].Value = "合计";
@@ -351,6 +351,11 @@ namespace WSCATProject.Warehouse
             warehouseprofit.StorageCode = _storageCode;
             warehouseprofit.StorageName = _storageName;
             warehouseprofit.ShowDialog();
+        }
+
+        private void WareHouseInventoryReportForm_Activated(object sender, EventArgs e)
+        {
+            cboPanDianIdea.Focus();
         }
     }
 }

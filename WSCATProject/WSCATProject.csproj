@@ -104,6 +104,24 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Sales\SalesOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SalesOrderForm.Designer.cs">
+      <DependentUpon>SalesOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesOrderReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SalesOrderReportForm.Designer.cs">
+      <DependentUpon>SalesOrderReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesTicketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SalesTicketForm.Designer.cs">
+      <DependentUpon>SalesTicketForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +246,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sales\SalesOrderForm.resx">
+      <DependentUpon>SalesOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SalesOrderReportForm.resx">
+      <DependentUpon>SalesOrderReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SalesTicketForm.resx">
+      <DependentUpon>SalesTicketForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -525,9 +552,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sales\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

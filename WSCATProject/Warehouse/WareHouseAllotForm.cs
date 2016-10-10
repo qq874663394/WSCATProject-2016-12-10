@@ -127,30 +127,30 @@ namespace WSCATProject.Warehouse
                 _AllStorage = storage.GetList(00, "");
 
                 //调入单价
-                GridDoubleInputEditControl diaoruprice = superGridControl1.PrimaryGrid.Columns["gridColumnpricein"].EditControl as GridDoubleInputEditControl;
+                GridDoubleInputEditControl diaoruprice = superGridControlShangPing.PrimaryGrid.Columns["gridColumnpricein"].EditControl as GridDoubleInputEditControl;
                 diaoruprice.MinValue = 0;
                 diaoruprice.MaxValue = 999999999;
                 //数量
-                GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 0;
                 gdiecNumber.MaxValue = 999999999;
 
                 //禁用自动创建列
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridViewFujia.AutoGenerateColumns = false;
-                superGridControl1.HScrollBarVisible = true;
+                dataGridViewShangPing.AutoGenerateColumns = false;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
                 //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 // 将dataGridView中的内容居中显示
-                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 //显示行号
-                superGridControl1.PrimaryGrid.ShowRowGridIndex = true;
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
                 //内容居中
-                superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
                 //调用合计行数据
                 InitDataGridView();
-                cbotype.SelectedIndex = 0;
+                cboType.SelectedIndex = 0;
                 //生成code 和显示条形码
                 _WareHouseAllotCode = BuildCode.ModuleCode("WIA");
                 textBoxOddNumbers.Text = _WareHouseAllotCode;
@@ -159,8 +159,8 @@ namespace WSCATProject.Warehouse
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBox9.Image = imgTemp;
 
-                toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
-                toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
             }
             catch (Exception ex)
@@ -173,7 +173,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -189,7 +189,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
-                warehouseallot.allotType = XYEEncoding.strCodeHex(cbotype.Text);
+                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
                 warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
                 warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseallot.checkState = 1;
@@ -212,8 +212,8 @@ namespace WSCATProject.Warehouse
             try
             {
                 //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 int i = 0;
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
@@ -247,7 +247,7 @@ namespace WSCATProject.Warehouse
                         warehousealld.stoOutcode = _OutStorage == "" ? "" : XYEEncoding.strCodeHex(_OutStorage);
                         warehousealld.stoOutName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());
                         warehousealld.updateDate = DateTime.Now;
-                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseallList.Add(warehousealld);
 
                     }
@@ -272,7 +272,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -288,7 +288,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
-                warehouseallot.allotType = XYEEncoding.strCodeHex(cbotype.Text);
+                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
                 warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
                 warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseallot.checkState = 0;
@@ -311,8 +311,8 @@ namespace WSCATProject.Warehouse
             try
             {
                 //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 int i = 0;
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
@@ -346,7 +346,7 @@ namespace WSCATProject.Warehouse
                         warehousealld.stoOutcode = _OutStorage == "" ? "" : XYEEncoding.strCodeHex(_OutStorage);
                         warehousealld.stoOutName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());
                         warehousealld.updateDate = DateTime.Now;
-                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseallList.Add(warehousealld);
 
                     }
@@ -363,7 +363,7 @@ namespace WSCATProject.Warehouse
             if (warehouseInResult != null)
             {
                 MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
-                this.toolStripButtonsave.Enabled = false;
+                this.toolStripBtnSave.Enabled = false;
             }
         }
 
@@ -375,10 +375,10 @@ namespace WSCATProject.Warehouse
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            superGridControl1.PrimaryGrid.NewRow(true);
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
             //最后一行做统计行
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
             gr.Cells["gridColumnStock"].Value = "合计";
@@ -403,12 +403,12 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private bool isNUllValidate()
         {
-            if (cbotype.Text.Trim() == null)
+            if (cboType.Text.Trim() == null)
             {
                 MessageBox.Show("出库类别不能为空！");
                 return false;
             }
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("调出仓库不能为空！");
@@ -442,23 +442,23 @@ namespace WSCATProject.Warehouse
                 if (_Click != 1)
                 {
                     _Click = 1;
-                    dataGridViewFujia.DataSource = null;
-                    dataGridViewFujia.Columns.Clear();
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
 
                     DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "code";
                     dgvc.HeaderText = "员工工号";
                     dgvc.DataPropertyName = "员工工号";
-                    dataGridViewFujia.Columns.Add(dgvc);
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "姓名";
                     dgvc.DataPropertyName = "姓名";
-                    dataGridViewFujia.Columns.Add(dgvc);
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
                     resizablePanel1.Location = new Point(234, 420);
-                    dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
                     resizablePanel1.Visible = true;
 
                     if (this.WindowState == FormWindowState.Maximized)
@@ -487,32 +487,32 @@ namespace WSCATProject.Warehouse
             if (_Click != 2)
             {
                 _Click = 2;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.Visible = false;
                 dgvc.HeaderText = "code";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.Visible = true;
                 dgvc.HeaderText = "仓库名称";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "address";
                 dgvc.Visible = true;
                 dgvc.HeaderText = "仓库地址";
                 dgvc.DataPropertyName = "address";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 //查询仓库的方法
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllStorage);
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
             }
         }
 
@@ -521,8 +521,8 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitMaterialDataGridView()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.Columns.Clear();
+            dataGridViewShangPing.DataSource = null;
+            dataGridViewShangPing.Columns.Clear();
 
             DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
             dgvc = new DataGridViewTextBoxColumn();
@@ -530,99 +530,99 @@ namespace WSCATProject.Warehouse
             dgvc.Visible = false;
             dgvc.HeaderText = "备注";
             dgvc.DataPropertyName = "remark";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "price";
             dgvc.Visible = false;
             dgvc.HeaderText = "单价";
             dgvc.DataPropertyName = "price";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "currentNumber";
             dgvc.Visible = false;
             dgvc.HeaderText = "数量";
             dgvc.DataPropertyName = "currentNumber";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "unit";
             dgvc.Visible = false;
             dgvc.HeaderText = "单位";
             dgvc.DataPropertyName = "unit";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "productionDate";
             dgvc.Visible = false;
             dgvc.HeaderText = "生产/采购日期";
             dgvc.DataPropertyName = "productionDate";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "qualityDate";
             dgvc.Visible = false;
             dgvc.HeaderText = "保质期";
             dgvc.DataPropertyName = "qualityDate";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "effectiveDate";
             dgvc.Visible = false;
             dgvc.HeaderText = "有效期至";
             dgvc.DataPropertyName = "effectiveDate";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "code";
             dgvc.Visible = false;
             dgvc.HeaderText = "商品code";
             dgvc.DataPropertyName = "code";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "storageCode";
             dgvc.Visible = false;
             dgvc.HeaderText = "仓库code";
             dgvc.DataPropertyName = "storageCode";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "storageName";
             dgvc.Visible = false;
             dgvc.HeaderText = "仓库名称";
             dgvc.DataPropertyName = "storageName";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "materialDaima";
             dgvc.Visible = true;
             dgvc.HeaderText = "商品代码";
             dgvc.DataPropertyName = "materialDaima";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "name";
             dgvc.Visible = true;
             dgvc.HeaderText = "商品名称";
             dgvc.DataPropertyName = "name";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "model";
             dgvc.Visible = true;
             dgvc.HeaderText = "规格型号";
             dgvc.DataPropertyName = "model";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
             dgvc = new DataGridViewTextBoxColumn();
             dgvc.Name = "barCode";
             dgvc.Visible = true;
             dgvc.HeaderText = "条码";
             dgvc.DataPropertyName = "barCode";
-            dataGridView1.Columns.Add(dgvc);
+            dataGridViewShangPing.Columns.Add(dgvc);
 
-            dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+            dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
 
         }
         /// <summary>
@@ -630,17 +630,17 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitForm()
         {
-            cbotype.Enabled = false;
-            cbotype.BackColor = Color.FromArgb(240, 240, 240);
+            cboType.Enabled = false;
+            cboType.BackColor = Color.FromArgb(240, 240, 240);
             labtextboxTop6.ReadOnly = true;
             labtextboxTop6.BackColor = Color.FromArgb(240, 240, 240);
-            superGridControl1.PrimaryGrid.ReadOnly = true;
-            superGridControl1.BackColor = Color.FromArgb(240, 240, 240);
+            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
+            superGridControlShangPing.BackColor = Color.FromArgb(240, 240, 240);
             dateTimePicker1.Enabled = false;
             textBoxOddNumbers.ReadOnly = true;
             ltxtbSalsMan.ReadOnly = true;
             ltxtbSalsMan.BackColor = Color.FromArgb(240, 240, 240);
-            pictureBox5.Enabled = false;
+            pictureBoxEmployee.Enabled = false;
             ltxtbMakeMan.ReadOnly = true;
             ltxtbMakeMan.BackColor = Color.FromArgb(240, 240, 240);
             ltxtbShengHeMan.ReadOnly = true;
@@ -648,16 +648,16 @@ namespace WSCATProject.Warehouse
             this.pictureBox6.Parent = pictureBoxtitle;
             this.pictureBox6.Image = Properties.Resources.审核;
             pictureBox6.Visible = true;
-            this.toolStripButtonshen.Enabled = false;
-            this.toolStripButtonsave.Enabled = false;
-            this.toolStripButtonnew.Enabled = false;
+            this.toolStripBtnShengHe.Enabled = false;
+            this.toolStripBtnSave.Enabled = false;
+            this.toolStripBtnInsert.Enabled = false;
             this.panel2.BackColor = Color.FromArgb(240, 240, 240);
             this.panel5.BackColor = Color.FromArgb(240, 240, 240);
         }
         #endregion
 
         #region 小箭头图标和表格数据的点击事件
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -666,14 +666,14 @@ namespace WSCATProject.Warehouse
             _Click = 3;
         }
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 //业务员
                 if (_Click == 1 || _Click == 3)
                 {
-                    string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
@@ -681,12 +681,12 @@ namespace WSCATProject.Warehouse
                 if (_Click == 2)
                 {
 
-                    GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                     //判断是调入还是调出仓库
                     if (_StorageState == 1)
                     {
-                        string codeout = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                        string OutName = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                        string codeout = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                        string OutName = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                         gr.Cells["gridColumnStock"].Value = OutName;
                         gr.Cells["gridColumnoutcode"].Value = codeout;
                         _ClickOutStorageList = new KeyValuePair<string, string>(codeout, OutName);
@@ -695,8 +695,8 @@ namespace WSCATProject.Warehouse
                     }
                     else
                     {
-                        string codein = dataGridViewFujia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                        string Inname = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                        string codein = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                        string Inname = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                         gr.Cells["gridColumnStockIn"].Value = Inname;
                         gr.Cells["gridColumnincode"].Value = codein;
                         _ClickInStorageList = new KeyValuePair<string, string>(codein, Inname);
@@ -711,37 +711,37 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 //是否要新增一行的标记
                 bool newAdd = false;
-                GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 //id字段为空 说明是没有数据的行 不是修改而是新增
                 if (gr.Cells["gridColumnid"].Value == null)
                 {
                     newAdd = true;
                 }
-                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
-                gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["name"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
-                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumnnumber"].Value = dataGridView1.Rows[e.RowIndex].Cells["currentNumber"].Value;//数量
-                gr.Cells["gridColumnpriceout"].Value = dataGridView1.Rows[e.RowIndex].Cells["price"].Value;//单价
-                gr.Cells["gridColumnshengchandate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value;//生产/采购日期
-                gr.Cells["gridColumnbaozhi"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
-                gr.Cells["gridColumnyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期
-                gr.Cells["gridColumnremark"].Value = dataGridView1.Rows[e.RowIndex].Cells["remark"].Value;//备注
+                gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
+                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
+                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
+                gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
+                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                gr.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//数量
+                gr.Cells["gridColumnpriceout"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
+                gr.Cells["gridColumnshengchandate"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value;//生产/采购日期
+                gr.Cells["gridColumnbaozhi"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
+                gr.Cells["gridColumnyouxiao"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期
+                gr.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注
                 gr.Cells["gridColumnincode"].Value = _InStorage;//调入仓库code
                 gr.Cells["gridColumnoutcode"].Value = _OutStorage;//调出仓库code
-                gr.Cells["gridColumnMaterialcode"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;//商品code 
+                gr.Cells["gridColumnMaterialcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code 
 
                 gr.Cells["gridColumnnumber"].Value = 1;
 
-                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["price"].Value.Equals("") ?
-                    0 : dataGridView1.Rows[e.RowIndex].Cells["price"].Value);
+                decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value.Equals("") ?
+                    0 : dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);
                 gr.Cells["gridColumnpriceout"].Value = price;
                 gr.Cells["gridColumnmoneyout"].Value = price;
                 resizablePanelData.Visible = false;
@@ -760,9 +760,9 @@ namespace WSCATProject.Warehouse
                 //新增一行 
                 if (newAdd)
                 {
-                    superGridControl1.PrimaryGrid.NewRow(superGridControl1.PrimaryGrid.Rows.Count);
+                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
-                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                     _MaterialNumber += 1;
                     _MaterialMoney += price;
                     gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
@@ -774,7 +774,7 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("错误代码：-绑定商品数据错误" + ex.Message);
             }
 
-            superGridControl1.Focus();
+            superGridControlShangPing.Focus();
             SendKeys.Send("^{End}{Home}");
         }
 
@@ -785,7 +785,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -830,7 +830,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
             //若是没数据的行则不做处理
@@ -867,7 +867,7 @@ namespace WSCATProject.Warehouse
                     decimal tempAllNumber = 0;//统计数量
                     decimal tempAllMoney = 0;//调出金额
                     decimal temAllInMoney = 0;//调入金额
-                    if (cbotype.Text == "同价调拨")
+                    if (cboType.Text == "同价调拨")
                     {
                         number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].FormattedValue);
                         decimal priceout = Convert.ToDecimal(gr.Cells["gridColumnpriceout"].FormattedValue);
@@ -875,34 +875,34 @@ namespace WSCATProject.Warehouse
                         gr.Cells["gridColumnmoneyout"].Value = allOutPrice;
 
                         //逐行统计数据总数
-                        for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                        for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                         {
-                            GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                            GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                             tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
                             tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoneyout"].FormattedValue);
                         }
                         _MaterialNumber = tempAllNumber;
                         _MaterialMoney = tempAllMoney;
-                        gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                        gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                         gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
                         gr["gridColumnmoneyout"].Value = _MaterialMoney.ToString();
                     }
-                    if (cbotype.Text == "异价调拨")
+                    if (cboType.Text == "异价调拨")
                     {
                         number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].FormattedValue);
                         decimal pricein = Convert.ToDecimal(gr.Cells["gridColumnpricein"].FormattedValue);
                         decimal allInmoney = number * pricein;
                         gr.Cells["gridColumnmoneyin"].Value = allInmoney;
 
-                        for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                        for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                         {
-                            GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                            GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                             tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
                             temAllInMoney += Convert.ToDecimal(tempGR["gridColumnmoneyin"].FormattedValue);
                         }
                         _MaterialNumber = tempAllNumber;
                         _MaterInMoney = temAllInMoney;
-                        gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                        gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                         gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
                         gr["gridColumnmoneyin"].Value = _MaterInMoney.ToString();
                     }
@@ -920,25 +920,25 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBoxEx1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                switch (cbotype.Text.Trim())
+                switch (cboType.Text.Trim())
                 {
                     case "同价调拨":
-                        superGridControl1.PrimaryGrid.Columns["gridColumnpricein"].Visible = false;
-                        superGridControl1.PrimaryGrid.Columns["gridColumnmoneyin"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnpricein"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnmoneyin"].Visible = false;
                         labTop9.Visible = false;
                         labtextboxTop7.Visible = false;
 
                         break;
                     case "异价调拨":
-                        superGridControl1.PrimaryGrid.Columns["gridColumnpricein"].Visible = true;
-                        superGridControl1.PrimaryGrid.Columns["gridColumnmoneyin"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnpricein"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnmoneyin"].Visible = true;
                         labTop9.Visible = true;
                         labtextboxTop7.Visible = true;
-                        superGridControl1.PrimaryGrid.Columns["gridColumnmoneyin"].ReadOnly = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnmoneyin"].ReadOnly = true;
                         break;
                 }
             }
@@ -964,7 +964,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -974,23 +974,23 @@ namespace WSCATProject.Warehouse
                     InitEmployee();
                     return;
                 }
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "员工工号";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(234, 420);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)
@@ -1004,25 +1004,30 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_EditorValueChanged(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_EditorValueChanged(object sender, GridEditEventArgs e)
         {
             try
             {
                 string SS = "";
-                GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
                 if (SS == "")
                 {
                     //模糊查询商品列表
                     _AllMaterial = waremain.GetWMainAndMaterialByWMCode(0, "" + materialDaima + "","" + XYEEncoding.strCodeHex(_OutStorage + ""));
                     InitMaterialDataGridView();
-                    dataGridView1.DataSource = ch.DataTableReCoding(_AllMaterial);
+                    dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码:2111-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
             }
+        }
+
+        private void WareHouseAllotForm_Activated(object sender, EventArgs e)
+        {
+            cboType.Focus();
         }
     }
 }

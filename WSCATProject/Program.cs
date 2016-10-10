@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using WSCATProject.Warehouse;
+using WSCATProject.Sales;
 
 namespace WSCATProject
 {
@@ -14,7 +15,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestVoidForm());
+            Application.Run(new SalesOrderForm());
         }
     }
 }

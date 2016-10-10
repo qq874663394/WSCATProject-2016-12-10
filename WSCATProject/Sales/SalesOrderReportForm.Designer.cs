@@ -1,6 +1,6 @@
-﻿namespace WSCATProject.Warehouse
+﻿namespace WSCATProject.Sales
 {
-    partial class WareHouseInventoryReportForm
+    partial class SalesOrderReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouseInventoryReportForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesOrderReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMax = new System.Windows.Forms.PictureBox();
@@ -38,13 +37,12 @@
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonProfit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLoss = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonShuaiXin = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDaYing = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDaoChu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.superGridControlShangPing = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.storge = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.daima = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.name = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -62,16 +60,9 @@
             this.panyingMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pankuiMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.bar1 = new DevComponents.DotNetBar.Bar();
-            this.lblzhangcundate = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.cboPanDianIdea = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBoxpandiancode = new System.Windows.Forms.TextBox();
-            this.picbpandianBarCode = new System.Windows.Forms.PictureBox();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -79,9 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbpandianBarCode)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -94,8 +82,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1202, 61);
-            this.panel1.TabIndex = 3;
+            this.panel1.Size = new System.Drawing.Size(1186, 61);
+            this.panel1.TabIndex = 4;
             // 
             // pictureBoxClose
             // 
@@ -104,14 +92,12 @@
             this.pictureBoxClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxClose.Image = global::WSCATProject.Properties.Resources.clo;
-            this.pictureBoxClose.Location = new System.Drawing.Point(1144, 28);
+            this.pictureBoxClose.Location = new System.Drawing.Point(1128, 28);
             this.pictureBoxClose.Name = "pictureBoxClose";
             this.pictureBoxClose.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxClose.TabIndex = 51;
             this.pictureBoxClose.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxClose, "关闭");
-            this.pictureBoxClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
             // pictureBoxMax
             // 
@@ -120,15 +106,12 @@
             this.pictureBoxMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxMax.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxMax.Image = global::WSCATProject.Properties.Resources.zuidahua1;
-            this.pictureBoxMax.Location = new System.Drawing.Point(1115, 28);
+            this.pictureBoxMax.Location = new System.Drawing.Point(1099, 28);
             this.pictureBoxMax.Name = "pictureBoxMax";
             this.pictureBoxMax.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMax.TabIndex = 49;
             this.pictureBoxMax.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxMax, "最大化");
-            this.pictureBoxMax.Click += new System.EventHandler(this.pictureBoxMax_Click);
-            this.pictureBoxMax.MouseEnter += new System.EventHandler(this.pictureBoxMax_MouseEnter);
             // 
             // pictureBoxMin
             // 
@@ -136,14 +119,12 @@
             this.pictureBoxMin.BackColor = System.Drawing.Color.White;
             this.pictureBoxMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxMin.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBoxMin.Location = new System.Drawing.Point(1088, 28);
+            this.pictureBoxMin.Location = new System.Drawing.Point(1072, 28);
             this.pictureBoxMin.Name = "pictureBoxMin";
             this.pictureBoxMin.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMin.TabIndex = 50;
             this.pictureBoxMin.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxMin, "最小化");
-            this.pictureBoxMin.Click += new System.EventHandler(this.pictureBoxMin_Click);
             // 
             // labelTitle
             // 
@@ -158,11 +139,10 @@
             this.labelTitle.ForeColor = System.Drawing.Color.White;
             this.labelTitle.Location = new System.Drawing.Point(452, 8);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(287, 30);
+            this.labelTitle.Size = new System.Drawing.Size(271, 30);
             this.labelTitle.TabIndex = 4;
-            this.labelTitle.Text = "商  品  盘  点  报  告  单";
+            this.labelTitle.Text = "销  售  订  单  报  告";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -173,11 +153,10 @@
             this.pictureBoxtitle.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxtitle.Image")));
             this.pictureBoxtitle.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxtitle.Name = "pictureBoxtitle";
-            this.pictureBoxtitle.Size = new System.Drawing.Size(1205, 61);
+            this.pictureBoxtitle.Size = new System.Drawing.Size(1189, 61);
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
-            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // toolStrip1
             // 
@@ -186,17 +165,15 @@
             this.toolStrip1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonProfit,
-            this.toolStripButtonLoss,
-            this.toolStripButtonShuaiXin,
-            this.toolStripButtonDaYing,
-            this.toolStripButtonDaoChu,
+            this.toolStripButtonshuaixin,
+            this.toolStripButtondayin,
+            this.toolStripButtondaochu,
             this.toolStripButtonClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
-            this.toolStrip1.TabIndex = 51;
+            this.toolStrip1.Size = new System.Drawing.Size(1186, 70);
+            this.toolStrip1.TabIndex = 52;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -205,61 +182,47 @@
             this.toolStripButtonProfit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonProfit.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonProfit.Name = "toolStripButtonProfit";
-            this.toolStripButtonProfit.Size = new System.Drawing.Size(55, 66);
-            this.toolStripButtonProfit.Text = "盘盈单";
+            this.toolStripButtonProfit.Size = new System.Drawing.Size(41, 66);
+            this.toolStripButtonProfit.Text = "查看";
             this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonProfit.ToolTipText = "输出盘盈单";
-            this.toolStripButtonProfit.Click += new System.EventHandler(this.toolStripButtonProfit_Click);
             // 
-            // toolStripButtonLoss
+            // toolStripButtonshuaixin
             // 
-            this.toolStripButtonLoss.Image = global::WSCATProject.Properties.Resources.盘点;
-            this.toolStripButtonLoss.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonLoss.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLoss.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtonLoss.Name = "toolStripButtonLoss";
-            this.toolStripButtonLoss.Size = new System.Drawing.Size(55, 66);
-            this.toolStripButtonLoss.Text = "盘亏单";
-            this.toolStripButtonLoss.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonLoss.ToolTipText = "输出盘亏单";
-            this.toolStripButtonLoss.Click += new System.EventHandler(this.toolStripButtonLoss_Click);
+            this.toolStripButtonshuaixin.AutoSize = false;
+            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
+            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonshuaixin.Margin = new System.Windows.Forms.Padding(0, 5, 0, -2);
+            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
+            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(41, 67);
+            this.toolStripButtonshuaixin.Text = "刷新";
+            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
             // 
-            // toolStripButtonShuaiXin
+            // toolStripButtondayin
             // 
-            this.toolStripButtonShuaiXin.AutoSize = false;
-            this.toolStripButtonShuaiXin.Image = global::WSCATProject.Properties.Resources.刷新;
-            this.toolStripButtonShuaiXin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonShuaiXin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonShuaiXin.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.toolStripButtonShuaiXin.Name = "toolStripButtonShuaiXin";
-            this.toolStripButtonShuaiXin.Size = new System.Drawing.Size(41, 67);
-            this.toolStripButtonShuaiXin.Text = "刷新";
-            this.toolStripButtonShuaiXin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonShuaiXin.ToolTipText = "刷新（F5）";
+            this.toolStripButtondayin.Image = global::WSCATProject.Properties.Resources.daying1;
+            this.toolStripButtondayin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtondayin.Name = "toolStripButtondayin";
+            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 66);
+            this.toolStripButtondayin.Text = "打印";
+            this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtondayin.ToolTipText = "打印盘点表(Ctrl+P)";
             // 
-            // toolStripButtonDaYing
+            // toolStripButtondaochu
             // 
-            this.toolStripButtonDaYing.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripButtonDaYing.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonDaYing.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDaYing.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtonDaYing.Name = "toolStripButtonDaYing";
-            this.toolStripButtonDaYing.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonDaYing.Text = "打印";
-            this.toolStripButtonDaYing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonDaYing.ToolTipText = "打印盘点表(Ctrl+P)";
-            // 
-            // toolStripButtonDaoChu
-            // 
-            this.toolStripButtonDaoChu.Image = global::WSCATProject.Properties.Resources.countExc;
-            this.toolStripButtonDaoChu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonDaoChu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDaoChu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtonDaoChu.Name = "toolStripButtonDaoChu";
-            this.toolStripButtonDaoChu.Size = new System.Drawing.Size(75, 66);
-            this.toolStripButtonDaoChu.Text = "导出Excel";
-            this.toolStripButtonDaoChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonDaoChu.ToolTipText = "导出Excel(Ctrl+T)";
+            this.toolStripButtondaochu.Image = global::WSCATProject.Properties.Resources.countExc;
+            this.toolStripButtondaochu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtondaochu.Name = "toolStripButtondaochu";
+            this.toolStripButtondaochu.Size = new System.Drawing.Size(75, 66);
+            this.toolStripButtondaochu.Text = "导出Excel";
+            this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
             // 
             // toolStripButtonClose
             // 
@@ -271,47 +234,45 @@
             this.toolStripButtonClose.Text = "关闭";
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
-            this.toolStripButtonClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.superGridControlShangPing);
+            this.panel2.Controls.Add(this.superGridControl1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 131);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1202, 511);
-            this.panel2.TabIndex = 52;
+            this.panel2.Size = new System.Drawing.Size(1186, 473);
+            this.panel2.TabIndex = 53;
             // 
-            // superGridControlShangPing
+            // superGridControl1
             // 
-            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControlShangPing.Location = new System.Drawing.Point(0, 0);
-            this.superGridControlShangPing.Name = "superGridControlShangPing";
+            this.superGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.superGridControl1.Name = "superGridControl1";
             // 
             // 
             // 
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.storge);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.daima);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.name);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.model);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.tiaoxingma);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shengchandate);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.baozhiqi);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.unit);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.zhangcunnumber);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.pandiannumber);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.panyingnumber);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.pankuinumber);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnprice);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.panyingMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.pankuiMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
-            this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 511);
-            this.superGridControlShangPing.TabIndex = 1;
-            this.superGridControlShangPing.Text = "superGridControlShangPing";
-            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.storge);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.daima);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.name);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.model);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.tiaoxingma);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.shengchandate);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.baozhiqi);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.unit);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.zhangcunnumber);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.pandiannumber);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingnumber);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuinumber);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumnprice);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.panyingMoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.pankuiMoney);
+            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControl1.Size = new System.Drawing.Size(1186, 473);
+            this.superGridControl1.TabIndex = 1;
+            this.superGridControl1.Text = "superGridControl1";
             // 
             // storge
             // 
@@ -451,150 +412,56 @@
             this.gridColumncode.Name = "gridColumncode";
             this.gridColumncode.Visible = false;
             // 
-            // panel3
+            // label1
             // 
-            this.panel3.Controls.Add(this.bar1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 615);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1202, 27);
-            this.panel3.TabIndex = 57;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(983, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 12);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "共计：";
             // 
-            // bar1
+            // label2
             // 
-            this.bar1.AntiAlias = true;
-            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
-            this.bar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bar1.DockSide = DevComponents.DotNetBar.eDockSide.Bottom;
-            this.bar1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.bar1.IsMaximized = false;
-            this.bar1.Location = new System.Drawing.Point(0, 0);
-            this.bar1.Name = "bar1";
-            this.bar1.Size = new System.Drawing.Size(1202, 25);
-            this.bar1.Stretch = true;
-            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.bar1.TabIndex = 55;
-            this.bar1.TabStop = false;
-            this.bar1.Text = "bar1";
-            this.bar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.superGridControl1_MouseDown);
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(1031, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "label2";
             // 
-            // lblzhangcundate
+            // label3
             // 
-            this.lblzhangcundate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblzhangcundate.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(1102, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "label3";
             // 
-            // 
-            // 
-            this.lblzhangcundate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblzhangcundate.Location = new System.Drawing.Point(835, 80);
-            this.lblzhangcundate.Name = "lblzhangcundate";
-            this.lblzhangcundate.Size = new System.Drawing.Size(75, 23);
-            this.lblzhangcundate.TabIndex = 60;
-            this.lblzhangcundate.Text = "labelX4";
-            this.lblzhangcundate.Visible = false;
-            // 
-            // labelX3
-            // 
-            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(770, 80);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(70, 23);
-            this.labelX3.TabIndex = 59;
-            this.labelX3.Text = "账存日期：";
-            this.labelX3.Visible = false;
-            // 
-            // cboPanDianIdea
-            // 
-            this.cboPanDianIdea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboPanDianIdea.DisplayMember = "Text";
-            this.cboPanDianIdea.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboPanDianIdea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPanDianIdea.FormattingEnabled = true;
-            this.cboPanDianIdea.ItemHeight = 15;
-            this.cboPanDianIdea.Location = new System.Drawing.Point(532, 81);
-            this.cboPanDianIdea.Name = "cboPanDianIdea";
-            this.cboPanDianIdea.Size = new System.Drawing.Size(121, 21);
-            this.cboPanDianIdea.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cboPanDianIdea.TabIndex = 58;
-            this.cboPanDianIdea.SelectedValueChanged += new System.EventHandler(this.cboPanDianIdea_SelectedValueChanged);
-            // 
-            // labelX2
-            // 
-            this.labelX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(462, 80);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(67, 23);
-            this.labelX2.TabIndex = 61;
-            this.labelX2.Text = "盘点方案：";
-            // 
-            // textBoxpandiancode
-            // 
-            this.textBoxpandiancode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxpandiancode.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxpandiancode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxpandiancode.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxpandiancode.Location = new System.Drawing.Point(1023, 111);
-            this.textBoxpandiancode.Name = "textBoxpandiancode";
-            this.textBoxpandiancode.ReadOnly = true;
-            this.textBoxpandiancode.Size = new System.Drawing.Size(141, 14);
-            this.textBoxpandiancode.TabIndex = 64;
-            // 
-            // picbpandianBarCode
-            // 
-            this.picbpandianBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picbpandianBarCode.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.picbpandianBarCode.Location = new System.Drawing.Point(1023, 65);
-            this.picbpandianBarCode.Name = "picbpandianBarCode";
-            this.picbpandianBarCode.Size = new System.Drawing.Size(141, 40);
-            this.picbpandianBarCode.TabIndex = 63;
-            this.picbpandianBarCode.TabStop = false;
-            // 
-            // labelX1
-            // 
-            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(977, 61);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(43, 23);
-            this.labelX1.TabIndex = 62;
-            this.labelX1.Text = "单号：";
-            this.labelX1.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // WareHouseInventoryReportForm
+            // SalesOrderReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 642);
-            this.Controls.Add(this.textBoxpandiancode);
-            this.Controls.Add(this.picbpandianBarCode);
-            this.Controls.Add(this.labelX1);
-            this.Controls.Add(this.labelX2);
-            this.Controls.Add(this.lblzhangcundate);
-            this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.cboPanDianIdea);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1186, 604);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "WareHouseInventoryReportForm";
-            this.Text = "商品盘点报告单";
-            this.Activated += new System.EventHandler(this.WareHouseInventoryReportForm_Activated);
-            this.Load += new System.EventHandler(this.WareHouseInventoryReportForm_Load);
+            this.Name = "SalesOrderReportForm";
+            this.Text = "销售订单报告";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
@@ -603,9 +470,6 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbpandianBarCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,20 +478,19 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.PictureBox pictureBoxtitle;
-        protected DevComponents.DotNetBar.LabelX labelTitle;
         protected System.Windows.Forms.PictureBox pictureBoxClose;
         public System.Windows.Forms.PictureBox pictureBoxMax;
         public System.Windows.Forms.PictureBox pictureBoxMin;
+        protected DevComponents.DotNetBar.LabelX labelTitle;
+        public System.Windows.Forms.PictureBox pictureBoxtitle;
         private System.Windows.Forms.ToolStrip toolStrip1;
         protected System.Windows.Forms.ToolStripButton toolStripButtonProfit;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonLoss;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonShuaiXin;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonDaYing;
-        protected System.Windows.Forms.ToolStripButton toolStripButtonDaoChu;
+        protected System.Windows.Forms.ToolStripButton toolStripButtonshuaixin;
+        protected System.Windows.Forms.ToolStripButton toolStripButtondayin;
+        protected System.Windows.Forms.ToolStripButton toolStripButtondaochu;
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private System.Windows.Forms.Panel panel2;
-        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlShangPing;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn storge;
         private DevComponents.DotNetBar.SuperGrid.GridColumn daima;
         private DevComponents.DotNetBar.SuperGrid.GridColumn name;
@@ -641,19 +504,12 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn panyingnumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn pankuinumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
-        private System.Windows.Forms.Panel panel3;
-        private DevComponents.DotNetBar.Bar bar1;
-        private DevComponents.DotNetBar.LabelX lblzhangcundate;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cboPanDianIdea;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox textBoxpandiancode;
-        private System.Windows.Forms.PictureBox picbpandianBarCode;
-        private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnprice;
         private DevComponents.DotNetBar.SuperGrid.GridColumn panyingMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn pankuiMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -31,6 +31,8 @@ namespace WSCATProject
             label2.ForeColor = Color.White;
             label3.Parent = pictureBox2;
             label3.ForeColor = Color.White;
+            label4.Parent = pictureBox2;
+            label4.ForeColor = Color.White;
             btnLogin.Parent = pictureBox2;
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.BackColor = Color.FromArgb(74, 77, 110);
@@ -41,6 +43,7 @@ namespace WSCATProject
             btnClose.BackColor = Color.FromArgb(74, 77, 110);
             btnClose.FlatAppearance.BorderColor = btnClose.BackColor;
             btnClose.ForeColor = Color.White;
+
             #endregion
 
             if (File.Exists(strFilePath) == false)

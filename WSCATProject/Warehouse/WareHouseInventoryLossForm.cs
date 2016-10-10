@@ -88,21 +88,21 @@ namespace WSCATProject.Warehouse
                 _AllEmployee = employee.SelSupplierTable(false);
 
                 //数量
-                GridDoubleInputEditControl gdiecNumber = superGridControl1.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
+                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 0;
                 gdiecNumber.MaxValue = 999999999;
 
                 //禁用自动创建列
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridViewFujia.AutoGenerateColumns = false;
-                superGridControl1.HScrollBarVisible = true;
+                dataGridViewShangPing.AutoGenerateColumns = false;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
                 //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFujia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-                dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 // 将dataGridView中的内容居中显示
-                dataGridViewFujia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                toolStripButtonsave.Click += ToolStripButtonsave_Click;//保存按钮
-                toolStripButtonshen.Click += ToolStripButtonshen_Click;//审核按钮
+                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
                 //生成code 和显示条形码
                 _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
@@ -111,11 +111,11 @@ namespace WSCATProject.Warehouse
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBox9.Image = imgTemp;
-                superGridControl1.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
-                superGridControl1.DefaultVisualStyles.CellStyles.Default.Alignment =
+                superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;//设置内容居中
-                superGridControl1.PrimaryGrid.DataSource = ch.DataTableReCoding(warehouseinv.Search(5, XYEEncoding.strCodeHex(_storageCode)));
-                superGridControl1.PrimaryGrid.EnsureVisible();
+                superGridControlShangPing.PrimaryGrid.DataSource = ch.DataTableReCoding(warehouseinv.Search(5, XYEEncoding.strCodeHex(_storageCode)));
+                superGridControlShangPing.PrimaryGrid.EnsureVisible();
                 //调用合计行数据
                 InitDataGridView();
                 //最后一行做统计行
@@ -127,9 +127,9 @@ namespace WSCATProject.Warehouse
                     decimal tempAllpandian = 0;
                     decimal tempAllpankui = 0;
                     decimal tempAllpankuimoney = 0;
-                    for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                    for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                     {
-                        GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                        GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                         tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                         tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
                         tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
@@ -139,7 +139,7 @@ namespace WSCATProject.Warehouse
                     _AllPanDianShuLiang = tempAllpandian;
                     _AllPanKuiShuLiang = tempAllpankui;
                     _AllPanKuiMoney = tempAllpankuimoney;
-                    gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                     gr["zhangcunnumber"].Value = _AllZhuCunShuLiang.ToString();
                     gr["pandiannumber"].Value = _AllPanDianShuLiang.ToString();
                     gr["pankuinumber"].Value = _AllPanKuiShuLiang.ToString();
@@ -160,12 +160,14 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("错误代码- ：初始化数据错误，没有仓库code" + ex.Message);
             }
         }
+
+
         /// <summary>
         /// 审核按钮事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonshen_Click(object sender, EventArgs e)
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -201,8 +203,8 @@ namespace WSCATProject.Warehouse
             try
             {
                 //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 int i = 0;
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
@@ -233,7 +235,7 @@ namespace WSCATProject.Warehouse
                         warehouselossDetail.updateDate = DateTime.Now;
                         warehouselossDetail.warehouseCode = "";
                         warehouselossDetail.warehouseName = "";
-                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         wareHouselossList.Add(warehouselossDetail);
                     }
                 }
@@ -260,7 +262,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripButtonsave_Click(object sender, EventArgs e)
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -297,8 +299,8 @@ namespace WSCATProject.Warehouse
             try
             {
                 //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 int i = 0;
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
@@ -329,7 +331,7 @@ namespace WSCATProject.Warehouse
                         warehouselossDetail.updateDate = DateTime.Now;
                         warehouselossDetail.warehouseCode = "";
                         warehouselossDetail.warehouseName = "";
-                        GridRow dr = superGridControl1.PrimaryGrid.Rows[0] as GridRow;
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         wareHouselossList.Add(warehouselossDetail);
                     }
                 }
@@ -357,10 +359,10 @@ namespace WSCATProject.Warehouse
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            superGridControl1.PrimaryGrid.NewRow(true);
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
             //最后一行做统计行
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
             gr.Cells["material"].Value = "合计";
@@ -406,23 +408,23 @@ namespace WSCATProject.Warehouse
             if (_Click != 1)
             {
                 _Click = 1;
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "员工工号";
                 dgvc.DataPropertyName = "员工工号";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "姓名";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
                 resizablePanel1.Visible = true;
 
                 if (this.WindowState == FormWindowState.Maximized)
@@ -445,13 +447,13 @@ namespace WSCATProject.Warehouse
         {
             cboOutType.Enabled = false;
             labtextboxTop7.ReadOnly = true;
-            superGridControl1.PrimaryGrid.ReadOnly = true;
+            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
             ltxtbMakeMan.ReadOnly = true;
             ltxtbSalsMan.ReadOnly = true;
             ltxtbShengHeMan.ReadOnly = true;
-            toolStripButtonsave.Enabled = false;
-            toolStripButtonshen.Enabled = false;
-            pictureBox5.Enabled = false;
+            toolStripBtnSave.Enabled = false;
+            toolStripBtnShengHe.Enabled = false;
+            pictureBoxEmployee.Enabled = false;
             dateTimePicker1.Enabled = false;
             textBoxOddNumbers.ReadOnly = true;
         }
@@ -459,7 +461,7 @@ namespace WSCATProject.Warehouse
         #endregion
 
         #region 小箭头图标和表格数据的点击事件
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -469,14 +471,14 @@ namespace WSCATProject.Warehouse
         }
 
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 //业务员
                 if (_Click == 1 || _Click == 2)
                 {
-                    string name = dataGridViewFujia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
@@ -487,7 +489,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //表的点击事件
         }
@@ -523,7 +525,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxBotton1_TextChanged(object sender, EventArgs e)
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
         {
             if (ltxtbSalsMan.Text.Trim() == "")
             {
@@ -533,23 +535,23 @@ namespace WSCATProject.Warehouse
             }
             try
             {
-                dataGridViewFujia.DataSource = null;
-                dataGridViewFujia.Columns.Clear();
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
                 DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "code";
                 dgvc.HeaderText = "员工工号";
                 dgvc.DataPropertyName = "code";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "姓名";
                 dgvc.DataPropertyName = "name";
-                dataGridViewFujia.Columns.Add(dgvc);
+                dataGridViewFuJia.Columns.Add(dgvc);
 
                 resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFujia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)
@@ -577,7 +579,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_CellValidated(object sender, GridCellValidatedEventArgs e)
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
         {
             //最后一行做统计行
             GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
@@ -588,9 +590,9 @@ namespace WSCATProject.Warehouse
                 decimal tempAllpandian = 0;
                 decimal tempAllpankui = 0;
                 decimal tempAllpankuimoney = 0;
-                for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                 {
-                    GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                     tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
                     tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
                     tempAllpankui += Convert.ToDecimal(tempGR["pankuinumber"].FormattedValue);
@@ -600,7 +602,7 @@ namespace WSCATProject.Warehouse
                 _AllPanDianShuLiang = tempAllpandian;
                 _AllPanKuiShuLiang = tempAllpankui;
                 _AllPanKuiMoney = tempAllpankuimoney;
-                gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                 gr["zhangcunnumber"].Value = _AllZhuCunShuLiang.ToString();
                 gr["pandiannumber"].Value = _AllPanDianShuLiang.ToString();
                 gr["pankuinumber"].Value = _AllPanKuiShuLiang.ToString();
@@ -610,6 +612,11 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("统计出错！请检查：" + ex.Message);
             }
+        }
+
+        private void WareHouseInventoryLossForm_Activated(object sender, EventArgs e)
+        {
+            cboOutType.Focus();
         }
     }
 }
