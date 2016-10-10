@@ -179,6 +179,10 @@ namespace WSCATProject.Warehouse
         /// 入库code
         /// </summary>
         private string _WareHouseInCode;
+        /// <summary>
+        /// 计算数量
+        /// </summary>
+        private decimal _BeforeNumber;
         #endregion
 
         private void WareHouseInMain_Load(object sender, EventArgs e)
@@ -590,24 +594,54 @@ namespace WSCATProject.Warehouse
                 //是否要新增一行的标记
                 bool newAdd = false;
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
+
+                GridItemsCollection grs = superGridControl1.PrimaryGrid.Rows;
                 //id字段为空 说明是没有数据的行 不是修改而是新增
                 if (gr.Cells["gridColumnid"].Value == null)
                 {
                     newAdd = true;
                 }
-                gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
-                gr.Cells["gridColumncode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
-                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
-                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                gr.Cells["gridColumnprice"].Value = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);//单价
-                decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["number"].Value);
-                decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumncode"].Value==null)
+                    {
+                        break;
+                    }
+                    if (g.Cells["gridColumncode"].Value.Equals(dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value))
+                    {
+                        decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnnumber"].Value);
+                        shuliang += 1;
+                        g.Cells["gridColumnnumber"].Value = shuliang;
+                        //逐行统计数据总数
+                        decimal tempAllNumber = 0;
+                        for (int i = 0; i < superGridControl1.PrimaryGrid.Rows.Count - 1; i++)
+                        {
+                            GridRow tempGR = superGridControl1.PrimaryGrid.Rows[i] as GridRow;
+                            tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
+                        }
+                        _MaterialNumber = tempAllNumber;
+                        gr = (GridRow)superGridControl1.PrimaryGrid.LastSelectableRow;
+                        gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
+                        resizablePanelData.Visible = false;
+                        return;
+                    }
+                    continue;
+                }
+                gr.Cells["material"].Value = dataGridView1.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
+                gr.Cells["gridColumncode"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
+                gr.Cells["gridColumnname"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
+                gr.Cells["gridColumnmodel"].Value = dataGridView1.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
+                gr.Cells["gridColumnunit"].Value = dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                gr.Cells["gridColumntiaoxingma"].Value = dataGridView1.Rows[e.RowIndex].Cells["barCode"].Value;//条码
+                gr.Cells["gridColumnprice"].Value = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);//单价
+                decimal number = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["number"].Value);
+                decimal price = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
                 gr.Cells["gridColumnmoney"].Value = number * price;//金额
-                gr.Cells["gridColumndate"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value.ToString();//生产日期
-                gr.Cells["gridColumnbaozhe"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString();//保质期
-                gr.Cells["gridColumnyouxiao"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期至
+                gr.Cells["gridColumnnumber"].Value = 1.ToString();
+                _BeforeNumber = Convert.ToDecimal( gr.Cells["gridColumnnumber"].Value);
+                gr.Cells["gridColumndate"].Value = dataGridView1.Rows[e.RowIndex].Cells["productionDate"].Value.ToString();//生产日期
+                gr.Cells["gridColumnbaozhe"].Value = dataGridView1.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString();//保质期
+                gr.Cells["gridColumnyouxiao"].Value = dataGridView1.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期至
                 resizablePanelData.Visible = false;
                 //新增一行 
                 if (newAdd)
@@ -615,16 +649,15 @@ namespace WSCATProject.Warehouse
                     superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                    _Materialnumber += 0;
-                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-
+                    _Materialnumber += _BeforeNumber;
+                    gr.Cells["gridColumnnumber"].Value = _Materialnumber;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码:2108-尝试连接物料绑定数据错误！" + ex.Message);
             }
-            SendKeys.Send("^{End}{Home}");
+            //SendKeys.Send("^{End}{Home}");
         }
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
