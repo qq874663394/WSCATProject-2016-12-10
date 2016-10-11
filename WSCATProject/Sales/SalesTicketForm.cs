@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,6 +71,11 @@ namespace WSCATProject.Sales
         /// 销售订单code
         /// </summary>
         private string _SalesOrderCode;
+        /// <summary>
+        /// 保存仓库的字典集合
+        /// </summary>
+        private KeyValuePair<string, string> _ClickStorageList;
+
         #endregion
 
         #region 初始化数据
@@ -239,49 +245,97 @@ namespace WSCATProject.Sales
 
         #endregion
 
+        /// <summary>
+        /// 窗体加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SalesTicketForm_Load(object sender, EventArgs e)
         {
-            //客户
-            _AllClient = client.GetClientByBool(false);
-            //销售员
-            _AllEmployee = employee.SelSupplierTable(false);
-            //仓库
-            _AllStorage = storage.GetList(00, "");
+            try
+            {
+                toolStripButtonXuanYuanDan.Visible = true;
+                //客户
+                _AllClient = client.GetClientByBool(false);
+                //销售员
+                _AllEmployee = employee.SelSupplierTable(false);
+                //仓库
+                _AllStorage = storage.GetList(00, "");
 
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFuJia.CellDoubleClick += DataGridViewFujia_CellDoubleClick;
-            dataGridViewShangPing.CellDoubleClick += DataGridView1_CellDoubleClick;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
 
-            #region 初始化窗体
+                toolStripButtonXuanYuanDan.Visible = true;
+                toolStripBtnSave.Click += ToolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += ToolStripBtnShengHe_Click;//审核按钮
+                toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
 
-            comboBoxtype.SelectedIndex = 0;//单据类型
-            comboBoxfapiaotype.SelectedIndex = 0;//发票类型
+                #region 初始化窗体
 
-            //禁用自动创建列
-            dataGridViewShangPing.AutoGenerateColumns = false;
-            dataGridViewFuJia.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //显示行号
-            superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-            //内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //调用合计行数据
-            InitDataGridView();
+                comboBoxType.SelectedIndex = 0;//单据类型
+                comboBoxfapiaotype.SelectedIndex = 0;//发票类型
 
-            #endregion
+                //禁用自动创建列
+                dataGridViewShangPing.AutoGenerateColumns = false;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //显示行号
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
+                //内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                //调用合计行数据
+                InitDataGridView();
 
-            //生成销售单code和显示条形码
-            _SalesOrderCode = BuildCode.ModuleCode("ST");
-            textBoxOddNumbers.Text = _SalesOrderCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBoxtiaoxingma.Image = imgTemp;
+                #endregion
+
+                //生成销售单code和显示条形码
+                _SalesOrderCode = BuildCode.ModuleCode("ST");
+                textBoxOddNumbers.Text = _SalesOrderCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBoxtiaoxingma.Image = imgTemp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-初始化数据错误" + ex.Message);
+            }
+
         }
 
-        private void DataGridViewFujia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// 选源单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 审核按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 保存按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripBtnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -313,8 +367,8 @@ namespace WSCATProject.Sales
                     string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     gr.Cells["gridColumnStock"].Value = Name;
-                    //gr.Cells["gridColumncode"].Value = code;
-                    // _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                    gr.Cells["gridColumncode"].Value = code;
+                     _ClickStorageList = new KeyValuePair<string, string>(code, Name);
                     _storgeCode = code;
                     resizablePanel1.Visible = false;
                 }
@@ -330,7 +384,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -339,7 +393,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBoxClient_Click(object sender, EventArgs e)
         {
             if (_Click != 1)
             {
@@ -352,13 +406,13 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
             if (_Click != 2)
             {
                 InitEmployee();
             }
-           _Click = 5;
+            _Click = 5;
         }
 
         /// <summary>
@@ -366,7 +420,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -416,7 +470,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtextboxTop2_TextChanged(object sender, EventArgs e)
+        private void labtextboxTopClient_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -540,23 +594,31 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBoxtype_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                switch (comboBoxtype.Text.Trim())
+                switch (comboBoxType.Text.Trim())
                 {
                     case "销售发货":
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = true;
+                        superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Black;
                         break;
                     case "销售退货":
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = false;
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
+                        superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Red;
                         break;
                     case "委托退货":
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = true;
+                        superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Black;
                         break;
                     case "委托结算退货":
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
+                        superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Red;
                         break;
                 }
             }
@@ -564,6 +626,34 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("错误代码：-选择调拨类型数据错误" + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 修改边框 的颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                             this.panel2.ClientRectangle,
+                             Color.FromArgb(85, 177, 238),
+                             2,
+                             ButtonBorderStyle.Solid,
+                             Color.FromArgb(85, 177, 238),
+                             1,
+                             ButtonBorderStyle.Solid,
+                             Color.FromArgb(85, 177, 238),
+                             2,
+                             ButtonBorderStyle.Solid,
+                             Color.White,
+                             1,
+                             ButtonBorderStyle.Solid);
+        }
+
+        private void SalesTicketForm_Activated(object sender, EventArgs e)
+        {
+            labtextboxTop2.Focus();//焦点在客户上
         }
     }
 }

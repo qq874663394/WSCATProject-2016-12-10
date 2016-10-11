@@ -76,16 +76,17 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 6);
+            this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1029, 62);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(135, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(990, 4);
+            this.labelprie.Location = new System.Drawing.Point(990, 9);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1025, 84);
+            this.dateTimePicker1.Location = new System.Drawing.Point(1027, 84);
             // 
             // panel1
             // 
@@ -504,7 +505,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Location = new System.Drawing.Point(1026, 24);
+            this.pictureBox9.Location = new System.Drawing.Point(1027, 7);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(139, 55);
             this.pictureBox9.TabIndex = 53;

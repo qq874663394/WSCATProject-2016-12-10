@@ -73,7 +73,8 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1025, 7);
+            this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1027, 51);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             this.textBoxOddNumbers.TabIndex = 56;
             // 
@@ -639,7 +640,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Location = new System.Drawing.Point(1025, 26);
+            this.pictureBox9.Location = new System.Drawing.Point(1027, 3);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(140, 41);
             this.pictureBox9.TabIndex = 54;

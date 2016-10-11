@@ -101,14 +101,14 @@ namespace WSCATProject.Warehouse
         {
             ControlPaint.DrawBorder(e.Graphics,
                                this.panel2.ClientRectangle,
-                               Color.White,
-                               1,
+                               Color.FromArgb(85, 177, 238),
+                               2,
                                ButtonBorderStyle.Solid,
                                Color.FromArgb(85, 177, 238),
                                1,
                                ButtonBorderStyle.Solid,
-                               Color.White,
-                               1,
+                               Color.FromArgb(85, 177, 238),
+                               2,
                                ButtonBorderStyle.Solid,
                                Color.White,
                                1,
@@ -125,7 +125,9 @@ namespace WSCATProject.Warehouse
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
-
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 //调入单价
                 GridDoubleInputEditControl diaoruprice = superGridControlShangPing.PrimaryGrid.Columns["gridColumnpricein"].EditControl as GridDoubleInputEditControl;
                 diaoruprice.MinValue = 0;
@@ -718,10 +720,55 @@ namespace WSCATProject.Warehouse
                 //是否要新增一行的标记
                 bool newAdd = false;
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 //id字段为空 说明是没有数据的行 不是修改而是新增
                 if (gr.Cells["gridColumnid"].Value == null)
                 {
                     newAdd = true;
+                }
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnMaterialcode"].Value == null)
+                    {
+                        newAdd = true;
+                        continue;
+                    }
+                    if (g.Cells["gridColumnMaterialcode"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value))
+                    {
+                        decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnnumber"].Value);
+                        shuliang += 1;
+                        g.Cells["gridColumnnumber"].Value = shuliang;
+                        try
+                        {
+                            decimal tempAllNumber = 0;//统计数量
+                            decimal tempAllMoney = 0;//调出金额
+
+                            decimal priceout = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);
+                            decimal allOutPrice = shuliang * priceout;
+                            g.Cells["gridColumnmoneyout"].Value = allOutPrice;
+
+                            //逐行统计数据总数
+                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                            {
+                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                                tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
+                                tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoneyout"].FormattedValue);
+                            }
+                            _MaterialNumber = tempAllNumber;
+                            _MaterialMoney = tempAllMoney;
+                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                            gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
+                            gr["gridColumnmoneyout"].Value = _MaterialMoney.ToString();
+                            labtextboxTop7.Text = (_MaterInMoney - _MaterialMoney).ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("金额转换错误" + ex.Message);
+                        }
+                        resizablePanelData.Visible = false;
+                        return;
+                    }
+                    continue;
                 }
                 gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
                 gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
@@ -807,7 +854,7 @@ namespace WSCATProject.Warehouse
                 {
                     if (_OutStorage != null || _InStorage != null)
                     {
-                        _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999,"",XYEEncoding.strCodeHex(_OutStorage));
+                        _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999, "", XYEEncoding.strCodeHex(_OutStorage));
                         InitMaterialDataGridView();
                         _StorageState = 3;
                     }
@@ -1014,7 +1061,7 @@ namespace WSCATProject.Warehouse
                 if (SS == "")
                 {
                     //模糊查询商品列表
-                    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(0, "" + materialDaima + "","" + XYEEncoding.strCodeHex(_OutStorage + ""));
+                    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(0, "" + materialDaima + "", "" + XYEEncoding.strCodeHex(_OutStorage + ""));
                     InitMaterialDataGridView();
                     dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
                 }
@@ -1027,7 +1074,7 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseAllotForm_Activated(object sender, EventArgs e)
         {
-            cboType.Focus();
+            superGridControlShangPing.Focus();
         }
     }
 }

@@ -155,9 +155,9 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(390, 461);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 17);
+            this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 10;
-            this.label4.Text = "0.0.01";
+            this.label4.Text = "00.00.01";
             // 
             // LoginForm
             // 

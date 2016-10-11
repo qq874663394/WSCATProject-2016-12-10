@@ -38,6 +38,14 @@ namespace Model
         private DateTime? _effectivedate;
         private string _zhujima;
         private string _barcode;
+        private decimal? _vatrate;
+        private decimal? _discountmoney;
+        private decimal? _tax;
+        private decimal? _leviedmoney;
+        private decimal? _costprice;
+        private decimal? _costmoney;
+        private decimal? _returnsnumber;
+        private string _sourcecode;
         /// <summary>
         /// 栏号(自增)ID
         /// </summary>
@@ -239,7 +247,7 @@ namespace Model
             get { return _effectivedate; }
         }
         /// <summary>
-        /// 
+        /// 商品代码
         /// </summary>
         public string zhujima
         {
@@ -247,12 +255,76 @@ namespace Model
             get { return _zhujima; }
         }
         /// <summary>
-        /// 
+        /// 条形码
         /// </summary>
         public string barCode
         {
             set { _barcode = value; }
             get { return _barcode; }
+        }
+        /// <summary>
+        /// 增值税税率%
+        /// </summary>
+        public decimal? VATRate
+        {
+            set { _vatrate = value; }
+            get { return _vatrate; }
+        }
+        /// <summary>
+        /// 折扣额
+        /// </summary>
+        public decimal? discountMoney
+        {
+            set { _discountmoney = value; }
+            get { return _discountmoney; }
+        }
+        /// <summary>
+        /// 税额
+        /// </summary>
+        public decimal? tax
+        {
+            set { _tax = value; }
+            get { return _tax; }
+        }
+        /// <summary>
+        /// 价税合计
+        /// </summary>
+        public decimal? leviedMoney
+        {
+            set { _leviedmoney = value; }
+            get { return _leviedmoney; }
+        }
+        /// <summary>
+        /// 成本单价
+        /// </summary>
+        public decimal? costPrice
+        {
+            set { _costprice = value; }
+            get { return _costprice; }
+        }
+        /// <summary>
+        /// 成本金额
+        /// </summary>
+        public decimal? costMoney
+        {
+            set { _costmoney = value; }
+            get { return _costmoney; }
+        }
+        /// <summary>
+        /// 退货数量
+        /// </summary>
+        public decimal? ReturnsNumber
+        {
+            set { _returnsnumber = value; }
+            get { return _returnsnumber; }
+        }
+        /// <summary>
+        /// 源单code
+        /// </summary>
+        public string sourceCode
+        {
+            set { _sourcecode = value; }
+            get { return _sourcecode; }
         }
         #endregion Model
 

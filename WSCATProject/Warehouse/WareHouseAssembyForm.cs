@@ -77,19 +77,19 @@ namespace WSCATProject.Warehouse
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics,
-                               this.panel2.ClientRectangle,
-                               Color.White,
-                               1,
-                               ButtonBorderStyle.Solid,
-                               Color.FromArgb(85, 177, 238),
-                               1,
-                               ButtonBorderStyle.Solid,
-                               Color.White,
-                               1,
-                               ButtonBorderStyle.Solid,
-                               Color.White,
-                               1,
-                               ButtonBorderStyle.Solid);
+                                 this.panel2.ClientRectangle,
+                                 Color.FromArgb(85, 177, 238),
+                                 2,
+                                 ButtonBorderStyle.Solid,
+                                 Color.FromArgb(85, 177, 238),
+                                 1,
+                                 ButtonBorderStyle.Solid,
+                                 Color.FromArgb(85, 177, 238),
+                                 2,
+                                 ButtonBorderStyle.Solid,
+                                 Color.White,
+                                 1,
+                                 ButtonBorderStyle.Solid);
         }
 
 
@@ -101,7 +101,7 @@ namespace WSCATProject.Warehouse
         EmpolyeeInterface employee = new EmpolyeeInterface();
         StorageInterface storage = new StorageInterface();
         WarehouseMainInterface waremain = new WarehouseMainInterface();
-        
+
 
         #endregion
 
@@ -390,7 +390,8 @@ namespace WSCATProject.Warehouse
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
-
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 cbotype.SelectedIndex = 0;
                 // 将dataGridView中的内容居中显示
                 dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -649,17 +650,46 @@ namespace WSCATProject.Warehouse
                     grs.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
                     grs.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//商品数量
                     grs.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注  
-                    resizablePanelData.Visible = false; 
+                    resizablePanelData.Visible = false;
                 }
                 if (_Material == 1)
                 {
                     ////是否要新增一行的标记
                     bool newAdd = false;
                     GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                     //id字段为空 说明是没有数据的行 不是修改而是新增
                     if (gr.Cells["gridColumnid"].Value == null)
                     {
                         newAdd = true;
+                    }
+                    foreach (GridRow g in grs)
+                    {
+                        if (g.Cells["code"].Value == null)
+                        {
+                            newAdd = true;
+                            continue;
+                        }
+                        if (g.Cells["code"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value))
+                        {
+                            decimal shuliang = Convert.ToDecimal(g.Cells["number"].Value);
+                            decimal needNumber = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
+                            shuliang += needNumber;
+                            g.Cells["number"].Value = shuliang;
+                            //逐行统计数据总数
+                            decimal tempAllNumber = 0;
+                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                            {
+                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                                tempAllNumber += Convert.ToDecimal(tempGR["number"].FormattedValue);
+                            }
+                            _MaterialNumber = tempAllNumber;
+                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                            gr["number"].Value = _MaterialNumber.ToString();
+                            resizablePanelData.Visible = false;
+                            return;
+                        }
+                        continue;
                     }
                     gr.Cells["code"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
                     gr.Cells["sup1material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
@@ -669,13 +699,13 @@ namespace WSCATProject.Warehouse
                     gr.Cells["unit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
                     gr.Cells["number"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//商品数量
                     gr.Cells["price"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
-                    decimal number= Convert.ToDecimal( dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
+                    decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
                     decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);
                     decimal money = number * price;
                     gr.Cells["money"].Value = money;
                     gr.Cells["remark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注       
 
-                    _number = Convert.ToDecimal( dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
+                    _number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
                     //当上一次有选择仓库时 默认本次也为上次选择仓库
                     if (!string.IsNullOrEmpty(_ClickStorageList.Value) && !string.IsNullOrEmpty(_ClickStorageList.Key))
                     {
@@ -717,15 +747,15 @@ namespace WSCATProject.Warehouse
                 {
                     if (_WareHouse == 2)
                     {
-                    GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
-                    string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                    string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    gr.Cells["gridColumnstockCode"].Value = code;
-                    gr.Cells["gridColumnStock"].Value = Name;
-                     _StorageCode = code;
-                    _ClickStorageList = new KeyValuePair<string, string>(code, Name);
-                    //_StorageCode = code;
-                    resizablePanel1.Visible = false;
+                        GridRow gr = (GridRow)superGridControlZuZhuang.PrimaryGrid.Rows[ClickRowIndex];
+                        string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                        string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                        gr.Cells["gridColumnstockCode"].Value = code;
+                        gr.Cells["gridColumnStock"].Value = Name;
+                        _StorageCode = code;
+                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                        //_StorageCode = code;
+                        resizablePanel1.Visible = false;
                     }
                     if (_WareHouse == 1)
                     {
@@ -849,7 +879,7 @@ namespace WSCATProject.Warehouse
                     ClickStorage = true;
                     resizablePanel1.Visible = true;
                     resizablePanel1.Size = new Size(190, 120);
-                    resizablePanel1.Location = new Point(38,350);
+                    resizablePanel1.Location = new Point(38, 350);
                     InitStorageList();
                     _WareHouse = 1;
                     return;
@@ -860,7 +890,7 @@ namespace WSCATProject.Warehouse
                     {
                         ClickRowIndex = e.GridCell.RowIndex;
                         resizablePanelData.Visible = true;
-                        resizablePanelData.Location = new Point(156,350);
+                        resizablePanelData.Location = new Point(156, 350);
                         //查询商品列表
                         _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999, "", XYEEncoding.strCodeHex(_StorageCode));
                         InitMaterialDataGridView();
@@ -949,7 +979,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码:-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
             }
         }
 

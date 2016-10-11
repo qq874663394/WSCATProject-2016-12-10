@@ -194,7 +194,10 @@ namespace WSCATProject.Warehouse
 
                 //业务员
                 _AllEmployee = employee.SelSupplierTable(false);
-
+      
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 //仓库
                 GridTextBoxXEditControl gdieccangku = superGridControlShangPing.PrimaryGrid.Columns["griCoulumcangku"].EditControl as GridTextBoxXEditControl;
                 gdieccangku.ButtonCustom.Visible = true;
@@ -593,8 +596,7 @@ namespace WSCATProject.Warehouse
             {
                 //是否要新增一行的标记
                 bool newAdd = false;
-                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
-
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 //id字段为空 说明是没有数据的行 不是修改而是新增
                 if (gr.Cells["gridColumnid"].Value == null)
@@ -603,15 +605,17 @@ namespace WSCATProject.Warehouse
                 }
                 foreach (GridRow g in grs)
                 {
-                    if (g.Cells["gridColumncode"].Value==null)
+                    if (g.Cells["gridColumncode"].Value == null)
                     {
-                        break;
+                        newAdd = true;
+                        continue;
                     }
                     if (g.Cells["gridColumncode"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value))
                     {
                         decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnnumber"].Value);
                         shuliang += 1;
                         g.Cells["gridColumnnumber"].Value = shuliang;
+                        
                         //逐行统计数据总数
                         decimal tempAllNumber = 0;
                         for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
@@ -627,37 +631,49 @@ namespace WSCATProject.Warehouse
                     }
                     continue;
                 }
-                gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["zhujima"].Value;//助记码
-                gr.Cells["gridColumncode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value;//商品单号
-                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialName"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialModel"].Value;//规格型号
-                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                gr.Cells["gridColumnprice"].Value = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);//单价
-                decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["number"].Value);
-                decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
-                gr.Cells["gridColumnmoney"].Value = number * price;//金额
-                gr.Cells["gridColumnnumber"].Value = 1.ToString();
-                _BeforeNumber = Convert.ToDecimal( gr.Cells["gridColumnnumber"].Value);
-                gr.Cells["gridColumndate"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value.ToString();//生产日期
-                gr.Cells["gridColumnbaozhe"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString();//保质期
-                gr.Cells["gridColumnyouxiao"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期至
-                resizablePanelData.Visible = false;
                 //新增一行 
                 if (newAdd)
                 {
-                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
+                    
+                    decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["number"].Value);
+                    decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountBeforePrice"].Value);
+                    decimal Jine = number * price;//金额
+                    GridRow gr1 = new GridRow();
+                    //无法保证每次都对应
+                    superGridControlShangPing.PrimaryGrid.Rows.Insert(0,
+                        new GridRow(
+                       
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["zhujima"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["materialName"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["materialModel"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value,
+                       dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value,
+                       1.ToString(),
+                       Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountBeforePrice"].Value),
+                       Jine,
+                         "",
+                         "",
+                         "",
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value.ToString(),
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value.ToString(),
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value,
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value,
+                        dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value
+                        )
+                        );
+                    //superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                    _Materialnumber += _BeforeNumber;
+                    _Materialnumber += 1;
                     gr.Cells["gridColumnnumber"].Value = _Materialnumber;
+                    resizablePanelData.Visible = false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码:2108-尝试连接物料绑定数据错误！" + ex.Message);
             }
-            //SendKeys.Send("^{End}{Home}");
+            SendKeys.Send("^{End}{Home}");
         }
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1238,14 +1254,14 @@ namespace WSCATProject.Warehouse
         {
             ControlPaint.DrawBorder(e.Graphics,
                                this.panel2.ClientRectangle,
-                               Color.White,
-                               1,
+                               Color.FromArgb(85, 177, 238),
+                               2,
                                ButtonBorderStyle.Solid,
                                Color.FromArgb(85, 177, 238),
                                1,
                                ButtonBorderStyle.Solid,
-                               Color.White,
-                               1,
+                               Color.FromArgb(85, 177, 238),
+                               2,
                                ButtonBorderStyle.Solid,
                                Color.White,
                                1,
