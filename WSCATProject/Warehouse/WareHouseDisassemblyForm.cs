@@ -162,7 +162,7 @@ namespace WSCATProject.Warehouse
                 return false;
             }
 
-            GridRow grs = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            GridRow grs = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (grs.Cells["gridColumnStockIn"].Value == null || grs.Cells["gridColumnStockIn"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库2不能为空！");

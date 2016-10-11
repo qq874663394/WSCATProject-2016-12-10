@@ -348,39 +348,38 @@ namespace WSCATProject.Sales
             List<SalesDetail> salesdetialList = new List<SalesDetail>();
             try
             {
-
-                salesMain.accountCode = "";
-                salesMain.checkMan = "";
-                salesMain.checkState = 1;
-                salesMain.clientAddress = "";
-                salesMain.clientCode = "";
-                salesMain.clientName = "";
-                salesMain.clientPhone = "";
-                salesMain.code = "";
-                salesMain.collectMoney = 0.0M;
-                salesMain.date = null;
-                salesMain.disInvoiceMoney = 0.0M;
-                salesMain.expireDate = null;
-                salesMain.invoiceMoney = 0.0M;
-                salesMain.invoiceNumber = "";
-                salesMain.invoiceType = "";
-                salesMain.isClear = 1;
-                salesMain.lastMoney = 0.0M;
-                salesMain.linkMan = "";
-                salesMain.oddAllMoney = 0.0M;
-                salesMain.operationMan = "";
-                salesMain.payMathod = "";
-                salesMain.payState = 0;
-                salesMain.Preferentialsubjects = "";
-                salesMain.receiptDate = null;
-                salesMain.remark = "";
+                salesMain.accountCode = XYEEncoding.strCodeHex(txtBank.Text);//结算账户
+                salesMain.checkMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//审核人
+                salesMain.checkState = 0;//审核状态
+                salesMain.clientAddress = "";//客户地址
+                salesMain.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户地址
+                salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
+                salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text);//客户电话
+                salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
+                salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text);//本次收款
+                salesMain.date = dateTimePicker1.Value;//订单日期
+                salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text);//未开票金额
+                salesMain.expireDate = null;//最晚到底时间
+                salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
+                salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
+                salesMain.invoiceType =XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
+                salesMain.isClear = 1;//是否删除
+                salesMain.lastMoney = 0.0M;//剩余尾款
+                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
+                salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
+                salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
+                salesMain.payMathod = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//付款方式
+                salesMain.payState = 0;//是否付款
+                salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text);//优惠科目
+                salesMain.receiptDate = dateTimePickershoukuan.Value;//收款日期
+                salesMain.remark = XYEEncoding.strCodeHex(txtZhaiYao.Text);//备注
                 salesMain.reserved1 = "";
                 salesMain.reserved2 = "";
-                salesMain.salesMan = "";
-                salesMain.salesOrderState = 0;
-                salesMain.type = "";
-                salesMain.updateDate = DateTime.Now;
-                salesMain.urgentState = 0;
+                salesMain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                salesMain.salesOrderState = 0;//发货状态
+                salesMain.type = XYEEncoding.strCodeHex(comboBoxType.Text);//单据状态
+                salesMain.updateDate = DateTime.Now;//更改时间
+                salesMain.urgentState = 0;//加急状态
 
             }
             catch (Exception ex)
@@ -388,7 +387,6 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码:;尝试创建销售单商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
                 return;
             }
-
             try
             {
                 //获得商品列表数据,准备传给base层新增数据

@@ -94,7 +94,7 @@ namespace WSCATProject.Warehouse
                 _AllEmployee = employee.SelSupplierTable(false);
 
                 superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
-                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[1], SortDirection.Ascending);//设置排序列和排序方式
                 superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 //数量
                 GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
@@ -462,8 +462,8 @@ namespace WSCATProject.Warehouse
                 Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["material"].Value = "合计";
-            gr.Cells["material"].CellStyles.Default.Alignment =
+            gr.Cells["gridColumnname"].Value = "合计";
+            gr.Cells["gridColumnname"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnnumber"].Value = 0;
             gr.Cells["gridColumnnumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
@@ -811,7 +811,7 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("客户不能为空！");
                 return false;
             }
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");
