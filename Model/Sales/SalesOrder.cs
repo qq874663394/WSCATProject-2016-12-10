@@ -110,7 +110,7 @@ namespace Model.Sales
             get { return _examine; }
         }
         /// <summary>
-        /// 审核状态
+        /// 审核状态  
         /// </summary>
         public int? checkState
         {

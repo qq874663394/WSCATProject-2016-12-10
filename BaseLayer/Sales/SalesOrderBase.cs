@@ -23,32 +23,69 @@ namespace BaseLayer.Sales
         {
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();
+            StringBuilder sqlDetail = new StringBuilder();
             object result = null;
-            string sqlDetail = "";
             string sqlMain = "";
             try
             {
 
-                sqlMain = @"INSERT INTO [T_SalesOrder] VALUES (@clientCode,@deliversDate,@deliversMethod,@remark,@code,@date,@deliversLocation);select scope_identity()";
+                sqlMain = @"INSERT INTO [T_SalesOrder] ( 
+[clientCode] ,
+[deliversDate] ,
+[deliversMethod] ,
+[remark] ,
+[code] ,
+[date] ,
+[deliversLocation] ,
+[operation] ,
+[makeMan] ,
+[examine] ,
+[checkState] ) VALUES (
+@clientCode,
+@deliversDate,
+@deliversMethod,
+@remark,
+@code,
+@date,
+@deliversLocation,
+@operation,
+@makeMan,
+@examine,
+@checkState
+);select scope_identity()";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@clientCode", SqlDbType.NVarChar,50),
-                    new SqlParameter("@deliversDate", SqlDbType.DateTime,3),
+                    new SqlParameter("@deliversDate", SqlDbType.Date,3),
                     new SqlParameter("@deliversMethod", SqlDbType.Int,4),
                     new SqlParameter("@remark", SqlDbType.NVarChar,200),
                     new SqlParameter("@code", SqlDbType.NVarChar,50),
-                    new SqlParameter("@date", SqlDbType.DateTime,3),
-                    new SqlParameter("@deliversLocation", SqlDbType.NVarChar,50)
+                    new SqlParameter("@date", SqlDbType.Date,3),
+                    new SqlParameter("@deliversLocation", SqlDbType.NVarChar,50),
+                    new SqlParameter("@operation", SqlDbType.NVarChar,40),
+                    new SqlParameter("@makeMan", SqlDbType.NVarChar,40),
+                    new SqlParameter("@examine", SqlDbType.NVarChar,40),
+                    new SqlParameter("@checkState", SqlDbType.Int,4)
                 };
                 spsMain[0].Value = model.clientCode;
-                spsMain[1].Value = model.deliversDate;
-                spsMain[2].Value = model.deliversMethod;
-                spsMain[3].Value = model.remark;
-                spsMain[4].Value = model.code;
-                spsMain[5].Value = model.date;
-                spsMain[6].Value = model.deliversLocation;
+                spsMain[1].Value =model.deliversDate;
+                spsMain[2].Value =model.deliversMethod;
+                spsMain[3].Value =model.remark;
+                spsMain[4].Value =model.code;
+                spsMain[5].Value =model.date;
+                spsMain[6].Value =model.deliversLocation;
+                spsMain[7].Value =model.operation;
+                spsMain[8].Value =model.makeMan;
+                spsMain[9].Value = model.examine;
+                spsMain[10].Value = model.checkState;
+
                 hashTable.Add(sqlMain, spsMain);
-                sqlDetail = @"INSERT INTO [T_SalesOrderDetail] VALUES (@code,@materialCode,@materialNumber,@materialPrice,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode)";
+                sqlDetail.Append("insert into[T_SalesOrderDetail] (");
+
+                sqlDetail.Append("materialCode,materialNumber,materialPrice,discountRate,VATRate,discountMoney,tax,taxTotal,remark,deliveryNumber,mainCode,code)");
+                sqlDetail.Append(" values (");
+                sqlDetail.Append("@materialCode,@materialNumber,@materialPrice,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code)");
+                sqlDetail.Append(";select @@IDENTITY");
 
                 foreach (var item in modelDetail)
                 {
@@ -65,23 +102,23 @@ namespace BaseLayer.Sales
                     new SqlParameter("@remark", SqlDbType.NVarChar,200),
                     new SqlParameter("@deliveryNumber", SqlDbType.Decimal,9),
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,50),
-                    new SqlParameter("@code",SqlDbType.NVarChar,50)
+                    new SqlParameter("@code", SqlDbType.NVarChar,50)
                     };
                     spsDetail[0].Value = item.materialCode;
                     spsDetail[1].Value = item.materialNumber;
-                    spsDetail[2].Value = item.materialPrice;
-                    spsDetail[3].Value = item.discountRate;
-                    spsDetail[4].Value = item.VATRate;
-                    spsDetail[5].Value = item.discountMoney;
-                    spsDetail[6].Value = item.tax;
-                    spsDetail[7].Value = item.taxTotal;
+                    spsDetail[2].Value =item.materialPrice;
+                    spsDetail[3].Value =item.discountRate;
+                    spsDetail[4].Value =item.VATRate;
+                    spsDetail[5].Value =item.discountMoney;
+                    spsDetail[6].Value =item.tax;
+                    spsDetail[7].Value =item.taxTotal;
                     spsDetail[8].Value = item.remark;
                     spsDetail[9].Value = item.deliveryNumber;
                     spsDetail[10].Value = item.mainCode;
                     spsDetail[11].Value = item.code;
                     list.Add(spsDetail);
                 }
-                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
             }
             catch (Exception ex)
             {
@@ -100,48 +137,63 @@ namespace BaseLayer.Sales
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();
             object result = null;
-            string sqlDetail = "";
-            string sqlMain = "";
+            StringBuilder sqlMain = new StringBuilder();
+            StringBuilder sqlDetail = new StringBuilder();
             try
             {
-                sqlMain = @"update [T_SalesOrder] set 
-[clientCode] = @clientCode,
-[deliversDate] = @deliversDate,
-[deliversMethod] = @deliversMethod,
-[remark] = @remark,
-[date] = @date,
-[deliversLocation] = @deliversLocation where [code] = @code;select scope_identity()";
+                sqlMain.Append("update [T_SalesOrder] set ");
+                sqlMain.Append("clientCode=@clientCode,");
+                sqlMain.Append("deliversDate=@deliversDate,");
+                sqlMain.Append("deliversMethod=@deliversMethod,");
+                sqlMain.Append("remark=@remark,");
+                sqlMain.Append("code=@code,");
+                sqlMain.Append("date=@date,");
+                sqlMain.Append("deliversLocation=@deliversLocation,");
+                sqlMain.Append("operation=@operation,");
+                sqlMain.Append("makeMan=@makeMan,");
+                sqlMain.Append("examine=@examine,");
+                sqlMain.Append("checkState=@checkState");
+                sqlMain.Append(" where code=@code ");
+                sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@clientCode", SqlDbType.NVarChar,50),
-                    new SqlParameter("@deliversDate", SqlDbType.DateTime,3),
+                    new SqlParameter("@deliversDate", SqlDbType.Date,3),
                     new SqlParameter("@deliversMethod", SqlDbType.Int,4),
                     new SqlParameter("@remark", SqlDbType.NVarChar,200),
                     new SqlParameter("@code", SqlDbType.NVarChar,50),
-                    new SqlParameter("@date", SqlDbType.DateTime,3),
-                    new SqlParameter("@deliversLocation", SqlDbType.NVarChar,50)
+                    new SqlParameter("@date", SqlDbType.Date,3),
+                    new SqlParameter("@deliversLocation", SqlDbType.NVarChar,50),
+                    new SqlParameter("@operation", SqlDbType.NVarChar,40),
+                    new SqlParameter("@makeMan", SqlDbType.NVarChar,40),
+                    new SqlParameter("@examine", SqlDbType.NVarChar,40),
+                    new SqlParameter("@checkState", SqlDbType.Int,4)
                 };
-                spsMain[0].Value = model.clientCode;
-                spsMain[1].Value = model.deliversDate;
-                spsMain[2].Value = model.deliversMethod;
-                spsMain[3].Value = model.remark;
-                spsMain[4].Value = model.code;
-                spsMain[5].Value = model.date;
-                spsMain[6].Value = model.deliversLocation;
+                spsMain[0].Value =model.clientCode;
+                spsMain[1].Value =model.deliversDate;
+                spsMain[2].Value =model.deliversMethod;
+                spsMain[3].Value =model.remark;
+                spsMain[4].Value =model.code;
+                spsMain[5].Value =model.date;
+                spsMain[6].Value =model.deliversLocation;
+                spsMain[7].Value =model.operation;
+                spsMain[8].Value =model.makeMan;
+                spsMain[9].Value = model.examine;
+                spsMain[10].Value = model.checkState;
+
                 hashTable.Add(sqlMain, spsMain);
-                sqlDetail = @"update [T_SalesOrderDetail] set 
-[id] = @id,
-[code]=@code,
-[materialCode] = @materialCode,
-[materialNumber] = @materialNumber,
-[materialPrice] = @materialPrice,
-[discountRate] = @discountRate,
-[VATRate] = @VATRate,
-[discountMoney] = @discountMoney,
-[tax] = @tax,
-[taxTotal] = @taxTotal,
-[remark] = @remark,
-[deliveryNumber] = @deliveryNumber where mainCode=@mainCode";
+                sqlDetail.Append("update [T_SalesOrderDetail] set ");
+                sqlDetail.Append("materialCode=@materialCode,");
+                sqlDetail.Append("materialNumber=@materialNumber,");
+                sqlDetail.Append("materialPrice=@materialPrice,");
+                sqlDetail.Append("discountRate=@discountRate,");
+                sqlDetail.Append("VATRate=@VATRate,");
+                sqlDetail.Append("discountMoney=@discountMoney,");
+                sqlDetail.Append("tax=@tax,");
+                sqlDetail.Append("taxTotal=@taxTotal,");
+                sqlDetail.Append("remark=@remark,");
+                sqlDetail.Append("deliveryNumber=@deliveryNumber");
+                sqlDetail.Append(" where mainCode=@mainCode and code=@code");
 
                 foreach (var item in modelDetail)
                 {
@@ -156,29 +208,49 @@ namespace BaseLayer.Sales
                     new SqlParameter("@tax", SqlDbType.Decimal,9),
                     new SqlParameter("@taxTotal", SqlDbType.Decimal,9),
                     new SqlParameter("@remark", SqlDbType.NVarChar,200),
-                    new SqlParameter("@DeliveryNumber", SqlDbType.Decimal,9),
-                    new SqlParameter("@mainCode", SqlDbType.NVarChar,50)
+                    new SqlParameter("@deliveryNumber", SqlDbType.Decimal,9),
+                    new SqlParameter("@mainCode", SqlDbType.NVarChar,50),
+                    new SqlParameter("@code", SqlDbType.NVarChar,50)
                     };
-                    spsDetail[0].Value = item.materialCode;
-                    spsDetail[1].Value = item.materialNumber;
-                    spsDetail[2].Value = item.materialPrice;
-                    spsDetail[3].Value = item.discountRate;
-                    spsDetail[4].Value = item.VATRate;
-                    spsDetail[5].Value = item.discountMoney;
-                    spsDetail[6].Value = item.tax;
-                    spsDetail[7].Value = item.taxTotal;
-                    spsDetail[8].Value = item.remark;
+                    spsDetail[0].Value =item.materialCode;
+                    spsDetail[1].Value =item.materialNumber;
+                    spsDetail[2].Value =item.materialPrice;
+                    spsDetail[3].Value =item.discountRate;
+                    spsDetail[4].Value =item.VATRate;
+                    spsDetail[5].Value =item.discountMoney;
+                    spsDetail[6].Value =item.tax;
+                    spsDetail[7].Value =item.taxTotal;
+                    spsDetail[8].Value =item.remark;
                     spsDetail[9].Value = item.deliveryNumber;
-                    spsDetail[10].Value = item.mainCode;
+                    spsDetail[10].Value =item.mainCode;
+                    spsDetail[11].Value =item.code;
                     list.Add(spsDetail);
                 }
-                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail, list);
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
             return result;
+        }
+        /// <summary>
+        /// 判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_SalesOrder where code='{0}'", code);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return DbHelperSQL.Exists(sql);
         }
     }
 }

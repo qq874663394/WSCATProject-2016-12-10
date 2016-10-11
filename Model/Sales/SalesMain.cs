@@ -16,21 +16,13 @@ namespace Model
         private string _code;
         private string _type;
         private DateTime? _date = DateTime.Now;
-        private string _transportmathod;
         private int? _salesorderstate = 0;
-        private string _salesmancode;
         private int? _checkstate = 0;
-        private DateTime? _changedate;
         private string _operationman;
         private string _checkman;
         private string _salesman;
         private int? _paystate;
-        private int? _inwarehousestate;
         private string _paymathod;
-        private DateTime? _deliverydate;
-        private string _logistics;
-        private string _logisticsoddcode;
-        private string _logisticsphone;
         private decimal? _oddallmoney;
         private string _accountcode;
         private decimal? _collectmoney;
@@ -46,6 +38,12 @@ namespace Model
         private string _remark;
         private string _reserved1;
         private string _reserved2;
+        private DateTime? _receiptdate;
+        private string _invoicetype;
+        private string _invoicenumber;
+        private string _preferentialsubjects;
+        private decimal? _disinvoicemoney;
+        private decimal? _invoicemoney;
         /// <summary>
         /// 
         /// </summary>
@@ -87,14 +85,6 @@ namespace Model
             get { return _date; }
         }
         /// <summary>
-        /// 运送方式
-        /// </summary>
-        public string transportMathod
-        {
-            set { _transportmathod = value; }
-            get { return _transportmathod; }
-        }
-        /// <summary>
         /// 发货状态0未审核，1缺货，2发货中，3，已完成
         /// </summary>
         public int? salesOrderState
@@ -103,28 +93,12 @@ namespace Model
             get { return _salesorderstate; }
         }
         /// <summary>
-        /// 业务员
-        /// </summary>
-        public string salesManCode
-        {
-            set { _salesmancode = value; }
-            get { return _salesmancode; }
-        }
-        /// <summary>
         /// 0未审核,1已审核
         /// </summary>
         public int? checkState
         {
             set { _checkstate = value; }
             get { return _checkstate; }
-        }
-        /// <summary>
-        /// 调价日期
-        /// </summary>
-        public DateTime? changeDate
-        {
-            set { _changedate = value; }
-            get { return _changedate; }
         }
         /// <summary>
         /// 操作人
@@ -143,7 +117,7 @@ namespace Model
             get { return _checkman; }
         }
         /// <summary>
-        /// 
+        /// 销售员
         /// </summary>
         public string salesMan
         {
@@ -159,52 +133,12 @@ namespace Model
             get { return _paystate; }
         }
         /// <summary>
-        /// 入库状态(0未入库,1已入库)
-        /// </summary>
-        public int? inWarehouseState
-        {
-            set { _inwarehousestate = value; }
-            get { return _inwarehousestate; }
-        }
-        /// <summary>
         /// 付款方式
         /// </summary>
         public string payMathod
         {
             set { _paymathod = value; }
             get { return _paymathod; }
-        }
-        /// <summary>
-        /// 到达时间
-        /// </summary>
-        public DateTime? deliveryDate
-        {
-            set { _deliverydate = value; }
-            get { return _deliverydate; }
-        }
-        /// <summary>
-        /// 物流
-        /// </summary>
-        public string logistics
-        {
-            set { _logistics = value; }
-            get { return _logistics; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string logisticsOddCode
-        {
-            set { _logisticsoddcode = value; }
-            get { return _logisticsoddcode; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string logisticsPhone
-        {
-            set { _logisticsphone = value; }
-            get { return _logisticsphone; }
         }
         /// <summary>
         /// 本单总额
@@ -325,6 +259,54 @@ namespace Model
         {
             set { _reserved2 = value; }
             get { return _reserved2; }
+        }
+        /// <summary>
+        /// 收款日期
+        /// </summary>
+        public DateTime? receiptDate
+        {
+            set { _receiptdate = value; }
+            get { return _receiptdate; }
+        }
+        /// <summary>
+        /// 发票类型
+        /// </summary>
+        public string invoiceType
+        {
+            set { _invoicetype = value; }
+            get { return _invoicetype; }
+        }
+        /// <summary>
+        /// 发票号码
+        /// </summary>
+        public string invoiceNumber
+        {
+            set { _invoicenumber = value; }
+            get { return _invoicenumber; }
+        }
+        /// <summary>
+        /// 优惠科目
+        /// </summary>
+        public string Preferentialsubjects
+        {
+            set { _preferentialsubjects = value; }
+            get { return _preferentialsubjects; }
+        }
+        /// <summary>
+        /// 未开票金额
+        /// </summary>
+        public decimal? disInvoiceMoney
+        {
+            set { _disinvoicemoney = value; }
+            get { return _disinvoicemoney; }
+        }
+        /// <summary>
+        /// 已开票金额
+        /// </summary>
+        public decimal? invoiceMoney
+        {
+            set { _invoicemoney = value; }
+            get { return _invoicemoney; }
         }
         #endregion Model
 

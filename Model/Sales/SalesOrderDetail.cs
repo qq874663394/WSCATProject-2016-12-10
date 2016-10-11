@@ -118,6 +118,9 @@ namespace Model.Sales
             set { _maincode = value; }
             get { return _maincode; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string code
         {
             set { _code = value; }
