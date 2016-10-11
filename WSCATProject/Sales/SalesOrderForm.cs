@@ -177,7 +177,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("交货地点不能为空！");
                 return false;
             }
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");
@@ -425,7 +425,9 @@ namespace WSCATProject.Sales
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
-
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 #region 初始化窗体
 
                 cboMethod.SelectedIndex = 0;
@@ -443,7 +445,7 @@ namespace WSCATProject.Sales
                 InitDataGridView();
 
                 #endregion
-
+     
                 //订购数量
                 GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["dinggouNumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 1;
@@ -811,11 +813,76 @@ namespace WSCATProject.Sales
                 //是否要新增一行的标记
                 bool newAdd = false;
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 //id字段为空 说明是没有数据的行 不是修改而是新增
                 if (gr.Cells["gridColumnid"].Value == null)
                 {
                     newAdd = true;
                 }
+                try
+                {
+                    foreach (GridRow g in grs)
+                    {
+                        if (g.Cells["materialCode"].Value == null)
+                        {
+                            newAdd = true;
+                            continue;
+                        }
+                        if (g.Cells["materialCode"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value))
+                        {
+                            decimal shuliang = Convert.ToDecimal(g.Cells["dinggouNumber"].Value);
+                            shuliang += 1;
+                            g.Cells["dinggouNumber"].Value = shuliang;
+                            
+                            //计算金额
+                            decimal dingguoshu = Convert.ToDecimal(g.Cells["dinggouNumber"].FormattedValue);//订购数量
+                            decimal danJa = Convert.ToDecimal(g.Cells["price"].FormattedValue);//单价               
+                            decimal Jine = dingguoshu * danJa;//金额
+                            g.Cells["money"].Value = Jine;
+                            decimal zheKou = Convert.ToDecimal(g.Cells["DiscountRate"].FormattedValue);//折扣率
+                            decimal zheKouJine = Jine * (zheKou / 100);
+                            decimal zheKouE = Jine - zheKouJine;//折扣额
+                            g.Cells["DiscountMoney"].Value = zheKouE;
+                            decimal taxrate = Convert.ToDecimal(g.Cells["TaxRate"].FormattedValue);//增值税税率
+                            decimal ratemoney = Jine * (taxrate / 100);//税额
+                            g.Cells["TaxMoney"].Value = ratemoney;
+                            decimal priceandtax = Jine + ratemoney;//价税合计
+                            g.Cells["priceANDtax"].Value = priceandtax;
+                            resizablePanelData.Visible = false;
+
+                            //逐行统计数据总数
+                            decimal TempAllNumber = 0;
+                            decimal tempallMoney = 0;
+                            decimal tempallTaxMoney = 0;
+                            decimal tempallPriceAndTax = 0;
+                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                            {
+                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                                TempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
+                                tempallMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
+                                tempallTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
+                                tempallPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
+                            }
+                            _MaterialNumber = TempAllNumber;
+                            _Money = tempallMoney;
+                            _TaxMoney = tempallTaxMoney;
+                            _PriceAndTaxMoney = tempallPriceAndTax;
+                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                            gr["dinggouNumber"].Value = _MaterialNumber.ToString();
+                            gr["money"].Value = _Money.ToString();
+                            gr["TaxMoney"].Value = _TaxMoney.ToString();
+                            gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+                            resizablePanelData.Visible = false;
+                            return;
+                        }
+                        continue;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：-重复添加商品计算数据错误"+ex.Message);
+                }
+       
                 _materialCode = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value.ToString();//商品code 
                 gr.Cells["materialCode"].Value = _materialCode;//商品code 
                 gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
