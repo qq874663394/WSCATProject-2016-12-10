@@ -99,7 +99,6 @@
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
             this.textBoxOddNumbers.Location = new System.Drawing.Point(1039, 108);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
-            this.textBoxOddNumbers.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelprie
             // 
