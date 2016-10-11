@@ -306,6 +306,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码：-初始化数据错误" + ex.Message);
             }
 
+           
         }
 
         /// <summary>
