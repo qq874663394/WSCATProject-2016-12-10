@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseHelper.cs" />
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Base\EmpolyeeBase.cs" />
     <Compile Include="Base\MaterialBase.cs" />
