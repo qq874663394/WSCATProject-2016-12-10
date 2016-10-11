@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Sales;
 using Model.Sales;
 using System;
 using System.Collections.Generic;
@@ -490,11 +491,11 @@ namespace WSCATProject.Sales
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            // WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            SalesOrderInterface saleorderinterface = new SalesOrderInterface();
             //销售订单
             SalesOrder salesorder = new SalesOrder();
             //销售订单商品列表
-            List<SalesOrderDetail> saleorderList = new List<SalesOrderDetail>();
+            List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
             try
             {
                 salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
@@ -518,7 +519,7 @@ namespace WSCATProject.Sales
                 salesorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
                 salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
                 salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-                salesorder.checkState = 0;
+                salesorder.checkState = 0;//审核状态
             }
             catch (Exception ex)
             {
@@ -535,7 +536,7 @@ namespace WSCATProject.Sales
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
                 {
-                    if (gr["material"].Value != null)
+                    if (gr["name"].Value != null)
                     {
 
                         i++;
@@ -550,11 +551,11 @@ namespace WSCATProject.Sales
                         salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
                         salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
                         salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
-                        salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注
+                        salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
                         salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        saleorderList.Add(salesorderDetail);
+                        salesorderList.Add(salesorderDetail);
                     }
                 }
             }
@@ -564,13 +565,12 @@ namespace WSCATProject.Sales
                 return;
             }
 
-            //增加一条入库单和入库单详细数据
-            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
-            //this.textBoxid.Text = warehouseInResult.ToString();
-            //if (warehouseInResult != null)
-            //{
-            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
-            //}
+            //增加一条销售订单和销售订单详细数据
+            object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);
+            if (saleOrderResult != null)
+            {
+                MessageBox.Show("新增销售订单数据成功", "销售订单温馨提示");
+            }
         }
 
         /// <summary>
@@ -583,6 +583,87 @@ namespace WSCATProject.Sales
             if (isNUllValidate() == false)
             {
                 return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+            SalesOrderInterface saleorderinterface = new SalesOrderInterface();
+            //销售订单
+            SalesOrder salesorder = new SalesOrder();
+            //销售订单商品列表
+            List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
+            try
+            {
+                salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
+                salesorder.date = this.dateTimePicker1.Value;//开单日期
+                salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户code
+                switch (cboMethod.Text.Trim())//交货方式
+                {
+                    case "提货":
+                        salesorder.deliversMethod = 0;
+                        break;
+                    case "送货":
+                        salesorder.deliversMethod = 1;
+                        break;
+                    case "发货":
+                        salesorder.deliversMethod = 2;
+                        break;
+                }
+                salesorder.deliversLocation = XYEEncoding.strCodeHex(labtextboxTop5.Text);//交货地点
+                salesorder.deliversDate = dateTimePicker2.Value;//交货日期
+                salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
+                salesorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
+                salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                salesorder.checkState = 1;//审核状态
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:尝试创建销售订单数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].Value != null)
+                    {
+
+                        i++;
+                        SalesOrderDetail salesorderDetail = new SalesOrderDetail();
+                        salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
+                        salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
+                        salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
+                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
+                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
+                        salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
+                        salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
+                        salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
+                        salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
+
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        salesorderList.Add(salesorderDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                return;
+            }
+
+            //增加一条销售订单和销售订单详细数据
+            object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);
+            if (saleOrderResult != null)
+            {
+                MessageBox.Show("新增并审核销售订单数据成功", "销售订单温馨提示");
             }
         }
 
@@ -640,8 +721,9 @@ namespace WSCATProject.Sales
         {
             try
             {
-                if (labtxtDanJuType.Text.Trim() == null)
+                if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
                 {
+                    resizablePanelData.Visible = false;
                     MessageBox.Show("请先选择客户：");
                     return;
                 }
