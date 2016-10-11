@@ -12,7 +12,7 @@ namespace Model.Sales
         private int _id;
         private string _materialcode;
         private decimal? _materialnumber;
-        private string _materialunit;
+        private decimal? _materialprice;
         private decimal? _discountrate;
         private decimal? _vatrate;
         private decimal? _discountmoney;
@@ -49,10 +49,10 @@ namespace Model.Sales
         /// <summary>
         /// 单价
         /// </summary>
-        public string materialUnit
+        public decimal? materialPrice
         {
-            set { _materialunit = value; }
-            get { return _materialunit; }
+            set { _materialprice = value; }
+            get { return _materialprice; }
         }
         /// <summary>
         /// 折扣率
@@ -118,6 +118,9 @@ namespace Model.Sales
             set { _maincode = value; }
             get { return _maincode; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string code
         {
             set { _code = value; }

@@ -17,6 +17,10 @@ namespace Model.Sales
         private string _code;
         private DateTime? _date;
         private string _deliverslocation;
+        private string _operation;
+        private string _makeman;
+        private string _examine;
+        private int? _checkstate;
         /// <summary>
         /// 
         /// </summary>
@@ -80,6 +84,38 @@ namespace Model.Sales
         {
             set { _deliverslocation = value; }
             get { return _deliverslocation; }
+        }
+        /// <summary>
+        /// 销售员
+        /// </summary>
+        public string operation
+        {
+            set { _operation = value; }
+            get { return _operation; }
+        }
+        /// <summary>
+        /// 制单人
+        /// </summary>
+        public string makeMan
+        {
+            set { _makeman = value; }
+            get { return _makeman; }
+        }
+        /// <summary>
+        /// 审核人
+        /// </summary>
+        public string examine
+        {
+            set { _examine = value; }
+            get { return _examine; }
+        }
+        /// <summary>
+        /// 审核状态  
+        /// </summary>
+        public int? checkState
+        {
+            set { _checkstate = value; }
+            get { return _checkstate; }
         }
         #endregion Model
     }
