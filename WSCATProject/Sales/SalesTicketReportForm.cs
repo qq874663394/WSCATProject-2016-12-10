@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar.SuperGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 
 namespace WSCATProject.Sales
 {
-    public partial class SalesOrderReportForm : Form
+    public partial class SalesTicketReportForm : Form
     {
-        public SalesOrderReportForm()
+        public SalesTicketReportForm()
         {
             InitializeComponent();
         }
@@ -23,7 +24,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SalesOrderReportForm_Load(object sender, EventArgs e)
+        private void SalesTicketReportForm_Load(object sender, EventArgs e)
         {
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
@@ -36,11 +37,32 @@ namespace WSCATProject.Sales
             //表格内容居中
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-
-            
+            InitDataGridView();//调用表格初始化
         }
+        #region  初始化数据
+        /// <summary>
+        /// 统计行数据
+        /// </summary>
+        private void InitDataGridView()
+        {
+            //新增一行 用于给客户操作
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["BillType"].Value = "合计";
+            gr.Cells["BillType"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["ZongMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["ZongMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+        }
+        #endregion
 
-        #region 设置窗体无边框可以拖动
+        #region  设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -49,7 +71,7 @@ namespace WSCATProject.Sales
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void SalesOrderReportForm_MouseDown(object sender, MouseEventArgs e)
+        private void SalesTicketReportForm_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -104,6 +126,5 @@ namespace WSCATProject.Sales
             this.Dispose();
         }
         #endregion
-
     }
 }
