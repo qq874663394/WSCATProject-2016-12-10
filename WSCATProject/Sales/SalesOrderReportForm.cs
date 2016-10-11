@@ -31,6 +31,8 @@ namespace WSCATProject.Sales
             //表格内容居中
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+
+            
         }
 
         #region 设置窗体无边框可以拖动

@@ -48,7 +48,7 @@ namespace BaseLayer.Sales
                 spsMain[5].Value = model.date;
                 spsMain[6].Value = model.deliversLocation;
                 hashTable.Add(sqlMain, spsMain);
-                sqlDetail = @"INSERT INTO [T_SalesOrderDetail] VALUES (@code,@materialCode,@materialNumber,@materialUnit,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode)";
+                sqlDetail = @"INSERT INTO [T_SalesOrderDetail] VALUES (@code,@materialCode,@materialNumber,@materialPrice,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode)";
 
                 foreach (var item in modelDetail)
                 {
@@ -56,7 +56,7 @@ namespace BaseLayer.Sales
                     {
                     new SqlParameter("@materialCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@materialNumber", SqlDbType.Decimal,9),
-                    new SqlParameter("@materialUnit", SqlDbType.NVarChar,10),
+                    new SqlParameter("@materialPrice", SqlDbType.Decimal,9),
                     new SqlParameter("@discountRate", SqlDbType.Decimal,9),
                     new SqlParameter("@VATRate", SqlDbType.Decimal,9),
                     new SqlParameter("@discountMoney", SqlDbType.Decimal,9),
@@ -69,7 +69,7 @@ namespace BaseLayer.Sales
                     };
                     spsDetail[0].Value = item.materialCode;
                     spsDetail[1].Value = item.materialNumber;
-                    spsDetail[2].Value = item.materialUnit;
+                    spsDetail[2].Value = item.materialPrice;
                     spsDetail[3].Value = item.discountRate;
                     spsDetail[4].Value = item.VATRate;
                     spsDetail[5].Value = item.discountMoney;
@@ -134,7 +134,7 @@ namespace BaseLayer.Sales
 [code]=@code,
 [materialCode] = @materialCode,
 [materialNumber] = @materialNumber,
-[materialUnit] = @materialUnit,
+[materialPrice] = @materialPrice,
 [discountRate] = @discountRate,
 [VATRate] = @VATRate,
 [discountMoney] = @discountMoney,
@@ -149,7 +149,7 @@ namespace BaseLayer.Sales
                     {
                     new SqlParameter("@materialCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@materialNumber", SqlDbType.Decimal,9),
-                    new SqlParameter("@materialUnit", SqlDbType.NVarChar,10),
+                    new SqlParameter("@materialPrice", SqlDbType.Decimal,9),
                     new SqlParameter("@discountRate", SqlDbType.Decimal,9),
                     new SqlParameter("@VATRate", SqlDbType.Decimal,9),
                     new SqlParameter("@discountMoney", SqlDbType.Decimal,9),
@@ -161,7 +161,7 @@ namespace BaseLayer.Sales
                     };
                     spsDetail[0].Value = item.materialCode;
                     spsDetail[1].Value = item.materialNumber;
-                    spsDetail[2].Value = item.materialUnit;
+                    spsDetail[2].Value = item.materialPrice;
                     spsDetail[3].Value = item.discountRate;
                     spsDetail[4].Value = item.VATRate;
                     spsDetail[5].Value = item.discountMoney;
