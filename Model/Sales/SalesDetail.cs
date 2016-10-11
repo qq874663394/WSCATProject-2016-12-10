@@ -247,7 +247,7 @@ namespace Model
             get { return _effectivedate; }
         }
         /// <summary>
-        /// 商品代码
+        /// 组记码
         /// </summary>
         public string zhujima
         {

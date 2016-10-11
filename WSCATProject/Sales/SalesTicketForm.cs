@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
 
 namespace WSCATProject.Sales
 {
@@ -27,6 +28,7 @@ namespace WSCATProject.Sales
         ClientInterface client = new ClientInterface();//客户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
         StorageInterface storage = new StorageInterface();//仓库
+
         #endregion
 
         #region 数据字段
@@ -332,7 +334,127 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ToolStripBtnSave_Click(object sender, EventArgs e)
         {
+            //非空验证
+            //if (isNUllValidate() == false)
+            //{
+            //    return;
+            //}
+            //获得界面上的数据,准备传给base层新增数据
 
+            //WarehouseInInterface warehouseInterface = new WarehouseInInterface();
+            //入库单
+            SalesMain salesMain = new SalesMain();
+            //入库商品列表
+            List<SalesDetail> salesdetialList = new List<SalesDetail>();
+            try
+            {
+
+                salesMain.accountCode = "";
+                salesMain.checkMan = "";
+                salesMain.checkState = 1;
+                salesMain.clientAddress = "";
+                salesMain.clientCode = "";
+                salesMain.clientName = "";
+                salesMain.clientPhone = "";
+                salesMain.code = "";
+                salesMain.collectMoney = 0.0M;
+                salesMain.date = null;
+                salesMain.disInvoiceMoney = 0.0M;
+                salesMain.expireDate = null;
+                salesMain.invoiceMoney = 0.0M;
+                salesMain.invoiceNumber = "";
+                salesMain.invoiceType = "";
+                salesMain.isClear = 1;
+                salesMain.lastMoney = 0.0M;
+                salesMain.linkMan = "";
+                salesMain.oddAllMoney = 0.0M;
+                salesMain.operationMan = "";
+                salesMain.payMathod = "";
+                salesMain.payState = 0;
+                salesMain.Preferentialsubjects = "";
+                salesMain.receiptDate = null;
+                salesMain.remark = "";
+                salesMain.reserved1 = "";
+                salesMain.reserved2 = "";
+                salesMain.salesMan = "";
+                salesMain.salesOrderState = 0;
+                salesMain.type = "";
+                salesMain.updateDate = DateTime.Now;
+                salesMain.urgentState = 0;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:;尝试创建销售单商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+
+                        i++;
+                        SalesDetail salesDetail = new SalesDetail();
+                        salesDetail.actualNumber = 0.0M;
+                        salesDetail.barCode = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//条形码
+                        salesDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text + i.ToString());//销售详细ccode
+                        salesDetail.costMoney = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//成本金额
+                        salesDetail.costPrice = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//成本单价
+                        salesDetail.discount = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣
+                        salesDetail.discountAfterPrice = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣前单价
+                        salesDetail.discountBeforePrice = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣后单价
+                        salesDetail.discountMoney = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣额
+                        salesDetail.effectiveDate = Convert.ToDateTime(gr[""].Value == null ? null : gr[""].Value);//有效期至
+                        salesDetail.isClear = 1;//是否删除
+                        salesDetail.leviedMoney = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//价税合计
+                        salesDetail.lostNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//欠缺数量
+                        salesDetail.materialCode = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料编号
+                        salesDetail.materialDaima = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
+                        salesDetail.materialName = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料名称
+                        salesDetail.materiaModel = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料规格型号
+                        salesDetail.money = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//金额
+                        salesDetail.needNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//需求数量
+                        salesDetail.productionDate = null;//生产采购日期
+                        salesDetail.qualityDate = null;//保质期
+                        salesDetail.remark = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
+                        salesDetail.reserved1 = "";//保留字段
+                        salesDetail.reserved2 = "";//保留字段
+                        salesDetail.ReturnsNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//退货数量
+                        salesDetail.salesMainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        salesDetail.sourceCode = "";//销售订单code
+                        salesDetail.storageCode = "";//仓库code
+                        salesDetail.storageName = "";//仓库名称
+                        salesDetail.tax = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//税额
+                        salesDetail.unit = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
+                        salesDetail.updateDate = DateTime.Now;//更改时间
+                        salesDetail.VATRate = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//增值税税率
+                        salesDetail.zhujima = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//助记码
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        salesdetialList.Add(salesDetail);
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建销售单详商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                return;
+            }
+
+            //增加一条入库单和入库单详细数据
+            //object warehouseInResult = warehouseInterface.AddWarehouseOrToDetail(warehouseIn, wareHouseInList);
+            //this.textBoxid.Text = warehouseInResult.ToString();
+            //if (warehouseInResult != null)
+            //{
+            //    MessageBox.Show("新增入库数据成功", "入库单温馨提示");
+            //}
         }
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -368,7 +490,7 @@ namespace WSCATProject.Sales
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
                     gr.Cells["gridColumnStock"].Value = Name;
                     gr.Cells["gridColumncode"].Value = code;
-                     _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                    _ClickStorageList = new KeyValuePair<string, string>(code, Name);
                     _storgeCode = code;
                     resizablePanel1.Visible = false;
                 }
