@@ -22,6 +22,7 @@ namespace Model.Sales
         private string _examine;
         private int? _checkstate;
         private decimal? _depositreceived;
+        private DateTime? _examinedate;
         /// <summary>
         /// 
         /// </summary>
@@ -121,10 +122,18 @@ namespace Model.Sales
         /// <summary>
         /// 已收订金  
         /// </summary>
-        public decimal? DepositReceived
+        public decimal? depositReceived
         {
             set { _depositreceived = value; }
             get { return _depositreceived; }
+        }
+        /// <summary>
+        /// 审核日期  
+        /// </summary>
+        public DateTime? examineDate
+        {
+            set { _examinedate = value; }
+            get { return _examinedate; }
         }
         #endregion Model
     }
