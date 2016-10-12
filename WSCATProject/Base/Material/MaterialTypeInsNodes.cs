@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Model;
-using BLL;
 using HelperUtility;
 
 namespace WSCATProject.Base

@@ -316,7 +316,15 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
+            if (_clientCode==""||labtextboxTop2.Text=="")
+            {
+                MessageBox.Show("请先选择客户!");
+                return;
+            }
 
+            SalesOrderReportForm salesOrder = new SalesOrderReportForm();
+            salesOrder.clientCode = _clientCode;
+            salesOrder.ShowDialog();
         }
         /// <summary>
         /// 审核按钮的点击事件

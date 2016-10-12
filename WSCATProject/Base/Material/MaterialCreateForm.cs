@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
-using BLL;
 using HelperUtility;
 using HelperUtility.Encrypt;
 using DevComponents.DotNetBar.Controls;

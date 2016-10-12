@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevComponents.DotNetBar.SuperGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,18 @@ namespace WSCATProject.Sales
             InitializeComponent();
         }
 
+        #region 初始化数据
+        /// <summary>
+        /// 保存客户code
+        /// </summary>
+        private string _clientCode;
+
+        public string clientCode
+        {
+            get { return _clientCode; }
+            set { _clientCode = value; }
+        }
+        #endregion
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -37,12 +50,30 @@ namespace WSCATProject.Sales
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
 
-            
+            //DataTable dt1 = soif.GetSalesJoinSearch();
+            //DataTable dt2 = soif.GetSalesDetailJoinSearch();
+            //for (int i = 0; i < dt1.Rows.Count; i++)
+            //{
+            //    superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
+            //    for (int j = 0; j < dt2.Rows.Count; j++)
+            //    {
+            //        if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+            //        {
+            //            superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt2.Rows[j].ItemArray));
+            //        }
+            //        else
+            //        {
+            //            continue;
+            //        }
+            //    }
+            //}
         }
 
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+
+
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);

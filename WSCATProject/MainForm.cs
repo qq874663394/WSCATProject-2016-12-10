@@ -126,6 +126,7 @@ namespace WSCATProject
             if (this.WindowState == FormWindowState.Maximized)
             {
                 panel12.Location = new Point(200,100);
+                panelsales.Location = new Point(200, 100);
                 return;
             }
         }

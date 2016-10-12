@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Material\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\Material\MaterialForm.Designer.cs">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\Shelves\InShelvesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     <Compile Include="Warehouse\WareHuseStorageRack.Designer.cs">
       <DependentUpon>WareHuseStorageRack.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Base\Material\MaterialForm.resx">
+      <DependentUpon>MaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Base\Shelves\InShelvesForm.resx">
       <DependentUpon>InShelvesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -380,9 +389,12 @@
     <Content Include="Resources\bottomBtnBackgroup.png" />
     <Content Include="Resources\btnRightBackgroup.png" />
     <Content Include="Resources\btn_enter.png" />
+    <None Include="Resources\BTN_FUND_SKD.png" />
     <Content Include="Resources\btn_hover.png" />
     <Content Include="Resources\btn_None.png" />
     <None Include="Resources\business.png" />
+    <None Include="Resources\BTN_SAIL_XSD.png" />
+    <None Include="Resources\BTN_SAIL_XSDD.png" />
     <Content Include="Resources\businessQuery.png" />
     <Content Include="Resources\caigou.PNG" />
     <Content Include="Resources\caigouxitong.png" />

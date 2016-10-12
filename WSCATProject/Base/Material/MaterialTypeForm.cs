@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using Model;
-using BLL;
 using HelperUtility.Encrypt;
 
 namespace WSCATProject.Base
