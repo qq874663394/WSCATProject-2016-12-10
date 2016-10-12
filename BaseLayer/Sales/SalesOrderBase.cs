@@ -68,14 +68,14 @@ namespace BaseLayer.Sales
                     new SqlParameter("@checkState", SqlDbType.Int,4)
                 };
                 spsMain[0].Value = model.clientCode;
-                spsMain[1].Value =model.deliversDate;
-                spsMain[2].Value =model.deliversMethod;
-                spsMain[3].Value =model.remark;
-                spsMain[4].Value =model.code;
-                spsMain[5].Value =model.date;
-                spsMain[6].Value =model.deliversLocation;
-                spsMain[7].Value =model.operation;
-                spsMain[8].Value =model.makeMan;
+                spsMain[1].Value = model.deliversDate;
+                spsMain[2].Value = model.deliversMethod;
+                spsMain[3].Value = model.remark;
+                spsMain[4].Value = model.code;
+                spsMain[5].Value = model.date;
+                spsMain[6].Value = model.deliversLocation;
+                spsMain[7].Value = model.operation;
+                spsMain[8].Value = model.makeMan;
                 spsMain[9].Value = model.examine;
                 spsMain[10].Value = model.checkState;
 
@@ -106,12 +106,12 @@ namespace BaseLayer.Sales
                     };
                     spsDetail[0].Value = item.materialCode;
                     spsDetail[1].Value = item.materialNumber;
-                    spsDetail[2].Value =item.materialPrice;
-                    spsDetail[3].Value =item.discountRate;
-                    spsDetail[4].Value =item.VATRate;
-                    spsDetail[5].Value =item.discountMoney;
-                    spsDetail[6].Value =item.tax;
-                    spsDetail[7].Value =item.taxTotal;
+                    spsDetail[2].Value = item.materialPrice;
+                    spsDetail[3].Value = item.discountRate;
+                    spsDetail[4].Value = item.VATRate;
+                    spsDetail[5].Value = item.discountMoney;
+                    spsDetail[6].Value = item.tax;
+                    spsDetail[7].Value = item.taxTotal;
                     spsDetail[8].Value = item.remark;
                     spsDetail[9].Value = item.deliveryNumber;
                     spsDetail[10].Value = item.mainCode;
@@ -169,15 +169,15 @@ namespace BaseLayer.Sales
                     new SqlParameter("@examine", SqlDbType.NVarChar,40),
                     new SqlParameter("@checkState", SqlDbType.Int,4)
                 };
-                spsMain[0].Value =model.clientCode;
-                spsMain[1].Value =model.deliversDate;
-                spsMain[2].Value =model.deliversMethod;
-                spsMain[3].Value =model.remark;
-                spsMain[4].Value =model.code;
-                spsMain[5].Value =model.date;
-                spsMain[6].Value =model.deliversLocation;
-                spsMain[7].Value =model.operation;
-                spsMain[8].Value =model.makeMan;
+                spsMain[0].Value = model.clientCode;
+                spsMain[1].Value = model.deliversDate;
+                spsMain[2].Value = model.deliversMethod;
+                spsMain[3].Value = model.remark;
+                spsMain[4].Value = model.code;
+                spsMain[5].Value = model.date;
+                spsMain[6].Value = model.deliversLocation;
+                spsMain[7].Value = model.operation;
+                spsMain[8].Value = model.makeMan;
                 spsMain[9].Value = model.examine;
                 spsMain[10].Value = model.checkState;
 
@@ -212,18 +212,18 @@ namespace BaseLayer.Sales
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@code", SqlDbType.NVarChar,50)
                     };
-                    spsDetail[0].Value =item.materialCode;
-                    spsDetail[1].Value =item.materialNumber;
-                    spsDetail[2].Value =item.materialPrice;
-                    spsDetail[3].Value =item.discountRate;
-                    spsDetail[4].Value =item.VATRate;
-                    spsDetail[5].Value =item.discountMoney;
-                    spsDetail[6].Value =item.tax;
-                    spsDetail[7].Value =item.taxTotal;
-                    spsDetail[8].Value =item.remark;
+                    spsDetail[0].Value = item.materialCode;
+                    spsDetail[1].Value = item.materialNumber;
+                    spsDetail[2].Value = item.materialPrice;
+                    spsDetail[3].Value = item.discountRate;
+                    spsDetail[4].Value = item.VATRate;
+                    spsDetail[5].Value = item.discountMoney;
+                    spsDetail[6].Value = item.tax;
+                    spsDetail[7].Value = item.taxTotal;
+                    spsDetail[8].Value = item.remark;
                     spsDetail[9].Value = item.deliveryNumber;
-                    spsDetail[10].Value =item.mainCode;
-                    spsDetail[11].Value =item.code;
+                    spsDetail[10].Value = item.mainCode;
+                    spsDetail[11].Value = item.code;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -251,6 +251,54 @@ namespace BaseLayer.Sales
                 throw ex;
             }
             return DbHelperSQL.Exists(sql);
+        }
+        public DataTable GetSalesDetailJoinSearch()
+        {
+            DataTable dt = null;
+            string sql = @"select 
+bm.materialDaima as materialDaima,
+bm.name as name,
+bm.model as model,
+bm.barCode as barCode,
+bm.unit as unit,
+sod.materialNumber as number,
+sod.discountRate as discountRate,
+sod.materialPrice as materialPrice,
+sod.discountMoney as discountMoney,
+sod.tax as tax,
+sod.deliveryNumber as deliveryNumber,
+wm.allNumber as allNumber
+from 
+T_SalesOrderDetail sod,T_BaseMaterial bm,T_WarehouseMain wm
+where 
+sod.materialCode=bm.code and       
+wm.materialCode=sod.materialCode and
+wm.materialCode=bm.code";
+            dt = DbHelperSQL.Query(sql).Tables[0];
+            return dt;
+        }
+        public DataTable GetSalesJoinSearch()
+        {
+            DataTable dt = null;
+            string sql = @"select 
+so.code as code,
+so.date as date,
+client.name as name,
+client.mobilePhone as mobilephone,
+client.fax as fax,
+so.deliversMethod as deliversMethod,
+so.deliversDate as deliversDate,
+so.remark as remark,
+--定金
+so.operation as operation,
+--部门code  部门表+code 命名
+so.makeMan as makeMan,
+so.examine as examine,
+--审核日期examineDate
+so.checkState as checkState
+ from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code";
+            dt = DbHelperSQL.Query(sql).Tables[0];
+            return dt;
         }
     }
 }

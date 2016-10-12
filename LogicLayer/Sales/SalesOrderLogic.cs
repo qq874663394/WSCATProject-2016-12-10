@@ -5,6 +5,7 @@ using Model;
 using Model.Sales;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace LogicLayer.Sales
                 {
                     throw new Exception("-2");
                 }
-                if (_dal.Exists(model.code)==false)
+                if (_dal.Exists(model.code) == false)
                 {
                     result = _dal.AddSalesOrToDetail(model, modelDetail);
                     logModel.objective = "新增销售订单,新增销售订单详情";
@@ -69,6 +70,14 @@ namespace LogicLayer.Sales
                 _logDal.Add(logModel);
             }
             return result;
+        }
+        public DataTable GetSalesJoinSearch()
+        {
+            return _dal.GetSalesJoinSearch();
+        }
+        public DataTable GetSalesDetailJoinSearch()
+        {
+            return _dal.GetSalesDetailJoinSearch();
         }
     }
 }
