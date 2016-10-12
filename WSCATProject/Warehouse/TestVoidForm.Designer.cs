@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.superGridControl1 = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.sgContracts = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
             this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -38,6 +38,10 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sgCustomers = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.gridColumn3 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -52,25 +56,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // superGridControl1
+            // sgContracts
             // 
-            this.superGridControl1.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControl1.Location = new System.Drawing.Point(-2, 163);
-            this.superGridControl1.Name = "superGridControl1";
+            this.sgContracts.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.sgContracts.Location = new System.Drawing.Point(-2, 299);
+            this.sgContracts.Name = "sgContracts";
             // 
             // 
             // 
-            this.superGridControl1.PrimaryGrid.AllowRowDelete = true;
-            this.superGridControl1.PrimaryGrid.AllowRowInsert = true;
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn1);
-            this.superGridControl1.PrimaryGrid.Columns.Add(this.gridColumn2);
-            this.superGridControl1.PrimaryGrid.MultiSelect = false;
-            this.superGridControl1.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControl1.PrimaryGrid.UseAlternateRowStyle = true;
-            this.superGridControl1.Size = new System.Drawing.Size(1060, 334);
-            this.superGridControl1.TabIndex = 2;
-            this.superGridControl1.CellClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellClickEventArgs>(this.superGridControl1_CellClick);
-            this.superGridControl1.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControl1_BeginEdit);
+            this.sgContracts.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.sgContracts.PrimaryGrid.Columns.Add(this.gridColumn2);
+            this.sgContracts.Size = new System.Drawing.Size(1118, 327);
+            this.sgContracts.TabIndex = 2;
             // 
             // gridColumn1
             // 
@@ -96,7 +93,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(562, 123);
             this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // name
             // 
@@ -124,7 +120,6 @@
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(492, 123);
             this.dataGridView2.TabIndex = 3;
-            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -140,15 +135,49 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Width = 54;
             // 
+            // sgCustomers
+            // 
+            this.sgCustomers.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.sgCustomers.Location = new System.Drawing.Point(-2, 41);
+            this.sgCustomers.Name = "sgCustomers";
+            // 
+            // 
+            // 
+            this.sgCustomers.PrimaryGrid.Columns.Add(this.gridColumn3);
+            this.sgCustomers.PrimaryGrid.Columns.Add(this.gridColumn4);
+            this.sgCustomers.PrimaryGrid.Columns.Add(this.gridColumn5);
+            this.sgCustomers.PrimaryGrid.Name = "sgCustomers";
+            this.sgCustomers.Size = new System.Drawing.Size(1118, 252);
+            this.sgCustomers.TabIndex = 2;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.DataPropertyName = "id";
+            this.gridColumn3.HeaderText = "id";
+            this.gridColumn3.Name = "id";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.DataPropertyName = "code";
+            this.gridColumn4.HeaderText = "code";
+            this.gridColumn4.Name = "code";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.DataPropertyName = "mainCode";
+            this.gridColumn5.HeaderText = "mainCode";
+            this.gridColumn5.Name = "mainCode";
+            // 
             // TestVoidForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 494);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.superGridControl1);
+            this.ClientSize = new System.Drawing.Size(1114, 624);
+            this.Controls.Add(this.sgCustomers);
+            this.Controls.Add(this.sgContracts);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Name = "TestVoidForm";
             this.Text = "TestVoidForm";
             this.Load += new System.EventHandler(this.TestVoidForm_Load);
@@ -160,7 +189,7 @@
 
         #endregion
         private System.Windows.Forms.Button button1;
-        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControl1;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl sgContracts;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -169,5 +198,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl sgCustomers;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn3;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
     }
 }
