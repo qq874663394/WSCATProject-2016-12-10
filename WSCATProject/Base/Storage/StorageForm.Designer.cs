@@ -48,11 +48,7 @@
             this.gridColumn4 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn5 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn6 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn7 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn8 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumn9 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn10 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumn11 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新增ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,80 +197,52 @@
             this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn4);
             this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn5);
             this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn6);
-            this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn7);
-            this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn8);
             this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn9);
-            this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn10);
-            this.superGridControlStorage.PrimaryGrid.Columns.Add(this.gridColumn11);
             this.superGridControlStorage.PrimaryGrid.SelectionGranularity = DevComponents.DotNetBar.SuperGrid.SelectionGranularity.Row;
             this.superGridControlStorage.Size = new System.Drawing.Size(660, 303);
             this.superGridControlStorage.TabIndex = 0;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.DataPropertyName = "St_ID";
+            this.gridColumn1.DataPropertyName = "id";
             this.gridColumn1.Name = "St_ID";
             this.gridColumn1.Visible = false;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.DataPropertyName = "St_Code";
+            this.gridColumn2.DataPropertyName = "code";
             this.gridColumn2.Name = "St_Code";
             this.gridColumn2.Visible = false;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.DataPropertyName = "St_Name";
+            this.gridColumn3.DataPropertyName = "name";
             this.gridColumn3.HeaderText = "仓库名称";
             this.gridColumn3.Name = "St_Name";
             // 
             // gridColumn4
             // 
-            this.gridColumn4.DataPropertyName = "St_EmpName";
+            this.gridColumn4.DataPropertyName = "empName";
             this.gridColumn4.HeaderText = "联系人";
             this.gridColumn4.Name = "St_EmpName";
             // 
             // gridColumn5
             // 
-            this.gridColumn5.DataPropertyName = "St_Phone";
+            this.gridColumn5.DataPropertyName = "address";
             this.gridColumn5.HeaderText = "电话";
             this.gridColumn5.Name = "St_Phone";
             // 
             // gridColumn6
             // 
-            this.gridColumn6.DataPropertyName = "St_Address";
+            this.gridColumn6.DataPropertyName = "address";
             this.gridColumn6.HeaderText = "仓库地址";
             this.gridColumn6.Name = "St_Address";
             // 
-            // gridColumn7
-            // 
-            this.gridColumn7.DataPropertyName = "St_Enable";
-            this.gridColumn7.HeaderText = "是否启用";
-            this.gridColumn7.Name = "St_Enable";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.DataPropertyName = "St_Clear";
-            this.gridColumn8.Name = "St_Clear";
-            this.gridColumn8.Visible = false;
-            // 
             // gridColumn9
             // 
-            this.gridColumn9.DataPropertyName = "St_Remark";
+            this.gridColumn9.DataPropertyName = "remark";
             this.gridColumn9.HeaderText = "备注";
             this.gridColumn9.Name = "St_Remark";
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.DataPropertyName = "St_Safetyone";
-            this.gridColumn10.Name = "St_Safetyone";
-            this.gridColumn10.Visible = false;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.DataPropertyName = "St_Safetytwo";
-            this.gridColumn11.Name = "St_Safetytwo";
-            this.gridColumn11.Visible = false;
             // 
             // contextMenuStrip1
             // 
@@ -392,11 +360,7 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn4;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn5;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn6;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn8;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn9;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn10;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn11;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 新增ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem1;

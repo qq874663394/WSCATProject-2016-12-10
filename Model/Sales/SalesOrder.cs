@@ -21,6 +21,7 @@ namespace Model.Sales
         private string _makeman;
         private string _examine;
         private int? _checkstate;
+        private decimal? _depositreceived;
         /// <summary>
         /// 
         /// </summary>
@@ -116,6 +117,14 @@ namespace Model.Sales
         {
             set { _checkstate = value; }
             get { return _checkstate; }
+        }
+        /// <summary>
+        /// 已收订金  
+        /// </summary>
+        public decimal? DepositReceived
+        {
+            set { _depositreceived = value; }
+            get { return _depositreceived; }
         }
         #endregion Model
     }

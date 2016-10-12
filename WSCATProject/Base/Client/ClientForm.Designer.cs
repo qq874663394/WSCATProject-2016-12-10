@@ -70,7 +70,6 @@ namespace WSCATProject.Base
             this.gridColumnCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnZ = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnCliName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnCo = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnPic = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnPho = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -98,11 +97,9 @@ namespace WSCATProject.Base
             this.gridColumnRem = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnsafetone = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnsafettwo = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnEnable = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.applicationButton1 = new DevComponents.DotNetBar.ApplicationButton();
-            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
             this.itemContainer3 = new DevComponents.DotNetBar.ItemContainer();
@@ -121,6 +118,7 @@ namespace WSCATProject.Base
             this.itemContainer4 = new DevComponents.DotNetBar.ItemContainer();
             this.buttonItem12 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem13 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -373,7 +371,6 @@ namespace WSCATProject.Base
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnCode);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnZ);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnCliName);
-            this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnCo);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnMan);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnPic);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnPho);
@@ -401,7 +398,6 @@ namespace WSCATProject.Base
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnRem);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnsafetone);
             this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnsafettwo);
-            this.superGridControlClient.PrimaryGrid.Columns.Add(this.gridColumnEnable);
             this.superGridControlClient.PrimaryGrid.SelectionGranularity = DevComponents.DotNetBar.SuperGrid.SelectionGranularity.Row;
             this.superGridControlClient.Size = new System.Drawing.Size(729, 428);
             this.superGridControlClient.TabIndex = 0;
@@ -476,14 +472,14 @@ namespace WSCATProject.Base
             // 
             // gridColumnID
             // 
-            this.gridColumnID.DataPropertyName = "Cli_ID";
+            this.gridColumnID.DataPropertyName = "id";
             this.gridColumnID.HeaderText = "ID";
             this.gridColumnID.Name = "gridColumnID";
             this.gridColumnID.Visible = false;
             // 
             // gridColumnCode
             // 
-            this.gridColumnCode.DataPropertyName = "Cli_Code";
+            this.gridColumnCode.DataPropertyName = "code";
             this.gridColumnCode.HeaderText = "code";
             this.gridColumnCode.Name = "gridColumnCode";
             this.gridColumnCode.Visible = false;
@@ -497,194 +493,186 @@ namespace WSCATProject.Base
             // 
             // gridColumnCliName
             // 
-            this.gridColumnCliName.DataPropertyName = "Cli_Name";
+            this.gridColumnCliName.DataPropertyName = "name";
             this.gridColumnCliName.HeaderText = "客户名称";
             this.gridColumnCliName.Name = "gridColumnCliName";
             // 
-            // gridColumnCo
-            // 
-            this.gridColumnCo.DataPropertyName = "Cli_Company";
-            this.gridColumnCo.HeaderText = "单位";
-            this.gridColumnCo.Name = "gridColumnCo";
-            // 
             // gridColumnMan
             // 
-            this.gridColumnMan.DataPropertyName = "Cli_LinkMan";
+            this.gridColumnMan.DataPropertyName = "linkMan";
             this.gridColumnMan.HeaderText = "联系人";
             this.gridColumnMan.Name = "gridColumnMan";
             // 
             // gridColumnPic
             // 
-            this.gridColumnPic.DataPropertyName = "Cli_PicName";
+            this.gridColumnPic.DataPropertyName = "picName";
             this.gridColumnPic.HeaderText = "图片名";
             this.gridColumnPic.Name = "gridColumnPic";
             this.gridColumnPic.Visible = false;
             // 
             // gridColumnPho
             // 
-            this.gridColumnPho.DataPropertyName = "Cli_Phone";
+            this.gridColumnPho.DataPropertyName = "mobilePhone";
             this.gridColumnPho.HeaderText = "手机";
             this.gridColumnPho.Name = "gridColumnPho";
             // 
             // gridColumnPho2
             // 
-            this.gridColumnPho2.DataPropertyName = "Cli_PhoneTwo";
+            this.gridColumnPho2.DataPropertyName = "fixedPhone";
             this.gridColumnPho2.HeaderText = "电话";
             this.gridColumnPho2.Name = "gridColumnPho2";
             // 
             // gridColumnFax
             // 
-            this.gridColumnFax.DataPropertyName = "Cli_faxes";
+            this.gridColumnFax.DataPropertyName = "fax";
             this.gridColumnFax.HeaderText = "传真";
             this.gridColumnFax.Name = "gridColumnFax";
             // 
             // gridColumnCiCode
             // 
-            this.gridColumnCiCode.DataPropertyName = "Cli_CityCode";
+            this.gridColumnCiCode.DataPropertyName = "cityCode";
             this.gridColumnCiCode.HeaderText = "citycode";
             this.gridColumnCiCode.Name = "gridColumnCiCode";
             this.gridColumnCiCode.Visible = false;
             // 
             // gridColumnArea
             // 
-            this.gridColumnArea.DataPropertyName = "Cli_area";
+            this.gridColumnArea.DataPropertyName = "cityName";
             this.gridColumnArea.HeaderText = "地区";
             this.gridColumnArea.Name = "gridColumnArea";
             // 
             // gridColumnAd
             // 
-            this.gridColumnAd.DataPropertyName = "Cli_Address";
+            this.gridColumnAd.DataPropertyName = "address";
             this.gridColumnAd.HeaderText = "详细地址";
             this.gridColumnAd.Name = "gridColumnAd";
             // 
             // gridColumnTy
             // 
-            this.gridColumnTy.DataPropertyName = "Cli_TypeCode";
+            this.gridColumnTy.DataPropertyName = "typeCode";
             this.gridColumnTy.HeaderText = "类别ID";
             this.gridColumnTy.Name = "gridColumnTy";
             this.gridColumnTy.Visible = false;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.DataPropertyName = "Cli_TypeName";
+            this.gridColumn1.DataPropertyName = "typeName";
             this.gridColumn1.HeaderText = "所属类别";
             this.gridColumn1.Name = "gridColumnTyName";
+            this.gridColumn1.Visible = false;
             // 
             // gridColumnDiCode
             // 
-            this.gridColumnDiCode.DataPropertyName = "Cli_DiscountCode";
+            this.gridColumnDiCode.DataPropertyName = "discountCode";
             this.gridColumnDiCode.HeaderText = "折扣ID";
             this.gridColumnDiCode.Name = "gridColumnDiCode";
             this.gridColumnDiCode.Visible = false;
             // 
             // gridColumnBa
             // 
-            this.gridColumnBa.DataPropertyName = "Cli_Bankaccounts";
+            this.gridColumnBa.DataPropertyName = "bankCard";
             this.gridColumnBa.HeaderText = "银行帐号";
             this.gridColumnBa.Name = "gridColumnBa";
+            this.gridColumnBa.Visible = false;
             // 
             // gridColumnOpB
             // 
-            this.gridColumnOpB.DataPropertyName = "Cli_OpenBank";
+            this.gridColumnOpB.DataPropertyName = "openBank";
             this.gridColumnOpB.HeaderText = "开户行";
             this.gridColumnOpB.Name = "gridColumnOpB";
+            this.gridColumnOpB.Visible = false;
             // 
             // gridColumnOldData
             // 
-            this.gridColumnOldData.DataPropertyName = "Cli_Olddata";
+            this.gridColumnOldData.DataPropertyName = "initialSalesTime";
             this.gridColumnOldData.HeaderText = "Cli_Olddata";
             this.gridColumnOldData.Name = "gridColumnOldData";
             this.gridColumnOldData.Visible = false;
             // 
             // gridColumnOldreturn
             // 
-            this.gridColumnOldreturn.DataPropertyName = "Cli_Oldreturn";
+            this.gridColumnOldreturn.DataPropertyName = "initialReturnTime";
             this.gridColumnOldreturn.HeaderText = "Oldreturn";
             this.gridColumnOldreturn.Name = "gridColumnOldreturn";
             this.gridColumnOldreturn.Visible = false;
             // 
             // gridColumnNewoutdata
             // 
-            this.gridColumnNewoutdata.DataPropertyName = "Cli_Newoutdata";
+            this.gridColumnNewoutdata.DataPropertyName = "lastReturnTime";
             this.gridColumnNewoutdata.HeaderText = "Newoutdata";
             this.gridColumnNewoutdata.Name = "gridColumnNewoutdata";
             this.gridColumnNewoutdata.Visible = false;
             // 
             // gridColumnNewintodata
             // 
-            this.gridColumnNewintodata.DataPropertyName = "Cli_Newintodata";
+            this.gridColumnNewintodata.DataPropertyName = "lastSalesTime";
             this.gridColumnNewintodata.HeaderText = "Cli_Newintodata";
             this.gridColumnNewintodata.Name = "gridColumnNewintodata";
             this.gridColumnNewintodata.Visible = false;
             // 
             // gridColumnCre
             // 
-            this.gridColumnCre.DataPropertyName = "Cli_Createdata";
+            this.gridColumnCre.DataPropertyName = "createTime";
             this.gridColumnCre.HeaderText = "新增时间";
             this.gridColumnCre.Name = "gridColumnCre";
+            this.gridColumnCre.Visible = false;
             // 
             // gridColumnLim
             // 
-            this.gridColumnLim.DataPropertyName = "Cli_Limit";
+            this.gridColumnLim.DataPropertyName = "availableBalance";
             this.gridColumnLim.HeaderText = "可用额度";
             this.gridColumnLim.Name = "gridColumnLim";
             // 
             // gridColumnReLim
             // 
-            this.gridColumnReLim.DataPropertyName = "Cli_RemainLimit";
+            this.gridColumnReLim.DataPropertyName = "balance";
             this.gridColumnReLim.HeaderText = "剩余额度";
             this.gridColumnReLim.Name = "gridColumnReLim";
             // 
             // gridColumnDay
             // 
-            this.gridColumnDay.DataPropertyName = "Cli_ClearLimitdate";
+            this.gridColumnDay.DataPropertyName = "statementDate";
             this.gridColumnDay.HeaderText = "结账日";
             this.gridColumnDay.Name = "gridColumnDay";
+            this.gridColumnDay.Visible = false;
             // 
             // gridColumnSho
             // 
-            this.gridColumnSho.DataPropertyName = "Cli_ShouldMoney";
+            this.gridColumnSho.DataPropertyName = "receivables";
             this.gridColumnSho.HeaderText = "应收款";
             this.gridColumnSho.Name = "gridColumnSho";
             // 
             // gridColumnGet
             // 
-            this.gridColumnGet.DataPropertyName = "Cli_GetMoney";
+            this.gridColumnGet.DataPropertyName = "moneyReceipt";
             this.gridColumnGet.HeaderText = "已收款";
             this.gridColumnGet.Name = "gridColumnGet";
             // 
             // gridColumnPre
             // 
-            this.gridColumnPre.DataPropertyName = "Cli_PreMoney";
+            this.gridColumnPre.DataPropertyName = "advanceReceipts";
             this.gridColumnPre.HeaderText = "预收款";
             this.gridColumnPre.Name = "gridColumnPre";
             // 
             // gridColumnRem
             // 
-            this.gridColumnRem.DataPropertyName = "Cli_Remark";
+            this.gridColumnRem.DataPropertyName = "remark";
             this.gridColumnRem.HeaderText = "备注";
             this.gridColumnRem.Name = "gridColumnRem";
             // 
             // gridColumnsafetone
             // 
-            this.gridColumnsafetone.DataPropertyName = "Cli_safetone";
+            this.gridColumnsafetone.DataPropertyName = "reserved1";
             this.gridColumnsafetone.HeaderText = "Cli_safetone";
             this.gridColumnsafetone.Name = "gridColumnsafetone";
             this.gridColumnsafetone.Visible = false;
             // 
             // gridColumnsafettwo
             // 
-            this.gridColumnsafettwo.DataPropertyName = "Cli_safettwo";
+            this.gridColumnsafettwo.DataPropertyName = "reserved2";
             this.gridColumnsafettwo.HeaderText = "Cli_safettwo";
             this.gridColumnsafettwo.Name = "gridColumnsafettwo";
             this.gridColumnsafettwo.Visible = false;
-            // 
-            // gridColumnEnable
-            // 
-            this.gridColumnEnable.DataPropertyName = "Cli_Enable";
-            this.gridColumnEnable.HeaderText = "Cli_Enable";
-            this.gridColumnEnable.Name = "gridColumnEnable";
-            this.gridColumnEnable.Visible = false;
             // 
             // saveFileDialog1
             // 
@@ -741,11 +729,6 @@ namespace WSCATProject.Base
             this.applicationButton1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.itemContainer1});
             this.applicationButton1.Text = "&File";
-            // 
-            // buttonItem1
-            // 
-            this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.Text = "buttonItem1";
             // 
             // itemContainer1
             // 
@@ -944,6 +927,11 @@ namespace WSCATProject.Base
             this.buttonItem13.SubItemsExpandWidth = 24;
             this.buttonItem13.Text = "E&xit";
             // 
+            // buttonItem1
+            // 
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.Text = "buttonItem1";
+            // 
             // ClientForm
             // 
             this.ClientSize = new System.Drawing.Size(915, 494);
@@ -1005,7 +993,6 @@ namespace WSCATProject.Base
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnArea;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnAd;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnMan;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnCo;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnTy;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnDiCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnBa;
@@ -1022,7 +1009,6 @@ namespace WSCATProject.Base
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnPre;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnRem;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnsafetone;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnEnable;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnsafettwo;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnCliName;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnPic;
