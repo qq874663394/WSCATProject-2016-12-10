@@ -124,6 +124,7 @@ namespace WSCATProject.Base
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.Ma_Daima = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -303,6 +304,7 @@ namespace WSCATProject.Base
             // superGridControlMaterial
             // 
             this.superGridControlMaterial.ContextMenuStrip = this.contextMenuStrip2;
+            this.superGridControlMaterial.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControlMaterial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superGridControlMaterial.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             this.superGridControlMaterial.Location = new System.Drawing.Point(0, 2);
@@ -311,6 +313,7 @@ namespace WSCATProject.Base
             // 
             // 
             this.superGridControlMaterial.PrimaryGrid.AllowEdit = false;
+            this.superGridControlMaterial.PrimaryGrid.Columns.Add(this.Ma_Daima);
             this.superGridControlMaterial.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.superGridControlMaterial.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControlMaterial.PrimaryGrid.Columns.Add(this.gridColumn5);
@@ -411,14 +414,14 @@ namespace WSCATProject.Base
             // 
             // gridColumn1
             // 
-            this.gridColumn1.DataPropertyName = "Ma_ID";
+            this.gridColumn1.DataPropertyName = "id";
             this.gridColumn1.HeaderText = "ID";
             this.gridColumn1.Name = "Ma_ID";
             this.gridColumn1.Visible = false;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.DataPropertyName = "Ma_PicName";
+            this.gridColumn2.DataPropertyName = "picName";
             this.gridColumn2.HeaderText = "picname";
             this.gridColumn2.Name = "Ma_PicName";
             this.gridColumn2.Visible = false;
@@ -432,147 +435,148 @@ namespace WSCATProject.Base
             // 
             // gridColumn8
             // 
-            this.gridColumn8.DataPropertyName = "Ma_TypeID";
+            this.gridColumn8.DataPropertyName = "typeID";
             this.gridColumn8.HeaderText = "类别id";
             this.gridColumn8.Name = "Ma_TypeID";
             this.gridColumn8.Visible = false;
             // 
             // gridColumn18
             // 
-            this.gridColumn18.DataPropertyName = "Ma_SupID";
+            this.gridColumn18.DataPropertyName = "supplierCode";
             this.gridColumn18.HeaderText = "supID";
             this.gridColumn18.Name = "Ma_SupID";
             this.gridColumn18.Visible = false;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.DataPropertyName = "Ma_Name";
+            this.gridColumn3.DataPropertyName = "name";
             this.gridColumn3.HeaderText = "产品名称";
             this.gridColumn3.Name = "Ma_Name";
             // 
             // gridColumn4
             // 
-            this.gridColumn4.DataPropertyName = "Ma_Model";
+            this.gridColumn4.DataPropertyName = "model";
             this.gridColumn4.HeaderText = "规格型号";
             this.gridColumn4.Name = "Ma_Model";
             // 
             // gridColumn6
             // 
-            this.gridColumn6.DataPropertyName = "Ma_Barcode";
+            this.gridColumn6.DataPropertyName = "barCode";
             this.gridColumn6.HeaderText = "条码";
             this.gridColumn6.Name = "Ma_Barcode";
             // 
             // gridColumn19
             // 
-            this.gridColumn19.DataPropertyName = "Ma_zhujima";
+            this.gridColumn19.DataPropertyName = "zhujima";
             this.gridColumn19.HeaderText = "助记码";
             this.gridColumn19.Name = "Ma_zhujima";
             // 
             // gridColumn7
             // 
-            this.gridColumn7.DataPropertyName = "Ma_Code";
+            this.gridColumn7.DataPropertyName = "code";
             this.gridColumn7.HeaderText = "编号";
             this.gridColumn7.Name = "Ma_Code";
             // 
             // gridColumn9
             // 
-            this.gridColumn9.DataPropertyName = "Ma_TypeName";
+            this.gridColumn9.DataPropertyName = "typeName";
             this.gridColumn9.HeaderText = "所属类别";
             this.gridColumn9.Name = "Ma_TypeName";
             // 
             // gridColumn10
             // 
-            this.gridColumn10.DataPropertyName = "Ma_Price";
+            this.gridColumn10.DataPropertyName = "price";
             this.gridColumn10.HeaderText = "售价";
             this.gridColumn10.Name = "Ma_Price";
             // 
             // gridColumn11
             // 
-            this.gridColumn11.DataPropertyName = "Ma_PriceA";
+            this.gridColumn11.DataPropertyName = "peiceA";
             this.gridColumn11.HeaderText = "预设售价A";
             this.gridColumn11.Name = "Ma_PriceA";
             // 
             // gridColumn12
             // 
-            this.gridColumn12.DataPropertyName = "Ma_PriceB";
+            this.gridColumn12.DataPropertyName = "priceB";
             this.gridColumn12.HeaderText = "预设售价B";
             this.gridColumn12.Name = "Ma_PriceB";
             // 
             // gridColumn13
             // 
-            this.gridColumn13.DataPropertyName = "Ma_PriceC";
+            this.gridColumn13.DataPropertyName = "priceC";
             this.gridColumn13.HeaderText = "预设售价C";
             this.gridColumn13.Name = "Ma_PriceC";
             // 
             // gridColumn14
             // 
-            this.gridColumn14.DataPropertyName = "Ma_PriceD";
+            this.gridColumn14.DataPropertyName = "priceD";
             this.gridColumn14.HeaderText = "预设售价D";
             this.gridColumn14.Name = "Ma_PriceD";
             // 
             // gridColumn15
             // 
-            this.gridColumn15.DataPropertyName = "Ma_PriceE";
+            this.gridColumn15.DataPropertyName = "priceE";
             this.gridColumn15.HeaderText = "预设售价E";
             this.gridColumn15.Name = "Ma_PriceE";
             // 
             // gridColumn16
             // 
-            this.gridColumn16.DataPropertyName = "Ma_CreateDate";
+            this.gridColumn16.DataPropertyName = "createDate";
             this.gridColumn16.HeaderText = "创建时间";
             this.gridColumn16.Name = "Ma_CreateDate";
             // 
             // gridColumn17
             // 
-            this.gridColumn17.DataPropertyName = "Ma_Supplier";
+            this.gridColumn17.DataPropertyName = "supplierName";
             this.gridColumn17.HeaderText = "供应商";
             this.gridColumn17.Name = "Ma_Supplier";
             // 
             // Ma_Unit
             // 
+            this.Ma_Unit.DataPropertyName = "unit";
             this.Ma_Unit.HeaderText = "单位";
             this.Ma_Unit.Name = "Ma_Unit";
             // 
             // gridColumn20
             // 
-            this.gridColumn20.DataPropertyName = "Ma_InPrice";
+            this.gridColumn20.DataPropertyName = "inPrice";
             this.gridColumn20.HeaderText = "进价";
             this.gridColumn20.Name = "Ma_InPrice";
             // 
             // gridColumn21
             // 
-            this.gridColumn21.DataPropertyName = "Ma_InDate";
+            this.gridColumn21.DataPropertyName = "inDate";
             this.gridColumn21.HeaderText = "进货时间";
             this.gridColumn21.Name = "Ma_InDate";
             // 
             // gridColumn22
             // 
-            this.gridColumn22.DataPropertyName = "Ma_Remark";
+            this.gridColumn22.DataPropertyName = "remark";
             this.gridColumn22.HeaderText = "备注";
             this.gridColumn22.Name = "Ma_Remark";
             // 
             // gridColumn23
             // 
-            this.gridColumn23.DataPropertyName = "Ma_Enable";
+            this.gridColumn23.DataPropertyName = "isEnable";
             this.gridColumn23.HeaderText = "启用标志";
             this.gridColumn23.Name = "Ma_Enable";
             // 
             // gridColumn24
             // 
-            this.gridColumn24.DataPropertyName = "Ma_Clear";
+            this.gridColumn24.DataPropertyName = "isClear";
             this.gridColumn24.HeaderText = "clear";
             this.gridColumn24.Name = "Ma_Clear";
             this.gridColumn24.Visible = false;
             // 
             // gridColumn25
             // 
-            this.gridColumn25.DataPropertyName = "Ma_Safeyone";
+            this.gridColumn25.DataPropertyName = "reserved1";
             this.gridColumn25.HeaderText = "预留1";
             this.gridColumn25.Name = "Ma_Safeyone";
             // 
             // gridColumn26
             // 
-            this.gridColumn26.DataPropertyName = "Ma_Safetytwo";
+            this.gridColumn26.DataPropertyName = "reserved2";
             this.gridColumn26.HeaderText = "预留2";
             this.gridColumn26.Name = "Ma_Safetytwo";
             // 
@@ -1004,6 +1008,12 @@ namespace WSCATProject.Base
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
+            // Ma_Daima
+            // 
+            this.Ma_Daima.DataPropertyName = "materialDaima";
+            this.Ma_Daima.HeaderText = "商品代码";
+            this.Ma_Daima.Name = "Ma_Daima";
+            // 
             // MaterialForm
             // 
             this.ClientSize = new System.Drawing.Size(918, 492);
@@ -1122,5 +1132,6 @@ namespace WSCATProject.Base
         private System.Windows.Forms.ToolStripMenuItem 导出到ExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 刷新ToolStripMenuItem;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlMaterial;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn Ma_Daima;
     }
 }

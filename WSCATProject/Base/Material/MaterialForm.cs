@@ -3,9 +3,10 @@ using System.Data;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using Model;
-using BLL;
 using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility.Excel;
+using HelperUtility.Encrypt;
+using InterfaceLayer.Base;
 
 namespace WSCATProject.Base
 {
@@ -16,7 +17,13 @@ namespace WSCATProject.Base
             InitializeComponent();
         }
 
-        DataSet allData = new DataSet();
+        DataTable allData = new DataTable();
+
+        #region 实例化接口和解密类
+        CodingHelper ch = new CodingHelper();
+        MaterialInterface material = new MaterialInterface();//物料
+        #endregion
+
         //点击的节点text
         private string materialNodeText = "类别";
 
@@ -37,10 +44,11 @@ namespace WSCATProject.Base
         private void MaterialForm_Load(object sender, EventArgs e)
         {
             StartPosition = FormStartPosition.CenterParent;
-            MaterialTypeManager mtm = new MaterialTypeManager();
-            DataTable dt = mtm.GetList("").Tables[0];
-            DataView dvTree = new DataView(dt);
-            AddTree("", null, dvTree);
+            // MaterialTypeManager mtm = new MaterialTypeManager();
+            // DataTable dt = mtm.GetList("").Tables[0];
+            // DataView dvTree = new DataView(dt);
+            // AddTree("", null, dvTree);
+            superGridControlMaterial.PrimaryGrid.AutoGenerateColumns = false;
             loadData();
         }
 
@@ -49,117 +57,118 @@ namespace WSCATProject.Base
         //新建
         private void ToolStripMenuItemCreate_Click(object sender, EventArgs e)
         {
-            MaterialCreateForm mf = new MaterialCreateForm();
-            mf.ShowDialog(this);
-            closeDispose();
+            //MaterialCreateForm mf = new MaterialCreateForm();
+            //mf.ShowDialog(this);
+            //closeDispose();
         }
 
         //编辑
         private void ToolStripMenuItemEdit_Click(object sender, EventArgs e)
         {
-            if (superGridControlMaterial.GetSelectedRows().Count > 0)
-            {
-                Model.Material material = new Model.Material();
-                SelectedElementCollection col = superGridControlMaterial.GetSelectedRows();
-                if (col.Count > 0)
-                {
-                    GridRow gridRow = col[0] as GridRow;
-                    material.Ma_Barcode = gridRow.Cells["Ma_Barcode"].Value.ToString();
-                    material.Ma_Clear = 1;
-                    material.Ma_Code = gridRow.Cells["Ma_Code"].Value.ToString();
-                    if(gridRow.Cells["Ma_CreateDate"].Value == null ||
-                        gridRow.Cells["Ma_InDate"].Value == DBNull.Value)
-                    {
-                        material.Ma_CreateDate = null;
-                    }
-                    else
-                    {
-                        material.Ma_CreateDate = Convert.
-                            ToDateTime(gridRow.Cells["Ma_CreateDate"].Value);
-                    }
-                    material.Ma_Enable = Convert.ToInt32(gridRow.Cells["Ma_Enable"].Value);
-                    material.Ma_ID = Convert.ToInt32(gridRow.Cells["Ma_ID"].Value);
-                    if(gridRow.Cells["Ma_InDate"].Value == null ||
-                        gridRow.Cells["Ma_InDate"].Value == DBNull.Value)
-                    {
-                        material.Ma_InDate = null;
-                    }
-                    else
-                    {
-                        material.Ma_InDate = Convert.ToDateTime(gridRow.Cells["Ma_InDate"].Value);
-                    }
-                    material.Ma_InPrice = Convert.ToDecimal(gridRow.Cells["Ma_InPrice"].Value);
-                    material.Ma_Model = gridRow.Cells["Ma_Model"].Value.ToString();
-                    material.Ma_Name = gridRow.Cells["Ma_Name"].Value.ToString();
-                    material.Ma_PicName = gridRow.Cells["Ma_PicName"].Value.ToString();
-                    material.Ma_Price = Convert.ToDecimal(gridRow.Cells["Ma_Price"].Value);
-                    material.Ma_PriceA = Convert.ToDecimal(gridRow.Cells["Ma_PriceA"].Value);
-                    material.Ma_PriceB = Convert.ToDecimal(gridRow.Cells["Ma_PriceB"].Value);
-                    material.Ma_PriceC = Convert.ToDecimal(gridRow.Cells["Ma_PriceC"].Value);
-                    material.Ma_PriceD = Convert.ToDecimal(gridRow.Cells["Ma_PriceD"].Value);
-                    material.Ma_PriceE = 0;
-                    material.Ma_Remark = gridRow.Cells["Ma_Remark"].Value.ToString();
-                    material.Ma_RFID = gridRow.Cells["Ma_RFID"].Value.ToString();
-                    material.Ma_Safetytwo = "";
-                    material.Ma_Safeyone = "";
-                    material.Ma_SupID = gridRow.Cells["Ma_SupID"].Value.ToString();
-                    material.Ma_Supplier = gridRow.Cells["Ma_Supplier"].Value.ToString();
-                    material.Ma_TypeID = gridRow.Cells["Ma_TypeID"].Value.ToString();
-                    material.Ma_TypeName = gridRow.Cells["Ma_TypeName"].Value.ToString();
-                    material.Ma_Unit = gridRow.Cells["Ma_Unit"].Value.ToString();
-                    material.Ma_zhujima = gridRow.Cells["Ma_zhujima"].Value.ToString();
-                }
-                MaterialCreateForm mcf = new MaterialCreateForm();
-                mcf.Material = material;
-                mcf.ShowDialog(this);
-                closeDispose();
-            }
-            else
-            {
-                MessageBox.Show("请选择要修改的行");
-            }
+            //if (superGridControlMaterial.GetSelectedRows().Count > 0)
+            //{
+            //    Model.Material material = new Model.Material();
+            //    SelectedElementCollection col = superGridControlMaterial.GetSelectedRows();
+            //    if (col.Count > 0)
+            //    {
+            //        GridRow gridRow = col[0] as GridRow;
+            //        material.Ma_Barcode = gridRow.Cells["Ma_Barcode"].Value.ToString();
+            //        material.Ma_Clear = 1;
+            //        material.Ma_Code = gridRow.Cells["Ma_Code"].Value.ToString();
+            //        if(gridRow.Cells["Ma_CreateDate"].Value == null ||
+            //            gridRow.Cells["Ma_InDate"].Value == DBNull.Value)
+            //        {
+            //            material.Ma_CreateDate = null;
+            //        }
+            //        else
+            //        {
+            //            material.Ma_CreateDate = Convert.
+            //                ToDateTime(gridRow.Cells["Ma_CreateDate"].Value);
+            //        }
+            //        material.Ma_Enable = Convert.ToInt32(gridRow.Cells["Ma_Enable"].Value);
+            //        material.Ma_ID = Convert.ToInt32(gridRow.Cells["Ma_ID"].Value);
+            //        if(gridRow.Cells["Ma_InDate"].Value == null ||
+            //            gridRow.Cells["Ma_InDate"].Value == DBNull.Value)
+            //        {
+            //            material.Ma_InDate = null;
+            //        }
+            //        else
+            //        {
+            //            material.Ma_InDate = Convert.ToDateTime(gridRow.Cells["Ma_InDate"].Value);
+            //        }
+            //        material.Ma_InPrice = Convert.ToDecimal(gridRow.Cells["Ma_InPrice"].Value);
+            //        material.Ma_Model = gridRow.Cells["Ma_Model"].Value.ToString();
+            //        material.Ma_Name = gridRow.Cells["Ma_Name"].Value.ToString();
+            //        material.Ma_PicName = gridRow.Cells["Ma_PicName"].Value.ToString();
+            //        material.Ma_Price = Convert.ToDecimal(gridRow.Cells["Ma_Price"].Value);
+            //        material.Ma_PriceA = Convert.ToDecimal(gridRow.Cells["Ma_PriceA"].Value);
+            //        material.Ma_PriceB = Convert.ToDecimal(gridRow.Cells["Ma_PriceB"].Value);
+            //        material.Ma_PriceC = Convert.ToDecimal(gridRow.Cells["Ma_PriceC"].Value);
+            //        material.Ma_PriceD = Convert.ToDecimal(gridRow.Cells["Ma_PriceD"].Value);
+            //        material.Ma_PriceE = 0;
+            //        material.Ma_Remark = gridRow.Cells["Ma_Remark"].Value.ToString();
+            //        material.Ma_RFID = gridRow.Cells["Ma_RFID"].Value.ToString();
+            //        material.Ma_Safetytwo = "";
+            //        material.Ma_Safeyone = "";
+            //        material.Ma_SupID = gridRow.Cells["Ma_SupID"].Value.ToString();
+            //        material.Ma_Supplier = gridRow.Cells["Ma_Supplier"].Value.ToString();
+            //        material.Ma_TypeID = gridRow.Cells["Ma_TypeID"].Value.ToString();
+            //        material.Ma_TypeName = gridRow.Cells["Ma_TypeName"].Value.ToString();
+            //        material.Ma_Unit = gridRow.Cells["Ma_Unit"].Value.ToString();
+            //        material.Ma_zhujima = gridRow.Cells["Ma_zhujima"].Value.ToString();
+            //    }
+            //    MaterialCreateForm mcf = new MaterialCreateForm();
+            //    mcf.Material = material;
+            //    mcf.ShowDialog(this);
+            //    closeDispose();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请选择要修改的行");
+            //}
+
         }
 
         //删除
         private void ToolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
-            if (superGridControlMaterial.GetSelectedRows().Count > 0)
-            {
-                if (DialogResult.No == MessageBox.Show("确认要删除选中行的数据吗?", "请注意",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2))
-                {
-                    return;
-                }
-                Client client = new Client();
-                ClientManager cm = new ClientManager();
-                SelectedElementCollection col = superGridControlMaterial.GetSelectedRows();
-                if (col.Count > 0)
-                {
-                    GridRow gridRow = col[0] as GridRow;
-                    try
-                    {
-                        bool result = cm.DeleteFake(gridRow.Cells[1].Value.ToString());
-                        if (result)
-                        {
-                            MessageBox.Show("删除成功!");
-                            isflag = true;
-                            closeDispose();
-                        }
-                        else
-                        {
-                            MessageBox.Show("删除失败,请检查是否选中指定行");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("删除异常,请检查服务器连接:" + ex.Message);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("请先选中要进行删除的行");
-            }
+            //if (superGridControlMaterial.GetSelectedRows().Count > 0)
+            //{
+            //    if (DialogResult.No == MessageBox.Show("确认要删除选中行的数据吗?", "请注意",
+            //        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2))
+            //    {
+            //        return;
+            //    }
+            //    Client client = new Client();
+            //    ClientManager cm = new ClientManager();
+            //    SelectedElementCollection col = superGridControlMaterial.GetSelectedRows();
+            //    if (col.Count > 0)
+            //    {
+            //        GridRow gridRow = col[0] as GridRow;
+            //        try
+            //        {
+            //            bool result = cm.DeleteFake(gridRow.Cells[1].Value.ToString());
+            //            if (result)
+            //            {
+            //                MessageBox.Show("删除成功!");
+            //                isflag = true;
+            //                closeDispose();
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("删除失败,请检查是否选中指定行");
+            //            }
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show("删除异常,请检查服务器连接:" + ex.Message);
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请先选中要进行删除的行");
+            //}
         }
 
         //删除全部
@@ -204,23 +213,23 @@ namespace WSCATProject.Base
         //菜单搜索按钮 模糊检索条件下是否有符合的数据
         private void toolStripButtonSeach_Click(object sender, EventArgs e)
         {
-            string field = toolStripComboBoxKey.Text;
-            string text = toolStripTextBoxValue.Text.Trim();
-            MaterialManager mm = new MaterialManager();
+            //string field = toolStripComboBoxKey.Text;
+            //string text = toolStripTextBoxValue.Text.Trim();
+            //MaterialManager mm = new MaterialManager();
 
-            if (allData != null)
-            {
-                try
-                {
-                    superGridControlMaterial.PrimaryGrid.DataSource =
-                                mm.searchClientByNodeClick(allData.Tables[0],
-                                text, field);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //if (allData != null)
+            //{
+            //    try
+            //    {
+            //        superGridControlMaterial.PrimaryGrid.DataSource =
+            //                    mm.searchClientByNodeClick(allData.Tables[0],
+            //                    text, field);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         //刷新
@@ -236,107 +245,107 @@ namespace WSCATProject.Base
 
         private void 新增下级节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeViewMaterial.SelectedNode != null)
-            {
-                MaterialTypeManager mtm = new MaterialTypeManager();
-                DataTable dt = mtm.GetList("").Tables[0];
-                DataView dvTree = new DataView(dt);
-                InsNodes insN = new InsNodes();
-                insN.city_code = treeViewMaterial.SelectedNode.Tag.ToString();
-                insN.ShowDialog(this);
-                if (Isflag)
-                {
-                    treeViewMaterial.Nodes.Clear();
-                    AddTree("", null, dvTree);
-                    isflag = false;
-                    this.Focus();
-                }
-            }
-            else
-            {
-                MessageBox.Show("请选择需要增加的上级城市");
-            }
+            //if (treeViewMaterial.SelectedNode != null)
+            //{
+            //    MaterialTypeManager mtm = new MaterialTypeManager();
+            //    DataTable dt = mtm.GetList("").Tables[0];
+            //    DataView dvTree = new DataView(dt);
+            //    InsNodes insN = new InsNodes();
+            //    insN.city_code = treeViewMaterial.SelectedNode.Tag.ToString();
+            //    insN.ShowDialog(this);
+            //    if (Isflag)
+            //    {
+            //        treeViewMaterial.Nodes.Clear();
+            //        AddTree("", null, dvTree);
+            //        isflag = false;
+            //        this.Focus();
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请选择需要增加的上级城市");
+            //}
         }
 
         private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeViewMaterial.SelectedNode != null)
-            {
-                MaterialTypeInsNodes insN = new MaterialTypeInsNodes();
-                MaterialType mt = new MaterialType();
-                mt.MT_Clear = 1;
-                mt.MT_Code = treeViewMaterial.SelectedNode.Tag.ToString();
-                mt.MT_Enable = 1;
-                mt.MT_Name = treeViewMaterial.SelectedNode.Text;
-                mt.MT_ParentID = treeViewMaterial.SelectedNode.Parent.Tag.ToString();
-                insN.ShowDialog(this);
-                if (Isflag)
-                {
-                    MaterialTypeManager mtm = new MaterialTypeManager();
-                    DataTable dt = mtm.GetList("").Tables[0];
-                    DataView dvTree = new DataView(dt);
-                    treeViewMaterial.Nodes.Clear();
-                    AddTree("", null, dvTree);
-                    isflag = false;
-                    Focus();
-                }
-            }
-            else
-            {
-                MessageBox.Show("请选择需要增加的上级城市");
-            }
+            //if (treeViewMaterial.SelectedNode != null)
+            //{
+            //    MaterialTypeInsNodes insN = new MaterialTypeInsNodes();
+            //    MaterialType mt = new MaterialType();
+            //    mt.MT_Clear = 1;
+            //    mt.MT_Code = treeViewMaterial.SelectedNode.Tag.ToString();
+            //    mt.MT_Enable = 1;
+            //    mt.MT_Name = treeViewMaterial.SelectedNode.Text;
+            //    mt.MT_ParentID = treeViewMaterial.SelectedNode.Parent.Tag.ToString();
+            //    insN.ShowDialog(this);
+            //    if (Isflag)
+            //    {
+            //        MaterialTypeManager mtm = new MaterialTypeManager();
+            //        DataTable dt = mtm.GetList("").Tables[0];
+            //        DataView dvTree = new DataView(dt);
+            //        treeViewMaterial.Nodes.Clear();
+            //        AddTree("", null, dvTree);
+            //        isflag = false;
+            //        Focus();
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请选择需要增加的上级城市");
+            //}
         }
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeViewMaterial.SelectedNode != null)
-            {
-                if (DialogResult.Yes != MessageBox.Show("确定要删除所选节点吗?该操作将不可恢复,请注意.","请确认",
-                    MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2))
-                {
-                    return;
-                }
-                MaterialTypeManager mtm = new MaterialTypeManager();
-                try
-                {
-                    if(mtm.DeleteFake(treeViewMaterial.SelectedNode.Tag.ToString()))
-                    {
-                        MessageBox.Show("删除成功!");
-                        DataTable dt = mtm.GetList("").Tables[0];
-                        DataView dvTree = new DataView(dt);
-                        treeViewMaterial.Nodes.Clear();
-                        AddTree("", null, dvTree);
-                    }
-                    else
-                    {
-                        MessageBox.Show("删除失败,请重试.");
-                    }
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("删除节点出错,请检查服务器连接.异常:" + ex.Message);
-                }
-            }
+            //if (treeViewMaterial.SelectedNode != null)
+            //{
+            //    if (DialogResult.Yes != MessageBox.Show("确定要删除所选节点吗?该操作将不可恢复,请注意.","请确认",
+            //        MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2))
+            //    {
+            //        return;
+            //    }
+            //    MaterialTypeManager mtm = new MaterialTypeManager();
+            //    try
+            //    {
+            //        if(mtm.DeleteFake(treeViewMaterial.SelectedNode.Tag.ToString()))
+            //        {
+            //            MessageBox.Show("删除成功!");
+            //            DataTable dt = mtm.GetList("").Tables[0];
+            //            DataView dvTree = new DataView(dt);
+            //            treeViewMaterial.Nodes.Clear();
+            //            AddTree("", null, dvTree);
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("删除失败,请重试.");
+            //        }
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //        MessageBox.Show("删除节点出错,请检查服务器连接.异常:" + ex.Message);
+            //    }
+            //}
         }
 
         //点击节点搜索符合该范围的数据
         private void treeViewMaterial_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            materialNodeText = e.Node.Text;
-            MaterialManager mm = new MaterialManager();
-            if (allData != null)
-            {
-                try
-                {
-                    superGridControlMaterial.PrimaryGrid.DataSource =
-                                mm.searchClientByNodeClick(allData.Tables[0],
-                                materialNodeText, "类别名称");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //materialNodeText = e.Node.Text;
+            //MaterialManager mm = new MaterialManager();
+            //if (allData != null)
+            //{
+            //    try
+            //    {
+            //        superGridControlMaterial.PrimaryGrid.DataSource =
+            //                    mm.searchClientByNodeClick(allData.Tables[0],
+            //                    materialNodeText, "类别名称");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         #endregion
@@ -399,9 +408,9 @@ namespace WSCATProject.Base
         /// </summary>
         private void loadData()
         {
-            MaterialManager mm = new MaterialManager();
-            allData = mm.GetList("");
-            superGridControlMaterial.PrimaryGrid.DataSource = allData;
+            string value = "";
+            allData = material.GetList(99999, value);
+            superGridControlMaterial.PrimaryGrid.DataSource = ch.DataTableReCoding( allData);
         }
 
         /// <summary>

@@ -32,7 +32,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtBank = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickershoukuan = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.txtZhaiYao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
@@ -130,7 +130,7 @@
             this.panel2.Controls.Add(this.pictureBoxtiaoxingma);
             this.panel2.Controls.Add(this.txtZhaiYao);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.dateTimePicker2);
+            this.panel2.Controls.Add(this.dateTimePickershoukuan);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtYouHuiKeMu);
             this.panel2.Controls.Add(this.txtBank);
@@ -143,7 +143,7 @@
             this.panel2.Controls.SetChildIndex(this.txtBank, 0);
             this.panel2.Controls.SetChildIndex(this.txtYouHuiKeMu, 0);
             this.panel2.Controls.SetChildIndex(this.label6, 0);
-            this.panel2.Controls.SetChildIndex(this.dateTimePicker2, 0);
+            this.panel2.Controls.SetChildIndex(this.dateTimePickershoukuan, 0);
             this.panel2.Controls.SetChildIndex(this.label7, 0);
             this.panel2.Controls.SetChildIndex(this.txtZhaiYao, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBoxtiaoxingma, 0);
@@ -590,12 +590,12 @@
             this.label6.TabIndex = 59;
             this.label6.Text = "收款日期：";
             // 
-            // dateTimePicker2
+            // dateTimePickershoukuan
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(844, 48);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(135, 21);
-            this.dateTimePicker2.TabIndex = 60;
+            this.dateTimePickershoukuan.Location = new System.Drawing.Point(844, 48);
+            this.dateTimePickershoukuan.Name = "dateTimePickershoukuan";
+            this.dateTimePickershoukuan.Size = new System.Drawing.Size(135, 21);
+            this.dateTimePickershoukuan.TabIndex = 60;
             // 
             // label7
             // 
@@ -974,7 +974,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         protected DevComponents.DotNetBar.Controls.TextBoxX txtBank;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePickershoukuan;
         private System.Windows.Forms.Label label6;
         protected DevComponents.DotNetBar.Controls.TextBoxX txtZhaiYao;
         private System.Windows.Forms.Label label7;

@@ -811,7 +811,7 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("客户不能为空！");
                 return false;
             }
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");

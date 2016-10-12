@@ -12,31 +12,19 @@ using System.Windows.Forms;
 
 namespace WSCATProject.Sales
 {
-    public partial class SalesOrderReportForm : Form
+    public partial class SalesTicketReportForm : Form
     {
-        public SalesOrderReportForm()
+        public SalesTicketReportForm()
         {
             InitializeComponent();
         }
 
-        #region 初始化数据
-        /// <summary>
-        /// 保存客户code
-        /// </summary>
-        private string _clientCode;
-
-        public string clientCode
-        {
-            get { return _clientCode; }
-            set { _clientCode = value; }
-        }
-        #endregion
         /// <summary>
         /// 窗体加载事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SalesOrderReportForm_Load(object sender, EventArgs e)
+        private void SalesTicketReportForm_Load(object sender, EventArgs e)
         {
             this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
             this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
@@ -49,38 +37,41 @@ namespace WSCATProject.Sales
             //表格内容居中
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-
-            //DataTable dt1 = soif.GetSalesJoinSearch();
-            //DataTable dt2 = soif.GetSalesDetailJoinSearch();
-            //for (int i = 0; i < dt1.Rows.Count; i++)
-            //{
-            //    superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
-            //    for (int j = 0; j < dt2.Rows.Count; j++)
-            //    {
-            //        if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
-            //        {
-            //            superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt2.Rows[j].ItemArray));
-            //        }
-            //        else
-            //        {
-            //            continue;
-            //        }
-            //    }
-            //}
+            InitDataGridView();//调用表格初始化
         }
+        #region  初始化数据
+        /// <summary>
+        /// 统计行数据
+        /// </summary>
+        private void InitDataGridView()
+        {
+            //新增一行 用于给客户操作
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["BillType"].Value = "合计";
+            gr.Cells["BillType"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["ZongMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["ZongMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+        }
+        #endregion
 
-        #region 设置窗体无边框可以拖动
+        #region  设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
-
-
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void SalesOrderReportForm_MouseDown(object sender, MouseEventArgs e)
+        private void SalesTicketReportForm_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -135,6 +126,5 @@ namespace WSCATProject.Sales
             this.Dispose();
         }
         #endregion
-
     }
 }

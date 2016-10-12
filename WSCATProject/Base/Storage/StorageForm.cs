@@ -2,9 +2,10 @@
 using System.Data;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using BLL;
 using Model;
 using DevComponents.DotNetBar.SuperGrid;
+using InterfaceLayer.Base;
+using HelperUtility.Encrypt;
 
 namespace WSCATProject.Base
 {
@@ -15,19 +16,26 @@ namespace WSCATProject.Base
             InitializeComponent();
         }
 
+        StorageInterface storage = new StorageInterface();
+        CodingHelper ch = new CodingHelper();
+
         private void StorageForm_Load(object sender, EventArgs e)
         {
             StartPosition = FormStartPosition.CenterParent;
+            //禁止自动创建列
+            superGridControlStorage.PrimaryGrid.AutoGenerateColumns = false;
+            //内容居中
+            superGridControlStorage.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             loadData();
         }
 
         private void loadData()
         {
-            StorageManager sm = new StorageManager();
+            
             try
             {
-                DataSet ds = sm.GetList("");
-                superGridControlStorage.PrimaryGrid.DataSource = ds;
+                DataTable dt = storage.GetList(00,"");
+                superGridControlStorage.PrimaryGrid.DataSource =ch.DataTableReCoding(dt);
             }
             catch (Exception ex)
             {
@@ -39,36 +47,36 @@ namespace WSCATProject.Base
 
         private void 新增ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StorageCreateForm scf = new StorageCreateForm();
-            scf._update = false;
-            scf.ShowDialog(this);
+            //StorageCreateForm scf = new StorageCreateForm();
+            //scf._update = false;
+            //scf.ShowDialog(this);
         }
 
         private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (superGridControlStorage.GetSelectedRows().Count > 0)
             {
-                Storage storage = new Storage();
-                SelectedElementCollection col = superGridControlStorage.GetSelectedRows();
-                if (col.Count > 0)
-                {
-                    GridRow gridRow = col[0] as GridRow;
-                    storage.St_Address = gridRow["St_Address"].Value.ToString();
-                    storage.St_Clear = Convert.ToInt32(gridRow["St_Clear"].Value);
-                    storage.St_Code = gridRow["St_Code"].Value.ToString();
-                    storage.St_EmpName = gridRow["St_EmpName"].Value.ToString();
-                    storage.St_Enable = Convert.ToInt32(gridRow["St_Enable"].Value);
-                    storage.St_ID = Convert.ToInt32(gridRow["St_ID"].Value);
-                    storage.St_Name = gridRow["St_Name"].Value.ToString();
-                    storage.St_Phone = gridRow["St_Phone"].Value.ToString();
-                    storage.St_Remark = gridRow["St_Remark"].Value.ToString();
-                    storage.St_Safetyone = gridRow["St_Safetyone"].Value.ToString(); 
-                    storage.St_Safetytwo = gridRow["St_Safetytwo"].Value.ToString();
-                }
-                StorageCreateForm scf = new StorageCreateForm();
-                scf._update = true;
-                scf._storage = storage;
-                scf.ShowDialog(this);
+                //Storage storage = new Storage();
+                //SelectedElementCollection col = superGridControlStorage.GetSelectedRows();
+                //if (col.Count > 0)
+                //{
+                //    GridRow gridRow = col[0] as GridRow;
+                //    storage.St_Address = gridRow["St_Address"].Value.ToString();
+                //    storage.St_Clear = Convert.ToInt32(gridRow["St_Clear"].Value);
+                //    storage.St_Code = gridRow["St_Code"].Value.ToString();
+                //    storage.St_EmpName = gridRow["St_EmpName"].Value.ToString();
+                //    storage.St_Enable = Convert.ToInt32(gridRow["St_Enable"].Value);
+                //    storage.St_ID = Convert.ToInt32(gridRow["St_ID"].Value);
+                //    storage.St_Name = gridRow["St_Name"].Value.ToString();
+                //    storage.St_Phone = gridRow["St_Phone"].Value.ToString();
+                //    storage.St_Remark = gridRow["St_Remark"].Value.ToString();
+                //    storage.St_Safetyone = gridRow["St_Safetyone"].Value.ToString(); 
+                //    storage.St_Safetytwo = gridRow["St_Safetytwo"].Value.ToString();
+                //}
+                //StorageCreateForm scf = new StorageCreateForm();
+                //scf._update = true;
+                //scf._storage = storage;
+                //scf.ShowDialog(this);
             }
             else
             {
@@ -80,29 +88,29 @@ namespace WSCATProject.Base
         {
             if (superGridControlStorage.GetSelectedRows().Count > 0)
             {
-                SelectedElementCollection col = superGridControlStorage.GetSelectedRows();
-                if (col.Count > 0)
-                {
-                    StorageManager sm = new StorageManager();
-                    GridRow gridRow = col[0] as GridRow;
-                    try
-                    {
-                        bool result = sm.DeleteFake(gridRow["St_Code"].Value.ToString());
-                        if (result)
-                        {
-                            MessageBox.Show("删除成功!");
+                //SelectedElementCollection col = superGridControlStorage.GetSelectedRows();
+                //if (col.Count > 0)
+                //{
+                //    StorageManager sm = new StorageManager();
+                //    GridRow gridRow = col[0] as GridRow;
+                //    try
+                //    {
+                //        bool result = sm.DeleteFake(gridRow["St_Code"].Value.ToString());
+                //        if (result)
+                //        {
+                //            MessageBox.Show("删除成功!");
                             
-                        }
-                        else
-                        {
-                            MessageBox.Show("删除失败,请重试");
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("删除异常,请检查服务器连接.异常信息:" + ex.Message);
-                    }
-                }
+                //        }
+                //        else
+                //        {
+                //            MessageBox.Show("删除失败,请重试");
+                //        }
+                //    }
+                //    catch(Exception ex)
+                //    {
+                //        MessageBox.Show("删除异常,请检查服务器连接.异常信息:" + ex.Message);
+                //    }
+                //}
             }
             else
             {
@@ -168,19 +176,19 @@ namespace WSCATProject.Base
         public void DataGridViewRowsAdd(int id,string code,string name,string empName,string phone,
             string address,int enable,int clear,string remark,string safetyone,string safetytwo)
         {
-            DataSet ds = (DataSet)superGridControlStorage.PrimaryGrid.DataSource;
-            DataRow dr = ds.Tables[0].Rows.Add();
-            dr["St_ID"] = id;
-            dr["St_Code"] = code;
-            dr["St_Name"] = name;
-            dr["St_EmpName"] = empName;
-            dr["St_Phone"] = phone;
-            dr["St_Address"] = address;
-            dr["St_Enable"] = enable;
-            dr["St_Clear"] = clear;
-            dr["St_Remark"] = remark;
-            dr["St_Safetyone"] = safetyone;
-            dr["St_Safetytwo"] = safetytwo;
+            //DataSet ds = (DataSet)superGridControlStorage.PrimaryGrid.DataSource;
+            //DataRow dr = ds.Tables[0].Rows.Add();
+            //dr["St_ID"] = id;
+            //dr["St_Code"] = code;
+            //dr["St_Name"] = name;
+            //dr["St_EmpName"] = empName;
+            //dr["St_Phone"] = phone;
+            //dr["St_Address"] = address;
+            //dr["St_Enable"] = enable;
+            //dr["St_Clear"] = clear;
+            //dr["St_Remark"] = remark;
+            //dr["St_Safetyone"] = safetyone;
+            //dr["St_Safetytwo"] = safetytwo;
         }
     }
 }

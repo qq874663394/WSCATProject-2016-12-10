@@ -171,6 +171,7 @@
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "销  售  订  单  序  时  薄";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -185,6 +186,7 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             // 
             // toolStrip1
             // 
@@ -202,6 +204,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1186, 70);
             this.toolStrip1.TabIndex = 52;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -320,6 +323,7 @@
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
+            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             // 
             // DanJuCode
             // 

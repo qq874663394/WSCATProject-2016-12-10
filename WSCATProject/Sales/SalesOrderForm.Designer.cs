@@ -50,6 +50,7 @@
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.materialCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.FaHuoNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -454,6 +455,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.FaHuoNumber);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
@@ -607,6 +609,7 @@
             this.TaxMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.TaxMoney.HeaderText = "税额";
             this.TaxMoney.Name = "TaxMoney";
+            this.TaxMoney.ReadOnly = true;
             this.TaxMoney.Width = 80;
             // 
             // priceANDtax
@@ -635,11 +638,14 @@
             this.money.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.money.HeaderText = "金额";
             this.money.Name = "money";
+            this.money.ReadOnly = true;
             this.money.Width = 80;
             // 
             // gridColumnid
             // 
+            this.gridColumnid.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.ReadOnly = true;
             this.gridColumnid.Visible = false;
             // 
             // dateTimePicker2
@@ -651,9 +657,18 @@
             // 
             // materialCode
             // 
+            this.materialCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialCode.HeaderText = "商品code";
             this.materialCode.Name = "materialCode";
+            this.materialCode.ReadOnly = true;
             this.materialCode.Visible = false;
+            // 
+            // FaHuoNumber
+            // 
+            this.FaHuoNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.FaHuoNumber.HeaderText = "发货数量";
+            this.FaHuoNumber.Name = "FaHuoNumber";
+            this.FaHuoNumber.Width = 70;
             // 
             // SalesOrderForm
             // 
@@ -715,5 +730,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialCode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn FaHuoNumber;
     }
 }
