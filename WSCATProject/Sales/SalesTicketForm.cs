@@ -306,7 +306,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码：-初始化数据错误" + ex.Message);
             }
 
-           
+
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
-            if (_clientCode==""||labtextboxTop2.Text=="")
+            if (_clientCode == "" || labtextboxTop2.Text == "")
             {
                 MessageBox.Show("请先选择客户!");
                 return;
@@ -371,7 +371,7 @@ namespace WSCATProject.Sales
                 salesMain.expireDate = null;//最晚到底时间
                 salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
                 salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
-                salesMain.invoiceType =XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
+                salesMain.invoiceType = XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
                 salesMain.isClear = 1;//是否删除
                 salesMain.lastMoney = 0.0M;//剩余尾款
                 salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
@@ -425,12 +425,12 @@ namespace WSCATProject.Sales
                         salesDetail.materialCode = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料编号
                         salesDetail.materialDaima = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
                         salesDetail.materialName = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料名称
-                        salesDetail.materiaModel = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料规格型号
+                        salesDetail.materiaModel = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料规格型号
                         salesDetail.money = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//金额
                         salesDetail.needNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//需求数量
                         salesDetail.productionDate = null;//生产采购日期
                         salesDetail.qualityDate = null;//保质期
-                        salesDetail.remark = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
+                        salesDetail.remark = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
                         salesDetail.reserved1 = "";//保留字段
                         salesDetail.reserved2 = "";//保留字段
                         salesDetail.ReturnsNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//退货数量
@@ -439,13 +439,13 @@ namespace WSCATProject.Sales
                         salesDetail.storageCode = "";//仓库code
                         salesDetail.storageName = "";//仓库名称
                         salesDetail.tax = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//税额
-                        salesDetail.unit = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
+                        salesDetail.unit = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
                         salesDetail.updateDate = DateTime.Now;//更改时间
                         salesDetail.VATRate = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//增值税税率
-                        salesDetail.zhujima = gr[""].Value==null?"":XYEEncoding.strCodeHex(gr[""].Value.ToString());//助记码
+                        salesDetail.zhujima = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//助记码
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesdetialList.Add(salesDetail);
-                        
+
                     }
                 }
             }
@@ -739,16 +739,6 @@ namespace WSCATProject.Sales
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
                         superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Red;
                         break;
-                    case "委托退货":
-                        superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
-                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = true;
-                        superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Black;
-                        break;
-                    case "委托结算退货":
-                        superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = false;
-                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
-                        superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Red;
-                        break;
                 }
             }
             catch (Exception ex)
@@ -783,6 +773,90 @@ namespace WSCATProject.Sales
         private void SalesTicketForm_Activated(object sender, EventArgs e)
         {
             labtextboxTop2.Focus();//焦点在客户上
+        }
+
+        /// <summary>
+        /// 发票类型的选择改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBoxfapiaotype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (comboBoxfapiaotype.Text)
+                {
+                    case "增值税发票":
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnzengzhishui"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnshuie"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnjiashuiheji"].Visible = true;
+                        break;
+                    case "普通发票":
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnzengzhishui"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnshuie"].Visible = true;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnjiashuiheji"].Visible = true;
+                        break;
+                    case "收据":
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnzengzhishui"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnshuie"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnjiashuiheji"].Visible = false;
+                        break;
+                    case "其他":
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnzengzhishui"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnshuie"].Visible = false;
+                        superGridControlShangPing.PrimaryGrid.Columns["gridColumnjiashuiheji"].Visible = false;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-选择发票类型数据绑定错误!" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SalesTicketForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                ToolStripBtnSave_Click(sender, e);
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                ToolStripBtnShengHe_Click(sender, e);
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
         }
     }
 }

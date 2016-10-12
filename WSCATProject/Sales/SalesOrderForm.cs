@@ -445,7 +445,7 @@ namespace WSCATProject.Sales
                 InitDataGridView();
 
                 #endregion
-     
+
                 //订购数量
                 GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["dinggouNumber"].EditControl as GridDoubleInputEditControl;
                 gdiecNumber.MinValue = 1;
@@ -833,7 +833,7 @@ namespace WSCATProject.Sales
                             decimal shuliang = Convert.ToDecimal(g.Cells["dinggouNumber"].Value);
                             shuliang += 1;
                             g.Cells["dinggouNumber"].Value = shuliang;
-                            
+
                             //计算金额
                             decimal dingguoshu = Convert.ToDecimal(g.Cells["dinggouNumber"].FormattedValue);//订购数量
                             decimal danJa = Convert.ToDecimal(g.Cells["price"].FormattedValue);//单价               
@@ -880,9 +880,9 @@ namespace WSCATProject.Sales
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("错误代码：-重复添加商品计算数据错误"+ex.Message);
+                    MessageBox.Show("错误代码：-重复添加商品计算数据错误" + ex.Message);
                 }
-       
+
                 _materialCode = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value.ToString();//商品code 
                 gr.Cells["materialCode"].Value = _materialCode;//商品code 
                 gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
@@ -1239,5 +1239,50 @@ namespace WSCATProject.Sales
             return strnew;
         }
         #endregion
+
+        /// <summary>
+        /// 快捷方式设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SalesOrderForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                toolStripBtnSave_Click(sender, e);
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                toolStripBtnShengHe_Click(sender, e);
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
     }
 }
