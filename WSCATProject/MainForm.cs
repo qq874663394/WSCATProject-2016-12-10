@@ -123,11 +123,16 @@ namespace WSCATProject
             //clickbtn = imgbtn_maintain;
             //imgbtn_maintain.BackgroundImage = Properties.Resources.btn_enter;
 
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                panel12.Location = new Point(200,100);
-                return;
-            }
+            //if (this.WindowState == FormWindowState.Maximized)
+            //{
+            //    panel12.Location = new Point(200,100);
+            //    return;
+            //}
+            //if (this.WindowState == FormWindowState.Normal)
+            //{
+            //    panel12.Location = new Point(5, 100);
+            //    return;
+            //}
         }
 
         #region picbox在鼠标移入移出的变化

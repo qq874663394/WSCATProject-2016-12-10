@@ -105,6 +105,25 @@
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.superGridControlhandl = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
+            this.superGridControlSetback = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.查看进度条ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看详情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.storageControlAllPanel = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -132,25 +151,6 @@
             this.btnStockList = new System.Windows.Forms.Button();
             this.btnStockAll = new System.Windows.Forms.Button();
             this.superTabItemStock = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
-            this.superGridControlhandl = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.expandablePanel1 = new DevComponents.DotNetBar.ExpandablePanel();
-            this.superGridControlSetback = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.查看进度条ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看详情ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.inContorlAllPannel = new System.Windows.Forms.Panel();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
@@ -352,8 +352,14 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.superTabControlPanel8.SuspendLayout();
+            this.expandablePanel2.SuspendLayout();
+            this.expandablePanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
-            this.storageControlAllPanel.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -367,13 +373,6 @@
             this.storageContorlBottomPannel.SuspendLayout();
             this.storageContorlRightPannel.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.superTabControlPanel8.SuspendLayout();
-            this.expandablePanel2.SuspendLayout();
-            this.expandablePanel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.superTabControlPanel2.SuspendLayout();
             this.inContorlAllPannel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
@@ -1405,6 +1404,263 @@
             this.superTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.WinMediaPlayer12;
             this.superTabControl1.Text = "superTabControl1";
             // 
+            // superTabControlPanel8
+            // 
+            this.superTabControlPanel8.Controls.Add(this.expandablePanel2);
+            this.superTabControlPanel8.Controls.Add(this.expandablePanel1);
+            this.superTabControlPanel8.Controls.Add(this.panel8);
+            this.superTabControlPanel8.Controls.Add(this.panel6);
+            this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel8.Location = new System.Drawing.Point(0, 26);
+            this.superTabControlPanel8.Name = "superTabControlPanel8";
+            this.superTabControlPanel8.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel8.TabIndex = 0;
+            this.superTabControlPanel8.TabItem = this.superTabItem1;
+            // 
+            // expandablePanel2
+            // 
+            this.expandablePanel2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.expandablePanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.expandablePanel2.Controls.Add(this.superGridControlhandl);
+            this.expandablePanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.expandablePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expandablePanel2.Expanded = false;
+            this.expandablePanel2.ExpandedBounds = new System.Drawing.Rectangle(0, 239, 745, 142);
+            this.expandablePanel2.HideControlsWhenCollapsed = true;
+            this.expandablePanel2.Location = new System.Drawing.Point(0, 239);
+            this.expandablePanel2.Name = "expandablePanel2";
+            this.expandablePanel2.Size = new System.Drawing.Size(745, 142);
+            this.expandablePanel2.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.expandablePanel2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.expandablePanel2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.expandablePanel2.Style.GradientAngle = 90;
+            this.expandablePanel2.TabIndex = 21;
+            this.expandablePanel2.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel2.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel2.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel2.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
+            this.expandablePanel2.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.expandablePanel2.TitleStyle.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.expandablePanel2.TitleStyle.ForeColor.Color = System.Drawing.Color.DarkBlue;
+            this.expandablePanel2.TitleStyle.GradientAngle = 90;
+            this.expandablePanel2.TitleText = "待处理事项";
+            // 
+            // superGridControlhandl
+            // 
+            this.superGridControlhandl.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.superGridControlhandl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControlhandl.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlhandl.Location = new System.Drawing.Point(0, 26);
+            this.superGridControlhandl.Name = "superGridControlhandl";
+            // 
+            // 
+            // 
+            this.superGridControlhandl.PrimaryGrid.ShowRowHeaders = false;
+            this.superGridControlhandl.Size = new System.Drawing.Size(745, 116);
+            this.superGridControlhandl.TabIndex = 4;
+            this.superGridControlhandl.Text = "superGridControl2";
+            this.superGridControlhandl.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlhandl_CellDoubleClick);
+            // 
+            // expandablePanel1
+            // 
+            this.expandablePanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.expandablePanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.expandablePanel1.Controls.Add(this.superGridControlSetback);
+            this.expandablePanel1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.expandablePanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.expandablePanel1.HideControlsWhenCollapsed = true;
+            this.expandablePanel1.Location = new System.Drawing.Point(0, 0);
+            this.expandablePanel1.Name = "expandablePanel1";
+            this.expandablePanel1.Size = new System.Drawing.Size(745, 239);
+            this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.expandablePanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.expandablePanel1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.expandablePanel1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.expandablePanel1.Style.GradientAngle = 90;
+            this.expandablePanel1.TabIndex = 17;
+            this.expandablePanel1.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
+            this.expandablePanel1.TitleStyle.BackColor2.Color = System.Drawing.Color.Transparent;
+            this.expandablePanel1.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.expandablePanel1.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.expandablePanel1.TitleStyle.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.expandablePanel1.TitleStyle.ForeColor.Color = System.Drawing.Color.DarkBlue;
+            this.expandablePanel1.TitleStyle.GradientAngle = 90;
+            this.expandablePanel1.TitleText = "跟进进度";
+            // 
+            // superGridControlSetback
+            // 
+            this.superGridControlSetback.ContextMenuStrip = this.contextMenuStrip1;
+            this.superGridControlSetback.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            this.superGridControlSetback.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControlSetback.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlSetback.Location = new System.Drawing.Point(0, 26);
+            this.superGridControlSetback.Name = "superGridControlSetback";
+            // 
+            // 
+            // 
+            this.superGridControlSetback.PrimaryGrid.ShowRowHeaders = false;
+            this.superGridControlSetback.Size = new System.Drawing.Size(745, 213);
+            this.superGridControlSetback.TabIndex = 4;
+            this.superGridControlSetback.Text = "superGridControl1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.查看进度条ToolStripMenuItem,
+            this.查看详情ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
+            // 
+            // 查看进度条ToolStripMenuItem
+            // 
+            this.查看进度条ToolStripMenuItem.Name = "查看进度条ToolStripMenuItem";
+            this.查看进度条ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.查看进度条ToolStripMenuItem.Text = "查看进度条";
+            this.查看进度条ToolStripMenuItem.Click += new System.EventHandler(this.查看进度条ToolStripMenuItem_Click);
+            // 
+            // 查看详情ToolStripMenuItem
+            // 
+            this.查看详情ToolStripMenuItem.Name = "查看详情ToolStripMenuItem";
+            this.查看详情ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.查看详情ToolStripMenuItem.Text = "查看详情";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.MintCream;
+            this.panel8.Controls.Add(this.button8);
+            this.panel8.Controls.Add(this.button9);
+            this.panel8.Controls.Add(this.panel10);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel8.Location = new System.Drawing.Point(745, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(125, 381);
+            this.panel8.TabIndex = 16;
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.MintCream;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Location = new System.Drawing.Point(1, 67);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(123, 35);
+            this.button8.TabIndex = 6;
+            this.button8.Text = "采购开单明细表";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.MintCream;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Location = new System.Drawing.Point(1, 29);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(123, 35);
+            this.button9.TabIndex = 5;
+            this.button9.Text = "采购开单汇总表";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // panel10
+            // 
+            this.panel10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel10.BackgroundImage")));
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(125, 28);
+            this.panel10.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label3.Location = new System.Drawing.Point(31, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "报表中心";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.MintCream;
+            this.panel6.Controls.Add(this.button1);
+            this.panel6.Controls.Add(this.button2);
+            this.panel6.Controls.Add(this.button3);
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 381);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(870, 87);
+            this.panel6.TabIndex = 15;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanelBorder_Paint);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::WSCATProject.Properties.Resources.businessQuery;
+            this.button1.Location = new System.Drawing.Point(473, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 73);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "业务查找";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = global::WSCATProject.Properties.Resources.goodsData;
+            this.button2.Location = new System.Drawing.Point(340, 11);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(80, 73);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "货品资料";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Image = global::WSCATProject.Properties.Resources.supplierData;
+            this.button3.Location = new System.Drawing.Point(205, 11);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(80, 73);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "供应商资料";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.Image = global::WSCATProject.Properties.Resources.regionData;
+            this.button4.Location = new System.Drawing.Point(66, 11);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(80, 73);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "地区资料";
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // superTabItem1
+            // 
+            this.superTabItem1.AttachedControl = this.superTabControlPanel8;
+            this.superTabItem1.GlobalItem = false;
+            this.superTabItem1.Name = "superTabItem1";
+            this.superTabItem1.Text = "工作日志";
+            // 
             // superTabControlPanel4
             // 
             this.superTabControlPanel4.Controls.Add(this.storageControlAllPanel);
@@ -1420,7 +1676,6 @@
             // storageControlAllPanel
             // 
             this.storageControlAllPanel.BackColor = System.Drawing.Color.White;
-            this.storageControlAllPanel.Controls.Add(this.panel12);
             this.storageControlAllPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.storageControlAllPanel.Location = new System.Drawing.Point(0, 0);
             this.storageControlAllPanel.Name = "storageControlAllPanel";
@@ -1429,6 +1684,7 @@
             // 
             // panel12
             // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel12.Controls.Add(this.pictureBox12);
             this.panel12.Controls.Add(this.pictureBox8);
             this.panel12.Controls.Add(this.pictureBoxdiaassembly);
@@ -1438,7 +1694,7 @@
             this.panel12.Controls.Add(this.pbWarehomeAdjust);
             this.panel12.Controls.Add(this.pbWarehomeClearing);
             this.panel12.Controls.Add(this.pbWarehomeChange);
-            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Location = new System.Drawing.Point(3, 3);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(745, 381);
             this.panel12.TabIndex = 22;
@@ -1715,261 +1971,6 @@
             this.superTabItemStock.GlobalItem = false;
             this.superTabItemStock.Name = "superTabItemStock";
             this.superTabItemStock.Text = "仓库系统";
-            // 
-            // superTabControlPanel8
-            // 
-            this.superTabControlPanel8.Controls.Add(this.expandablePanel2);
-            this.superTabControlPanel8.Controls.Add(this.expandablePanel1);
-            this.superTabControlPanel8.Controls.Add(this.panel8);
-            this.superTabControlPanel8.Controls.Add(this.panel6);
-            this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel8.Location = new System.Drawing.Point(0, 26);
-            this.superTabControlPanel8.Name = "superTabControlPanel8";
-            this.superTabControlPanel8.Size = new System.Drawing.Size(870, 468);
-            this.superTabControlPanel8.TabIndex = 0;
-            this.superTabControlPanel8.TabItem = this.superTabItem1;
-            // 
-            // expandablePanel2
-            // 
-            this.expandablePanel2.CanvasColor = System.Drawing.SystemColors.Control;
-            this.expandablePanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.expandablePanel2.Controls.Add(this.superGridControlhandl);
-            this.expandablePanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.expandablePanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expandablePanel2.HideControlsWhenCollapsed = true;
-            this.expandablePanel2.Location = new System.Drawing.Point(0, 239);
-            this.expandablePanel2.Name = "expandablePanel2";
-            this.expandablePanel2.Size = new System.Drawing.Size(745, 142);
-            this.expandablePanel2.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.expandablePanel2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.expandablePanel2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.expandablePanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.expandablePanel2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.expandablePanel2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandablePanel2.Style.GradientAngle = 90;
-            this.expandablePanel2.TabIndex = 21;
-            this.expandablePanel2.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
-            this.expandablePanel2.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.expandablePanel2.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.expandablePanel2.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner;
-            this.expandablePanel2.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandablePanel2.TitleStyle.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.expandablePanel2.TitleStyle.ForeColor.Color = System.Drawing.Color.DarkBlue;
-            this.expandablePanel2.TitleStyle.GradientAngle = 90;
-            this.expandablePanel2.TitleText = "待处理事项";
-            // 
-            // superGridControlhandl
-            // 
-            this.superGridControlhandl.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            this.superGridControlhandl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControlhandl.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControlhandl.Location = new System.Drawing.Point(0, 26);
-            this.superGridControlhandl.Name = "superGridControlhandl";
-            // 
-            // 
-            // 
-            this.superGridControlhandl.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlhandl.Size = new System.Drawing.Size(745, 116);
-            this.superGridControlhandl.TabIndex = 4;
-            this.superGridControlhandl.Text = "superGridControl2";
-            this.superGridControlhandl.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlhandl_CellDoubleClick);
-            // 
-            // expandablePanel1
-            // 
-            this.expandablePanel1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.expandablePanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.expandablePanel1.Controls.Add(this.superGridControlSetback);
-            this.expandablePanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.expandablePanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.expandablePanel1.HideControlsWhenCollapsed = true;
-            this.expandablePanel1.Location = new System.Drawing.Point(0, 0);
-            this.expandablePanel1.Name = "expandablePanel1";
-            this.expandablePanel1.Size = new System.Drawing.Size(745, 239);
-            this.expandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.expandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.expandablePanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.expandablePanel1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.expandablePanel1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.expandablePanel1.Style.GradientAngle = 90;
-            this.expandablePanel1.TabIndex = 17;
-            this.expandablePanel1.TitleStyle.Alignment = System.Drawing.StringAlignment.Center;
-            this.expandablePanel1.TitleStyle.BackColor2.Color = System.Drawing.Color.Transparent;
-            this.expandablePanel1.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.expandablePanel1.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.expandablePanel1.TitleStyle.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.expandablePanel1.TitleStyle.ForeColor.Color = System.Drawing.Color.DarkBlue;
-            this.expandablePanel1.TitleStyle.GradientAngle = 90;
-            this.expandablePanel1.TitleText = "跟进进度";
-            // 
-            // superGridControlSetback
-            // 
-            this.superGridControlSetback.ContextMenuStrip = this.contextMenuStrip1;
-            this.superGridControlSetback.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            this.superGridControlSetback.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControlSetback.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControlSetback.Location = new System.Drawing.Point(0, 26);
-            this.superGridControlSetback.Name = "superGridControlSetback";
-            // 
-            // 
-            // 
-            this.superGridControlSetback.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlSetback.Size = new System.Drawing.Size(745, 213);
-            this.superGridControlSetback.TabIndex = 4;
-            this.superGridControlSetback.Text = "superGridControl1";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.查看进度条ToolStripMenuItem,
-            this.查看详情ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
-            // 
-            // 查看进度条ToolStripMenuItem
-            // 
-            this.查看进度条ToolStripMenuItem.Name = "查看进度条ToolStripMenuItem";
-            this.查看进度条ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.查看进度条ToolStripMenuItem.Text = "查看进度条";
-            this.查看进度条ToolStripMenuItem.Click += new System.EventHandler(this.查看进度条ToolStripMenuItem_Click);
-            // 
-            // 查看详情ToolStripMenuItem
-            // 
-            this.查看详情ToolStripMenuItem.Name = "查看详情ToolStripMenuItem";
-            this.查看详情ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.查看详情ToolStripMenuItem.Text = "查看详情";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.MintCream;
-            this.panel8.Controls.Add(this.button8);
-            this.panel8.Controls.Add(this.button9);
-            this.panel8.Controls.Add(this.panel10);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(745, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(125, 381);
-            this.panel8.TabIndex = 16;
-            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.MintCream;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(1, 67);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(123, 35);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "采购开单明细表";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.MintCream;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(1, 29);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(123, 35);
-            this.button9.TabIndex = 5;
-            this.button9.Text = "采购开单汇总表";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // panel10
-            // 
-            this.panel10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel10.BackgroundImage")));
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(125, 28);
-            this.panel10.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label3.Location = new System.Drawing.Point(31, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "报表中心";
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.MintCream;
-            this.panel6.Controls.Add(this.button1);
-            this.panel6.Controls.Add(this.button2);
-            this.panel6.Controls.Add(this.button3);
-            this.panel6.Controls.Add(this.button4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 381);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(870, 87);
-            this.panel6.TabIndex = 15;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanelBorder_Paint);
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::WSCATProject.Properties.Resources.businessQuery;
-            this.button1.Location = new System.Drawing.Point(473, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 73);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "业务查找";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::WSCATProject.Properties.Resources.goodsData;
-            this.button2.Location = new System.Drawing.Point(340, 11);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 73);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "货品资料";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::WSCATProject.Properties.Resources.supplierData;
-            this.button3.Location = new System.Drawing.Point(205, 11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 73);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "供应商资料";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.Image = global::WSCATProject.Properties.Resources.regionData;
-            this.button4.Location = new System.Drawing.Point(66, 11);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 73);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "地区资料";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // superTabItem1
-            // 
-            this.superTabItem1.AttachedControl = this.superTabControlPanel8;
-            this.superTabItem1.GlobalItem = false;
-            this.superTabItem1.Name = "superTabItem1";
-            this.superTabItem1.Text = "工作日志";
             // 
             // superTabControlPanel2
             // 
@@ -3281,6 +3282,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(244)))), ((int)(((byte)(252)))));
+            this.panel4.Controls.Add(this.panel12);
             this.panel4.Controls.Add(this.labelX4);
             this.panel4.Controls.Add(this.comboBoxEx1);
             this.panel4.Controls.Add(this.labelX3);
@@ -3288,9 +3290,8 @@
             this.panel4.Controls.Add(this.pictureBox7);
             this.panel4.Controls.Add(this.pictureBox6);
             this.panel4.Controls.Add(this.labelX1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.ForeColor = System.Drawing.Color.Red;
-            this.panel4.Location = new System.Drawing.Point(129, 250);
+            this.panel4.Location = new System.Drawing.Point(132, 250);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(870, 26);
             this.panel4.TabIndex = 17;
@@ -4063,8 +4064,15 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
+            this.superTabControlPanel8.ResumeLayout(false);
+            this.expandablePanel2.ResumeLayout(false);
+            this.expandablePanel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.superTabControlPanel4.ResumeLayout(false);
-            this.storageControlAllPanel.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -4079,14 +4087,6 @@
             this.storageContorlRightPannel.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.superTabControlPanel8.ResumeLayout(false);
-            this.expandablePanel2.ResumeLayout(false);
-            this.expandablePanel1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel6.ResumeLayout(false);
             this.superTabControlPanel2.ResumeLayout(false);
             this.inContorlAllPannel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();

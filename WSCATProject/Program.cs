@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using WSCATProject.Warehouse;
 using WSCATProject.Sales;
+using WSCATProject.Base;
 
 namespace WSCATProject
 {

@@ -38,6 +38,14 @@
             this.pictureBoxMin = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.superGridControlShangPing = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.BillType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.BillCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.KeHuName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.BillDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.ZongMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.YiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.WeiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -49,14 +57,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblshuju = new System.Windows.Forms.Label();
-            this.BillCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.KeHuName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.BillDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.BillType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.ZongMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.YiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.WeiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
@@ -166,9 +166,78 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControlShangPing.PrimaryGrid.GridLines = DevComponents.DotNetBar.SuperGrid.GridLines.None;
+            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 435);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
+            // 
+            // BillType
+            // 
+            this.BillType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillType.HeaderText = "单据类型";
+            this.BillType.Name = "BillType";
+            this.BillType.ReadOnly = true;
+            this.BillType.Width = 120;
+            // 
+            // BillCode
+            // 
+            this.BillCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillCode.HeaderText = "单据编号";
+            this.BillCode.Name = "BillCode";
+            this.BillCode.ReadOnly = true;
+            this.BillCode.Width = 120;
+            // 
+            // KeHuName
+            // 
+            this.KeHuName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.KeHuName.HeaderText = "客户名称";
+            this.KeHuName.Name = "KeHuName";
+            this.KeHuName.ReadOnly = true;
+            this.KeHuName.Width = 120;
+            // 
+            // BillDate
+            // 
+            this.BillDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillDate.HeaderText = "单据日期";
+            this.BillDate.Name = "BillDate";
+            this.BillDate.ReadOnly = true;
+            this.BillDate.Width = 150;
+            // 
+            // ZongMoney
+            // 
+            this.ZongMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.ZongMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.ZongMoney.HeaderText = "总金额";
+            this.ZongMoney.Name = "ZongMoney";
+            this.ZongMoney.ReadOnly = true;
+            this.ZongMoney.Width = 150;
+            // 
+            // YiHeXiaoMoney
+            // 
+            this.YiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.YiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.YiHeXiaoMoney.HeaderText = "已核销金额";
+            this.YiHeXiaoMoney.Name = "YiHeXiaoMoney";
+            this.YiHeXiaoMoney.ReadOnly = true;
+            this.YiHeXiaoMoney.Width = 150;
+            // 
+            // WeiHeXiaoMoney
+            // 
+            this.WeiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.WeiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.WeiHeXiaoMoney.HeaderText = "未核销金额";
+            this.WeiHeXiaoMoney.Name = "WeiHeXiaoMoney";
+            this.WeiHeXiaoMoney.ReadOnly = true;
+            this.WeiHeXiaoMoney.Width = 150;
+            // 
+            // remark
+            // 
+            this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.remark.HeaderText = "摘要";
+            this.remark.Name = "remark";
+            this.remark.ReadOnly = true;
             // 
             // labelTitle
             // 
@@ -317,72 +386,6 @@
             this.lblshuju.Size = new System.Drawing.Size(47, 12);
             this.lblshuju.TabIndex = 63;
             this.lblshuju.Text = "label4";
-            // 
-            // BillCode
-            // 
-            this.BillCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.BillCode.HeaderText = "单据编号";
-            this.BillCode.Name = "BillCode";
-            this.BillCode.ReadOnly = true;
-            this.BillCode.Width = 120;
-            // 
-            // KeHuName
-            // 
-            this.KeHuName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.KeHuName.HeaderText = "客户名称";
-            this.KeHuName.Name = "KeHuName";
-            this.KeHuName.ReadOnly = true;
-            this.KeHuName.Width = 120;
-            // 
-            // BillDate
-            // 
-            this.BillDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.BillDate.HeaderText = "单据日期";
-            this.BillDate.Name = "BillDate";
-            this.BillDate.ReadOnly = true;
-            this.BillDate.Width = 150;
-            // 
-            // BillType
-            // 
-            this.BillType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.BillType.HeaderText = "单据类型";
-            this.BillType.Name = "BillType";
-            this.BillType.ReadOnly = true;
-            this.BillType.Width = 120;
-            // 
-            // ZongMoney
-            // 
-            this.ZongMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.ZongMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.ZongMoney.HeaderText = "总金额";
-            this.ZongMoney.Name = "ZongMoney";
-            this.ZongMoney.ReadOnly = true;
-            this.ZongMoney.Width = 150;
-            // 
-            // YiHeXiaoMoney
-            // 
-            this.YiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.YiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.YiHeXiaoMoney.HeaderText = "已核销金额";
-            this.YiHeXiaoMoney.Name = "YiHeXiaoMoney";
-            this.YiHeXiaoMoney.ReadOnly = true;
-            this.YiHeXiaoMoney.Width = 150;
-            // 
-            // WeiHeXiaoMoney
-            // 
-            this.WeiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.WeiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.WeiHeXiaoMoney.HeaderText = "未核销金额";
-            this.WeiHeXiaoMoney.Name = "WeiHeXiaoMoney";
-            this.WeiHeXiaoMoney.ReadOnly = true;
-            this.WeiHeXiaoMoney.Width = 150;
-            // 
-            // remark
-            // 
-            this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.remark.HeaderText = "摘要";
-            this.remark.Name = "remark";
-            this.remark.ReadOnly = true;
             // 
             // SalesTicketReportForm
             // 

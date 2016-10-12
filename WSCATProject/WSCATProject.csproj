@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Client\ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\Client\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\Shelves\InShelvesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Base\Shelves\ShelvesListForm.Designer.cs">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Storage\StorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\Storage\StorageForm.Designer.cs">
+      <DependentUpon>StorageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GridStateEditControl.cs">
       <SubType>Component</SubType>
@@ -236,11 +248,17 @@
     <Compile Include="Warehouse\WareHuseStorageRack.Designer.cs">
       <DependentUpon>WareHuseStorageRack.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Base\Client\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Base\Shelves\InShelvesForm.resx">
       <DependentUpon>InShelvesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\Shelves\ShelvesListForm.resx">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\Storage\StorageForm.resx">
+      <DependentUpon>StorageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

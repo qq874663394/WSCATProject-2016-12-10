@@ -3,15 +3,18 @@ using System.Data;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using Model;
-using BLL;
 using HelperUtility.Excel;
 using HelperUtility.Encrypt;
 using DevComponents.DotNetBar.SuperGrid;
+using InterfaceLayer.Base;
 
 namespace WSCATProject.Base
 {
     public partial class ClientForm : RibbonForm
     {
+        CodingHelper ch = new CodingHelper();
+        ClientInterface CI = new ClientInterface();
+
         private bool isflag = false;
         //是否子窗体确定后需要刷新
         public bool Isflag
@@ -27,7 +30,7 @@ namespace WSCATProject.Base
             }
         }
         //所有的客户列表
-        private DataSet allDS = null;
+        private DataTable allDS = null;
         //点击的节点text
         private string clientNodeText = "所有节点";
 
@@ -40,6 +43,10 @@ namespace WSCATProject.Base
 
         private void ClientForm_Load(object sender, EventArgs e)
         {
+            //禁止自动创建列
+            superGridControlClient.PrimaryGrid.AutoGenerateColumns = false;
+            //内容居中
+            superGridControlClient.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             loadTree();
             loadData();
             MultiColumn();
@@ -51,9 +58,8 @@ namespace WSCATProject.Base
         {
             try
             {
-                ClientManager cm = new ClientManager();
-                allDS = cm.GetList("");
-                superGridControlClient.PrimaryGrid.DataSource = allDS;
+                allDS =CI.GetClientByBool(false);
+                superGridControlClient.PrimaryGrid.DataSource =ch.DataTableReCoding(allDS);
             }
             catch (Exception ex)
             {
@@ -106,73 +112,73 @@ namespace WSCATProject.Base
         //新增节点
         private void conToolStripMenuItemChild_Click(object sender, EventArgs e)
         {
-            if (treeViewClient.SelectedNode != null)
-            {
-                InsNodes insN = new InsNodes();
-                insN.city_code = treeViewClient.SelectedNode.Tag.ToString();
-                insN.ShowDialog(this);
-                if(Isflag)
-                {
+            //if (treeViewClient.SelectedNode != null)
+            //{
+            //    InsNodes insN = new InsNodes();
+            //    insN.city_code = treeViewClient.SelectedNode.Tag.ToString();
+            //    insN.ShowDialog(this);
+            //    if(Isflag)
+            //    {
                     
-                    loadTree();
-                    isflag = false;
-                    this.Focus();
-                }
-            }
-            else
-            {
-                MessageBox.Show("请选择需要增加的上级城市");
-            }
+            //        loadTree();
+            //        isflag = false;
+            //        this.Focus();
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请选择需要增加的上级城市");
+            //}
         }
 
         //删除节点 
         private void conToolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
-            if (treeViewClient.SelectedNode != null)
-            {
-                CityManager cm = new CityManager();
-                try
-                {
-                    if (cm.DeleteByCode(treeViewClient.SelectedNode.Tag.ToString()))
-                    {
-                        treeViewClient.SelectedNode.Remove();
-                        MessageBox.Show("删除该城市成功!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("删除该城市信息失败,请重新尝试");
-                    }
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("删除城市信息出现异常,请检查服务器连接." + ex.Message);
-                }
-            }
+            //if (treeViewClient.SelectedNode != null)
+            //{
+            //    CityManager cm = new CityManager();
+            //    try
+            //    {
+            //        if (cm.DeleteByCode(treeViewClient.SelectedNode.Tag.ToString()))
+            //        {
+            //            treeViewClient.SelectedNode.Remove();
+            //            MessageBox.Show("删除该城市成功!");
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("删除该城市信息失败,请重新尝试");
+            //        }
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //        MessageBox.Show("删除城市信息出现异常,请检查服务器连接." + ex.Message);
+            //    }
+            //}
         }
 
         //编辑节点 
         private void conToolStripMenuItemEdit_Click(object sender, EventArgs e)
         {
-            if(treeViewClient.SelectedNode != null)
-            {
-                InsNodes insNodes = new InsNodes();
-                City city = new City();
-                city.City_Name = treeViewClient.SelectedNode.Text;
-                city.City_Code = treeViewClient.SelectedNode.Tag.ToString();
-                city.City_ParentId = treeViewClient.SelectedNode.Parent.Tag.ToString();
-                city.City_Clear = 1;
-                city.City_Enable = 1;
-                insNodes.city = city;
-                insNodes.ShowDialog(this);
-                if(isflag)
-                {
-                    loadTree();
-                }
-            }
-            else
-            {
-                MessageBox.Show("请先选择要编辑的节点");
-            }
+            //if(treeViewClient.SelectedNode != null)
+            //{
+            //    InsNodes insNodes = new InsNodes();
+            //    City city = new City();
+            //    city.City_Name = treeViewClient.SelectedNode.Text;
+            //    city.City_Code = treeViewClient.SelectedNode.Tag.ToString();
+            //    city.City_ParentId = treeViewClient.SelectedNode.Parent.Tag.ToString();
+            //    city.City_Clear = 1;
+            //    city.City_Enable = 1;
+            //    insNodes.city = city;
+            //    insNodes.ShowDialog(this);
+            //    if(isflag)
+            //    {
+            //        loadTree();
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请先选择要编辑的节点");
+            //}
         }
 
         /// <summary>
@@ -192,21 +198,21 @@ namespace WSCATProject.Base
         private void treeViewClient_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-            clientNodeText = e.Node.Text;
-            ClientManager cm = new ClientManager();
-            if (allDS != null)
-            {
-                try
-                {
-                    superGridControlClient.PrimaryGrid.DataSource =
-                                cm.searchClientByNodeClick(allDS.Tables[0],
-                                clientNodeText, "地区");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //clientNodeText = e.Node.Text;
+            //ClientManager cm = new ClientManager();
+            //if (allDS != null)
+            //{
+            //    try
+            //    {
+            //        superGridControlClient.PrimaryGrid.DataSource =
+            //                    cm.searchClientByNodeClick(allDS.Tables[0],
+            //                    clientNodeText, "地区");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
         #endregion
 
@@ -221,127 +227,127 @@ namespace WSCATProject.Base
         //搜索按钮
         private void toolStripButtonSeach_Click(object sender, EventArgs e)
         {
-            string field = toolStripComboBoxKey.Text;
-            string text = toolStripTextBoxValue.Text.Trim();
-            ClientManager cm = new ClientManager();
+            //string field = toolStripComboBoxKey.Text;
+            //string text = toolStripTextBoxValue.Text.Trim();
+            //ClientManager cm = new ClientManager();
 
-            if (allDS != null)
-            {
-                try
-                {
-                    superGridControlClient.PrimaryGrid.DataSource =
-                                cm.searchClientByNodeClick(allDS.Tables[0],
-                                text, field);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //if (allDS != null)
+            //{
+            //    try
+            //    {
+            //        superGridControlClient.PrimaryGrid.DataSource =
+            //                    cm.searchClientByNodeClick(allDS.Tables[0],
+            //                    text, field);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         //新增
         private void ToolStripMenuItemCreate_Click(object sender, EventArgs e)
         {
-            CreateClientForm ccf = new CreateClientForm();
-            ccf.ShowDialog(this);
-            closeDispose();
+            //CreateClientForm ccf = new CreateClientForm();
+            //ccf.ShowDialog(this);
+            //closeDispose();
         }
 
         //编辑
         private void ToolStripMenuItemEdit_Click(object sender, EventArgs e)
         {
-            if (superGridControlClient.GetSelectedRows().Count > 0)
-            {
-                Client client = new Client();
-                SelectedElementCollection col = superGridControlClient.GetSelectedRows();
-                if (col.Count > 0)
-                {
-                    GridRow gridRow = col[0] as GridRow;
-                    client.Cli_ID = Convert.ToInt32(gridRow.Cells["gridColumnID"].Value);
-                    client.Cli_Code = gridRow.Cells["gridColumnCode"].Value.ToString();
-                    client.Cli_zhiwen = gridRow.Cells["gridColumnZ"].Value.ToString();
-                    client.Cli_Name = gridRow.Cells["gridColumnCliName"].Value.ToString();
-                    client.Cli_LinkMan = gridRow.Cells["gridColumnMan"].Value.ToString();
-                    client.Cli_Company = gridRow.Cells["gridColumnCo"].Value.ToString();
-                    client.Cli_Phone = gridRow.Cells["gridColumnPho"].Value.ToString();
-                    client.Cli_PhoneTwo = gridRow.Cells["gridColumnPho2"].Value.ToString();
-                    client.Cli_faxes = gridRow.Cells["gridColumnFax"].Value.ToString();
-                    client.Cli_Citycode = gridRow.Cells["gridColumnCiCode"].Value.ToString();
-                    client.Cli_area = gridRow.Cells["gridColumnArea"].Value.ToString();
-                    client.Cli_Address = gridRow.Cells["gridColumnAd"].Value.ToString();
-                    client.Cli_TypeCode = gridRow.Cells["gridColumnTy"].Value.ToString();
-                    client.Cli_typename= gridRow.Cells["gridColumnTyName"].Value.ToString();
-                    client.Cli_DiscountCode = gridRow.Cells["gridColumnDiCode"].Value.ToString();
-                    client.Cli_Bankaccounts = gridRow.Cells["gridColumnBa"].Value.ToString();
-                    client.Cli_OpenBank = gridRow.Cells["gridColumnOpB"].Value.ToString();
-                    client.Cli_Olddata = null;
-                    client.Cli_Oldreturn = null;
-                    client.Cli_Newoutdata = null;
-                    client.Cli_Newintodata = null;
-                    client.Cli_Createdata = Convert.ToDateTime(gridRow.Cells["gridColumnCre"].Value);
-                    client.Cli_Limit = gridRow.Cells["gridColumnLim"].Value.ToString();
-                    client.Cli_RemainLimit = gridRow.Cells["gridColumnReLim"].Value.ToString();
-                    client.Cli_ClearLimitdate = gridRow.Cells["gridColumnDay"].Value.ToString();
-                    client.Cli_ShouldMoney = gridRow.Cells["gridColumnSho"].Value.ToString();
-                    client.Cli_GetMoney = gridRow.Cells["gridColumnGet"].Value.ToString();
-                    client.Cli_PreMoney = gridRow.Cells["gridColumnPre"].Value.ToString();
-                    client.Cli_Remark = gridRow.Cells["gridColumnRem"].Value.ToString();
-                    client.Cli_safetone = gridRow.Cells["gridColumnsafetone"].Value.ToString();
-                    client.Cli_safettwo = gridRow.Cells["gridColumnsafettwo"].Value.ToString();
-                    client.Cli_Enable = Convert.ToInt32(gridRow.Cells["gridColumnEnable"].Value);
-                    client.Cli_PicName = gridRow.Cells["gridColumnPic"].Value.ToString();
-                }
-                CreateClientForm ccf = new CreateClientForm();
-                ccf.Client = client;
-                ccf.ShowDialog(this);
-                closeDispose();
-            }
-            else
-            {
-                MessageBox.Show("请选择要修改的行");
-            }
+            //if (superGridControlClient.GetSelectedRows().Count > 0)
+            //{
+            //    Client client = new Client();
+            //    SelectedElementCollection col = superGridControlClient.GetSelectedRows();
+            //    if (col.Count > 0)
+            //    {
+            //        GridRow gridRow = col[0] as GridRow;
+            //        client.Cli_ID = Convert.ToInt32(gridRow.Cells["gridColumnID"].Value);
+            //        client.Cli_Code = gridRow.Cells["gridColumnCode"].Value.ToString();
+            //        client.Cli_zhiwen = gridRow.Cells["gridColumnZ"].Value.ToString();
+            //        client.Cli_Name = gridRow.Cells["gridColumnCliName"].Value.ToString();
+            //        client.Cli_LinkMan = gridRow.Cells["gridColumnMan"].Value.ToString();
+            //        client.Cli_Company = gridRow.Cells["gridColumnCo"].Value.ToString();
+            //        client.Cli_Phone = gridRow.Cells["gridColumnPho"].Value.ToString();
+            //        client.Cli_PhoneTwo = gridRow.Cells["gridColumnPho2"].Value.ToString();
+            //        client.Cli_faxes = gridRow.Cells["gridColumnFax"].Value.ToString();
+            //        client.Cli_Citycode = gridRow.Cells["gridColumnCiCode"].Value.ToString();
+            //        client.Cli_area = gridRow.Cells["gridColumnArea"].Value.ToString();
+            //        client.Cli_Address = gridRow.Cells["gridColumnAd"].Value.ToString();
+            //        client.Cli_TypeCode = gridRow.Cells["gridColumnTy"].Value.ToString();
+            //        client.Cli_typename= gridRow.Cells["gridColumnTyName"].Value.ToString();
+            //        client.Cli_DiscountCode = gridRow.Cells["gridColumnDiCode"].Value.ToString();
+            //        client.Cli_Bankaccounts = gridRow.Cells["gridColumnBa"].Value.ToString();
+            //        client.Cli_OpenBank = gridRow.Cells["gridColumnOpB"].Value.ToString();
+            //        client.Cli_Olddata = null;
+            //        client.Cli_Oldreturn = null;
+            //        client.Cli_Newoutdata = null;
+            //        client.Cli_Newintodata = null;
+            //        client.Cli_Createdata = Convert.ToDateTime(gridRow.Cells["gridColumnCre"].Value);
+            //        client.Cli_Limit = gridRow.Cells["gridColumnLim"].Value.ToString();
+            //        client.Cli_RemainLimit = gridRow.Cells["gridColumnReLim"].Value.ToString();
+            //        client.Cli_ClearLimitdate = gridRow.Cells["gridColumnDay"].Value.ToString();
+            //        client.Cli_ShouldMoney = gridRow.Cells["gridColumnSho"].Value.ToString();
+            //        client.Cli_GetMoney = gridRow.Cells["gridColumnGet"].Value.ToString();
+            //        client.Cli_PreMoney = gridRow.Cells["gridColumnPre"].Value.ToString();
+            //        client.Cli_Remark = gridRow.Cells["gridColumnRem"].Value.ToString();
+            //        client.Cli_safetone = gridRow.Cells["gridColumnsafetone"].Value.ToString();
+            //        client.Cli_safettwo = gridRow.Cells["gridColumnsafettwo"].Value.ToString();
+            //        client.Cli_Enable = Convert.ToInt32(gridRow.Cells["gridColumnEnable"].Value);
+            //        client.Cli_PicName = gridRow.Cells["gridColumnPic"].Value.ToString();
+            //    }
+            //    CreateClientForm ccf = new CreateClientForm();
+            //    ccf.Client = client;
+            //    ccf.ShowDialog(this);
+            //    closeDispose();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请选择要修改的行");
+            //}
         }
 
         private void ToolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
-            if (superGridControlClient.GetSelectedRows().Count > 0)
-            {
-                if (DialogResult.No == MessageBox.Show("确认要删除选中行的数据吗?","请注意",
-                    MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2))
-                {
-                    return;
-                }
-                Client client = new Client();
-                ClientManager cm = new ClientManager();
-                SelectedElementCollection col = superGridControlClient.GetSelectedRows();
-                if (col.Count > 0)
-                {
-                    GridRow gridRow = col[0] as GridRow;
-                    try
-                    {
-                        bool result = cm.DeleteFake(gridRow.Cells[1].Value.ToString());
-                        if(result)
-                        {
-                            MessageBox.Show("删除成功!");
-                            isflag = true;
-                            closeDispose();
-                        }
-                        else
-                        {
-                            MessageBox.Show("删除失败,请检查是否选中指定行");
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("删除异常,请检查服务器连接:" + ex.Message);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("请先选中要进行删除的行");
-            }
+            //if (superGridControlClient.GetSelectedRows().Count > 0)
+            //{
+            //    if (DialogResult.No == MessageBox.Show("确认要删除选中行的数据吗?","请注意",
+            //        MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2))
+            //    {
+            //        return;
+            //    }
+            //    Client client = new Client();
+            //    ClientManager cm = new ClientManager();
+            //    SelectedElementCollection col = superGridControlClient.GetSelectedRows();
+            //    if (col.Count > 0)
+            //    {
+            //        GridRow gridRow = col[0] as GridRow;
+            //        try
+            //        {
+            //            bool result = cm.DeleteFake(gridRow.Cells[1].Value.ToString());
+            //            if(result)
+            //            {
+            //                MessageBox.Show("删除成功!");
+            //                isflag = true;
+            //                closeDispose();
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("删除失败,请检查是否选中指定行");
+            //            }
+            //        }
+            //        catch(Exception ex)
+            //        {
+            //            MessageBox.Show("删除异常,请检查服务器连接:" + ex.Message);
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请先选中要进行删除的行");
+            //}
         }
 
         private void ToolStripMenuItemAll_Click(object sender, EventArgs e)
@@ -520,10 +526,10 @@ namespace WSCATProject.Base
 
         private void loadTree()
         {
-            treeViewClient.Nodes.Clear();
-            CityManager cm = new CityManager();
-            DataTable dt = cm.GetList("").Tables[0];
-            AddTree("", null, dt);
+            //treeViewClient.Nodes.Clear();
+            //CityManager cm = new CityManager();
+            //DataTable dt = cm.GetList("").Tables[0];
+            //AddTree("", null, dt);
         }
 
         #endregion
