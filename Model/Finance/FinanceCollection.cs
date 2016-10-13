@@ -19,9 +19,6 @@ namespace Model
 		private string _accountname;
 		private string _salecode;
 		private DateTime? _date= DateTime.Now;
-		private decimal? _amountreceivable;
-		private decimal? _amountreceived;
-		private decimal? _amountunpaid;
 		private string _operationman;
 		private string _checkman;
 		private string _salesman;
@@ -33,10 +30,14 @@ namespace Model
 		private int? _isclear=1;
 		private int? _financecollectionstate=0;
 		private DateTime? _updatedate;
-		/// <summary>
-		/// 自增ID
-		/// </summary>
-		public int id
+        private string _type;
+        private string _settlementmethod;
+        private decimal? _discount;
+        private decimal? _totalcollection;
+        /// <summary>
+        /// 自增ID
+        /// </summary>
+        public int id
 		{
 			set{ _id=value;}
 			get{return _id;}
@@ -96,30 +97,6 @@ namespace Model
 		{
 			set{ _date=value;}
 			get{return _date;}
-		}
-		/// <summary>
-		/// 应收金额
-		/// </summary>
-		public decimal? amountReceivable
-		{
-			set{ _amountreceivable=value;}
-			get{return _amountreceivable;}
-		}
-		/// <summary>
-		/// 已收金额
-		/// </summary>
-		public decimal? amountReceived
-		{
-			set{ _amountreceived=value;}
-			get{return _amountreceived;}
-		}
-		/// <summary>
-		/// 未收金额
-		/// </summary>
-		public decimal? amountUnpaid
-		{
-			set{ _amountunpaid=value;}
-			get{return _amountunpaid;}
 		}
 		/// <summary>
 		/// 操作人
@@ -209,8 +186,40 @@ namespace Model
 			set{ _updatedate=value;}
 			get{return _updatedate;}
 		}
-		#endregion Model
+        /// <summary>
+		/// 单据类型
+		/// </summary>
+		public string type
+        {
+            set { _type = value; }
+            get { return _type; }
+        }
+        /// <summary>
+        /// 结算方式
+        /// </summary>
+        public string settlementMethod
+        {
+            set { _settlementmethod = value; }
+            get { return _settlementmethod; }
+        }
+        /// <summary>
+		/// 整单折扣
+		/// </summary>
+		public decimal? discount
+        {
+            set { _discount = value; }
+            get { return _discount; }
+        }
+        /// <summary>
+        /// 整单收款
+        /// </summary>
+        public decimal? totalCollection
+        {
+            set { _totalcollection = value; }
+            get { return _totalcollection; }
+        }
+        #endregion Model
 
-	}
+    }
 }
 

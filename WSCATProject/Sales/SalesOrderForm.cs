@@ -152,33 +152,33 @@ namespace WSCATProject.Sales
         /// </summary>
         private bool isNUllValidate()
         {
-            if (labtxtDanJuType.Text.Trim() == null)
+            if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
             {
                 MessageBox.Show("客户不能为空！");
                 return false;
             }
-            if (labtextboxTop2.Text.Trim() == null)
+            if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
             {
                 MessageBox.Show("联系人不能为空！");
                 return false;
             }
-            if (labtextboxTop3.Text.Trim() == null)
+            if (labtextboxTop3.Text.Trim() == null || labtextboxTop3.Text == "")
             {
                 MessageBox.Show("电话不能为空！");
                 return false;
             }
-            if (cboMethod.Text.Trim() == null)
+            if (cboMethod.Text.Trim() == null || cboMethod.Text == "")
             {
                 MessageBox.Show("交货方式不能为空！");
                 return false;
             }
-            if (labtextboxTop5.Text.Trim() == null)
+            if (labtextboxTop5.Text.Trim() == null || labtextboxTop5.Text == "")
             {
                 MessageBox.Show("交货地点不能为空！");
                 return false;
             }
             GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
-            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            if (gr.Cells["name"].Value == null || gr.Cells["name"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");
                 return false;
@@ -408,6 +408,62 @@ namespace WSCATProject.Sales
             }
         }
 
+        /// <summary>
+        /// 标示那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            labTop1.ForeColor = Color.Gray;
+            labtxtDanJuType.Border.BorderBottomColor = Color.Gray;
+            labtxtDanJuType.ForeColor = Color.Gray;
+            labtxtDanJuType.ReadOnly = true;
+            labTop2.ForeColor = Color.Gray;
+            labtextboxTop2.Border.BorderBottomColor = Color.Gray;
+            labtextboxTop2.ForeColor = Color.Red;
+            labtextboxTop2.ReadOnly = true;
+            labTop3.ForeColor = Color.Gray;
+            labtextboxTop3.Border.BorderBottomColor = Color.Gray;
+            labtextboxTop3.ForeColor = Color.Gray;
+            labtextboxTop3.ReadOnly = true;
+            labTop4.ForeColor = Color.Gray;
+            cboMethod.BackColor = Color.Gray;
+            cboMethod.ForeColor = Color.Gray;
+            cboMethod.Enabled = false;
+            labTop5.ForeColor = Color.Gray;
+            labtextboxTop5.Border.BorderBottomColor = Color.Gray;
+            labtextboxTop5.ForeColor = Color.Gray;
+            labtextboxTop5.ReadOnly = true;
+            labTop6.ForeColor = Color.Gray;
+            dateTimePicker2.Enabled = false;
+            dateTimePicker2.CalendarForeColor = Color.Gray;
+            labTop7.ForeColor = Color.Gray;
+            labtextboxTop7.Border.BorderBottomColor = Color.Gray;
+            labtextboxTop7.ForeColor = Color.Gray;
+            labtextboxTop7.ReadOnly = true;
+            labTop8.ForeColor = Color.Gray;
+            labtextboxTop8.Border.BorderBottomColor = Color.Gray;
+            labtextboxTop8.ForeColor = Color.Gray;
+            labtextboxTop8.ReadOnly = true;
+            labTop9.ForeColor = Color.Gray;
+            labtextboxTop9.Border.BorderBottomColor = Color.Gray;
+            labtextboxTop9.ForeColor = Color.Gray;
+            labtextboxTop9.ReadOnly = true;
+            textBoxOddNumbers.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
+            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
+            this.superGridControlShangPing.BackColor = Color.Gray;
+            this.superGridControlShangPing.Enabled = false;
+            ltxtbSalsMan.ReadOnly = true;
+            ltxtbMakeMan.ReadOnly = true;
+            ltxtbShengHeMan.ReadOnly = true;
+            picShengHe.Visible = true;
+            picShengHe.Parent = pictureBoxtitle;
+            dateTimePicker1.Enabled = false;
+            labeldata.ForeColor = Color.Gray;
+            labelprie.ForeColor = Color.Gray;
+            labelprie.BackColor= Color.FromArgb(240, 240, 240);
+        }
+
         #endregion
 
         /// <summary>
@@ -473,6 +529,7 @@ namespace WSCATProject.Sales
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+            
 
             }
             catch (Exception ex)
@@ -666,6 +723,8 @@ namespace WSCATProject.Sales
             if (saleOrderResult != null)
             {
                 MessageBox.Show("新增并审核销售订单数据成功", "销售订单温馨提示");
+                InitForm();
+                this.picShengHe.Image = Properties.Resources.审核;
             }
         }
 
