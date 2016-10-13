@@ -267,6 +267,7 @@ sod.materialPrice as materialPrice,
 sod.discountMoney as discountMoney,
 sod.tax as tax,
 sod.deliveryNumber as deliveryNumber,
+sod.mainCode as MainCode,
 wm.allNumber as allNumber
 from 
 T_SalesOrderDetail sod,T_BaseMaterial bm,T_WarehouseMain wm
