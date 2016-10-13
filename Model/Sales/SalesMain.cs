@@ -117,7 +117,7 @@ namespace Model
             get { return _checkman; }
         }
         /// <summary>
-        /// 销售员
+        /// 
         /// </summary>
         public string salesMan
         {

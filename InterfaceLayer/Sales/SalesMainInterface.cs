@@ -1,4 +1,5 @@
 ﻿using LogicLayer.Sales;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,7 @@ namespace InterfaceLayer.Sales
 {
     public class SalesMainInterface
     {
-        private SalesMainLogic sml = new SalesMainLogic();
+        private SalesMainLogic _dal = new SalesMainLogic();
         /// <summary>
         /// 根据条件获取销售单列表
         /// </summary>
@@ -19,7 +20,7 @@ namespace InterfaceLayer.Sales
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {
-            return sml.GetList(fieldName, fieldValue);
+            return _dal.GetList(fieldName, fieldValue);
         }
         /// <summary>
         /// 根据客户编号返回销售单的Table(id,code)
@@ -28,7 +29,17 @@ namespace InterfaceLayer.Sales
         /// <returns></returns>
         public DataTable GetTableByClientCode(string clientCode)
         {
-            return sml.GetTableByClientCode(clientCode);
+            return _dal.GetTableByClientCode(clientCode);
+        }
+        /// <summary>
+        /// 保存审核公用
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="modelDetail"></param>
+        /// <returns></returns>
+        public object AddOrUpdateToMainOrDetail(SalesMain model, List<SalesDetail> modelDetail)
+        {
+            return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
     }
 }

@@ -434,7 +434,7 @@ namespace WSCATProject.Sales
                         salesDetail.reserved1 = "";//保留字段
                         salesDetail.reserved2 = "";//保留字段
                         salesDetail.ReturnsNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//退货数量
-                        salesDetail.salesMainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        salesDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
                         salesDetail.sourceCode = "";//销售订单code
                         salesDetail.storageCode = "";//仓库code
                         salesDetail.storageName = "";//仓库名称

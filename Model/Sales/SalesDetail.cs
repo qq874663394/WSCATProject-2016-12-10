@@ -14,7 +14,7 @@ namespace Model
         private int _id;
         private int? _isclear = 1;
         private string _code;
-        private string _salesmaincode;
+        private string _maincode;
         private string _storagecode;
         private string _storagename;
         private string _materialdaima;
@@ -73,10 +73,10 @@ namespace Model
         /// <summary>
         /// 主表code
         /// </summary>
-        public string salesMainCode
+        public string mainCode
         {
-            set { _salesmaincode = value; }
-            get { return _salesmaincode; }
+            set { _maincode = value; }
+            get { return _maincode; }
         }
         /// <summary>
         /// 仓库code
@@ -247,7 +247,7 @@ namespace Model
             get { return _effectivedate; }
         }
         /// <summary>
-        /// 组记码
+        /// 
         /// </summary>
         public string zhujima
         {
@@ -255,7 +255,7 @@ namespace Model
             get { return _zhujima; }
         }
         /// <summary>
-        /// 条形码
+        /// 
         /// </summary>
         public string barCode
         {
