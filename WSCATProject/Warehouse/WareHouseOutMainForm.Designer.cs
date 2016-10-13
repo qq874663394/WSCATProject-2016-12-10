@@ -727,6 +727,7 @@
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox10.TabIndex = 46;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Visible = false;
             // 
             // gridColumnmaterialcode
             // 

@@ -226,41 +226,49 @@ namespace WSCATProject.Sales
 
         private void SalesReceivablesForm_Load(object sender, EventArgs e)
         {
-            #region 初始化窗体
-            cboDanJuType.SelectedIndex = 0;
-            cboJieSuanMethod.SelectedIndex = 0;
-            //禁用自动创建列
-            dataGridViewShangPing.AutoGenerateColumns = false;
-            dataGridViewFuJia.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //显示行号
-            superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-            //内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //调用合计行数据
-            InitDataGridView();
-            #endregion
+            try
+            {
+                #region 初始化窗体
+                cboDanJuType.SelectedIndex = 0;
+                cboJieSuanMethod.SelectedIndex = 0;
+                //禁用自动创建列
+                dataGridViewShangPing.AutoGenerateColumns = false;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //显示行号
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
+                //内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                //调用合计行数据
+                InitDataGridView();
+                #endregion
 
-            //客户
-            _AllClient = client.GetClientByBool(false);
-            //收款员
-            _AllEmployee = employee.SelSupplierTable(false);
+                //客户
+                _AllClient = client.GetClientByBool(false);
+                //收款员
+                _AllEmployee = employee.SelSupplierTable(false);
 
-            //生成销售订单code和显示条形码
-            _SaleReceivablesCode = BuildCode.ModuleCode("SRS");
-            textBoxOddNumbers.Text = _SaleReceivablesCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBoxBarCode.Image = imgTemp;
+                //生成销售订单code和显示条形码
+                _SaleReceivablesCode = BuildCode.ModuleCode("SRS");
+                textBoxOddNumbers.Text = _SaleReceivablesCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBoxBarCode.Image = imgTemp;
 
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
-            //dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
-            toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
-            toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                //dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：初始化数据错误！"+ex.Message);
+            }
+    
         }
 
         /// <summary>

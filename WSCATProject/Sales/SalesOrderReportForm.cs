@@ -217,7 +217,10 @@ namespace WSCATProject.Sales
                     GridRow row = col[0] as GridRow;
                     string mainCode = row.Cells["DanJuCode"].Value.ToString();
                     string code = row.Cells["salesDetilecode"].Value.ToString();
-
+                    SalesTicketForm sales = (SalesTicketForm)this.Owner;
+                    sales.SalesOrderMainCode = mainCode;
+                    sales.SalesOrderCode = code;
+                    this.Close();
                 }
                 else
                 {

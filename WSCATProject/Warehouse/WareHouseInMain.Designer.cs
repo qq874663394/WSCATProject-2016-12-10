@@ -764,6 +764,7 @@
             this.picBoxShengHeIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBoxShengHeIn.TabIndex = 58;
             this.picBoxShengHeIn.TabStop = false;
+            this.picBoxShengHeIn.Visible = false;
             // 
             // WareHouseInMain
             // 

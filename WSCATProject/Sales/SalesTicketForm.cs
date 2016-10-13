@@ -77,7 +77,26 @@ namespace WSCATProject.Sales
         /// 保存仓库的字典集合
         /// </summary>
         private KeyValuePair<string, string> _ClickStorageList;
+        /// <summary>
+        /// 销售订单的主表code
+        /// </summary>
+        private string _salesOrderMainCode;
 
+        public string SalesOrderMainCode
+        {
+            get  { return _salesOrderMainCode; }
+            set { _salesOrderMainCode = value;  }
+        }
+
+       /// <summary>
+       /// 销售订单详细code
+       /// </summary>
+        public string SalesOrderCode
+        {
+            get { return _salesOrderCode; }
+            set  { _salesOrderCode = value; }
+        }
+        private string _salesOrderCode;
         #endregion
 
         #region 初始化数据
@@ -260,7 +279,7 @@ namespace WSCATProject.Sales
                 //客户
                 _AllClient = client.GetClientByBool(false);
                 //销售员
-                _AllEmployee = employee.SelSupplierTable(false);
+               _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
 
@@ -300,6 +319,7 @@ namespace WSCATProject.Sales
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxtiaoxingma.Image = imgTemp;
+            
             }
             catch (Exception ex)
             {
@@ -321,10 +341,9 @@ namespace WSCATProject.Sales
                 MessageBox.Show("请先选择客户!");
                 return;
             }
-
             SalesOrderReportForm salesOrder = new SalesOrderReportForm();
             salesOrder.clientCode = _clientCode;
-            salesOrder.ShowDialog();
+            salesOrder.ShowDialog(this);
         }
         /// <summary>
         /// 审核按钮的点击事件

@@ -19,6 +19,7 @@ using InterfaceLayer;
 using InterfaceLayer.Warehouse;
 using HelperUtility.Encrypt;
 using WSCATProject.Warehouse;
+using WSCATProject.Sales;
 
 namespace WSCATProject
 {
@@ -93,42 +94,50 @@ namespace WSCATProject
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            LoginInfomation loginInf = LoginInfomation.getInstance();
-            if (_ShowOrHide == false)
+            try
             {
-                if (string.IsNullOrWhiteSpace(loginInf.UserName))
+                LoginInfomation loginInf = LoginInfomation.getInstance();
+                if (_ShowOrHide == false)
                 {
-                    Hide();
-                    LoginForm lf = new LoginForm();
-                    lf.ShowDialog();
-                    _ShowOrHide = true;
+                    if (string.IsNullOrWhiteSpace(loginInf.UserName))
+                    {
+                        Hide();
+                        LoginForm lf = new LoginForm();
+                        lf.ShowDialog();
+                        _ShowOrHide = true;
+                    }
+                }
+                List<string> Writ = new List<string>();
+
+                //现在没有登录所以没有权限，就显示仓库模块的东西
+                //BDStorage();
+                //this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
+                //superGridControlSetback.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+                //superGridControlhandl.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+                //superTabControl1.SelectedTab = superTabItem1;
+               this.sideBarPanelItem1.Image = Properties.Resources.日志大;
+                this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
+                this.labelX2.Text = "待处理事项总数:" + _Daichuli + "";
+
+                //LoginForm lf = new LoginForm();
+                //lf.ShowDialog();
+                //var off = new officeTool();
+                //off.initConnString();
+                //clickbtn = imgbtn_maintain;
+                //imgbtn_maintain.BackgroundImage = Properties.Resources.btn_enter;
+
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    panel12.Location = new Point(200, 100);
+                    panelsales.Location = new Point(200, 100);
+                    return;
                 }
             }
-            List<string> Writ = new List<string>();
-
-            //现在没有登录所以没有权限，就显示仓库模块的东西
-            BDStorage();
-            this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
-            superGridControlSetback.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
-            superGridControlhandl.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
-            superTabControl1.SelectedTab = superTabItem1;
-            this.sideBarPanelItem1.Image = Properties.Resources.日志大;
-            this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
-            this.labelX2.Text = "待处理事项总数:" + _Daichuli + "";
-
-            //LoginForm lf = new LoginForm();
-            //lf.ShowDialog();
-            //var off = new officeTool();
-            //off.initConnString();
-            //clickbtn = imgbtn_maintain;
-            //imgbtn_maintain.BackgroundImage = Properties.Resources.btn_enter;
-
-            if (this.WindowState == FormWindowState.Maximized)
+            catch (Exception)
             {
-                panel12.Location = new Point(200,100);
-                panelsales.Location = new Point(200, 100);
-                return;
+                MessageBox.Show("错误代码：暂无连接数据库，请检查数据的连接！");
             }
+          
         }
 
         #region picbox在鼠标移入移出的变化
@@ -1845,6 +1854,24 @@ namespace WSCATProject
             {
                 MessageBox.Show("请先选中要查看的数据所在行");
             }
+        }
+
+        private void pbMarketReturned_Click_1(object sender, EventArgs e)
+        {
+            SalesOrderForm sales = new Sales.SalesOrderForm();
+            sales.Show();
+        }
+
+        private void pbMarketReceipts_Click_1(object sender, EventArgs e)
+        {
+            SalesTicketForm salestick = new Sales.SalesTicketForm();
+            salestick.Show();
+        }
+
+        private void pbMarketGet_Click_1(object sender, EventArgs e)
+        {
+            SalesReceivablesForm salesreceivables = new SalesReceivablesForm();
+            salesreceivables.Show();
         }
     }
 }
