@@ -2,6 +2,7 @@
 using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using InterfaceLayer.Base;
+using InterfaceLayer.Sales;
 using InterfaceLayer.Warehouse;
 using LogicLayer;
 using LogicLayer.Base;
@@ -24,21 +25,7 @@ namespace WSCATProject.Warehouse
 {
     public partial class TestVoidForm : Form
     {
-        private int _clickRowIndex;
-
-        public int ClickRowIndex
-        {
-            get
-            {
-                return _clickRowIndex;
-            }
-
-            set
-            {
-                _clickRowIndex = value;
-            }
-        }
-
+        SalesOrderInterface soif = new SalesOrderInterface();
         public TestVoidForm()
         {
             InitializeComponent();
@@ -46,20 +33,7 @@ namespace WSCATProject.Warehouse
 
         private void TestVoidForm_Load(object sender, EventArgs e)
         {
-            //name.SortMode = DataGridViewColumnSortMode.NotSortable; //排序模式
-            superGridControl1.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
-            superGridControl1.PrimaryGrid.AddSort(superGridControl1.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
-
-            superGridControl1.PrimaryGrid.ShowRowGridIndex = true;//显示行号
-            InitColumns();  //初始化列
-            InitDataGridView(); //统计行
-
-            //DGV数据源
-            ClientInterface ci = new ClientInterface();
-            dataGridView1.DataSource = ci.GetList(999, "");
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView2.DataSource = ci.GetList(999, "");
-            dataGridView2.AutoGenerateColumns = false;
+            
         }
         public string ExSwitch(string warehouseInResult)
         {
@@ -83,105 +57,30 @@ namespace WSCATProject.Warehouse
                     return "未知错误";
             }
         }
-        /// <summary>
-        /// 初始化列
-        /// </summary>
-        public void InitColumns()
-        {
-            GridColumn gc = null;
-            gc = new GridColumn();
-            gc.DataPropertyName = "name";
-            gc.Name = "name";
-            gc.HeaderText = "name";
-            gc.Width = 120;
-            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-
-            gc = new GridColumn();
-            gc.DataPropertyName = "code";
-            gc.Name = "code";
-            gc.HeaderText = "code";
-            gc.Width = 120;
-            gc.AutoSizeMode = ColumnAutoSizeMode.Fill;
-            superGridControl1.PrimaryGrid.Columns.Add(gc);
-        }
-        private void InitDataGridView()
-        {
-            //新增一行 用于给客户操作
-            superGridControl1.PrimaryGrid.NewRow(true);
-            //最后一行做统计行
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.
-                Rows[superGridControl1.PrimaryGrid.Rows.Count - 1];
-            gr.ReadOnly = true;
-            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["name"].Value = "99999";
-            gr.Cells["code"].Value = "99999";
-        }
-
-
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            bool newAdd = false;
-            GridRow gr = (GridRow)superGridControl1.PrimaryGrid.Rows[ClickRowIndex];
-            GridItemsCollection _gridItemCollection = superGridControl1.PrimaryGrid.Rows;//获取所有行
-
-            foreach (GridRow item in _gridItemCollection)
-            {
-                if (item.Cells["code"].Value == null)
-                {
-                    newAdd = true;
-                    continue;
-                }
-                if (item.Cells["code"].Value.Equals(dataGridView1.Rows[e.RowIndex].Cells["code"].Value))//双击code和所有行的code相同时
-                {
-                    item.Cells["name"].Value = dataGridView1.Rows[e.RowIndex].Cells["name"].Value;  //修改
-                    item.Cells["code"].Value = dataGridView1.Rows[e.RowIndex].Cells["code"].Value;
-                    newAdd = false;
-                    break;
-                }
-                else
-                {
-                    newAdd = true;
-                }
-            }
-            if (newAdd == true)
-            {
-                GridRow gr1 = new GridRow();
-                //无法保证每次都对应
-                superGridControl1.PrimaryGrid.Rows.Insert(0, 
-                    new GridRow(
-                    dataGridView1.Rows[e.RowIndex].Cells["name"].Value, 
-                    dataGridView1.Rows[e.RowIndex].Cells["code"].Value
-
-                    )
-                    );
-            }
-        }
-
-        private void superGridControl1_BeginEdit(object sender, GridEditEventArgs e)
-        {
-            ClickRowIndex = e.GridCell.RowIndex;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            #region dgv子父级添加行
+            DataTable dt1 = soif.GetSalesJoinSearch();
+            DataTable dt2 = soif.GetSalesDetailJoinSearch();
+            for (int i = 0; i < dt1.Rows.Count; i++)
+            {
+                sgCustomers.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
+                for (int j = 0; j < dt2.Rows.Count; j++)
+                {
+                    if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+                    {
+                        sgCustomers.PrimaryGrid.Rows.Add(new GridRow(dt2.Rows[j].ItemArray));
+                        (sgCustomers.PrimaryGrid.Rows[i] as GridRow).Cells["mainCode"].Value = dt2.Rows[j]["MainCode"];
+                        //sgCustomers.PrimaryGrid.Rows[i]//dt1.Rows[i]["code"] = "";
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            #endregion
         }
-
-        private void superGridControl1_CellClick(object sender, GridCellClickEventArgs e)
-        {
-        }
-        //    #region Table合并
-        //    //WarehouseInInterface wi = new WarehouseInInterface();
-        //    //WarehouseOutInterface wo = new WarehouseOutInterface();
-        //    //DataTable widt = wi.GetListToIn(0).Tables[0];
-        //    //DataTable wodt = wo.GetListToOut(0).Tables[0];
-        //    //wodt.Merge(widt); 
-        //    #endregion
-        ////当单元格编辑器值更改后发生
-        //private void superGridControl1_EditorValueChanged(object sender, DevComponents.DotNetBar.SuperGrid.GridEditEventArgs e)
-        //{
-        //    string text = e.EditControl.EditorValue.ToString();
-        //}
     }
 }

@@ -80,10 +80,15 @@
             this.CaiGouZaiDingNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.SaleZaiDingNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialRemark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridRow2 = new DevComponents.DotNetBar.SuperGrid.GridRow();
+            this.gridRow3 = new DevComponents.DotNetBar.SuperGrid.GridRow();
+            this.gridRow4 = new DevComponents.DotNetBar.SuperGrid.GridRow();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.gridRow1 = new DevComponents.DotNetBar.SuperGrid.GridRow();
+            this.gridCell1 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -320,18 +325,20 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.CaiGouZaiDingNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SaleZaiDingNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialRemark);
+            this.superGridControlShangPing.PrimaryGrid.Rows.Add(this.gridRow1);
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
-            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             // 
             // DanJuCode
             // 
+            this.DanJuCode.DataPropertyName = "code";
             this.DanJuCode.HeaderText = "单据编号";
             this.DanJuCode.Name = "DanJuCode";
             // 
             // DanJuDate
             // 
+            this.DanJuDate.DataPropertyName = "date";
             this.DanJuDate.HeaderText = "单据日期";
             this.DanJuDate.Name = "DanJuDate";
             // 
@@ -339,33 +346,39 @@
             // 
             this.ClientCode.HeaderText = "客户编号";
             this.ClientCode.Name = "ClientCode";
+            this.ClientCode.Visible = false;
             // 
             // ClientName
             // 
+            this.ClientName.DataPropertyName = "name";
             this.ClientName.HeaderText = "客户名称";
             this.ClientName.Name = "ClientName";
             this.ClientName.Width = 80;
             // 
             // LinkMan
             // 
+            this.LinkMan.DataPropertyName = "";
             this.LinkMan.HeaderText = "联系人";
             this.LinkMan.Name = "LinkMan";
             this.LinkMan.Width = 60;
             // 
             // MobilPhone
             // 
+            this.MobilPhone.DataPropertyName = "mobilephone";
             this.MobilPhone.HeaderText = "电话";
             this.MobilPhone.Name = "MobilPhone";
             this.MobilPhone.Width = 80;
             // 
             // fax
             // 
+            this.fax.DataPropertyName = "fax";
             this.fax.HeaderText = "传真";
             this.fax.Name = "fax";
             this.fax.Width = 80;
             // 
             // JiaoHuoMethod
             // 
+            this.JiaoHuoMethod.DataPropertyName = "deliversMethod";
             this.JiaoHuoMethod.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.JiaoHuoMethod.HeaderText = "交货方式";
             this.JiaoHuoMethod.Name = "JiaoHuoMethod";
@@ -380,24 +393,28 @@
             // 
             // JiaoHuoDate
             // 
+            this.JiaoHuoDate.DataPropertyName = "deliversDate";
             this.JiaoHuoDate.HeaderText = "交货日期";
             this.JiaoHuoDate.Name = "JiaoHuoDate";
             this.JiaoHuoDate.Width = 80;
             // 
             // YiShouDingJin
             // 
+            this.YiShouDingJin.DataPropertyName = "operation";
             this.YiShouDingJin.HeaderText = "已收订金";
             this.YiShouDingJin.Name = "YiShouDingJin";
             this.YiShouDingJin.Width = 70;
             // 
             // SaleMan
             // 
+            this.SaleMan.DataPropertyName = "makeMan";
             this.SaleMan.HeaderText = "销售员";
             this.SaleMan.Name = "SaleMan";
             this.SaleMan.Width = 60;
             // 
             // makeMan
             // 
+            this.makeMan.DataPropertyName = "examine";
             this.makeMan.HeaderText = "制单人";
             this.makeMan.Name = "makeMan";
             this.makeMan.Width = 60;
@@ -410,12 +427,14 @@
             // 
             // ZhaiYao
             // 
+            this.ZhaiYao.DataPropertyName = "remark";
             this.ZhaiYao.HeaderText = "摘要";
             this.ZhaiYao.Name = "ZhaiYao";
             this.ZhaiYao.Width = 60;
             // 
             // shengheState
             // 
+            this.shengheState.DataPropertyName = "checkState";
             this.shengheState.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengheState.HeaderText = "审核状态";
             this.shengheState.Name = "shengheState";
@@ -423,16 +442,19 @@
             // 
             // materialDaiMa
             // 
+            this.materialDaiMa.DataPropertyName = "materialDaima";
             this.materialDaiMa.HeaderText = "商品代码";
             this.materialDaiMa.Name = "materialDaiMa";
             // 
             // materialName
             // 
+            this.materialName.DataPropertyName = "name";
             this.materialName.HeaderText = "商品名称";
             this.materialName.Name = "materialName";
             // 
             // materialModel
             // 
+            this.materialModel.DataPropertyName = "model";
             this.materialModel.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.materialModel.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.materialModel.HeaderText = "规格型号";
@@ -441,35 +463,41 @@
             // 
             // materialBarCode
             // 
+            this.materialBarCode.DataPropertyName = "barCode";
             this.materialBarCode.HeaderText = "条形码";
             this.materialBarCode.Name = "materialBarCode";
             this.materialBarCode.Width = 150;
             // 
             // materialUnit
             // 
+            this.materialUnit.DataPropertyName = "unit";
             this.materialUnit.HeaderText = "单位";
             this.materialUnit.Name = "materialUnit";
             this.materialUnit.Width = 50;
             // 
             // materialNumber
             // 
+            this.materialNumber.DataPropertyName = "number";
             this.materialNumber.HeaderText = "数量";
             this.materialNumber.Name = "materialNumber";
             this.materialNumber.Width = 80;
             // 
             // materialPrice
             // 
+            this.materialPrice.DataPropertyName = "materialPrice";
             this.materialPrice.HeaderText = "单价";
             this.materialPrice.Name = "materialPrice";
             this.materialPrice.Width = 80;
             // 
             // materialMoney
             // 
+            this.materialMoney.DataPropertyName = "";
             this.materialMoney.HeaderText = "金额";
             this.materialMoney.Name = "materialMoney";
             // 
             // discountRate
             // 
+            this.discountRate.DataPropertyName = "discountRate";
             this.discountRate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.discountRate.HeaderText = "折扣率%";
             this.discountRate.Name = "discountRate";
@@ -477,6 +505,7 @@
             // 
             // discountMoney
             // 
+            this.discountMoney.DataPropertyName = "discountMoney";
             this.discountMoney.HeaderText = "折扣额";
             this.discountMoney.Name = "discountMoney";
             this.discountMoney.Width = 80;
@@ -489,6 +518,7 @@
             // 
             // taxRate
             // 
+            this.taxRate.DataPropertyName = "tax";
             this.taxRate.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.taxRate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.taxRate.HeaderText = " 增值税  税率%";
@@ -517,12 +547,14 @@
             // 
             // fahuoNumber
             // 
+            this.fahuoNumber.DataPropertyName = "deliveryNumber";
             this.fahuoNumber.HeaderText = "发货数量";
             this.fahuoNumber.Name = "fahuoNumber";
             this.fahuoNumber.Width = 60;
             // 
             // ZongKuCun
             // 
+            this.ZongKuCun.DataPropertyName = "allNumber";
             this.ZongKuCun.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.False;
             this.ZongKuCun.HeaderText = "总库存";
             this.ZongKuCun.Name = "ZongKuCun";
@@ -589,6 +621,14 @@
             this.label3.TabIndex = 56;
             this.label3.Text = "label3";
             // 
+            // gridRow1
+            // 
+            this.gridRow1.Cells.Add(this.gridCell1);
+            // 
+            // gridCell1
+            // 
+            this.gridCell1.Value = "123123123123";
+            // 
             // SalesOrderReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -604,6 +644,7 @@
             this.Name = "SalesOrderReportForm";
             this.Text = "销售订单报告";
             this.Load += new System.EventHandler(this.SalesOrderReportForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesOrderReportForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
@@ -674,5 +715,10 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn SaleZaiDingNumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialRemark;
         private System.Windows.Forms.ToolTip toolTip1;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow2;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow3;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow4;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow1;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell1;
     }
 }

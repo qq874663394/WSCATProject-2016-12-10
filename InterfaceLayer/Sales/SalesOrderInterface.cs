@@ -2,6 +2,7 @@
 using Model.Sales;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,14 @@ namespace InterfaceLayer.Sales
         public object AddOrUpdate(SalesOrder model, List<SalesOrderDetail> modelDetail)
         {
             return _dal.AddOrUpdate(model, modelDetail);
+        }
+        public DataTable GetSalesJoinSearch()
+        {
+            return _dal.GetSalesJoinSearch();
+        }
+        public DataTable GetSalesDetailJoinSearch()
+        {
+            return _dal.GetSalesDetailJoinSearch();
         }
     }
 }
