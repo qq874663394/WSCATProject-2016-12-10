@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,12 +98,12 @@ namespace WSCATProject.Sales
         /// </summary>
         private bool isNUllValidate()
         {
-            if (labtxtDanJuType.Text.Trim() == null)
+            if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
             {
                 MessageBox.Show("客户不能为空！");
                 return false;
             }
-            if (txtBank.Text.Trim() == null)
+            if (txtBank.Text.Trim() == null || txtBank.Text == "")
             {
                 MessageBox.Show("结算账户不能为空！");
                 return false;
@@ -225,7 +226,7 @@ namespace WSCATProject.Sales
 
             //客户
             _AllClient = client.GetClientByBool(false);
-            //销售员
+            //收款员
             _AllEmployee = employee.SelSupplierTable(false);
 
             //生成销售订单code和显示条形码
@@ -239,6 +240,8 @@ namespace WSCATProject.Sales
             //绑定事件 双击事填充内容并隐藏列表
             dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
             //dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
+            toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+            toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
         }
 
         /// <summary>
@@ -441,6 +444,210 @@ namespace WSCATProject.Sales
         private void SalesReceivablesForm_Activated(object sender, EventArgs e)
         {
             txtClient.Focus();//窗体活动时焦点在客户
+        }
+
+        /// <summary>
+        /// 按ESC关闭副表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SalesReceivablesForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.resizablePanel1.Visible = false;
+                this.resizablePanelData.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
+        {
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+            //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
+            //收款单
+            FinanceCollection financecollection = new FinanceCollection();
+            //销售订单商品列表
+            //List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
+            try
+            {
+                financecollection.code = XYEEncoding.strCodeHex(_SaleReceivablesCode);//收款单单号
+                financecollection.date = this.dateTimePicker1.Value;//开单日期
+                financecollection.type = XYEEncoding.strCodeHex(cboDanJuType.Text.Trim());//单据类型
+                financecollection.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户编号
+                financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
+                financecollection.accountCode = XYEEncoding.strCodeHex("");//账户code
+                financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
+                financecollection.settlementMethod = XYEEncoding.strCodeHex(cboJieSuanMethod.Text.Trim());
+                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim());//整单折扣率
+                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim());//整单收款   
+                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim());//摘要 
+                financecollection.salesCode = XYEEncoding.strCodeHex(_employeeCode);//收款员code
+                financecollection.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//收款员
+                financecollection.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim());//制单人
+                financecollection.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim());//审核人   
+                financecollection.isClear = 1;
+                financecollection.updatedate = DateTime.Now;
+                financecollection.checkState = 0;//审核状态
+                financecollection.financeCollectionState = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:尝试创建收款单数据出错,请检查输入" + ex.Message, "收款单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].Value != null)
+                    {
+
+                        i++;
+                        FinanceCollectionDetail financecollectionDetail = new FinanceCollectionDetail();
+                        financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（销售单code）
+
+                        //SalesOrderDetail salesorderDetail = new SalesOrderDetail();
+                        //salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
+                        //salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
+                        //salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
+                        //salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
+                        //salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价
+                        //salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
+                        //salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
+                        //salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
+                        //salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
+                        //salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
+                        //salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
+                        //salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
+
+                        //GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        //salesorderList.Add(salesorderDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                return;
+            }
+
+            ////增加一条销售订单和销售订单详细数据
+            //object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);
+            //if (saleOrderResult != null)
+            //{
+            //    MessageBox.Show("新增销售订单数据成功", "销售订单温馨提示");
+            //}
+        }
+
+        /// <summary>
+        /// 审核按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            ////获得界面上的数据,准备传给base层新增数据
+            //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
+            ////销售订单
+            //SalesOrder salesorder = new SalesOrder();
+            ////销售订单商品列表
+            //List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
+            try
+            {
+            //    salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
+            //    salesorder.date = this.dateTimePicker1.Value;//开单日期
+            //    salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户code
+            //    switch (cboMethod.Text.Trim())//交货方式
+            //    {
+            //        case "提货":
+            //            salesorder.deliversMethod = 0;
+            //            break;
+            //        case "送货":
+            //            salesorder.deliversMethod = 1;
+            //            break;
+            //        case "发货":
+            //            salesorder.deliversMethod = 2;
+            //            break;
+            //    }
+            //    salesorder.deliversLocation = XYEEncoding.strCodeHex(labtextboxTop5.Text);//交货地点
+            //    salesorder.deliversDate = dateTimePicker2.Value;//交货日期
+            //    salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
+            //    salesorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+            //    salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
+            //    salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+            //    salesorder.checkState = 1;//审核状态
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:尝试创建销售订单数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                return;
+            }
+
+            try
+            {
+                ////获得商品列表数据,准备传给base层新增数据
+                //GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                //GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                //int i = 0;
+                //DateTime nowDataTime = DateTime.Now;
+                //foreach (GridRow gr in grs)
+                //{
+                //    if (gr["name"].Value != null)
+                //    {
+
+                //        i++;
+                //        SalesOrderDetail salesorderDetail = new SalesOrderDetail();
+                //        salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
+                //        salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
+                //        salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
+                //        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
+                //        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价
+                //        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
+                //        salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
+                //        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
+                //        salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
+                //        salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
+                //        salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
+                //        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
+
+                //        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                //        salesorderList.Add(salesorderDetail);
+                //    }
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                return;
+            }
+
+            ////增加一条销售订单和销售订单详细数据
+            //object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);
+            //if (saleOrderResult != null)
+            //{
+            //    MessageBox.Show("新增并审核销售订单数据成功", "销售订单温馨提示");
+            //    InitForm();
+            //    this.picShengHe.Image = Properties.Resources.审核;
+            //}
         }
     }
 }

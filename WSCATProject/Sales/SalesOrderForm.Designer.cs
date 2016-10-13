@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cboMethod = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -51,6 +55,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.materialCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.FaHuoNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.picShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -68,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -84,6 +90,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1019, 82);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.picShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.picShengHe, 0);
             // 
             // labelTitle
             // 
@@ -521,7 +537,10 @@
             // 
             // name
             // 
+            this.name.AllowSelection = false;
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background1.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.name.CellStyles.Default.Background = background1;
             this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
@@ -530,7 +549,10 @@
             // 
             // model
             // 
+            this.model.AllowSelection = false;
             this.model.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
+            background2.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.model.CellStyles.Default.Background = background2;
             this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -539,7 +561,10 @@
             // 
             // barcode
             // 
+            this.barcode.AllowSelection = false;
             this.barcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.barcode.CellStyles.Default.Background = background3;
             this.barcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.barcode.HeaderText = "条形码";
             this.barcode.Name = "barcode";
@@ -548,7 +573,10 @@
             // 
             // unit
             // 
+            this.unit.AllowSelection = false;
             this.unit.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
+            background4.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.unit.CellStyles.Default.Background = background4;
             this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
@@ -670,6 +698,17 @@
             this.FaHuoNumber.Name = "FaHuoNumber";
             this.FaHuoNumber.Width = 70;
             // 
+            // picShengHe
+            // 
+            this.picShengHe.BackColor = System.Drawing.Color.Transparent;
+            this.picShengHe.Location = new System.Drawing.Point(696, 2);
+            this.picShengHe.Name = "picShengHe";
+            this.picShengHe.Size = new System.Drawing.Size(77, 56);
+            this.picShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picShengHe.TabIndex = 46;
+            this.picShengHe.TabStop = false;
+            this.picShengHe.Visible = false;
+            // 
             // SalesOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -701,6 +740,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -731,5 +771,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn FaHuoNumber;
+        private System.Windows.Forms.PictureBox picShengHe;
     }
 }
