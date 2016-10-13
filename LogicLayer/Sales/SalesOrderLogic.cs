@@ -79,5 +79,9 @@ namespace LogicLayer.Sales
         {
             return _dal.GetSalesDetailJoinSearch();
         }
+        public DataTable GetSelectedDetail(string salesCode, string salesDetailCode)
+        {
+            return _dal.GetSelectedDetail(salesCode, salesDetailCode);
+        }
     }
 }

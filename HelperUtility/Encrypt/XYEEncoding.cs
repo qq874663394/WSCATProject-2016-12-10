@@ -48,14 +48,18 @@ namespace HelperUtility.Encrypt
         /// </summary>
         /// <param name="str">要加密的字符串</param>
         /// <returns></returns>
-        public static string strCodeHex(string str)
+        public static string strCodeHex(object str)
         {
             if (str==null)
             {
                 return "";
             }
+            if (string.IsNullOrWhiteSpace(str.ToString()) == true)
+            {
+                return "";
+            }
             string strCode = "";
-            byte[] strBytes = System.Text.UTF8Encoding.Default.GetBytes(str);
+            byte[] strBytes = System.Text.UTF8Encoding.Default.GetBytes(str.ToString());
             byte[] codeBytes = new byte[strBytes.Length];
             int key1 = 861;
             int key2 = 19;
@@ -87,18 +91,26 @@ namespace HelperUtility.Encrypt
         /// </summary>
         /// <param name="strDecodeHex">需要转移的字符串</param>
         /// <returns></returns>
-        public static string strHexDecode(string strDecodeHex)
+        public static string strHexDecode(object strDecodeHex)
         {
+            if (strDecodeHex == null)
+            {
+                return "";
+            }
+            if (string.IsNullOrWhiteSpace(strDecodeHex.ToString()) == true)
+            {
+                return "";
+            }
             string strDecode = "";
-            byte[] strBytes = new byte[strDecodeHex.Length / 2];
-            byte[] decodeBytes = new byte[strDecodeHex.Length / 2];
+            byte[] strBytes = new byte[strDecodeHex.ToString().Length / 2];
+            byte[] decodeBytes = new byte[strDecodeHex.ToString().Length / 2];
             int key1 = 861;
             int key2 = 19;
             for (int i = 0; i < strBytes.Length; i++)
             {
                 try
                 {
-                    strBytes[i] = byte.Parse(strDecodeHex.Substring(i * 2, 2),
+                    strBytes[i] = byte.Parse(strDecodeHex.ToString().Substring(i * 2, 2),
                                         System.Globalization.NumberStyles.HexNumber);
                     byte code = strBytes[i];
                     code = (byte)(((code & 0x0f) << 4) + ((code & 0xf0) >> 4));
