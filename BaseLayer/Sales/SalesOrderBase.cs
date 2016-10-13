@@ -256,7 +256,7 @@ namespace BaseLayer.Sales
         {
             DataTable dt = null;
             string sql = @"select 
-sod.mainCode as mainCode,
+
 sod.code as code,
 bm.materialDaima as materialDaima,
 bm.name as name,
@@ -267,7 +267,7 @@ sod.materialNumber as number,
 sod.discountRate as discountRate,
 sod.materialPrice as materialPrice,
 sod.discountMoney as discountMoney,
-sod.mainCode as mainCode,
+sod.materialMoney as materialMoney,
 sod.tax as tax,
 sod.deliveryNumber as deliveryNumber,
 sod.mainCode as MainCode,
@@ -281,7 +281,7 @@ wm.materialCode=bm.code";
             dt = DbHelperSQL.Query(sql).Tables[0];
             return dt;
         }
-        public DataTable GetSalesJoinSearch()
+        public DataTable GetSalesJoinSearch(string clientcode)
         {
             DataTable dt = null;
             string sql = @"select 
@@ -300,7 +300,7 @@ wm.materialCode=bm.code";
                 so.examine as examine,
                 --审核日期examineDate
                 so.checkState as checkState
-                 from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code";
+                 from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code and client.code='"+ clientcode + "'";
                   dt = DbHelperSQL.Query(sql).Tables[0];
             return dt;
         }

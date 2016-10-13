@@ -61,7 +61,7 @@ namespace WSCATProject.Warehouse
         private void button1_Click(object sender, EventArgs e)
         {
             #region dgv子父级添加行
-            DataTable dt1 = soif.GetSalesJoinSearch();
+            DataTable dt1 = soif.GetSalesJoinSearch("225525");
             DataTable dt2 = soif.GetSalesDetailJoinSearch();
             for (int i = 0; i < dt1.Rows.Count; i++)
             {

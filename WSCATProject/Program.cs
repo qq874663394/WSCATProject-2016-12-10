@@ -16,7 +16,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SalesOrderReportForm());
+            Application.Run(new SalesTicketForm());
         }
     }
 }

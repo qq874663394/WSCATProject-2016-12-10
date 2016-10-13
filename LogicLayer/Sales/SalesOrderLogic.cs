@@ -71,9 +71,9 @@ namespace LogicLayer.Sales
             }
             return result;
         }
-        public DataTable GetSalesJoinSearch()
+        public DataTable GetSalesJoinSearch(string clientcode)
         {
-            return _dal.GetSalesJoinSearch();
+            return _dal.GetSalesJoinSearch(clientcode);
         }
         public DataTable GetSalesDetailJoinSearch()
         {
