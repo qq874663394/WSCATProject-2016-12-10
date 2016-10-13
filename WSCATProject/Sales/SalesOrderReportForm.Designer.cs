@@ -80,10 +80,15 @@
             this.CaiGouZaiDingNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.SaleZaiDingNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialRemark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridRow2 = new DevComponents.DotNetBar.SuperGrid.GridRow();
+            this.gridRow3 = new DevComponents.DotNetBar.SuperGrid.GridRow();
+            this.gridRow4 = new DevComponents.DotNetBar.SuperGrid.GridRow();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.gridRow1 = new DevComponents.DotNetBar.SuperGrid.GridRow();
+            this.gridCell1 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -320,6 +325,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.CaiGouZaiDingNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SaleZaiDingNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialRemark);
+            this.superGridControlShangPing.PrimaryGrid.Rows.Add(this.gridRow1);
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
@@ -615,6 +621,14 @@
             this.label3.TabIndex = 56;
             this.label3.Text = "label3";
             // 
+            // gridRow1
+            // 
+            this.gridRow1.Cells.Add(this.gridCell1);
+            // 
+            // gridCell1
+            // 
+            this.gridCell1.Value = "123123123123";
+            // 
             // SalesOrderReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -701,5 +715,10 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn SaleZaiDingNumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialRemark;
         private System.Windows.Forms.ToolTip toolTip1;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow2;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow3;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow4;
+        private DevComponents.DotNetBar.SuperGrid.GridRow gridRow1;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell1;
     }
 }

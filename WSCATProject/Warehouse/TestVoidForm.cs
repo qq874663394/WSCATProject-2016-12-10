@@ -33,25 +33,7 @@ namespace WSCATProject.Warehouse
 
         private void TestVoidForm_Load(object sender, EventArgs e)
         {
-            #region dgv子父级添加行
-            //DataTable dt1 = soif.GetSalesJoinSearch();
-            //DataTable dt2 = soif.GetSalesDetailJoinSearch();
-            //for (int i = 0; i < dt1.Rows.Count; i++)
-            //{
-            //    sgCustomers.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
-            //    for (int j = 0; j < dt2.Rows.Count; j++)
-            //    {
-            //        if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
-            //        {
-            //            sgCustomers.PrimaryGrid.Rows.Add(new GridRow(dt2.Rows[j].ItemArray));
-            //        }
-            //        else
-            //        {
-            //            continue;
-            //        }
-            //    }
-            //}
-            #endregion
+            
         }
         public string ExSwitch(string warehouseInResult)
         {
@@ -74,6 +56,31 @@ namespace WSCATProject.Warehouse
                 default:
                     return "未知错误";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            #region dgv子父级添加行
+            DataTable dt1 = soif.GetSalesJoinSearch();
+            DataTable dt2 = soif.GetSalesDetailJoinSearch();
+            for (int i = 0; i < dt1.Rows.Count; i++)
+            {
+                sgCustomers.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
+                for (int j = 0; j < dt2.Rows.Count; j++)
+                {
+                    if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+                    {
+                        sgCustomers.PrimaryGrid.Rows.Add(new GridRow(dt2.Rows[j].ItemArray));
+                        (sgCustomers.PrimaryGrid.Rows[i] as GridRow).Cells["mainCode"].Value = dt2.Rows[j]["MainCode"];
+                        //sgCustomers.PrimaryGrid.Rows[i]//dt1.Rows[i]["code"] = "";
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            #endregion
         }
     }
 }
