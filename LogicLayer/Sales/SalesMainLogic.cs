@@ -8,12 +8,19 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UpdateManagerLayer;
 
 namespace LogicLayer.Sales
 {
     public class SalesMainLogic
     {
-        private SalesMainBase smb = new SalesMainBase();
+        private SalesMainBase _dal = new SalesMainBase();
+        private SalesUpdataManager _update = new SalesUpdataManager();
+        /// <summary>
+        /// 复合查询
+        /// </summary>
+        /// <param name="strWhere"></param>
+        /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {
             string strWhere = "";
@@ -36,8 +43,8 @@ namespace LogicLayer.Sales
                         strWhere += string.Format("clientCode='{0}'", fieldValue);
                         break;
                 }
-                model.operationContent = "查询T_SalesMain表的数据,条件：where="+strWhere;
-                dt = smb.GetList(strWhere);
+                model.operationContent = "查询T_SalesMain表的数据,条件：where=" + strWhere;
+                dt = _dal.GetList(strWhere);
                 model.result = 1;
             }
             catch (Exception ex)
@@ -51,6 +58,11 @@ namespace LogicLayer.Sales
             }
             return dt;
         }
+        /// <summary>
+        /// 查询id和code列
+        /// </summary>
+        /// <param name="clientCode">客户code</param>
+        /// <returns></returns>
         public DataTable GetTableByClientCode(string clientCode)
         {
             DataTable dt = null;
@@ -67,7 +79,7 @@ namespace LogicLayer.Sales
             try
             {
                 model.operationContent = "查询T_SalesMain表的数据,条件：clientCode=" + clientCode;
-                dt = smb.GetTableByClientCode(clientCode);
+                dt = _dal.GetTableByClientCode(clientCode);
                 model.result = 1;
             }
             catch (Exception ex)
@@ -80,6 +92,67 @@ namespace LogicLayer.Sales
                 lb.Add(model);
             }
             return dt;
+        }
+        /// <summary>
+        /// 保存审核公用
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="modelDetail"></param>
+        /// <returns></returns>
+        public object AddOrUpdateToMainOrDetail(SalesMain model, List<SalesDetail> modelDetail)
+        {
+            object result = 0;
+            LogBase lb = new LogBase();
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesMain/T_SealesDetail",
+                operationTime = DateTime.Now
+            };
+            try
+            {
+                if (model == null || modelDetail == null)
+                {
+                    throw new Exception("-2");
+                }
+                if (_dal.Exists(model.code) == false)
+                {
+                    result = _dal.AddToMainOrDetail(model, modelDetail);
+                    logModel.objective = "新增销售单,新增销售详情";
+                    logModel.operationContent = "新增T_SalesMain和T_SealesDetail表的数据";
+                }
+                else
+                {
+                    result = _dal.UpdateToMainOrDetail(model, modelDetail);
+                    logModel.objective = "修改销售,修改销售详情";
+                    logModel.operationContent = "修改T_SalesMain和T_SalesDetail表的数据";
+                }
+                if (result == null)
+                {
+                    throw new Exception("-3");
+                }
+                logModel.result = 1;
+                _update.add(model.code, logModel.operationTable, modelDetail.Count + 1, "", logModel.operationTime);
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
+        }
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
         }
     }
 }

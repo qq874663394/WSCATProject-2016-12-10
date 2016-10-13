@@ -1,24 +1,7 @@
-﻿using BaseLayer;
-using DevComponents.DotNetBar.SuperGrid;
-using HelperUtility;
-using InterfaceLayer.Base;
+﻿using DevComponents.DotNetBar.SuperGrid;
 using InterfaceLayer.Sales;
-using InterfaceLayer.Warehouse;
-using LogicLayer;
-using LogicLayer.Base;
-using LogicLayer.Purchase;
-using LogicLayer.Warehouse;
-using Model;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WSCATProject.Warehouse

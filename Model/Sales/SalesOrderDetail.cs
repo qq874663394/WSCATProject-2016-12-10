@@ -56,7 +56,7 @@ namespace Model.Sales
             get { return _materialprice; }
         }
         /// <summary>
-        /// 单价
+        /// 金额
         /// </summary>
         public decimal? materialMoney
         {

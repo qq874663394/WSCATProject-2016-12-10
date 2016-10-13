@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BankAccountInterface.cs" />
     <Compile Include="Base\ClientInterface.cs" />
     <Compile Include="Base\EmpolyeeInterface.cs" />
     <Compile Include="Base\MaterialInterface.cs" />

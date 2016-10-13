@@ -261,7 +261,6 @@ namespace BaseLayer.Sales
         {
             DataTable dt = null;
             string sql = @"select 
-
 sod.code as code,
 bm.materialDaima as materialDaima,
 bm.name as name,
@@ -305,7 +304,21 @@ wm.materialCode=bm.code";
                 so.examine as examine,
                 --审核日期examineDate
                 so.checkState as checkState
-                 from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code and client.code='"+ clientcode + "'";
+                 from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code and client.code='" + clientcode + "'";
+            dt = DbHelperSQL.Query(sql).Tables[0];
+            return dt;
+        }
+        public DataTable GetSelectedDetail(string salesCode, string salesDetailCode)
+        {
+            string sql = "";
+            DataTable dt = null;
+            sql = string.Format(@"select sod.code,bm.materialDaima,bm.name,
+sod.materialCode,bm.barCode,bm.unit,sod.materialNumber,sod.materialPrice,
+sod.discountRate,sod.VATRate,sod.discountMoney,sod.materialMoney,sod.tax,
+sod.taxTotal,bm.inPrice,(bm.inPrice*sod.materialNumber) as inMoney,bm.productionDate,bm.qualityDate,bm.remark
+ from T_SalesOrder so,T_SalesOrderDetail sod,T_BaseMaterial bm
+where so.code=sod.mainCode and sod.materialCode=bm.code and 
+so.code='{0}' and sod.code='{1}'", salesCode, salesDetailCode);
             dt = DbHelperSQL.Query(sql).Tables[0];
             return dt;
         }
