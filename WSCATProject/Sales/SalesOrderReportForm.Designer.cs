@@ -76,6 +76,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
@@ -300,6 +301,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.fahuoNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongKuCun);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
@@ -515,6 +517,12 @@
             this.label3.TabIndex = 56;
             this.label3.Text = "label3";
             // 
+            // gridColumncode
+            // 
+            this.gridColumncode.HeaderText = "物流code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
+            // 
             // SalesOrderReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -593,5 +601,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridRow gridRow4;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn salesDetilecode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
     }
 }

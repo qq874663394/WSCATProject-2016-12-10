@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using InterfaceLayer.Sales;
 
 namespace WSCATProject.Sales
 {
@@ -81,22 +82,56 @@ namespace WSCATProject.Sales
         /// 销售订单的主表code
         /// </summary>
         private string _salesOrderMainCode;
+        /// <summary>
+        /// 统计金额
+        /// </summary>
+        private decimal _Money;
+        /// <summary>
+        /// 统计税额
+        /// </summary>
+        private decimal _TaxMoney;
+        /// <summary>
+        /// 统计价税合计
+        /// </summary>
+        private decimal _PriceAndTaxMoney;
+        private string _shangPinCode;
+        /// <summary>
+        /// 成本金额
+        /// </summary>
+        private decimal _chengBenJinE;
 
         public string SalesOrderMainCode
         {
-            get  { return _salesOrderMainCode; }
-            set { _salesOrderMainCode = value;  }
+            get { return _salesOrderMainCode; }
+            set { _salesOrderMainCode = value; }
         }
 
-       /// <summary>
-       /// 销售订单详细code
-       /// </summary>
+        /// <summary>
+        /// 销售订单详细code
+        /// </summary>
         public string SalesOrderCode
         {
             get { return _salesOrderCode; }
-            set  { _salesOrderCode = value; }
+            set { _salesOrderCode = value; }
         }
+        /// <summary>
+        /// 商品code
+        /// </summary>
+        public string ShangPinCode
+        {
+            get
+            {
+                return _shangPinCode;
+            }
+
+            set
+            {
+                _shangPinCode = value;
+            }
+        }
+
         private string _salesOrderCode;
+        private decimal _MaterialNumber;
         #endregion
 
         #region 初始化数据
@@ -133,9 +168,6 @@ namespace WSCATProject.Sales
             gr.Cells["gridColumnchengbenjine"].Value = 0;
             gr.Cells["gridColumnchengbenjine"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnchengbenjine"].CellStyles.Default.Background.Color1 = Color.Orange;
-            gr.Cells["gridColumntuihuoshu"].Value = 0;
-            gr.Cells["gridColumntuihuoshu"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["gridColumntuihuoshu"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
 
         /// <summary>
@@ -279,7 +311,7 @@ namespace WSCATProject.Sales
                 //客户
                 _AllClient = client.GetClientByBool(false);
                 //销售员
-               _AllEmployee = employee.SelSupplierTable(false);
+                _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
 
@@ -319,7 +351,7 @@ namespace WSCATProject.Sales
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxtiaoxingma.Image = imgTemp;
-            
+
             }
             catch (Exception ex)
             {
@@ -344,6 +376,122 @@ namespace WSCATProject.Sales
             SalesOrderReportForm salesOrder = new SalesOrderReportForm();
             salesOrder.clientCode = _clientCode;
             salesOrder.ShowDialog(this);
+            GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+            GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            SalesOrderInterface salesorder = new SalesOrderInterface();
+            DataTable dt = ch.DataTableReCoding(salesorder.GetSelectedDetail(XYEEncoding.strCodeHex(_salesOrderMainCode), XYEEncoding.strCodeHex(_salesOrderCode)));
+            foreach (GridRow g in grs)
+            {
+                if (g.Cells["material"].Value == null || g.Cells["material"].Value.ToString() == "合计")
+                {
+                    continue;
+                }
+                if (g.Cells["gridColumncode"].Value.Equals(dt.Rows[0]["materialCode"]))
+                {
+
+                    decimal shuliang = Convert.ToDecimal(g.Cells["gridColumndinggoushu"].Value);
+                    decimal gridColumnmoney = Convert.ToDecimal(g.Cells["gridColumnmoney"].Value);
+                    decimal gridColumnshuie = Convert.ToDecimal(g.Cells["gridColumnshuie"].Value);
+                    decimal gridColumnjiashuiheji = Convert.ToDecimal(g.Cells["gridColumnjiashuiheji"].Value);
+                    decimal gridColumnchengbenjine = Convert.ToDecimal(g.Cells["gridColumnchengbenjine"].Value);
+                    shuliang += 1;
+                    gridColumnmoney += gridColumnmoney;
+                    gridColumnshuie += gridColumnshuie;
+                    gridColumnjiashuiheji += gridColumnjiashuiheji;
+                    gridColumnchengbenjine += gridColumnchengbenjine;
+                    g.Cells["gridColumndinggoushu"].Value = shuliang;
+                    g.Cells["gridColumnmoney"].Value = gridColumnmoney;
+                    g.Cells["gridColumnshuie"].Value = gridColumnshuie;
+                    g.Cells["gridColumnjiashuiheji"].Value = gridColumnjiashuiheji;
+                    g.Cells["gridColumnchengbenjine"].Value = gridColumnchengbenjine;
+                    //逐行统计数据总数
+                    decimal tempAllMaterialNumber = 0;
+                    decimal tempAllMoney = 0;
+                    decimal tempAllTaxMoney = 0;
+                    decimal tempAllPriceAndTax = 0;
+                    decimal tempAllChengBenJine = 0;
+                    for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                    {
+                        GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                        tempAllMaterialNumber += Convert.ToDecimal(tempGR["gridColumndinggoushu"].FormattedValue);
+                        tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
+                        tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
+                        tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
+                        tempAllChengBenJine += Convert.ToDecimal(tempGR["gridColumnchengbenjine"].FormattedValue);
+                    }
+                    _MaterialNumber = tempAllMaterialNumber;
+                    _Money = tempAllMoney;
+                    _TaxMoney = tempAllTaxMoney;
+                    _PriceAndTaxMoney = tempAllPriceAndTax;
+                    _chengBenJinE = tempAllChengBenJine;
+                    grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                    grid["gridColumndinggoushu"].Value = _MaterialNumber.ToString();
+                    grid["gridColumnmoney"].Value = _Money.ToString();
+                    grid["gridColumnshuie"].Value = _TaxMoney.ToString();
+                    grid["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
+                    grid["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+                    resizablePanelData.Visible = false;
+                    return;
+                }
+                continue;
+            }
+            superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["materialDaima"],
+                dt.Rows[0]["name"],
+                dt.Rows[0]["model"],
+                dt.Rows[0]["barCode"],
+                dt.Rows[0]["unit"],
+                dt.Rows[0]["materialNumber"].ToString() == "" ? 0.0M : dt.Rows[0]["materialNumber"],
+                0.0M,
+                dt.Rows[0]["materialPrice"].ToString() == "" ? 0.0M : dt.Rows[0]["materialPrice"],
+                dt.Rows[0]["discountRate"].ToString() == "" ? 0.0M : dt.Rows[0]["discountRate"],
+                dt.Rows[0]["VATRate"].ToString() == "" ? 0.0M : dt.Rows[0]["VATRate"],
+                dt.Rows[0]["discountMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["discountMoney"],
+                dt.Rows[0]["materialMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["materialMoney"],
+                dt.Rows[0]["tax"],
+                dt.Rows[0]["taxTotal"],
+                dt.Rows[0]["inPrice"],
+                dt.Rows[0]["inMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["inMoney"],
+                dt.Rows[0]["productionDate"],
+                dt.Rows[0]["effectiveDate"],
+                dt.Rows[0]["qualityDate"],
+                dt.Rows[0]["remark"],
+                _salesOrderMainCode,
+                dt.Rows[0]["materialCode"]
+                ));
+            try
+            {
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                //逐行统计数据总数
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                decimal tempAllTaxMoney = 0;
+                decimal tempAllPriceAndTax = 0;
+                decimal tempAllChengBenJine = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumndinggoushu"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
+                    tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
+                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
+                    tempAllChengBenJine += Convert.ToDecimal(tempGR["gridColumnchengbenjine"].FormattedValue);
+                }
+                _Materialnumber = tempAllNumber;
+                _Money = tempAllMoney;
+                _TaxMoney = tempAllTaxMoney;
+                _PriceAndTaxMoney = tempAllPriceAndTax;
+                _chengBenJinE = tempAllChengBenJine;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["gridColumndinggoushu"].Value = _Materialnumber.ToString();
+                gr["gridColumnmoney"].Value = _Money.ToString();
+                gr["gridColumnshuie"].Value = _TaxMoney.ToString();
+                gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
+                gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
+            }
         }
         /// <summary>
         /// 审核按钮的点击事件
@@ -429,39 +577,46 @@ namespace WSCATProject.Sales
                         i++;
                         SalesDetail salesDetail = new SalesDetail();
                         salesDetail.actualNumber = 0.0M;
-                        salesDetail.barCode = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//条形码
+                        salesDetail.barCode = gr["gridColumntiaoxingma"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
                         salesDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text + i.ToString());//销售详细ccode
-                        salesDetail.costMoney = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//成本金额
-                        salesDetail.costPrice = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//成本单价
-                        salesDetail.discount = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣
-                        salesDetail.discountAfterPrice = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣前单价
-                        salesDetail.discountBeforePrice = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣后单价
-                        salesDetail.discountMoney = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//折扣额
-                        salesDetail.effectiveDate = Convert.ToDateTime(gr[""].Value == null ? null : gr[""].Value);//有效期至
+                        salesDetail.costMoney = gr["gridColumnchengbenjine"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnchengbenjine"].Value);//成本金额
+                        salesDetail.costPrice = gr["gridColumnchengbeidanjia"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnchengbeidanjia"].Value);//成本单价
+                        salesDetail.discount = gr["gridColumnzhekoul"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnzhekoul"].Value);//折扣
+                        salesDetail.discountAfterPrice = gr["gridColumnprice"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnprice"].Value);//折扣前单价
+
+                        salesDetail.discountBeforePrice = 0.0M;//折扣后单价
+
+                        salesDetail.discountMoney = gr["gridColumnzhekoue"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnzhekoue"].Value);//折扣额
+                        salesDetail.effectiveDate = Convert.ToDateTime(gr["gridColumnyouxiaoqi"].Value == null ? null : gr["gridColumnyouxiaoqi"].Value);//有效期至
                         salesDetail.isClear = 1;//是否删除
-                        salesDetail.leviedMoney = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//价税合计
-                        salesDetail.lostNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//欠缺数量
-                        salesDetail.materialCode = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料编号
-                        salesDetail.materialDaima = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
-                        salesDetail.materialName = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料名称
-                        salesDetail.materiaModel = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//物料规格型号
-                        salesDetail.money = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//金额
-                        salesDetail.needNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//需求数量
+                        salesDetail.leviedMoney = gr["gridColumnjiashuiheji"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnjiashuiheji"].Value);//价税合计
+
+                        salesDetail.lostNumber = gr["gridColumnfahuoshu"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnfahuoshu"].Value);//发货数量
+
+                        salesDetail.materialCode = gr["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumncode"].Value.ToString());//物料编号
+                        salesDetail.materialDaima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
+                        salesDetail.materialName = gr["gridColumnmaterialname"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialname"].Value.ToString());//物料名称
+                        salesDetail.materiaModel = gr["gridColumnmode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmode"].Value.ToString());//物料规格型号
+                        salesDetail.money = gr["gridColumnmoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
+                        salesDetail.needNumber = gr["gridColumndinggoushu"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumndinggoushu"].Value);//需求数量
+
                         salesDetail.productionDate = null;//生产采购日期
-                        salesDetail.qualityDate = gr[""].Value== null?0.0M:Convert.ToDecimal(gr[""].Value);//保质期
-                        salesDetail.remark = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
+
+                        salesDetail.qualityDate = gr["gridColumnbaozhiqi"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnbaozhiqi"].Value);//保质期
+
+                        salesDetail.remark = gr["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
                         salesDetail.reserved1 = "";//保留字段
                         salesDetail.reserved2 = "";//保留字段
-                        salesDetail.ReturnsNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//退货数量
+                        salesDetail.ReturnsNumber = 0.0M;//退货数量
                         salesDetail.salesMainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
-                        salesDetail.sourceCode = "";//销售订单code
-                        salesDetail.storageCode = "";//仓库code
-                        salesDetail.storageName = "";//仓库名称
-                        salesDetail.tax = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//税额
-                        salesDetail.unit = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//单位
+                        salesDetail.sourceCode = XYEEncoding.strCodeHex(_salesOrderMainCode);//销售订单code
+                        salesDetail.storageCode = XYEEncoding.strCodeHex( _storgeCode);//仓库code
+                        salesDetail.storageName =gr["gridColumnStock"].Value==null?"":XYEEncoding.strCodeHex(gr["gridColumnStock"].Value) ;//仓库名称
+                        salesDetail.tax = gr["gridColumnshuie"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnshuie"].Value);//税额
+                        salesDetail.unit = gr["gridColumndanwei"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumndanwei"].Value.ToString());//单位
                         salesDetail.updateDate = DateTime.Now;//更改时间
-                        salesDetail.VATRate = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//增值税税率
-                        salesDetail.zhujima = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//助记码
+                        salesDetail.VATRate = gr["gridColumnzengzhishui"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnzengzhishui"].Value);//增值税税率
+                        salesDetail.zhujima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//助记码
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesdetialList.Add(salesDetail);
 
@@ -750,12 +905,10 @@ namespace WSCATProject.Sales
                 {
                     case "销售发货":
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = true;
-                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = true;
                         superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Black;
                         break;
                     case "销售退货":
                         superGridControlShangPing.PrimaryGrid.Columns["gridColumndinggoushu"].Visible = false;
-                        superGridControlShangPing.PrimaryGrid.Columns["gridColumntuihuoshu"].Visible = false;
                         superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.TextColor = Color.Red;
                         break;
                 }
@@ -875,6 +1028,60 @@ namespace WSCATProject.Sales
             {
                 this.Close();
                 this.Dispose();
+            }
+        }
+        /// <summary>
+        /// 验证计算
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                ////最后一行做统计行
+                //GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                //////计算金额
+                //decimal number = Convert.ToDecimal(gr.Cells["dinggouNumber"].FormattedValue);//订购数量
+                //decimal price = Convert.ToDecimal(gr.Cells["price"].FormattedValue);//单价               
+                //decimal money = number * price;//金额
+                //gr.Cells["money"].Value = money;
+                //decimal discountRate = Convert.ToDecimal(gr.Cells["DiscountRate"].FormattedValue);//折扣率
+                //decimal discountAfter = money * (discountRate / 100);
+                //decimal discountMoney = money - discountAfter;//折扣额
+                //gr.Cells["DiscountMoney"].Value = discountMoney;
+                //decimal taxRate = Convert.ToDecimal(gr.Cells["TaxRate"].FormattedValue);//增值税税率
+                //decimal rateMoney = money * (taxRate / 100);//税额
+                //gr.Cells["TaxMoney"].Value = rateMoney;
+                //decimal priceAndtax = money + rateMoney;//价税合计
+                //gr.Cells["priceANDtax"].Value = priceAndtax;
+
+                ////逐行统计数据总数
+                //decimal tempAllNumber = 0;
+                //decimal tempAllMoney = 0;
+                //decimal tempAllTaxMoney = 0;
+                //decimal tempAllPriceAndTax = 0;
+                //for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                //{
+                //    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                //    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
+                //    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
+                //    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
+                //    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
+                //}
+                //_Materialnumber = tempAllNumber;
+                //_Money = tempAllMoney;
+                //_TaxMoney = tempAllTaxMoney;
+                //_PriceAndTaxMoney = tempAllPriceAndTax;
+                //gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                //gr["dinggouNumber"].Value = _Materialnumber.ToString();
+                //gr["money"].Value = _Money.ToString();
+                //gr["TaxMoney"].Value = _TaxMoney.ToString();
+                //gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
             }
         }
     }

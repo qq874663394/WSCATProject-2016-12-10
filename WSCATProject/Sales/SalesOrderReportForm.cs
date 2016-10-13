@@ -91,7 +91,8 @@ namespace WSCATProject.Sales
                             dt2.Rows[j]["discountRate"],
                             dt2.Rows[j]["discountMoney"],
                             dt2.Rows[j]["deliveryNumber"],
-                            dt2.Rows[j]["allNumber"]
+                            dt2.Rows[j]["allNumber"],
+                            dt2.Rows[j]["MainCode"]
                             ));
 
                         #endregion
@@ -217,9 +218,11 @@ namespace WSCATProject.Sales
                     GridRow row = col[0] as GridRow;
                     string mainCode = row.Cells["DanJuCode"].Value.ToString();
                     string code = row.Cells["salesDetilecode"].Value.ToString();
+                    string shangPinCode = row.Cells["gridColumncode"].Value.ToString();
                     SalesTicketForm sales = (SalesTicketForm)this.Owner;
                     sales.SalesOrderMainCode = mainCode;
                     sales.SalesOrderCode = code;
+                    sales.ShangPinCode = shangPinCode;
                     this.Close();
                 }
                 else
