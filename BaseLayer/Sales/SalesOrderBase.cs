@@ -256,6 +256,8 @@ namespace BaseLayer.Sales
         {
             DataTable dt = null;
             string sql = @"select 
+sod.mainCode as mainCode,
+sod.code as code,
 bm.materialDaima as materialDaima,
 bm.name as name,
 bm.model as model,
@@ -265,6 +267,7 @@ sod.materialNumber as number,
 sod.discountRate as discountRate,
 sod.materialPrice as materialPrice,
 sod.discountMoney as discountMoney,
+sod.mainCode as mainCode,
 sod.tax as tax,
 sod.deliveryNumber as deliveryNumber,
 wm.allNumber as allNumber
@@ -281,23 +284,23 @@ wm.materialCode=bm.code";
         {
             DataTable dt = null;
             string sql = @"select 
-so.code as code,
-so.date as date,
-client.name as name,
-client.mobilePhone as mobilephone,
-client.fax as fax,
-so.deliversMethod as deliversMethod,
-so.deliversDate as deliversDate,
-so.remark as remark,
---定金
-so.operation as operation,
---部门code  部门表+code 命名
-so.makeMan as makeMan,
-so.examine as examine,
---审核日期examineDate
-so.checkState as checkState
- from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code";
-            dt = DbHelperSQL.Query(sql).Tables[0];
+                so.code as code,
+                so.date as date,
+                client.name as name,
+                client.mobilePhone as mobilephone,
+                client.fax as fax,
+                so.deliversMethod as deliversMethod,
+                so.deliversDate as deliversDate,
+                so.remark as remark,
+                --定金
+                so.operation as operation,
+                --部门code  部门表+code 命名
+                so.makeMan as makeMan,
+                so.examine as examine,
+                --审核日期examineDate
+                so.checkState as checkState
+                 from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code";
+                  dt = DbHelperSQL.Query(sql).Tables[0];
             return dt;
         }
     }
