@@ -256,27 +256,27 @@ namespace BaseLayer.Sales
         {
             DataTable dt = null;
             string sql = @"select 
-sod.mainCode as mainCode,
-sod.code as code,
-bm.materialDaima as materialDaima,
-bm.name as name,
-bm.model as model,
-bm.barCode as barCode,
-bm.unit as unit,
-sod.materialNumber as number,
-sod.discountRate as discountRate,
-sod.materialPrice as materialPrice,
-sod.discountMoney as discountMoney,
-sod.mainCode as mainCode,
-sod.tax as tax,
-sod.deliveryNumber as deliveryNumber,
-wm.allNumber as allNumber
-from 
-T_SalesOrderDetail sod,T_BaseMaterial bm,T_WarehouseMain wm
-where 
-sod.materialCode=bm.code and       
-wm.materialCode=sod.materialCode and
-wm.materialCode=bm.code";
+            sod.mainCode as mainCode,
+            sod.code as code,
+            bm.materialDaima as materialDaima,
+            bm.name as name,
+            bm.model as model,
+            bm.barCode as barCode,
+            bm.unit as unit,
+            sod.materialNumber as number,
+            sod.discountRate as discountRate,
+            sod.materialPrice as materialPrice,
+            sod.discountMoney as discountMoney,
+            sod.mainCode as mainCode,
+            sod.tax as tax,
+            sod.deliveryNumber as deliveryNumber,
+            wm.allNumber as allNumber
+            from 
+            T_SalesOrderDetail sod,T_BaseMaterial bm,T_WarehouseMain wm
+            where 
+            sod.materialCode=bm.code and       
+            wm.materialCode=sod.materialCode and
+            wm.materialCode=bm.code";
             dt = DbHelperSQL.Query(sql).Tables[0];
             return dt;
         }

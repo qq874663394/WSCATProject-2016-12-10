@@ -630,6 +630,7 @@
             this.Name = "SalesOrderReportForm";
             this.Text = "销售订单报告";
             this.Load += new System.EventHandler(this.SalesOrderReportForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesOrderReportForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesOrderReportForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
