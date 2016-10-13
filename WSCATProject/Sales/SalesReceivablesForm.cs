@@ -61,6 +61,22 @@ namespace WSCATProject.Sales
         /// 收款单单code
         /// </summary>
         private string _SaleReceivablesCode;
+        /// <summary>
+        /// 统计单据金额
+        /// </summary>
+        private decimal _danJuMoney;
+        /// <summary>
+        /// 统计已核销金额
+        /// </summary>
+        private decimal _yiHeXiaoMoney;
+        /// <summary>
+        /// 统计未核销金额
+        /// </summary>
+        private decimal _weiHeXiaoMoney;
+        /// <summary>
+        /// 统计本次核销金额
+        /// </summary>
+        private decimal _benCiHeXiaoMoney;
         #endregion
 
         #region 初始化数据
@@ -70,27 +86,30 @@ namespace WSCATProject.Sales
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            //superGridControlShangPing.PrimaryGrid.NewRow(true);
-            ////最后一行做统计行
-            //GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
-            //    Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
-            //gr.ReadOnly = true;
-            //gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            //gr.Cells["material"].Value = "合计";
-            //gr.Cells["material"].CellStyles.Default.Alignment =
-            //    DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //gr.Cells["dinggouNumber"].Value = 0;
-            //gr.Cells["dinggouNumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //gr.Cells["dinggouNumber"].CellStyles.Default.Background.Color1 = Color.Orange;
-            //gr.Cells["money"].Value = 0;
-            //gr.Cells["money"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //gr.Cells["money"].CellStyles.Default.Background.Color1 = Color.Orange;
-            //gr.Cells["TaxMoney"].Value = 0;
-            //gr.Cells["TaxMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //gr.Cells["TaxMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
-            //gr.Cells["priceANDtax"].Value = 0;
-            //gr.Cells["priceANDtax"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            //gr.Cells["priceANDtax"].CellStyles.Default.Background.Color1 = Color.Orange;
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
+            //最后一行做统计行
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
+            gr.ReadOnly = true;
+            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+            gr.Cells["yuandanCode"].Value = "合计";
+            gr.Cells["yuandanCode"].CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["danjuMoney"].Value = 0;
+            gr.Cells["danjuMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["danjuMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["YiHeXiaoMoney"].Value = 0;
+            gr.Cells["YiHeXiaoMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["YiHeXiaoMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["WeiHeXiaoMoney"].Value = 0;
+            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["BenCiHeXiao"].Value = 0;
+            gr.Cells["BenCiHeXiao"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["BenCiHeXiao"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["WeuFuMoney"].Value = 0;
+            gr.Cells["WeuFuMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["WeuFuMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
 
         /// <summary>
@@ -475,8 +494,8 @@ namespace WSCATProject.Sales
             //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
             //收款单
             FinanceCollection financecollection = new FinanceCollection();
-            //销售订单商品列表
-            //List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
+            //收款详单
+            List<FinanceCollectionDetail> financecollectionList = new List<FinanceCollectionDetail>();
             try
             {
                 financecollection.code = XYEEncoding.strCodeHex(_SaleReceivablesCode);//收款单单号
@@ -514,35 +533,30 @@ namespace WSCATProject.Sales
                 DateTime nowDataTime = DateTime.Now;
                 foreach (GridRow gr in grs)
                 {
-                    if (gr["name"].Value != null)
+                    if (gr["yuandanCode"].Value != null)
                     {
-
                         i++;
                         FinanceCollectionDetail financecollectionDetail = new FinanceCollectionDetail();
-                        financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（销售单code）
+                        financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
+                        financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
+                        financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
+                        financecollectionDetail.salesDate =Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
+                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr[" yuandanType"].Value.ToString());//销售单类型
+                        financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value);//应收金额
+                        financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value);//已核销金额
+                        financecollectionDetail.amountUnpaid= Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
+                        financecollectionDetail.nowMoney= Convert.ToDecimal(gr["BenCiHeXiao"].Value);//本次收款金额
+                        financecollectionDetail.unCollection= Convert.ToDecimal(gr["WeuFuMoney"].Value);//未收金额
+                        financecollectionDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
 
-                        //SalesOrderDetail salesorderDetail = new SalesOrderDetail();
-                        //salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
-                        //salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
-                        //salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-                        //salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
-                        //salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价
-                        //salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
-                        //salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
-                        //salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
-                        //salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
-                        //salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
-                        //salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        //salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
-
-                        //GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        //salesorderList.Add(salesorderDetail);
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        financecollectionList.Add(financecollectionDetail);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：-尝试创建收款详单出错,请检查输入" + ex.Message, "收款单温馨提示");
                 return;
             }
 
@@ -561,93 +575,74 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            if (isNUllValidate() == false)
-            {
-                return;
-            }
-            ////获得界面上的数据,准备传给base层新增数据
-            //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
-            ////销售订单
-            //SalesOrder salesorder = new SalesOrder();
-            ////销售订单商品列表
-            //List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
+
+        }
+
+        /// <summary>
+        /// 验证、统计数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
             try
             {
-            //    salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
-            //    salesorder.date = this.dateTimePicker1.Value;//开单日期
-            //    salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户code
-            //    switch (cboMethod.Text.Trim())//交货方式
-            //    {
-            //        case "提货":
-            //            salesorder.deliversMethod = 0;
-            //            break;
-            //        case "送货":
-            //            salesorder.deliversMethod = 1;
-            //            break;
-            //        case "发货":
-            //            salesorder.deliversMethod = 2;
-            //            break;
-            //    }
-            //    salesorder.deliversLocation = XYEEncoding.strCodeHex(labtextboxTop5.Text);//交货地点
-            //    salesorder.deliversDate = dateTimePicker2.Value;//交货日期
-            //    salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
-            //    salesorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
-            //    salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-            //    salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-            //    salesorder.checkState = 1;//审核状态
+                //最后一行做统计行
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+
+                ////计算金额
+                decimal benciHeXiaoMoney = Convert.ToDecimal(gr.Cells["BenCiHeXiao"].FormattedValue);//本次核销金额
+                decimal weiHeXiaoMoney = Convert.ToDecimal(gr.Cells["WeiHeXiaoMoney"].FormattedValue);//未核销金额
+                if (benciHeXiaoMoney > weiHeXiaoMoney)
+                {
+                    MessageBox.Show("本次核销金额不能大于未核销金额！");
+                    return;
+                }
+                decimal weishouMoney = weiHeXiaoMoney - benciHeXiaoMoney;//未收金额
+                gr.Cells["WeuFuMoney"].Value = weishouMoney;
+
+                //逐行统计数据总数
+                decimal tempDanJuMoney = 0;
+                decimal tempYiHeXiaoMoney = 0;
+                decimal tempWeiHeXiaoMoney = 0;
+                decimal tempBenCiHeXiao = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempDanJuMoney += Convert.ToDecimal(tempGR["danjuMoney"].FormattedValue);
+                    tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["YiHeXiaoMoney"].FormattedValue);
+                    tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["WeiHeXiaoMoney"].FormattedValue);
+                    tempBenCiHeXiao += Convert.ToDecimal(tempGR["BenCiHeXiao"].FormattedValue);
+                }
+                _danJuMoney = tempDanJuMoney;
+                _yiHeXiaoMoney = tempYiHeXiaoMoney;
+                _weiHeXiaoMoney = tempWeiHeXiaoMoney;
+                _benCiHeXiaoMoney = tempBenCiHeXiao;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["danjuMoney"].Value = _danJuMoney.ToString();
+                gr["YiHeXiaoMoney"].Value = _yiHeXiaoMoney.ToString();
+                gr["WeiHeXiaoMoney"].Value = _weiHeXiaoMoney.ToString();
+                gr["BenCiHeXiao"].Value = _benCiHeXiaoMoney.ToString();
+
+                txtBenCiHeXiao.Text = _benCiHeXiaoMoney.ToString();
+                txtBenCiShouKuan.Text = _benCiHeXiaoMoney.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:尝试创建销售订单数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
-                return;
+                MessageBox.Show("错误代码：-统计出错！请检查：" + ex.Message);
             }
+        }
 
-            try
+        private void txtDiscount_Validated(object sender, EventArgs e)
+        {
+            decimal zhekou = Convert.ToDecimal(txtDiscount.Text);
+            decimal hexiao = Convert.ToDecimal(txtBenCiHeXiao.Text);
+            if (zhekou > 100 || zhekou < 0)
             {
-                ////获得商品列表数据,准备传给base层新增数据
-                //GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                //GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                //int i = 0;
-                //DateTime nowDataTime = DateTime.Now;
-                //foreach (GridRow gr in grs)
-                //{
-                //    if (gr["name"].Value != null)
-                //    {
-
-                //        i++;
-                //        SalesOrderDetail salesorderDetail = new SalesOrderDetail();
-                //        salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
-                //        salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
-                //        salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-                //        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
-                //        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价
-                //        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
-                //        salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
-                //        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
-                //        salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
-                //        salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
-                //        salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                //        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
-
-                //        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                //        salesorderList.Add(salesorderDetail);
-                //    }
-                //}
+                MessageBox.Show("折扣率不能大于100或者不能小于0！");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
-                return;
-            }
-
-            ////增加一条销售订单和销售订单详细数据
-            //object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);
-            //if (saleOrderResult != null)
-            //{
-            //    MessageBox.Show("新增并审核销售订单数据成功", "销售订单温馨提示");
-            //    InitForm();
-            //    this.picShengHe.Image = Properties.Resources.审核;
-            //}
+            decimal bencishoukuan = hexiao * (zhekou / 100);
+            txtBenCiShouKuan.Text = bencishoukuan.ToString();
         }
     }
 }

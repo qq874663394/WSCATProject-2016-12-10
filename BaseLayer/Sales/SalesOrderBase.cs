@@ -82,9 +82,9 @@ namespace BaseLayer.Sales
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail.Append("insert into[T_SalesOrderDetail] (");
 
-                sqlDetail.Append("materialCode,materialNumber,materialPrice,discountRate,VATRate,discountMoney,tax,taxTotal,remark,deliveryNumber,mainCode,code)");
+                sqlDetail.Append("materialCode,materialNumber,materialPrice,materialMoney,discountRate,VATRate,discountMoney,tax,taxTotal,remark,deliveryNumber,mainCode,code)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append("@materialCode,@materialNumber,@materialPrice,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code)");
+                sqlDetail.Append("@materialCode,@materialNumber,@materialPrice,@materialMoney,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code)");
                 sqlDetail.Append(";select @@IDENTITY");
 
                 foreach (var item in modelDetail)
@@ -94,6 +94,7 @@ namespace BaseLayer.Sales
                     new SqlParameter("@materialCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@materialNumber", SqlDbType.Decimal,9),
                     new SqlParameter("@materialPrice", SqlDbType.Decimal,9),
+                    new SqlParameter("@materialMoney", SqlDbType.Decimal,9),
                     new SqlParameter("@discountRate", SqlDbType.Decimal,9),
                     new SqlParameter("@VATRate", SqlDbType.Decimal,9),
                     new SqlParameter("@discountMoney", SqlDbType.Decimal,9),
@@ -107,15 +108,16 @@ namespace BaseLayer.Sales
                     spsDetail[0].Value = item.materialCode;
                     spsDetail[1].Value = item.materialNumber;
                     spsDetail[2].Value = item.materialPrice;
-                    spsDetail[3].Value = item.discountRate;
-                    spsDetail[4].Value = item.VATRate;
-                    spsDetail[5].Value = item.discountMoney;
-                    spsDetail[6].Value = item.tax;
-                    spsDetail[7].Value = item.taxTotal;
-                    spsDetail[8].Value = item.remark;
-                    spsDetail[9].Value = item.deliveryNumber;
-                    spsDetail[10].Value = item.mainCode;
-                    spsDetail[11].Value = item.code;
+                    spsDetail[3].Value = item.materialMoney;
+                    spsDetail[4].Value = item.discountRate;
+                    spsDetail[5].Value = item.VATRate;
+                    spsDetail[6].Value = item.discountMoney;
+                    spsDetail[7].Value = item.tax;
+                    spsDetail[8].Value = item.taxTotal;
+                    spsDetail[9].Value = item.remark;
+                    spsDetail[10].Value = item.deliveryNumber;
+                    spsDetail[11].Value = item.mainCode;
+                    spsDetail[12].Value = item.code;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -186,6 +188,7 @@ namespace BaseLayer.Sales
                 sqlDetail.Append("materialCode=@materialCode,");
                 sqlDetail.Append("materialNumber=@materialNumber,");
                 sqlDetail.Append("materialPrice=@materialPrice,");
+                sqlDetail.Append("materialMoney=@materialMoney,");
                 sqlDetail.Append("discountRate=@discountRate,");
                 sqlDetail.Append("VATRate=@VATRate,");
                 sqlDetail.Append("discountMoney=@discountMoney,");
@@ -202,6 +205,7 @@ namespace BaseLayer.Sales
                     new SqlParameter("@materialCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@materialNumber", SqlDbType.Decimal,9),
                     new SqlParameter("@materialPrice", SqlDbType.Decimal,9),
+                    new SqlParameter("@materialMoney", SqlDbType.Decimal,9),
                     new SqlParameter("@discountRate", SqlDbType.Decimal,9),
                     new SqlParameter("@VATRate", SqlDbType.Decimal,9),
                     new SqlParameter("@discountMoney", SqlDbType.Decimal,9),
@@ -215,15 +219,16 @@ namespace BaseLayer.Sales
                     spsDetail[0].Value = item.materialCode;
                     spsDetail[1].Value = item.materialNumber;
                     spsDetail[2].Value = item.materialPrice;
-                    spsDetail[3].Value = item.discountRate;
-                    spsDetail[4].Value = item.VATRate;
-                    spsDetail[5].Value = item.discountMoney;
-                    spsDetail[6].Value = item.tax;
-                    spsDetail[7].Value = item.taxTotal;
-                    spsDetail[8].Value = item.remark;
-                    spsDetail[9].Value = item.deliveryNumber;
-                    spsDetail[10].Value = item.mainCode;
-                    spsDetail[11].Value = item.code;
+                    spsDetail[3].Value = item.materialMoney;
+                    spsDetail[4].Value = item.discountRate;
+                    spsDetail[5].Value = item.VATRate;
+                    spsDetail[6].Value = item.discountMoney;
+                    spsDetail[7].Value = item.tax;
+                    spsDetail[8].Value = item.taxTotal;
+                    spsDetail[9].Value = item.remark;
+                    spsDetail[10].Value = item.deliveryNumber;
+                    spsDetail[11].Value = item.mainCode;
+                    spsDetail[12].Value = item.code;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -301,7 +306,7 @@ wm.materialCode=bm.code";
                 --审核日期examineDate
                 so.checkState as checkState
                  from T_SalesOrder so,T_BaseClient client where so.clientCode=client.code";
-                  dt = DbHelperSQL.Query(sql).Tables[0];
+            dt = DbHelperSQL.Query(sql).Tables[0];
             return dt;
         }
     }
