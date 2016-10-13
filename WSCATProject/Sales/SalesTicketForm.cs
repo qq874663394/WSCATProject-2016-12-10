@@ -608,7 +608,7 @@ namespace WSCATProject.Sales
                         salesDetail.reserved1 = "";//保留字段
                         salesDetail.reserved2 = "";//保留字段
                         salesDetail.ReturnsNumber = 0.0M;//退货数量
-                        salesDetail.salesMainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        salesDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
                         salesDetail.sourceCode = XYEEncoding.strCodeHex(_salesOrderMainCode);//销售订单code
                         salesDetail.storageCode = XYEEncoding.strCodeHex( _storgeCode);//仓库code
                         salesDetail.storageName =gr["gridColumnStock"].Value==null?"":XYEEncoding.strCodeHex(gr["gridColumnStock"].Value) ;//仓库名称

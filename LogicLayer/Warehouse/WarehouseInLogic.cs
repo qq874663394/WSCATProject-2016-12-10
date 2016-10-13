@@ -306,17 +306,14 @@ namespace LogicLayer
                 {
                     throw new Exception("-2");
                 }
-                foreach (var item in list)
+                if (Exists(warehouseIn.code) == true)//判断此入库单是否存在
                 {
+                    result = warehouseInBase.updateByCode(warehouseIn.code);
                 }
-                //if (Exists(warehouseIn.code) == true)//判断此入库单是否存在
-                //{
-                //    result = warehouseInBase.updateByCode(warehouseIn.code);
-                //}
-                //else
-                //{
-                //    result = Convert.ToInt32(AddWarehouseOrToDetail(warehouseIn, list));
-                //}
+                else
+                {
+                    result = Convert.ToInt32(AddWarehouseOrToDetail(warehouseIn, list));
+                }
                 if (result <= 0)
                 {
                     throw new Exception("-3");
