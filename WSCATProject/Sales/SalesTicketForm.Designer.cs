@@ -66,8 +66,6 @@
             this.comboBoxType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboBoxfapiaotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
@@ -433,7 +431,6 @@
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxBotton2.Location = new System.Drawing.Point(98, 85);
-            this.labtextboxBotton2.ReadOnly = true;
             this.labtextboxBotton2.Size = new System.Drawing.Size(135, 16);
             // 
             // ltxtbSalsMan
@@ -457,7 +454,7 @@
             // 
             // labBotton2
             // 
-            this.labBotton2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.labBotton2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labBotton2.Location = new System.Drawing.Point(33, 87);
             this.labBotton2.Text = "结算方式：";
             // 
@@ -543,7 +540,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(286, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
@@ -573,11 +570,10 @@
             this.txtBank.Border.Class = "SideNavStrip";
             this.txtBank.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBank.DisabledBackColor = System.Drawing.Color.White;
-            this.txtBank.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtBank.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtBank.Location = new System.Drawing.Point(345, 85);
             this.txtBank.Name = "txtBank";
             this.txtBank.PreventEnterBeep = true;
-            this.txtBank.ReadOnly = true;
             this.txtBank.Size = new System.Drawing.Size(135, 16);
             this.txtBank.TabIndex = 56;
             // 
@@ -853,9 +849,7 @@
             this.comboBoxType.ItemHeight = 15;
             this.comboBoxType.Items.AddRange(new object[] {
             this.comboItem1,
-            this.comboItem2,
-            this.comboItem3,
-            this.comboItem4});
+            this.comboItem2});
             this.comboBoxType.Location = new System.Drawing.Point(98, 12);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(135, 21);
@@ -870,14 +864,6 @@
             // comboItem2
             // 
             this.comboItem2.Text = "销售退货";
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "委托退货";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "委托结算退货";
             // 
             // comboBoxfapiaotype
             // 
@@ -895,6 +881,7 @@
             this.comboBoxfapiaotype.Size = new System.Drawing.Size(135, 21);
             this.comboBoxfapiaotype.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxfapiaotype.TabIndex = 71;
+            this.comboBoxfapiaotype.SelectedIndexChanged += new System.EventHandler(this.comboBoxfapiaotype_SelectedIndexChanged);
             // 
             // comboItem5
             // 
@@ -942,6 +929,7 @@
             this.Text = "SalesTicketForm";
             this.Activated += new System.EventHandler(this.SalesTicketForm_Activated);
             this.Load += new System.EventHandler(this.SalesTicketForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesTicketForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SalesTicketForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1009,8 +997,6 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxType;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.Editors.ComboItem comboItem3;
-        private DevComponents.Editors.ComboItem comboItem4;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxfapiaotype;
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.Editors.ComboItem comboItem6;

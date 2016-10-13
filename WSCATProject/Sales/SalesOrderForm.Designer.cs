@@ -679,6 +679,7 @@
             this.Text = "销售订单";
             this.Activated += new System.EventHandler(this.SalesOrderForm_Activated);
             this.Load += new System.EventHandler(this.SalesOrderForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesOrderForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SalesOrderForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
