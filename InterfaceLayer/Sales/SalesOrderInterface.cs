@@ -20,9 +20,9 @@ namespace InterfaceLayer.Sales
         {
             return _dal.AddOrUpdate(model, modelDetail);
         }
-        public DataTable GetSalesJoinSearch()
+        public DataTable GetSalesJoinSearch(string clientcode)
         {
-            return _dal.GetSalesJoinSearch();
+            return _dal.GetSalesJoinSearch(clientcode);
         }
         public DataTable GetSalesDetailJoinSearch()
         {

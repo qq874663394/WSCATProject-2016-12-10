@@ -53,77 +53,51 @@ namespace WSCATProject.Sales
             //表格内容居中
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
 
             SalesOrderInterface salesOrder = new SalesOrderInterface();
 
-            DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch());
+            DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch(XYEEncoding.strCodeHex(_clientCode)));
             DataTable dt2 = ch.DataTableReCoding(salesOrder.GetSalesDetailJoinSearch());
             for (int i = 0; i < dt1.Rows.Count; i++)
             {
-                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
-                GridRow gr = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                
                 for (int j = 0; j < dt2.Rows.Count; j++)
                 {
                     if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
                     {
                         #region 绑定列
-                        // gr.Cells["JiaoHuoMethod"].Value = dt2.Rows[j]["code"] + "++" + dt2.Rows[j]["mainCode"];
-                        //gr.Cells["DanJuDate"].Value =
-                        //gr.Cells["ClientCode"].Value =
-                        //gr.Cells["ClientName"].Value =
-                        //gr.Cells["LinkMan"].Value =
-                        //gr.Cells["MobilPhone"].Value =
-                        //gr.Cells["fax"].Value =
-                        //gr.Cells["JiaoHuoMethod"].Value =
-                        //gr.Cells["JiaoHuoAddress"].Value =
-                        //gr.Cells["JiaoHuoDate"].Value =
-                        //gr.Cells["YiShouDingJin"].Value =
-                        //gr.Cells["SaleMan"].Value =
-                        //gr.Cells["makeMan"].Value =
-                        //gr.Cells["shengheMan"].Value =
-                        //gr.Cells["ZhaiYao"].Value =
-                        //gr.Cells["shengheState"].Value =
-                        //+dt2.Rows[j]["mainCode"])
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["mainCode"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["materialDaima"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["name"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["model"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["barCode"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["unit"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["number"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["materialPrice"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["discountMoney"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["discountRate"]));
-                        gr.Cells.Add(new GridCell(dt2.Rows[j]["discountMoney"]));
+                        superGridControlShangPing.PrimaryGrid.Rows.Insert(i, new GridRow(
+                            dt1.Rows[i]["code"],
+                            dt1.Rows[i]["date"],
+                            dt1.Rows[i]["name"],
+                            dt1.Rows[i]["mobilephone"],
+                            dt1.Rows[i]["fax"],
+                            dt1.Rows[i]["deliversMethod"],
+                            dt1.Rows[i]["deliversDate"],
+                            dt1.Rows[i]["makeMan"],
+                            dt1.Rows[i]["examine"],
+                            dt1.Rows[i]["remark"],
+                            dt1.Rows[i]["checkState"],
+                            dt2.Rows[j]["code"],
+                            dt2.Rows[j]["materialDaima"],
+                            dt2.Rows[j]["name"],
+                            dt2.Rows[j]["model"],
+                            dt2.Rows[j]["barCode"],
+                            dt2.Rows[j]["unit"],
+                            dt2.Rows[j]["number"],
+                            dt2.Rows[j]["materialPrice"],
+                            dt2.Rows[j]["materialMoney"],
+                            dt2.Rows[j]["discountRate"],
+                            dt2.Rows[j]["discountMoney"],
+                            dt2.Rows[j]["deliveryNumber"],
+                            dt2.Rows[j]["allNumber"]
+                            ));
 
-
-
-                        //dt2.Rows[j]["materialDaima"];
-                        //dt2.Rows[j]["name"];
-                        //dt2.Rows[j]["model"];
-                        //dt2.Rows[j]["barCode"];
-                        //dt2.Rows[j]["unit"];
-                        //dt2.Rows[j]["number"];
-                        //dt2.Rows[j]["materialPrice"];
-                        //dt2.Rows[j]["discountMoney"];
-                        //dt2.Rows[j]["discountRate"];
-                        //dt2.Rows[j]["discountMoney"];
-                        ////gr.Cells["shiJiPrice"].Value =
-                        //gr.Cells["taxRate"].Value = dt2.Rows[j]["tax"];
-                        ////gr.Cells["taxMoney"].Value =
-                        ////gr.Cells["priceANDtax"].Value =
-                        ////gr.Cells["shiJiTaxPrice"].Value =
-                        //gr.Cells["fahuoNumber"].Value = dt2.Rows[j]["deliveryNumber"];
-                        //gr.Cells["ZongKuCun"].Value = dt2.Rows[j]["allNumber"];
-                        ////gr.Cells["CaiGouZaiDingNumber"].Value =
-                        ////gr.Cells["SaleZaiDingNumber"].Value =
-                        ////gr.Cells["materialRemark"].Value =
                         #endregion
-                       
                     }
                     else
                     {
-                        
                         continue;
                     }
                 }
@@ -196,5 +170,64 @@ namespace WSCATProject.Sales
         }
         #endregion
 
+        /// <summary>
+        /// 快捷方式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SalesOrderReportForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //刷新
+            if (e.KeyCode == Keys.F5)
+            {
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 行的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
+        {
+            if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
+            {
+                SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
+                if (col.Count > 0)
+                {
+                    GridRow row = col[0] as GridRow;
+                    string mainCode = row.Cells["DanJuCode"].Value.ToString();
+                    string code = row.Cells["salesDetilecode"].Value.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("请先选择要操作的行！");
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

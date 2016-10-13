@@ -13,6 +13,7 @@ namespace Model.Sales
         private string _materialcode;
         private decimal? _materialnumber;
         private decimal? _materialprice;
+        private decimal? _materialmoney;
         private decimal? _discountrate;
         private decimal? _vatrate;
         private decimal? _discountmoney;
@@ -53,6 +54,14 @@ namespace Model.Sales
         {
             set { _materialprice = value; }
             get { return _materialprice; }
+        }
+        /// <summary>
+        /// 单价
+        /// </summary>
+        public decimal? materialMoney
+        {
+            set { _materialmoney = value; }
+            get { return _materialmoney; }
         }
         /// <summary>
         /// 折扣率

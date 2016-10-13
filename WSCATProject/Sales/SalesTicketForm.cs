@@ -429,7 +429,7 @@ namespace WSCATProject.Sales
                         salesDetail.money = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//金额
                         salesDetail.needNumber = gr[""].Value == null ? 0.0M : Convert.ToDecimal(gr[""].Value);//需求数量
                         salesDetail.productionDate = null;//生产采购日期
-                        salesDetail.qualityDate = null;//保质期
+                        salesDetail.qualityDate = gr[""].Value== null?0.0M:Convert.ToDecimal(gr[""].Value);//保质期
                         salesDetail.remark = gr[""].Value == null ? "" : XYEEncoding.strCodeHex(gr[""].Value.ToString());//备注
                         salesDetail.reserved1 = "";//保留字段
                         salesDetail.reserved2 = "";//保留字段
