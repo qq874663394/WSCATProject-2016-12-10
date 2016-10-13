@@ -61,18 +61,13 @@ namespace WSCATProject.Sales
             for (int i = 0; i < dt1.Rows.Count; i++)
             {
                 superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[i].ItemArray));
-                #region 绑定列
-                //gr.Cells["ColumnsName"].Value = dt1.Rows[i]["ColumnsName"];
-                //superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt1.Rows[j].ItemArray));
-                #endregion
                 GridRow gr = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
                 for (int j = 0; j < dt2.Rows.Count; j++)
                 {
                     if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
                     {
-                        //superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt2.Rows[j].ItemArray));
                         #region 绑定列
-                       // gr.Cells["JiaoHuoMethod"].Value = dt2.Rows[j]["code"] + "++" + dt2.Rows[j]["mainCode"];
+                        // gr.Cells["JiaoHuoMethod"].Value = dt2.Rows[j]["code"] + "++" + dt2.Rows[j]["mainCode"];
                         //gr.Cells["DanJuDate"].Value =
                         //gr.Cells["ClientCode"].Value =
                         //gr.Cells["ClientName"].Value =
@@ -88,30 +83,47 @@ namespace WSCATProject.Sales
                         //gr.Cells["shengheMan"].Value =
                         //gr.Cells["ZhaiYao"].Value =
                         //gr.Cells["shengheState"].Value =
-                        gr.Cells["materialDaiMa"].Value = dt2.Rows[j]["materialDaima"];
-                        gr.Cells["materialName"].Value = dt2.Rows[j]["name"];
-                        gr.Cells["materialModel"].Value = dt2.Rows[j]["model"];
-                        gr.Cells["materialBarCode"].Value = dt2.Rows[j]["barCode"];
-                        gr.Cells["materialUnit"].Value = dt2.Rows[j]["unit"];
-                        gr.Cells["materialNumber"].Value = dt2.Rows[j]["number"];
-                        gr.Cells["materialPrice"].Value = dt2.Rows[j]["materialPrice"];
-                        gr.Cells["materialMoney"].Value = dt2.Rows[j]["discountMoney"];
-                        gr.Cells["discountRate"].Value = dt2.Rows[j]["discountRate"];
-                        gr.Cells["discountMoney"].Value = dt2.Rows[j]["discountMoney"];
-                        //gr.Cells["shiJiPrice"].Value =
-                        gr.Cells["taxRate"].Value = dt2.Rows[j]["tax"];
-                        //gr.Cells["taxMoney"].Value =
-                        //gr.Cells["priceANDtax"].Value =
-                        //gr.Cells["shiJiTaxPrice"].Value =
-                        gr.Cells["fahuoNumber"].Value = dt2.Rows[j]["deliveryNumber"];
-                        gr.Cells["ZongKuCun"].Value = dt2.Rows[j]["allNumber"];
-                        //gr.Cells["CaiGouZaiDingNumber"].Value =
-                        //gr.Cells["SaleZaiDingNumber"].Value =
-                        //gr.Cells["materialRemark"].Value =
+                        //+dt2.Rows[j]["mainCode"])
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["mainCode"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["materialDaima"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["name"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["model"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["barCode"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["unit"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["number"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["materialPrice"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["discountMoney"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["discountRate"]));
+                        gr.Cells.Add(new GridCell(dt2.Rows[j]["discountMoney"]));
+
+
+
+                        //dt2.Rows[j]["materialDaima"];
+                        //dt2.Rows[j]["name"];
+                        //dt2.Rows[j]["model"];
+                        //dt2.Rows[j]["barCode"];
+                        //dt2.Rows[j]["unit"];
+                        //dt2.Rows[j]["number"];
+                        //dt2.Rows[j]["materialPrice"];
+                        //dt2.Rows[j]["discountMoney"];
+                        //dt2.Rows[j]["discountRate"];
+                        //dt2.Rows[j]["discountMoney"];
+                        ////gr.Cells["shiJiPrice"].Value =
+                        //gr.Cells["taxRate"].Value = dt2.Rows[j]["tax"];
+                        ////gr.Cells["taxMoney"].Value =
+                        ////gr.Cells["priceANDtax"].Value =
+                        ////gr.Cells["shiJiTaxPrice"].Value =
+                        //gr.Cells["fahuoNumber"].Value = dt2.Rows[j]["deliveryNumber"];
+                        //gr.Cells["ZongKuCun"].Value = dt2.Rows[j]["allNumber"];
+                        ////gr.Cells["CaiGouZaiDingNumber"].Value =
+                        ////gr.Cells["SaleZaiDingNumber"].Value =
+                        ////gr.Cells["materialRemark"].Value =
                         #endregion
+                       
                     }
                     else
                     {
+                        
                         continue;
                     }
                 }
