@@ -551,6 +551,8 @@
             this.txtBenCiHeXiao.PreventEnterBeep = true;
             this.txtBenCiHeXiao.Size = new System.Drawing.Size(140, 16);
             this.txtBenCiHeXiao.TabIndex = 56;
+            this.txtBenCiHeXiao.TextChanged += new System.EventHandler(this.txtBenCiHeXiao_TextChanged);
+            this.txtBenCiHeXiao.Leave += new System.EventHandler(this.txtDiscount_Leave);
             // 
             // cboJieSuanMethod
             // 
@@ -602,6 +604,8 @@
             this.txtBenCiShouKuan.PreventEnterBeep = true;
             this.txtBenCiShouKuan.Size = new System.Drawing.Size(140, 16);
             this.txtBenCiShouKuan.TabIndex = 59;
+            this.txtBenCiShouKuan.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
+            this.txtBenCiShouKuan.Leave += new System.EventHandler(this.txtDiscount_Leave);
             // 
             // txtRemark
             // 
@@ -638,6 +642,8 @@
             this.txtDiscount.PreventEnterBeep = true;
             this.txtDiscount.Size = new System.Drawing.Size(140, 16);
             this.txtDiscount.TabIndex = 62;
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
+            this.txtDiscount.Leave += new System.EventHandler(this.txtDiscount_Leave);
             this.txtDiscount.Validated += new System.EventHandler(this.txtDiscount_Validated);
             // 
             // pictureBoxBarCode

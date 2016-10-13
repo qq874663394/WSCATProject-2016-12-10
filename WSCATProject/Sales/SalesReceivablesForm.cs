@@ -1,4 +1,5 @@
-﻿using DevComponents.DotNetBar.SuperGrid;
+﻿using DevComponents.DotNetBar.Controls;
+using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
@@ -516,7 +517,8 @@ namespace WSCATProject.Sales
                 financecollection.isClear = 1;
                 financecollection.updatedate = DateTime.Now;
                 financecollection.checkState = 0;//审核状态
-                financecollection.financeCollectionState = 0;
+                if()
+                financecollection.financeCollectionState = 0;//单据状态
             }
             catch (Exception ex)
             {
@@ -633,6 +635,12 @@ namespace WSCATProject.Sales
             }
         }
 
+        #region  验证数据
+        /// <summary>
+        /// 整单折扣
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtDiscount_Validated(object sender, EventArgs e)
         {
             decimal zhekou = Convert.ToDecimal(txtDiscount.Text);
@@ -640,9 +648,111 @@ namespace WSCATProject.Sales
             if (zhekou > 100 || zhekou < 0)
             {
                 MessageBox.Show("折扣率不能大于100或者不能小于0！");
+                txtDiscount.Clear();
+                txtDiscount.Text = "100.00";
             }
-            decimal bencishoukuan = hexiao * (zhekou / 100);
+            decimal bencishoukuan = hexiao * (Convert.ToDecimal(txtDiscount.Text) / 100);
             txtBenCiShouKuan.Text = bencishoukuan.ToString();
         }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+            {
+                if (e.KeyChar == '.')
+                {
+                    if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                        e.Handled = true;
+                }
+                else
+                    e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar <= 31)
+                {
+                    e.Handled = false;
+                }
+                else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                {
+                    if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                        e.Handled = true;
+                }
+            }
+        }
+
+        private string skipComma(string str)
+        {
+            string[] ss = null;
+            string strnew = "";
+            if (str == "")
+            {
+                strnew = "0";
+            }
+            else
+            {
+                ss = str.Split(',');
+                for (int i = 0; i < ss.Length; i++)
+                {
+                    strnew += ss[i];
+                }
+            }
+            return strnew;
+        }
+
+        /// <summary>
+        /// 本次核销金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBenCiHeXiao_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBenCiHeXiao.Text))
+                return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(txtBenCiHeXiao.Text));
+            txtBenCiHeXiao.Text = string.Format("{0:#,#}", d);
+            // 确保输入光标在最右侧
+            txtBenCiHeXiao.Select(txtBenCiHeXiao.Text.Length, 0);
+        }
+
+        /// <summary>
+        /// 本次收款金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtBenCiShouKuan.Text))
+                return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(txtBenCiShouKuan.Text));
+            txtBenCiShouKuan.Text = string.Format("{0:#,#}", d);
+
+            // 确保输入光标在最右侧
+            txtBenCiShouKuan.Select(txtBenCiShouKuan.Text.Length, 0);
+        }
+
+        /// <summary>
+        /// 当控件失去焦点时，控件的值精确到两位小数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtDiscount_Leave(object sender, EventArgs e)
+        {
+            //控件失去焦点后将它的值的格式精确到两位小数
+            TextBoxX name = (sender as TextBoxX);
+
+            if (name.Text == "")
+            {
+                name.Text = "0.00";
+            }
+            name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
+        }
+        #endregion
+
     }
 }
