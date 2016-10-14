@@ -622,7 +622,144 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
 
+            SalesMainInterface salesMainInterface = new SalesMainInterface();
+            //入库单
+            SalesMain salesMain = new SalesMain();
+            //入库商品列表
+            List<SalesDetail> salesdetialList = new List<SalesDetail>();
+            try
+            {
+                salesMain.accountCode = XYEEncoding.strCodeHex(txtBank.Text);//结算账户
+                salesMain.checkMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//审核人
+                salesMain.checkState = 1;//审核状态
+                salesMain.clientAddress = "";//客户地址
+                salesMain.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户地址
+                salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
+                salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text);//客户电话
+                salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
+                salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text);//本次收款
+                salesMain.date = dateTimePicker1.Value;//订单日期
+                salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text);//未开票金额
+                salesMain.expireDate = null;//最晚到底时间
+                salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
+                salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
+                salesMain.invoiceType = XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
+                salesMain.isClear = 1;//是否删除
+                salesMain.lastMoney = 0.0M;//剩余尾款
+                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
+                salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
+                salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
+                salesMain.payMathod = XYEEncoding.strCodeHex(cboJiesuanMethod.Text);//付款方式
+                salesMain.payState = 0;//是否付款
+                salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text);//优惠科目
+                salesMain.receiptDate = dateTimePickershoukuan.Value;//收款日期
+                salesMain.remark = XYEEncoding.strCodeHex(txtZhaiYao.Text);//备注
+                salesMain.reserved1 = "";
+                salesMain.reserved2 = "";
+                salesMain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                salesMain.salesOrderState = 0;//发货状态
+                salesMain.type = XYEEncoding.strCodeHex(comboBoxType.Text);//单据状态
+                salesMain.updateDate = DateTime.Now;//更改时间
+                salesMain.urgentState = 0;//加急状态
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:;尝试创建销售单商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                return;
+            }
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnmaterialname"].Value != null)
+                    {
+
+                        i++;
+                        SalesDetail salesDetail = new SalesDetail();
+                        salesDetail.actualNumber = gr["gridColumnfahuoshu"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnfahuoshu"].Value);//实际数量
+                        _faHuoShuLiang = Convert.ToDecimal(salesDetail.actualNumber);
+                        salesDetail.barCode = gr["gridColumntiaoxingma"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
+                        salesDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text + i.ToString());//销售详细ccode
+                        salesDetail.costMoney = gr["gridColumnchengbenjine"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnchengbenjine"].Value);//成本金额
+                        salesDetail.costPrice = gr["gridColumnchengbeidanjia"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnchengbeidanjia"].Value);//成本单价
+                        salesDetail.discount = gr["gridColumnzhekoul"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnzhekoul"].Value);//折扣
+                        salesDetail.discountAfterPrice = gr["gridColumnprice"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnprice"].Value);//折扣前单价
+
+                        salesDetail.discountBeforePrice = 0.0M;//折扣后单价
+
+                        salesDetail.discountMoney = gr["gridColumnzhekoue"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnzhekoue"].Value);//折扣额
+                        salesDetail.effectiveDate = gr["gridColumnyouxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiaoqi"].Value);//有效期至
+
+                        salesDetail.isClear = 1;//是否删除
+                        salesDetail.leviedMoney = gr["gridColumnjiashuiheji"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnjiashuiheji"].Value);//价税合计
+                        salesDetail.needNumber = gr["gridColumndinggoushu"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumndinggoushu"].Value);//需求数量
+                        _dingGouShuLiang = Convert.ToDecimal(salesDetail.needNumber);
+                        if (_dingGouShuLiang - _faHuoShuLiang == 0)
+                        {
+                            salesDetail.lostNumber = 0.0M;//缺少数量
+                        }
+                        else if (_dingGouShuLiang - _faHuoShuLiang > 0)
+                        {
+                            _lostNumber = _dingGouShuLiang - _faHuoShuLiang;
+                            salesDetail.lostNumber = _lostNumber;//缺少数量
+                        }
+                        else if (_dingGouShuLiang - _faHuoShuLiang < 0)
+                        {
+                            _lostNumber = _dingGouShuLiang - _faHuoShuLiang;
+                            salesDetail.lostNumber = _lostNumber;//缺少数量
+                        }
+                        salesDetail.materialCode = gr["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumncode"].Value.ToString());//物料编号
+                        salesDetail.materialDaima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
+                        salesDetail.materialName = gr["gridColumnmaterialname"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialname"].Value.ToString());//物料名称
+                        salesDetail.materiaModel = gr["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//物料规格型号
+                        salesDetail.money = gr["gridColumnmoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
+
+                        salesDetail.productionDate = gr["gridColumnshengchanrqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnshengchanrqi"].Value);//生产采购日期
+
+                        salesDetail.qualityDate = gr["gridColumnbaozhiqi"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnbaozhiqi"].Value);//保质期
+
+                        salesDetail.remark = gr["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());//备注
+                        salesDetail.reserved1 = "";//保留字段
+                        salesDetail.reserved2 = "";//保留字段
+                        salesDetail.ReturnsNumber = 0.0M;//退货数量
+                        salesDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        salesDetail.sourceCode = XYEEncoding.strCodeHex(_salesOrderMainCode);//销售订单code
+                        salesDetail.storageCode = XYEEncoding.strCodeHex(_storgeCode);//仓库code
+                        salesDetail.storageName = gr["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value);//仓库名称
+                        salesDetail.tax = gr["gridColumnshuie"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnshuie"].Value);//税额
+                        salesDetail.unit = gr["gridColumndanwei"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumndanwei"].Value.ToString());//单位
+                        salesDetail.updateDate = DateTime.Now;//更改时间
+                        salesDetail.VATRate = gr["gridColumnzengzhishui"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnzengzhishui"].Value);//增值税税率
+                        salesDetail.zhujima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//助记码
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        salesdetialList.Add(salesDetail);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建销售单详商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                return;
+            }
+
+            //增加一条入库单和入库单详细数据
+            object salesMainResult = salesMainInterface.AddOrUpdateToMainOrDetail(salesMain, salesdetialList);
+            if (salesMainResult != null)
+            {
+                MessageBox.Show("审核和保存销售单数据成功", "销售单温馨提示");
+            }
         }
 
         /// <summary>
@@ -875,8 +1012,7 @@ namespace WSCATProject.Sales
             }
             _Click = 8;
         }
-
-
+        
         /// <summary>
         /// 第一行第一列选择仓库
         /// </summary>
