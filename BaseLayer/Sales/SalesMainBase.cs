@@ -467,7 +467,7 @@ where sm.code = sd.mainCode and checkState = 1 and payState = 0  and clientCode 
             }
             return dt;
         }
-        public DataTable GetExamineAndPay(string clientCode,string salesCode)
+        public DataTable GetExamineAndPay(string clientCode, string salesCode)
         {
             string sql = "";
             DataTable dt = null;
@@ -482,6 +482,14 @@ where sm.code = sd.mainCode and checkState = 1 and payState = 0  and clientCode 
                 throw ex;
             }
             return dt;
+        }
+        public int SetPayState(int payState, string code)
+        {
+            int result = 0;
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(string.Format("DELETE FROM T_FinanceCollection set payState={0} where code={1}", payState, code));
+            result = DbHelperSQL.ExecuteSql(strSql.ToString());
+            return result;
         }
     }
 }
