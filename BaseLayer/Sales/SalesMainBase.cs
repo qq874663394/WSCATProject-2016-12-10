@@ -146,16 +146,16 @@ namespace BaseLayer.Sales
                 hashTable.Add(sqlMain, spsMain);
 
                 sqlDetail.Append("insert into [T_SalesDetail] (");
-                sqlDetail.Append("isClear,code,salesMainCode,storageCode,storageName,materialDaima,materialCode,materialName,materiaModel,unit,needNumber,actualNumber,lostNumber,discountBeforePrice,discount,discountAfterPrice,money,reserved1,reserved2,remark,updateDate,productionDate,qualityDate,effectiveDate,zhujima,barCode,VATRate,discountMoney,tax,leviedMoney,costPrice,costMoney,ReturnsNumber,sourceCode)");
+                sqlDetail.Append("isClear,code,mainCode,storageCode,storageName,materialDaima,materialCode,materialName,materiaModel,unit,needNumber,actualNumber,lostNumber,discountBeforePrice,discount,discountAfterPrice,money,reserved1,reserved2,remark,updateDate,productionDate,qualityDate,effectiveDate,zhujima,barCode,VATRate,discountMoney,tax,leviedMoney,costPrice,costMoney,ReturnsNumber,sourceCode)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append("@isClear,@code,@salesMainCode,@storageCode,@storageName,@materialDaima,@materialCode,@materialName,@materiaModel,@unit,@needNumber,@actualNumber,@lostNumber,@discountBeforePrice,@discount,@discountAfterPrice,@money,@reserved1,@reserved2,@remark,@updateDate,@productionDate,@qualityDate,@effectiveDate,@zhujima,@barCode,@VATRate,@discountMoney,@tax,@leviedMoney,@costPrice,@costMoney,@ReturnsNumber,@sourceCode)");
+                sqlDetail.Append("@isClear,@code,@mainCode,@storageCode,@storageName,@materialDaima,@materialCode,@materialName,@materiaModel,@unit,@needNumber,@actualNumber,@lostNumber,@discountBeforePrice,@discount,@discountAfterPrice,@money,@reserved1,@reserved2,@remark,@updateDate,@productionDate,@qualityDate,@effectiveDate,@zhujima,@barCode,@VATRate,@discountMoney,@tax,@leviedMoney,@costPrice,@costMoney,@ReturnsNumber,@sourceCode)");
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
                     {
                         new SqlParameter("@isClear", SqlDbType.Int,4),
                         new SqlParameter("@code", SqlDbType.NVarChar,45),
-                        new SqlParameter("@salesMainCode", SqlDbType.NVarChar,45),
+                        new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
                         new SqlParameter("@storageCode", SqlDbType.NVarChar,45),
                         new SqlParameter("@storageName", SqlDbType.NVarChar,60),
                         new SqlParameter("@materialDaima", SqlDbType.NVarChar,45),
@@ -320,7 +320,7 @@ namespace BaseLayer.Sales
 
                 sqlDetail.Append("update [T_SalesDetail] set ");
                 sqlDetail.Append("isClear=@isClear,");
-                sqlDetail.Append("salesMainCode=@salesMainCode,");
+                sqlDetail.Append("mainCode=@mainCode,");
                 sqlDetail.Append("storageCode=@storageCode,");
                 sqlDetail.Append("storageName=@storageName,");
                 sqlDetail.Append("materialDaima=@materialDaima,");
