@@ -3,6 +3,7 @@ using DevComponents.DotNetBar.SuperGrid;
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Sales;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -87,6 +88,23 @@ namespace WSCATProject.Sales
         /// 统计本次核销金额
         /// </summary>
         private decimal _benCiHeXiaoMoney;
+
+        List<string> _salesMainList = new List<string>();
+        /// <summary>
+        /// 销售单code
+        /// </summary>
+        private string _salesMainCode;
+        public string SalesMainCode
+        {
+            get { return _salesMainCode; }
+            set { _salesMainCode = value; }
+        }
+
+        public List<string> SalesMainList
+        {
+            get { return _salesMainList;  }
+            set  { _salesMainList = value; }
+        }
         #endregion
 
         #region 初始化数据
@@ -355,13 +373,65 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
-            if (txtBank.Text == null || txtBank.Text == "" || _clientCode==null || _clientCode=="")
+            if (txtClient.Text == null || txtClient.Text == "" || _clientCode == null || _clientCode == "")
             {
                 MessageBox.Show("请先选择客户：");
                 return;
             }
+         
+            SalesTicketReportForm salesTickeReport = new SalesTicketReportForm();
+            salesTickeReport.ClientCode = _clientCode;
+            salesTickeReport.ShowDialog(this);
+            SalesMainInterface salesInterface = new SalesMainInterface();
+            if (_salesMainCode == null)
+            {
+                return;
+            }
+            GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+            GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            DataTable dt = ch.DataTableReCoding( salesInterface.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode), XYEEncoding.strCodeHex(_salesMainCode)));
 
+            superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt.Rows[0]["code"],
+           dt.Rows[0]["date"],
+           dt.Rows[0]["type"],
+           dt.Rows[0]["oddAllMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddAllMoney"],
+           dt.Rows[0]["firstMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["firstMoney"],
+           dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+             0.0M,
+             0.0M,
+           dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+           ));
+            //逐行统计数据总数
+            decimal tempDanJuMoney = 0;
+            decimal tempYiHeXiaoMoney = 0;
+            decimal tempWeiHeXiaoMoney = 0;
+            decimal tempBenCiHeXiao = 0;
+            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                tempDanJuMoney += Convert.ToDecimal(tempGR["danjuMoney"].FormattedValue);
+                tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["YiHeXiaoMoney"].FormattedValue);
+                tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["WeiHeXiaoMoney"].FormattedValue);
+                tempBenCiHeXiao += Convert.ToDecimal(tempGR["BenCiHeXiao"].FormattedValue);
+            }
+            _danJuMoney = tempDanJuMoney;
+            _yiHeXiaoMoney = tempYiHeXiaoMoney;
+            _weiHeXiaoMoney = tempWeiHeXiaoMoney;
+            _benCiHeXiaoMoney = tempBenCiHeXiao;
+            grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+            grid["danjuMoney"].Value = _danJuMoney.ToString();
+            grid["YiHeXiaoMoney"].Value = _yiHeXiaoMoney.ToString();
+            grid["WeiHeXiaoMoney"].Value = _weiHeXiaoMoney.ToString();
+            grid["BenCiHeXiao"].Value = _benCiHeXiaoMoney.ToString();
 
+            foreach (GridRow g in grs)
+            {
+                if (g.Cells["yuandanCode"].Value==null||g.Cells["yuandanCode"].Value.ToString()=="合计")
+                {
+                    continue;
+                }
+                SalesMainList.Add(g.Cells["yuandanCode"].Value.ToString());
+            }
         }
 
         /// <summary>
