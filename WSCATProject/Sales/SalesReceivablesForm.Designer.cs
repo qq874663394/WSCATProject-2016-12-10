@@ -454,6 +454,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BenCiHeXiao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeuFuMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 359);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             // 
@@ -659,6 +660,7 @@
             // 
             // yuandanCode
             // 
+            this.yuandanCode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.yuandanCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yuandanCode.HeaderText = "源单编号";
             this.yuandanCode.Name = "yuandanCode";
@@ -667,6 +669,7 @@
             // 
             // danjuDate
             // 
+            this.danjuDate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.danjuDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.danjuDate.HeaderText = "单据日期";
             this.danjuDate.Name = "danjuDate";
@@ -674,6 +677,7 @@
             // 
             // yuandanType
             // 
+            this.yuandanType.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.yuandanType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yuandanType.HeaderText = "源单类型";
             this.yuandanType.Name = "yuandanType";
@@ -687,6 +691,7 @@
             this.danjuMoney.HeaderText = "单据金额";
             this.danjuMoney.Name = "danjuMoney";
             this.danjuMoney.ReadOnly = true;
+            this.danjuMoney.Width = 130;
             // 
             // YiHeXiaoMoney
             // 
@@ -695,6 +700,7 @@
             this.YiHeXiaoMoney.HeaderText = "已核销金额";
             this.YiHeXiaoMoney.Name = "YiHeXiaoMoney";
             this.YiHeXiaoMoney.ReadOnly = true;
+            this.YiHeXiaoMoney.Width = 130;
             // 
             // WeiHeXiaoMoney
             // 
@@ -703,6 +709,7 @@
             this.WeiHeXiaoMoney.HeaderText = "未核销金额";
             this.WeiHeXiaoMoney.Name = "WeiHeXiaoMoney";
             this.WeiHeXiaoMoney.ReadOnly = true;
+            this.WeiHeXiaoMoney.Width = 130;
             // 
             // BenCiHeXiao
             // 
@@ -714,6 +721,7 @@
             // 
             // remark
             // 
+            this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
@@ -724,6 +732,7 @@
             this.WeuFuMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.WeuFuMoney.HeaderText = "未付金额";
             this.WeuFuMoney.Name = "WeuFuMoney";
+            this.WeuFuMoney.Visible = false;
             // 
             // SalesReceivablesForm
             // 

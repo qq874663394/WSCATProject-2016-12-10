@@ -65,6 +65,10 @@ namespace WSCATProject.Sales
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
                 superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
 
+                if (_clientCode==null)
+                {
+                    return;
+                }
                 SalesOrderInterface salesOrder = new SalesOrderInterface();
 
                 DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch(XYEEncoding.strCodeHex(_clientCode)));

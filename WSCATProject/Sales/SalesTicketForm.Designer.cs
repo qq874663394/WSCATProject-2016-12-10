@@ -226,11 +226,13 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.labtextboxTop7.ForeColor = System.Drawing.SystemColors.Desktop;
             this.labtextboxTop7.Location = new System.Drawing.Point(597, 85);
-            this.labtextboxTop7.ReadOnly = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(135, 16);
             this.labtextboxTop7.Text = "0.00";
+            this.labtextboxTop7.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
+            this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBenCiShouKuan_KeyPress);
+            this.labtextboxTop7.Leave += new System.EventHandler(this.txtBenCiShouKuan_Leave);
             // 
             // labtextboxTop9
             // 
@@ -244,7 +246,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.labtextboxTop9.ForeColor = System.Drawing.Color.Gray;
             this.labtextboxTop9.Location = new System.Drawing.Point(844, 85);
             this.labtextboxTop9.ReadOnly = true;
             this.labtextboxTop9.Size = new System.Drawing.Size(135, 16);

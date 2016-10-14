@@ -166,15 +166,16 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControlShangPing.PrimaryGrid.GridLines = DevComponents.DotNetBar.SuperGrid.GridLines.None;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 435);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
+            this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
             // 
             // BillType
             // 
             this.BillType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillType.DataPropertyName = "type";
             this.BillType.HeaderText = "单据类型";
             this.BillType.Name = "BillType";
             this.BillType.ReadOnly = true;
@@ -183,6 +184,7 @@
             // BillCode
             // 
             this.BillCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillCode.DataPropertyName = "code";
             this.BillCode.HeaderText = "单据编号";
             this.BillCode.Name = "BillCode";
             this.BillCode.ReadOnly = true;
@@ -191,6 +193,7 @@
             // KeHuName
             // 
             this.KeHuName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.KeHuName.DataPropertyName = "clientName";
             this.KeHuName.HeaderText = "客户名称";
             this.KeHuName.Name = "KeHuName";
             this.KeHuName.ReadOnly = true;
@@ -199,6 +202,7 @@
             // BillDate
             // 
             this.BillDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillDate.DataPropertyName = "date";
             this.BillDate.HeaderText = "单据日期";
             this.BillDate.Name = "BillDate";
             this.BillDate.ReadOnly = true;
@@ -207,6 +211,7 @@
             // ZongMoney
             // 
             this.ZongMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.ZongMoney.DataPropertyName = "oddAllMoney";
             this.ZongMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.ZongMoney.HeaderText = "总金额";
             this.ZongMoney.Name = "ZongMoney";
@@ -216,6 +221,7 @@
             // YiHeXiaoMoney
             // 
             this.YiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.YiHeXiaoMoney.DataPropertyName = "firstMoney";
             this.YiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.YiHeXiaoMoney.HeaderText = "已核销金额";
             this.YiHeXiaoMoney.Name = "YiHeXiaoMoney";
@@ -225,6 +231,7 @@
             // WeiHeXiaoMoney
             // 
             this.WeiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.WeiHeXiaoMoney.DataPropertyName = "lastMoney";
             this.WeiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.WeiHeXiaoMoney.HeaderText = "未核销金额";
             this.WeiHeXiaoMoney.Name = "WeiHeXiaoMoney";
@@ -235,6 +242,7 @@
             // 
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.remark.DataPropertyName = "remark";
             this.remark.HeaderText = "摘要";
             this.remark.Name = "remark";
             this.remark.ReadOnly = true;

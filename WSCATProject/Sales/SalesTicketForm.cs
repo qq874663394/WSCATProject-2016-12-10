@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using InterfaceLayer.Sales;
+using DevComponents.DotNetBar.Controls;
 
 namespace WSCATProject.Sales
 {
@@ -116,6 +117,18 @@ namespace WSCATProject.Sales
         /// 成本金额
         /// </summary>
         private decimal _chengBenJinE;
+        /// <summary>
+        /// 本次收款
+        /// </summary>
+        private decimal _benCiShouKuan;
+        /// <summary>
+        /// 总金额
+        /// </summary>
+        private decimal _zongJinE;
+        /// <summary>
+        /// 未付款金额
+        /// </summary>
+        private decimal _weiFuKuan;
 
         public string SalesOrderMainCode
         {
@@ -562,7 +575,7 @@ namespace WSCATProject.Sales
                 SalesOrderReportForm salesOrder = new SalesOrderReportForm();
                 salesOrder.clientCode = _clientCode;
                 salesOrder.ShowDialog(this);
-                if (_salesOrderMainCode==null)
+                if (_salesOrderMainCode == null)
                 {
                     return;
                 }
@@ -654,10 +667,10 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-双击绑定商品错误"+ex.Message);
+                MessageBox.Show("错误代码：-双击绑定商品错误" + ex.Message);
                 return;
             }
-       
+
             try
             {
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
@@ -869,16 +882,31 @@ namespace WSCATProject.Sales
                 salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text);//客户电话
                 salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
                 salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text);//本次收款
+                _benCiShouKuan = Convert.ToDecimal(salesMain.collectMoney);
                 salesMain.date = dateTimePicker1.Value;//订单日期
                 salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text);//未开票金额
                 salesMain.expireDate = null;//最晚到底时间
                 salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
                 salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
                 salesMain.invoiceType = XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
-                salesMain.isClear = 1;//是否删除
-                salesMain.lastMoney = 0.0M;//剩余尾款
-                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
                 salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
+                _zongJinE = Convert.ToDecimal(salesMain.oddAllMoney);
+                salesMain.isClear = 1;//是否删除
+                if (_zongJinE - _benCiShouKuan == 0)
+                {
+                    salesMain.lastMoney = 0.0M;//剩余尾款
+                }
+                else if (_zongJinE - _benCiShouKuan < 0)
+                {
+                    _weiFuKuan = _zongJinE - _benCiShouKuan;
+                    salesMain.lastMoney = _weiFuKuan;//剩余尾款
+                }
+                else if (_zongJinE - _benCiShouKuan > 0)
+                {
+                    _weiFuKuan = _zongJinE - _benCiShouKuan;
+                    salesMain.lastMoney = _weiFuKuan;//剩余尾款
+                }
+                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
                 salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
                 salesMain.payMathod = XYEEncoding.strCodeHex(cboJiesuanMethod.Text);//付款方式
                 salesMain.payState = 0;//是否付款
@@ -1032,7 +1060,7 @@ namespace WSCATProject.Sales
                     GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                     string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
-                    txtBank.Text = Name;                   
+                    txtBank.Text = Name;
                     _bankCode = code;
                     resizablePanel1.Visible = false;
                 }
@@ -1091,7 +1119,7 @@ namespace WSCATProject.Sales
             }
             _Click = 8;
         }
-        
+
         /// <summary>
         /// 第一行第一列选择仓库
         /// </summary>
@@ -1110,7 +1138,7 @@ namespace WSCATProject.Sales
                     _Click = 7;
                     return;
                 }
-                if (e.GridCell.GridColumn.Name== "material")
+                if (e.GridCell.GridColumn.Name == "material")
                 {
                     this.resizablePanelData.Visible = false;
                     ToolStripButtonXuanYuanDan_Click(sender, e);
@@ -1522,6 +1550,86 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
             }
+        }
+
+        private void txtBenCiShouKuan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+            {
+                if (e.KeyChar == '.')
+                {
+                    if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                        e.Handled = true;
+                }
+                else
+                    e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar <= 31)
+                {
+                    e.Handled = false;
+                }
+                else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                {
+                    if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                        e.Handled = true;
+                }
+            }
+        }
+
+        private string skipComma(string str)
+        {
+            string[] ss = null;
+            string strnew = "";
+            if (str == "")
+            {
+                strnew = "0";
+            }
+            else
+            {
+                ss = str.Split(',');
+                for (int i = 0; i < ss.Length; i++)
+                {
+                    strnew += ss[i];
+                }
+            }
+            return strnew;
+        }
+
+        private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(labtextboxTop7.Text))
+                return;
+
+            //// 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
+            labtextboxTop7.Text = string.Format("{0:#,#}", d);
+            //// 确保输入光标在最右侧
+            labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
+
+            if (d > 999999999)
+            {
+                MessageBox.Show("输入的值超过范围！请重新输入");
+                labtextboxTop7.Clear();
+                return;
+            }
+        }
+        /// <summary>
+        /// 当控件失去焦点时，控件的值精确到两位小数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBenCiShouKuan_Leave(object sender, EventArgs e)
+        {
+            //控件失去焦点后将它的值的格式精确到两位小数
+            TextBoxX name = (sender as TextBoxX);
+
+            if (name.Text == "")
+            {
+                name.Text = "0.00";
+            }
+            name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
     }
 }
