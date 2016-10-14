@@ -216,6 +216,7 @@
             // 
             // labtextboxTop7
             // 
+            this.labtextboxTop7.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -225,7 +226,9 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop7.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.labtextboxTop7.Location = new System.Drawing.Point(597, 85);
+            this.labtextboxTop7.ReadOnly = true;
             this.labtextboxTop7.Size = new System.Drawing.Size(135, 16);
             this.labtextboxTop7.Text = "0.00";
             this.labtextboxTop7.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);

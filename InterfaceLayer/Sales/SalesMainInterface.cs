@@ -45,5 +45,9 @@ namespace InterfaceLayer.Sales
         {
             return _dal.GetExamineAndPay(clientCode);
         }
+        public DataTable GetExamineAndPay(string clientCode, string salesCode)
+        {
+            return _dal.GetExamineAndPay(clientCode, salesCode);
+        }
     }
 }

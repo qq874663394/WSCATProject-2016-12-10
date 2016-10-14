@@ -342,7 +342,7 @@ namespace WSCATProject.Sales
                 //绑定事件 双击事填充内容并隐藏列表
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
-                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮 
                 toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
             }
             catch (Exception ex)
