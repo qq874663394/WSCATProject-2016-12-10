@@ -29,6 +29,7 @@ namespace WSCATProject.Sales
         ClientInterface client = new ClientInterface();//客户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
         StorageInterface storage = new StorageInterface();//仓库
+        BankAccountInterface bank = new BankAccountInterface();//结算账户
 
         #endregion
 
@@ -47,6 +48,10 @@ namespace WSCATProject.Sales
         /// </summary>
         private DataTable _AllStorage = null;
         /// <summary>
+        /// 所有结算账户
+        /// </summary>
+        private DataTable _AllBank = null;
+        /// <summary>
         /// 点击的项,1客户  2为销售员  3为仓库   
         /// </summary>
         private int _Click = 0;
@@ -62,6 +67,10 @@ namespace WSCATProject.Sales
         /// 保存仓库Code
         /// </summary>
         private string _storgeCode;
+        /// <summary>
+        /// 保存账户code
+        /// </summary>
+        private string _bankCode;
         /// <summary>
         /// 所有商品列表
         /// </summary>
@@ -174,6 +183,35 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
+        /// 非空验证
+        /// </summary>
+        private bool isNUllValidate()
+        {
+            if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
+            {
+                MessageBox.Show("客户不能为空！");
+                return false;
+            }
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
+            {
+                MessageBox.Show("仓库不能为空！");
+                return false;
+            }
+            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            {
+                MessageBox.Show("商品代码不能为空！");
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("销售员不能为空！");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// 初始化客户
         /// </summary>
         private void InitClient()
@@ -217,7 +255,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dataGridViewFuJia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(460, 160);
+                resizablePanel1.Location = new Point(470, 160);
                 dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
                 resizablePanel1.Visible = true;
             }
@@ -299,6 +337,70 @@ namespace WSCATProject.Sales
             }
         }
 
+        /// <summary>
+        /// 初始化结算账户
+        /// </summary>
+        private void InitBank()
+        {
+            try
+            {
+                if (_Click != 4)
+                {
+                    _Click = 4;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
+
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "账户编号";
+                    dgvc.DataPropertyName = "code";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "openBank";
+                    dgvc.HeaderText = "开户行";
+                    dgvc.DataPropertyName = "openBank";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "bankCard";
+                    dgvc.HeaderText = "银行账户";
+                    dgvc.DataPropertyName = "bankCard";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "cardHolder";
+                    dgvc.HeaderText = "持卡人";
+                    dgvc.DataPropertyName = "cardHolder";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "remark";
+                    dgvc.HeaderText = "备注";
+                    dgvc.DataPropertyName = "remark";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "availableBalance";
+                    dgvc.HeaderText = "可用额度";
+                    dgvc.DataPropertyName = "availableBalance";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    resizablePanel1.Location = new Point(470, 230);
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllBank);
+                    resizablePanel1.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("初始化结算账户数据失败！请检查：" + ex.Message);
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -317,6 +419,8 @@ namespace WSCATProject.Sales
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
+                //结算账户
+                _AllBank = bank.GetList(999, "", false, false);
 
                 //绑定事件 双击事填充内容并隐藏列表
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
@@ -331,6 +435,7 @@ namespace WSCATProject.Sales
 
                 comboBoxType.SelectedIndex = 0;//单据类型
                 comboBoxfapiaotype.SelectedIndex = 0;//发票类型
+                cboJiesuanMethod.SelectedIndex = 0;//结算方式
 
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
@@ -528,10 +633,10 @@ namespace WSCATProject.Sales
         private void ToolStripBtnSave_Click(object sender, EventArgs e)
         {
             //非空验证
-            //if (isNUllValidate() == false)
-            //{
-            //    return;
-            //}
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
 
             SalesMainInterface salesMainInterface = new SalesMainInterface();
             //入库单
@@ -560,7 +665,7 @@ namespace WSCATProject.Sales
                 salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
                 salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
                 salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
-                salesMain.payMathod = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//付款方式
+                salesMain.payMathod = XYEEncoding.strCodeHex(cboJiesuanMethod.Text);//付款方式
                 salesMain.payState = 0;//是否付款
                 salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text);//优惠科目
                 salesMain.receiptDate = dateTimePickershoukuan.Value;//收款日期
@@ -672,7 +777,7 @@ namespace WSCATProject.Sales
             try
             {
                 //客户
-                if (_Click == 1 || _Click == 4)
+                if (_Click == 1 || _Click == 5)
                 {
                     _clientCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//客户code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//客户名称
@@ -686,14 +791,15 @@ namespace WSCATProject.Sales
                     resizablePanel1.Visible = false;
                 }
                 //销售员
-                if (_Click == 2 || _Click == 5)
+                if (_Click == 2 || _Click == 6)
                 {
                     _employeeCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//销售员code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//销售员
                     ltxtbSalsMan.Text = name;
                     resizablePanel1.Visible = false;
                 }
-                if (_Click == 3 || _Click == 6)
+                //仓库
+                if (_Click == 3 || _Click == 7)
                 {
                     GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                     string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
@@ -702,6 +808,16 @@ namespace WSCATProject.Sales
                     gr.Cells["gridColumncode"].Value = code;
                     _ClickStorageList = new KeyValuePair<string, string>(code, Name);
                     _storgeCode = code;
+                    resizablePanel1.Visible = false;
+                }
+                //结算账户
+                if (_Click == 4 || _Click == 8)
+                {
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                    string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
+                    txtBank.Text = Name;                   
+                    _bankCode = code;
                     resizablePanel1.Visible = false;
                 }
             }
@@ -731,7 +847,7 @@ namespace WSCATProject.Sales
             {
                 InitClient();
             }
-            _Click = 4;
+            _Click = 5;
         }
         /// <summary>
         /// 销售员的下拉箭头
@@ -744,8 +860,22 @@ namespace WSCATProject.Sales
             {
                 InitEmployee();
             }
-            _Click = 5;
+            _Click = 6;
         }
+        /// <summary>
+        /// 结算账户下拉箭头
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxBank_Click(object sender, EventArgs e)
+        {
+            if (_Click != 4)
+            {
+                InitBank();
+            }
+            _Click = 8;
+        }
+
 
         /// <summary>
         /// 第一行第一列选择仓库
@@ -762,7 +892,7 @@ namespace WSCATProject.Sales
                     {
                         InitStorage();
                     }
-                    _Click = 6;
+                    _Click = 7;
                     return;
                 }
                 if (e.GridCell.GridColumn.Name == "material")
@@ -809,7 +939,7 @@ namespace WSCATProject.Sales
                 if (this.labtxtDanJuType.Text.Trim() == "")
                 {
                     InitClient();
-                    _Click = 4;
+                    _Click = 5;
                     return;
                 }
                 dataGridViewFuJia.DataSource = null;
@@ -904,6 +1034,75 @@ namespace WSCATProject.Sales
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：-销售员模糊查询数据失败！" + ex.Message);
+            }
+        }
+        /// <summary>
+        /// 结算账户模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBank_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.txtBank.Text.Trim() == "")
+                {
+                    InitBank();
+                    _Click = 8;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "账户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "openBank";
+                dgvc.HeaderText = "开户行";
+                dgvc.DataPropertyName = "openBank";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "bankCard";
+                dgvc.HeaderText = "银行账户";
+                dgvc.DataPropertyName = "bankCard";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "cardHolder";
+                dgvc.HeaderText = "持卡人";
+                dgvc.DataPropertyName = "cardHolder";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "availableBalance";
+                dgvc.HeaderText = "可用额度";
+                dgvc.DataPropertyName = "availableBalance";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(470, 230);
+                string name = XYEEncoding.strCodeHex(this.txtBank.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：模糊查询结算账户数据错误" + ex.Message, "销售单温馨提示");
             }
         }
 

@@ -28,10 +28,10 @@ namespace LogicLayer.Base
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("and code='{0}'", fieldName);
+                        strWhere += string.Format(" and code='{0}'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("and openBank like '%{0}%'", fieldName);
+                        strWhere += string.Format(" and openBank like '%{0}%'", fieldValue);
                         break;
                 }
                 if (isClear == false)

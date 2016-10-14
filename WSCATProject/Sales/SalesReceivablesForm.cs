@@ -522,7 +522,7 @@ namespace WSCATProject.Sales
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtBank_TextChanged(object sender, EventArgs e)
-        {
+       {
             try
             {
                 if (this.txtBank.Text.Trim() == "")
@@ -679,7 +679,7 @@ namespace WSCATProject.Sales
                 financecollection.type = XYEEncoding.strCodeHex(cboDanJuType.Text.Trim());//单据类型
                 financecollection.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户编号
                 financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
-                financecollection.accountCode = XYEEncoding.strCodeHex("");//账户code
+                financecollection.accountCode = XYEEncoding.strCodeHex(_bankCode);//账户code
                 financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
                 financecollection.settlementMethod = XYEEncoding.strCodeHex(cboJieSuanMethod.Text.Trim());
                 financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim());//整单折扣率
@@ -692,6 +692,8 @@ namespace WSCATProject.Sales
                 financecollection.isClear = 1;
                 financecollection.updatedate = DateTime.Now;
                 financecollection.checkState = 0;//审核状态
+                financecollection.Reserved1 = "";
+                financecollection.Reserved2 = "";
                 
                 financecollection.financeCollectionState = 0;//单据状态
             }
