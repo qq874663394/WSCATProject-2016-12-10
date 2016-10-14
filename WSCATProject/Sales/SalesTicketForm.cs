@@ -213,7 +213,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("客户不能为空！");
                 return false;
             }
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库不能为空！");
