@@ -36,8 +36,8 @@
             this.txtBank = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtBenCiHeXiao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cboJieSuanMethod = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.txtBenCiShouKuan = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -563,8 +563,8 @@
             this.cboJieSuanMethod.FormattingEnabled = true;
             this.cboJieSuanMethod.ItemHeight = 15;
             this.cboJieSuanMethod.Items.AddRange(new object[] {
-            this.comboItem4,
             this.comboItem5,
+            this.comboItem4,
             this.comboItem6,
             this.comboItem7});
             this.cboJieSuanMethod.Location = new System.Drawing.Point(649, 47);
@@ -573,21 +573,21 @@
             this.cboJieSuanMethod.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboJieSuanMethod.TabIndex = 57;
             // 
+            // comboItem5
+            // 
+            this.comboItem5.Text = "现金";
+            // 
             // comboItem4
             // 
             this.comboItem4.Text = "电汇";
             // 
-            // comboItem5
-            // 
-            this.comboItem5.Text = "comboItem5";
-            // 
             // comboItem6
             // 
-            this.comboItem6.Text = "comboItem6";
+            this.comboItem6.Text = "信汇";
             // 
             // comboItem7
             // 
-            this.comboItem7.Text = "comboItem7";
+            this.comboItem7.Text = "银行汇票";
             // 
             // txtBenCiShouKuan
             // 
@@ -734,6 +734,7 @@
             this.Text = "收款单";
             this.Activated += new System.EventHandler(this.SalesReceivablesForm_Activated);
             this.Load += new System.EventHandler(this.SalesReceivablesForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesReceivablesForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SalesReceivablesForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

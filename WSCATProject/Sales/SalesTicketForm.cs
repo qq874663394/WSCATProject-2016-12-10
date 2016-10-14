@@ -92,6 +92,10 @@ namespace WSCATProject.Sales
         /// </summary>
         private string _salesOrderMainCode;
         /// <summary>
+        /// 统计发货数量
+        /// </summary>
+        private decimal _FaHuoShuLiang;
+        /// <summary>
         /// 统计金额
         /// </summary>
         private decimal _Money;
@@ -1238,45 +1242,50 @@ namespace WSCATProject.Sales
         {
             try
             {
-                ////最后一行做统计行
-                //GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-                //////计算金额
-                //decimal number = Convert.ToDecimal(gr.Cells["dinggouNumber"].FormattedValue);//订购数量
-                //decimal price = Convert.ToDecimal(gr.Cells["price"].FormattedValue);//单价               
-                //decimal money = number * price;//金额
-                //gr.Cells["money"].Value = money;
-                //decimal discountRate = Convert.ToDecimal(gr.Cells["DiscountRate"].FormattedValue);//折扣率
-                //decimal discountAfter = money * (discountRate / 100);
-                //decimal discountMoney = money - discountAfter;//折扣额
-                //gr.Cells["DiscountMoney"].Value = discountMoney;
-                //decimal taxRate = Convert.ToDecimal(gr.Cells["TaxRate"].FormattedValue);//增值税税率
-                //decimal rateMoney = money * (taxRate / 100);//税额
-                //gr.Cells["TaxMoney"].Value = rateMoney;
-                //decimal priceAndtax = money + rateMoney;//价税合计
-                //gr.Cells["priceANDtax"].Value = priceAndtax;
+                //最后一行做统计行
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                //计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["gridColumnfahuoshu"].FormattedValue);//发货数量
+                decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);//单价               
+                decimal money = number * price;//金额
+                gr.Cells["gridColumnmoney"].Value = money;
+                decimal discountRate = Convert.ToDecimal(gr.Cells["gridColumnzhekoul"].FormattedValue);//折扣率
+                decimal discountAfter = money * (discountRate / 100);
+                decimal discountMoney = money - discountAfter;//折扣额
+                gr.Cells["gridColumnzhekoue"].Value = discountMoney;
+                decimal taxRate = Convert.ToDecimal(gr.Cells["gridColumnzengzhishui"].FormattedValue);//增值税税率
+                decimal rateMoney = money * (taxRate / 100);//税额
+                gr.Cells["gridColumnshuie"].Value = rateMoney;
+                decimal priceAndtax = money + rateMoney;//价税合计
+                gr.Cells["gridColumnjiashuiheji"].Value = priceAndtax;
 
-                ////逐行统计数据总数
-                //decimal tempAllNumber = 0;
-                //decimal tempAllMoney = 0;
-                //decimal tempAllTaxMoney = 0;
-                //decimal tempAllPriceAndTax = 0;
-                //for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                //{
-                //    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                //    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
-                //    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
-                //    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
-                //    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
-                //}
-                //_Materialnumber = tempAllNumber;
-                //_Money = tempAllMoney;
-                //_TaxMoney = tempAllTaxMoney;
-                //_PriceAndTaxMoney = tempAllPriceAndTax;
-                //gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                //gr["dinggouNumber"].Value = _Materialnumber.ToString();
-                //gr["money"].Value = _Money.ToString();
-                //gr["TaxMoney"].Value = _TaxMoney.ToString();
-                //gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+                //逐行统计数据总数
+                decimal tempAllDingGouNumber = 0;
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                decimal tempAllTaxMoney = 0;
+                decimal tempAllPriceAndTax = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllDingGouNumber += Convert.ToDecimal(tempGR["gridColumndinggoushu"].FormattedValue);
+                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumnfahuoshu"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
+                    tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
+                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
+                }
+
+                _Materialnumber = tempAllDingGouNumber;
+                _FaHuoShuLiang = tempAllNumber;
+                _Money = tempAllMoney;
+                _TaxMoney = tempAllTaxMoney;
+                _PriceAndTaxMoney = tempAllPriceAndTax;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["gridColumndinggoushu"].Value = _Materialnumber.ToString();
+                gr["gridColumnfahuoshu"].Value = _FaHuoShuLiang.ToString();
+                gr["gridColumnmoney"].Value = _Money.ToString();
+                gr["gridColumnshuie"].Value = _TaxMoney.ToString();
+                gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
             }
             catch (Exception ex)
             {

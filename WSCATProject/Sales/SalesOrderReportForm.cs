@@ -103,6 +103,7 @@ namespace WSCATProject.Sales
                     }
                 }
             }
+            
         }
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
