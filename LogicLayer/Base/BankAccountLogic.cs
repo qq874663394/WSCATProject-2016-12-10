@@ -1,4 +1,7 @@
-﻿using BaseLayer.Base;
+﻿using BaseLayer;
+using BaseLayer.Base;
+using HelperUtility;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +14,7 @@ namespace LogicLayer.Base
     public class BankAccountLogic
     {
         BankAccountBase _dal = new BankAccountBase();
+        LogBase _logDal = new LogBase();
         /// <summary>
         /// 获得数据列表
         /// </summary>
@@ -23,6 +27,15 @@ namespace LogicLayer.Base
         {
             DataTable dt = null;
             string strWhere = "";
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseBankAccount",
+                operationTime = DateTime.Now,
+                objective = "查询账户信息"
+            };
             try
             {
                 switch (fieldName)
@@ -45,10 +58,13 @@ namespace LogicLayer.Base
                 {
                     strWhere += string.Format(" and isEnable=1");
                 }
+                model.operationContent = "查询T_BaseBankAccount表的所有数据,条件:" + strWhere;
                 dt = _dal.GetList(strWhere).Tables[0];
+                model.result = 1;
             }
             catch (Exception ex)
             {
+                model.result = 0;
                 throw ex;
             }
             return dt;
