@@ -42,67 +42,80 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void SalesOrderReportForm_Load(object sender, EventArgs e)
         {
-            this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
-
-            //不可自动添加列
-            this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            //表格内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
-
-            SalesOrderInterface salesOrder = new SalesOrderInterface();
-
-            DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch(XYEEncoding.strCodeHex(_clientCode)));
-            DataTable dt2 = ch.DataTableReCoding(salesOrder.GetSalesDetailJoinSearch());
-            for (int i = 0; i < dt1.Rows.Count; i++)
+            try
             {
-                
-                for (int j = 0; j < dt2.Rows.Count; j++)
-                {
-                    if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
-                    {
-                        #region 绑定列
-                        superGridControlShangPing.PrimaryGrid.Rows.Insert(i, new GridRow(
-                            dt1.Rows[i]["code"],
-                            dt1.Rows[i]["date"],
-                            dt1.Rows[i]["name"],
-                            dt1.Rows[i]["mobilephone"],
-                            dt1.Rows[i]["fax"],
-                            dt1.Rows[i]["deliversMethod"],
-                            dt1.Rows[i]["deliversDate"],
-                            dt1.Rows[i]["makeMan"],
-                            dt1.Rows[i]["examine"],
-                            dt1.Rows[i]["remark"],
-                            dt1.Rows[i]["checkState"],
-                            dt2.Rows[j]["code"],
-                            dt2.Rows[j]["materialDaima"],
-                            dt2.Rows[j]["name"],
-                            dt2.Rows[j]["model"],
-                            dt2.Rows[j]["barCode"],
-                            dt2.Rows[j]["unit"],
-                            dt2.Rows[j]["number"],
-                            dt2.Rows[j]["materialPrice"],
-                            dt2.Rows[j]["materialMoney"],
-                            dt2.Rows[j]["discountRate"],
-                            dt2.Rows[j]["discountMoney"],
-                            dt2.Rows[j]["deliveryNumber"],
-                            dt2.Rows[j]["allNumber"],
-                            dt2.Rows[j]["MainCode"]
-                            ));
+                this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
 
-                        #endregion
-                    }
-                    else
+                //不可自动添加列
+                this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                //表格内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+
+                SalesOrderInterface salesOrder = new SalesOrderInterface();
+
+                DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch(XYEEncoding.strCodeHex(_clientCode)));
+                DataTable dt2 = ch.DataTableReCoding(salesOrder.GetSalesDetailJoinSearch());
+                if (dt1==null||dt2==null)
+                {
+                    MessageBox.Show("此客户暂无销售订单信息！请重新选择");
+                    return;
+                }
+                for (int i = 0; i < dt1.Rows.Count; i++)
+                {
+
+                    for (int j = 0; j < dt2.Rows.Count; j++)
                     {
-                        continue;
+                        if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+                        {
+                            #region 绑定列
+                            superGridControlShangPing.PrimaryGrid.Rows.Insert(i, new GridRow(
+                                dt1.Rows[i]["code"],
+                                dt1.Rows[i]["date"],
+                                dt1.Rows[i]["name"],
+                                dt1.Rows[i]["mobilephone"],
+                                dt1.Rows[i]["fax"],
+                                dt1.Rows[i]["deliversMethod"],
+                                dt1.Rows[i]["deliversDate"],
+                                dt1.Rows[i]["makeMan"],
+                                dt1.Rows[i]["examine"],
+                                dt1.Rows[i]["remark"],
+                                dt1.Rows[i]["checkState"],
+                                dt2.Rows[j]["code"],
+                                dt2.Rows[j]["materialDaima"],
+                                dt2.Rows[j]["name"],
+                                dt2.Rows[j]["model"],
+                                dt2.Rows[j]["barCode"],
+                                dt2.Rows[j]["unit"],
+                                dt2.Rows[j]["number"],
+                                dt2.Rows[j]["materialPrice"],
+                                dt2.Rows[j]["materialMoney"],
+                                dt2.Rows[j]["discountRate"],
+                                dt2.Rows[j]["discountMoney"],
+                                dt2.Rows[j]["deliveryNumber"],
+                                dt2.Rows[j]["allNumber"],
+                                dt2.Rows[j]["MainCode"]
+                                ));
+
+                            #endregion
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-选源单初始化数据库错误！"+ex.Message);
+            }
+        
         }
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
