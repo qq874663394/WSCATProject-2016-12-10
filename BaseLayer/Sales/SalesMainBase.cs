@@ -70,12 +70,11 @@ namespace BaseLayer.Sales
             object result = null;
             try
             {
-                StringBuilder strSql = new StringBuilder();
-                strSql.Append("insert into [T_SalesMain] (");
-                strSql.Append("isClear,code,type,date,salesOrderState,checkState,operationMan,checkMan,salesMan,payState,payMathod,oddAllMoney,accountCode,collectMoney,lastMoney,clientAddress,clientCode,clientName,clientPhone,linkMan,urgentState,expireDate,updateDate,remark,reserved1,reserved2,receiptDate,invoiceType,invoiceNumber,Preferentialsubjects,disInvoiceMoney,invoiceMoney)");
-                strSql.Append(" values (");
-                strSql.Append("@isClear,@code,@type,@date,@salesOrderState,@checkState,@operationMan,@checkMan,@salesMan,@payState,@payMathod,@oddAllMoney,@accountCode,@collectMoney,@lastMoney,@clientAddress,@clientCode,@clientName,@clientPhone,@linkMan,@urgentState,@expireDate,@updateDate,@remark,@reserved1,@reserved2,@receiptDate,@invoiceType,@invoiceNumber,@Preferentialsubjects,@disInvoiceMoney,@invoiceMoney)");
-                strSql.Append(";select @@IDENTITY");
+                sqlMain.Append("insert into [T_SalesMain] (");
+                sqlMain.Append("isClear,code,type,date,salesOrderState,checkState,operationMan,checkMan,salesMan,payState,payMathod,oddAllMoney,accountCode,collectMoney,lastMoney,clientAddress,clientCode,clientName,clientPhone,linkMan,urgentState,expireDate,updateDate,remark,reserved1,reserved2,receiptDate,invoiceType,invoiceNumber,Preferentialsubjects,disInvoiceMoney,invoiceMoney)");
+                sqlMain.Append(" values (");
+                sqlMain.Append("@isClear,@code,@type,@date,@salesOrderState,@checkState,@operationMan,@checkMan,@salesMan,@payState,@payMathod,@oddAllMoney,@accountCode,@collectMoney,@lastMoney,@clientAddress,@clientCode,@clientName,@clientPhone,@linkMan,@urgentState,@expireDate,@updateDate,@remark,@reserved1,@reserved2,@receiptDate,@invoiceType,@invoiceNumber,@Preferentialsubjects,@disInvoiceMoney,@invoiceMoney)");
+                sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@isClear", SqlDbType.Int,4),

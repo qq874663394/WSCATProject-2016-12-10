@@ -56,6 +56,7 @@
     <Compile Include="Base\StorageRackBase.cs" />
     <Compile Include="Base\SupplierBase.cs" />
     <Compile Include="DbHelperSQL.cs" />
+    <Compile Include="Finance\FinanceCollectionBase.cs" />
     <Compile Include="LogBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\PurchaseBase.cs" />
