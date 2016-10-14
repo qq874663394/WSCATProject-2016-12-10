@@ -31,7 +31,7 @@ namespace LogicLayer.Base
                         strWhere += string.Format("and code='{0}'", fieldName);
                         break;
                     case 1:
-                        strWhere += string.Format("and cardHolder like '%{0}%'",fieldName);
+                        strWhere += string.Format("and openBank like '%{0}%'", fieldName);
                         break;
                 }
                 if (isClear == false)
@@ -40,7 +40,7 @@ namespace LogicLayer.Base
                 }
                 if (isEnable == false)
                 {
-                    strWhere += string.Format("and isEnable=1");
+                    strWhere += string.Format(" and isEnable=1");
                 }
                 dt = _dal.GetList(strWhere).Tables[0];
             }

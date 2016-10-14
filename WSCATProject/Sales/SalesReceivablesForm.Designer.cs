@@ -283,6 +283,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(498, 46);
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBoxBank_Click);
             // 
             // pictureBox2
             // 
@@ -533,6 +534,7 @@
             this.txtBank.PreventEnterBeep = true;
             this.txtBank.Size = new System.Drawing.Size(120, 16);
             this.txtBank.TabIndex = 55;
+            this.txtBank.TextChanged += new System.EventHandler(this.txtBank_TextChanged);
             // 
             // txtBenCiHeXiao
             // 

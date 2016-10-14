@@ -21,7 +21,7 @@ namespace InterfaceLayer.Base
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue, bool isClear, bool isEnable)
         {
-            return _dal.GetList(fieldName., fieldValue, isClear, isEnable);
+            return _dal.GetList(fieldName, fieldValue, isClear, isEnable);
         }
     }
 }

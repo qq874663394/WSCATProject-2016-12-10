@@ -19,7 +19,7 @@ namespace BaseLayer.Base
             strSql.Append(" FROM [T_BaseBankAccount] ");
             if (strWhere.Trim() != "")
             {
-                strSql.Append(" where 1=1 and " + strWhere);
+                strSql.Append(" where 1=1  " + strWhere);
             }
             return DbHelperSQL.Query(strSql.ToString());
         }
