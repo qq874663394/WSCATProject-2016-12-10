@@ -110,12 +110,12 @@ namespace WSCATProject
                 List<string> Writ = new List<string>();
 
                 //现在没有登录所以没有权限，就显示仓库模块的东西
-                //BDStorage();
-                //this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
-                //superGridControlSetback.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
-                //superGridControlhandl.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
-                //superTabControl1.SelectedTab = superTabItem1;
-               this.sideBarPanelItem1.Image = Properties.Resources.日志大;
+                BDStorage();
+                this.comboBoxEx1.SelectedIndex = 0;//先默认仓库系统
+                superGridControlSetback.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+                superGridControlhandl.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+                superTabControl1.SelectedTab = superTabItem1;
+                this.sideBarPanelItem1.Image = Properties.Resources.日志大;
                 this.labelX1.Text = "跟进进度总数:" + _Jindushu + "";
                 this.labelX2.Text = "待处理事项总数:" + _Daichuli + "";
 
