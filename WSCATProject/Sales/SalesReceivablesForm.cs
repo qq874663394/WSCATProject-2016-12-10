@@ -338,7 +338,7 @@ namespace WSCATProject.Sales
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
                 //dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
-                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮 
             }
             catch (Exception ex)
             {
