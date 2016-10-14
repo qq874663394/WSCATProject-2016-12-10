@@ -53,6 +53,7 @@
             this.BenCiHeXiao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.WeuFuMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBoxShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -86,6 +88,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1051, 81);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBoxShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxShengHe, 0);
             // 
             // labelTitle
             // 
@@ -109,6 +121,7 @@
             this.panel2.Controls.Add(this.txtClient);
             this.panel2.Controls.Add(this.cboDanJuType);
             this.panel2.Size = new System.Drawing.Size(1202, 120);
+            this.panel2.Visible = false;
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
             this.panel2.Controls.SetChildIndex(this.labTop2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop3, 0);
@@ -725,6 +738,14 @@
             this.WeuFuMoney.HeaderText = "未付金额";
             this.WeuFuMoney.Name = "WeuFuMoney";
             // 
+            // pictureBoxShengHe
+            // 
+            this.pictureBoxShengHe.Location = new System.Drawing.Point(685, 5);
+            this.pictureBoxShengHe.Name = "pictureBoxShengHe";
+            this.pictureBoxShengHe.Size = new System.Drawing.Size(71, 53);
+            this.pictureBoxShengHe.TabIndex = 46;
+            this.pictureBoxShengHe.TabStop = false;
+            // 
             // SalesReceivablesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -757,6 +778,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBarCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -789,5 +811,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn BenCiHeXiao;
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
         private DevComponents.DotNetBar.SuperGrid.GridColumn WeuFuMoney;
+        private System.Windows.Forms.PictureBox pictureBoxShengHe;
     }
 }
