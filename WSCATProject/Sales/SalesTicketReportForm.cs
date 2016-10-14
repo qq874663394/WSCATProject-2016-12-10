@@ -1,4 +1,6 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility.Encrypt;
+using InterfaceLayer.Sales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +22,17 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
+        /// 保存客户code
+        /// </summary>
+        private string _clientCode;
+        public string clientCode
+        {
+            get { return _clientCode; }
+            set { _clientCode = value; }
+        }
+
+
+        /// <summary>
         /// 窗体加载事件
         /// </summary>
         /// <param name="sender"></param>
@@ -38,6 +51,8 @@ namespace WSCATProject.Sales
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             InitDataGridView();//调用表格初始化
+
+
         }
 
         #region  初始化数据
