@@ -843,6 +843,7 @@
             // 
             this.gridColumnyuandandanhao.HeaderText = "源单编号";
             this.gridColumnyuandandanhao.Name = "gridColumnyuandandanhao";
+            this.gridColumnyuandandanhao.Width = 120;
             // 
             // comboBoxType
             // 

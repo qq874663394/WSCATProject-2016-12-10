@@ -312,10 +312,25 @@ wm.materialCode=bm.code";
         {
             string sql = "";
             DataTable dt = null;
-            sql = string.Format(@"select sod.code,bm.materialDaima,bm.name,bm.model,
-sod.materialCode,bm.barCode,bm.unit,sod.materialNumber,sod.materialPrice,
-sod.discountRate,sod.VATRate,sod.discountMoney,sod.materialMoney,sod.tax,
-sod.taxTotal,bm.inPrice,(bm.inPrice*sod.materialNumber) as inMoney,bm.productionDate,bm.qualityDate,bm.remark,bm.effectiveDate
+            sql = string.Format(@"select sod.code,
+bm.materialDaima,
+bm.name,
+bm.barCode,
+bm.unit,
+sod.materialCode,
+sod.materialNumber,
+sod.materialPrice,
+sod.discountRate,
+sod.VATRate,
+sod.discountMoney,
+sod.materialMoney,
+sod.tax,
+sod.taxTotal,
+bm.inPrice,
+(bm.inPrice*sod.materialNumber) as inMoney,
+bm.productionDate,
+bm.qualityDate,
+bm.remark
  from T_SalesOrder so,T_SalesOrderDetail sod,T_BaseMaterial bm
 where so.code=sod.mainCode and sod.materialCode=bm.code and 
 so.code='{0}' and sod.code='{1}'", salesCode, salesDetailCode);

@@ -41,5 +41,9 @@ namespace InterfaceLayer.Sales
         {
             return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
+        public DataTable GetExamineAndPay(string clientCode)
+        {
+            return _dal.GetExamineAndPay(clientCode);
+        }
     }
 }
