@@ -22,35 +22,61 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
-        /// 保存客户code
+        /// 客户code
         /// </summary>
         private string _clientCode;
-        public string clientCode
+        public string ClientCode
         {
-            get { return _clientCode; }
-            set { _clientCode = value; }
+            get {  return _clientCode;  }
+            set {  _clientCode = value;  }
         }
-
-
-        /// <summary>
-        /// 窗体加载事件
+        List<string> _saleslist = new List<string>();
+        CodingHelper ch = new CodingHelper();        /// 窗体加载事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SalesTicketReportForm_Load(object sender, EventArgs e)
         {
-            this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
+            try
+            {
+                this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
 
-            //不可自动添加列
-            this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            //表格内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            InitDataGridView();//调用表格初始化
+                //不可自动添加列
+                this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                //表格内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+                InitDataGridView();//调用表格初始化
+
+                if (_clientCode == null)
+                {
+                    return;
+                }
+                SalesMainInterface salesMainInter = new SalesMainInterface();
+                DataTable dt = ch.DataTableReCoding( salesMainInter.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode)));
+                SalesReceivablesForm sales =  (SalesReceivablesForm)this.Owner;
+                _saleslist = sales.SalesMainList;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    foreach (var liat in _saleslist)
+                    {
+                        if (dt.Rows[i][1].ToString()==liat)
+                        {
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("销售单数据加载错误!"+ex.Message);
+            }
 
 
         }
@@ -81,7 +107,6 @@ namespace WSCATProject.Sales
         #region  设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
-
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
@@ -172,6 +197,35 @@ namespace WSCATProject.Sales
             {
                 this.Close();
                 this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 双击一行显示数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
+        {
+            if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
+            {
+                SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
+                if (col.Count > 0)
+                {
+                    GridRow row = col[0] as GridRow;
+                    string mainCode = row.Cells["BillCode"].Value.ToString();
+                    SalesReceivablesForm salesreceivables =  (SalesReceivablesForm)this.Owner;
+                    salesreceivables.SalesMainCode = mainCode;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("请先选择要操作的行！");
+                }
+            }
+            else
+            {
+                return;
             }
         }
     }

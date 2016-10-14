@@ -117,6 +117,18 @@ namespace WSCATProject.Sales
         /// 成本金额
         /// </summary>
         private decimal _chengBenJinE;
+        /// <summary>
+        /// 本次收款
+        /// </summary>
+        private decimal _benCiShouKuan;
+        /// <summary>
+        /// 总金额
+        /// </summary>
+        private decimal _zongJinE;
+        /// <summary>
+        /// 未付款金额
+        /// </summary>
+        private decimal _weiFuKuan;
 
         public string SalesOrderMainCode
         {
@@ -201,7 +213,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("客户不能为空！");
                 return false;
             }
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库不能为空！");
@@ -563,7 +575,7 @@ namespace WSCATProject.Sales
                 SalesOrderReportForm salesOrder = new SalesOrderReportForm();
                 salesOrder.clientCode = _clientCode;
                 salesOrder.ShowDialog(this);
-                if (_salesOrderMainCode==null)
+                if (_salesOrderMainCode == null)
                 {
                     return;
                 }
@@ -655,10 +667,10 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-双击绑定商品错误"+ex.Message);
+                MessageBox.Show("错误代码：-双击绑定商品错误" + ex.Message);
                 return;
             }
-       
+
             try
             {
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
@@ -870,16 +882,31 @@ namespace WSCATProject.Sales
                 salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text);//客户电话
                 salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
                 salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text);//本次收款
+                _benCiShouKuan = Convert.ToDecimal(salesMain.collectMoney);
                 salesMain.date = dateTimePicker1.Value;//订单日期
                 salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text);//未开票金额
                 salesMain.expireDate = null;//最晚到底时间
                 salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
                 salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
                 salesMain.invoiceType = XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
-                salesMain.isClear = 1;//是否删除
-                salesMain.lastMoney = 0.0M;//剩余尾款
-                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
                 salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
+                _zongJinE = Convert.ToDecimal(salesMain.oddAllMoney);
+                salesMain.isClear = 1;//是否删除
+                if (_zongJinE - _benCiShouKuan == 0)
+                {
+                    salesMain.lastMoney = 0.0M;//剩余尾款
+                }
+                else if (_zongJinE - _benCiShouKuan < 0)
+                {
+                    _weiFuKuan = _zongJinE - _benCiShouKuan;
+                    salesMain.lastMoney = _weiFuKuan;//剩余尾款
+                }
+                else if (_zongJinE - _benCiShouKuan > 0)
+                {
+                    _weiFuKuan = _zongJinE - _benCiShouKuan;
+                    salesMain.lastMoney = _weiFuKuan;//剩余尾款
+                }
+                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
                 salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
                 salesMain.payMathod = XYEEncoding.strCodeHex(cboJiesuanMethod.Text);//付款方式
                 salesMain.payState = 0;//是否付款
@@ -1033,7 +1060,7 @@ namespace WSCATProject.Sales
                     GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                     string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
-                    txtBank.Text = Name;                   
+                    txtBank.Text = Name;
                     _bankCode = code;
                     resizablePanel1.Visible = false;
                 }
@@ -1092,7 +1119,7 @@ namespace WSCATProject.Sales
             }
             _Click = 8;
         }
-        
+
         /// <summary>
         /// 第一行第一列选择仓库
         /// </summary>
@@ -1111,7 +1138,7 @@ namespace WSCATProject.Sales
                     _Click = 7;
                     return;
                 }
-                if (e.GridCell.GridColumn.Name== "material")
+                if (e.GridCell.GridColumn.Name == "material")
                 {
                     this.resizablePanelData.Visible = false;
                     ToolStripButtonXuanYuanDan_Click(sender, e);

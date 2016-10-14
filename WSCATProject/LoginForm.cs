@@ -115,31 +115,31 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //StreamWriter sw;
-            //EmpolyeeInterface EmpInter = new EmpolyeeInterface();
-            //if (EmpInter.Exists(comboBox2.Text.Trim(), textBox2.Text) == true)
-            //    return;
-            //sw = new StreamWriter(strFilePath, true);//流写写入 new建取一个缓存区
-            //if (File.Exists(strFilePath) == false)
-            //{
-            //    sw = new StreamWriter(strFilePath, false);
-            //}
+            StreamWriter sw;
+            EmpolyeeInterface EmpInter = new EmpolyeeInterface();
+            if (EmpInter.Exists(comboBox2.Text.Trim(), textBox2.Text) == true)
+                return;
+            sw = new StreamWriter(strFilePath, true);//流写写入 new建取一个缓存区
+            if (File.Exists(strFilePath) == false)
+            {
+                sw = new StreamWriter(strFilePath, false);
+            }
             try
             {
-                //if (strContentsps == null)
-                //{
-                //    sw.WriteLine(comboBox2.Text.Trim());    //写入
-                //}
-                //else
-                //{
-                //    for (int i = 0; i < strContentsps.Length - 1; i++)
-                //    {
-                //        if (strContentsps[i].Equals(comboBox2.Text.Trim()) == false && i == strContentsps.Length - 1)
-                //        {
-                //            sw.WriteLine(comboBox2.Text.Trim());    //写入
-                //        }
-                //    }
-                //}
+                if (strContentsps == null)
+                {
+                    sw.WriteLine(comboBox2.Text.Trim());    //写入
+                }
+                else
+                {
+                    for (int i = 0; i < strContentsps.Length - 1; i++)
+                    {
+                        if (strContentsps[i].Equals(comboBox2.Text.Trim()) == false && i == strContentsps.Length - 1)
+                        {
+                            sw.WriteLine(comboBox2.Text.Trim());    //写入
+                        }
+                    }
+                }
             }
             catch (Exception)
             {
@@ -147,8 +147,8 @@ namespace WSCATProject
             }
             finally
             {
-                //sw.Flush();
-                //sw.Close();
+                sw.Flush();
+                sw.Close();
             }
 
             LoginInfomation.getInstance().UserName = comboBox2.Text.Trim();
