@@ -452,5 +452,21 @@ namespace BaseLayer.Sales
 
             return DbHelperSQL.Exists(strSql.ToString(), parameters);
         }
+        public DataTable GetExamineAndPay(string clientCode)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = string.Format(@"select sm.type,sm.code,sm.clientName,sm.date,sm.oddAllMoney,(oddAllMoney-lastMoney) as firstMoney,lastMoney,sm.remark from T_SalesMain sm,T_SalesDetail sd
+where sm.code = sd.mainCode and checkState = 1 and payState = 0 and payState = 1 and clientCode = '{0}'", clientCode);
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
     }
 }
