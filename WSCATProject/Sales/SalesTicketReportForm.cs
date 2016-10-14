@@ -127,5 +127,37 @@ namespace WSCATProject.Sales
             this.Dispose();
         }
         #endregion
+
+        /// <summary>
+        /// 快捷方式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SalesTicketReportForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //刷新
+            if (e.KeyCode == Keys.F5)
+            {
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
     }
 }

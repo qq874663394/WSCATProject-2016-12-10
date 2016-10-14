@@ -403,6 +403,7 @@
             this.Name = "SalesTicketReportForm";
             this.Text = "销售单序时薄";
             this.Load += new System.EventHandler(this.SalesTicketReportForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesTicketReportForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();

@@ -305,6 +305,7 @@ namespace WSCATProject.Sales
                 #region 初始化窗体
                 cboDanJuType.SelectedIndex = 0;
                 cboJieSuanMethod.SelectedIndex = 0;
+                toolStripButtonXuanYuanDan.Visible = true;
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
                 dataGridViewFuJia.AutoGenerateColumns = false;
@@ -319,12 +320,12 @@ namespace WSCATProject.Sales
                 InitDataGridView();
                 #endregion
 
-            //客户
-            _AllClient = client.GetClientByBool(false);
-            //结算账户
-            _AllBank = bank.GetList(999,"",false,false);
-            //收款员
-            _AllEmployee = employee.SelSupplierTable(false);
+                //客户
+                _AllClient = client.GetClientByBool(false);
+                //结算账户
+                _AllBank = bank.GetList(999, "", false, false);
+                //收款员
+                _AllEmployee = employee.SelSupplierTable(false);
 
                 //生成销售订单code和显示条形码
                 _SaleReceivablesCode = BuildCode.ModuleCode("SRS");
@@ -336,15 +337,31 @@ namespace WSCATProject.Sales
 
                 //绑定事件 双击事填充内容并隐藏列表
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
-                //dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮 
+                toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：初始化数据错误！"+ex.Message);
+                MessageBox.Show("错误代码：初始化数据错误！" + ex.Message);
             }
-    
+
+        }
+
+        /// <summary>
+        /// 选源单点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
+        {
+            if (txtBank.Text == null || txtBank.Text == "" || _clientCode==null || _clientCode=="")
+            {
+                MessageBox.Show("请先选择客户：");
+                return;
+            }
+
+
         }
 
         /// <summary>
@@ -522,7 +539,7 @@ namespace WSCATProject.Sales
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtBank_TextChanged(object sender, EventArgs e)
-       {
+        {
             try
             {
                 if (this.txtBank.Text.Trim() == "")
@@ -577,7 +594,7 @@ namespace WSCATProject.Sales
 
                 resizablePanel1.Location = new Point(500, 200);
                 string name = XYEEncoding.strCodeHex(this.txtBank.Text.Trim());
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name,false,false));
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
                 resizablePanel1.Visible = true;
             }
             catch (Exception ex)
@@ -694,7 +711,7 @@ namespace WSCATProject.Sales
                 financecollection.checkState = 0;//审核状态
                 financecollection.Reserved1 = "";
                 financecollection.Reserved2 = "";
-                
+
                 financecollection.financeCollectionState = 0;//单据状态
             }
             catch (Exception ex)
@@ -719,13 +736,13 @@ namespace WSCATProject.Sales
                         financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
                         financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
-                        financecollectionDetail.salesDate =Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
+                        financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
                         financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr[" yuandanType"].Value.ToString());//销售单类型
                         financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value);//应收金额
                         financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value);//已核销金额
-                        financecollectionDetail.amountUnpaid= Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
-                        financecollectionDetail.nowMoney= Convert.ToDecimal(gr["BenCiHeXiao"].Value);//本次收款金额
-                        financecollectionDetail.unCollection= Convert.ToDecimal(gr["WeuFuMoney"].Value);//未收金额
+                        financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
+                        financecollectionDetail.nowMoney = Convert.ToDecimal(gr["BenCiHeXiao"].Value);//本次收款金额
+                        financecollectionDetail.unCollection = Convert.ToDecimal(gr["WeuFuMoney"].Value);//未收金额
                         financecollectionDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
@@ -929,8 +946,47 @@ namespace WSCATProject.Sales
             }
             name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
+
         #endregion
 
-      
+        private void SalesReceivablesForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                toolStripBtnSave_Click(sender, e);
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                toolStripBtnShengHe_Click(sender, e);
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
     }
 }
