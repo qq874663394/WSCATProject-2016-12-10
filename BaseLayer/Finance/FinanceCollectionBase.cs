@@ -76,14 +76,22 @@ namespace BaseLayer.Finance
 
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail.Append("insert into [T_FinanceCollectionDetail] (");
-                sqlDetail.Append("id,mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                sqlDetail.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append("@id,@mainCode,@code,@salesCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
+                sqlDetail.Append(@"@mainCode,
+                    @code,
+@salesCode,
+@salesDate,
+@salesType,
+@amountReceivable,
+@amountReceived,
+@amountUnpaid,
+@nowMoney,
+@unCollection,@remark)");
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
                     {
-                        new SqlParameter("@id", SqlDbType.Int,4),
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@code", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesCode", SqlDbType.NVarChar,45),
@@ -96,18 +104,17 @@ namespace BaseLayer.Finance
                     new SqlParameter("@unCollection", SqlDbType.Decimal,9),
                     new SqlParameter("@remark", SqlDbType.NVarChar,400)
                     };
-                    spsDetail[0].Value = item.id;
-                    spsDetail[1].Value = item.mainCode;
-                    spsDetail[2].Value = item.code;
-                    spsDetail[3].Value = item.salesCode;
-                    spsDetail[4].Value = item.salesDate;
-                    spsDetail[5].Value = item.salesType;
-                    spsDetail[6].Value = item.amountReceivable;
-                    spsDetail[7].Value = item.amountReceived;
-                    spsDetail[8].Value = item.amountUnpaid;
-                    spsDetail[9].Value = item.nowMoney;
-                    spsDetail[10].Value = item.unCollection;
-                    spsDetail[11].Value = item.remark;
+                    spsDetail[0].Value = item.mainCode;
+                    spsDetail[1].Value = item.code;
+                    spsDetail[2].Value = item.salesCode;
+                    spsDetail[3].Value = item.salesDate;
+                    spsDetail[4].Value = item.salesType;
+                    spsDetail[5].Value = item.amountReceivable;
+                    spsDetail[6].Value = item.amountReceived;
+                    spsDetail[7].Value = item.amountUnpaid;
+                    spsDetail[8].Value = item.nowMoney;
+                    spsDetail[9].Value = item.unCollection;
+                    spsDetail[10].Value = item.remark;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);

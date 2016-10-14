@@ -121,7 +121,6 @@
             this.panel2.Controls.Add(this.txtClient);
             this.panel2.Controls.Add(this.cboDanJuType);
             this.panel2.Size = new System.Drawing.Size(1202, 120);
-            this.panel2.Visible = false;
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
             this.panel2.Controls.SetChildIndex(this.labTop2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop3, 0);
@@ -605,6 +604,7 @@
             // 
             // txtBenCiShouKuan
             // 
+            this.txtBenCiShouKuan.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -618,6 +618,7 @@
             this.txtBenCiShouKuan.Location = new System.Drawing.Point(91, 84);
             this.txtBenCiShouKuan.Name = "txtBenCiShouKuan";
             this.txtBenCiShouKuan.PreventEnterBeep = true;
+            this.txtBenCiShouKuan.ReadOnly = true;
             this.txtBenCiShouKuan.Size = new System.Drawing.Size(140, 16);
             this.txtBenCiShouKuan.TabIndex = 59;
             this.txtBenCiShouKuan.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
@@ -754,6 +755,7 @@
             this.pictureBoxShengHe.Size = new System.Drawing.Size(71, 53);
             this.pictureBoxShengHe.TabIndex = 46;
             this.pictureBoxShengHe.TabStop = false;
+            this.pictureBoxShengHe.Visible = false;
             // 
             // SalesReceivablesForm
             // 

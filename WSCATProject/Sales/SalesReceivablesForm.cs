@@ -106,8 +106,8 @@ namespace WSCATProject.Sales
 
         public List<string> SalesMainList
         {
-            get { return _salesMainList;  }
-            set  { _salesMainList = value; }
+            get { return _salesMainList; }
+            set { _salesMainList = value; }
         }
         #endregion
 
@@ -124,7 +124,7 @@ namespace WSCATProject.Sales
                 Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["yuandanCode"].Value = "合计";
+            gr.Cells["danjuDate"].Value = "合计"; 
             gr.Cells["yuandanCode"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["danjuMoney"].Value = 0;
@@ -149,7 +149,7 @@ namespace WSCATProject.Sales
         /// </summary>
         private bool isNUllValidate()
         {
-            if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
+            if (txtClient.Text.Trim() == null || txtClient.Text == "")
             {
                 MessageBox.Show("客户不能为空！");
                 return false;
@@ -159,12 +159,18 @@ namespace WSCATProject.Sales
                 MessageBox.Show("结算账户不能为空！");
                 return false;
             }
-            //GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
-            //if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
-            //{
-            //    MessageBox.Show("商品代码不能为空！");
-            //    return false;
-            //}
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+            double benci = Convert.ToDouble(gr.Cells["BenCiHeXiao"].Value);
+            if (gr.Cells["yuandanCode"].Value == null || gr.Cells["yuandanCode"].Value.ToString() == "")
+            {
+                MessageBox.Show("表格里源单编号不能为空！");
+                return false;
+            }
+            if (benci == 0.00)
+            {
+                MessageBox.Show("本次核销不应该是等于零的数据！请检查：");
+                return false;
+            }
             if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
             {
                 MessageBox.Show("收款员不能为空！");
@@ -325,6 +331,7 @@ namespace WSCATProject.Sales
         {
             pictureBoxShengHe.Visible = true;
             pictureBoxShengHe.Parent = pictureBoxtitle;
+            textBoxOddNumbers.ReadOnly = true;
 
             labTop1.ForeColor = Color.Gray;
             labTop1.ForeColor = Color.Gray;
@@ -354,7 +361,7 @@ namespace WSCATProject.Sales
             txtBenCiShouKuan.Border.BorderBottomColor = Color.Gray;
             txtDiscount.ReadOnly = true;
             txtDiscount.Border.BorderBottomColor = Color.Gray;
-            txtRemark.ReadOnly = true;           
+            txtRemark.ReadOnly = true;
             txtRemark.Border.BorderBottomColor = Color.Gray;
             ltxtbSalsMan.ReadOnly = true;
             ltxtbSalsMan.Border.BorderBottomColor = Color.Gray;
@@ -368,7 +375,7 @@ namespace WSCATProject.Sales
             toolStripBtnSave.Enabled = false;
             toolStripBtnShengHe.Enabled = false;
             panel2.BackColor = Color.FromArgb(240, 240, 240);
-            panel5.BackColor= Color.FromArgb(240, 240, 240);
+            panel5.BackColor = Color.FromArgb(240, 240, 240);
 
         }
 
@@ -382,6 +389,9 @@ namespace WSCATProject.Sales
                 cboDanJuType.SelectedIndex = 0;
                 cboJieSuanMethod.SelectedIndex = 0;
                 toolStripButtonXuanYuanDan.Visible = true;
+                txtDiscount.Text = "100.00";
+                BenCiHeXiao.HeaderText = "0.00";
+                txtBenCiShouKuan.Text = "0.00";
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
                 dataGridViewFuJia.AutoGenerateColumns = false;
@@ -436,7 +446,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("请先选择客户：");
                 return;
             }
-         
+
             SalesTicketReportForm salesTickeReport = new SalesTicketReportForm();
             salesTickeReport.ClientCode = _clientCode;
             salesTickeReport.ShowDialog(this);
@@ -447,7 +457,7 @@ namespace WSCATProject.Sales
             }
             GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
             GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-            DataTable dt = ch.DataTableReCoding( salesInterface.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode), XYEEncoding.strCodeHex(_salesMainCode)));
+            DataTable dt = ch.DataTableReCoding(salesInterface.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode), XYEEncoding.strCodeHex(_salesMainCode)));
 
             superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt.Rows[0]["code"],
            dt.Rows[0]["date"],
@@ -484,7 +494,7 @@ namespace WSCATProject.Sales
 
             foreach (GridRow g in grs)
             {
-                if (g.Cells["yuandanCode"].Value==null||g.Cells["yuandanCode"].Value.ToString()=="合计")
+                if (g.Cells["yuandanCode"].Value == null || g.Cells["yuandanCode"].Value.ToString() == "合计")
                 {
                     continue;
                 }
@@ -839,7 +849,7 @@ namespace WSCATProject.Sales
                 financecollection.checkState = 0;//审核状态
                 financecollection.Reserved1 = "";
                 financecollection.Reserved2 = "";
-               
+
                 if (_shengYuMoney < _danJuMoney)
                 {
                     financecollection.financeCollectionState = 0;//单据状态 (0为部分付款)
@@ -872,7 +882,7 @@ namespace WSCATProject.Sales
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
                         financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
                         financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
-                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr[" yuandanType"].Value.ToString());//销售单类型
+                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
                         financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value);//应收金额
                         financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value);//已核销金额
                         financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
@@ -971,7 +981,7 @@ namespace WSCATProject.Sales
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
                         financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
                         financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
-                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr[" yuandanType"].Value.ToString());//销售单类型
+                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
                         financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value);//应收金额
                         financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value);//已核销金额
                         financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
@@ -1020,7 +1030,7 @@ namespace WSCATProject.Sales
                     MessageBox.Show("本次核销金额不能大于未核销金额！");
                     return;
                 }
-              
+
                 decimal weishouMoney = weiHeXiaoMoney - benciHeXiaoMoney;//未收金额
                 gr.Cells["WeuFuMoney"].Value = weishouMoney;
 
@@ -1051,8 +1061,8 @@ namespace WSCATProject.Sales
                 gr["BenCiHeXiao"].Value = _benCiHeXiaoMoney.ToString();
                 gr["WeuFuMoney"].Value = tempShengYuMoney.ToString();
 
-                txtBenCiHeXiao.Text = _benCiHeXiaoMoney.ToString();
-                txtBenCiShouKuan.Text = _benCiHeXiaoMoney.ToString();
+                txtBenCiHeXiao.Text = _benCiHeXiaoMoney.ToString("0.00");
+                txtBenCiShouKuan.Text = _benCiHeXiaoMoney.ToString("0.00");
             }
             catch (Exception ex)
             {
