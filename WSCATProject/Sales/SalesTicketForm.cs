@@ -400,6 +400,74 @@ namespace WSCATProject.Sales
                 MessageBox.Show("初始化结算账户数据失败！请检查：" + ex.Message);
             }
         }
+        /// <summary>
+        /// 初始化商品下拉别表的数据
+        /// </summary>
+        private void InitMaterialDataGridView()
+        {
+            try
+            {
+                dataGridViewShangPing.DataSource = null;
+                dataGridViewShangPing.Columns.Clear();
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "code";
+                dgvc.DataPropertyName = "code";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "materialDaima";
+                dgvc.HeaderText = "商品代码";
+                dgvc.DataPropertyName = "materialDaima";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "商品名称";
+                dgvc.DataPropertyName = "name";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "model";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "规格型号";
+                dgvc.DataPropertyName = "model";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "barCode";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "条形码";
+                dgvc.DataPropertyName = "barCode";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "unit";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "单位";
+                dgvc.DataPropertyName = "unit";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "price";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "单价";
+                dgvc.DataPropertyName = "price";
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dataGridViewShangPing.Columns.Add(dgvc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("初始化商品列表失败，请检查：" + ex.Message);
+            }
+        }
 
         #endregion
 
@@ -486,9 +554,8 @@ namespace WSCATProject.Sales
                 SalesOrderReportForm salesOrder = new SalesOrderReportForm();
                 salesOrder.clientCode = _clientCode;
                 salesOrder.ShowDialog(this);
-                if (_salesOrderMainCode=="")
+                if (_salesOrderMainCode==null)
                 {
-                    MessageBox.Show("暂无选择商品，请选择商品！");
                     return;
                 }
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -1031,19 +1098,10 @@ namespace WSCATProject.Sales
                     _Click = 7;
                     return;
                 }
-                if (e.GridCell.GridColumn.Name == "material")
+                if (e.GridCell.GridColumn.Name== "material")
                 {
-                    //if (_StorageCode != "")
-                    //{
-                    //    //查询商品列表
-                    //    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999, "", XYEEncoding.strCodeHex(_StorageCode));
-                    //    InitMaterialDataGridView();
-                    //}
-                    //else
-                    //{
-                    //    resizablePanelData.Visible = false;
-                    //    MessageBox.Show("请先选择仓库：");
-                    //}
+                    this.resizablePanelData.Visible = false;
+                    ToolStripButtonXuanYuanDan_Click(sender, e);
                 }
             }
             catch (Exception)

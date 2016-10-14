@@ -32,6 +32,14 @@ namespace WSCATProject.Sales
             get { return _clientCode; }
             set { _clientCode = value; }
         }
+        /// <summary>
+        /// 销售单数量
+        /// </summary>
+        private int _salesMainCodeShuliang;
+        /// <summary>
+        /// 销售订单详细数量
+        /// </summary>
+        private int _salesDetielShuLiang;
         #endregion
         CodingHelper ch = new CodingHelper();
 
@@ -60,8 +68,12 @@ namespace WSCATProject.Sales
                 SalesOrderInterface salesOrder = new SalesOrderInterface();
 
                 DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch(XYEEncoding.strCodeHex(_clientCode)));
+                _salesMainCodeShuliang = dt1.Rows.Count;
+                this.labelSalesMain.Text = _salesMainCodeShuliang.ToString()+"张单据";
                 DataTable dt2 = ch.DataTableReCoding(salesOrder.GetSalesDetailJoinSearch());
-                if (dt1==null||dt2==null)
+                _salesDetielShuLiang = dt2.Rows.Count;
+                this.labelSalesDetile.Text = _salesDetielShuLiang.ToString()+"条记录";
+                if (dt1.Rows.Count == 0 || dt2.Rows.Count == 0)
                 {
                     MessageBox.Show("此客户暂无销售订单信息！请重新选择");
                     return;
@@ -113,9 +125,9 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-选源单初始化数据库错误！"+ex.Message);
+                MessageBox.Show("错误代码：-选源单初始化数据库错误！" + ex.Message);
             }
-        
+
         }
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
