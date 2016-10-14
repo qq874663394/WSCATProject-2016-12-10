@@ -190,7 +190,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 //供应商
-                _AllSupply = supply.GetList(99, "");
+               _AllSupply = supply.GetList(99, "");
 
                 //业务员
                 _AllEmployee = employee.SelSupplierTable(false);

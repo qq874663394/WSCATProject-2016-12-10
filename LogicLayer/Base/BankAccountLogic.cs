@@ -43,7 +43,7 @@ namespace LogicLayer.Base
                 }
                 if (isEnable == false)
                 {
-                    strWhere += string.Format("and isEnable=1");
+                    strWhere += string.Format(" and isEnable=1");
                 }
                 dt = _dal.GetList(strWhere).Tables[0];
             }

@@ -127,63 +127,71 @@ namespace WSCATProject.Warehouse
 
         private void WareHouseInventoryForm_Load(object sender, EventArgs e)
         {
-            this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
-
-            //设置盘点数量可输入的最大值和最小值
-            GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
-            gdiecNumber.MinValue = 0;
-            gdiecNumber.MaxValue = 999999999;
-
-            superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-            superGridControlShangPing.HScrollBarVisible = true;
-            superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;//设置内容居中
-            InitDataGridView(); //调用表格初始化
-
-            //生成code 和显示条形码
-            _PanDianCode = BuildCode.ModuleCode("WII");
-            textBoxpandiancode.Text = _PanDianCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
-            picbpandianBarCode.Image = imgTemp;
-
-            #region 盘点方案
-            DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
-            cboPanDianIdea.DisplayMember = "name";
-            cboPanDianIdea.ValueMember = "code";
-            cboPanDianIdea.DataSource = dt;
-            string code = cboPanDianIdea.SelectedValue.ToString();
-            superGridControlShangPing.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
-            superGridControlShangPing.PrimaryGrid.EnsureVisible();
-            InitDataGridView();
             try
             {
-                GridRow gr = new GridRow();
-                decimal tempAllzhucun = 0;
-                decimal tempAllpandian = 0;
-                //逐行统计数据总数
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
+
+                //设置盘点数量可输入的最大值和最小值
+                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["pandiannumber"].EditControl as GridDoubleInputEditControl;
+                gdiecNumber.MinValue = 0;
+                gdiecNumber.MaxValue = 999999999;
+
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
+                superGridControlShangPing.HScrollBarVisible = true;
+                superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;//禁止自动创建列
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;//设置内容居中
+                InitDataGridView(); //调用表格初始化
+
+                //生成code 和显示条形码
+                _PanDianCode = BuildCode.ModuleCode("WII");
+                textBoxpandiancode.Text = _PanDianCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxpandiancode.Text, barcodeXYE.Code128.Encode.Code128A);
+                picbpandianBarCode.Image = imgTemp;
+
+                #region 盘点方案
+                DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
+                cboPanDianIdea.DisplayMember = "name";
+                cboPanDianIdea.ValueMember = "code";
+                cboPanDianIdea.DataSource = dt;
+                string code = cboPanDianIdea.SelectedValue.ToString();
+                superGridControlShangPing.PrimaryGrid.DataSource = codeh.DataTableReCoding(warehousemain.GetMaterialByMain(XYEEncoding.strCodeHex(code)));
+                superGridControlShangPing.PrimaryGrid.EnsureVisible();
+                InitDataGridView();
+                try
                 {
-                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
-                    tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
+                    GridRow gr = new GridRow();
+                    decimal tempAllzhucun = 0;
+                    decimal tempAllpandian = 0;
+                    //逐行统计数据总数
+                    for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                    {
+                        GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                        tempAllzhucun += Convert.ToDecimal(tempGR["zhangcunnumber"].FormattedValue);
+                        tempAllpandian += Convert.ToDecimal(tempGR["pandiannumber"].FormattedValue);
+                    }
+                    _ZhangCunShuLiang = tempAllzhucun;
+                    _PanDianShuLiang = tempAllpandian;
+                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                    gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
+                    gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
                 }
-                _ZhangCunShuLiang = tempAllzhucun;
-                _PanDianShuLiang = tempAllpandian;
-                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["zhangcunnumber"].Value = _ZhangCunShuLiang.ToString();
-                gr["pandiannumber"].Value = _PanDianShuLiang.ToString();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+                }
+                #endregion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+                MessageBox.Show("错误代码：初始化数据错误！"+ex.Message);
             }
-            #endregion
+     
         }
 
         #region  下拉框选择改变事件

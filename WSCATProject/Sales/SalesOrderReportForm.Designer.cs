@@ -68,13 +68,14 @@
             this.discountMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.fahuoNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.ZongKuCun = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridCell1 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridRow2 = new DevComponents.DotNetBar.SuperGrid.GridRow();
             this.gridRow3 = new DevComponents.DotNetBar.SuperGrid.GridRow();
             this.gridRow4 = new DevComponents.DotNetBar.SuperGrid.GridRow();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelSalesMain = new System.Windows.Forms.Label();
+            this.labelSalesDetile = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
@@ -300,6 +301,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.fahuoNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongKuCun);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
@@ -472,6 +474,12 @@
             this.ZongKuCun.Name = "ZongKuCun";
             this.ZongKuCun.Width = 60;
             // 
+            // gridColumncode
+            // 
+            this.gridColumncode.HeaderText = "物流code";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
+            // 
             // gridCell1
             // 
             this.gridCell1.Value = "123123123123";
@@ -489,39 +497,39 @@
             this.label1.TabIndex = 54;
             this.label1.Text = "共计：";
             // 
-            // label2
+            // labelSalesMain
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(1031, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
-            this.label2.TabIndex = 55;
-            this.label2.Text = "label2";
+            this.labelSalesMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSalesMain.AutoSize = true;
+            this.labelSalesMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelSalesMain.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelSalesMain.ForeColor = System.Drawing.Color.Red;
+            this.labelSalesMain.Location = new System.Drawing.Point(1031, 93);
+            this.labelSalesMain.Name = "labelSalesMain";
+            this.labelSalesMain.Size = new System.Drawing.Size(47, 12);
+            this.labelSalesMain.TabIndex = 55;
+            this.labelSalesMain.Text = "label2";
             // 
-            // label3
+            // labelSalesDetile
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(1102, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
-            this.label3.TabIndex = 56;
-            this.label3.Text = "label3";
+            this.labelSalesDetile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSalesDetile.AutoSize = true;
+            this.labelSalesDetile.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelSalesDetile.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelSalesDetile.ForeColor = System.Drawing.Color.Red;
+            this.labelSalesDetile.Location = new System.Drawing.Point(1102, 93);
+            this.labelSalesDetile.Name = "labelSalesDetile";
+            this.labelSalesDetile.Size = new System.Drawing.Size(47, 12);
+            this.labelSalesDetile.TabIndex = 56;
+            this.labelSalesDetile.Text = "label3";
             // 
             // SalesOrderReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 604);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelSalesDetile);
+            this.Controls.Add(this.labelSalesMain);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
@@ -562,8 +570,8 @@
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlShangPing;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelSalesMain;
+        private System.Windows.Forms.Label labelSalesDetile;
         private DevComponents.DotNetBar.SuperGrid.GridColumn DanJuCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn DanJuDate;
         private DevComponents.DotNetBar.SuperGrid.GridColumn ClientName;
@@ -593,5 +601,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridRow gridRow4;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell1;
         private DevComponents.DotNetBar.SuperGrid.GridColumn salesDetilecode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
     }
 }

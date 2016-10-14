@@ -350,9 +350,9 @@ namespace WSCATProject.Warehouse
             try
             {
                 //业务员
-                _AllEmployee = employee.SelSupplierTable(false);
+               _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
-                _AllStorage = storage.GetList(00, "");
+               _AllStorage = storage.GetList(00, "");
                 superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
                 superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 cbotype.SelectedIndex = 0;
