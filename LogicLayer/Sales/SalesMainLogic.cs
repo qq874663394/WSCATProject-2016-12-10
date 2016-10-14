@@ -162,5 +162,9 @@ namespace LogicLayer.Sales
         {
             return _dal.GetExamineAndPay(clientCode, salesCode);
         }
+        public int SetPayState(int payState, string code)
+        {
+            return _dal.SetPayState(payState, code);
+        }
     }
 }
