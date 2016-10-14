@@ -31,9 +31,7 @@ namespace WSCATProject.Sales
             set {  _clientCode = value;  }
         }
         List<string> _saleslist = new List<string>();
-        CodingHelper ch = new CodingHelper();
-        /// <summary>
-        /// 窗体加载事件
+        CodingHelper ch = new CodingHelper();        /// 窗体加载事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -79,6 +77,8 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("销售单数据加载错误!"+ex.Message);
             }
+
+
         }
 
         #region  初始化数据

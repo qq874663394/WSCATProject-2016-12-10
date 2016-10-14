@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using InterfaceLayer.Sales;
+using DevComponents.DotNetBar.Controls;
 
 namespace WSCATProject.Sales
 {
@@ -1549,6 +1550,86 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
             }
+        }
+
+        private void txtBenCiShouKuan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+            {
+                if (e.KeyChar == '.')
+                {
+                    if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                        e.Handled = true;
+                }
+                else
+                    e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar <= 31)
+                {
+                    e.Handled = false;
+                }
+                else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                {
+                    if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                        e.Handled = true;
+                }
+            }
+        }
+
+        private string skipComma(string str)
+        {
+            string[] ss = null;
+            string strnew = "";
+            if (str == "")
+            {
+                strnew = "0";
+            }
+            else
+            {
+                ss = str.Split(',');
+                for (int i = 0; i < ss.Length; i++)
+                {
+                    strnew += ss[i];
+                }
+            }
+            return strnew;
+        }
+
+        private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(labtextboxTop7.Text))
+                return;
+
+            //// 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
+            labtextboxTop7.Text = string.Format("{0:#,#}", d);
+            //// 确保输入光标在最右侧
+            labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
+
+            if (d > 999999999)
+            {
+                MessageBox.Show("输入的值超过范围！请重新输入");
+                labtextboxTop7.Clear();
+                return;
+            }
+        }
+        /// <summary>
+        /// 当控件失去焦点时，控件的值精确到两位小数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBenCiShouKuan_Leave(object sender, EventArgs e)
+        {
+            //控件失去焦点后将它的值的格式精确到两位小数
+            TextBoxX name = (sender as TextBoxX);
+
+            if (name.Text == "")
+            {
+                name.Text = "0.00";
+            }
+            name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
     }
 }
