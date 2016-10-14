@@ -154,5 +154,9 @@ namespace LogicLayer.Sales
         {
             return _dal.Exists(code);
         }
+        public DataTable GetExamineAndPay(string clientCode)
+        {
+            return _dal.GetExamineAndPay(clientCode);
+        }
     }
 }
