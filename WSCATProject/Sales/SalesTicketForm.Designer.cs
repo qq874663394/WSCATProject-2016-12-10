@@ -61,7 +61,6 @@
             this.gridColumnshengchanrqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnbaozhiqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnyouxiaoqi = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumntuihuoshu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnyuandandanhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.comboBoxType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
@@ -72,6 +71,7 @@
             this.comboItem7 = new DevComponents.Editors.ComboItem();
             this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.txtYouHuiKeMu = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -515,11 +515,12 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnshengchanrqi);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbaozhiqi);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyouxiaoqi);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumntuihuoshu);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyuandandanhao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 389);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             // 
             // resizablePanel1
@@ -829,13 +830,6 @@
             this.gridColumnyouxiaoqi.Name = "gridColumnyouxiaoqi";
             this.gridColumnyouxiaoqi.Width = 80;
             // 
-            // gridColumntuihuoshu
-            // 
-            this.gridColumntuihuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumntuihuoshu.HeaderText = "退货数量";
-            this.gridColumntuihuoshu.Name = "gridColumntuihuoshu";
-            this.gridColumntuihuoshu.Width = 60;
-            // 
             // gridColumnyuandandanhao
             // 
             this.gridColumnyuandandanhao.HeaderText = "源单编号";
@@ -920,6 +914,12 @@
             this.txtYouHuiKeMu.Size = new System.Drawing.Size(135, 16);
             this.txtYouHuiKeMu.TabIndex = 58;
             // 
+            // gridColumncode
+            // 
+            this.gridColumncode.HeaderText = "商品代码";
+            this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
+            // 
             // SalesTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -992,7 +992,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnshengchanrqi;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnbaozhiqi;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyouxiaoqi;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumntuihuoshu;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnyuandandanhao;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxType;
         private DevComponents.Editors.ComboItem comboItem1;
@@ -1003,5 +1002,6 @@
         private DevComponents.Editors.ComboItem comboItem7;
         private DevComponents.Editors.ComboItem comboItem8;
         protected DevComponents.DotNetBar.Controls.TextBoxX txtYouHuiKeMu;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
     }
 }

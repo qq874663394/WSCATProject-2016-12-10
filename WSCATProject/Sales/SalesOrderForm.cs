@@ -478,7 +478,7 @@ namespace WSCATProject.Sales
                 //客户
                 _AllClient = client.GetClientByBool(false);
                 //销售员
-                _AllEmployee = employee.SelSupplierTable(false);
+               _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
                 superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
