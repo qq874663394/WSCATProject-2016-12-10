@@ -171,6 +171,7 @@
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
             this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
+            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // BillType
             // 
@@ -264,6 +265,7 @@
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "销  售  单  序  时  薄";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -278,6 +280,7 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // toolStrip1
             // 
@@ -295,6 +298,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
             this.toolStrip1.TabIndex = 58;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // toolStripButtonProfit
             // 
