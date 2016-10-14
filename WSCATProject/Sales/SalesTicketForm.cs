@@ -489,9 +489,55 @@ namespace WSCATProject.Sales
                 MessageBox.Show("初始化商品列表失败，请检查：" + ex.Message);
             }
         }
+        /// <summary>
+        /// 初始化窗体
+        /// </summary>
+        private void InitForm()
+
+        {
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
+        }
 
         #endregion
-
+        
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -549,12 +595,12 @@ namespace WSCATProject.Sales
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxtiaoxingma.Image = imgTemp;
 
+                pictureBoxShengHe.Parent = pictureBoxtitle;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：-初始化数据错误" + ex.Message);
             }
-
 
         }
 
@@ -849,7 +895,10 @@ namespace WSCATProject.Sales
             object salesMainResult = salesMainInterface.AddOrUpdateToMainOrDetail(salesMain, salesdetialList);
             if (salesMainResult != null)
             {
+                pictureBoxShengHe.Visible = true;
+                InitForm();
                 MessageBox.Show("审核和保存销售单数据成功", "销售单温馨提示");
+
             }
         }
 
@@ -1631,5 +1680,7 @@ namespace WSCATProject.Sales
             }
             name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
+
+
     }
 }

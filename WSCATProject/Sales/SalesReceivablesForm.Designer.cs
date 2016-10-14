@@ -76,12 +76,12 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1053, 79);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1055, 79);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(135, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(1007, 10);
+            this.labelprie.Location = new System.Drawing.Point(1009, 10);
             // 
             // dateTimePicker1
             // 
@@ -99,6 +99,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.cboJieSuanMethod);
             this.panel2.Controls.Add(this.txtRemark);
             this.panel2.Controls.Add(this.pictureBoxBarCode);
@@ -109,6 +110,7 @@
             this.panel2.Controls.Add(this.txtClient);
             this.panel2.Controls.Add(this.cboDanJuType);
             this.panel2.Size = new System.Drawing.Size(1202, 120);
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
             this.panel2.Controls.SetChildIndex(this.labTop2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop3, 0);
@@ -352,6 +354,11 @@
             // 
             this.pictureBoxClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(221, 15);
@@ -433,6 +440,10 @@
             // 
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labeldata.Location = new System.Drawing.Point(1007, 84);
+            // 
+            // bar1
+            // 
+            this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // panel3
             // 
