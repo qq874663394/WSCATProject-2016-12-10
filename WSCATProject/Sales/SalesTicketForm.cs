@@ -68,6 +68,10 @@ namespace WSCATProject.Sales
         /// </summary>
         private string _storgeCode;
         /// <summary>
+        /// 仓库名称
+        /// </summary>
+        private string _storgeName;
+        /// <summary>
         /// 保存账户code
         /// </summary>
         private string _bankCode;
@@ -612,12 +616,15 @@ namespace WSCATProject.Sales
                         grid["gridColumnshuie"].Value = _TaxMoney.ToString();
                         grid["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
                         grid["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+                        labtextboxTop9.Text = _PriceAndTaxMoney.ToString();
+                        labtextboxTop7.Text = _PriceAndTaxMoney.ToString();
                         resizablePanelData.Visible = false;
                         return;
                     }
                     continue;
                 }
-                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["materialDaima"],
+
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(_storgeName, dt.Rows[0]["materialDaima"],
                     dt.Rows[0]["name"],
                     dt.Rows[0]["model"],
                     dt.Rows[0]["barCode"],
@@ -1012,6 +1019,7 @@ namespace WSCATProject.Sales
                     gr.Cells["gridColumncode"].Value = code;
                     _ClickStorageList = new KeyValuePair<string, string>(code, Name);
                     _storgeCode = code;
+                    _storgeName = Name;
                     resizablePanel1.Visible = false;
                 }
                 //结算账户
