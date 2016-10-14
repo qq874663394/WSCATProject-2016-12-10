@@ -39,6 +39,7 @@ namespace WSCATProject.Sales
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             InitDataGridView();//调用表格初始化
         }
+
         #region  初始化数据
         /// <summary>
         /// 统计行数据

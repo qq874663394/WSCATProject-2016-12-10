@@ -72,6 +72,11 @@
             this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.txtYouHuiKeMu = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.cboJiesuanMethod = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.comboItem9 = new DevComponents.Editors.ComboItem();
+            this.comboItem10 = new DevComponents.Editors.ComboItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -119,6 +124,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panel2.Controls.Add(this.cboJiesuanMethod);
             this.panel2.Controls.Add(this.comboBoxfapiaotype);
             this.panel2.Controls.Add(this.comboBoxType);
             this.panel2.Controls.Add(this.txtYiKaiPiao);
@@ -178,6 +184,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxType, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxfapiaotype, 0);
+            this.panel2.Controls.SetChildIndex(this.cboJiesuanMethod, 0);
             // 
             // labtextboxTop6
             // 
@@ -312,8 +319,8 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(196, 48);
-            this.pictureBox4.Visible = false;
+            this.pictureBox4.Location = new System.Drawing.Point(461, 80);
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBoxBank_Click);
             // 
             // pictureBox3
             // 
@@ -432,6 +439,7 @@
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxBotton2.Location = new System.Drawing.Point(98, 85);
             this.labtextboxBotton2.Size = new System.Drawing.Size(135, 16);
+            this.labtextboxBotton2.Visible = false;
             // 
             // ltxtbSalsMan
             // 
@@ -575,8 +583,9 @@
             this.txtBank.Location = new System.Drawing.Point(345, 85);
             this.txtBank.Name = "txtBank";
             this.txtBank.PreventEnterBeep = true;
-            this.txtBank.Size = new System.Drawing.Size(135, 16);
+            this.txtBank.Size = new System.Drawing.Size(115, 16);
             this.txtBank.TabIndex = 56;
+            this.txtBank.TextChanged += new System.EventHandler(this.txtBank_TextChanged);
             // 
             // label6
             // 
@@ -920,6 +929,39 @@
             this.gridColumncode.Name = "gridColumncode";
             this.gridColumncode.Visible = false;
             // 
+            // cboJiesuanMethod
+            // 
+            this.cboJiesuanMethod.DisplayMember = "Text";
+            this.cboJiesuanMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboJiesuanMethod.FormattingEnabled = true;
+            this.cboJiesuanMethod.ItemHeight = 15;
+            this.cboJiesuanMethod.Items.AddRange(new object[] {
+            this.comboItem3,
+            this.comboItem4,
+            this.comboItem9,
+            this.comboItem10});
+            this.cboJiesuanMethod.Location = new System.Drawing.Point(98, 80);
+            this.cboJiesuanMethod.Name = "cboJiesuanMethod";
+            this.cboJiesuanMethod.Size = new System.Drawing.Size(134, 21);
+            this.cboJiesuanMethod.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cboJiesuanMethod.TabIndex = 72;
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "现金";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "电汇";
+            // 
+            // comboItem9
+            // 
+            this.comboItem9.Text = "信汇";
+            // 
+            // comboItem10
+            // 
+            this.comboItem10.Text = "银行汇票";
+            // 
             // SalesTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1003,5 +1045,10 @@
         private DevComponents.Editors.ComboItem comboItem8;
         protected DevComponents.DotNetBar.Controls.TextBoxX txtYouHuiKeMu;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cboJiesuanMethod;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.Editors.ComboItem comboItem9;
+        private DevComponents.Editors.ComboItem comboItem10;
     }
 }
