@@ -530,9 +530,11 @@ namespace WSCATProject.Sales
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+
             }
             catch (Exception ex)
             {
+               
                 MessageBox.Show("错误代码：1101-窗体加载时，初始化数据错误！请检查：" + ex.Message);
             }
         }
@@ -784,10 +786,10 @@ namespace WSCATProject.Sales
                 if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
                 {
                     resizablePanelData.Visible = false;
-                    MessageBox.Show("请先选择客户：");
+                    MessageBox.Show("请先选择客户");
                     return;
                 }
-                if (e.GridCell.GridColumn.Name == "material")
+                else if (e.GridCell.GridColumn.Name == "material")
                 {
                     SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
                     GridCell gc = ge[0] as GridCell;
@@ -1180,6 +1182,11 @@ namespace WSCATProject.Sales
         {
             try
             {
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+                if (g.Cells["name"].Value == null || g.Cells["name"].Value.ToString() == "")
+                {
+                    return;
+                }
                 //最后一行做统计行
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
                 ////计算金额
@@ -1357,6 +1364,18 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
+        /// 表格按回车键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
+        }
+    /// <summary>
         /// 点击panel隐藏控件
         /// </summary>
         /// <param name="sender"></param>
@@ -1368,3 +1387,4 @@ namespace WSCATProject.Sales
         }
     }
 }
+

@@ -1702,11 +1702,13 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码：1318-本次收款的值为非法字符，只能输入数字，请重新输入：" + ex.Message, "销售单温馨提示！");
             }
         }
+
         /// <summary>
         /// 当控件失去焦点时，控件的值精确到两位小数
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+      
         private void txtBenCiShouKuan_Leave(object sender, EventArgs e)
         {
             //控件失去焦点后将它的值的格式精确到两位小数
@@ -1719,6 +1721,12 @@ namespace WSCATProject.Sales
             name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
 
-
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
+        }
     }
 }
