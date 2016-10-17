@@ -237,48 +237,55 @@ namespace WSCATProject.Sales
         /// </summary>
         private void InitClient()
         {
-            if (_Click != 1)
+            try
             {
-                _Click = 1;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
+                if (_Click != 1)
+                {
+                    _Click = 1;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
 
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "客户编号";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "客户编号";
+                    dgvc.DataPropertyName = "code";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "客户姓名";
-                dgvc.DataPropertyName = "name";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.HeaderText = "客户姓名";
+                    dgvc.DataPropertyName = "name";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "mobilePhone";
-                dgvc.HeaderText = "电话";
-                dgvc.DataPropertyName = "mobilePhone";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "mobilePhone";
+                    dgvc.HeaderText = "电话";
+                    dgvc.DataPropertyName = "mobilePhone";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "linkMan";
-                dgvc.HeaderText = "联系人";
-                dgvc.DataPropertyName = "linkMan";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "linkMan";
+                    dgvc.HeaderText = "联系人";
+                    dgvc.DataPropertyName = "linkMan";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "fax";
-                dgvc.HeaderText = "传真";
-                dgvc.DataPropertyName = "fax";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "fax";
+                    dgvc.HeaderText = "传真";
+                    dgvc.DataPropertyName = "fax";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(470, 160);
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
-                resizablePanel1.Visible = true;
+                    resizablePanel1.Location = new Point(470, 160);
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
+                    resizablePanel1.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1306-尝试点击客户，数据显示失败或者无数据！" + ex.Message, "销售单温馨提示！");
             }
         }
 
@@ -287,36 +294,43 @@ namespace WSCATProject.Sales
         /// </summary>
         private void InitEmployee()
         {
-            if (_Click != 2)
+            try
             {
-                _Click = 2;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "员工工号";
-                dgvc.DataPropertyName = "员工工号";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "姓名";
-                dgvc.DataPropertyName = "姓名";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
-                resizablePanel1.Visible = true;
-                if (this.WindowState == FormWindowState.Maximized)
+                if (_Click != 2)
                 {
-                    resizablePanel1.Location = new Point(220, 670);
-                    return;
+                    _Click = 2;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
+
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "员工工号";
+                    dgvc.DataPropertyName = "员工工号";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.HeaderText = "姓名";
+                    dgvc.DataPropertyName = "姓名";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                    resizablePanel1.Visible = true;
+                    if (this.WindowState == FormWindowState.Maximized)
+                    {
+                        resizablePanel1.Location = new Point(220, 670);
+                        return;
+                    }
+                    if (this.WindowState == FormWindowState.Normal)
+                    {
+                        resizablePanel1.Location = new Point(220, 520);
+                        return;
+                    }
                 }
-                if (this.WindowState == FormWindowState.Normal)
-                {
-                    resizablePanel1.Location = new Point(220, 520);
-                    return;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1308-尝试点击销售员，数据显示失败或者无数据！" + ex.Message, "销售单温馨提示！");
             }
         }
 
@@ -325,36 +339,43 @@ namespace WSCATProject.Sales
         /// </summary>
         private void InitStorage()
         {
-            if (_Click != 3)
+            try
             {
-                _Click = 3;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
+                if (_Click != 3)
+                {
+                    _Click = 3;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
 
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.Visible = true;
-                dgvc.HeaderText = "仓库编号";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.Visible = true;
+                    dgvc.HeaderText = "仓库编号";
+                    dgvc.DataPropertyName = "code";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.Visible = true;
-                dgvc.HeaderText = "仓库名称";
-                dgvc.DataPropertyName = "name";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.Visible = true;
+                    dgvc.HeaderText = "仓库名称";
+                    dgvc.DataPropertyName = "name";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "address";
-                dgvc.Visible = false;
-                dgvc.HeaderText = "仓库地址";
-                dgvc.DataPropertyName = "address";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "address";
+                    dgvc.Visible = false;
+                    dgvc.HeaderText = "仓库地址";
+                    dgvc.DataPropertyName = "address";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                //查询仓库的方法
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
-                resizablePanel1.Visible = true;
+                    //查询仓库的方法
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
+                    resizablePanel1.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1309-尝试点击表格里仓库出错或者无数据！" + ex.Message, "销售单温馨提示！");
             }
         }
 
@@ -418,9 +439,10 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化结算账户数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1307-尝试点击结算账户，数据显示失败或者无数据！" + ex.Message, "销售单温馨提示！");
             }
         }
+
         /// <summary>
         /// 初始化商品下拉别表的数据
         /// </summary>
@@ -486,9 +508,10 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化商品列表失败，请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1310-尝试点击表格里商品代码数据错误或者无数据！" + ex.Message, "销售单温馨提示！");
             }
         }
+
         /// <summary>
         /// 初始化窗体
         /// </summary>
@@ -537,7 +560,7 @@ namespace WSCATProject.Sales
         }
 
         #endregion
-        
+
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -599,7 +622,8 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-初始化数据错误" + ex.Message);
+                MessageBox.Show("错误代码：1301-窗体加载时，初始化数据失败！请检查：" + ex.Message, "销售单温馨提示！");
+                return;
             }
 
         }
@@ -713,7 +737,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-双击绑定商品错误" + ex.Message);
+                MessageBox.Show("错误代码：1319-双击销售订单序时薄选中行绑定商品错误！请检查" + ex.Message,"销售单温馨提示！");
                 return;
             }
 
@@ -749,7 +773,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1320-表格里统计数量出错！请检查：" + ex.Message);
             }
         }
         /// <summary>
@@ -808,7 +832,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:;尝试创建销售单商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                MessageBox.Show("错误代码:1304-尝试创建并审核销售单商品数据出错！请检查：" + ex.Message, "销售单温馨提示");
                 return;
             }
             try
@@ -887,7 +911,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建销售单详商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                MessageBox.Show("错误代码：1305-尝试创建并审核销售单详商品详细数据出错！请检查：" + ex.Message, "销售单温馨提示");
                 return;
             }
 
@@ -973,7 +997,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:;尝试创建销售单商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                MessageBox.Show("错误代码:1302-尝试创建销售单商品数据出错！请检查：" + ex.Message, "销售单温馨提示");
                 return;
             }
             try
@@ -1052,7 +1076,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建销售单详商品数据出错,请检查输入" + ex.Message, "销售单温馨提示");
+                MessageBox.Show("错误代码：1303-尝试创建销售单商品详细数据出错！请检查：" + ex.Message, "销售单温馨提示");
                 return;
             }
 
@@ -1060,7 +1084,7 @@ namespace WSCATProject.Sales
             object salesMainResult = salesMainInterface.AddOrUpdateToMainOrDetail(salesMain, salesdetialList);
             if (salesMainResult != null)
             {
-                MessageBox.Show("新增销售单数据成功", "销售单温馨提示");
+                MessageBox.Show("新增销售单数据成功！", "销售单温馨提示");
             }
         }
 
@@ -1116,7 +1140,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1311-双击绑定客户、销售员、仓库、结算账户数据错误！请检查：" + ex.Message, "销售单温馨提示！");
             }
         }
 
@@ -1268,7 +1292,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询客户数据错误" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：1312-模糊查询客户数据错误！请检查：" + ex.Message, "销售单温馨提示");
             }
         }
         /// <summary>
@@ -1316,7 +1340,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-销售员模糊查询数据失败！" + ex.Message);
+                MessageBox.Show("错误代码：1314-模糊查询销售员数据失败！请检查：" + ex.Message, "销售单温馨提示！");
             }
         }
         /// <summary>
@@ -1385,7 +1409,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询结算账户数据错误" + ex.Message, "销售单温馨提示");
+                MessageBox.Show("错误代码：1313-模糊查询结算账户数据错误！请检查：" + ex.Message, "销售单温馨提示");
             }
         }
 
@@ -1426,7 +1450,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-选择调拨类型数据错误" + ex.Message);
+                MessageBox.Show("错误代码：1315-选择调拨类型数据错误" + ex.Message);
             }
         }
 
@@ -1493,7 +1517,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-选择发票类型数据绑定错误!" + ex.Message);
+                MessageBox.Show("错误代码：1316-选择发票类型数据绑定错误!" + ex.Message);
             }
         }
 
@@ -1597,33 +1621,40 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1317-验证表格里的金额以及统计数量出错！请检查：" + ex.Message);
             }
         }
 
         private void txtBenCiShouKuan_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+            try
             {
-                if (e.KeyChar == '.')
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
                 {
-                    if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                            e.Handled = true;
+                    }
+                    else
                         e.Handled = true;
                 }
                 else
-                    e.Handled = true;
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                if (e.KeyChar <= 31)
-                {
-                    e.Handled = false;
-                }
-                else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
-                {
-                    if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
-                        e.Handled = true;
-                }
+                MessageBox.Show("错误代码：1318-本次收款的值为非法字符，只能输入数字，请重新输入：" + ex.Message, "销售单温馨提示！");
             }
         }
 
@@ -1648,20 +1679,27 @@ namespace WSCATProject.Sales
 
         private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(labtextboxTop7.Text))
-                return;
-
-            //// 按千分位逗号格式显示！
-            double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
-            labtextboxTop7.Text = string.Format("{0:#,#}", d);
-            //// 确保输入光标在最右侧
-            labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
-
-            if (d > 999999999)
+            try
             {
-                MessageBox.Show("输入的值超过范围！请重新输入");
-                labtextboxTop7.Clear();
-                return;
+                if (string.IsNullOrEmpty(labtextboxTop7.Text))
+                    return;
+
+                //// 按千分位逗号格式显示！
+                double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
+                labtextboxTop7.Text = string.Format("{0:#,#}", d);
+                //// 确保输入光标在最右侧
+                labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
+
+                if (d > 999999999)
+                {
+                    MessageBox.Show("输入的值超过范围！请重新输入");
+                    labtextboxTop7.Clear();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1318-本次收款的值为非法字符，只能输入数字，请重新输入：" + ex.Message, "销售单温馨提示！");
             }
         }
         /// <summary>

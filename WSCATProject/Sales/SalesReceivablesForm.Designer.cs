@@ -562,6 +562,7 @@
             // 
             // txtBenCiHeXiao
             // 
+            this.txtBenCiHeXiao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -575,6 +576,7 @@
             this.txtBenCiHeXiao.Location = new System.Drawing.Point(91, 50);
             this.txtBenCiHeXiao.Name = "txtBenCiHeXiao";
             this.txtBenCiHeXiao.PreventEnterBeep = true;
+            this.txtBenCiHeXiao.ReadOnly = true;
             this.txtBenCiHeXiao.Size = new System.Drawing.Size(140, 16);
             this.txtBenCiHeXiao.TabIndex = 56;
             this.txtBenCiHeXiao.TextChanged += new System.EventHandler(this.txtBenCiHeXiao_TextChanged);

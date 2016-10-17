@@ -244,7 +244,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化客户数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1106-尝试点击客户数据出错或者无数据！请检查：" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -289,7 +289,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化销售员数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1107-尝试点击销售员数据出错或者无数据！请检查：" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -335,7 +335,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化仓库数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1108-尝试点击交货地点数据出错或者无数据！请检查：" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -461,7 +461,7 @@ namespace WSCATProject.Sales
             dateTimePicker1.Enabled = false;
             labeldata.ForeColor = Color.Gray;
             labelprie.ForeColor = Color.Gray;
-            labelprie.BackColor= Color.FromArgb(240, 240, 240);
+            labelprie.BackColor = Color.FromArgb(240, 240, 240);
         }
 
         #endregion
@@ -478,12 +478,13 @@ namespace WSCATProject.Sales
                 //客户
                 _AllClient = client.GetClientByBool(false);
                 //销售员
-               _AllEmployee = employee.SelSupplierTable(false);
+                _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
                 superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
                 superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
+
                 #region 初始化窗体
 
                 cboMethod.SelectedIndex = 0;
@@ -529,12 +530,10 @@ namespace WSCATProject.Sales
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
-            
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("窗体加载失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1101-窗体加载时，初始化数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -582,7 +581,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:尝试创建销售订单数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码:1102-尝试创建销售订单数据出错！请检查：" + ex.Message, "销售订单温馨提示");
                 return;
             }
 
@@ -620,7 +619,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：1103-尝试创建销售订单商品详细数据出错!请检查:" + ex.Message, "销售订单温馨提示");
                 return;
             }
 
@@ -676,7 +675,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:尝试创建销售订单数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码:1104-尝试创建销售订单商品数据出错！请检查：" + ex.Message, "销售订单温馨提示");
                 return;
             }
 
@@ -714,7 +713,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建销售订单详情商品数据出错,请检查输入" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：1105-尝试创建销售订单商品详细数据出错！请检查：" + ex.Message, "销售订单温馨提示");
                 return;
             }
 
@@ -810,7 +809,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("查询商品数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1109-尝试点击商品代码出错或者无数据！请检查：" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -856,7 +855,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1110-双击绑定客户或者销售员或者仓库数据错误！请检查：" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -939,7 +938,7 @@ namespace WSCATProject.Sales
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("错误代码：-重复添加商品计算数据错误" + ex.Message);
+                    MessageBox.Show("错误代码：1111-重复添加商品并且计算数据错误" + ex.Message, "销售订单温馨提示！");
                 }
 
                 _materialCode = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value.ToString();//商品code 
@@ -1007,7 +1006,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-绑定商品数据错误" + ex.Message);
+                MessageBox.Show("错误代码：1112-双击绑定物料数据错误" + ex.Message, "销售订单温馨提示！");
             }
 
             superGridControlShangPing.Focus();
@@ -1063,7 +1062,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-销售员模糊查询数据失败！" + ex.Message);
+                MessageBox.Show("错误代码：1115-模糊查询销售员数据错误！" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -1125,7 +1124,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询客户数据错误" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：1114-模糊查询客户数据错误" + ex.Message, "销售订单温馨提示");
             }
         }
 
@@ -1152,7 +1151,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-表格商品模糊查询错误，查询数据错误" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码:1116-模糊查询表格商品数据错误！请检查：" + ex.Message, "销售订单温馨提示");
             }
         }
 
@@ -1223,7 +1222,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-统计数量出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1113-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "销售订单温馨提示！");
             }
         }
 
@@ -1240,44 +1239,57 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ltxtTopYiShouDingJin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //判断按键是不是要输入的类型。
-            if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
-                e.Handled = true;
-            //小数点的处理。
-            if ((int)e.KeyChar == 46)//小数点
+            try
             {
-                if (labtextboxTop7.Text.Length < 0)
-                    e.Handled = true;   //小数点不能在第一位
-                else
+                //判断按键是不是要输入的类型。
+                if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
+                    e.Handled = true;
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
                 {
-                    float f;
-                    float oldf;
-                    bool b1 = false, b2 = false;
-                    b1 = float.TryParse(labtextboxTop7.Text, out oldf);
-                    b2 = float.TryParse(labtextboxTop7.Text + e.KeyChar.ToString(), out f);
-                    if (b2 == false)
+                    if (labtextboxTop7.Text.Length < 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
                     {
-                        if (b1 == true)
-                            e.Handled = true;
-                        else
-                            e.Handled = false;
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(labtextboxTop7.Text, out oldf);
+                        b2 = float.TryParse(labtextboxTop7.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
                     }
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1117-已收金额输入的值为非法字符，请输入数字：" + ex.Message, "销售订单温馨提示！");
+            }
         }
 
         private void labtextboxTop7_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(labtextboxTop7.Text)) return;
 
-            if (string.IsNullOrEmpty(labtextboxTop7.Text)) return;
+                // 按千分位逗号格式显示！
+                double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
+                //labtextboxTop7.Text = string.Format("{0:#,#}", d);
+                labtextboxTop7.Text = string.Format("{0:#,#}", d);
+                // 确保输入光标在最右侧
+                labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1117-已收金额输入的值为非法字符，请输入数字：" + ex.Message, "销售订单温馨提示！");
+            }
 
-            // 按千分位逗号格式显示！
-            double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
-            //labtextboxTop7.Text = string.Format("{0:#,#}", d);
-            labtextboxTop7.Text = string.Format("{0:#,#}", d);
-            // 确保输入光标在最右侧
-            labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
         }
         private string skipComma(string str)
         {
@@ -1342,6 +1354,17 @@ namespace WSCATProject.Sales
                 this.Close();
                 this.Dispose();
             }
+        }
+
+        /// <summary>
+        /// 点击panel隐藏控件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Click(object sender, EventArgs e)
+        {
+            this.resizablePanel1.Visible = false;
+            this.resizablePanelData.Visible = false;
         }
     }
 }

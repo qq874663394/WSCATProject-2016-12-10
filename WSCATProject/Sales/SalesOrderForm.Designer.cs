@@ -118,6 +118,7 @@
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.pictureBoxBarCode);
             this.panel2.Controls.Add(this.cboMethod);
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labBotton2, 0);
@@ -348,7 +349,8 @@
             // 
             // labTop1
             // 
-            this.labTop1.Text = "客    户：";
+            this.labTop1.Size = new System.Drawing.Size(71, 12);
+            this.labTop1.Text = "客    户*：";
             // 
             // pictureBoxClose
             // 
@@ -357,6 +359,7 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panel5.Click += new System.EventHandler(this.panel2_Click);
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBoxEmployee
@@ -434,7 +437,8 @@
             // 
             // labBotton1
             // 
-            this.labBotton1.Text = "销 售 员：";
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "销 售 员*：";
             // 
             // resizablePanelData
             // 
@@ -448,6 +452,10 @@
             // bar1
             // 
             this.bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            // 
+            // pictureBoxtitle
+            // 
+            this.pictureBoxtitle.Click += new System.EventHandler(this.panel2_Click);
             // 
             // superGridControlShangPing
             // 
