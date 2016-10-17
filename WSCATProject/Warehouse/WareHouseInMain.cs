@@ -1445,5 +1445,13 @@ namespace WSCATProject.Warehouse
             }
             resizablePanelData.Visible = false;
         }
+
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
+        }
     }
 }

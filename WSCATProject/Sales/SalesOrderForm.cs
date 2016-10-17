@@ -461,7 +461,7 @@ namespace WSCATProject.Sales
             dateTimePicker1.Enabled = false;
             labeldata.ForeColor = Color.Gray;
             labelprie.ForeColor = Color.Gray;
-            labelprie.BackColor= Color.FromArgb(240, 240, 240);
+            labelprie.BackColor = Color.FromArgb(240, 240, 240);
         }
 
         #endregion
@@ -478,7 +478,7 @@ namespace WSCATProject.Sales
                 //客户
                 _AllClient = client.GetClientByBool(false);
                 //销售员
-               _AllEmployee = employee.SelSupplierTable(false);
+                _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
                 superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
@@ -529,7 +529,7 @@ namespace WSCATProject.Sales
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
-            
+
 
             }
             catch (Exception ex)
@@ -785,10 +785,10 @@ namespace WSCATProject.Sales
                 if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
                 {
                     resizablePanelData.Visible = false;
-                    MessageBox.Show("请先选择客户：");
+                    MessageBox.Show("请先选择客户");
                     return;
                 }
-                if (e.GridCell.GridColumn.Name == "material")
+                else if (e.GridCell.GridColumn.Name == "material")
                 {
                     SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
                     GridCell gc = ge[0] as GridCell;
@@ -1181,6 +1181,11 @@ namespace WSCATProject.Sales
         {
             try
             {
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+                if (g.Cells["name"].Value == null || g.Cells["name"].Value.ToString() == "")
+                {
+                    return;
+                }
                 //最后一行做统计行
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
                 ////计算金额
@@ -1343,5 +1348,19 @@ namespace WSCATProject.Sales
                 this.Dispose();
             }
         }
+
+        /// <summary>
+        /// 表格按回车键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
+        }
     }
 }
+

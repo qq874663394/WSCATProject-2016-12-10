@@ -164,6 +164,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("窗体加载时出错！请检查：" + ex.Message, "调价单温馨提示！");
+                return;
             }
         }
 
@@ -934,6 +935,14 @@ namespace WSCATProject.Warehouse
         private void WareHouseAdjustPriceForm_Activated(object sender, EventArgs e)
         {
             superGridControlShangPing.Focus();
+        }
+
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
         }
     }
 }

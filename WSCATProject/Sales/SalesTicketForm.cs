@@ -1664,11 +1664,13 @@ namespace WSCATProject.Sales
                 return;
             }
         }
+
         /// <summary>
         /// 当控件失去焦点时，控件的值精确到两位小数
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+      
         private void txtBenCiShouKuan_Leave(object sender, EventArgs e)
         {
             //控件失去焦点后将它的值的格式精确到两位小数
@@ -1681,6 +1683,12 @@ namespace WSCATProject.Sales
             name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
 
-
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
+        }
     }
 }
