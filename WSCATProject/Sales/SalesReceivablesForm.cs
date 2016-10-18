@@ -902,7 +902,7 @@ namespace WSCATProject.Sales
             }
 
             //增加一条收款单和收款单详细数据
-            object financelCollectionResult = financeCollectionInterface.AddToMainOrDetail(financecollection, financecollectionList);
+            object financelCollectionResult = financeCollectionInterface.AddOrUpdateToMainOrDetail(financecollection, financecollectionList);
             if (financelCollectionResult != null)
             {
                 MessageBox.Show("新增收款单数据成功", "收款单温馨提示");
@@ -1001,7 +1001,7 @@ namespace WSCATProject.Sales
             }
 
             //增加一条收款单和收款单详细数据
-            object financelCollectionResult = financeCollectionInterface.AddToMainOrDetail(financecollection, financecollectionList);
+            object financelCollectionResult = financeCollectionInterface.AddOrUpdateToMainOrDetail(financecollection, financecollectionList);
             if (financelCollectionResult != null)
             {
                 MessageBox.Show("新增并审核收款单数据成功", "收款单温馨提示");

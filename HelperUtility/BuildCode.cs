@@ -16,7 +16,7 @@ namespace HelperUtility
         public static string ModuleCode(string module)
         {
             string code = "";
-            string datetime = DateTime.Now.ToString("yyMMddHHmmssff");
+            string datetime = DateTime.Now.ToString("y秒yMMddHHmmssff");
             code = module + datetime;
             return code;
         }

@@ -43,7 +43,7 @@ namespace BaseLayer
             int result = 0;
             try
             {
-                result = DbHelperSQL.ExecuteSqlTran(hashTable, sql, list);
+                result = Convert.ToInt32(DbHelperSQL.ExecuteSqlTranScalar(hashTable, sql, list));
             }
             catch (Exception ex)
             {

@@ -112,7 +112,7 @@ namespace LogicLayer.Sales
                 operationTable = "T_SalesOrder",
                 operationTime = DateTime.Now,
                 objective = "查询销售信息",
-                operationContent = "查询T_SalesOrder表的所有数据
+                operationContent = "查询T_SalesOrder表的所有数据"
             };
             DataTable dt = null;
             try

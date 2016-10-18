@@ -11,13 +11,9 @@ namespace InterfaceLayer.Finance
     public class FinanceCollectionInterface
     {
         FinanceCollectionLogic _dal = new FinanceCollectionLogic();
-        public object AddToMainOrDetail(FinanceCollection model, List<FinanceCollectionDetail> modelDetail)
+        public object AddOrUpdateToMainOrDetail(FinanceCollection model, List<FinanceCollectionDetail> modelDetail)
         {
-            return _dal.AddToMainOrDetail(model, modelDetail);
-        }
-        public object UpdateToMainOrDetail(FinanceCollection model, List<FinanceCollectionDetail> modelDetail)
-        {
-            return _dal.UpdateToMainOrDetail(model, modelDetail);
+            return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
     }
 }

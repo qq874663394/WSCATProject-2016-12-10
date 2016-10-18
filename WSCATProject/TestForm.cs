@@ -215,7 +215,10 @@ namespace WSCATProject
                 resizablePanelData.Location = new Point(e.GridCell.UnMergedBounds.X,
                     e.GridCell.UnMergedBounds.Bottom + panel3.Location.Y);
             }
-
+            if (resizablePanelData.Visible == true)
+            {
+                dataGridViewShangPing.Focus();
+            }
         }
 
 

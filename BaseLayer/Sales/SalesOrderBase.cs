@@ -198,6 +198,16 @@ namespace BaseLayer.Sales
                 sqlDetail.Append("deliveryNumber=@deliveryNumber");
                 sqlDetail.Append(" where mainCode=@mainCode and code=@code");
 
+                string sqlInsert=@"insert into[T_SalesOrderDetail] 
+(materialCode,materialNumber,materialPrice,
+materialMoney,discountRate,VATRate,discountMoney,tax,taxTotal,
+remark,deliveryNumber,mainCode,code)
+values (@materialCode,@materialNumber,
+@materialPrice,@materialMoney,@discountRate,
+@VATRate,@discountMoney,@tax,@taxTotal,@remark,
+@deliveryNumber,@mainCode,@code)
+select @@IDENTITY";
+
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
@@ -231,7 +241,7 @@ namespace BaseLayer.Sales
                     spsDetail[12].Value = item.code;
                     list.Add(spsDetail);
                 }
-                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), sqlInsert, list);
             }
             catch (Exception ex)
             {
