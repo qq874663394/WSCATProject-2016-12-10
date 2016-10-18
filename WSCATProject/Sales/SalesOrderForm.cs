@@ -402,6 +402,13 @@ namespace WSCATProject.Sales
                 dgvc.HeaderText = "备注";
                 dgvc.DataPropertyName = "remark";
                 dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "isDouble";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "是否可输入小数点";
+                dgvc.DataPropertyName = "isDouble";
+                dataGridViewShangPing.Columns.Add(dgvc);
             }
             catch (Exception ex)
             {
@@ -730,8 +737,7 @@ namespace WSCATProject.Sales
                 this.picShengHe.Image = Properties.Resources.审核;
             }
         }
-
-
+        
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
 
         /// <summary>
@@ -952,7 +958,7 @@ namespace WSCATProject.Sales
                 gr.Cells["model"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
                 gr.Cells["barcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
                 gr.Cells["unit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value.ToString()=="斤")
+                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["isDouble"].Value.ToString()=="0")
                 {
                     gr.Cells["dinggouNumber"].EditorType = typeof(GridDoubleInputEditControl);
                 }

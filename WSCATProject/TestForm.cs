@@ -281,7 +281,7 @@ namespace WSCATProject
 
         private void dataGridViewShangPing_Leave(object sender, EventArgs e)
         {
-            resizablePanelData.Visible = false;
+            
         }
 
         private void dataGridViewFuJia_Leave(object sender, EventArgs e)

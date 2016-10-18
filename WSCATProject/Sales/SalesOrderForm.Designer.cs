@@ -711,6 +711,7 @@
             this.FaHuoNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.FaHuoNumber.HeaderText = "发货数量";
             this.FaHuoNumber.Name = "FaHuoNumber";
+            this.FaHuoNumber.Visible = false;
             this.FaHuoNumber.Width = 70;
             // 
             // picShengHe
