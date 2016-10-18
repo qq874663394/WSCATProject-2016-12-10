@@ -889,7 +889,7 @@ namespace WSCATProject.Sales
                 this.picShengHe.Image = Properties.Resources.审核;
             }
         }
-        
+
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
 
         /// <summary>
@@ -1110,8 +1110,8 @@ namespace WSCATProject.Sales
                 gr.Cells["model"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
                 gr.Cells["barcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
                 gr.Cells["unit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-    
-                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["isDouble"].Value.ToString()=="0")
+
+                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["isDouble"].Value.ToString() == "0")
                 {
                     gr.Cells["dinggouNumber"].EditorType = typeof(GridDoubleInputEditControl);
                 }
@@ -1534,6 +1534,20 @@ namespace WSCATProject.Sales
         {
             if (e.KeyCode == Keys.Enter)
             {
+                int jishu = 0;
+                //GridRow gr=superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Coun]
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count; i++)
+                {
+                    GridRow gr = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    if (gr["material"].Value == null || gr["material"].Value.ToString() == "")
+                    {
+                        jishu++;
+                        if (jishu>=2)
+                        {
+                            superGridControlShangPing.PrimaryGrid.Rows.RemoveAt(i);
+                        }
+                    }
+                }
                 labtxtDanJuType.Focus();
             }
         }
@@ -1551,6 +1565,20 @@ namespace WSCATProject.Sales
         private void SalesOrderForm_Activated(object sender, EventArgs e)
         {
             labtxtDanJuType.Focus();
+        }
+
+        private void superGridControlShangPing_KeyUp(object sender, KeyEventArgs e)
+        {
+            superGridControlShangPing_KeyDown(sender, e);
+        }
+
+        private void superGridControlShangPing_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //在KeyPress事件里写
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

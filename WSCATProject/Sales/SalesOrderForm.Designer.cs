@@ -491,6 +491,8 @@
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
+            this.superGridControlShangPing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.superGridControlShangPing_KeyPress);
+            this.superGridControlShangPing.KeyUp += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyUp);
             // 
             // resizablePanel1
             // 
