@@ -136,9 +136,9 @@ namespace WSCATProject.Purchase
             gr.Cells["CaiGouNumber"].EditorType = typeof(GridDoubleInputEditControl);
             gr.Cells["CaiGouNumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["CaiGouNumber"].CellStyles.Default.Background.Color1 = Color.Orange;
-            gr.Cells["money"].Value = 0;
-            gr.Cells["money"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["money"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["Money"].Value = 0;
+            gr.Cells["Money"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            gr.Cells["Money"].CellStyles.Default.Background.Color1 = Color.Orange;
             gr.Cells["faxMoney"].Value = 0;
             gr.Cells["faxMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["faxMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
@@ -152,42 +152,49 @@ namespace WSCATProject.Purchase
         /// </summary>
         private bool isNUllValidate()
         {
-            //if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
-            //{
-            //    MessageBox.Show("客户不能为空！");
-            //    return false;
-            //}
-            //if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
-            //{
-            //    MessageBox.Show("联系人不能为空！");
-            //    return false;
-            //}
-            //if (labtextboxTop3.Text.Trim() == null || labtextboxTop3.Text == "")
-            //{
-            //    MessageBox.Show("电话不能为空！");
-            //    return false;
-            //}
-            //if (cboMethod.Text.Trim() == null || cboMethod.Text == "")
-            //{
-            //    MessageBox.Show("交货方式不能为空！");
-            //    return false;
-            //}
-            //if (labtextboxTop5.Text.Trim() == null || labtextboxTop5.Text == "")
-            //{
-            //    MessageBox.Show("交货地点不能为空！");
-            //    return false;
-            //}
-            //GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
-            //if (gr.Cells["name"].Value == null || gr.Cells["name"].Value.ToString() == "")
-            //{
-            //    MessageBox.Show("商品代码不能为空！");
-            //    return false;
-            //}
-            //if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
-            //{
-            //    MessageBox.Show("销售员不能为空！");
-            //    return false;
-            //}
+            if (txtSupply.Text.Trim() == null || txtSupply.Text == "")
+            {
+                MessageBox.Show("供应商不能为空！");
+                txtSupply.Focus();
+                return false;
+            }
+            if (txtLinkMan.Text.Trim() == null || txtLinkMan.Text == "")
+            {
+                MessageBox.Show("联系人不能为空！");
+                txtLinkMan.Focus();
+                return false;
+            }
+            if (txtPhone.Text.Trim() == null || txtPhone.Text == "")
+            {
+                MessageBox.Show("电话不能为空！");
+                txtPhone.Focus();
+                return false;
+            }
+            if (cboMethod.Text.Trim() == null || cboMethod.Text == "")
+            {
+                MessageBox.Show("交货方式不能为空！");
+                cboMethod.Focus();
+                return false;
+            }
+            if (txtAddress.Text.Trim() == null || txtAddress.Text == "")
+            {
+                MessageBox.Show("交货地点不能为空！");
+                txtAddress.Focus();
+                return false;
+            }
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            {
+                MessageBox.Show("商品代码不能为空！");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("销售员不能为空！");
+                ltxtbSalsMan.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -206,34 +213,34 @@ namespace WSCATProject.Purchase
 
                     DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "code";
-                    dgvc.HeaderText = "供应商编号";
-                    dgvc.DataPropertyName = "code";
+                    dgvc.HeaderText = "编码";
+                    dgvc.DataPropertyName = "编码";
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
-                    dgvc.HeaderText = "供应商名称";
-                    dgvc.DataPropertyName = "name";
+                    dgvc.HeaderText = "单位名称";
+                    dgvc.DataPropertyName = "单位名称";
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
-                    dgvc.Name = "phone";
-                    dgvc.HeaderText = "电话";
-                    dgvc.DataPropertyName = "phone";
+                    dgvc.Name = "mobilePhone";
+                    dgvc.HeaderText = "联系手机";
+                    dgvc.DataPropertyName = "联系手机";
                     dgvc.Visible = false;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "linkMan";
                     dgvc.HeaderText = "联系人";
-                    dgvc.DataPropertyName = "linkMan";
+                    dgvc.DataPropertyName = "联系人";
                     dgvc.Visible = false;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "fax";
                     dgvc.HeaderText = "传真";
-                    dgvc.DataPropertyName = "fax";
+                    dgvc.DataPropertyName = "传真";
                     dgvc.Visible = false;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
@@ -413,7 +420,7 @@ namespace WSCATProject.Purchase
         /// </summary>
         private void InitForm()
         {
-           
+
         }
 
         #endregion
@@ -477,8 +484,8 @@ namespace WSCATProject.Purchase
                 picBarCode.Image = imgTemp;
 
                 //绑定事件 双击事填充内容并隐藏列表
-                //dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
-                //dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
@@ -499,14 +506,14 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
-            //if (isNUllValidate() == false)
-            //{
-            //    return;
-            //}
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             ////获得界面上的数据,准备传给base层新增数据
             //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
             ////销售订单
-            //SalesOrder salesorder = new SalesOrder();
+            //pur salesorder = new SalesOrder();
             ////销售订单商品列表
             //List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
             //try
@@ -735,10 +742,11 @@ namespace WSCATProject.Purchase
         {
             try
             {
-                if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
+                if (txtSupply.Text.Trim() == null || txtSupply.Text == "")
                 {
                     resizablePanelData.Visible = false;
                     MessageBox.Show("请先选择供应商:");
+                    txtSupply.Focus();
                     return;
                 }
                 else if (e.GridCell.GridColumn.Name == "material")
@@ -782,9 +790,9 @@ namespace WSCATProject.Purchase
                     _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//供应商名称
                     string linkman = dataGridViewFuJia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
-                    string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["phone"].Value.ToString();//电话
+                    string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
                     string fax = dataGridViewFuJia.Rows[e.RowIndex].Cells["fax"].Value.ToString();//传真
-                    labtxtDanJuType.Text = name;
+                    txtSupply.Text = name;
                     txtLinkMan.Text = linkman;
                     txtPhone.Text = phone;
                     txtFax.Text = fax;
@@ -803,7 +811,7 @@ namespace WSCATProject.Purchase
                 {
                     _storgeCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//仓库code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//仓库
-                    labtextboxTop5.Text = name;
+                    txtAddress.Text = name;
                     resizablePanel1.Visible = false;
                 }
             }
@@ -925,9 +933,9 @@ namespace WSCATProject.Purchase
                 gr.Cells["discountMoney"].Value = discountMoney;
                 decimal taxRate = Convert.ToDecimal(gr.Cells["faxRate"].FormattedValue);//增值税税率
                 decimal rateMoney = money * (taxRate / 100);//税额
-                gr.Cells["TaxMoney"].Value = rateMoney;
+                gr.Cells["faxMoney"].Value = rateMoney;
                 decimal priceAndtax = money + rateMoney;//价税合计
-                gr.Cells["priceANDtax"].Value = priceAndtax;
+                gr.Cells["priceANDrate"].Value = priceAndtax;
                 resizablePanelData.Visible = false;
 
                 //逐行统计数据总数
@@ -938,20 +946,20 @@ namespace WSCATProject.Purchase
                 for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
                 {
                     GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
-                    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
-                    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
-                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
+                    tempAllNumber += Convert.ToDecimal(tempGR["CaiGouNumber"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["Money"].FormattedValue);
+                    tempAllTaxMoney += Convert.ToDecimal(tempGR["faxMoney"].FormattedValue);
+                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDrate"].FormattedValue);
                 }
                 _Materialnumber = tempAllNumber;
                 _Money = tempAllMoney;
                 _TaxMoney = tempAllTaxMoney;
                 _PriceAndTaxMoney = tempAllPriceAndTax;
                 gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["dinggouNumber"].Value = _Materialnumber.ToString();
-                gr["money"].Value = _Money.ToString();
-                gr["TaxMoney"].Value = _TaxMoney.ToString();
-                gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+                gr["CaiGouNumber"].Value = _Materialnumber.ToString();
+                gr["Money"].Value = _Money.ToString();
+                gr["faxMoney"].Value = _TaxMoney.ToString();
+                gr["priceANDrate"].Value = _PriceAndTaxMoney.ToString();
 
                 //新增一行
                 if (newAdd)
@@ -960,12 +968,12 @@ namespace WSCATProject.Purchase
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                     _MaterialNumber += 1;
-                    gr.Cells["dinggouNumber"].Value = _Materialnumber;
+                    gr.Cells["CaiGouNumber"].Value = _Materialnumber;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1112-双击绑定物料数据错误" + ex.Message, "销售订单温馨提示！");
+                MessageBox.Show("错误代码：1112-双击绑定物料数据错误" + ex.Message, "采购订单温馨提示！");
             }
 
             superGridControlShangPing.Focus();
@@ -977,7 +985,7 @@ namespace WSCATProject.Purchase
         #region 模糊查询
 
         /// <summary>
-        /// 销售员模糊查询
+        /// 采购员模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -985,105 +993,105 @@ namespace WSCATProject.Purchase
         {
             try
             {
-                //if (ltxtbSalsMan.Text.Trim() == "")
-                //{
-                //    _Click = 5;
-                //    InitEmployee();
-                //    return;
-                //}
-                //dataGridViewFuJia.DataSource = null;
-                //dataGridViewFuJia.Columns.Clear();
+                if (ltxtbSalsMan.Text.Trim() == "")
+                {
+                    _Click = 5;
+                    InitEmployee();
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
-                //DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "code";
-                //dgvc.HeaderText = "员工工号";
-                //dgvc.DataPropertyName = "code";
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "name";
-                //dgvc.HeaderText = "姓名";
-                //dgvc.DataPropertyName = "name";
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
-                //resizablePanel1.Visible = true;
-                //if (this.WindowState == FormWindowState.Maximized)
-                //{
-                //    resizablePanel1.Location = new Point(220, 670);
-                //    return;
-                //}
-                //if (this.WindowState == FormWindowState.Normal)
-                //{
-                //    resizablePanel1.Location = new Point(234, 460);
-                //    return;
-                //}
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(220, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 460);
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1115-模糊查询销售员数据错误！" + ex.Message, "销售订单温馨提示！");
+                MessageBox.Show("错误代码：1115-模糊查询采购员数据错误！" + ex.Message, "采购订单温馨提示！");
             }
         }
 
         /// <summary>
-        /// 客户模糊查询
+        /// 供应商模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void labtxtDanJuType_TextChanged(object sender, EventArgs e)
+        private void txtSupply_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                //if (this.labtxtDanJuType.Text.Trim() == "")
-                //{
-                //    InitSupplier();
-                //    _Click = 4;
-                //    return;
-                //}
-                //dataGridViewFuJia.DataSource = null;
-                //dataGridViewFuJia.Columns.Clear();
+                if (this.txtSupply.Text.Trim() == "")
+                {
+                    InitSupplier();
+                    _Click = 4;
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
 
-                //DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "code";
-                //dgvc.HeaderText = "客户编号";
-                //dgvc.DataPropertyName = "code";
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "编码";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "name";
-                //dgvc.HeaderText = "客户姓名";
-                //dgvc.DataPropertyName = "name";
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "单位名称";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "mobilePhone";
-                //dgvc.HeaderText = "电话";
-                //dgvc.DataPropertyName = "mobilePhone";
-                //dgvc.Visible = false;
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.HeaderText = "联系手机";
+                dgvc.DataPropertyName = "mobilePhone";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "linkMan";
-                //dgvc.HeaderText = "联系人";
-                //dgvc.DataPropertyName = "linkMan";
-                //dgvc.Visible = false;
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "linkMan";
+                dgvc.HeaderText = "联系人";
+                dgvc.DataPropertyName = "linkMan";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //dgvc = new DataGridViewTextBoxColumn();
-                //dgvc.Name = "fax";
-                //dgvc.HeaderText = "传真";
-                //dgvc.DataPropertyName = "fax";
-                //dgvc.Visible = false;
-                //dataGridViewFuJia.Columns.Add(dgvc);
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "fax";
+                dgvc.HeaderText = "传真";
+                dgvc.DataPropertyName = "fax";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
 
-                //resizablePanel1.Location = new Point(230, 160);
-                //string name = XYEEncoding.strCodeHex(this.labtxtDanJuType.Text.Trim());
-                //dataGridViewFuJia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
-                //resizablePanel1.Visible = true;
+                resizablePanel1.Location = new Point(230, 160);
+                string name = XYEEncoding.strCodeHex(this.txtSupply.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(supplier.GetList(0, name));
+                resizablePanel1.Visible = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1114-模糊查询客户数据错误" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：1114-模糊查询供应商数据错误" + ex.Message, "采购订单温馨提示");
             }
         }
 
@@ -1096,25 +1104,242 @@ namespace WSCATProject.Purchase
         {
             try
             {
-                //string SS = "";
-                //GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                //GridCell gc = gr[0] as GridCell;
-                //string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
-                //if (SS == "")
-                //{
-                //    //模糊查询商品列表
-                //    _AllMaterial = materialInterface.GetList(0, "" + materialDaima + "");
-                //    InitMaterialDataGridView();
-                //    dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
-                //}
+                string SS = "";
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridCell gc = gr[0] as GridCell;
+                string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+                if (SS == "")
+                {
+                    //模糊查询商品列表
+                    _AllMaterial = materialInterface.GetList(0, "" + materialDaima + "");
+                    InitMaterialDataGridView();
+                    dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:1116-模糊查询表格商品数据错误！请检查：" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码:1116-模糊查询表格商品数据错误！请检查：" + ex.Message, "采购订单温馨提示");
             }
         }
 
         #endregion
 
+        private void PurchaseOrderForm_Activated(object sender, EventArgs e)
+        {
+            txtSupply.Focus();//焦点在供应商
+        }
+
+        /// <summary>
+        /// 按ESC关闭副表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PurchaseOrderForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.resizablePanel1.Visible = false;
+                this.resizablePanelData.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 验证和统计数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+                if (g.Cells["name"].Value == null || g.Cells["name"].Value.ToString() == "")
+                {
+                    MessageBox.Show("请选择商品代码：");
+                    return;
+                }
+                //最后一行做统计行
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                ////计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["CaiGouNumber"].FormattedValue);//订购数量
+                decimal price = Convert.ToDecimal(gr.Cells["price"].FormattedValue);//单价               
+                decimal money = number * price;//金额
+                gr.Cells["Money"].Value = money;
+                decimal discountRate = Convert.ToDecimal(gr.Cells["discountRate"].FormattedValue);//折扣率
+                decimal discountAfter = money * (discountRate / 100);
+                decimal discountMoney = money - discountAfter;//折扣额
+                gr.Cells["discountMoney"].Value = discountMoney;
+                decimal taxRate = Convert.ToDecimal(gr.Cells["faxRate"].FormattedValue);//增值税税率
+                decimal rateMoney = money * (taxRate / 100);//税额
+                gr.Cells["faxMoney"].Value = rateMoney;
+                decimal priceAndtax = money + rateMoney;//价税合计
+                gr.Cells["priceANDrate"].Value = priceAndtax;
+
+                //逐行统计数据总数
+                decimal tempAllNumber = 0;
+                decimal tempAllMoney = 0;
+                decimal tempAllTaxMoney = 0;
+                decimal tempAllPriceAndTax = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllNumber += Convert.ToDecimal(tempGR["CaiGouNumber"].FormattedValue);
+                    tempAllMoney += Convert.ToDecimal(tempGR["Money"].FormattedValue);
+                    tempAllTaxMoney += Convert.ToDecimal(tempGR["faxMoney"].FormattedValue);
+                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDrate"].FormattedValue);
+                }
+                _Materialnumber = tempAllNumber;
+                _Money = tempAllMoney;
+                _TaxMoney = tempAllTaxMoney;
+                _PriceAndTaxMoney = tempAllPriceAndTax;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["CaiGouNumber"].Value = _Materialnumber.ToString();
+                gr["Money"].Value = _Money.ToString();
+                gr["faxMoney"].Value = _TaxMoney.ToString();
+                gr["priceANDrate"].Value = _PriceAndTaxMoney.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1113-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "采购订单温馨提示！");
+            }
+        }
+
+        #region 验证只能输入数字和小数点
+        /// <summary>
+        /// 验证只能输入数字和小数点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtYiFuDingJin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                //判断按键是不是要输入的类型。
+                if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
+                    e.Handled = true;
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
+                {
+                    if (txtYiFuDingJin.Text.Length < 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
+                    {
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(txtYiFuDingJin.Text, out oldf);
+                        b2 = float.TryParse(txtYiFuDingJin.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1117-已付定金输入的值为非法字符，请输入数字：" + ex.Message, "采购订单温馨提示！");
+            }
+        }
+
+        private void txtYiFuDingJin_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtYiFuDingJin.Text)) return;
+
+                // 按千分位逗号格式显示！
+                double d = Convert.ToDouble(skipComma(txtYiFuDingJin.Text));
+                //labtextboxTop7.Text = string.Format("{0:#,#}", d);
+                txtYiFuDingJin.Text = string.Format("{0:#,#}", d);
+                // 确保输入光标在最右侧
+                txtYiFuDingJin.Select(txtYiFuDingJin.Text.Length, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1117-已付定金输入的值为非法字符，请输入数字：" + ex.Message, "采购订单温馨提示！");
+            }
+        }
+
+        private string skipComma(string str)
+        {
+            string[] ss = null;
+            string strnew = "";
+            if (str == "")
+            {
+                strnew = "0";
+            }
+            else
+            {
+                ss = str.Split(',');
+                for (int i = 0; i < ss.Length; i++)
+                {
+                    strnew += ss[i];
+                }
+            }
+            return strnew;
+        }
+        #endregion
+
+        /// <summary>
+        /// 表格按回车键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtSupply.Focus();
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PurchaseOrderForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                toolStripBtnSave_Click(sender, e);
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                toolStripBtnShengHe_Click(sender, e);
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
     }
 }

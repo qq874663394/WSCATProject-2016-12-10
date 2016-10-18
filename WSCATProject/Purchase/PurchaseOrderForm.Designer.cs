@@ -82,7 +82,8 @@
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1053, 80);
+            this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1053, 65);
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
@@ -417,6 +418,7 @@
             this.ltxtbSalsMan.Border.Class = "SideNavStrip";
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ltxtbSalsMan.Location = new System.Drawing.Point(95, 19);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
             // labBotton4
             // 
@@ -472,7 +474,11 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shouHuoNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
+            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
+            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
+            this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
@@ -503,6 +509,7 @@
             this.txtSupply.PreventEnterBeep = true;
             this.txtSupply.Size = new System.Drawing.Size(130, 16);
             this.txtSupply.TabIndex = 56;
+            this.txtSupply.TextChanged += new System.EventHandler(this.txtSupply_TextChanged);
             // 
             // txtAddress
             // 
@@ -595,6 +602,8 @@
             this.txtYiFuDingJin.TabIndex = 62;
             this.txtYiFuDingJin.Text = "0.00";
             this.txtYiFuDingJin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtYiFuDingJin.TextChanged += new System.EventHandler(this.txtYiFuDingJin_TextChanged);
+            this.txtYiFuDingJin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYiFuDingJin_KeyPress);
             // 
             // txtLinkMan
             // 
@@ -655,7 +664,7 @@
             this.picBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBarCode.Location = new System.Drawing.Point(1052, 7);
             this.picBarCode.Name = "picBarCode";
-            this.picBarCode.Size = new System.Drawing.Size(137, 68);
+            this.picBarCode.Size = new System.Drawing.Size(137, 55);
             this.picBarCode.TabIndex = 66;
             this.picBarCode.TabStop = false;
             // 
@@ -796,7 +805,10 @@
             this.ClientSize = new System.Drawing.Size(1202, 690);
             this.Name = "PurchaseOrderForm";
             this.Text = "采购订单";
+            this.Activated += new System.EventHandler(this.PurchaseOrderForm_Activated);
             this.Load += new System.EventHandler(this.PurchaseOrderForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchaseOrderForm_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PurchaseOrderForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
