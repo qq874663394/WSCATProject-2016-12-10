@@ -130,6 +130,7 @@ namespace WSCATProject.Sales
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：1201-窗体加载时，初始化数据失败或者无数据！" + ex.Message, "销售订单序时薄温馨提示！");
+                return;
             }
 
         }

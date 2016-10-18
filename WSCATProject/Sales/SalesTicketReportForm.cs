@@ -77,9 +77,8 @@ namespace WSCATProject.Sales
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：1401-窗体加载时，初始化数据失败!" + ex.Message, "销售单序时薄温馨提示！");
+                return;
             }
-
-
         }
 
         #region  初始化数据

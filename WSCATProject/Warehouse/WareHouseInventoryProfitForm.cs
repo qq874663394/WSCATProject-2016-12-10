@@ -123,7 +123,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("窗体加载数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2501-窗体加载时，初始化数据错误！请检查：" + ex.Message,"盘盈单温馨提示");
+                return;
             }
             //调用合计行数据
             InitDataGridView();
@@ -155,7 +156,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("盘盈单统计数量失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码2502-盘盈单加载时统计数量失败！请检查：" + ex.Message, "盘盈单温馨提示");
+                return;
             }
         }
         /// <summary>
@@ -193,7 +195,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建盘盈单商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                MessageBox.Show("错误代码:2505-尝试创建并审核盘盈单商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
                 return;
             }
 
@@ -240,7 +242,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建盘盈单详商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                MessageBox.Show("错误代码：2506-尝试创建并审核盘盈单商品详细数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
                 return;
             }
 
@@ -290,7 +292,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建盘盈单商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                MessageBox.Show("错误代码:2503-尝试创建盘盈单商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
                 return;
             }
 
@@ -337,7 +339,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建盘盈单详商品数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
+                MessageBox.Show("错误代码：2504-尝试创建盘盈单商品详细数据出错,请检查输入" + ex.Message, "盘盈单温馨提示");
                 return;
             }
 
@@ -441,7 +443,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化盘盈员失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2507-点击盘盈员数据显示出错！请检查：" + ex.Message,"盘盈单温馨提示");
             }
         }
 
@@ -494,7 +496,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定盘盈员数据出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2508-双击绑定盘盈员数据出错！请检查：" + ex.Message,"盘盈单温馨提示");
             }
         }
 
@@ -571,7 +573,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("盘盈员模糊查询出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2509-模糊查询盘盈员出错！请检查：" + ex.Message,"盘盈单温馨提示");
             }
         }
 

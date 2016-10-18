@@ -1282,7 +1282,7 @@ namespace WSCATProject.Sales
         {
             if (e.KeyCode == Keys.Enter)
             {
-                panel2.Focus();
+                txtClient.Focus();
             }
         }
     }

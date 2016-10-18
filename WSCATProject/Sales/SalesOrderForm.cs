@@ -535,8 +535,9 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-               
+
                 MessageBox.Show("错误代码：1101-窗体加载时，初始化数据错误！请检查：" + ex.Message);
+                return;
             }
         }
 
@@ -787,7 +788,7 @@ namespace WSCATProject.Sales
                 if (labtxtDanJuType.Text.Trim() == null || labtxtDanJuType.Text == "")
                 {
                     resizablePanelData.Visible = false;
-                    MessageBox.Show("请先选择客户");
+                    MessageBox.Show("请先选择客户");                  
                     return;
                 }
                 else if (e.GridCell.GridColumn.Name == "material")
@@ -1378,10 +1379,10 @@ namespace WSCATProject.Sales
         {
             if (e.KeyCode == Keys.Enter)
             {
-                panel2.Focus();
+                labtxtDanJuType.Focus();
             }
         }
-    /// <summary>
+        /// <summary>
         /// 点击panel隐藏控件
         /// </summary>
         /// <param name="sender"></param>
@@ -1391,6 +1392,7 @@ namespace WSCATProject.Sales
             this.resizablePanel1.Visible = false;
             this.resizablePanelData.Visible = false;
         }
+
     }
 }
 
