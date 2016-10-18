@@ -257,5 +257,17 @@ namespace BaseLayer.Finance
             }
             return result;
         }
+        public bool Exists(string code)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from [T_FinanceCollection]");
+            strSql.Append(" where code=@code ");
+
+            SqlParameter[] parameters = {
+                    new SqlParameter("@code", SqlDbType.NVarChar,50)};
+            parameters[0].Value = code;
+
+            return DbHelperSQL.Exists(strSql.ToString(), parameters);
+        }
     }
 }

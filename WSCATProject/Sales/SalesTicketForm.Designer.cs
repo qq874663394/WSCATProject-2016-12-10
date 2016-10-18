@@ -765,7 +765,7 @@
             // 
             // gridColumndinggoushu
             // 
-            this.gridColumndinggoushu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumndinggoushu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumndinggoushu.HeaderText = "订购数量";
             this.gridColumndinggoushu.Name = "gridColumndinggoushu";
             this.gridColumndinggoushu.ReadOnly = true;

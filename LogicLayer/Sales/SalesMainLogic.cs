@@ -1,6 +1,7 @@
 ﻿using BaseLayer;
 using BaseLayer.Sales;
 using HelperUtility;
+using HelperUtility.Encrypt;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace LogicLayer.Sales
                 operationName = "操作人名",
                 operationTable = "T_SalesMain",
                 operationTime = DateTime.Now,
-                objective = "查询采购单信息"
+                objective = "查询销售单信息"
             };
             try
             {
@@ -74,7 +75,7 @@ namespace LogicLayer.Sales
                 operationName = "操作人名",
                 operationTable = "T_SalesMain",
                 operationTime = DateTime.Now,
-                objective = "查询采购单信息"
+                objective = "查询销售单信息"
             };
             try
             {
@@ -152,19 +153,124 @@ namespace LogicLayer.Sales
         /// </summary>
         public bool Exists(string code)
         {
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesMain",
+                operationTime = DateTime.Now,
+                objective = "查询销售信息",
+                operationContent = "查询T_SalesMain表的数据,条件为：code="+code
+            };
+            bool isflag = false;
+            try
+            {
+                isflag = _dal.Exists(code);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
             return _dal.Exists(code);
         }
         public DataTable GetExamineAndPay(string clientCode)
         {
-            return _dal.GetExamineAndPay(clientCode);
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesMain",
+                operationTime = DateTime.Now,
+                objective = "查询销售信息",
+                operationContent = "查询T_SalesMain表的数据,条件为：clientCode="+clientCode
+            };
+            DataTable dt = null;
+            try
+            {
+                dt = _dal.GetExamineAndPay(clientCode);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
         }
         public DataTable GetExamineAndPay(string clientCode, string salesCode)
         {
-            return _dal.GetExamineAndPay(clientCode, salesCode);
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesMain",
+                operationTime = DateTime.Now,
+                objective = "查询销售信息",
+                operationContent = string.Format("查询T_SalesMain表的数据,条件为：clientCode={0},salesCode={1}",clientCode,salesCode)
+            };
+            DataTable dt = null;
+            try
+            {
+                dt = _dal.GetExamineAndPay(clientCode,salesCode);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
         }
         public int SetPayState(int payState, string code)
         {
-            return _dal.SetPayState(payState, code);
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesMain",
+                operationTime = DateTime.Now,
+                objective = "修改销售信息",
+                operationContent = string.Format("修改销售表的数据,条件为：payState={0},code={1}", payState, XYEEncoding.strHexDecode(code))
+            };
+            int result = 0;
+            try
+            {
+                result = _dal.SetPayState(payState, code);
+                model.result = 1;
+                _update.add(code, model.operationTable, result, "", model.operationTime);
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return result;
         }
     }
 }

@@ -97,7 +97,7 @@ namespace WSCATProject.Warehouse
                 superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 //数量
-                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridIntegerInputEditControl;
                 gdiecNumber.MinValue = 0;
                 gdiecNumber.MaxValue = 999999999;
 
@@ -1044,6 +1044,11 @@ namespace WSCATProject.Warehouse
                         JinE
                         )
                         );
+                    if (dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value.ToString() == "斤")
+                    {
+                        GridRow gridrows = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+                        gr.Cells["gridColumnnumber"].EditorType = typeof(GridDoubleInputEditControl);
+                    }
                     // superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;

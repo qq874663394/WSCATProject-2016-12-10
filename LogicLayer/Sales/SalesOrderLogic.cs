@@ -71,17 +71,95 @@ namespace LogicLayer.Sales
             }
             return result;
         }
-        public DataTable GetSalesJoinSearch(string clientcode)
+        public DataTable GetSalesJoinSearch(string clientCode)
         {
-            return _dal.GetSalesJoinSearch(clientcode);
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesOrder",
+                operationTime = DateTime.Now,
+                objective = "查询销售信息",
+                operationContent = "查询T_SalesOrder表的数据,条件为：clientCode=" + clientCode
+            };
+            DataTable dt = null;
+            try
+            {
+                dt = _dal.GetSalesJoinSearch(clientCode);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
         }
         public DataTable GetSalesDetailJoinSearch()
         {
-            return _dal.GetSalesDetailJoinSearch();
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesOrder",
+                operationTime = DateTime.Now,
+                objective = "查询销售信息",
+                operationContent = "查询T_SalesOrder表的所有数据"
+            };
+            DataTable dt = null;
+            try
+            {
+                dt = _dal.GetSalesDetailJoinSearch();
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
         }
         public DataTable GetSelectedDetail(string salesCode, string salesDetailCode)
         {
-            return _dal.GetSelectedDetail(salesCode, salesDetailCode);
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_SalesOrder",
+                operationTime = DateTime.Now,
+                objective = "查询销售信息",
+                operationContent = string.Format("查询T_SalesOrder表的数据,条件为：salesCode={0},salesDetailCode={1}",salesCode,salesDetailCode)
+            };
+            DataTable dt = null;
+            try
+            {
+                dt = _dal.GetSelectedDetail(salesCode, salesDetailCode);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
         }
     }
 }

@@ -133,7 +133,7 @@ namespace WSCATProject.Warehouse
                 diaoruprice.MinValue = 0;
                 diaoruprice.MaxValue = 999999999;
                 //数量
-                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridIntegerInputEditControl;
                 gdiecNumber.MinValue = 0;
                 gdiecNumber.MaxValue = 999999999;
 
@@ -785,6 +785,10 @@ namespace WSCATProject.Warehouse
                 gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
                 gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
                 gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                if (true)
+                {
+
+                }
                 gr.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//数量
                 gr.Cells["gridColumnpriceout"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
                 gr.Cells["gridColumnshengchandate"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value;//生产/采购日期

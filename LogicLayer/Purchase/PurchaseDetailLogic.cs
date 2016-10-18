@@ -13,23 +13,43 @@ namespace LogicLayer.Purchase
 {
     public class PurchaseDetailLogic
     {
-        PurchaseDetailBase pdl = new PurchaseDetailBase();
-        public DataTable GetList(int fieldName,string fieldValue)
+        PurchaseDetailBase _dal = new PurchaseDetailBase();
+        LogBase _logDal = new LogBase();
+        public DataTable GetList(int fieldName, string fieldValue)
         {
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_PurchaseDetail",
+                operationTime = DateTime.Now,
+                objective = "查询采购明细表"
+            };
             DataTable dt = null;
             string strWhere = "";
-            switch (fieldName)
+            try
             {
-                case 0:
-                    strWhere += "";
-                    break;
-                case 1:
+                switch (fieldName)
+                {
+                    case 0:
+                        strWhere += "";
+                        break;
+                    case 1:
 
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
+                logModel.operationContent = "查询T_PurchaseDetail表的数据,条件为："+strWhere;
+                dt = _dal.GetList(strWhere);
+                logModel.result = 1;
             }
-            dt = pdl.GetList(strWhere);
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
             return dt;
         }
         public DataTable GetList(string purchaseCode, string zhujima)
@@ -48,7 +68,7 @@ namespace LogicLayer.Purchase
             };
             try
             {
-                dt = pdl.GetList(purchaseCode, zhujima);
+                dt = _dal.GetList(purchaseCode, zhujima);
                 logModel.result = 1;
             }
             catch (Exception ex)
@@ -82,7 +102,7 @@ namespace LogicLayer.Purchase
                 {
                     throw new Exception("-2");
                 }
-                result = pdl.GetCheckNumber(purchaseCode, code);
+                result = _dal.GetCheckNumber(purchaseCode, code);
                 logModel.result = 1;
             }
             catch (Exception ex)
@@ -112,7 +132,7 @@ namespace LogicLayer.Purchase
             };
             try
             {
-                dt = pdl.GetList("", "");
+                dt = _dal.GetList("", "");
                 if (!string.IsNullOrWhiteSpace(fieldValue))
                 {
                     DataView view = null;

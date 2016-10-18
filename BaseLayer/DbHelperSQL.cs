@@ -501,90 +501,10 @@ namespace BaseLayer
         /// <param name="sqlstr">对某表插入多条数据的sql</param>
         /// <param name="paraList">插入多条数据的sql的参数集合</param>
         /// <param name="isState">是否新增</param>
-        public static int ExecuteSqlTran(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
+        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr,List<SqlParameter[]> paraList)
         {
-            int val1 = 0;
-            int val2 = 0;
-            int result = 0;
-            using (SqlConnection conn = Conn)
-            {
-                using (SqlTransaction trans = conn.BeginTransaction())
-                {
-                    SqlCommand cmd = new SqlCommand();
-                    try
-                    {
-                        if (paraList.Count > 0)
-                        {
-                            try
-                            {
-                                //循环
-                                foreach (DictionaryEntry myDE in SQLStringList)
-                                {
-                                    string cmdText = myDE.Key.ToString();
-                                    SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
-                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    for (int i = 0; i < cmdParms.Length; i++)
-                                    {
-                                        Console.WriteLine("declare " + cmdParms[i]);
-                                        Console.WriteLine("set " + cmdParms[i] + " = '" + cmdParms[i].Value + "'");
-                                    }
-                                    val1 += cmd.ExecuteNonQuery();
-                                    cmd.Parameters.Clear();
-                                }
-                                if (val1 != SQLStringList.Count)
-                                {
-                                    trans.Rollback();
-                                    return result = 0;
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                throw new Exception("7.1");
-                            }
-                            try
-                            {
-                                foreach (SqlParameter[] para in paraList)
-                                {
-                                    string cmdText = sqlstr;
-                                    SqlParameter[] cmdParms = para;
-                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    val2 += cmd.ExecuteNonQuery();
-                                    cmd.Parameters.Clear();
-                                }
-                                if (val2 != paraList.Count)
-                                {
-                                    trans.Rollback();
-                                    return result = 0;
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                throw new Exception("7.2");
-                            }
-                            trans.Commit();
-                            result = 1;
-                        }
-                        return result;
-                    }
-                    catch (Exception ex)
-                    {
-                        trans.Rollback();
-                        throw ex;
-                    }
-                }
-            }
-        }
-        /// <summary>
-        /// 执行多条SQL语句，实现数据库事务。并在其中有一条多影响行数的多参数语句
-        /// </summary>
-        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
-        /// <param name="sqlstr">对某表插入多条数据的sql</param>
-        /// <param name="paraList">插入多条数据的sql的参数集合</param>
-        /// <param name="isState">是否新增</param>
-        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
-        {
-            int result = 0;
             object val1 = null;
+            object val2 = null;
             using (SqlConnection conn = Conn)
             {
                 using (SqlTransaction trans = conn.BeginTransaction())
@@ -607,7 +527,6 @@ namespace BaseLayer
                                     {
                                         throw new Exception("-3");
                                     }
-                                    result++;
                                     cmd.Parameters.Clear();
                                 }
                             }
@@ -622,35 +541,11 @@ namespace BaseLayer
                                     string cmdText = sqlstr;
                                     SqlParameter[] cmdParms = para;
                                     PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
-                                    for (int i = 0; i < cmdParms.Length; i++)
+                                    val2 = cmd.ExecuteScalar();
+                                    if (val1 == null || val1 == DBNull.Value)
                                     {
-                                        string str1 = "declare " + cmdParms[i];
-                                        string str2 = "set " + cmdParms[i] + " = ";
-                                        if (cmdParms[i].SqlDbType == SqlDbType.NVarChar)
-                                        {
-                                            str1 += " Nvarchar(MAX)";
-                                            str2 += "'" + cmdParms[i].Value + "'";
-                                        }
-                                        if (cmdParms[i].SqlDbType == SqlDbType.DateTime)
-                                        {
-                                            str1 += " DateTime";
-                                            str2 += "'" + cmdParms[i].Value + "'";
-                                        }
-                                        if (cmdParms[i].SqlDbType == SqlDbType.Int)
-                                        {
-                                            str1 += " Int";
-                                            str2 += cmdParms[i].Value;
-                                        }
-                                        if (cmdParms[i].SqlDbType == SqlDbType.Decimal)
-                                        {
-                                            str1 += " Decimal(18,2)";
-                                            str2 += cmdParms[i].Value;
-                                        }
-                                        Console.WriteLine(str1);
-                                        Console.WriteLine(str2);
+                                        throw new Exception("-3");
                                     }
-                                    cmd.ExecuteNonQuery();
-                                    result++;
                                     cmd.Parameters.Clear();
                                 }
                             }
@@ -659,13 +554,78 @@ namespace BaseLayer
                                 throw new Exception("7.2");
                             }
                         }
-                        if (val1 == null || val1 == DBNull.Value)
+                        trans.Commit();
+                        return val1;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// 执行多条SQL语句，实现数据库事务。并在其中有一条多影响行数的多参数语句
+        /// </summary>
+        /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
+        /// <param name="sqlstr">对某表插入多条数据的sql</param>
+        /// <param name="paraList">插入多条数据的sql的参数集合</param>
+        /// <param name="isState">是否新增</param>
+        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr, string strInsert, List<SqlParameter[]> paraList)
+        {
+            object val1 = null;
+            object val2 = null;
+            using (SqlConnection conn = Conn)
+            {
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    try
+                    {
+                        if (paraList.Count > 0)
                         {
-                            throw new Exception("-3");
-                        }
-                        if (result != paraList.Count + 1)
-                        {
-                            throw new Exception("-3");
+                            try
+                            {
+                                //循环
+                                foreach (DictionaryEntry myDE in SQLStringList)
+                                {
+                                    string cmdText = myDE.Key.ToString();
+                                    SqlParameter[] cmdParms = (SqlParameter[])myDE.Value;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    val1 = cmd.ExecuteScalar();
+                                    if (val1 == null || val1 == DBNull.Value)
+                                    {
+                                        throw new Exception("-3");
+                                    }
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.1");
+                            }
+                            try
+                            {
+                                foreach (SqlParameter[] para in paraList)
+                                {
+                                    string cmdText = sqlstr;
+                                    SqlParameter[] cmdParms = para;
+                                    PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                    val2 = cmd.ExecuteScalar();
+                                    if (val2 == null || val2 == DBNull.Value)
+                                    {
+                                        cmdText = strInsert;
+                                        cmdParms = para;
+                                        PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                                        val2 = cmd.ExecuteScalar();
+                                    }
+                                    cmd.Parameters.Clear();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception("7.2");
+                            }
                         }
                         trans.Commit();
                         return val1;

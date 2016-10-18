@@ -258,6 +258,12 @@ namespace BaseLayer
             }
 
             Hashtable htKey = new Hashtable();  //参数要求
+            string sqlInert = @"INSERT INTO T_WarehouseOutDetail(code,materialDaima,materialCode,materialName,materialModel,
+                materiaUnit,number,price,money,barcode,rfid,updateDate,state,date,isClear,reserved1,reserved2,remark,storageRackName,
+                storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate)
+                VALUES(@code,@materialDaima,@materialCode,@materialName,@materialModel,@materiaUnit,@number,@price
+                ,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@reserved1,@reserved2,@remark,@storageRackName
+                ,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)select SCOPE_IDENTITY()";
             string sql = @"UPDATE T_WarehouseOut
 SET type = @type
 ,stock = @stock
@@ -311,7 +317,7 @@ WHERE code = @code";  //主表的
             htKey.Add(sql, parameters);//sql语句和主表的参数集合
             try
             {
-                result = DbHelperSQL.ExecuteSqlTran(htKey, sqlToList, listParameter);
+                result = Convert.ToInt32(DbHelperSQL.ExecuteSqlTranScalar(htKey, sqlToList,sqlInert, listParameter));
             }
             catch (Exception ex)
             {
