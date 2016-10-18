@@ -24,6 +24,7 @@ namespace WSCATProject.Sales
         {
             InitializeComponent();
         }
+
         #region 调用接口以及加密解密方法
         CodingHelper ch = new CodingHelper();
         ClientInterface client = new ClientInterface();//客户
@@ -124,7 +125,7 @@ namespace WSCATProject.Sales
                 Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["danjuDate"].Value = "合计"; 
+            gr.Cells["danjuDate"].Value = "合计";
             gr.Cells["yuandanCode"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["danjuMoney"].Value = 0;
@@ -211,7 +212,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化客户数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1506-尝试点击客户，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -275,12 +276,12 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化结算账户数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1507-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
         /// <summary>
-        /// 初始化销售员
+        /// 初始化收款员
         /// </summary>
         private void InitEmployee()
         {
@@ -320,7 +321,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化收款员数据失败！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1508-尝试点击收款员，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -429,7 +430,8 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：初始化数据错误！" + ex.Message);
+                MessageBox.Show("错误代码1501：窗体加载时，初始化数据失败！" + ex.Message, "收款单温馨提示！");
+                return;
             }
 
         }
@@ -623,7 +625,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1509-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -667,7 +669,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询客户数据错误" + ex.Message, "收款单温馨提示");
+                MessageBox.Show("错误代码：1510-模糊查询客户数据错误" + ex.Message, "收款单温馨提示");
             }
         }
 
@@ -737,12 +739,12 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询结算账户数据错误" + ex.Message, "收款单温馨提示");
+                MessageBox.Show("错误代码：1511-模糊查询结算账户数据错误" + ex.Message, "收款单温馨提示");
             }
         }
 
         /// <summary>
-        /// 销售员模糊查询
+        ///收款员模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -786,7 +788,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-收款员模糊查询数据失败！" + ex.Message);
+                MessageBox.Show("错误代码：1512-模糊查询收款员数据失败！" + ex.Message);
             }
         }
         #endregion
@@ -861,7 +863,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:尝试创建收款单数据出错,请检查输入" + ex.Message, "收款单温馨提示");
+                MessageBox.Show("错误代码:1502-尝试创建收款单数据出错!请检查:" + ex.Message, "收款单温馨提示");
                 return;
             }
 
@@ -897,7 +899,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建收款详单出错,请检查输入" + ex.Message, "收款单温馨提示");
+                MessageBox.Show("错误代码：1503-尝试创建收款单详细数据出错!请检查:" + ex.Message, "收款单温馨提示");
                 return;
             }
 
@@ -960,7 +962,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:尝试创建收款单数据出错,请检查输入" + ex.Message, "收款单温馨提示");
+                MessageBox.Show("错误代码:1504-尝试创建并审核收款单数据出错！请检查：" + ex.Message, "收款单温馨提示");
                 return;
             }
 
@@ -996,7 +998,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建收款详单出错,请检查输入" + ex.Message, "收款单温馨提示");
+                MessageBox.Show("错误代码：1505-尝试创建并审核收款单详细数据出错！请检查：" + ex.Message, "收款单温馨提示");
                 return;
             }
 
@@ -1066,7 +1068,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-统计出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：1513-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -1078,41 +1080,55 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void txtDiscount_Validated(object sender, EventArgs e)
         {
-            decimal zhekou = Convert.ToDecimal(txtDiscount.Text);
-            decimal hexiao = Convert.ToDecimal(txtBenCiHeXiao.Text);
-            if (zhekou > 100 || zhekou < 0)
+            try
             {
-                MessageBox.Show("折扣率不能大于100或者不能小于0！");
-                txtDiscount.Clear();
-                txtDiscount.Text = "100.00";
+                decimal zhekou = Convert.ToDecimal(txtDiscount.Text);
+                decimal hexiao = Convert.ToDecimal(txtBenCiHeXiao.Text);
+                if (zhekou > 100 || zhekou < 0)
+                {
+                    MessageBox.Show("折扣率不能大于100或者不能小于0！");
+                    txtDiscount.Clear();
+                    txtDiscount.Text = "100.00";
+                }
+                decimal bencishoukuan = hexiao * (Convert.ToDecimal(txtDiscount.Text) / 100);
+                txtBenCiShouKuan.Text = bencishoukuan.ToString();
             }
-            decimal bencishoukuan = hexiao * (Convert.ToDecimal(txtDiscount.Text) / 100);
-            txtBenCiShouKuan.Text = bencishoukuan.ToString();
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1515-验证整单折扣金额出错！请检查:" + ex.Message, "收款单温馨提示！");
+            }
         }
 
         private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+            try
             {
-                if (e.KeyChar == '.')
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
                 {
-                    if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                            e.Handled = true;
+                    }
+                    else
                         e.Handled = true;
                 }
                 else
-                    e.Handled = true;
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                if (e.KeyChar <= 31)
-                {
-                    e.Handled = false;
-                }
-                else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
-                {
-                    if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
-                        e.Handled = true;
-                }
+                MessageBox.Show("错误代码：1514-整单折扣输入的值为非法字符，请重新输入:" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -1256,6 +1272,18 @@ namespace WSCATProject.Sales
                              Color.White,
                              1,
                              ButtonBorderStyle.Solid);
+        }
+        /// <summary>
+        /// 表格回车键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtClient.Focus();
+            }
         }
     }
 }

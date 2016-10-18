@@ -145,7 +145,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化组装员错误！请检查：" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码：2001-初始化组装员错误！请检查：" + ex.Message, "组装单温馨提示");
             }
 
         }
@@ -286,7 +286,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化仓库出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2002-初始化仓库出错！请检查：" + ex.Message);
             }
         }
 
@@ -426,7 +426,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("窗体初始化数据错误！请检查：" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码：2003-窗体初始化数据错误！请检查：" + ex.Message, "组装单温馨提示");
             }
         }
 
@@ -478,7 +478,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建组装单商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码:2004-尝试创建和审核组装单商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
                 return;
             }
 
@@ -519,7 +519,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建组装单详情商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码：2005-尝试创建和审核组装单详情商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
                 return;
             }
 
@@ -580,7 +580,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建组装单商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码:2006-尝试创建组装单商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
                 return;
             }
 
@@ -621,7 +621,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建组装单详情商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码：2007-尝试创建组装单详情商品数据出错,请检查输入" + ex.Message, "组装单温馨提示");
                 return;
             }
 
@@ -727,7 +727,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定物料信息数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2008-双击绑定物料信息数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -772,7 +772,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定组装员或仓库信息数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2009-双击绑定组装员或仓库信息数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -954,7 +954,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询组装员数据错误" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码：2010-模糊查询组装员数据错误" + ex.Message, "组装单温馨提示");
             }
 
 
@@ -979,7 +979,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码:2011-表格商品代码模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
             }
         }
 
@@ -1000,7 +1000,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
+                MessageBox.Show("错误代码:2012-表格商品模糊查询错误，查询数据错误" + ex.Message, "组装单温馨提示");
             }
         }
 
@@ -1039,13 +1039,21 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("统计数量错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2013-统计数量错误！请检查：" + ex.Message);
             }
         }
 
         private void WareHouseAssembyForm_Activated(object sender, EventArgs e)
         {
             superGridControlZuZhuang.Focus();
+        }
+
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
         }
     }
 }

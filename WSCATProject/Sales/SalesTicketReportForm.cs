@@ -27,11 +27,12 @@ namespace WSCATProject.Sales
         private string _clientCode;
         public string ClientCode
         {
-            get {  return _clientCode;  }
-            set {  _clientCode = value;  }
+            get { return _clientCode; }
+            set { _clientCode = value; }
         }
         List<string> _saleslist = new List<string>();
-        CodingHelper ch = new CodingHelper();        /// 窗体加载事件
+        CodingHelper ch = new CodingHelper();
+        /// 窗体加载事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -58,14 +59,14 @@ namespace WSCATProject.Sales
                     return;
                 }
                 SalesMainInterface salesMainInter = new SalesMainInterface();
-                DataTable dt = ch.DataTableReCoding( salesMainInter.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode)));
-                SalesReceivablesForm sales =  (SalesReceivablesForm)this.Owner;
+                DataTable dt = ch.DataTableReCoding(salesMainInter.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode)));
+                SalesReceivablesForm sales = (SalesReceivablesForm)this.Owner;
                 _saleslist = sales.SalesMainList;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     foreach (var liat in _saleslist)
                     {
-                        if (dt.Rows[i][1].ToString()==liat)
+                        if (dt.Rows[i][1].ToString() == liat)
                         {
                             dt.Rows.RemoveAt(i);
                         }
@@ -75,10 +76,9 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("销售单数据加载错误!"+ex.Message);
+                MessageBox.Show("错误代码：1401-窗体加载时，初始化数据失败!" + ex.Message, "销售单序时薄温馨提示！");
+                return;
             }
-
-
         }
 
         #region  初始化数据
@@ -87,20 +87,27 @@ namespace WSCATProject.Sales
         /// </summary>
         private void InitDataGridView()
         {
-            //新增一行 用于给客户操作
-            superGridControlShangPing.PrimaryGrid.NewRow(true);
-            //最后一行做统计行
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
-                Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
-            gr.ReadOnly = true;
-            gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            gr.Cells["BillType"].Value = "合计";
-            gr.Cells["BillType"].CellStyles.Default.Alignment =
-                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["ZongMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["ZongMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
-            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            try
+            {
+                //新增一行 用于给客户操作
+                superGridControlShangPing.PrimaryGrid.NewRow(true);
+                //最后一行做统计行
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
+                    Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
+                gr.ReadOnly = true;
+                gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
+                gr.Cells["BillType"].Value = "合计";
+                gr.Cells["BillType"].CellStyles.Default.Alignment =
+                    DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                gr.Cells["ZongMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                gr.Cells["ZongMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+                gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                gr.Cells["WeiHeXiaoMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1402-初始化表格合计行错误！请检查：" + ex.Message, "销售序时薄温馨提示！");
+            }
         }
         #endregion
 
@@ -207,25 +214,32 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
         {
-            if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
+            try
             {
-                SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
-                if (col.Count > 0)
+                if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
                 {
-                    GridRow row = col[0] as GridRow;
-                    string mainCode = row.Cells["BillCode"].Value.ToString();
-                    SalesReceivablesForm salesreceivables =  (SalesReceivablesForm)this.Owner;
-                    salesreceivables.SalesMainCode = mainCode;
-                    this.Close();
+                    SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
+                    if (col.Count > 0)
+                    {
+                        GridRow row = col[0] as GridRow;
+                        string mainCode = row.Cells["BillCode"].Value.ToString();
+                        SalesReceivablesForm salesreceivables = (SalesReceivablesForm)this.Owner;
+                        salesreceivables.SalesMainCode = mainCode;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("请先选择要操作的行！");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("请先选择要操作的行！");
+                    return;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                return;
+                MessageBox.Show("错误代码：1403-尝试双击表格选中行失败！请检查：" + ex.Message, "销售单序时薄温馨提示！");
             }
         }
     }

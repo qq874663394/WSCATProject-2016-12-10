@@ -483,6 +483,7 @@
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
+            this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // pictureBoxMax
             // 
@@ -611,7 +612,7 @@
             // gridColumnnumber
             // 
             this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
             this.gridColumnnumber.Width = 80;

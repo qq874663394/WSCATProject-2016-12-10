@@ -189,7 +189,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：初始化数据错误！"+ex.Message);
+                MessageBox.Show("错误代码：2301-窗体加载时，初始化数据错误！" + ex.Message,"盘点表温馨提示！");
+                return;
             }
      
         }
@@ -231,7 +232,7 @@ namespace WSCATProject.Warehouse
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+                    MessageBox.Show("错误代码：2302-商品盘点表统计数量错误" + ex.Message,"盘点表温馨提示！");
                 }
             }
         }
@@ -564,7 +565,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("计算盘盈，盘亏数量有误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2303-计算盘盈，盘亏数量出错！请检查：" + ex.Message,"盘点表温馨提示！");
             }
 
 
@@ -622,12 +623,12 @@ namespace WSCATProject.Warehouse
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("错误代码-绑定盘点数据错误" + ex.Message);
+                    MessageBox.Show("错误代码:2304-添加盘点表数据错误，请检查：" + ex.Message,"盘点表温馨提示");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("商品盘点表统计数量错误" + ex.Message);
+                MessageBox.Show("错误代码：2305-商品盘点表统计数量错误，请检查：" + ex.Message, "盘点表温馨提示");
             }
         }
         #endregion

@@ -494,6 +494,7 @@
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             this.superGridControlShangPing.Click += new System.EventHandler(this.panel2_Click);
+            this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
@@ -602,7 +603,7 @@
             // gridColumnnumber
             // 
             this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
             this.gridColumnnumber.Width = 60;

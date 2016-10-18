@@ -65,7 +65,7 @@ namespace WSCATProject.Sales
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
                 superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
 
-                if (_clientCode==null)
+                if (_clientCode == null)
                 {
                     return;
                 }
@@ -73,10 +73,10 @@ namespace WSCATProject.Sales
 
                 DataTable dt1 = ch.DataTableReCoding(salesOrder.GetSalesJoinSearch(XYEEncoding.strCodeHex(_clientCode)));
                 _salesMainCodeShuliang = dt1.Rows.Count;
-                this.labelSalesMain.Text = _salesMainCodeShuliang.ToString()+"张单据";
+                this.labelSalesMain.Text = _salesMainCodeShuliang.ToString() + "张单据";
                 DataTable dt2 = ch.DataTableReCoding(salesOrder.GetSalesDetailJoinSearch());
                 _salesDetielShuLiang = dt2.Rows.Count;
-                this.labelSalesDetile.Text = _salesDetielShuLiang.ToString()+"条记录";
+                this.labelSalesDetile.Text = _salesDetielShuLiang.ToString() + "条记录";
                 if (dt1.Rows.Count == 0 || dt2.Rows.Count == 0)
                 {
                     MessageBox.Show("此客户暂无销售订单信息！请重新选择");
@@ -129,10 +129,12 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-选源单初始化数据库错误！" + ex.Message);
+                MessageBox.Show("错误代码：1201-窗体加载时，初始化数据失败或者无数据！" + ex.Message, "销售订单序时薄温馨提示！");
+                return;
             }
 
         }
+
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -239,29 +241,36 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
         {
-            if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
+            try
             {
-                SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
-                if (col.Count > 0)
+                if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
                 {
-                    GridRow row = col[0] as GridRow;
-                    string mainCode = row.Cells["DanJuCode"].Value.ToString();
-                    string code = row.Cells["salesDetilecode"].Value.ToString();
-                    string shangPinCode = row.Cells["gridColumncode"].Value.ToString();
-                    SalesTicketForm sales = (SalesTicketForm)this.Owner;
-                    sales.SalesOrderMainCode = mainCode;
-                    sales.SalesOrderCode = code;
-                    sales.ShangPinCode = shangPinCode;
-                    this.Close();
+                    SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
+                    if (col.Count > 0)
+                    {
+                        GridRow row = col[0] as GridRow;
+                        string mainCode = row.Cells["DanJuCode"].Value.ToString();
+                        string code = row.Cells["salesDetilecode"].Value.ToString();
+                        string shangPinCode = row.Cells["gridColumncode"].Value.ToString();
+                        SalesTicketForm sales = (SalesTicketForm)this.Owner;
+                        sales.SalesOrderMainCode = mainCode;
+                        sales.SalesOrderCode = code;
+                        sales.ShangPinCode = shangPinCode;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("请先选择要操作的行！");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("请先选择要操作的行！");
+                    return;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                return;
+                MessageBox.Show("错误代码：1202-尝试双击表格选中行失败！请检查：" + ex.Message, "销售订单序时薄温馨提示！");
             }
         }
     }

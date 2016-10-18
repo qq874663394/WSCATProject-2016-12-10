@@ -204,7 +204,7 @@ namespace WSCATProject.Warehouse
                 gdieccangku.ButtonCustomClick += Gdiec_ButtonCustomClick;
 
                 //数量
-                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridIntegerInputEditControl;
                 gdiecNumber.MinValue = 0;
                 gdiecNumber.MaxValue = 999999999;
                 //货架
@@ -244,6 +244,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2101-初始化数据失败" + ex.Message, "入库单温馨提示");
+                return;
             }
 
         }
@@ -661,6 +662,11 @@ namespace WSCATProject.Warehouse
                         dataGridViewShangPing.Rows[e.RowIndex].Cells["materialCode"].Value
                         )
                         );
+                    if (dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value.ToString()=="斤")
+                    {
+                        GridRow gridrows = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+                        gr.Cells["gridColumnnumber"].EditorType = typeof(GridDoubleInputEditControl);
+                    }
                     //superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
@@ -1444,6 +1450,14 @@ namespace WSCATProject.Warehouse
                 return;
             }
             resizablePanelData.Visible = false;
+        }
+
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
         }
     }
 }

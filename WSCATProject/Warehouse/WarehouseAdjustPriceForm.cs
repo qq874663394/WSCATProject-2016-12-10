@@ -163,7 +163,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("窗体加载时出错！请检查：" + ex.Message, "调价单温馨提示！");
+                MessageBox.Show("错误代码：2701-窗体加载时出错！请检查：" + ex.Message, "调价单温馨提示！");
+                return;
             }
         }
 
@@ -202,7 +203,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建调价单商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
+                MessageBox.Show("错误代码:2705；尝试审核创建调价单商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
                 return;
             }
 
@@ -249,7 +250,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建调价单详情商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
+                MessageBox.Show("错误代码：2704-尝试审核创建调价单详情商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
                 return;
             }
 
@@ -297,7 +298,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建调价单商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
+                MessageBox.Show("错误代码:2702-尝试创建调价单商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
                 return;
             }
 
@@ -344,7 +345,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建调价单详情商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
+                MessageBox.Show("错误代码：2703-尝试创建调价单详情商品数据出错,请检查输入" + ex.Message, "调价单温馨提示");
                 return;
             }
 
@@ -464,7 +465,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化调价员出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2706-初始化调价员出错！请检查：" + ex.Message);
             }
         }
 
@@ -508,7 +509,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("初始化仓库出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2707-初始化仓库出错！请检查：" + ex.Message);
             }
         }
 
@@ -675,7 +676,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定调价员或仓库信息数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2708-双击绑定调价员或仓库信息数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -733,7 +734,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定物料信息数据错误！请检查：" + ex.Message);
+                MessageBox.Show(" 错误代码：2709-双击绑定物料信息数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -764,7 +765,7 @@ namespace WSCATProject.Warehouse
                     else
                     {
                         resizablePanelData.Visible = false;
-                        MessageBox.Show("请先选择仓库：");
+                        MessageBox.Show("请先选择仓库！");
                     }
 
                 }
@@ -838,7 +839,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("统计数量错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2710-统计数量错误！请检查：" + ex.Message);
             }
         }
 
@@ -878,7 +879,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("模糊查询调价员出错！请检查：" + ex.Message);
+                MessageBox.Show(" 错误代码：2711-模糊查询调价员出错！请检查：" + ex.Message);
             }
         }
 
@@ -927,13 +928,21 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "调价单温馨提示");
+                MessageBox.Show("错误代码:2712-表格商品模糊查询错误，查询数据错误" + ex.Message, "调价单温馨提示");
             }
         }
 
         private void WareHouseAdjustPriceForm_Activated(object sender, EventArgs e)
         {
             superGridControlShangPing.Focus();
+        }
+
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
         }
     }
 }

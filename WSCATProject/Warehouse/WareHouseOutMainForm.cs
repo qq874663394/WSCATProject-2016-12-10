@@ -97,7 +97,7 @@ namespace WSCATProject.Warehouse
                 superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
                 superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
                 //数量
-                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridDoubleInputEditControl;
+                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["gridColumnnumber"].EditControl as GridIntegerInputEditControl;
                 gdiecNumber.MinValue = 0;
                 gdiecNumber.MaxValue = 999999999;
 
@@ -128,6 +128,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2201-初始化数据错误" + ex.Message, "出库单温馨提示");
+                return;
             }
         }
         /// <summary>
@@ -175,7 +176,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2104;尝试创建出库单商品数据出错,请检查输入" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码:2204-尝试创建并审核出库单商品数据出错,请检查：" + ex.Message, "出库单温馨提示");
                 return;
             }
 
@@ -227,7 +228,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建出库单详商品数据出错,请检查输入" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码：2205-尝试创建并审核出库单商品详细数据出错,请检查：" + ex.Message, "出库单温馨提示");
                 return;
             }
 
@@ -288,7 +289,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2104;尝试创建出库单商品数据出错,请检查输入" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码:-2202;尝试创建出库单商品数据出错,请检查：" + ex.Message, "出库单温馨提示");
                 return;
             }
 
@@ -340,7 +341,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建出库单详商品数据出错,请检查输入" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码：-2203；尝试创建出库单商品详细数据出错,请检查：" + ex.Message, "出库单温馨提示");
                 return;
             }
 
@@ -397,7 +398,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试点击后单数据错误" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码：2206-尝试点击后单数据显示错误！请检查：" + ex.Message, "出库单温馨提示");
             }
         }
         /// <summary>
@@ -445,7 +446,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试点击后单数据错误" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码：2207-尝试点击后单数据显示错误" + ex.Message, "出库单温馨提示");
             }
         }
 
@@ -599,37 +600,45 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitEmployee()
         {
-            if (_Click != 2)
+            try
             {
-                _Click = 2;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "员工工号";
-                dgvc.DataPropertyName = "员工工号";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "姓名";
-                dgvc.DataPropertyName = "姓名";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
-                resizablePanel1.Visible = true;
-                if (this.WindowState == FormWindowState.Maximized)
+                if (_Click != 2)
                 {
-                    resizablePanel1.Location = new Point(220, 670);
-                    return;
-                }
-                if (this.WindowState == FormWindowState.Normal)
-                {
+                    _Click = 2;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
+
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "员工工号";
+                    dgvc.DataPropertyName = "员工工号";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.HeaderText = "姓名";
+                    dgvc.DataPropertyName = "姓名";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
                     resizablePanel1.Location = new Point(234, 440);
-                    return;
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                    resizablePanel1.Visible = true;
+                    if (this.WindowState == FormWindowState.Maximized)
+                    {
+                        resizablePanel1.Location = new Point(220, 670);
+                        return;
+                    }
+                    if (this.WindowState == FormWindowState.Normal)
+                    {
+                        resizablePanel1.Location = new Point(234, 440);
+                        return;
+                    }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2209-尝试点击出库员出错或者无数据！请检查：" + ex.Message, "出库单温馨提示！");
             }
         }
 
@@ -638,34 +647,41 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitClient()
         {
-            if (_Click != 1)
+            try
             {
-                _Click = 1;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
+                if (_Click != 1)
+                {
+                    _Click = 1;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
 
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "客户编号";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "客户编号";
+                    dgvc.DataPropertyName = "code";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "客户姓名";
-                dgvc.DataPropertyName = "name";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.HeaderText = "客户姓名";
+                    dgvc.DataPropertyName = "name";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "mobilePhone";
-                dgvc.HeaderText = "销售电话";
-                dgvc.DataPropertyName = "mobilePhone";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "mobilePhone";
+                    dgvc.HeaderText = "销售电话";
+                    dgvc.DataPropertyName = "mobilePhone";
+                    dgvc.Visible = false;
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(470, 160);
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
-                resizablePanel1.Visible = true;
+                    resizablePanel1.Location = new Point(470, 160);
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
+                    resizablePanel1.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2208-尝试点击客户出错或者无数据！请检查：" + ex.Message, "出库单温馨提示！");
             }
         }
 
@@ -834,30 +850,38 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
-            if (this.labtextboxTop2.Text.Trim() == "")
+            try
             {
-                resizablePanelData.Visible = false;
-                MessageBox.Show("请先选择客户，显示销售单号!");
-                return;
-            }
-            if (e.GridCell.GridColumn.Name == "material")
-            {
-                SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
-                GridCell gc = ge[0] as GridCell;
-                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                if (this.labtextboxTop2.Text.Trim() == "")
                 {
-                    //模糊查询商品列表
-                    _AllMaterial = salesdinterface.GetDetailByMainCode(XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim()), 2, XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()));
-                    InitMaterialDataGridView();
+                    resizablePanelData.Visible = false;
+                    MessageBox.Show("请先选择客户，显示销售单号!");
+                    return;
                 }
-                else
+                if (e.GridCell.GridColumn.Name == "material")
                 {
-                    //绑定商品列表
-                    _AllMaterial = salesdinterface.GetDetailByMainCode(XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim()), 4, "");
-                    InitMaterialDataGridView();
+                    SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
+                    GridCell gc = ge[0] as GridCell;
+                    if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                    {
+                        //模糊查询商品列表
+                        _AllMaterial = salesdinterface.GetDetailByMainCode(XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim()), 2, XYEEncoding.strCodeHex(gc.GridRow.Cells[material].Value.ToString()));
+                        InitMaterialDataGridView();
+                    }
+                    else
+                    {
+                        //绑定商品列表
+                        _AllMaterial = salesdinterface.GetDetailByMainCode(XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim()), 4, "");
+                        InitMaterialDataGridView();
+                    }
+
+                    dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
                 }
 
-                dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2210-尝试点击商品代码出错或者无数据！请检查：" + ex.Message, "出库单温馨提示！");
             }
         }
         /// <summary>
@@ -899,6 +923,8 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void superGridControlShangPing_EditorValueChanged(object sender, GridEditEventArgs e)
         {
+            try
+            {
             string SS = "";
             GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
             string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
@@ -908,6 +934,11 @@ namespace WSCATProject.Warehouse
                 _AllMaterial = salesdinterface.GetDetailByMainCode(XYEEncoding.strCodeHex(this.comboBoxExxiaos.Text.Trim()), 2, materialDaima);
                 InitMaterialDataGridView();
                 dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2215-模糊查询商品代码数据错误" + ex.Message, "出库单温馨提示");
             }
         }
 
@@ -1001,7 +1032,7 @@ namespace WSCATProject.Warehouse
                        dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value,
                        dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value,
                        1.ToString(),
-                      Convert.ToDecimal( dataGridViewShangPing.Rows[e.RowIndex].Cells["discountAfterPrice"].Value),
+                      Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["discountAfterPrice"].Value),
                        sArray[0],
                        Location,
                          "",
@@ -1013,6 +1044,11 @@ namespace WSCATProject.Warehouse
                         JinE
                         )
                         );
+                    if (dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value.ToString() == "斤")
+                    {
+                        GridRow gridrows = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[0];
+                        gr.Cells["gridColumnnumber"].EditorType = typeof(GridDoubleInputEditControl);
+                    }
                     // superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
                     //递增数量和金额 默认为1和单价 
                     gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
@@ -1023,35 +1059,44 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("点击物料绑定数据错误！" + ex.Message);
+                MessageBox.Show("错误代码：2212-双击绑定物料数据错误！请检查：" + ex.Message, "出库单温馨提示！");
             }
             SendKeys.Send("^{End}{Home}");
         }
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //客户
-            if (_Click == 1 || _Click == 3)
+            try
             {
-                string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                _clientcode = XYEEncoding.strCodeHex(dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString());
-                string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();
-                labtextboxTop2.Text = name;
-                labtextboxTop9.Text = phone;
-                resizablePanel1.Visible = false;
-                //根据搜索的客户来绑定下拉列表
-                DataTable dt = ch.DataTableReCoding(sales.GetTableByClientCode(_clientcode));
-                this.comboBoxExxiaos.DataSource = dt;
-                comboBoxExxiaos.ValueMember = "code";
-                comboBoxExxiaos.DisplayMember = "name";
+                //客户
+                if (_Click == 1 || _Click == 3)
+                {
+                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                    _clientcode = XYEEncoding.strCodeHex(dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString());
+                    string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();
+                    labtextboxTop2.Text = name;
+                    labtextboxTop9.Text = phone;
+                    resizablePanel1.Visible = false;
+                    //根据搜索的客户来绑定下拉列表
+                    DataTable dt = ch.DataTableReCoding(sales.GetTableByClientCode(_clientcode));
+                    this.comboBoxExxiaos.DataSource = dt;
+                    comboBoxExxiaos.ValueMember = "code";
+                    comboBoxExxiaos.DisplayMember = "name";
+
+                }
+                //出库员
+                if (_Click == 2 || _Click == 4)
+                {
+                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+
 
             }
-            //业务员
-            if (_Click == 2 || _Click == 4)
+            catch (Exception ex)
             {
-                string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                ltxtbSalsMan.Text = name;
-                resizablePanel1.Visible = false;
+                MessageBox.Show("错误代码：2211-双击绑定客户或者出库员数据错误！请检查：" + ex.Message, "出库单温馨提示！");
             }
         }
 
@@ -1086,7 +1131,7 @@ namespace WSCATProject.Warehouse
                                ButtonBorderStyle.Solid,
                                Color.White,
                                1,
-                               ButtonBorderStyle.Solid);     
+                               ButtonBorderStyle.Solid);
         }
         /// <summary>
         /// 出库员模糊查询
@@ -1174,7 +1219,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询客户数据错误" + ex.Message, "出库单温馨提示");
+                MessageBox.Show("错误代码：2213-模糊查询客户数据错误" + ex.Message, "出库单温馨提示");
             }
         }
         /// <summary>
@@ -1223,7 +1268,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2114-产品检索模糊查询数据失败" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码：2216-产品检索模糊查询商品代码、名称、条形码数据失败！请检查：" + ex.Message, "出库单温馨提示");
             }
         }
 
@@ -1242,5 +1287,12 @@ namespace WSCATProject.Warehouse
             resizablePanelData.Visible = false;
         }
 
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                panel2.Focus();
+            }
+        }
     }
 }
