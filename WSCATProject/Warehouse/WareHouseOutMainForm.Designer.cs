@@ -612,7 +612,7 @@
             // gridColumnnumber
             // 
             this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
             this.gridColumnnumber.Width = 80;
