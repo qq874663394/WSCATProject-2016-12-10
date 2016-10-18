@@ -462,6 +462,8 @@ namespace WSCATProject.Sales
             {
                 return;
             }
+            labTop1.ForeColor = Color.Gray;
+            cboDanJuType.Enabled = false;
             GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
             GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
             DataTable dt = ch.DataTableReCoding(salesInterface.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode), XYEEncoding.strCodeHex(_salesMainCode)));

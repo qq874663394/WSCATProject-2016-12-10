@@ -653,6 +653,8 @@ namespace WSCATProject.Sales
                 {
                     return;
                 }
+                labTop1.ForeColor = Color.Gray;
+                comboBoxType.Enabled = false;
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
                 GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 SalesOrderInterface salesorder = new SalesOrderInterface();
@@ -721,7 +723,7 @@ namespace WSCATProject.Sales
                     dt.Rows[0]["barCode"],
                     dt.Rows[0]["unit"],
                     dt.Rows[0]["materialNumber"].ToString() == "" ? 0.0M : dt.Rows[0]["materialNumber"],
-                    1,
+                    1.00,
                     dt.Rows[0]["materialPrice"].ToString() == "" ? 0.0M : dt.Rows[0]["materialPrice"],
                     dt.Rows[0]["discountRate"].ToString() == "" ? 0.0M : dt.Rows[0]["discountRate"],
                     dt.Rows[0]["VATRate"].ToString() == "" ? 0.0M : dt.Rows[0]["VATRate"],
@@ -738,7 +740,7 @@ namespace WSCATProject.Sales
                     dt.Rows[0]["remark"],
                     dt.Rows[0]["materialCode"]
                     ));
-                if (dt.Rows[0]["unit"].ToString() == "斤")
+                if (dt.Rows[0]["isDouble"].ToString() == "0")
                 {
                     GridRow gridrow =(GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
                     gridrow.Cells["gridColumnfahuoshu"].EditorType = typeof(GridDoubleInputEditControl);
@@ -783,6 +785,8 @@ namespace WSCATProject.Sales
                 gr["gridColumnshuie"].Value = _TaxMoney.ToString();
                 gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
                 gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+                labtextboxTop9.Text = _PriceAndTaxMoney.ToString();
+                labtextboxTop7.Text = _PriceAndTaxMoney.ToString();
             }
             catch (Exception ex)
             {
@@ -1314,6 +1318,11 @@ namespace WSCATProject.Sales
                 if (this.labtxtDanJuType.Text.Trim() == "")
                 {
                     InitClient();
+                    superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    InitDataGridView();
+                    labtextboxTop8.Text = "";
+                    labtextboxTop3.Text = "";
+                    labtextboxTop6.Text = "";
                     _Click = 5;
                     return;
                 }
@@ -1644,11 +1653,6 @@ namespace WSCATProject.Sales
                     MessageBox.Show("请先选择商品代码：");
                     return;
                 }
-                if (gr.Cells["gridColumndanwei"].FormattedValue == "斤")
-                {
-                    gr.Cells["gridColumnfahuoshu"].EditorType = typeof(GridDoubleInputEditControl);
-                    MessageBox.Show("TTT");
-                }
                 //计算金额
                 decimal number = Convert.ToDecimal(gr.Cells["gridColumnfahuoshu"].FormattedValue);//发货数量
                 decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);//单价               
@@ -1687,10 +1691,14 @@ namespace WSCATProject.Sales
                 _PriceAndTaxMoney = tempAllPriceAndTax;
                 gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                 gr["gridColumndinggoushu"].Value = _Materialnumber.ToString();
+                gr["gridColumnfahuoshu"].EditorType = typeof(GridDoubleIntInputEditControl);
                 gr["gridColumnfahuoshu"].Value = _FaHuoShuLiang;
                 gr["gridColumnmoney"].Value = _Money.ToString();
                 gr["gridColumnshuie"].Value = _TaxMoney.ToString();
                 gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
+                gr["gridColumnjiashuiheji"].EditorType = typeof(GridDoubleIntInputEditControl);
+                labtextboxTop9.Text = _PriceAndTaxMoney.ToString();
+                labtextboxTop7.Text = _PriceAndTaxMoney.ToString();
             }
             catch (Exception ex)
             {
