@@ -1101,7 +1101,11 @@ namespace WSCATProject.Sales
             {
                 //最后一行做统计行
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-
+                if (gr.Cells["yuandanCode"].FormattedValue == null || gr.Cells["yuandanCode"].FormattedValue == "")
+                {
+                    MessageBox.Show("请先选择源单：");
+                    return;
+                }
                 ////计算金额
                 decimal benciHeXiaoMoney = Convert.ToDecimal(gr.Cells["BenCiHeXiao"].FormattedValue);//本次核销金额
                 decimal weiHeXiaoMoney = Convert.ToDecimal(gr.Cells["WeiHeXiaoMoney"].FormattedValue);//未核销金额

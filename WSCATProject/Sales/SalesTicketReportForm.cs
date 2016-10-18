@@ -250,5 +250,8 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码：1403-尝试双击表格选中行失败！请检查：" + ex.Message, "销售单序时薄温馨提示！");
             }
         }
+
+       
+
     }
 }
