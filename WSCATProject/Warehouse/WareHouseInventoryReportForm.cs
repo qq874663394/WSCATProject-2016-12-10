@@ -106,9 +106,10 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-初始化盘点报告表数据错误"+ex.Message);
+                MessageBox.Show("错误代码：2401-窗体加载时，初始化数据错误,请检查：" + ex.Message, "盘点报告单温馨提示！");
+                return;
             }
-   
+
 
             #region 加载盘点方案的数据
             DataTable dt = codeh.DataTableReCoding(si.GetList(999, ""));
@@ -168,7 +169,7 @@ namespace WSCATProject.Warehouse
             {
                 toolStripButtonLoss.Enabled = true;
             }
-            if (y>0)
+            if (y > 0)
             {
                 toolStripButtonProfit.Enabled = true;
             }
@@ -195,6 +196,13 @@ namespace WSCATProject.Warehouse
                     superGridControlShangPing.PrimaryGrid.DataSource = codeh.DataTableReCoding(whidi.Search(2, (XYEEncoding.strCodeHex(cboPanDianIdea.SelectedValue.ToString()))));
                     superGridControlShangPing.PrimaryGrid.EnsureVisible();
                     InitDataGridView();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：2402-下拉框选择仓库查询商品盘点数据错误，请检查：" + ex.Message, "商品盘点报告单温馨提示");
+                }
+                try
+                {
 
                     GridRow gr = new GridRow();
                     decimal tempAllzhucun = 0;
@@ -222,7 +230,7 @@ namespace WSCATProject.Warehouse
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("商品盘点报告表统计数量错误" + ex.Message);
+                    MessageBox.Show("错误代码：2403-商品盘点报告表统计数量错误" + ex.Message, "盘点报告单温馨提示！");
                 }
             }
 
@@ -335,10 +343,10 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripButtonLoss_Click(object sender, EventArgs e)
         {
-                WareHouseInventoryLossForm wareinventloss = new WareHouseInventoryLossForm();
-                wareinventloss.StorageCode = _storageCode;
-                wareinventloss.StorageName = _storageName;
-                wareinventloss.ShowDialog();
+            WareHouseInventoryLossForm wareinventloss = new WareHouseInventoryLossForm();
+            wareinventloss.StorageCode = _storageCode;
+            wareinventloss.StorageName = _storageName;
+            wareinventloss.ShowDialog();
         }
         /// <summary>
         /// 生成盘盈单的点击事件

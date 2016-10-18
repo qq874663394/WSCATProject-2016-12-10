@@ -147,7 +147,8 @@ namespace WSCATProject.Warehouse
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("统计出错！请检查：" + ex.Message);
+                    MessageBox.Show("错误代码：2602-盘亏单加载时统计数量失败！请检查：" + ex.Message, "盘亏单温馨提示");
+                    return;
                 }
                 //绑定盘亏摘要
                 labtextboxTop7.Text = "由【" + _storageName + "】生成";
@@ -157,7 +158,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码- ：初始化数据错误，没有仓库code" + ex.Message);
+                MessageBox.Show("错误代码：2601-窗体加载时，初始化数据错误，没有仓库code" + ex.Message, "盘亏单温馨提示");
+                return;
             }
         }
 
@@ -197,7 +199,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                MessageBox.Show("错误代码:2605-尝试创建并审核盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
             try
@@ -242,7 +244,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建盘亏单详商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                MessageBox.Show("错误代码：2606-尝试创建并审核盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
 
@@ -292,7 +294,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:;尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                MessageBox.Show("错误代码:2603-尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
 
@@ -339,7 +341,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建盘亏单详商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                MessageBox.Show("错误代码：2604-尝试创建盘亏单商品详细数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
                 return;
             }
             //增加一条入库单和入库单详细数据
@@ -392,7 +394,7 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("出库类别不能为空！");
                 return false;
             }
-            if (ltxtbSalsMan.Text.Trim() == null||ltxtbSalsMan.Text=="")
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
             {
                 MessageBox.Show("盘点员不能为空！");
                 return false;
@@ -401,42 +403,49 @@ namespace WSCATProject.Warehouse
         }
 
         /// <summary>
-        /// 初始化业务员
+        /// 初始化盘亏员
         /// </summary>
         private void InitEmployee()
         {
-            if (_Click != 1)
+            try
             {
-                _Click = 1;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "员工工号";
-                dgvc.DataPropertyName = "员工工号";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "姓名";
-                dgvc.DataPropertyName = "姓名";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                resizablePanel1.Location = new Point(234, 440);
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
-                resizablePanel1.Visible = true;
-
-                if (this.WindowState == FormWindowState.Maximized)
+                if (_Click != 1)
                 {
-                    resizablePanel1.Location = new Point(230, 670);
-                    return;
+                    _Click = 1;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
+
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.HeaderText = "员工工号";
+                    dgvc.DataPropertyName = "员工工号";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.HeaderText = "姓名";
+                    dgvc.DataPropertyName = "姓名";
+                    dataGridViewFuJia.Columns.Add(dgvc);
+
+                    resizablePanel1.Location = new Point(234, 440);
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
+                    resizablePanel1.Visible = true;
+
+                    if (this.WindowState == FormWindowState.Maximized)
+                    {
+                        resizablePanel1.Location = new Point(230, 670);
+                        return;
+                    }
+                    if (this.WindowState == FormWindowState.Normal)
+                    {
+                        resizablePanel1.Location = new Point(230, 450);
+                        return;
+                    }
                 }
-                if (this.WindowState == FormWindowState.Normal)
-                {
-                    resizablePanel1.Location = new Point(230, 450);
-                    return;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2607-点击盘亏员数据显示出错，请检查：" + ex.Message, "盘亏单温馨提示");
             }
         }
 
@@ -485,7 +494,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定业务员员数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2608-双击绑定盘亏员数据出错！请检查：" + ex.Message,"盘亏单温馨提示");
             }
         }
 
@@ -521,7 +530,7 @@ namespace WSCATProject.Warehouse
         #endregion
 
         /// <summary>
-        /// 业务员模糊查询
+        ///盘亏员模糊查询
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -556,7 +565,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-模糊搜索业务员数据错误" + ex.Message);
+                MessageBox.Show("错误代码：2609-模糊查询盘亏员出错" + ex.Message,"盘亏单温馨提示");
             }
 
         }
@@ -610,7 +619,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("统计出错！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2610-统计表格里数量出错！请检查：" + ex.Message);
             }
         }
 

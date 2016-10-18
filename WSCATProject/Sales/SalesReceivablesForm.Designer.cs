@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cboDanJuType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -54,6 +55,7 @@
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.WeuFuMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.pictureBoxShengHe = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -297,11 +299,13 @@
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(498, 46);
+            this.toolTip1.SetToolTip(this.pictureBox3, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBox3.Click += new System.EventHandler(this.pictureBoxBank_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(495, 11);
+            this.toolTip1.SetToolTip(this.pictureBox2, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBoxDanJuType_Click);
             // 
             // checkBox1
@@ -374,6 +378,7 @@
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(221, 15);
+            this.toolTip1.SetToolTip(this.pictureBoxEmployee, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
@@ -837,5 +842,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
         private DevComponents.DotNetBar.SuperGrid.GridColumn WeuFuMoney;
         private System.Windows.Forms.PictureBox pictureBoxShengHe;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

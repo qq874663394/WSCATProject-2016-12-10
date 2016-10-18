@@ -1725,7 +1725,7 @@ namespace WSCATProject.Sales
         {
             if (e.KeyCode == Keys.Enter)
             {
-                panel2.Focus();
+                labtextboxTop2.Focus();
             }
         }
     }

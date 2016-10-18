@@ -249,8 +249,8 @@
             this.toolStripBtnQianDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnQianDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnQianDan.Name = "toolStripBtnQianDan";
-            this.toolStripBtnQianDan.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnQianDan.Text = "前单";
+            this.toolStripBtnQianDan.Size = new System.Drawing.Size(60, 57);
+            this.toolStripBtnQianDan.Text = "前单(&A)";
             this.toolStripBtnQianDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripBtnHouDan
@@ -259,8 +259,8 @@
             this.toolStripBtnHouDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnHouDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnHouDan.Name = "toolStripBtnHouDan";
-            this.toolStripBtnHouDan.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnHouDan.Text = "后单";
+            this.toolStripBtnHouDan.Size = new System.Drawing.Size(60, 57);
+            this.toolStripBtnHouDan.Text = "后单(&B)";
             this.toolStripBtnHouDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripBtnInsert
@@ -269,8 +269,8 @@
             this.toolStripBtnInsert.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnInsert.Name = "toolStripBtnInsert";
-            this.toolStripBtnInsert.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnInsert.Text = "新增";
+            this.toolStripBtnInsert.Size = new System.Drawing.Size(62, 57);
+            this.toolStripBtnInsert.Text = "新增(&N)";
             this.toolStripBtnInsert.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnInsert.ToolTipText = "新增(Ctrl+N)";
             // 
@@ -280,8 +280,8 @@
             this.toolStripBtnSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnSave.Name = "toolStripBtnSave";
-            this.toolStripBtnSave.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnSave.Text = "保存";
+            this.toolStripBtnSave.Size = new System.Drawing.Size(59, 57);
+            this.toolStripBtnSave.Text = "保存(&S)";
             this.toolStripBtnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnSave.ToolTipText = "保存(Ctrl+S)";
             // 
@@ -302,8 +302,8 @@
             this.toolStripBtnShengHe.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnShengHe.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnShengHe.Name = "toolStripBtnShengHe";
-            this.toolStripBtnShengHe.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnShengHe.Text = "审核";
+            this.toolStripBtnShengHe.Size = new System.Drawing.Size(66, 57);
+            this.toolStripBtnShengHe.Text = "审核(&F4)";
             this.toolStripBtnShengHe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnShengHe.ToolTipText = "审核(F4)";
             // 
@@ -313,8 +313,8 @@
             this.toolStripBtnDaYing.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnDaYing.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnDaYing.Name = "toolStripBtnDaYing";
-            this.toolStripBtnDaYing.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnDaYing.Text = "打印";
+            this.toolStripBtnDaYing.Size = new System.Drawing.Size(60, 57);
+            this.toolStripBtnDaYing.Text = "打印(&P)";
             this.toolStripBtnDaYing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnDaYing.ToolTipText = "打印(Ctrl+P)";
             // 
@@ -324,8 +324,8 @@
             this.toolStripBtnDaoChu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnDaoChu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnDaoChu.Name = "toolStripBtnDaoChu";
-            this.toolStripBtnDaoChu.Size = new System.Drawing.Size(75, 57);
-            this.toolStripBtnDaoChu.Text = "导出Excel";
+            this.toolStripBtnDaoChu.Size = new System.Drawing.Size(93, 57);
+            this.toolStripBtnDaoChu.Text = "导出Excel(&T)";
             this.toolStripBtnDaoChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnDaoChu.ToolTipText = "导出Excel(Ctrl+T)";
             // 
@@ -335,8 +335,8 @@
             this.toolStripBtnClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnClose.Name = "toolStripBtnClose";
-            this.toolStripBtnClose.Size = new System.Drawing.Size(41, 57);
-            this.toolStripBtnClose.Text = "关闭";
+            this.toolStripBtnClose.Size = new System.Drawing.Size(60, 57);
+            this.toolStripBtnClose.Text = "关闭(&X)";
             this.toolStripBtnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnClose.ToolTipText = "关闭(Ctrl+X)";
             this.toolStripBtnClose.Click += new System.EventHandler(this.toolStripBtnClose_Click);

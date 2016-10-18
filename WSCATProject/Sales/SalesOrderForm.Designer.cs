@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
@@ -56,6 +57,7 @@
             this.materialCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.FaHuoNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.picShengHe = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -115,11 +117,13 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panel2.Controls.Add(this.cboMethod);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.pictureBoxBarCode);
-            this.panel2.Controls.Add(this.cboMethod);
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel2.Controls.SetChildIndex(this.pictureBoxBarCode, 0);
+            this.panel2.Controls.SetChildIndex(this.dateTimePicker2, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
@@ -148,8 +152,6 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
             this.panel2.Controls.SetChildIndex(this.cboMethod, 0);
-            this.panel2.Controls.SetChildIndex(this.pictureBoxBarCode, 0);
-            this.panel2.Controls.SetChildIndex(this.dateTimePicker2, 0);
             // 
             // labtextboxTop6
             // 
@@ -296,6 +298,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(554, 46);
+            this.toolTip1.SetToolTip(this.pictureBox2, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBoxAddress_Click);
             // 
             // checkBox1
@@ -305,6 +308,7 @@
             // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(223, 12);
+            this.toolTip1.SetToolTip(this.pictureBoxDanJuType, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBoxDanJuType_Click);
             // 
             // labTop9
@@ -350,7 +354,8 @@
             // labTop1
             // 
             this.labTop1.Size = new System.Drawing.Size(71, 12);
-            this.labTop1.Text = "客    户*：";
+            this.labTop1.Text = "客    户：*";
+            this.labTop1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBoxClose
             // 
@@ -365,6 +370,7 @@
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(223, 15);
+            this.toolTip1.SetToolTip(this.pictureBoxEmployee, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
@@ -782,5 +788,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn FaHuoNumber;
         private System.Windows.Forms.PictureBox picShengHe;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
