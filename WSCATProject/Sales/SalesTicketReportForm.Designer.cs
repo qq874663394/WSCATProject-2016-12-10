@@ -56,7 +56,6 @@
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblshuju = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
@@ -386,25 +385,11 @@
             this.panel1.Size = new System.Drawing.Size(1202, 61);
             this.panel1.TabIndex = 57;
             // 
-            // lblshuju
-            // 
-            this.lblshuju.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblshuju.AutoSize = true;
-            this.lblshuju.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblshuju.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblshuju.ForeColor = System.Drawing.Color.Red;
-            this.lblshuju.Location = new System.Drawing.Point(1118, 93);
-            this.lblshuju.Name = "lblshuju";
-            this.lblshuju.Size = new System.Drawing.Size(47, 12);
-            this.lblshuju.TabIndex = 63;
-            this.lblshuju.Text = "label4";
-            // 
             // SalesTicketReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 566);
-            this.Controls.Add(this.lblshuju);
             this.Controls.Add(this.lbldanju);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
@@ -449,7 +434,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblshuju;
         private DevComponents.DotNetBar.SuperGrid.GridColumn BillType;
         private DevComponents.DotNetBar.SuperGrid.GridColumn BillCode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn KeHuName;

@@ -503,6 +503,7 @@
             // 
             this.cboDanJuType.DisplayMember = "Text";
             this.cboDanJuType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboDanJuType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDanJuType.FormattingEnabled = true;
             this.cboDanJuType.ItemHeight = 15;
             this.cboDanJuType.Items.AddRange(new object[] {
@@ -592,6 +593,7 @@
             // 
             this.cboJieSuanMethod.DisplayMember = "Text";
             this.cboJieSuanMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboJieSuanMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboJieSuanMethod.FormattingEnabled = true;
             this.cboJieSuanMethod.ItemHeight = 15;
             this.cboJieSuanMethod.Items.AddRange(new object[] {

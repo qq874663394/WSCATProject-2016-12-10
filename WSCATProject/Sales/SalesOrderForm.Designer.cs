@@ -508,6 +508,7 @@
             // 
             this.cboMethod.DisplayMember = "Text";
             this.cboMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMethod.FormattingEnabled = true;
             this.cboMethod.ItemHeight = 15;
             this.cboMethod.Items.AddRange(new object[] {
@@ -711,6 +712,7 @@
             this.FaHuoNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.FaHuoNumber.HeaderText = "发货数量";
             this.FaHuoNumber.Name = "FaHuoNumber";
+            this.FaHuoNumber.Visible = false;
             this.FaHuoNumber.Width = 70;
             // 
             // picShengHe

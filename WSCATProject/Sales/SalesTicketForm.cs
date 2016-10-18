@@ -211,22 +211,26 @@ namespace WSCATProject.Sales
             if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
             {
                 MessageBox.Show("客户不能为空！");
+                labtextboxTop2.Focus();
                 return false;
             }
             GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
             if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
             {
                 MessageBox.Show("仓库不能为空！");
+                superGridControlShangPing.Focus();
                 return false;
             }
             if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");
+                superGridControlShangPing.Focus();
                 return false;
             }
             if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
             {
                 MessageBox.Show("销售员不能为空！");
+                ltxtbSalsMan.Focus();
                 return false;
             }
             return true;
@@ -590,7 +594,7 @@ namespace WSCATProject.Sales
                 toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
 
                 #region 初始化窗体
-
+               
                 comboBoxType.SelectedIndex = 0;//单据类型
                 comboBoxfapiaotype.SelectedIndex = 0;//发票类型
                 cboJiesuanMethod.SelectedIndex = 0;//结算方式
@@ -645,7 +649,6 @@ namespace WSCATProject.Sales
                 SalesOrderReportForm salesOrder = new SalesOrderReportForm();
                 salesOrder.clientCode = _clientCode;
                 salesOrder.ShowDialog(this);
-                material.EditControl.EndEdit();
                 if (_salesOrderMainCode == null)
                 {
                     return;
@@ -743,7 +746,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1319-双击销售订单序时薄选中行绑定商品错误！请检查" + ex.Message,"销售单温馨提示！");
+                MessageBox.Show("错误代码：1319-双击销售订单序时薄选中行绑定商品错误！请检查" + ex.Message, "销售单温馨提示！");
                 return;
             }
 
@@ -806,34 +809,52 @@ namespace WSCATProject.Sales
             List<SalesDetail> salesdetialList = new List<SalesDetail>();
             try
             {
-                salesMain.accountCode = XYEEncoding.strCodeHex(txtBank.Text);//结算账户
-                salesMain.checkMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//审核人
+                salesMain.accountCode = XYEEncoding.strCodeHex(txtBank.Text == null ? "" : txtBank.Text);//结算账户
+                salesMain.checkMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//审核人
                 salesMain.checkState = 1;//审核状态
                 salesMain.clientAddress = "";//客户地址
-                salesMain.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户地址
-                salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
-                salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text);//客户电话
+                salesMain.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户Code
+                if (labtextboxTop2.Text.Trim() != null || labtextboxTop2.Text.Trim() != "")
+                {
+                    salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
+                }
+                else
+                {
+                    MessageBox.Show("客户不能为空!请输入：");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text == null ? "" : labtextboxTop3.Text.Trim());//客户电话
                 salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
-                salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text);//本次收款
+                salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text == null ? "" : Convert.ToDecimal(labtextboxTop7.Text).ToString());//本次收款
                 salesMain.date = dateTimePicker1.Value;//订单日期
-                salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text);//未开票金额
+                salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text == null ? "" : Convert.ToDecimal(txtWeiKaiPiao.Text).ToString());//未开票金额
                 salesMain.expireDate = null;//最晚到底时间
-                salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
-                salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
+                salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text == null ? "" : Convert.ToDecimal(txtYiKaiPiao.Text).ToString());//已开票金额
+                salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text == null ? "" : labtextboxTop5.Text.ToString());//发票号码
                 salesMain.invoiceType = XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
                 salesMain.isClear = 1;//是否删除
                 salesMain.lastMoney = 0.0M;//剩余尾款
-                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
-                salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
-                salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
+                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text == null ? "" : labtextboxTop8.Text.ToString());//联系人
+                salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text == null ? "" : Convert.ToDecimal(labtextboxTop9.Text).ToString());//本单总额
+                salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//操作人
                 salesMain.payMathod = XYEEncoding.strCodeHex(cboJiesuanMethod.Text);//付款方式
                 salesMain.payState = 0;//是否付款
-                salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text);//优惠科目
+                salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text == null ? "" : txtYouHuiKeMu.Text);//优惠科目
                 salesMain.receiptDate = dateTimePickershoukuan.Value;//收款日期
-                salesMain.remark = XYEEncoding.strCodeHex(txtZhaiYao.Text);//备注
+                salesMain.remark = XYEEncoding.strCodeHex(txtZhaiYao.Text == null ? "" : txtZhaiYao.Text);//备注
                 salesMain.reserved1 = "";
                 salesMain.reserved2 = "";
-                salesMain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                if (ltxtbSalsMan.Text.Trim() != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    salesMain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                }
+                else
+                {
+                    MessageBox.Show("销售员不能为空!请输入：");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 salesMain.salesOrderState = 0;//发货状态
                 salesMain.type = XYEEncoding.strCodeHex(comboBoxType.Text);//单据状态
                 salesMain.updateDate = DateTime.Now;//更改时间
@@ -956,24 +977,32 @@ namespace WSCATProject.Sales
             List<SalesDetail> salesdetialList = new List<SalesDetail>();
             try
             {
-
-                salesMain.accountCode = XYEEncoding.strCodeHex(txtBank.Text);//结算账户
-                salesMain.checkMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//审核人
+                salesMain.accountCode = XYEEncoding.strCodeHex(txtBank.Text == null ? "" : txtBank.Text);//结算账户
+                salesMain.checkMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//审核人
                 salesMain.checkState = 0;//审核状态
                 salesMain.clientAddress = "";//客户地址
                 salesMain.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户地址
-                salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
-                salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text);//客户电话
+                if (labtextboxTop2.Text.Trim() != null || labtextboxTop2.Text.Trim() != "")
+                {
+                    salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
+                }
+                else
+                {
+                    MessageBox.Show("客户姓名不能为空!请输入：");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                salesMain.clientPhone = XYEEncoding.strCodeHex(labtextboxTop3.Text == null ? "" : labtextboxTop3.Text);//客户电话
                 salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
-                salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text);//本次收款
+                salesMain.collectMoney = Convert.ToDecimal(labtextboxTop7.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text));//本次收款
                 _benCiShouKuan = Convert.ToDecimal(salesMain.collectMoney);
                 salesMain.date = dateTimePicker1.Value;//订单日期
-                salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text);//未开票金额
+                salesMain.disInvoiceMoney = Convert.ToDecimal(txtWeiKaiPiao.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtWeiKaiPiao.Text));//未开票金额
                 salesMain.expireDate = null;//最晚到底时间
-                salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text);//已开票金额
-                salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text);//发票号码
+                salesMain.invoiceMoney = Convert.ToDecimal(txtYiKaiPiao.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtYiKaiPiao.Text));//已开票金额
+                salesMain.invoiceNumber = XYEEncoding.strCodeHex(labtextboxTop5.Text == null ? "" : labtextboxTop5.Text.ToString());//发票号码
                 salesMain.invoiceType = XYEEncoding.strCodeHex(comboBoxfapiaotype.Text);//发票类型
-                salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text);//本单总额
+                salesMain.oddAllMoney = Convert.ToDecimal(labtextboxTop9.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(labtextboxTop9.Text));//本单总额
                 _zongJinE = Convert.ToDecimal(salesMain.oddAllMoney);
                 salesMain.isClear = 1;//是否删除
                 if (_zongJinE - _benCiShouKuan == 0)
@@ -990,16 +1019,25 @@ namespace WSCATProject.Sales
                     _weiFuKuan = _zongJinE - _benCiShouKuan;
                     salesMain.lastMoney = _weiFuKuan;//剩余尾款
                 }
-                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text);//联系人
-                salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//操作人
+                salesMain.linkMan = XYEEncoding.strCodeHex(labtextboxTop8.Text == null ? "" : labtextboxTop8.Text);//联系人
+                salesMain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//操作人
                 salesMain.payMathod = XYEEncoding.strCodeHex(cboJiesuanMethod.Text);//付款方式
                 salesMain.payState = 0;//是否付款
-                salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text);//优惠科目
+                salesMain.Preferentialsubjects = XYEEncoding.strCodeHex(txtYouHuiKeMu.Text == null ? "" : txtYouHuiKeMu.Text);//优惠科目
                 salesMain.receiptDate = dateTimePickershoukuan.Value;//收款日期
-                salesMain.remark = XYEEncoding.strCodeHex(txtZhaiYao.Text);//备注
+                salesMain.remark = XYEEncoding.strCodeHex(txtZhaiYao.Text == null ? "" : txtZhaiYao.Text);//备注
                 salesMain.reserved1 = "";
                 salesMain.reserved2 = "";
-                salesMain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    salesMain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
+                }
+                else
+                {
+                    MessageBox.Show("销售员不能为空!请输入：");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 salesMain.salesOrderState = 0;//发货状态
                 salesMain.type = XYEEncoding.strCodeHex(comboBoxType.Text);//单据状态
                 salesMain.updateDate = DateTime.Now;//更改时间
@@ -1057,6 +1095,16 @@ namespace WSCATProject.Sales
                             salesDetail.lostNumber = _lostNumber;//缺少数量
                         }
                         salesDetail.materialCode = gr["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumncode"].Value.ToString());//物料编号
+                        if (gr["material"].Value != null || gr["material"].Value.ToString() != "")
+                        {
+                            salesDetail.materialDaima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
+                        }
+                        else
+                        {
+                            MessageBox.Show("商品代码不能为空!请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
                         salesDetail.materialDaima = gr["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());//物料代码
                         salesDetail.materialName = gr["gridColumnmaterialname"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmaterialname"].Value.ToString());//物料名称
                         salesDetail.materiaModel = gr["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//物料规格型号
@@ -1073,7 +1121,16 @@ namespace WSCATProject.Sales
                         salesDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
                         salesDetail.sourceCode = XYEEncoding.strCodeHex(_salesOrderMainCode);//销售订单code
                         salesDetail.storageCode = XYEEncoding.strCodeHex(_storgeCode);//仓库code
-                        salesDetail.storageName = gr["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value);//仓库名称
+                        if (gr["gridColumnStock"].Value != null || gr["gridColumnStock"].Value.ToString() != "")
+                        {
+                            salesDetail.storageName = gr["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value);//仓库名称
+                        }
+                        else
+                        {
+                            MessageBox.Show("仓库不能为空!请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
                         salesDetail.tax = gr["gridColumnshuie"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnshuie"].Value);//税额
                         salesDetail.unit = gr["gridColumndanwei"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumndanwei"].Value.ToString());//单位
                         salesDetail.updateDate = DateTime.Now;//更改时间
@@ -1446,11 +1503,6 @@ namespace WSCATProject.Sales
                              ButtonBorderStyle.Solid);
         }
 
-        private void SalesTicketForm_Activated(object sender, EventArgs e)
-        {
-            labtextboxTop2.Focus();//焦点在客户上
-        }
-
         /// <summary>
         /// 发票类型的选择改变事件
         /// </summary>
@@ -1545,6 +1597,16 @@ namespace WSCATProject.Sales
             {
                 //最后一行做统计行
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                if (gr.Cells["material"].FormattedValue == null || gr.Cells["material"].FormattedValue == "")
+                {
+                    MessageBox.Show("请先选择商品代码：");
+                    return;
+                }
+                if (gr.Cells["gridColumndanwei"].FormattedValue == "斤")
+                {
+                    gr.Cells["gridColumnfahuoshu"].EditorType = typeof(GridDoubleInputEditControl);
+                    MessageBox.Show("TTT");
+                }
                 //计算金额
                 decimal number = Convert.ToDecimal(gr.Cells["gridColumnfahuoshu"].FormattedValue);//发货数量
                 decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);//单价               
@@ -1677,7 +1739,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-      
+
         private void txtBenCiShouKuan_Leave(object sender, EventArgs e)
         {
             //控件失去焦点后将它的值的格式精确到两位小数
@@ -1696,6 +1758,11 @@ namespace WSCATProject.Sales
             {
                 labtextboxTop2.Focus();
             }
+        }
+
+        private void SalesTicketForm_Activated(object sender, EventArgs e)
+        {
+            labtextboxTop2.Focus();
         }
 
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)

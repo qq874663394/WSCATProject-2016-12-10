@@ -153,11 +153,13 @@ namespace WSCATProject.Sales
             if (txtClient.Text.Trim() == null || txtClient.Text == "")
             {
                 MessageBox.Show("客户不能为空！");
+                txtClient.Focus();
                 return false;
             }
             if (txtBank.Text.Trim() == null || txtBank.Text == "")
             {
                 MessageBox.Show("结算账户不能为空！");
+                txtBank.Focus();
                 return false;
             }
             GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
@@ -165,16 +167,19 @@ namespace WSCATProject.Sales
             if (gr.Cells["yuandanCode"].Value == null || gr.Cells["yuandanCode"].Value.ToString() == "")
             {
                 MessageBox.Show("表格里源单编号不能为空！");
+                superGridControlShangPing.Focus();
                 return false;
             }
             if (benci == 0.00)
             {
                 MessageBox.Show("本次核销不应该是等于零的数据！请检查：");
+                superGridControlShangPing.Focus();
                 return false;
             }
             if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
             {
                 MessageBox.Show("收款员不能为空！");
+                ltxtbSalsMan.Focus();
                 return false;
             }
             return true;
@@ -835,17 +840,44 @@ namespace WSCATProject.Sales
                 financecollection.date = this.dateTimePicker1.Value;//开单日期
                 financecollection.type = XYEEncoding.strCodeHex(cboDanJuType.Text.Trim());//单据类型
                 financecollection.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户编号
-                financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
+                if (txtClient.Text != null || txtClient.Text != "")
+                {
+                    financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
+                }
+                else
+                {
+                    MessageBox.Show("客户名称不能为空，请输入：");
+                    txtClient.Focus();
+                    return;
+                }
                 financecollection.accountCode = XYEEncoding.strCodeHex(_bankCode);//账户code
-                financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
+                if (txtBank.Text != null || txtBank.Text.Trim() != "")
+                {
+                    financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
+                }
+                else
+                {
+                    MessageBox.Show("账户名称不能为空，请输入：");
+                    txtBank.Focus();
+                    return;
+                }
                 financecollection.settlementMethod = XYEEncoding.strCodeHex(cboJieSuanMethod.Text.Trim());//结算方式
-                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim());//整单折扣率
-                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim());//整单收款   
-                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim());//摘要 
+                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtDiscount.Text));//整单折扣率
+                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtBenCiShouKuan.Text));//整单收款   
+                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim() == null ? "" : txtRemark.Text.ToString());//摘要 
                 financecollection.salesCode = XYEEncoding.strCodeHex(_employeeCode);//收款员code
-                financecollection.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//收款员
-                financecollection.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim());//制单人
-                financecollection.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim());//审核人   
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financecollection.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//收款员
+                }
+                else
+                {
+                    MessageBox.Show("收款不能为空，请输入：");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financecollection.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim() == null ? "" : ltxtbMakeMan.Text);//制单人
+                financecollection.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim() == null ? "" : ltxtbShengHeMan.Text);//审核人   
                 financecollection.isClear = 1;
                 financecollection.updatedate = DateTime.Now;
                 financecollection.checkState = 0;//审核状态
@@ -884,12 +916,21 @@ namespace WSCATProject.Sales
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
                         financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
                         financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
-                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
-                        financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value);//应收金额
-                        financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value);//已核销金额
-                        financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
-                        financecollectionDetail.nowMoney = Convert.ToDecimal(gr["BenCiHeXiao"].Value);//本次收款金额
-                        financecollectionDetail.unCollection = Convert.ToDecimal(gr["WeuFuMoney"].Value);//未收金额
+                        if (gr["yuandanType"].Value.ToString() != "" || gr["yuandanType"].Value != null)
+                        {
+                            financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
+                        }
+                        else
+                        {
+                            MessageBox.Show("选源单不能为空，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["danjuMoney"].Value));//应收金额
+                        financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["YiHeXiaoMoney"].Value));//已核销金额
+                        financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value));//未核销金额
+                        financecollectionDetail.nowMoney = Convert.ToDecimal(gr["BenCiHeXiao"].Value.ToString()==""?0.0M: Convert.ToDecimal(gr["BenCiHeXiao"].Value));//本次收款金额
+                        financecollectionDetail.unCollection = Convert.ToDecimal(gr["WeuFuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["WeuFuMoney"].Value));//未收金额
                         financecollectionDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
@@ -934,20 +975,47 @@ namespace WSCATProject.Sales
                 financecollection.date = this.dateTimePicker1.Value;//开单日期
                 financecollection.type = XYEEncoding.strCodeHex(cboDanJuType.Text.Trim());//单据类型
                 financecollection.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户编号
-                financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
+                if (txtClient.Text != null || txtClient.Text != "")
+                {
+                    financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
+                }
+                else
+                {
+                    MessageBox.Show("客户名称不能为空，请输入：");
+                    txtClient.Focus();
+                    return;
+                }
                 financecollection.accountCode = XYEEncoding.strCodeHex(_bankCode);//账户code
-                financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
+                if (txtBank.Text != null || txtBank.Text.Trim() != "")
+                {
+                    financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
+                }
+                else
+                {
+                    MessageBox.Show("账户名称不能为空，请输入：");
+                    txtBank.Focus();
+                    return;
+                }
                 financecollection.settlementMethod = XYEEncoding.strCodeHex(cboJieSuanMethod.Text.Trim());//结算方式
-                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim());//整单折扣率
-                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim());//整单收款   
-                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim());//摘要 
+                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtDiscount.Text));//整单折扣率
+                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtBenCiShouKuan.Text));//整单收款   
+                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim() == null ? "" : txtRemark.Text.ToString());//摘要 
                 financecollection.salesCode = XYEEncoding.strCodeHex(_employeeCode);//收款员code
-                financecollection.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//收款员
-                financecollection.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim());//制单人
-                financecollection.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim());//审核人   
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financecollection.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//收款员
+                }
+                else
+                {
+                    MessageBox.Show("收款不能为空，请输入：");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financecollection.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim() == null ? "" : ltxtbMakeMan.Text);//制单人
+                financecollection.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim() == null ? "" : ltxtbShengHeMan.Text);//审核人   
                 financecollection.isClear = 1;
                 financecollection.updatedate = DateTime.Now;
-                financecollection.checkState = 1;//审核状态
+                financecollection.checkState = 0;//审核状态
                 financecollection.Reserved1 = "";
                 financecollection.Reserved2 = "";
 
@@ -983,13 +1051,23 @@ namespace WSCATProject.Sales
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
                         financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
                         financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
-                        financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
-                        financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value);//应收金额
-                        financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value);//已核销金额
-                        financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value);//未核销金额
-                        financecollectionDetail.nowMoney = Convert.ToDecimal(gr["BenCiHeXiao"].Value);//本次收款金额
-                        financecollectionDetail.unCollection = Convert.ToDecimal(gr["WeuFuMoney"].Value);//未收金额
+                        if (gr["yuandanType"].Value.ToString() != "" || gr["yuandanType"].Value != null)
+                        {
+                            financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
+                        }
+                        else
+                        {
+                            MessageBox.Show("选源单不能为空，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["danjuMoney"].Value));//应收金额
+                        financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["YiHeXiaoMoney"].Value));//已核销金额
+                        financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value));//未核销金额
+                        financecollectionDetail.nowMoney = Convert.ToDecimal(gr["BenCiHeXiao"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["BenCiHeXiao"].Value));//本次收款金额
+                        financecollectionDetail.unCollection = Convert.ToDecimal(gr["WeuFuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["WeuFuMoney"].Value));//未收金额
                         financecollectionDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
+
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         financecollectionList.Add(financecollectionDetail);

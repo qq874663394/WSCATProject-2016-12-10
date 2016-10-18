@@ -877,6 +877,7 @@
             // 
             this.comboBoxType.DisplayMember = "Text";
             this.comboBoxType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.ItemHeight = 15;
             this.comboBoxType.Items.AddRange(new object[] {
@@ -901,6 +902,7 @@
             // 
             this.comboBoxfapiaotype.DisplayMember = "Text";
             this.comboBoxfapiaotype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxfapiaotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxfapiaotype.FormattingEnabled = true;
             this.comboBoxfapiaotype.ItemHeight = 15;
             this.comboBoxfapiaotype.Items.AddRange(new object[] {
@@ -962,6 +964,7 @@
             // 
             this.cboJiesuanMethod.DisplayMember = "Text";
             this.cboJiesuanMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboJiesuanMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboJiesuanMethod.FormattingEnabled = true;
             this.cboJiesuanMethod.ItemHeight = 15;
             this.cboJiesuanMethod.Items.AddRange(new object[] {
