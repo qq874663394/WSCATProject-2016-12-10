@@ -134,6 +134,7 @@ namespace WSCATProject.Sales
             gr.Cells["material"].CellStyles.Default.Alignment =
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["dinggouNumber"].Value = 0;
+            gr.Cells["dinggouNumber"].EditorType = typeof(GridDoubleInputEditControl);
             gr.Cells["dinggouNumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["dinggouNumber"].CellStyles.Default.Background.Color1 = Color.Orange;
             gr.Cells["money"].Value = 0;
@@ -504,7 +505,7 @@ namespace WSCATProject.Sales
                 #endregion
 
                 //订购数量
-                GridDoubleInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["dinggouNumber"].EditControl as GridDoubleInputEditControl;
+                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["dinggouNumber"].EditControl as GridIntegerInputEditControl;
                 gdiecNumber.MinValue = 1;
                 gdiecNumber.MaxValue = 999999999;
                 //单价
@@ -950,6 +951,11 @@ namespace WSCATProject.Sales
                 gr.Cells["model"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
                 gr.Cells["barcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
                 gr.Cells["unit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
+                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value.ToString()=="斤")
+                {
+                    gr.Cells["dinggouNumber"].EditorType = typeof(GridDoubleInputEditControl);
+                }
+          
                 gr.Cells["dinggouNumber"].Value = 1.00;//数量
                 gr.Cells["price"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
                 double discount = 100.00;

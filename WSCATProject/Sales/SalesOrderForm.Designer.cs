@@ -596,7 +596,7 @@
             // 
             this.dinggouNumber.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
             this.dinggouNumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.dinggouNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.dinggouNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.dinggouNumber.HeaderText = "订购数量";
             this.dinggouNumber.Name = "dinggouNumber";
             this.dinggouNumber.Width = 70;

@@ -392,7 +392,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("窗体初始化数据错误！请检查：" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码：2901-窗体初始化数据错误！请检查：" + ex.Message, "拆卸单温馨提示");
             }
         }
 
@@ -444,7 +444,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码:2902-尝试创建和审核拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
                 return;
             }
 
@@ -485,7 +485,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码：2903-尝试创建审核拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
                 return;
             }
 
@@ -546,7 +546,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:；尝试创建拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码:2904-尝试创建拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
                 return;
             }
 
@@ -587,7 +587,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码：2905-尝试创建拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
                 return;
             }
 
@@ -693,7 +693,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定物料信息数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2906-双击绑定物料信息数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -738,7 +738,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定拆卸员或仓库信息数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2907-双击绑定拆卸员或仓库信息数据错误！请检查：" + ex.Message);
             }
         }
 
@@ -959,7 +959,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：模糊查询拆卸员数据错误" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码：2908-模糊查询拆卸员数据错误" + ex.Message, "拆卸单温馨提示");
             }
 
 
@@ -983,7 +983,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码:2909-表格商品模糊查询错误，查询数据错误" + ex.Message, "拆卸单温馨提示");
             }
         }
 
@@ -1004,7 +1004,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格商品模糊查询错误，查询数据错误" + ex.Message, "拆卸单温馨提示");
+                MessageBox.Show("错误代码:2910-表格商品拆卸明细模糊查询错误，查询数据错误" + ex.Message, "拆卸单温馨提示");
             }
         }
 
@@ -1040,7 +1040,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("统计数量错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2911-统计数量错误！请检查：" + ex.Message);
             }
         }
 

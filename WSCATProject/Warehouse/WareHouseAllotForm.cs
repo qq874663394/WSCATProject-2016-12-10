@@ -167,7 +167,8 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-初始化调拨窗体数据错误" + ex.Message);
+                MessageBox.Show("错误代码：2801-初始化调拨窗体数据错误" + ex.Message,"调拨单温馨提示");
+                return;
             }
         }
         /// <summary>
@@ -208,7 +209,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2104;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                MessageBox.Show("错误代码:2804;尝试创建和审核调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             try
@@ -257,7 +258,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                MessageBox.Show("错误代码：2805-尝试创建和审核调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             //增加一条入库单和入库单详细数据
@@ -307,7 +308,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2104;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                MessageBox.Show("错误代码:2802;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             try
@@ -356,7 +357,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2105-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                MessageBox.Show("错误代码：2803-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
                 return;
             }
             //增加一条入库单和入库单详细数据
@@ -477,7 +478,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-初始化业务员数据错误" + ex.Message);
+                MessageBox.Show("错误代码：2806-初始化调拨员数据错误" + ex.Message);
             }
         }
 
@@ -486,36 +487,45 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitStorageList()
         {
-            if (_Click != 2)
+            try
             {
-                _Click = 2;
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
+                if (_Click != 2)
+                {
+                    _Click = 2;
+                    dataGridViewFuJia.DataSource = null;
+                    dataGridViewFuJia.Columns.Clear();
 
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.Visible = false;
-                dgvc.HeaderText = "code";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "code";
+                    dgvc.Visible = false;
+                    dgvc.HeaderText = "code";
+                    dgvc.DataPropertyName = "code";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.Visible = true;
-                dgvc.HeaderText = "仓库名称";
-                dgvc.DataPropertyName = "name";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "name";
+                    dgvc.Visible = true;
+                    dgvc.HeaderText = "仓库名称";
+                    dgvc.DataPropertyName = "name";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "address";
-                dgvc.Visible = true;
-                dgvc.HeaderText = "仓库地址";
-                dgvc.DataPropertyName = "address";
-                dataGridViewFuJia.Columns.Add(dgvc);
+                    dgvc = new DataGridViewTextBoxColumn();
+                    dgvc.Name = "address";
+                    dgvc.Visible = true;
+                    dgvc.HeaderText = "仓库地址";
+                    dgvc.DataPropertyName = "address";
+                    dataGridViewFuJia.Columns.Add(dgvc);
 
-                //查询仓库的方法
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
+                    //查询仓库的方法
+                    dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2807-初始化仓库数据错误！"+ex.Message,"调拨单微信提示");
+            }
+       
+
         }
 
         /// <summary>
@@ -709,7 +719,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("双击绑定数据错误！请检查：" + ex.Message);
+                MessageBox.Show("错误代码：2808-双击绑定仓库或者业务员错误！请检查：" + ex.Message);
             }
         }
 
@@ -818,7 +828,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-绑定商品数据错误" + ex.Message);
+                MessageBox.Show("错误代码：2809-绑定商品数据错误" + ex.Message);
             }
 
             superGridControlShangPing.Focus();
@@ -867,7 +877,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-选择表格第一格数据错误！" + ex.Message);
+                MessageBox.Show("错误代码：2810-选择表格第一格数据错误！" + ex.Message);
             }
 
         }
@@ -957,7 +967,7 @@ namespace WSCATProject.Warehouse
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("金额转换错误" + ex.Message);
+                    MessageBox.Show("错误代码：2811-金额转换错误" + ex.Message);
                 }
             }
         }
@@ -991,7 +1001,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-选择调拨类型数据错误" + ex.Message);
+                MessageBox.Show("错误代码：2812-选择调拨类型数据错误" + ex.Message);
             }
 
         }
@@ -1042,7 +1052,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-业务员模糊查询数据失败！" + ex.Message);
+                MessageBox.Show("错误代码：2813-业务员模糊查询数据失败！" + ex.Message);
             }
 
         }
@@ -1068,7 +1078,7 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:2111-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:2814-商品表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
             }
         }
 

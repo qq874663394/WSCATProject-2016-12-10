@@ -1576,6 +1576,11 @@ namespace WSCATProject.Sales
             {
                 //最后一行做统计行
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                if (gr.Cells["gridColumndanwei"].FormattedValue=="斤")
+                {
+                    gr.Cells["gridColumnfahuoshu"].EditorType = typeof(GridDoubleInputEditControl);
+                    MessageBox.Show("TTT");
+                }
                 //计算金额
                 decimal number = Convert.ToDecimal(gr.Cells["gridColumnfahuoshu"].FormattedValue);//发货数量
                 decimal price = Convert.ToDecimal(gr.Cells["gridColumnprice"].FormattedValue);//单价               
