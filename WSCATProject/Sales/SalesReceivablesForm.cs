@@ -1367,5 +1367,10 @@ namespace WSCATProject.Sales
                 txtClient.Focus();
             }
         }
+
+        private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
     }
 }

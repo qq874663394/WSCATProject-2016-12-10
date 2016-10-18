@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PurchaseUpdataManager.cs" />
     <Compile Include="SystemUpdataManager.cs" />
     <Compile Include="SalesUpdataManager.cs" />
     <Compile Include="OtherUpdataManager.cs" />

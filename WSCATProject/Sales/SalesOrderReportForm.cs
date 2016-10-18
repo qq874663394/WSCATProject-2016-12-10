@@ -84,7 +84,6 @@ namespace WSCATProject.Sales
                 }
                 for (int i = 0; i < dt1.Rows.Count; i++)
                 {
-
                     for (int j = 0; j < dt2.Rows.Count; j++)
                     {
                         if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
