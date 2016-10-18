@@ -1264,48 +1264,6 @@ namespace WSCATProject.Sales
             }
             _Click = 8;
         }
-
-        /// <summary>
-        /// 第一行第一列选择仓库
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
-        {
-            try
-            {
-                if (e.GridCell.GridColumn.Name == "gridColumnStock")
-                {
-                    if (_Click != 3)
-                    {
-                        InitStorage();
-                    }
-                    _Click = 7;
-                    return;
-                }
-                if (e.GridCell.GridColumn.Name == "material")
-                {
-                    this.resizablePanelData.Visible = false;
-                    ToolStripButtonXuanYuanDan_Click(sender, e);
-                }
-            }
-            catch (Exception)
-            {
-                //if (_StorageCode != "")
-                //{
-                //    //查询商品列表
-                //    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999, "", XYEEncoding.strCodeHex(_StorageCode));
-                //    InitMaterialDataGridView();
-                //}
-                //else
-                //{
-                //    this.resizablePanelData.Visible = false;
-                //    MessageBox.Show("请先选择仓库！");
-                //}
-            }
-
-        }
-
         /// <summary>
         /// 客户的模糊查询
         /// </summary>
@@ -1813,6 +1771,41 @@ namespace WSCATProject.Sales
         private void SalesTicketForm_Activated(object sender, EventArgs e)
         {
             labtextboxTop2.Focus();
+        }
+
+        private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
+        {
+            try
+            {
+                if (e.GridCell.GridColumn.Name == "gridColumnStock")
+                {
+                    if (_Click != 3)
+                    {
+                        InitStorage();
+                    }
+                    _Click = 7;
+                    return;
+                }
+                if (e.GridCell.GridColumn.Name == "material")
+                {
+                    this.resizablePanelData.Visible = false;
+                    toolStripButtonXuanYuanDan.PerformClick();
+                }
+            }
+            catch (Exception)
+            {
+                //if (_StorageCode != "")
+                //{
+                //    //查询商品列表
+                //    _AllMaterial = waremain.GetWMainAndMaterialByWMCode(999, "", XYEEncoding.strCodeHex(_StorageCode));
+                //    InitMaterialDataGridView();
+                //}
+                //else
+                //{
+                //    this.resizablePanelData.Visible = false;
+                //    MessageBox.Show("请先选择仓库！");
+                //}
+            }
         }
     }
 }

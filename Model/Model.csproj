@@ -85,6 +85,8 @@
     <Compile Include="Purchase\PurchaseCancelDetail.cs" />
     <Compile Include="Purchase\PurchaseDetail.cs" />
     <Compile Include="Purchase\PurchaseMain.cs" />
+    <Compile Include="Purchase\PurchaseOrder.cs" />
+    <Compile Include="Purchase\PurchaseOrderDetail.cs" />
     <Compile Include="Purchase\PurchaseProcess.cs" />
     <Compile Include="Sales\SalesCancel.cs" />
     <Compile Include="Sales\SalesCancelDetail.cs" />

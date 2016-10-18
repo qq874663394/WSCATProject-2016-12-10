@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\PurchaseDetailLogic.cs" />
     <Compile Include="Purchase\PurchaseLogic.cs" />
+    <Compile Include="Purchase\PurchaseOrderLogic.cs" />
     <Compile Include="Sales\SalesDetailLogic.cs" />
     <Compile Include="Sales\SalesMainLogic.cs" />
     <Compile Include="Sales\SalesOrderLogic.cs" />
