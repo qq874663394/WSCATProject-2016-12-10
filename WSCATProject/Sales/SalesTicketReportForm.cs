@@ -31,6 +31,7 @@ namespace WSCATProject.Sales
             set { _clientCode = value; }
         }
         List<string> _saleslist = new List<string>();
+        private int _SalesTicketNumber;
         CodingHelper ch = new CodingHelper();
         /// 窗体加载事件
         /// </summary>
@@ -60,6 +61,13 @@ namespace WSCATProject.Sales
                 }
                 SalesMainInterface salesMainInter = new SalesMainInterface();
                 DataTable dt = ch.DataTableReCoding(salesMainInter.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode)));
+                _SalesTicketNumber = dt.Rows.Count;
+                this.lbldanju.Text = _SalesTicketNumber.ToString() + "张单据";
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此客户暂无销售单信息！请重新选择");
+                    return;
+                }
                 SalesReceivablesForm sales = (SalesReceivablesForm)this.Owner;
                 _saleslist = sales.SalesMainList;
                 for (int i = 0; i < dt.Rows.Count; i++)
