@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using Model.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -512,78 +513,141 @@ namespace WSCATProject.Purchase
             }
             ////获得界面上的数据,准备传给base层新增数据
             //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
-            ////销售订单
-            //pur salesorder = new SalesOrder();
-            ////销售订单商品列表
-            //List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
-            //try
-            //{
-            //    salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
-            //    salesorder.date = this.dateTimePicker1.Value;//开单日期
-            //    salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户code
-            //    switch (cboMethod.Text.Trim())//交货方式
-            //    {
-            //        case "提货":
-            //            salesorder.deliversMethod = 0;
-            //            break;
-            //        case "送货":
-            //            salesorder.deliversMethod = 1;
-            //            break;
-            //        case "发货":
-            //            salesorder.deliversMethod = 2;
-            //            break;
-            //    }
-            //    salesorder.deliversLocation = XYEEncoding.strCodeHex(labtextboxTop5.Text);//交货地点
-            //    salesorder.deliversDate = dateTimePicker2.Value;//交货日期
-            //    salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
-            //    salesorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//销售员
-            //    salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-            //    salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-            //    salesorder.checkState = 0;//审核状态
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("错误代码:1102-尝试创建销售订单数据出错！请检查：" + ex.Message, "销售订单温馨提示");
-            //    return;
-            //}
+            ////采购订单
+            PurchaseOrder purchaseorder = new PurchaseOrder();
+            ////采购订单商品列表
+            List<PurchaseOrderDetail> purchaseorderList = new List<PurchaseOrderDetail>();
+            try
+            {
+                purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);//采购订单code
+                purchaseorder.date = this.dateTimePicker1.Value;//开单日期
+                purchaseorder.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                switch (cboMethod.Text.Trim())//交货方式
+                {
+                    case "提货":
+                        purchaseorder.deliversMethod = 0;
+                        break;
+                    case "送货":
+                        purchaseorder.deliversMethod = 1;
+                        break;
+                    case "发货":
+                        purchaseorder.deliversMethod = 2;
+                        break;
+                }
+                if (txtAddress.Text != null || txtAddress.Text != "")
+                {
+                    purchaseorder.deliversLocation = XYEEncoding.strCodeHex(txtAddress.Text.Trim());//交货地点
+                }
+                else
+                {
+                    MessageBox.Show("交货地点员不能为空！");
+                    txtAddress.FindForm();
+                    return;
+                }
 
-            //try
-            //{
-            //    //获得商品列表数据,准备传给base层新增数据
-            //    GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-            //    GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-            //    int i = 0;
-            //    DateTime nowDataTime = DateTime.Now;
-            //    foreach (GridRow gr in grs)
-            //    {
-            //        if (gr["name"].Value != null)
-            //        {
+                purchaseorder.deliversDate = this.dateTimePicker2.Value;//交货日期
+                purchaseorder.depositReceived = Convert.ToDecimal(txtYiFuDingJin.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtYiFuDingJin.Text));//已付订金
+                purchaseorder.remark = XYEEncoding.strCodeHex(txtRemark.Text == null ? "" : txtRemark.Text.Trim());//摘要
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text != "")
+                {
+                    purchaseorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("采购员不能为空！");
+                    ltxtbSalsMan.FindForm();
+                    return;
+                }
+                purchaseorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
+                purchaseorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
+                purchaseorder.checkState = 0;//审核状态
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:1102-尝试创建采购订单数据出错！请检查：" + ex.Message, "采购订单温馨提示");
+                return;
+            }
 
-            //            i++;
-            //            SalesOrderDetail salesorderDetail = new SalesOrderDetail();
-            //            salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
-            //            salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
-            //            salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-            //            salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
-            //            salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价
-            //            salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
-            //            salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
-            //            salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
-            //            salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
-            //            salesorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
-            //            salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-            //            salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].Value != null)
+                    {
 
-            //            GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-            //            salesorderList.Add(salesorderDetail);
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("错误代码：1103-尝试创建销售订单商品详细数据出错!请检查:" + ex.Message, "销售订单温馨提示");
-            //    return;
-            //}
+                        i++;
+                        PurchaseOrderDetail purchaseorderDetail = new PurchaseOrderDetail();
+                        purchaseorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购订单单据code
+                        purchaseorderDetail.code = XYEEncoding.strCodeHex(_PurchaseOrderCode + i.ToString());//采购订单明细code
+                        purchaseorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
+                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
+                        purchaseorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
+                        //判断表格里的金额与实际值是否相符     
+                        decimal money = Convert.ToDecimal(gr["dinggouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
+                        if (money == Convert.ToDecimal(gr["money"].Value))
+                        {
+                            purchaseorderDetail.materialMoney = Convert.ToDecimal(gr["money"].Value);//金额
+                        }
+                        else
+                        {
+                            MessageBox.Show("表格里金额的值错误！");
+                            return;
+                        }
+                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
+                        decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
+                        decimal discountMoney = money - discountAfter;
+                        //判断表格里的折扣额与实际值是否相符
+                        if (discountMoney == Convert.ToDecimal(gr["DiscountMoney"].Value))
+                        {
+                            purchaseorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
+                        }
+                        else
+                        {
+                            MessageBox.Show("表格里折扣额的值错误！");
+                            return;
+                        }
+                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
+                        //判断表格里的税额与实际值是否相符
+                        decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
+                        if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
+                        {
+                            purchaseorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
+                        }
+                        else
+                        {
+                            MessageBox.Show("表格里税额的值错误！");
+                            return;
+                        }
+                        //判断表格里的价税合计与实际值是否相符
+                        decimal jiashui = money + rateMoney;
+                        if (jiashui == Convert.ToDecimal(gr["priceANDtax"].Value))
+                        {
+                            purchaseorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
+                        }
+                        else
+                        {
+                            MessageBox.Show("表格里价税合计的值错误！");
+                            return;
+                        }
+                        purchaseorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
+                        purchaseorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
+
+
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        purchaseorderList.Add(purchaseorderDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1103-尝试创建销售订单商品详细数据出错!请检查:" + ex.Message, "销售订单温馨提示");
+                return;
+            }
 
             ////增加一条销售订单和销售订单详细数据
             //object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);

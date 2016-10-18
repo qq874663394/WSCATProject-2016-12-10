@@ -649,9 +649,9 @@ namespace WSCATProject.Sales
                         salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
                         salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
                         salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
-                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价          
-
+                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
+                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
+                        //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["dinggouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
                         if (money == Convert.ToDecimal(gr["money"].Value))
                         {
@@ -662,10 +662,10 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
-
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
-                        decimal discountMoney = money - discountAfter;//折扣额
+                        decimal discountMoney = money - discountAfter;
+                        //判断表格里的折扣额与实际值是否相符
                         if (discountMoney == Convert.ToDecimal(gr["DiscountMoney"].Value))
                         {
                             salesorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
@@ -675,10 +675,9 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-
-
-                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
-                        decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);//税额
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
+                        //判断表格里的税额与实际值是否相符
+                        decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
                         {
                             salesorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
@@ -688,7 +687,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里税额的值错误！");
                             return;
                         }
-
+                        //判断表格里的价税合计与实际值是否相符
                         decimal jiashui = money + rateMoney;
                         if (jiashui == Convert.ToDecimal(gr["priceANDtax"].Value))
                         {
@@ -700,8 +699,7 @@ namespace WSCATProject.Sales
                             return;
                         }
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-
-                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesorderList.Add(salesorderDetail);
@@ -817,8 +815,8 @@ namespace WSCATProject.Sales
                         salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
                         salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
                         salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value);//数量
-                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value);//单价     
+                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
+                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
                         //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["dinggouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
                         if (money == Convert.ToDecimal(gr["money"].Value))
@@ -830,7 +828,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value);//折扣率
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -843,7 +841,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value);//增值税税率
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
@@ -867,7 +865,7 @@ namespace WSCATProject.Sales
                             return;
                         }
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value);//发货数量    
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesorderList.Add(salesorderDetail);
@@ -889,7 +887,7 @@ namespace WSCATProject.Sales
                 this.picShengHe.Image = Properties.Resources.审核;
             }
         }
-        
+
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
 
         /// <summary>
@@ -1110,8 +1108,8 @@ namespace WSCATProject.Sales
                 gr.Cells["model"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
                 gr.Cells["barcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
                 gr.Cells["unit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-    
-                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["isDouble"].Value.ToString()=="0")
+
+                if (dataGridViewShangPing.Rows[e.RowIndex].Cells["isDouble"].Value.ToString() == "0")
                 {
                     gr.Cells["dinggouNumber"].EditorType = typeof(GridDoubleInputEditControl);
                 }
