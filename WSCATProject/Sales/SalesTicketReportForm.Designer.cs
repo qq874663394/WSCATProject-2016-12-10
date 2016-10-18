@@ -170,7 +170,6 @@
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
             this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
-            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // BillType
             // 

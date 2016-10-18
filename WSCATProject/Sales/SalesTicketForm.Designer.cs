@@ -766,7 +766,7 @@
             // 
             // gridColumndinggoushu
             // 
-            this.gridColumndinggoushu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
+            this.gridColumndinggoushu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumndinggoushu.HeaderText = "订购数量";
             this.gridColumndinggoushu.Name = "gridColumndinggoushu";
             this.gridColumndinggoushu.ReadOnly = true;
@@ -774,7 +774,7 @@
             // 
             // gridColumnfahuoshu
             // 
-            this.gridColumnfahuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
+            this.gridColumnfahuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnfahuoshu.HeaderText = "发货数量";
             this.gridColumnfahuoshu.Name = "gridColumnfahuoshu";
             this.gridColumnfahuoshu.Width = 60;
