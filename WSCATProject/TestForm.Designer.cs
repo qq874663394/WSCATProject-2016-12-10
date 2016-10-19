@@ -250,7 +250,7 @@
             this.toolStripBtnQianDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnQianDan.Name = "toolStripBtnQianDan";
             this.toolStripBtnQianDan.Size = new System.Drawing.Size(60, 57);
-            this.toolStripBtnQianDan.Text = "前单(&A)";
+            this.toolStripBtnQianDan.Text = "前单(&B)";
             this.toolStripBtnQianDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripBtnHouDan
@@ -259,8 +259,8 @@
             this.toolStripBtnHouDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnHouDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnHouDan.Name = "toolStripBtnHouDan";
-            this.toolStripBtnHouDan.Size = new System.Drawing.Size(60, 57);
-            this.toolStripBtnHouDan.Text = "后单(&B)";
+            this.toolStripBtnHouDan.Size = new System.Drawing.Size(61, 57);
+            this.toolStripBtnHouDan.Text = "后单(&A)";
             this.toolStripBtnHouDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripBtnInsert

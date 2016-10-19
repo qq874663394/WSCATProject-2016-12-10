@@ -1293,7 +1293,7 @@ namespace WSCATProject.Purchase
                 //小数点的处理。
                 if ((int)e.KeyChar == 46)//小数点
                 {
-                    if (txtYiFuDingJin.Text.Length < 0)
+                    if (txtYiFuDingJin.Text.Length <= 0 )
                         e.Handled = true;   //小数点不能在第一位
                     else
                     {
@@ -1326,7 +1326,6 @@ namespace WSCATProject.Purchase
 
                 // 按千分位逗号格式显示！
                 double d = Convert.ToDouble(skipComma(txtYiFuDingJin.Text));
-                //labtextboxTop7.Text = string.Format("{0:#,#}", d);
                 txtYiFuDingJin.Text = string.Format("{0:#,#}", d);
                 // 确保输入光标在最右侧
                 txtYiFuDingJin.Select(txtYiFuDingJin.Text.Length, 0);
