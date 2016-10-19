@@ -781,8 +781,10 @@
             // shouHuoNumber
             // 
             this.shouHuoNumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.shouHuoNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.shouHuoNumber.HeaderText = "收货数量";
             this.shouHuoNumber.Name = "shouHuoNumber";
+            this.shouHuoNumber.Visible = false;
             this.shouHuoNumber.Width = 70;
             // 
             // gridColumnid
