@@ -26,7 +26,7 @@ namespace UpdateManagerLayer
             {
                 sqlstr = string.Format(@"insert into T_Purchase(updateCode,updateTableName,updateId,reserve,dateTime) 
                         values('{0}','{1}',{2},'{3}','{4}')",
-                        XYEEncoding.strCodeHex(updateCode), XYEEncoding.strCodeHex(updateTableName), updateId, XYEEncoding.strCodeHex(reserve), DateTime.Now);
+                        updateCode, XYEEncoding.strCodeHex(updateTableName), updateId, XYEEncoding.strCodeHex(reserve), DateTime.Now);
                 result = DbHelperSQL.ExecuteSql(sqlstr);
             }
             catch

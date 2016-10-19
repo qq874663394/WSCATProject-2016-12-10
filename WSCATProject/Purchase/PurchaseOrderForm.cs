@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Purchase;
 using Model.Purchase;
 using System;
 using System.Collections.Generic;
@@ -159,18 +160,18 @@ namespace WSCATProject.Purchase
                 txtSupply.Focus();
                 return false;
             }
-            if (txtLinkMan.Text.Trim() == null || txtLinkMan.Text == "")
-            {
-                MessageBox.Show("联系人不能为空！");
-                txtLinkMan.Focus();
-                return false;
-            }
-            if (txtPhone.Text.Trim() == null || txtPhone.Text == "")
-            {
-                MessageBox.Show("电话不能为空！");
-                txtPhone.Focus();
-                return false;
-            }
+            //if (txtLinkMan.Text.Trim() == null || txtLinkMan.Text == "")
+            //{
+            //    MessageBox.Show("联系人不能为空！");
+            //    txtLinkMan.Focus();
+            //    return false;
+            //}
+            //if (txtPhone.Text.Trim() == null || txtPhone.Text == "")
+            //{
+            //    MessageBox.Show("电话不能为空！");
+            //    txtPhone.Focus();
+            //    return false;
+            //}
             if (cboMethod.Text.Trim() == null || cboMethod.Text == "")
             {
                 MessageBox.Show("交货方式不能为空！");
@@ -184,7 +185,7 @@ namespace WSCATProject.Purchase
                 return false;
             }
             GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
-            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            if (gr.Cells["name"].Value == null || gr.Cells["name"].Value.ToString() == "")
             {
                 MessageBox.Show("商品代码不能为空！");
                 superGridControlShangPing.Focus();
@@ -512,7 +513,7 @@ namespace WSCATProject.Purchase
                 return;
             }
             ////获得界面上的数据,准备传给base层新增数据
-            //SalesOrderInterface saleorderinterface = new SalesOrderInterface();
+            PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
             ////采购订单
             PurchaseOrder purchaseorder = new PurchaseOrder();
             ////采购订单商品列表
@@ -585,38 +586,38 @@ namespace WSCATProject.Purchase
                         purchaseorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购订单单据code
                         purchaseorderDetail.code = XYEEncoding.strCodeHex(_PurchaseOrderCode + i.ToString());//采购订单明细code
                         purchaseorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
-                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
+                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["CaiGouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["CaiGouNumber"].Value));//数量
                         purchaseorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
                         //判断表格里的金额与实际值是否相符     
-                        decimal money = Convert.ToDecimal(gr["dinggouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
-                        if (money == Convert.ToDecimal(gr["money"].Value))
+                        decimal money = Convert.ToDecimal(gr["CaiGouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
+                        if (money == Convert.ToDecimal(gr["Money"].Value))
                         {
-                            purchaseorderDetail.materialMoney = Convert.ToDecimal(gr["money"].Value);//金额
+                            purchaseorderDetail.materialMoney = Convert.ToDecimal(gr["Money"].Value);//金额
                         }
                         else
                         {
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
-                        decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
+                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["discountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["discountRate"].Value));//折扣率
+                        decimal discountAfter = money * (Convert.ToDecimal(gr["discountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
-                        if (discountMoney == Convert.ToDecimal(gr["DiscountMoney"].Value))
+                        if (discountMoney == Convert.ToDecimal(gr["discountMoney"].Value))
                         {
-                            purchaseorderDetail.discountMoney = Convert.ToDecimal(gr["DiscountMoney"].Value);//折扣额
+                            purchaseorderDetail.discountMoney = Convert.ToDecimal(gr["discountMoney"].Value);//折扣额
                         }
                         else
                         {
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
+                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["faxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["faxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
-                        decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
-                        if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
+                        decimal rateMoney = money * (Convert.ToDecimal(gr["faxRate"].Value) / 100);
+                        if (rateMoney == Convert.ToDecimal(gr["faxMoney"].Value))
                         {
-                            purchaseorderDetail.tax = Convert.ToDecimal(gr["TaxMoney"].Value);//税额
+                            purchaseorderDetail.tax = Convert.ToDecimal(gr["faxMoney"].Value);//税额
                         }
                         else
                         {
@@ -625,9 +626,9 @@ namespace WSCATProject.Purchase
                         }
                         //判断表格里的价税合计与实际值是否相符
                         decimal jiashui = money + rateMoney;
-                        if (jiashui == Convert.ToDecimal(gr["priceANDtax"].Value))
+                        if (jiashui == Convert.ToDecimal(gr["priceANDrate"].Value))
                         {
-                            purchaseorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDtax"].Value);//价税合计
+                            purchaseorderDetail.taxTotal = Convert.ToDecimal(gr["priceANDrate"].Value);//价税合计
                         }
                         else
                         {
@@ -635,7 +636,15 @@ namespace WSCATProject.Purchase
                             return;
                         }
                         purchaseorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        purchaseorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
+                        if (gr["shouHuoNumber"].Value == null || gr["shouHuoNumber"].Value.ToString() == "")
+                        {
+                            purchaseorderDetail.deliveryNumber = Convert.ToDecimal(0.00);
+                        }
+                        else
+                        {
+                            purchaseorderDetail.deliveryNumber = Convert.ToDecimal(gr["shouHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["shouHuoNumber"].Value));//收货数量    
+                        }
+
 
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
@@ -645,16 +654,16 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1103-尝试创建销售订单商品详细数据出错!请检查:" + ex.Message, "销售订单温馨提示");
+                MessageBox.Show("错误代码：-尝试创建采购订单商品详细数据出错!请检查:" + ex.Message, "采购订单温馨提示");
                 return;
             }
 
             ////增加一条销售订单和销售订单详细数据
-            //object saleOrderResult = saleorderinterface.AddOrUpdate(salesorder, salesorderList);
-            //if (saleOrderResult != null)
-            //{
-            //    MessageBox.Show("新增销售订单数据成功", "销售订单温馨提示");
-            //}
+            object purchaseOrderResult = purchaseOrderinterface.AddOrUpdateToMainOrDetail(purchaseorder, purchaseorderList);
+            if (purchaseOrderResult != null)
+            {
+                MessageBox.Show("新增采购订单数据成功", "采购订单温馨提示");
+            }
         }
 
         /// <summary>
