@@ -828,7 +828,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -841,7 +841,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
@@ -865,7 +865,7 @@ namespace WSCATProject.Sales
                             return;
                         }
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesorderList.Add(salesorderDetail);
@@ -937,7 +937,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
