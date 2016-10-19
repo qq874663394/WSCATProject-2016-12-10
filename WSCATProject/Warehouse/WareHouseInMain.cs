@@ -1371,7 +1371,7 @@ namespace WSCATProject.Warehouse
             labtextboxTop6.Focus();
         }
 
-        protected override void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             if (this.cboPurchaseCode.Text.Trim() == "")
             {

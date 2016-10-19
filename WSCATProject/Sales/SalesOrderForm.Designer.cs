@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cboMethod = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -491,7 +491,6 @@
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
-            this.superGridControlShangPing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.superGridControlShangPing_KeyPress);
             this.superGridControlShangPing.KeyUp += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyUp);
             // 
             // resizablePanel1
@@ -557,8 +556,8 @@
             // 
             this.name.AllowSelection = false;
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background1.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.name.CellStyles.Default.Background = background1;
+            background5.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.name.CellStyles.Default.Background = background5;
             this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
@@ -569,8 +568,8 @@
             // 
             this.model.AllowSelection = false;
             this.model.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
-            background2.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.model.CellStyles.Default.Background = background2;
+            background6.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.model.CellStyles.Default.Background = background6;
             this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -581,8 +580,8 @@
             // 
             this.barcode.AllowSelection = false;
             this.barcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background3.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.barcode.CellStyles.Default.Background = background3;
+            background7.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.barcode.CellStyles.Default.Background = background7;
             this.barcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.barcode.HeaderText = "条形码";
             this.barcode.Name = "barcode";
@@ -593,8 +592,8 @@
             // 
             this.unit.AllowSelection = false;
             this.unit.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
-            background4.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.unit.CellStyles.Default.Background = background4;
+            background8.Color1 = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.unit.CellStyles.Default.Background = background8;
             this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";

@@ -1764,6 +1764,21 @@ namespace WSCATProject.Sales
         {
             if (e.KeyCode == Keys.Enter)
             {
+                int jishu = 0;
+                //GridRow gr=superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Coun]
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count; i++)
+                {
+                    GridRow gr = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    if (gr["material"].Value == null || gr["material"].Value.ToString() == "")
+                    {
+                        jishu++;
+                        if (jishu >= 2)
+                        {
+                            superGridControlShangPing.PrimaryGrid.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+
                 labtextboxTop2.Focus();
             }
         }

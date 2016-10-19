@@ -848,7 +848,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected override void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {

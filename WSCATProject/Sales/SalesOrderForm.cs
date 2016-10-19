@@ -937,7 +937,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected override void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -949,6 +949,7 @@ namespace WSCATProject.Sales
                 }
                 else if (e.GridCell.GridColumn.Name == "material")
                 {
+
                     SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
                     GridCell gc = ge[0] as GridCell;
                     string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
@@ -1540,7 +1541,7 @@ namespace WSCATProject.Sales
                     if (gr["material"].Value == null || gr["material"].Value.ToString() == "")
                     {
                         jishu++;
-                        if (jishu>=2)
+                        if (jishu >= 2)
                         {
                             superGridControlShangPing.PrimaryGrid.Rows.RemoveAt(i);
                         }
@@ -1568,15 +1569,6 @@ namespace WSCATProject.Sales
         private void superGridControlShangPing_KeyUp(object sender, KeyEventArgs e)
         {
             superGridControlShangPing_KeyDown(sender, e);
-        }
-
-        private void superGridControlShangPing_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //在KeyPress事件里写
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-            }
         }
     }
 }
