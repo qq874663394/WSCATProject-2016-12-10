@@ -215,8 +215,6 @@ namespace WSCATProject.Sales
             }
         }
 
-
-
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
         {
             try

@@ -60,6 +60,7 @@
             this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.picShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -77,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBarCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -89,6 +91,16 @@
             // labelprie
             // 
             this.labelprie.Location = new System.Drawing.Point(1017, 10);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.picShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.picShengHe, 0);
             // 
             // labelTitle
             // 
@@ -800,6 +812,17 @@
             this.materialCode.Name = "materialCode";
             this.materialCode.Visible = false;
             // 
+            // picShengHe
+            // 
+            this.picShengHe.Image = global::WSCATProject.Properties.Resources.审核;
+            this.picShengHe.Location = new System.Drawing.Point(714, 0);
+            this.picShengHe.Name = "picShengHe";
+            this.picShengHe.Size = new System.Drawing.Size(71, 50);
+            this.picShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picShengHe.TabIndex = 46;
+            this.picShengHe.TabStop = false;
+            this.picShengHe.Visible = false;
+            // 
             // PurchaseOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -832,6 +855,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBarCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -870,5 +894,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialCode;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox picShengHe;
     }
 }

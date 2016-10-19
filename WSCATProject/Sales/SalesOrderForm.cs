@@ -216,12 +216,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "客户编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "客户姓名";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -273,12 +275,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "员工工号";
                     dgvc.DataPropertyName = "员工工号";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "姓名";
                     dgvc.DataPropertyName = "姓名";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
@@ -319,6 +323,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = true;
                     dgvc.HeaderText = "仓库编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -326,6 +331,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = true;
                     dgvc.HeaderText = "仓库名称";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -361,18 +367,21 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "code";
                 dgvc.DataPropertyName = "code";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "materialDaima";
                 dgvc.HeaderText = "商品代码";
                 dgvc.DataPropertyName = "materialDaima";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "商品名称";
                 dgvc.DataPropertyName = "name";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -380,6 +389,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "规格型号";
                 dgvc.DataPropertyName = "model";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -387,6 +397,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "条形码";
                 dgvc.DataPropertyName = "barCode";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -394,6 +405,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "单位";
                 dgvc.DataPropertyName = "unit";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -401,6 +413,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "单价";
                 dgvc.DataPropertyName = "price";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -408,6 +421,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "备注";
                 dgvc.DataPropertyName = "remark";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -415,6 +429,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "是否可输入小数点";
                 dgvc.DataPropertyName = "isDouble";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
             }
             catch (Exception ex)
@@ -982,6 +997,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
                 //客户
                 if (_Click == 1 || _Click == 4)
                 {
@@ -1028,6 +1047,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
                 //是否要新增一行的标记
                 bool newAdd = false;
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];

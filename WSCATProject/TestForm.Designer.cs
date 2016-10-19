@@ -425,7 +425,6 @@
             this.panel2.Size = new System.Drawing.Size(1202, 110);
             this.panel2.TabIndex = 4;
             this.panel2.Click += new System.EventHandler(this.panel6_Click);
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // labtextboxTop6
             // 
@@ -768,7 +767,6 @@
             this.panel5.Size = new System.Drawing.Size(1202, 64);
             this.panel5.TabIndex = 11;
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
-            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBoxEmployee
             // 

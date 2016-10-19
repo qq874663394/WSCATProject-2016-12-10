@@ -1,6 +1,6 @@
-﻿namespace WSCATProject.Sales
+﻿namespace WSCATProject.Purchase
 {
-    partial class SalesTicketReportForm
+    partial class PurchaseTicketReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,23 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesTicketReportForm));
-            this.lbldanju = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseTicketReportForm));
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMax = new System.Windows.Forms.PictureBox();
             this.pictureBoxMin = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.superGridControlShangPing = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
-            this.BillType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.BillCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.KeHuName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.BillDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.ZongMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.YiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.WeiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -54,42 +42,41 @@
             this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.superGridControlShangPing = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.BillType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.BillCode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.SupplyName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.BillDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.ZongMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.YiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.WeiHeXiaoMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.lbldanju = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbldanju
+            // panel1
             // 
-            this.lbldanju.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbldanju.AutoSize = true;
-            this.lbldanju.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbldanju.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbldanju.ForeColor = System.Drawing.Color.Red;
-            this.lbldanju.Location = new System.Drawing.Point(1047, 93);
-            this.lbldanju.Name = "lbldanju";
-            this.lbldanju.Size = new System.Drawing.Size(47, 12);
-            this.lbldanju.TabIndex = 61;
-            this.lbldanju.Text = "label2";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(999, 93);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 12);
-            this.label1.TabIndex = 60;
-            this.label1.Text = "共计：";
+            this.panel1.Controls.Add(this.pictureBoxClose);
+            this.panel1.Controls.Add(this.pictureBoxMax);
+            this.panel1.Controls.Add(this.pictureBoxMin);
+            this.panel1.Controls.Add(this.labelTitle);
+            this.panel1.Controls.Add(this.pictureBoxtitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1186, 61);
+            this.panel1.TabIndex = 58;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseTicketReportForm_MouseDown);
             // 
             // pictureBoxClose
             // 
@@ -98,7 +85,7 @@
             this.pictureBoxClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxClose.Image = global::WSCATProject.Properties.Resources.clo;
-            this.pictureBoxClose.Location = new System.Drawing.Point(1144, 28);
+            this.pictureBoxClose.Location = new System.Drawing.Point(1128, 28);
             this.pictureBoxClose.Name = "pictureBoxClose";
             this.pictureBoxClose.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -114,7 +101,7 @@
             this.pictureBoxMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxMax.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxMax.Image = global::WSCATProject.Properties.Resources.zuidahua1;
-            this.pictureBoxMax.Location = new System.Drawing.Point(1115, 28);
+            this.pictureBoxMax.Location = new System.Drawing.Point(1099, 28);
             this.pictureBoxMax.Name = "pictureBoxMax";
             this.pictureBoxMax.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -130,7 +117,7 @@
             this.pictureBoxMin.BackColor = System.Drawing.Color.White;
             this.pictureBoxMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxMin.Image = global::WSCATProject.Properties.Resources.small;
-            this.pictureBoxMin.Location = new System.Drawing.Point(1088, 28);
+            this.pictureBoxMin.Location = new System.Drawing.Point(1072, 28);
             this.pictureBoxMin.Name = "pictureBoxMin";
             this.pictureBoxMin.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -138,113 +125,6 @@
             this.pictureBoxMin.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBoxMin, "最小化");
             this.pictureBoxMin.Click += new System.EventHandler(this.pictureBoxMin_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.superGridControlShangPing);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 131);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1202, 435);
-            this.panel2.TabIndex = 59;
-            // 
-            // superGridControlShangPing
-            // 
-            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControlShangPing.Location = new System.Drawing.Point(0, 0);
-            this.superGridControlShangPing.Name = "superGridControlShangPing";
-            // 
-            // 
-            // 
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillType);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillCode);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.KeHuName);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillDate);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
-            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 435);
-            this.superGridControlShangPing.TabIndex = 1;
-            this.superGridControlShangPing.Text = "superGridControl1";
-            this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
-            // 
-            // BillType
-            // 
-            this.BillType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.BillType.DataPropertyName = "type";
-            this.BillType.HeaderText = "单据类型";
-            this.BillType.Name = "BillType";
-            this.BillType.ReadOnly = true;
-            this.BillType.Width = 120;
-            // 
-            // BillCode
-            // 
-            this.BillCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.BillCode.DataPropertyName = "code";
-            this.BillCode.HeaderText = "单据编号";
-            this.BillCode.Name = "BillCode";
-            this.BillCode.ReadOnly = true;
-            this.BillCode.Width = 120;
-            // 
-            // KeHuName
-            // 
-            this.KeHuName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.KeHuName.DataPropertyName = "clientName";
-            this.KeHuName.HeaderText = "客户名称";
-            this.KeHuName.Name = "KeHuName";
-            this.KeHuName.ReadOnly = true;
-            this.KeHuName.Width = 120;
-            // 
-            // BillDate
-            // 
-            this.BillDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.BillDate.DataPropertyName = "date";
-            this.BillDate.HeaderText = "单据日期";
-            this.BillDate.Name = "BillDate";
-            this.BillDate.ReadOnly = true;
-            this.BillDate.Width = 150;
-            // 
-            // ZongMoney
-            // 
-            this.ZongMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.ZongMoney.DataPropertyName = "oddAllMoney";
-            this.ZongMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.ZongMoney.HeaderText = "总金额";
-            this.ZongMoney.Name = "ZongMoney";
-            this.ZongMoney.ReadOnly = true;
-            this.ZongMoney.Width = 150;
-            // 
-            // YiHeXiaoMoney
-            // 
-            this.YiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.YiHeXiaoMoney.DataPropertyName = "firstMoney";
-            this.YiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.YiHeXiaoMoney.HeaderText = "已核销金额";
-            this.YiHeXiaoMoney.Name = "YiHeXiaoMoney";
-            this.YiHeXiaoMoney.ReadOnly = true;
-            this.YiHeXiaoMoney.Width = 150;
-            // 
-            // WeiHeXiaoMoney
-            // 
-            this.WeiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.WeiHeXiaoMoney.DataPropertyName = "lastMoney";
-            this.WeiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.WeiHeXiaoMoney.HeaderText = "未核销金额";
-            this.WeiHeXiaoMoney.Name = "WeiHeXiaoMoney";
-            this.WeiHeXiaoMoney.ReadOnly = true;
-            this.WeiHeXiaoMoney.Width = 150;
-            // 
-            // remark
-            // 
-            this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.remark.DataPropertyName = "remark";
-            this.remark.HeaderText = "摘要";
-            this.remark.Name = "remark";
-            this.remark.ReadOnly = true;
             // 
             // labelTitle
             // 
@@ -259,11 +139,10 @@
             this.labelTitle.ForeColor = System.Drawing.Color.White;
             this.labelTitle.Location = new System.Drawing.Point(452, 8);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(287, 30);
+            this.labelTitle.Size = new System.Drawing.Size(271, 30);
             this.labelTitle.TabIndex = 4;
-            this.labelTitle.Text = "销  售  单  序  时  薄";
+            this.labelTitle.Text = "采  购  单  序  时  薄";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -274,11 +153,10 @@
             this.pictureBoxtitle.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxtitle.Image")));
             this.pictureBoxtitle.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxtitle.Name = "pictureBoxtitle";
-            this.pictureBoxtitle.Size = new System.Drawing.Size(1205, 61);
+            this.pictureBoxtitle.Size = new System.Drawing.Size(1189, 61);
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
-            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // toolStrip1
             // 
@@ -293,10 +171,9 @@
             this.toolStripButtonClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1202, 70);
-            this.toolStrip1.TabIndex = 58;
+            this.toolStrip1.Size = new System.Drawing.Size(1186, 70);
+            this.toolStrip1.TabIndex = 59;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -358,72 +235,174 @@
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
             // 
-            // label3
+            // panel2
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(1118, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
-            this.label3.TabIndex = 62;
-            this.label3.Text = "label3";
+            this.panel2.Controls.Add(this.superGridControlShangPing);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 131);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1186, 397);
+            this.panel2.TabIndex = 60;
             // 
-            // panel1
+            // superGridControlShangPing
             // 
-            this.panel1.Controls.Add(this.pictureBoxClose);
-            this.panel1.Controls.Add(this.pictureBoxMax);
-            this.panel1.Controls.Add(this.pictureBoxMin);
-            this.panel1.Controls.Add(this.labelTitle);
-            this.panel1.Controls.Add(this.pictureBoxtitle);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1202, 61);
-            this.panel1.TabIndex = 57;
+            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
+            this.superGridControlShangPing.Location = new System.Drawing.Point(0, 0);
+            this.superGridControlShangPing.Name = "superGridControlShangPing";
             // 
-            // SalesTicketReportForm
+            // 
+            // 
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillType);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillCode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SupplyName);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillDate);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 397);
+            this.superGridControlShangPing.TabIndex = 1;
+            this.superGridControlShangPing.Text = "superGridControl1";
+            this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
+            // 
+            // BillType
+            // 
+            this.BillType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillType.DataPropertyName = "type";
+            this.BillType.HeaderText = "单据类型";
+            this.BillType.Name = "BillType";
+            this.BillType.ReadOnly = true;
+            this.BillType.Width = 120;
+            // 
+            // BillCode
+            // 
+            this.BillCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillCode.DataPropertyName = "code";
+            this.BillCode.HeaderText = "单据编号";
+            this.BillCode.Name = "BillCode";
+            this.BillCode.ReadOnly = true;
+            this.BillCode.Width = 120;
+            // 
+            // SupplyName
+            // 
+            this.SupplyName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.SupplyName.DataPropertyName = "clientName";
+            this.SupplyName.HeaderText = "供应商名称";
+            this.SupplyName.Name = "SupplyName";
+            this.SupplyName.ReadOnly = true;
+            this.SupplyName.Width = 120;
+            // 
+            // BillDate
+            // 
+            this.BillDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillDate.DataPropertyName = "date";
+            this.BillDate.HeaderText = "单据日期";
+            this.BillDate.Name = "BillDate";
+            this.BillDate.ReadOnly = true;
+            this.BillDate.Width = 150;
+            // 
+            // ZongMoney
+            // 
+            this.ZongMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.ZongMoney.DataPropertyName = "oddAllMoney";
+            this.ZongMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.ZongMoney.HeaderText = "总金额";
+            this.ZongMoney.Name = "ZongMoney";
+            this.ZongMoney.ReadOnly = true;
+            this.ZongMoney.Width = 150;
+            // 
+            // YiHeXiaoMoney
+            // 
+            this.YiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.YiHeXiaoMoney.DataPropertyName = "firstMoney";
+            this.YiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.YiHeXiaoMoney.HeaderText = "已核销金额";
+            this.YiHeXiaoMoney.Name = "YiHeXiaoMoney";
+            this.YiHeXiaoMoney.ReadOnly = true;
+            this.YiHeXiaoMoney.Width = 150;
+            // 
+            // WeiHeXiaoMoney
+            // 
+            this.WeiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.WeiHeXiaoMoney.DataPropertyName = "lastMoney";
+            this.WeiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.WeiHeXiaoMoney.HeaderText = "未核销金额";
+            this.WeiHeXiaoMoney.Name = "WeiHeXiaoMoney";
+            this.WeiHeXiaoMoney.ReadOnly = true;
+            this.WeiHeXiaoMoney.Width = 150;
+            // 
+            // remark
+            // 
+            this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.remark.DataPropertyName = "remark";
+            this.remark.HeaderText = "摘要";
+            this.remark.Name = "remark";
+            this.remark.ReadOnly = true;
+            // 
+            // lbldanju
+            // 
+            this.lbldanju.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbldanju.AutoSize = true;
+            this.lbldanju.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbldanju.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbldanju.ForeColor = System.Drawing.Color.Red;
+            this.lbldanju.Location = new System.Drawing.Point(1097, 90);
+            this.lbldanju.Name = "lbldanju";
+            this.lbldanju.Size = new System.Drawing.Size(47, 12);
+            this.lbldanju.TabIndex = 63;
+            this.lbldanju.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(1049, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 12);
+            this.label1.TabIndex = 62;
+            this.label1.Text = "共计：";
+            // 
+            // PurchaseTicketReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 566);
+            this.ClientSize = new System.Drawing.Size(1186, 528);
             this.Controls.Add(this.lbldanju);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SalesTicketReportForm";
+            this.Name = "PurchaseTicketReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "销售单序时薄";
-            this.Load += new System.EventHandler(this.SalesTicketReportForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesTicketReportForm_KeyDown);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SalesTicketReportForm_MouseDown);
+            this.Load += new System.EventHandler(this.PurchaseTicketReportForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchaseTicketReportForm_KeyDown);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lbldanju;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolTip toolTip1;
+
+        private System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.PictureBox pictureBoxClose;
         public System.Windows.Forms.PictureBox pictureBoxMax;
         public System.Windows.Forms.PictureBox pictureBoxMin;
-        private System.Windows.Forms.Panel panel2;
-        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlShangPing;
         protected DevComponents.DotNetBar.LabelX labelTitle;
         public System.Windows.Forms.PictureBox pictureBoxtitle;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -432,15 +411,18 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtondayin;
         protected System.Windows.Forms.ToolStripButton toolStripButtondaochu;
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlShangPing;
         private DevComponents.DotNetBar.SuperGrid.GridColumn BillType;
         private DevComponents.DotNetBar.SuperGrid.GridColumn BillCode;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn KeHuName;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn SupplyName;
         private DevComponents.DotNetBar.SuperGrid.GridColumn BillDate;
         private DevComponents.DotNetBar.SuperGrid.GridColumn ZongMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn YiHeXiaoMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn WeiHeXiaoMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
+        private System.Windows.Forms.Label lbldanju;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

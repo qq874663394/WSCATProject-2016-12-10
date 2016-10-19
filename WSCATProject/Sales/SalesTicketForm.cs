@@ -253,12 +253,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "客户编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "客户姓名";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -266,6 +268,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "电话";
                     dgvc.DataPropertyName = "mobilePhone";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -273,6 +276,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "联系人";
                     dgvc.DataPropertyName = "linkMan";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -280,6 +284,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "传真";
                     dgvc.DataPropertyName = "fax";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     resizablePanel1.Location = new Point(470, 160);
@@ -310,12 +315,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "员工工号";
                     dgvc.DataPropertyName = "员工工号";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "姓名";
                     dgvc.DataPropertyName = "姓名";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
@@ -356,6 +363,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = true;
                     dgvc.HeaderText = "仓库编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -363,6 +371,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = true;
                     dgvc.HeaderText = "仓库名称";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -370,6 +379,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = false;
                     dgvc.HeaderText = "仓库地址";
                     dgvc.DataPropertyName = "address";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     //查询仓库的方法
@@ -400,12 +410,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "账户编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "openBank";
                     dgvc.HeaderText = "开户行";
                     dgvc.DataPropertyName = "openBank";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -413,6 +425,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "银行账户";
                     dgvc.DataPropertyName = "bankCard";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -420,6 +433,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "持卡人";
                     dgvc.DataPropertyName = "cardHolder";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -427,6 +441,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "备注";
                     dgvc.DataPropertyName = "remark";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -434,6 +449,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "可用额度";
                     dgvc.DataPropertyName = "availableBalance";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     resizablePanel1.Location = new Point(470, 230);
@@ -461,18 +477,21 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "code";
                 dgvc.DataPropertyName = "code";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "materialDaima";
                 dgvc.HeaderText = "商品代码";
                 dgvc.DataPropertyName = "materialDaima";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "商品名称";
                 dgvc.DataPropertyName = "name";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -480,6 +499,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "规格型号";
                 dgvc.DataPropertyName = "model";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -487,6 +507,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "条形码";
                 dgvc.DataPropertyName = "barCode";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -494,6 +515,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "单位";
                 dgvc.DataPropertyName = "unit";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -501,6 +523,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "单价";
                 dgvc.DataPropertyName = "price";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -508,6 +531,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "备注";
                 dgvc.DataPropertyName = "remark";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
             }
             catch (Exception ex)
@@ -1164,6 +1188,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
                 //客户
                 if (_Click == 1 || _Click == 5)
                 {

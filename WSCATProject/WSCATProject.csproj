@@ -117,6 +117,24 @@
     <Compile Include="Purchase\PurchaseOrderForm.Designer.cs">
       <DependentUpon>PurchaseOrderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Purchase\PurchaseOrderReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\PurchaseOrderReportForm.Designer.cs">
+      <DependentUpon>PurchaseOrderReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchasePaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\PurchasePaymentForm.Designer.cs">
+      <DependentUpon>PurchasePaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchaseTicketReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchase\PurchaseTicketReportForm.Designer.cs">
+      <DependentUpon>PurchaseTicketReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sales\SalesOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +294,15 @@
     </Compile>
     <EmbeddedResource Include="Purchase\PurchaseOrderForm.resx">
       <DependentUpon>PurchaseOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\PurchaseOrderReportForm.resx">
+      <DependentUpon>PurchaseOrderReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\PurchasePaymentForm.resx">
+      <DependentUpon>PurchasePaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchase\PurchaseTicketReportForm.resx">
+      <DependentUpon>PurchaseTicketReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales\SalesOrderForm.resx">
       <DependentUpon>SalesOrderForm.cs</DependentUpon>

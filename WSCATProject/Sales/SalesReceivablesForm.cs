@@ -202,12 +202,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "客户编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "客户姓名";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     resizablePanel1.Location = new Point(500, 160);
@@ -238,12 +240,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "账户编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "openBank";
                     dgvc.HeaderText = "开户行";
                     dgvc.DataPropertyName = "openBank";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -251,6 +255,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "银行账户";
                     dgvc.DataPropertyName = "bankCard";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -258,6 +263,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "持卡人";
                     dgvc.DataPropertyName = "cardHolder";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -265,6 +271,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "备注";
                     dgvc.DataPropertyName = "remark";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -272,6 +279,7 @@ namespace WSCATProject.Sales
                     dgvc.HeaderText = "可用额度";
                     dgvc.DataPropertyName = "availableBalance";
                     dgvc.Visible = false;
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     resizablePanel1.Location = new Point(500, 200);
@@ -302,12 +310,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "员工工号";
                     dgvc.DataPropertyName = "员工工号";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "姓名";
                     dgvc.DataPropertyName = "姓名";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
@@ -435,7 +445,7 @@ namespace WSCATProject.Sales
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码1501：窗体加载时，初始化数据失败！" + ex.Message, "收款单温馨提示！");
+                MessageBox.Show("错误代码：1501-窗体加载时，初始化数据失败！" + ex.Message, "收款单温馨提示！");
                 return;
             }
 
@@ -604,6 +614,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
                 //客户
                 if (_Click == 1 || _Click == 4)
                 {
