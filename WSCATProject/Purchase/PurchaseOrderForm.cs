@@ -984,11 +984,12 @@ namespace WSCATProject.Purchase
         {
             try
             {
+
                 if (e.RowIndex == -1)
                 {
                     return;
                 }
-                //客户
+                //供应商
                 if (_Click == 1 || _Click == 4)
                 {
                     _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code

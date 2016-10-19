@@ -750,7 +750,7 @@ namespace WSCATProject.Warehouse
 
         #endregion
 
-        protected override void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {

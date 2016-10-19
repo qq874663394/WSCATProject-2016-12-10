@@ -869,7 +869,7 @@ namespace WSCATProject.Warehouse
             }
         }
 
-        protected override void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
