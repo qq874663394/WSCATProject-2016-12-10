@@ -27,6 +27,11 @@ namespace Model.Purchase
         private int? _checkstate;
         private decimal? _depositreceived;
         private DateTime? _examinedate;
+        private DateTime? _paydate;
+        private string _offerssubject;
+        private decimal? _invoicedamount;
+        private decimal? _unbilledamount;
+        private decimal? _purchaseamount;
         /// <summary>
         /// 
         /// </summary>
@@ -138,6 +143,46 @@ namespace Model.Purchase
         {
             set { _examinedate = value; }
             get { return _examinedate; }
+        }
+        /// <summary>
+        /// 付款期限
+        /// </summary>
+        public DateTime? payDate
+        {
+            set { _paydate = value; }
+            get { return _paydate; }
+        }
+        /// <summary>
+        /// 优惠项目
+        /// </summary>
+        public string offersSubject
+        {
+            set { _offerssubject = value; }
+            get { return _offerssubject; }
+        }
+        /// <summary>
+        /// 未开票金额
+        /// </summary>
+        public decimal? invoicedAmount
+        {
+            set { _invoicedamount = value; }
+            get { return _invoicedamount; }
+        }
+        /// <summary>
+        /// 已开票金额
+        /// </summary>
+        public decimal? unbilledAmount
+        {
+            set { _unbilledamount = value; }
+            get { return _unbilledamount; }
+        }
+        /// <summary>
+        /// 采购费用合计
+        /// </summary>
+        public decimal? purchaseAmount
+        {
+            set { _purchaseamount = value; }
+            get { return _purchaseamount; }
         }
         #endregion Model
     }

@@ -5,6 +5,7 @@ using Model;
 using Model.Purchase;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,64 @@ namespace LogicLayer.Purchase
                 lb.Add(logModel);
             }
             return result;
+        }
+        public DataTable GetMainTable()
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_PurchaseOrder/T_PurchaseOrderDetail/T_BaseSupplier",
+                operationTime = DateTime.Now,
+                objective = "查询采购订单表信息",
+                operationContent = "查询T_PurchaseOrder表的所有数据"
+            };
+            try
+            {
+                dt = _dal.GetMinorTable();
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return dt;
+        }
+        public DataTable GetMinorTable()
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_PurchaseOrderDetail/T_BaseMaterial/T_WarehouseMain",
+                operationTime = DateTime.Now,
+                objective = "查询采购订单详细表信息",
+                operationContent = "查询T_PurchaseOrderDetail表的所有数据"
+            };
+            try
+            {
+                dt = _dal.GetMinorTable();
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return dt;
         }
     }
 }
