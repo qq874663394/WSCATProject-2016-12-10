@@ -133,7 +133,7 @@ namespace WSCATProject.Purchase
             gr.Cells["weiHeXiao"].Value = 0;
             gr.Cells["weiHeXiao"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["weiHeXiao"].CellStyles.Default.Background.Color1 = Color.Orange;
-            gr.Cells["BenCiHeXiao"].Value = 0;
+            gr.Cells["benciHeXiao"].Value = 0;
             gr.Cells["benciHeXiao"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["benciHeXiao"].CellStyles.Default.Background.Color1 = Color.Orange;
             gr.Cells["shengyuMoney"].Value = 0;
@@ -232,7 +232,7 @@ namespace WSCATProject.Purchase
                     dgvc.Visible = false;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
-                    resizablePanel1.Location = new Point(500, 160);
+                    resizablePanel1.Location = new Point(550, 160);
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllSupply);
                     resizablePanel1.Visible = true;
                 }
@@ -302,7 +302,7 @@ namespace WSCATProject.Purchase
                     dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
-                    resizablePanel1.Location = new Point(500, 200);
+                    resizablePanel1.Location = new Point(550, 200);
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllBank);
                     resizablePanel1.Visible = true;
                 }
@@ -376,7 +376,7 @@ namespace WSCATProject.Purchase
                 cboMethod.SelectedIndex = 0;
                 toolStripButtonXuanYuanDan.Visible = true;
                 labtextboxTop7.Text = "100.00";
-                benciHeXiao.HeaderText = "0.00";
+                labtextboxTop3.Text = "0.00";
                 labtextboxTop6.Text = "0.00";
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
@@ -618,7 +618,7 @@ namespace WSCATProject.Purchase
                 dgvc.Visible = false;
                 dataGridViewFuJia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(500, 160);
+                resizablePanel1.Location = new Point(550, 160);
                 string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
                 dataGridViewFuJia.DataSource = ch.DataTableReCoding(supplier.GetList(0, name));
                 resizablePanel1.Visible = true;
@@ -688,7 +688,7 @@ namespace WSCATProject.Purchase
                 dgvc.Visible = false;
                 dataGridViewFuJia.Columns.Add(dgvc);
 
-                resizablePanel1.Location = new Point(500, 200);
+                resizablePanel1.Location = new Point(550, 200);
                 string name = XYEEncoding.strCodeHex(this.labtextboxTop4.Text.Trim());
                 dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
                 resizablePanel1.Visible = true;
@@ -847,7 +847,103 @@ namespace WSCATProject.Purchase
                 labtextboxTop2.Focus();
             }
         }
+        
+        /// <summary>
+        /// 整单折扣
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtDiscount_Validated(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal zhekou = Convert.ToDecimal(labtextboxTop7.Text);
+                decimal hexiao = Convert.ToDecimal(labtextboxTop3.Text);
+                if (zhekou > 100 || zhekou < 0)
+                {
+                    MessageBox.Show("折扣率不能大于100或者不能小于0！");
+                    labtextboxTop7.FindForm();
+                    labtextboxTop7.Text = "100.00";
+                }
+                decimal bencishoukuan = hexiao * (Convert.ToDecimal(labtextboxTop7.Text) / 100);
+                labtextboxTop6.Text = bencishoukuan.ToString("0.00");
+                labtextboxTop7.Text = zhekou.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-验证整单折扣金额出错！请检查:" + ex.Message, "付款单温馨提示！");
+            }
+        }
+        /// <summary>
+        /// 验证整单折扣
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
+                {
+                    if (labtextboxTop7.Text.Length <= 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
+                    {
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(labtextboxTop7.Text, out oldf);
+                        b2 = float.TryParse(labtextboxTop7.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
+                    }
 
+                }
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+                {
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                            e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-整单折扣输入的值为非法字符，请重新输入:" + ex.Message, "付款单温馨提示！");
+            }
+        }
+
+        private void Save()
+        {
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            ////获得界面上的数据,准备传给base层新增数据
+            //PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
+          ///付款单
+        }
 
         /// <summary>
         /// 保存按钮
