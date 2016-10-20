@@ -491,6 +491,8 @@ namespace WSCATProject.Purchase
         {
  
         }
+
+        #region 小箭头和两个附表的点击事件
         /// <summary>
         /// 商品附表的点击事件
         /// </summary>
@@ -599,6 +601,7 @@ namespace WSCATProject.Purchase
             }
             _Click = 6;
         }
+
         /// <summary>
         /// 采购员的点击事件
         /// </summary>
@@ -612,6 +615,39 @@ namespace WSCATProject.Purchase
             }
             _Click = 5;
         }
+        /// <summary>
+        /// 第一列的第一格的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            try
+            {
+                if (e.GridCell.GridColumn.Name == "gridColumnStock")
+                {
+                    if (_Click != 3)
+                    {
+                        InitStorage();
+                    }
+                    _Click = 8;
+                    return;
+                }
+                if (e.GridCell.GridColumn.Name == "material")
+                {
+                    this.resizablePanelData.Visible = false;
+                    toolStripButtonXuanYuanDan.PerformClick();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：330-选择表格第一个数据错误！"+ex.Message);
+                return;
+            }
+    
+        }
+
+        #endregion
 
         #region 模糊查询
         /// <summary>
@@ -794,18 +830,34 @@ namespace WSCATProject.Purchase
             }
         }
 
+
         #endregion
 
-        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        /// <summary>
+        /// 表格按回车的时候
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.GridCell.GridColumn.Name == "gridColumnStock")
+            if (e.KeyCode == Keys.Enter)
             {
-                if (_Click != 3)
+                int jishu = 0;
+                //GridRow gr=superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Coun]
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count; i++)
                 {
-                    InitStorage();
+                    GridRow gr = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    if (gr["material"].Value == null || gr["material"].Value.ToString() == "")
+                    {
+                        jishu++;
+                        if (jishu >= 2)
+                        {
+                            superGridControlShangPing.PrimaryGrid.Rows.RemoveAt(i);
+                        }
+                    }
                 }
-                _Click = 8;
-                return;
+
+                labtextboxTop2.Focus();
             }
         }
     }
