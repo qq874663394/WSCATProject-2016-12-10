@@ -565,6 +565,7 @@ namespace WSCATProject.Sales
             {
 
                 MessageBox.Show("错误代码：1101-窗体加载时，初始化数据错误！请检查：" + ex.Message);
+                this.Close();
                 return;
             }
         }

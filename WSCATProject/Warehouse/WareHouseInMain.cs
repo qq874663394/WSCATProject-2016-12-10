@@ -244,6 +244,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2101-初始化数据失败" + ex.Message, "入库单温馨提示");
+                this.Close();
                 return;
             }
 

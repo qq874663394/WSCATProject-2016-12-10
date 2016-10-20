@@ -461,6 +461,7 @@ namespace WSCATProject.Purchase
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：3301-窗体加载时，初始化数据失败！请检查：" + ex.Message, "购货单温馨提示！");
+                this.Close();
                 return;
             }
         }

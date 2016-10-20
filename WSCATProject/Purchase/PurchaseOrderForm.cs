@@ -553,6 +553,7 @@ namespace WSCATProject.Purchase
             {
 
                 MessageBox.Show("错误代码：3101-窗体加载时，初始化数据错误！请检查：" + ex.Message,"采购订单温馨提示！");
+                this.Close();
                 return;
             }
         }

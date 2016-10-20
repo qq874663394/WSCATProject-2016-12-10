@@ -446,6 +446,7 @@ namespace WSCATProject.Sales
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：1501-窗体加载时，初始化数据失败！" + ex.Message, "收款单温馨提示！");
+                this.Close();
                 return;
             }
 

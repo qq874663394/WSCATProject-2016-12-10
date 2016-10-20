@@ -157,6 +157,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码2502-盘盈单加载时统计数量失败！请检查：" + ex.Message, "盘盈单温馨提示");
+                this.Close();
                 return;
             }
         }
