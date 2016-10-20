@@ -41,7 +41,7 @@
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
-            this.labelYoHuiKeMu = new System.Windows.Forms.Label();
+            this.labelJiaoJi = new System.Windows.Forms.Label();
             this.labelWuLiuDanHao = new System.Windows.Forms.Label();
             this.textBoxKuaiDiDanHao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,7 +54,6 @@
             this.comboItem10 = new DevComponents.Editors.ComboItem();
             this.comboItem11 = new DevComponents.Editors.ComboItem();
             this.comboItem12 = new DevComponents.Editors.ComboItem();
-            this.textBoxYouHuiKeMu = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnname = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnStock = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -78,6 +77,7 @@
             this.gridColumnyuandancode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumndingdanbianhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.checkBoxJiaoJi = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -107,7 +107,7 @@
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(1000, 13);
+            this.labelprie.Location = new System.Drawing.Point(998, 13);
             this.labelprie.Size = new System.Drawing.Size(29, 12);
             this.labelprie.Text = "单号";
             // 
@@ -128,7 +128,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBoxYouHuiKeMu);
+            this.panel2.Controls.Add(this.checkBoxJiaoJi);
             this.panel2.Controls.Add(this.comboBoxEWuLiuType);
             this.panel2.Controls.Add(this.textBoxX2);
             this.panel2.Controls.Add(this.labelYiKaiPiao);
@@ -136,7 +136,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBoxKuaiDiDanHao);
             this.panel2.Controls.Add(this.labelWuLiuDanHao);
-            this.panel2.Controls.Add(this.labelYoHuiKeMu);
+            this.panel2.Controls.Add(this.labelJiaoJi);
             this.panel2.Controls.Add(this.comboBoxExJieSuaType);
             this.panel2.Controls.Add(this.labelJieSuaType);
             this.panel2.Controls.Add(this.dateTimePickerFuKuan);
@@ -177,7 +177,7 @@
             this.panel2.Controls.SetChildIndex(this.dateTimePickerFuKuan, 0);
             this.panel2.Controls.SetChildIndex(this.labelJieSuaType, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxExJieSuaType, 0);
-            this.panel2.Controls.SetChildIndex(this.labelYoHuiKeMu, 0);
+            this.panel2.Controls.SetChildIndex(this.labelJiaoJi, 0);
             this.panel2.Controls.SetChildIndex(this.labelWuLiuDanHao, 0);
             this.panel2.Controls.SetChildIndex(this.textBoxKuaiDiDanHao, 0);
             this.panel2.Controls.SetChildIndex(this.label3, 0);
@@ -185,7 +185,7 @@
             this.panel2.Controls.SetChildIndex(this.labelYiKaiPiao, 0);
             this.panel2.Controls.SetChildIndex(this.textBoxX2, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxEWuLiuType, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxYouHuiKeMu, 0);
+            this.panel2.Controls.SetChildIndex(this.checkBoxJiaoJi, 0);
             // 
             // labtextboxTop6
             // 
@@ -213,7 +213,7 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.Location = new System.Drawing.Point(96, 75);
+            this.labtextboxTop3.Location = new System.Drawing.Point(96, 74);
             this.labtextboxTop3.Size = new System.Drawing.Size(121, 16);
             // 
             // labtextboxTop7
@@ -227,7 +227,7 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(850, 45);
+            this.labtextboxTop7.Location = new System.Drawing.Point(850, 42);
             this.labtextboxTop7.Size = new System.Drawing.Size(120, 16);
             // 
             // labtextboxTop9
@@ -269,7 +269,7 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop5.Location = new System.Drawing.Point(339, 75);
+            this.labtextboxTop5.Location = new System.Drawing.Point(339, 74);
             this.labtextboxTop5.Size = new System.Drawing.Size(122, 16);
             // 
             // labtextboxTop4
@@ -283,7 +283,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(339, 43);
+            this.labtextboxTop4.Location = new System.Drawing.Point(339, 42);
             this.labtextboxTop4.TextChanged += new System.EventHandler(this.labtextboxTopBank_TextChanged);
             // 
             // labtextboxTop2
@@ -350,7 +350,7 @@
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(761, 49);
+            this.labTop7.Location = new System.Drawing.Point(761, 46);
             this.labTop7.Size = new System.Drawing.Size(89, 12);
             this.labTop7.Text = "采购费用合计：";
             // 
@@ -368,7 +368,7 @@
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(270, 47);
+            this.labTop4.Location = new System.Drawing.Point(270, 46);
             this.labTop4.Size = new System.Drawing.Size(71, 12);
             this.labTop4.Text = "结算 账户：";
             // 
@@ -503,10 +503,11 @@
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
+            this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
-            this.resizablePanel1.Location = new System.Drawing.Point(78, 238);
+            this.resizablePanel1.Location = new System.Drawing.Point(78, 242);
             // 
             // pictureBoxMax
             // 
@@ -522,7 +523,7 @@
             // 
             this.pictureBoxTiaoXiangMa.Location = new System.Drawing.Point(1037, 14);
             this.pictureBoxTiaoXiangMa.Name = "pictureBoxTiaoXiangMa";
-            this.pictureBoxTiaoXiangMa.Size = new System.Drawing.Size(136, 72);
+            this.pictureBoxTiaoXiangMa.Size = new System.Drawing.Size(137, 70);
             this.pictureBoxTiaoXiangMa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTiaoXiangMa.TabIndex = 53;
             this.pictureBoxTiaoXiangMa.TabStop = false;
@@ -569,7 +570,7 @@
             // labelJieSuaType
             // 
             this.labelJieSuaType.AutoSize = true;
-            this.labelJieSuaType.Location = new System.Drawing.Point(34, 49);
+            this.labelJieSuaType.Location = new System.Drawing.Point(34, 46);
             this.labelJieSuaType.Name = "labelJieSuaType";
             this.labelJieSuaType.Size = new System.Drawing.Size(65, 12);
             this.labelJieSuaType.TabIndex = 59;
@@ -587,7 +588,7 @@
             this.comboItem5,
             this.comboItem6,
             this.comboItem7});
-            this.comboBoxExJieSuaType.Location = new System.Drawing.Point(96, 45);
+            this.comboBoxExJieSuaType.Location = new System.Drawing.Point(96, 42);
             this.comboBoxExJieSuaType.Name = "comboBoxExJieSuaType";
             this.comboBoxExJieSuaType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxExJieSuaType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -613,14 +614,14 @@
             // 
             this.comboItem7.Text = "银行汇票";
             // 
-            // labelYoHuiKeMu
+            // labelJiaoJi
             // 
-            this.labelYoHuiKeMu.AutoSize = true;
-            this.labelYoHuiKeMu.Location = new System.Drawing.Point(34, 105);
-            this.labelYoHuiKeMu.Name = "labelYoHuiKeMu";
-            this.labelYoHuiKeMu.Size = new System.Drawing.Size(65, 12);
-            this.labelYoHuiKeMu.TabIndex = 61;
-            this.labelYoHuiKeMu.Text = "优惠科目：";
+            this.labelJiaoJi.AutoSize = true;
+            this.labelJiaoJi.Location = new System.Drawing.Point(34, 105);
+            this.labelJiaoJi.Name = "labelJiaoJi";
+            this.labelJiaoJi.Size = new System.Drawing.Size(65, 12);
+            this.labelJiaoJi.TabIndex = 61;
+            this.labelJiaoJi.Text = "是否加急：";
             // 
             // labelWuLiuDanHao
             // 
@@ -643,7 +644,7 @@
             this.textBoxKuaiDiDanHao.Border.Class = "SideNavStrip";
             this.textBoxKuaiDiDanHao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxKuaiDiDanHao.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxKuaiDiDanHao.Location = new System.Drawing.Point(850, 75);
+            this.textBoxKuaiDiDanHao.Location = new System.Drawing.Point(850, 74);
             this.textBoxKuaiDiDanHao.Name = "textBoxKuaiDiDanHao";
             this.textBoxKuaiDiDanHao.PreventEnterBeep = true;
             this.textBoxKuaiDiDanHao.Size = new System.Drawing.Size(120, 16);
@@ -740,24 +741,6 @@
             // comboItem12
             // 
             this.comboItem12.Text = "EMS速递";
-            // 
-            // textBoxYouHuiKeMu
-            // 
-            // 
-            // 
-            // 
-            this.textBoxYouHuiKeMu.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxYouHuiKeMu.Border.BorderBottomColor = System.Drawing.Color.Black;
-            this.textBoxYouHuiKeMu.Border.BorderBottomWidth = 1;
-            this.textBoxYouHuiKeMu.Border.BorderGradientAngle = 0;
-            this.textBoxYouHuiKeMu.Border.Class = "SideNavStrip";
-            this.textBoxYouHuiKeMu.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxYouHuiKeMu.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxYouHuiKeMu.Location = new System.Drawing.Point(95, 101);
-            this.textBoxYouHuiKeMu.Name = "textBoxYouHuiKeMu";
-            this.textBoxYouHuiKeMu.PreventEnterBeep = true;
-            this.textBoxYouHuiKeMu.Size = new System.Drawing.Size(122, 16);
-            this.textBoxYouHuiKeMu.TabIndex = 71;
             // 
             // material
             // 
@@ -904,6 +887,19 @@
             this.gridColumncode.HeaderText = "仓库code";
             this.gridColumncode.Name = "gridColumncode";
             // 
+            // checkBoxJiaoJi
+            // 
+            // 
+            // 
+            // 
+            this.checkBoxJiaoJi.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxJiaoJi.Location = new System.Drawing.Point(100, 101);
+            this.checkBoxJiaoJi.Name = "checkBoxJiaoJi";
+            this.checkBoxJiaoJi.Size = new System.Drawing.Size(100, 23);
+            this.checkBoxJiaoJi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxJiaoJi.TabIndex = 71;
+            this.checkBoxJiaoJi.Text = "加急";
+            // 
             // PurchaseTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -947,7 +943,7 @@
         private System.Windows.Forms.Label labelJieSuaType;
         private System.Windows.Forms.DateTimePicker dateTimePickerFuKuan;
         private System.Windows.Forms.Label labelFuKuanDate;
-        private System.Windows.Forms.Label labelYoHuiKeMu;
+        private System.Windows.Forms.Label labelJiaoJi;
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxWeiKaiPiao;
         private System.Windows.Forms.Label label3;
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxKuaiDiDanHao;
@@ -955,7 +951,6 @@
         private System.Windows.Forms.Label labelYiKaiPiao;
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEWuLiuType;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxYouHuiKeMu;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnname;
@@ -991,5 +986,6 @@
         private DevComponents.Editors.ComboItem comboItem11;
         private DevComponents.Editors.ComboItem comboItem12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxJiaoJi;
     }
 }

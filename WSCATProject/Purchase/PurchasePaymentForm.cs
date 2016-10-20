@@ -416,6 +416,7 @@ namespace WSCATProject.Purchase
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：-窗体加载时，初始化数据失败！" + ex.Message, "付款单温馨提示！");
+                this.Close();
                 return;
             }
         }

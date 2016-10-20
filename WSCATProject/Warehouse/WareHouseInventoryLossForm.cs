@@ -159,6 +159,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2601-窗体加载时，初始化数据错误，没有仓库code" + ex.Message, "盘亏单温馨提示");
+                this.Close();
                 return;
             }
         }
