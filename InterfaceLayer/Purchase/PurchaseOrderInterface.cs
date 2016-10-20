@@ -2,6 +2,7 @@
 using Model.Purchase;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,22 @@ namespace InterfaceLayer.Purchase
         public object AddOrUpdateToMainOrDetail(PurchaseOrder model, List<PurchaseOrderDetail> modelDetail)
         {
             return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
+        }
+        /// <summary>
+        /// 主表
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetMainTable(string supplierCode)
+        {
+            return _dal.GetMainTable(supplierCode);
+        }
+        /// <summary>
+        /// 从表
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetMinorTable()
+        {
+            return _dal.GetMinorTable();
         }
     }
 }

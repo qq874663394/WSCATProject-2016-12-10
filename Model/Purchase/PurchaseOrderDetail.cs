@@ -21,12 +21,14 @@ namespace Model.Purchase
         private decimal? _discountrate;
         private decimal? _vatrate;
         private decimal? _discountmoney;
+        private string _purchaseamount;
         private decimal? _tax;
         private decimal? _taxtotal;
         private string _remark;
         private decimal? _deliverynumber;
         private string _maincode;
         private string _code;
+        private string _amount;
         /// <summary>
         /// 
         /// </summary>
@@ -92,6 +94,14 @@ namespace Model.Purchase
             get { return _discountmoney; }
         }
         /// <summary>
+        /// 采购费用合计
+        /// </summary>
+        public string purchaseAmount
+        {
+            set { _purchaseamount = value; }
+            get { return _purchaseamount; }
+        }
+        /// <summary>
         /// 税额
         /// </summary>
         public decimal? tax
@@ -138,6 +148,14 @@ namespace Model.Purchase
         {
             set { _code = value; }
             get { return _code; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string amount
+        {
+            set { _amount = value; }
+            get { return _amount; }
         }
         #endregion Model
     }
