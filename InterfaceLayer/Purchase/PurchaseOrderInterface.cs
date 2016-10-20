@@ -28,7 +28,7 @@ namespace InterfaceLayer.Purchase
         /// <returns></returns>
         public DataTable GetMainTable(string supplierCode)
         {
-            return _dal.GetMainTable();
+            return _dal.GetMainTable(supplierCode);
         }
         /// <summary>
         /// 从表

@@ -87,7 +87,7 @@ namespace LogicLayer.Purchase
             };
             try
             {
-                dt = _dal.GetMinorTable();
+                dt = _dal.GetMainTable(supplierCode);
                 logModel.result = 1;
             }
             catch (Exception ex)
