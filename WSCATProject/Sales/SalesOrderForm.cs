@@ -216,12 +216,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "客户编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "客户姓名";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -273,12 +275,14 @@ namespace WSCATProject.Sales
                     dgvc.Name = "code";
                     dgvc.HeaderText = "员工工号";
                     dgvc.DataPropertyName = "员工工号";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
                     dgvc.Name = "name";
                     dgvc.HeaderText = "姓名";
                     dgvc.DataPropertyName = "姓名";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllEmployee);
@@ -319,6 +323,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = true;
                     dgvc.HeaderText = "仓库编号";
                     dgvc.DataPropertyName = "code";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -326,6 +331,7 @@ namespace WSCATProject.Sales
                     dgvc.Visible = true;
                     dgvc.HeaderText = "仓库名称";
                     dgvc.DataPropertyName = "name";
+                    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
                     dgvc = new DataGridViewTextBoxColumn();
@@ -361,18 +367,21 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "code";
                 dgvc.DataPropertyName = "code";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "materialDaima";
                 dgvc.HeaderText = "商品代码";
                 dgvc.DataPropertyName = "materialDaima";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
                 dgvc.Name = "name";
                 dgvc.HeaderText = "商品名称";
                 dgvc.DataPropertyName = "name";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -380,6 +389,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "规格型号";
                 dgvc.DataPropertyName = "model";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -387,6 +397,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "条形码";
                 dgvc.DataPropertyName = "barCode";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -394,6 +405,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "单位";
                 dgvc.DataPropertyName = "unit";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -401,6 +413,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "单价";
                 dgvc.DataPropertyName = "price";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -408,6 +421,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "备注";
                 dgvc.DataPropertyName = "remark";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
 
                 dgvc = new DataGridViewTextBoxColumn();
@@ -415,6 +429,7 @@ namespace WSCATProject.Sales
                 dgvc.Visible = false;
                 dgvc.HeaderText = "是否可输入小数点";
                 dgvc.DataPropertyName = "isDouble";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
             }
             catch (Exception ex)
@@ -828,7 +843,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -841,7 +856,7 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
@@ -865,7 +880,7 @@ namespace WSCATProject.Sales
                             return;
                         }
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString()==""?0.0M:Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesorderList.Add(salesorderDetail);
@@ -937,7 +952,7 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected override void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -949,6 +964,7 @@ namespace WSCATProject.Sales
                 }
                 else if (e.GridCell.GridColumn.Name == "material")
                 {
+
                     SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
                     GridCell gc = ge[0] as GridCell;
                     string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
@@ -982,6 +998,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
                 //客户
                 if (_Click == 1 || _Click == 4)
                 {
@@ -1028,6 +1048,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
                 //是否要新增一行的标记
                 bool newAdd = false;
                 GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
@@ -1540,7 +1564,7 @@ namespace WSCATProject.Sales
                     if (gr["material"].Value == null || gr["material"].Value.ToString() == "")
                     {
                         jishu++;
-                        if (jishu>=2)
+                        if (jishu >= 2)
                         {
                             superGridControlShangPing.PrimaryGrid.Rows.RemoveAt(i);
                         }
@@ -1568,15 +1592,6 @@ namespace WSCATProject.Sales
         private void superGridControlShangPing_KeyUp(object sender, KeyEventArgs e)
         {
             superGridControlShangPing_KeyDown(sender, e);
-        }
-
-        private void superGridControlShangPing_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //在KeyPress事件里写
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-            }
         }
     }
 }

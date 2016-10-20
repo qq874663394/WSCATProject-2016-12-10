@@ -250,7 +250,7 @@
             this.toolStripBtnQianDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnQianDan.Name = "toolStripBtnQianDan";
             this.toolStripBtnQianDan.Size = new System.Drawing.Size(60, 57);
-            this.toolStripBtnQianDan.Text = "前单(&A)";
+            this.toolStripBtnQianDan.Text = "前单(&B)";
             this.toolStripBtnQianDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripBtnHouDan
@@ -259,8 +259,8 @@
             this.toolStripBtnHouDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripBtnHouDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnHouDan.Name = "toolStripBtnHouDan";
-            this.toolStripBtnHouDan.Size = new System.Drawing.Size(60, 57);
-            this.toolStripBtnHouDan.Text = "后单(&B)";
+            this.toolStripBtnHouDan.Size = new System.Drawing.Size(61, 57);
+            this.toolStripBtnHouDan.Text = "后单(&A)";
             this.toolStripBtnHouDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripBtnInsert
@@ -425,7 +425,6 @@
             this.panel2.Size = new System.Drawing.Size(1202, 110);
             this.panel2.TabIndex = 4;
             this.panel2.Click += new System.EventHandler(this.panel6_Click);
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // labtextboxTop6
             // 
@@ -768,7 +767,6 @@
             this.panel5.Size = new System.Drawing.Size(1202, 64);
             this.panel5.TabIndex = 11;
             this.panel5.Click += new System.EventHandler(this.panel6_Click);
-            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TestForm_MouseDown);
             // 
             // pictureBoxEmployee
             // 

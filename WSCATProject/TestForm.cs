@@ -180,7 +180,7 @@ namespace WSCATProject
         }
 
 
-        protected virtual void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             if (e.GridCell.GridColumn.Name == "material")
             {
