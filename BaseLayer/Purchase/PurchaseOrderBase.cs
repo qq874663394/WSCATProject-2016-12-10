@@ -266,7 +266,7 @@ new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
             }
             return result;
         }
-        public DataTable GetMainTable()
+        public DataTable GetMainTable(string supplierCode)
         {
             string sql = "";
             DataTable dt = null;
@@ -291,7 +291,7 @@ T_PurchaseOrderDetail pod,
 T_BaseSupplier bs
 where 
 po.code=pod.mainCode and 
-po.supplierCode=bs.name";
+po.supplierCode=bs.name where po.supplierCode="+supplierCode;
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)
@@ -306,7 +306,9 @@ po.supplierCode=bs.name";
             DataTable dt = null;
             try
             {
-                sql = @"select bm.materialDaima,bm.name,bm.model,bm.barCode,bm.unit,pod.deliveryNumber,bm.price,pod.discountRate,pod.VATRate,wm.allNumber from T_PurchaseOrderDetail pod,T_BaseMaterial bm,T_WarehouseMain wm
+                sql = @"select bm.materialDaima,bm.name,bm.model,
+bm.barCode,bm.unit,pod.deliveryNumber,bm.price,pod.discountRate,
+pod.VATRate,wm.allNumber from T_PurchaseOrderDetail pod,T_BaseMaterial bm,T_WarehouseMain wm
 where pod.materialCode = bm.code and wm.materialCode = pod.materialCode";
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }

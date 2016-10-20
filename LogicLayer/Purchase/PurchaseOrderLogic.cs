@@ -71,7 +71,7 @@ namespace LogicLayer.Purchase
             }
             return result;
         }
-        public DataTable GetMainTable()
+        public DataTable GetMainTable(string supplierCode)
         {
             DataTable dt = null;
             LogBase lb = new LogBase();

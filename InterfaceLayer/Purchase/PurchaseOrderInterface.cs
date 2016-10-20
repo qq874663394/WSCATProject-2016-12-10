@@ -22,10 +22,18 @@ namespace InterfaceLayer.Purchase
         {
             return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
-        public DataTable GetMainTable()
+        /// <summary>
+        /// 主表
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetMainTable(string supplierCode)
         {
             return _dal.GetMainTable();
         }
+        /// <summary>
+        /// 从表
+        /// </summary>
+        /// <returns></returns>
         public DataTable GetMinorTable()
         {
             return _dal.GetMinorTable();
