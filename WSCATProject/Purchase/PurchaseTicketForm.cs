@@ -121,6 +121,8 @@ namespace WSCATProject.Purchase
         /// 订购数量
         /// </summary>
         private decimal _dingGouShuLiang;
+        private string _purchaseMainCode;
+        private string _shangPinCode;
         /// <summary>
         /// 商品code
         /// </summary>
@@ -159,6 +161,7 @@ namespace WSCATProject.Purchase
             set { _jiaoHuoFangShi = value; }
         }
         private string _jiaoHuoFangShi;
+        private decimal _caiGoiJinE;
         #endregion
 
         #region 初始化数据
@@ -1031,14 +1034,14 @@ namespace WSCATProject.Purchase
             _Money = tempAllMoney;
             _TaxMoney = tempAllTaxMoney;
             _PriceAndTaxMoney = tempAllPriceAndTax;
-            _chengBenJinE = tempAllCaiGouJine;
+            _caiGoiJinE = tempAllCaiGouJine;
             grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
             grid["gridColumndinggoushu"].Value = _dingGouShuLiang;
             grid["gridColumnNumber"].Value = _MaterialNumber;
             grid["gridColumnMoney"].Value = _Money.ToString();
             grid["gridColumnshuie"].Value = _TaxMoney.ToString();
             grid["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
-            grid["gridColumncaihouMoney"].Value = _chengBenJinE.ToString();
+            grid["gridColumncaihouMoney"].Value = _caiGoiJinE.ToString();
         }
 
         /// <summary>
@@ -1158,32 +1161,7 @@ namespace WSCATProject.Purchase
                 decimal priceAndtax = money + rateMoney;//价税合计
                 gr.Cells["gridColumnjiashuiheji"].Value = priceAndtax;
 
-                //逐行统计数据总数
-                decimal tempAllNumber = 0;
-                decimal tempAllMoney = 0;
-                decimal tempAllTaxMoney = 0;
-                decimal tempAllPriceAndTax = 0;
-                decimal tempAllPurchaseCost = 0;
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                {
-                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumnNumber"].FormattedValue);
-                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumnMoney"].FormattedValue);
-                    tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
-                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
-                    tempAllPurchaseCost += Convert.ToDecimal(tempGR["gridColumncaihouMoney"].FormattedValue);
-                }
-                _Materialnumber = tempAllNumber;
-                _Money = tempAllMoney;
-                _TaxMoney = tempAllTaxMoney;
-                _PriceAndTaxMoney = tempAllPriceAndTax;
-                _purchaseCost = tempAllPurchaseCost;
-                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["gridColumnNumber"].Value = _Materialnumber.ToString();
-                gr["gridColumnMoney"].Value = _Money.ToString();
-                gr["gridColumnshuie"].Value = _TaxMoney.ToString();
-                gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
-                gr["gridColumncaihouMoney"].Value = _purchaseCost.ToString();
+                TongJi();
                 labtextboxTop7.Text = _purchaseCost.ToString("0.00");
                 labtextboxTop5.Text = _PriceAndTaxMoney.ToString("0.00");
                 labtextboxTop3.Text = _PriceAndTaxMoney.ToString("0.00");
