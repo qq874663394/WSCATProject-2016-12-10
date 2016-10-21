@@ -96,6 +96,7 @@
             this.gridColumndingdanbianhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.checkBoxJiaoJi = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.pictureBoxShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -113,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTiaoXiangMa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -132,6 +134,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1037, 82);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBoxShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxShengHe, 0);
             // 
             // labelTitle
             // 
@@ -489,7 +501,7 @@
             // 
             // resizablePanelData
             // 
-            this.resizablePanelData.Location = new System.Drawing.Point(517, 242);
+            this.resizablePanelData.Location = new System.Drawing.Point(517, 311);
             // 
             // labeldata
             // 
@@ -535,12 +547,13 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
-            this.resizablePanel1.Location = new System.Drawing.Point(78, 242);
+            this.resizablePanel1.Location = new System.Drawing.Point(78, 309);
             // 
             // pictureBoxMax
             // 
@@ -1021,6 +1034,16 @@
             this.checkBoxJiaoJi.TabIndex = 71;
             this.checkBoxJiaoJi.Text = "加急";
             // 
+            // pictureBoxShengHe
+            // 
+            this.pictureBoxShengHe.Image = global::WSCATProject.Properties.Resources.审核;
+            this.pictureBoxShengHe.Location = new System.Drawing.Point(679, -1);
+            this.pictureBoxShengHe.Name = "pictureBoxShengHe";
+            this.pictureBoxShengHe.Size = new System.Drawing.Size(89, 59);
+            this.pictureBoxShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxShengHe.TabIndex = 46;
+            this.pictureBoxShengHe.TabStop = false;
+            // 
             // PurchaseTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1051,6 +1074,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTiaoXiangMa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1108,5 +1132,6 @@
         private DevComponents.Editors.ComboItem comboItem12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxJiaoJi;
+        private System.Windows.Forms.PictureBox pictureBoxShengHe;
     }
 }

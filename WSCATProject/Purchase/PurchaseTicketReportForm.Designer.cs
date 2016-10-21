@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseTicketReportForm));
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMax = new System.Windows.Forms.PictureBox();
@@ -253,6 +254,7 @@
             // 
             // 
             // 
+            this.superGridControlShangPing.PrimaryGrid.AllowSelection = false;
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillType);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SupplyName);
@@ -261,6 +263,8 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 397);
             this.superGridControlShangPing.TabIndex = 1;
