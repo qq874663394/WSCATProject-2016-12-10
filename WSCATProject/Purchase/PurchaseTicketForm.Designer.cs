@@ -43,9 +43,9 @@
             DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             DevComponents.DotNetBar.SuperGrid.Style.Background background15 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background18 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             DevComponents.DotNetBar.SuperGrid.Style.Background background16 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             DevComponents.DotNetBar.SuperGrid.Style.Background background17 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background18 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.pictureBoxTiaoXiangMa = new System.Windows.Forms.PictureBox();
             this.comboBoxExType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
@@ -96,6 +96,7 @@
             this.gridColumndingdanbianhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.checkBoxJiaoJi = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.gridColumnwuliaocode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -529,10 +530,11 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnshengchandate);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbaozhiqi);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyouxiaoqi);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyuandancode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumndingdanbianhao);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnwuliaocode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
@@ -852,7 +854,7 @@
             // gridColumnNumber
             // 
             this.gridColumnNumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.gridColumnNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumnNumber.HeaderText = "数量";
             this.gridColumnNumber.Name = "gridColumnNumber";
             this.gridColumnNumber.Width = 70;
@@ -974,8 +976,8 @@
             // 
             // gridColumnbeizhu
             // 
-            background16.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnbeizhu.CellStyles.Default.Background = background16;
+            background18.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnbeizhu.CellStyles.Default.Background = background18;
             this.gridColumnbeizhu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbeizhu.HeaderText = "备注";
             this.gridColumnbeizhu.Name = "gridColumnbeizhu";
@@ -984,8 +986,8 @@
             // 
             // gridColumnyuandancode
             // 
-            background17.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnyuandancode.CellStyles.Default.Background = background17;
+            background16.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnyuandancode.CellStyles.Default.Background = background16;
             this.gridColumnyuandancode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnyuandancode.HeaderText = "源单编号";
             this.gridColumnyuandancode.Name = "gridColumnyuandancode";
@@ -994,8 +996,8 @@
             // 
             // gridColumndingdanbianhao
             // 
-            background18.Color1 = System.Drawing.Color.Azure;
-            this.gridColumndingdanbianhao.CellStyles.Default.Background = background18;
+            background17.Color1 = System.Drawing.Color.Azure;
+            this.gridColumndingdanbianhao.CellStyles.Default.Background = background17;
             this.gridColumndingdanbianhao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumndingdanbianhao.HeaderText = "订单编号";
             this.gridColumndingdanbianhao.Name = "gridColumndingdanbianhao";
@@ -1007,6 +1009,7 @@
             this.gridColumncode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumncode.HeaderText = "仓库code";
             this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
             // 
             // checkBoxJiaoJi
             // 
@@ -1020,6 +1023,11 @@
             this.checkBoxJiaoJi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxJiaoJi.TabIndex = 71;
             this.checkBoxJiaoJi.Text = "加急";
+            // 
+            // gridColumnwuliaocode
+            // 
+            this.gridColumnwuliaocode.Name = "gridColumnwuliaocode";
+            this.gridColumnwuliaocode.Visible = false;
             // 
             // PurchaseTicketForm
             // 
@@ -1108,5 +1116,6 @@
         private DevComponents.Editors.ComboItem comboItem12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxJiaoJi;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnwuliaocode;
     }
 }
