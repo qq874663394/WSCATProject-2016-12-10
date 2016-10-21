@@ -146,6 +146,22 @@ namespace WSCATProject.Sales
             gr.Cells["priceANDtax"].Value = 0;
             gr.Cells["priceANDtax"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["priceANDtax"].CellStyles.Default.Background.Color1 = Color.Orange;
+            #region  合计行不能点击
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["name"].AllowSelection = false;
+            gr.Cells["model"].AllowSelection = false;
+            gr.Cells["barcode"].AllowSelection = false;
+            gr.Cells["unit"].AllowSelection = false;
+            gr.Cells["dinggouNumber"].AllowSelection = false;
+            gr.Cells["price"].AllowSelection = false;
+            gr.Cells["money"].AllowSelection = false;
+            gr.Cells["DiscountRate"].AllowSelection = false;
+            gr.Cells["DiscountMoney"].AllowSelection = false;
+            gr.Cells["TaxRate"].AllowSelection = false;
+            gr.Cells["TaxMoney"].AllowSelection = false;
+            gr.Cells["priceANDtax"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
@@ -581,7 +597,7 @@ namespace WSCATProject.Sales
         }
 
         #region  调用的函数
-      
+
         /// <summary>
         /// 保存的函数
         /// </summary>
@@ -1452,13 +1468,10 @@ namespace WSCATProject.Sales
         {
             try
             {
-                //判断按键是不是要输入的类型。
-                if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 46)
-                    e.Handled = true;
                 //小数点的处理。
                 if ((int)e.KeyChar == 46)//小数点
                 {
-                    if (labtextboxTop7.Text.Length < 0)
+                    if (labtextboxTop7.Text.Length <= 0)
                         e.Handled = true;   //小数点不能在第一位
                     else
                     {
@@ -1476,6 +1489,28 @@ namespace WSCATProject.Sales
                         }
                     }
                 }
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+                {
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > 0)
+                            e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1483,42 +1518,25 @@ namespace WSCATProject.Sales
             }
         }
 
-        private void labtextboxTop7_TextChanged(object sender, EventArgs e)
+        private void labtextboxTop7_Validated(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(labtextboxTop7.Text)) return;
-
-                // 按千分位逗号格式显示！
-                double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
-                //labtextboxTop7.Text = string.Format("{0:#,#}", d);
-                labtextboxTop7.Text = string.Format("{0:#,#}", d);
-                // 确保输入光标在最右侧
-                labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
+                if (labtextboxTop7.MaxLength > 12)
+                {
+                    labtextboxTop7.Focus();
+                    labtextboxTop7.Text = "0.00";
+                }
+                else
+                {
+                    decimal yishou = Convert.ToDecimal(labtextboxTop7.Text);
+                    labtextboxTop7.Text = yishou.ToString("0.00");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：1117-已收金额输入的值为非法字符，请输入数字：" + ex.Message, "销售订单温馨提示！");
             }
-
-        }
-        private string skipComma(string str)
-        {
-            string[] ss = null;
-            string strnew = "";
-            if (str == "")
-            {
-                strnew = "0";
-            }
-            else
-            {
-                ss = str.Split(',');
-                for (int i = 0; i < ss.Length; i++)
-                {
-                    strnew += ss[i];
-                }
-            }
-            return strnew;
         }
         #endregion
 
@@ -1625,6 +1643,8 @@ namespace WSCATProject.Sales
         {
             superGridControlShangPing_KeyDown(sender, e);
         }
+
+
     }
 }
 

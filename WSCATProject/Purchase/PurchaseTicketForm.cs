@@ -2,6 +2,8 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using Model;
+using InterfaceLayer.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,26 +74,13 @@ namespace WSCATProject.Purchase
         /// </summary>
         private string _bankCode;
         /// <summary>
-        /// 所有商品列表
+        /// 保存仓库的字典集合
         /// </summary>
-        private DataTable _AllMaterial = null;
+        private KeyValuePair<string, string> _ClickStorageList;
         /// <summary>
         /// 统计数量
         /// </summary>
         private decimal _Materialnumber;
-        /// <summary>
-        /// 销售订单code
-        /// </summary>
-        private string _SalesOrderCode;
-        /// <summary>
-        /// 保存仓库的字典集合
-        /// </summary>
-        private KeyValuePair<string, string> _ClickStorageList;
-
-        /// <summary>
-        /// 统计发货数量
-        /// </summary>
-        private decimal _FaHuoShuLiang;
         /// <summary>
         /// 统计金额
         /// </summary>
@@ -104,13 +93,12 @@ namespace WSCATProject.Purchase
         /// 统计价税合计
         /// </summary>
         private decimal _PriceAndTaxMoney;
-        private string _shangPinCode;
         /// <summary>
-        /// 成本金额
+        /// 统计采购费用合计
         /// </summary>
-        private decimal _chengBenJinE;
+        private decimal _purchaseCost;
         /// <summary>
-        /// 本次收款
+        /// 采购单code
         /// </summary>
         private decimal _benCiShouKuan;
         /// <summary>
@@ -133,6 +121,8 @@ namespace WSCATProject.Purchase
         /// 订购数量
         /// </summary>
         private decimal _dingGouShuLiang;
+        private string _purchaseMainCode;
+        private string _shangPinCode;
         /// <summary>
         /// 商品code
         /// </summary>
@@ -141,7 +131,7 @@ namespace WSCATProject.Purchase
             get { return _shangPinCode; }
             set { _shangPinCode = value; }
         }
-        
+
         private decimal _MaterialNumber;
         /// <summary>
         /// 采购主表code
@@ -167,10 +157,11 @@ namespace WSCATProject.Purchase
         /// </summary>
         public string JiaoHuoFangShi
         {
-            get { return _jiaoHuoFangShi;}
-            set{_jiaoHuoFangShi = value;}
+            get { return _jiaoHuoFangShi; }
+            set { _jiaoHuoFangShi = value; }
         }
         private string _jiaoHuoFangShi;
+        private decimal _caiGoiJinE;
         #endregion
 
         #region 初始化数据
@@ -315,7 +306,7 @@ namespace WSCATProject.Purchase
                     dgvc.HeaderText = "仓库地址";
                     dgvc.DataPropertyName = "address";
                     dataGridViewFuJia.Columns.Add(dgvc);
-                    
+
                     //查询仓库的方法
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
                     resizablePanel1.Visible = true;
@@ -427,6 +418,39 @@ namespace WSCATProject.Purchase
             gr.Cells["gridColumnjiashuiheji"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnjiashuiheji"].CellStyles.Default.Background.Color1 = Color.Orange;
         }
+
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private bool isNUllValidate()
+        {
+            if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
+            {
+                MessageBox.Show("供应商不能为空！");
+                labtextboxTop2.Focus();
+                return false;
+            }
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+            if (gr.Cells["gridColumnStock"].Value == null || gr.Cells["gridColumnStock"].Value.ToString() == "")
+            {
+                MessageBox.Show("仓库不能为空！");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            if (gr.Cells["gridColumnname"].Value == null || gr.Cells["gridColumnname"].Value.ToString() == "")
+            {
+                MessageBox.Show("商品代码不能为空！");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("采购员不能为空！");
+                ltxtbSalsMan.Focus();
+                return false;
+            }
+            return true;
+        }
         #endregion
 
         /// <summary>
@@ -441,7 +465,7 @@ namespace WSCATProject.Purchase
                 toolStripButtonXuanYuanDan.Visible = true;
                 //供应商
                 _AllSupplier = supplier.SelSupplierTable();
-                //销售员
+                //采购员
                 _AllEmployee = employee.SelSupplierTable(false);
                 //仓库
                 _AllStorage = storage.GetList(00, "");
@@ -477,15 +501,15 @@ namespace WSCATProject.Purchase
 
                 #endregion
 
-                //生成销售单code和显示条形码
-                _SalesOrderCode = BuildCode.ModuleCode("PCT");
-                textBoxOddNumbers.Text = _SalesOrderCode;
+                //生成采购单code和显示条形码
+                _purchaseMainCode = BuildCode.ModuleCode("PCT");
+                textBoxOddNumbers.Text = _purchaseMainCode;
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxTiaoXiangMa.Image = imgTemp;
                 //审核图标
-                //pictureBoxShengHe.Parent = pictureBoxtitle;
+                pictureBoxShengHe.Parent = pictureBoxtitle;
             }
             catch (Exception ex)
             {
@@ -500,7 +524,7 @@ namespace WSCATProject.Purchase
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
-        {   
+        {
             XuanYuanDan();
         }
         /// <summary>
@@ -510,7 +534,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-     
+
         }
         /// <summary>
         /// 保存按钮事件
@@ -519,7 +543,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnSave_Click(object sender, EventArgs e)
         {
- 
+
         }
 
         #region 小箭头和两个附表的点击事件
@@ -548,7 +572,7 @@ namespace WSCATProject.Purchase
                 //供应商
                 if (_Click == 1 || _Click == 7)
                 {
-                     _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
+                    _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//供应商名称
                     string linkman = dataGridViewFuJia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
                     string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
@@ -581,7 +605,7 @@ namespace WSCATProject.Purchase
                 //结算账户
                 if (_Click == 4 || _Click == 6)
                 {
-                  
+
                     _bankCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
                     labtextboxTop4.Text = Name;
@@ -671,10 +695,10 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：330-选择表格第一个数据错误！"+ex.Message);
+                MessageBox.Show("错误代码：330-选择表格第一个数据错误！" + ex.Message);
                 return;
             }
-    
+
         }
 
         #endregion
@@ -906,7 +930,118 @@ namespace WSCATProject.Purchase
             purchaseOrder.SupplierCode = _supplierCode;
             purchaseOrder.ShowDialog(this);
 
-             
+            GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+            GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+
+            PurchaseOrderInterface purchaseOrderinter = new PurchaseOrderInterface();
+            DataTable dt = ch.DataTableReCoding(purchaseOrderinter.GetJoinSearch(XYEEncoding.strCodeHex(_purchaseMainCodel), XYEEncoding.strCodeHex(_purchaseCode)));
+
+            foreach (GridRow g in grs)
+            {
+                if (g.Cells["material"].Value == null || g.Cells["material"].Value.ToString() == "合计")
+                {
+                    continue;
+                }
+                if (g.Cells["gridColumnwuliaocode"].Value.Equals(dt.Rows[0]["materialCode"]))
+                {
+                    decimal dingdanshu = Convert.ToDecimal(g.Cells["gridColumndinggoushu"].Value);
+                    decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnNumber"].Value);
+                    decimal gridColumnmoney = Convert.ToDecimal(g.Cells["gridColumnMoney"].Value);
+                    decimal gridColumnshuie = Convert.ToDecimal(g.Cells["gridColumnshuie"].Value);
+                    decimal gridColumnjiashuiheji = Convert.ToDecimal(g.Cells["gridColumnjiashuiheji"].Value);
+                    decimal gridColumncaihouMoney = Convert.ToDecimal(g.Cells["gridColumncaihouMoney"].Value);
+                    dingdanshu += dingdanshu;
+                    shuliang += 1;
+                    gridColumnmoney += gridColumnmoney;
+                    gridColumnshuie += gridColumnshuie;
+                    gridColumnjiashuiheji += gridColumnjiashuiheji;
+                    gridColumncaihouMoney += gridColumncaihouMoney;
+
+                    g.Cells["gridColumndinggoushu"].Value = dingdanshu;
+                    g.Cells["gridColumnNumber"].Value = shuliang;
+                    g.Cells["gridColumnMoney"].Value = gridColumnmoney;
+                    g.Cells["gridColumnshuie"].Value = gridColumnshuie;
+                    g.Cells["gridColumnjiashuiheji"].Value = gridColumnjiashuiheji;
+                    g.Cells["gridColumncaihouMoney"].Value = gridColumncaihouMoney;
+                    //统计数据
+                    TongJi();
+                    labtextboxTop5.Text = _PriceAndTaxMoney.ToString();
+                    labtextboxTop3.Text = _PriceAndTaxMoney.ToString();
+                    resizablePanelData.Visible = false;
+                    return;
+                }
+                continue;
+            }
+
+            superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(_storgeName, dt.Rows[0]["materialDaima"],
+                dt.Rows[0]["name"],
+                dt.Rows[0]["model"],
+                dt.Rows[0]["barCode"],
+                dt.Rows[0]["unit"],
+                dt.Rows[0]["deliveryNumber"].ToString() == "" ? 1.0M : dt.Rows[0]["deliveryNumber"],
+                1.00,
+                dt.Rows[0]["materialPrice"].ToString() == "" ? 0.0M : dt.Rows[0]["materialPrice"],
+                dt.Rows[0]["discountRate"].ToString() == "" ? 0.0M : dt.Rows[0]["discountRate"],
+                dt.Rows[0]["VATRate"].ToString() == "" ? 0.0M : dt.Rows[0]["VATRate"],
+                dt.Rows[0]["discountMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["discountMoney"],
+                dt.Rows[0]["materialMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["materialMoney"],
+                dt.Rows[0]["tax"],
+                dt.Rows[0]["purchaseAmount"].ToString() == "" ? 0.0M : dt.Rows[0]["purchaseAmount"],
+                dt.Rows[0]["taxTotal"],
+                dt.Rows[0]["createDate"].ToString(),
+                dt.Rows[0]["qualityDate"],
+                dt.Rows[0]["effectiveDate"],
+                dt.Rows[0]["mainCode"],
+                dt.Rows[0]["code"],
+                dt.Rows[0]["remark"],
+                _storgeCode,
+                _shangPinCode
+                ));
+            if (dt.Rows[0]["isDouble"].ToString() == "0")
+            {
+                GridRow gridrow = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
+                gridrow.Cells["gridColumnNumber"].EditorType = typeof(GridDoubleInputEditControl);
+            }
+            TongJi();
+        }
+
+        /// <summary>
+        /// 统计数据
+        /// </summary>
+        private void TongJi()
+        {
+            GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            //逐行统计数据总数
+            decimal tempAllDingDanShu = 0;
+            decimal tempAllMaterialNumber = 0;
+            decimal tempAllMoney = 0;
+            decimal tempAllTaxMoney = 0;
+            decimal tempAllPriceAndTax = 0;
+            decimal tempAllCaiGouJine = 0;
+
+            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                tempAllDingDanShu += Convert.ToDecimal(tempGR["gridColumndinggoushu"].FormattedValue);
+                tempAllMaterialNumber += Convert.ToDecimal(tempGR["gridColumnNumber"].FormattedValue);
+                tempAllMoney += Convert.ToDecimal(tempGR["gridColumnMoney"].FormattedValue);
+                tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
+                tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
+                tempAllCaiGouJine += Convert.ToDecimal(tempGR["gridColumncaihouMoney"].FormattedValue);
+            }
+            _dingGouShuLiang = tempAllDingDanShu;
+            _MaterialNumber = tempAllMaterialNumber;
+            _Money = tempAllMoney;
+            _TaxMoney = tempAllTaxMoney;
+            _PriceAndTaxMoney = tempAllPriceAndTax;
+            _caiGoiJinE = tempAllCaiGouJine;
+            grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+            grid["gridColumndinggoushu"].Value = _dingGouShuLiang;
+            grid["gridColumnNumber"].Value = _MaterialNumber;
+            grid["gridColumnMoney"].Value = _Money.ToString();
+            grid["gridColumnshuie"].Value = _TaxMoney.ToString();
+            grid["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
+            grid["gridColumncaihouMoney"].Value = _caiGoiJinE.ToString();
         }
 
         /// <summary>
@@ -920,7 +1055,7 @@ namespace WSCATProject.Purchase
             {
                 decimal BenCiFuKuan = Convert.ToDecimal(labtextboxTop3.Text);
                 decimal BenCiHeXiao = Convert.ToDecimal(labtextboxTop5.Text);
-                if (BenCiFuKuan>BenCiHeXiao)
+                if (BenCiFuKuan > BenCiHeXiao)
                 {
                     MessageBox.Show("本次付款不能大于所付金额！");
                     labtextboxTop3.Focus();
@@ -991,6 +1126,135 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：-本次付款输入的值为非法字符，请重新输入:" + ex.Message, "购货单单温馨提示！");
             }
         }
+        /// <summary>
+        /// 验证表格数据及统计
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+                if (g.Cells["gridColumnname"].Value == null || g.Cells["gridColumnname"].Value.ToString() == "")
+                {
+                    MessageBox.Show("请选择商品代码：");
+                    g.Cells["gridColumnNumber"].Value = 0.00;
+                    g.Cells["gridColumndanjia"].Value = 0.00;
+                    g.Cells["gridColumnzhekoul"].Value = 100.00;
+                    return;
+                }
+                //最后一行做统计行
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                ////计算金额
+                decimal number = Convert.ToDecimal(gr.Cells["gridColumnNumber"].FormattedValue);//数量
+                decimal price = Convert.ToDecimal(gr.Cells["gridColumndanjia"].FormattedValue);//单价               
+                decimal money = number * price;//金额
+                gr.Cells["gridColumnMoney"].Value = money;
+                decimal discountRate = Convert.ToDecimal(gr.Cells["gridColumnzhekoul"].FormattedValue);//折扣率
+                decimal discountAfter = money * (discountRate / 100);
+                decimal discountMoney = money - discountAfter;//折扣额
+                gr.Cells["gridColumnzhekoue"].Value = discountMoney;
+                decimal taxRate = Convert.ToDecimal(gr.Cells["gridColumnzengzhishiu"].FormattedValue);//增值税税率
+                decimal rateMoney = money * (taxRate / 100);//税额
+                gr.Cells["gridColumnshuie"].Value = rateMoney;
+                decimal priceAndtax = money + rateMoney;//价税合计
+                gr.Cells["gridColumnjiashuiheji"].Value = priceAndtax;
+
+                TongJi();
+                labtextboxTop7.Text = _purchaseCost.ToString("0.00");
+                labtextboxTop5.Text = _PriceAndTaxMoney.ToString("0.00");
+                labtextboxTop3.Text = _PriceAndTaxMoney.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "采购单温馨提示！");
+            }
+        }
+
+        /// <summary>
+        /// 保存按钮的封装函数
+        /// </summary>
+        private void Save()
+        {
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            ////获得界面上的数据,准备传给base层新增数据
+            // PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
+            ////采购单
+            PurchaseMain purchasemain = new PurchaseMain();
+            ////采购单商品列表
+            List<PurchaseDetail> purchasedetailList = new List<PurchaseDetail>();
+            try
+            {
+                purchasemain.code = XYEEncoding.strCodeHex(_purchaseMainCode);//采购单code
+                purchasemain.data = this.dateTimePicker1.Value;//开单日期
+                purchasemain.type = XYEEncoding.strCodeHex(comboBoxExType.Text);//单据类别
+                purchasemain.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                //供应商
+                if (labtextboxTop2.Text != null || labtextboxTop2.Text != "")
+                {
+                    purchasemain.supplierName = XYEEncoding.strCodeHex(labtextboxTop2.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                //purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);//采购订单code
+                //purchaseorder.date = this.dateTimePicker1.Value;//开单日期
+                //purchaseorder.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                //switch (cboMethod.Text.Trim())//交货方式
+                //{
+                //    case "提货":
+                //        purchaseorder.deliversMethod = 0;
+                //        break;
+                //    case "送货":
+                //        purchaseorder.deliversMethod = 1;
+                //        break;
+                //    case "发货":
+                //        purchaseorder.deliversMethod = 2;
+                //        break;
+                //}
+                //if (txtAddress.Text != null || txtAddress.Text != "")
+                //{
+                //    purchaseorder.deliversLocation = XYEEncoding.strCodeHex(txtAddress.Text.Trim());//交货地点
+                //}
+                //else
+                //{
+                //    MessageBox.Show("交货地点员不能为空！");
+                //    txtAddress.FindForm();
+                //    return;
+                //}
+
+                //purchaseorder.deliversDate = this.dateTimePicker2.Value;//交货日期
+                //purchaseorder.depositReceived = Convert.ToDecimal(txtYiFuDingJin.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtYiFuDingJin.Text));//已付订金
+                //purchaseorder.remark = XYEEncoding.strCodeHex(txtRemark.Text == null ? "" : txtRemark.Text.Trim());//摘要
+                //if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text != "")
+                //{
+                //    purchaseorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                //}
+                //else
+                //{
+                //    MessageBox.Show("采购员不能为空！");
+                //    ltxtbSalsMan.FindForm();
+                //    return;
+                //}
+                //purchaseorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
+                //purchaseorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
+                //purchaseorder.checkState = 0;//审核状态
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:3102-尝试创建采购订单数据出错！请检查：" + ex.Message, "采购订单温馨提示");
+                return;
+            }
+
+        }
 
     }
 }
+

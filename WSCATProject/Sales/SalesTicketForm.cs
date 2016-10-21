@@ -1736,10 +1736,32 @@ namespace WSCATProject.Sales
             }
         }
 
+        #region 验证本次收款
         private void txtBenCiShouKuan_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
+                {
+                    if (labtextboxTop7.Text.Length <= 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
+                    {
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(labtextboxTop7.Text, out oldf);
+                        b2 = float.TryParse(labtextboxTop7.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
+                    }
+                }
                 if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
                 {
                     if (e.KeyChar == '.')
@@ -1769,48 +1791,24 @@ namespace WSCATProject.Sales
             }
         }
 
-        private string skipComma(string str)
-        {
-            string[] ss = null;
-            string strnew = "";
-            if (str == "")
-            {
-                strnew = "0";
-            }
-            else
-            {
-                ss = str.Split(',');
-                for (int i = 0; i < ss.Length; i++)
-                {
-                    strnew += ss[i];
-                }
-            }
-            return strnew;
-        }
-
-        private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
+        private void txtBenCiShouKuan_Validated(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(labtextboxTop7.Text))
-                    return;
-
-                //// 按千分位逗号格式显示！
-                double d = Convert.ToDouble(skipComma(labtextboxTop7.Text));
-                labtextboxTop7.Text = string.Format("{0:#,#}", d);
-                //// 确保输入光标在最右侧
-                labtextboxTop7.Select(labtextboxTop7.Text.Length, 0);
-
-                if (d > 999999999)
+                if (labtextboxTop7.MaxLength > 12)
                 {
-                    MessageBox.Show("输入的值超过范围！请重新输入");
-                    labtextboxTop7.Clear();
-                    return;
+                    labtextboxTop7.Focus();
+                    labtextboxTop7.Text = "0.00";
+                }
+                else
+                {
+                    decimal yishou = Convert.ToDecimal(labtextboxTop7.Text);
+                    labtextboxTop7.Text = yishou.ToString("0.00");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1318-本次收款的值为非法字符，只能输入数字，请重新输入：" + ex.Message, "销售单温馨提示！");
+                MessageBox.Show("错误代码：1117-本次收款输入的值为非法字符，请输入数字：" + ex.Message, "销售单温馨提示！");
             }
         }
 
@@ -1819,7 +1817,6 @@ namespace WSCATProject.Sales
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void txtBenCiShouKuan_Leave(object sender, EventArgs e)
         {
             //控件失去焦点后将它的值的格式精确到两位小数
@@ -1831,6 +1828,7 @@ namespace WSCATProject.Sales
             }
             name.Text = Convert.ToDecimal(name.Text).ToString("0.00");
         }
+        #endregion
 
         private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1894,5 +1892,7 @@ namespace WSCATProject.Sales
                 //}
             }
         }
+
+        
     }
 }

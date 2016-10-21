@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background16 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background15 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cboDanJuType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -589,6 +589,7 @@
             this.txtBenCiHeXiao.Border.Class = "SideNavStrip";
             this.txtBenCiHeXiao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBenCiHeXiao.DisabledBackColor = System.Drawing.Color.White;
+            this.txtBenCiHeXiao.ForeColor = System.Drawing.Color.Gray;
             this.txtBenCiHeXiao.Location = new System.Drawing.Point(91, 50);
             this.txtBenCiHeXiao.Name = "txtBenCiHeXiao";
             this.txtBenCiHeXiao.PreventEnterBeep = true;
@@ -645,6 +646,7 @@
             this.txtBenCiShouKuan.Border.Class = "SideNavStrip";
             this.txtBenCiShouKuan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBenCiShouKuan.DisabledBackColor = System.Drawing.Color.White;
+            this.txtBenCiShouKuan.ForeColor = System.Drawing.Color.Gray;
             this.txtBenCiShouKuan.Location = new System.Drawing.Point(91, 84);
             this.txtBenCiShouKuan.Name = "txtBenCiShouKuan";
             this.txtBenCiShouKuan.PreventEnterBeep = true;
@@ -706,8 +708,8 @@
             // 
             this.yuandanCode.AllowSelection = false;
             this.yuandanCode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background1.Color1 = System.Drawing.Color.Azure;
-            this.yuandanCode.CellStyles.Default.Background = background1;
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.yuandanCode.CellStyles.Default.Background = background9;
             this.yuandanCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yuandanCode.HeaderText = "源单编号";
             this.yuandanCode.Name = "yuandanCode";
@@ -718,8 +720,8 @@
             // 
             this.danjuDate.AllowSelection = false;
             this.danjuDate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background2.Color1 = System.Drawing.Color.Azure;
-            this.danjuDate.CellStyles.Default.Background = background2;
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.danjuDate.CellStyles.Default.Background = background10;
             this.danjuDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.danjuDate.HeaderText = "单据日期";
             this.danjuDate.Name = "danjuDate";
@@ -729,8 +731,8 @@
             // 
             this.yuandanType.AllowSelection = false;
             this.yuandanType.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background3.Color1 = System.Drawing.Color.Azure;
-            this.yuandanType.CellStyles.Default.Background = background3;
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.yuandanType.CellStyles.Default.Background = background11;
             this.yuandanType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yuandanType.HeaderText = "源单类型";
             this.yuandanType.Name = "yuandanType";
@@ -740,8 +742,8 @@
             // danjuMoney
             // 
             this.danjuMoney.AllowSelection = false;
-            background4.Color1 = System.Drawing.Color.Azure;
-            this.danjuMoney.CellStyles.Default.Background = background4;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.danjuMoney.CellStyles.Default.Background = background12;
             this.danjuMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.danjuMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.danjuMoney.HeaderText = "单据金额";
@@ -752,8 +754,8 @@
             // YiHeXiaoMoney
             // 
             this.YiHeXiaoMoney.AllowSelection = false;
-            background5.Color1 = System.Drawing.Color.Azure;
-            this.YiHeXiaoMoney.CellStyles.Default.Background = background5;
+            background13.Color1 = System.Drawing.Color.Azure;
+            this.YiHeXiaoMoney.CellStyles.Default.Background = background13;
             this.YiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.YiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.YiHeXiaoMoney.HeaderText = "已核销金额";
@@ -764,8 +766,8 @@
             // WeiHeXiaoMoney
             // 
             this.WeiHeXiaoMoney.AllowSelection = false;
-            background6.Color1 = System.Drawing.Color.Azure;
-            this.WeiHeXiaoMoney.CellStyles.Default.Background = background6;
+            background14.Color1 = System.Drawing.Color.Azure;
+            this.WeiHeXiaoMoney.CellStyles.Default.Background = background14;
             this.WeiHeXiaoMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.WeiHeXiaoMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.WeiHeXiaoMoney.HeaderText = "未核销金额";
@@ -785,8 +787,8 @@
             // 
             this.remark.AllowSelection = false;
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background8.Color1 = System.Drawing.Color.Azure;
-            this.remark.CellStyles.Default.Background = background8;
+            background16.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background16;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
@@ -795,8 +797,9 @@
             // WeuFuMoney
             // 
             this.WeuFuMoney.AllowSelection = false;
-            background7.Color1 = System.Drawing.Color.Azure;
-            this.WeuFuMoney.CellStyles.Default.Background = background7;
+            background15.Color1 = System.Drawing.Color.Azure;
+            this.WeuFuMoney.CellStyles.Default.Background = background15;
+            this.WeuFuMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.WeuFuMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.WeuFuMoney.HeaderText = "未付金额";
             this.WeuFuMoney.Name = "WeuFuMoney";

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesOrderReportForm));
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMax = new System.Windows.Forms.PictureBox();
@@ -277,6 +278,7 @@
             // 
             // 
             // 
+            this.superGridControlShangPing.PrimaryGrid.AllowSelection = false;
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DanJuCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DanJuDate);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ClientName);
@@ -302,6 +304,8 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.fahuoNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongKuCun);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 473);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
