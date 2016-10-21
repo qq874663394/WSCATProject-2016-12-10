@@ -514,9 +514,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
-            this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
