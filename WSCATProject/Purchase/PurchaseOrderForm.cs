@@ -1520,40 +1520,12 @@ namespace WSCATProject.Purchase
                     txtYiFuDingJin.Text = "0.00";
                     return;
                 }
-                //if (string.IsNullOrEmpty(txtYiFuDingJin.Text)) return;
-
-                //double d = Convert.ToDouble(txtYiFuDingJin.Text);
-                //txtYiFuDingJin.Text = string.Format("{0:N2}", d);
-                //按千分位逗号格式显示！
-                //double d = Convert.ToDouble(skipComma(txtYiFuDingJin.Text));
-                //txtYiFuDingJin.Text = d.ToString();
-                ////确保输入光标在最右侧
-                //txtYiFuDingJin.Select(txtYiFuDingJin.Text.Length, 0);
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：3117-已付定金输入的值为非法字符，请输入数字：" + ex.Message, "采购订单温馨提示！");
             }
-        }
-
-        private string skipComma(string str)
-        {
-            string[] ss = null;
-            string strnew = "";
-            if (str == "")
-            {
-                strnew = "0";
-            }
-            else
-            {
-                ss = str.Split(',');
-                for (int i = 0; i < ss.Length; i++)
-                {
-                    strnew += ss[i];
-                }
-            }
-            return strnew;
         }
         #endregion
 

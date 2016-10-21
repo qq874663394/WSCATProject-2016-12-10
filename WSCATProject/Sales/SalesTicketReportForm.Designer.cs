@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesTicketReportForm));
             this.lbldanju = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -157,6 +158,7 @@
             // 
             // 
             // 
+            this.superGridControlShangPing.PrimaryGrid.AllowSelection = false;
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillType);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BillCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.KeHuName);
@@ -165,6 +167,8 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 435);
             this.superGridControlShangPing.TabIndex = 1;

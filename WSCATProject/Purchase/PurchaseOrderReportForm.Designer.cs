@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseOrderReportForm));
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMax = new System.Windows.Forms.PictureBox();
@@ -272,6 +273,7 @@
             // 
             // 
             // 
+            this.superGridControlShangPing.PrimaryGrid.AllowSelection = false;
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DanJuCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.DanJuDate);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.SupplyName);
@@ -295,6 +297,8 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongKuCun);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1170, 435);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
@@ -302,18 +306,21 @@
             // 
             // DanJuCode
             // 
+            this.DanJuCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.DanJuCode.DataPropertyName = "code";
             this.DanJuCode.HeaderText = "单据编号";
             this.DanJuCode.Name = "DanJuCode";
             // 
             // DanJuDate
             // 
+            this.DanJuDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.DanJuDate.DataPropertyName = "date";
             this.DanJuDate.HeaderText = "单据日期";
             this.DanJuDate.Name = "DanJuDate";
             // 
             // SupplyName
             // 
+            this.SupplyName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.SupplyName.DataPropertyName = "name";
             this.SupplyName.HeaderText = "供应商名称";
             this.SupplyName.Name = "SupplyName";
@@ -321,6 +328,7 @@
             // 
             // MobilPhone
             // 
+            this.MobilPhone.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.MobilPhone.DataPropertyName = "phone";
             this.MobilPhone.HeaderText = "电话";
             this.MobilPhone.Name = "MobilPhone";
@@ -328,6 +336,7 @@
             // 
             // fax
             // 
+            this.fax.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.fax.DataPropertyName = "fax";
             this.fax.DefaultNewRowCellValue = "";
             this.fax.HeaderText = "传真";
@@ -336,6 +345,7 @@
             // 
             // JiaoHuoMethod
             // 
+            this.JiaoHuoMethod.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.JiaoHuoMethod.DataPropertyName = "deliversMethod";
             this.JiaoHuoMethod.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.JiaoHuoMethod.HeaderText = "交货方式";
@@ -344,6 +354,7 @@
             // 
             // JiaoHuoDate
             // 
+            this.JiaoHuoDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.JiaoHuoDate.DataPropertyName = "deliversDate";
             this.JiaoHuoDate.HeaderText = "交货日期";
             this.JiaoHuoDate.Name = "JiaoHuoDate";
@@ -351,6 +362,7 @@
             // 
             // shengheMan
             // 
+            this.shengheMan.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.shengheMan.DataPropertyName = "examine";
             this.shengheMan.HeaderText = "审核人";
             this.shengheMan.Name = "shengheMan";
@@ -358,6 +370,7 @@
             // 
             // ZhaiYao
             // 
+            this.ZhaiYao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.ZhaiYao.DataPropertyName = "remark";
             this.ZhaiYao.HeaderText = "摘要";
             this.ZhaiYao.Name = "ZhaiYao";
@@ -365,6 +378,7 @@
             // 
             // shengheState
             // 
+            this.shengheState.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.shengheState.DataPropertyName = "checkState";
             this.shengheState.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengheState.HeaderText = "审核状态";
@@ -373,24 +387,28 @@
             // 
             // purchaseDetilecode
             // 
+            this.purchaseDetilecode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.purchaseDetilecode.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.purchaseDetilecode.HeaderText = "销售订单详细号";
             this.purchaseDetilecode.Name = "purchaseDetilecode";
             // 
             // materialDaiMa
             // 
+            this.materialDaiMa.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialDaiMa.DataPropertyName = "materialDaima";
             this.materialDaiMa.HeaderText = "商品代码";
             this.materialDaiMa.Name = "materialDaiMa";
             // 
             // materialName
             // 
+            this.materialName.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialName.DataPropertyName = "name";
             this.materialName.HeaderText = "商品名称";
             this.materialName.Name = "materialName";
             // 
             // materialModel
             // 
+            this.materialModel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialModel.DataPropertyName = "model";
             this.materialModel.HeaderStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.materialModel.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
@@ -400,6 +418,7 @@
             // 
             // materialBarCode
             // 
+            this.materialBarCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialBarCode.DataPropertyName = "barCode";
             this.materialBarCode.HeaderText = "条形码";
             this.materialBarCode.Name = "materialBarCode";
@@ -407,6 +426,7 @@
             // 
             // materialUnit
             // 
+            this.materialUnit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialUnit.DataPropertyName = "unit";
             this.materialUnit.HeaderText = "单位";
             this.materialUnit.Name = "materialUnit";
@@ -414,6 +434,7 @@
             // 
             // materialNumber
             // 
+            this.materialNumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialNumber.DataPropertyName = "number";
             this.materialNumber.HeaderText = "数量";
             this.materialNumber.Name = "materialNumber";
@@ -421,6 +442,7 @@
             // 
             // materialPrice
             // 
+            this.materialPrice.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialPrice.DataPropertyName = "materialPrice";
             this.materialPrice.HeaderText = "单价";
             this.materialPrice.Name = "materialPrice";
@@ -428,12 +450,14 @@
             // 
             // materialMoney
             // 
+            this.materialMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialMoney.DataPropertyName = "";
             this.materialMoney.HeaderText = "金额";
             this.materialMoney.Name = "materialMoney";
             // 
             // discountRate
             // 
+            this.discountRate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.discountRate.DataPropertyName = "discountRate";
             this.discountRate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.discountRate.HeaderText = "折扣率%";
@@ -442,6 +466,7 @@
             // 
             // discountMoney
             // 
+            this.discountMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.discountMoney.DataPropertyName = "discountMoney";
             this.discountMoney.HeaderText = "折扣额";
             this.discountMoney.Name = "discountMoney";
@@ -449,6 +474,7 @@
             // 
             // ZongKuCun
             // 
+            this.ZongKuCun.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.ZongKuCun.DataPropertyName = "allNumber";
             this.ZongKuCun.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.False;
             this.ZongKuCun.HeaderText = "总库存";
@@ -457,6 +483,7 @@
             // 
             // gridColumnmaterialcode
             // 
+            this.gridColumnmaterialcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmaterialcode.HeaderText = "物流code";
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
             this.gridColumnmaterialcode.Visible = false;

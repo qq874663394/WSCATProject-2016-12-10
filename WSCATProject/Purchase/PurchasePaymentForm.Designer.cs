@@ -140,6 +140,7 @@
             // 
             // labtextboxTop6
             // 
+            this.labtextboxTop6.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -149,10 +150,14 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop6.ForeColor = System.Drawing.Color.Gray;
+            this.labtextboxTop6.ReadOnly = true;
             this.labtextboxTop6.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop6.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
             // 
             // labtextboxTop3
             // 
+            this.labtextboxTop3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -162,8 +167,11 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop3.ForeColor = System.Drawing.Color.Gray;
             this.labtextboxTop3.Location = new System.Drawing.Point(91, 47);
+            this.labtextboxTop3.ReadOnly = true;
             this.labtextboxTop3.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop3.TextChanged += new System.EventHandler(this.txtBenCiHeXiao_TextChanged);
             // 
             // labtextboxTop7
             // 
@@ -307,7 +315,7 @@
             // 
             // labTop6
             // 
-            this.labTop6.Text = "本次收款：";
+            this.labTop6.Text = "本次付款：";
             // 
             // labTop5
             // 

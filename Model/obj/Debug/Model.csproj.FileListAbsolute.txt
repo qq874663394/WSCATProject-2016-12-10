@@ -37,7 +37,6 @@ E:\619项目\2016年10月8日090841\Model\bin\Debug\Model.pdb
 E:\619项目\2016年10月8日090841\Model\obj\Debug\Model.dll
 E:\619项目\2016年10月8日090841\Model\obj\Debug\Model.pdb
 E:\619项目\2016年10月8日090841\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-E:\619项目\619项目20160924\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 E:\619项目\2016年10月18日155346\Model\bin\Debug\Model.dll
 E:\619项目\2016年10月18日155346\Model\bin\Debug\Model.pdb
 E:\619项目\2016年10月18日155346\Model\obj\Debug\Model.dll

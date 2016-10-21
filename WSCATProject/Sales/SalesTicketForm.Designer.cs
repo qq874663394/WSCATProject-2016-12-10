@@ -29,6 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background16 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background15 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBank = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -242,11 +258,12 @@
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.ForeColor = System.Drawing.SystemColors.Desktop;
             this.labtextboxTop7.Location = new System.Drawing.Point(597, 85);
+            this.labtextboxTop7.MaxLength = 11;
             this.labtextboxTop7.Size = new System.Drawing.Size(135, 16);
             this.labtextboxTop7.Text = "0.00";
-            this.labtextboxTop7.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
             this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBenCiShouKuan_KeyPress);
             this.labtextboxTop7.Leave += new System.EventHandler(this.txtBenCiShouKuan_Leave);
+            this.labtextboxTop7.Validated += new System.EventHandler(this.txtBenCiShouKuan_Validated);
             // 
             // labtextboxTop9
             // 
@@ -732,40 +749,66 @@
             // 
             // gridColumnStock
             // 
+            this.gridColumnStock.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
             this.gridColumnStock.Width = 80;
             // 
             // material
             // 
+            this.material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             this.material.ReadOnly = true;
             // 
             // gridColumnmaterialname
             // 
+            this.gridColumnmaterialname.AllowSelection = false;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmaterialname.CellStyles.Default.Background = background1;
+            this.gridColumnmaterialname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmaterialname.HeaderText = "商品名称";
             this.gridColumnmaterialname.Name = "gridColumnmaterialname";
+            this.gridColumnmaterialname.ReadOnly = true;
             // 
             // gridColumnmodel
             // 
+            this.gridColumnmodel.AllowSelection = false;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmodel.CellStyles.Default.Background = background2;
+            this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
+            this.gridColumnmodel.ReadOnly = true;
             this.gridColumnmodel.Width = 80;
             // 
             // gridColumntiaoxingma
             // 
+            this.gridColumntiaoxingma.AllowSelection = false;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.gridColumntiaoxingma.CellStyles.Default.Background = background3;
+            this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
+            this.gridColumntiaoxingma.ReadOnly = true;
             // 
             // gridColumndanwei
             // 
+            this.gridColumndanwei.AllowSelection = false;
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.gridColumndanwei.CellStyles.Default.Background = background4;
+            this.gridColumndanwei.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumndanwei.HeaderText = "单位";
             this.gridColumndanwei.Name = "gridColumndanwei";
+            this.gridColumndanwei.ReadOnly = true;
             this.gridColumndanwei.Width = 60;
             // 
             // gridColumndinggoushu
             // 
+            this.gridColumndinggoushu.AllowSelection = false;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.gridColumndinggoushu.CellStyles.Default.Background = background5;
+            this.gridColumndinggoushu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumndinggoushu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumndinggoushu.HeaderText = "订购数量";
             this.gridColumndinggoushu.Name = "gridColumndinggoushu";
@@ -774,6 +817,7 @@
             // 
             // gridColumnfahuoshu
             // 
+            this.gridColumnfahuoshu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnfahuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnfahuoshu.HeaderText = "发货数量";
             this.gridColumnfahuoshu.Name = "gridColumnfahuoshu";
@@ -781,6 +825,7 @@
             // 
             // gridColumnprice
             // 
+            this.gridColumnprice.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnprice.HeaderText = "单价";
             this.gridColumnprice.Name = "gridColumnprice";
@@ -788,6 +833,7 @@
             // 
             // gridColumnzhekoul
             // 
+            this.gridColumnzhekoul.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnzhekoul.HeaderText = "折扣率";
             this.gridColumnzhekoul.Name = "gridColumnzhekoul";
             this.gridColumnzhekoul.Width = 60;
@@ -795,6 +841,7 @@
             // gridColumnzengzhishui
             // 
             this.gridColumnzengzhishui.CellStyles.Default.TextColor = System.Drawing.Color.Red;
+            this.gridColumnzengzhishui.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnzengzhishui.FilterRowStyles.Default.TextColor = System.Drawing.Color.White;
             this.gridColumnzengzhishui.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnzengzhishui.HeaderText = "增值税税率%";
@@ -803,74 +850,129 @@
             // 
             // gridColumnzhekoue
             // 
+            this.gridColumnzhekoue.AllowSelection = false;
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnzhekoue.CellStyles.Default.Background = background6;
+            this.gridColumnzhekoue.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnzhekoue.HeaderText = "折扣额";
             this.gridColumnzhekoue.Name = "gridColumnzhekoue";
+            this.gridColumnzhekoue.ReadOnly = true;
             this.gridColumnzhekoue.Width = 60;
             // 
             // gridColumnmoney
             // 
+            this.gridColumnmoney.AllowSelection = false;
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmoney.CellStyles.Default.Background = background7;
+            this.gridColumnmoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnmoney.HeaderText = "金额";
             this.gridColumnmoney.Name = "gridColumnmoney";
+            this.gridColumnmoney.ReadOnly = true;
             this.gridColumnmoney.Width = 60;
             // 
             // gridColumnshuie
             // 
+            this.gridColumnshuie.AllowSelection = false;
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnshuie.CellStyles.Default.Background = background8;
+            this.gridColumnshuie.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnshuie.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnshuie.HeaderText = "税额";
             this.gridColumnshuie.Name = "gridColumnshuie";
+            this.gridColumnshuie.ReadOnly = true;
             this.gridColumnshuie.Width = 60;
             // 
             // gridColumnjiashuiheji
             // 
+            this.gridColumnjiashuiheji.AllowSelection = false;
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnjiashuiheji.CellStyles.Default.Background = background9;
+            this.gridColumnjiashuiheji.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnjiashuiheji.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnjiashuiheji.HeaderText = "价税合计";
             this.gridColumnjiashuiheji.Name = "gridColumnjiashuiheji";
+            this.gridColumnjiashuiheji.ReadOnly = true;
             this.gridColumnjiashuiheji.Width = 80;
             // 
             // gridColumnremark
             // 
+            this.gridColumnremark.AllowSelection = false;
+            background16.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnremark.CellStyles.Default.Background = background16;
+            this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
+            this.gridColumnremark.ReadOnly = true;
             this.gridColumnremark.Width = 80;
             // 
             // gridColumnchengbeidanjia
             // 
+            this.gridColumnchengbeidanjia.AllowSelection = false;
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnchengbeidanjia.CellStyles.Default.Background = background10;
+            this.gridColumnchengbeidanjia.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnchengbeidanjia.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnchengbeidanjia.HeaderText = "成本单价";
             this.gridColumnchengbeidanjia.Name = "gridColumnchengbeidanjia";
+            this.gridColumnchengbeidanjia.ReadOnly = true;
             this.gridColumnchengbeidanjia.Width = 60;
             // 
             // gridColumnchengbenjine
             // 
+            this.gridColumnchengbenjine.AllowSelection = false;
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnchengbenjine.CellStyles.Default.Background = background11;
+            this.gridColumnchengbenjine.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnchengbenjine.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnchengbenjine.HeaderText = "成本金额";
             this.gridColumnchengbenjine.Name = "gridColumnchengbenjine";
+            this.gridColumnchengbenjine.ReadOnly = true;
             this.gridColumnchengbenjine.Width = 60;
             // 
             // gridColumnshengchanrqi
             // 
+            this.gridColumnshengchanrqi.AllowSelection = false;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnshengchanrqi.CellStyles.Default.Background = background12;
+            this.gridColumnshengchanrqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnshengchanrqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnshengchanrqi.HeaderText = "生产/采购日期";
             this.gridColumnshengchanrqi.Name = "gridColumnshengchanrqi";
+            this.gridColumnshengchanrqi.ReadOnly = true;
             this.gridColumnshengchanrqi.Width = 80;
             // 
             // gridColumnbaozhiqi
             // 
+            this.gridColumnbaozhiqi.AllowSelection = false;
+            background13.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnbaozhiqi.CellStyles.Default.Background = background13;
+            this.gridColumnbaozhiqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbaozhiqi.HeaderText = "保质期(天)";
             this.gridColumnbaozhiqi.Name = "gridColumnbaozhiqi";
+            this.gridColumnbaozhiqi.ReadOnly = true;
             this.gridColumnbaozhiqi.Width = 60;
             // 
             // gridColumnyouxiaoqi
             // 
+            this.gridColumnyouxiaoqi.AllowSelection = false;
+            background14.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnyouxiaoqi.CellStyles.Default.Background = background14;
+            this.gridColumnyouxiaoqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnyouxiaoqi.HeaderText = "有效期至";
             this.gridColumnyouxiaoqi.Name = "gridColumnyouxiaoqi";
+            this.gridColumnyouxiaoqi.ReadOnly = true;
             this.gridColumnyouxiaoqi.Width = 80;
             // 
             // gridColumnyuandandanhao
             // 
+            this.gridColumnyuandandanhao.AllowSelection = false;
+            background15.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnyuandandanhao.CellStyles.Default.Background = background15;
+            this.gridColumnyuandandanhao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnyuandandanhao.HeaderText = "源单编号";
             this.gridColumnyuandandanhao.Name = "gridColumnyuandandanhao";
+            this.gridColumnyuandandanhao.ReadOnly = true;
             this.gridColumnyuandandanhao.Width = 120;
             // 
             // comboBoxType
@@ -956,8 +1058,10 @@
             // 
             // gridColumncode
             // 
+            this.gridColumncode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumncode.HeaderText = "商品代码";
             this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.ReadOnly = true;
             this.gridColumncode.Visible = false;
             // 
             // cboJiesuanMethod

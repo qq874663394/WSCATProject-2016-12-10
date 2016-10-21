@@ -140,6 +140,15 @@ namespace WSCATProject.Purchase
             gr.Cells["shengyuMoney"].Value = 0;
             gr.Cells["shengyuMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["shengyuMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["BillCode"].AllowSelection = false;
+            gr.Cells["BillDate"].AllowSelection = false;
+            gr.Cells["BillType"].AllowSelection = false;
+            gr.Cells["BillMoney"].AllowSelection = false;
+            gr.Cells["yiHeXiao"].AllowSelection = false;
+            gr.Cells["weiHeXiao"].AllowSelection = false;
+            gr.Cells["benciHeXiao"].AllowSelection = false;
+            gr.Cells["shengyuMoney"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
         }
 
         /// <summary>
@@ -870,7 +879,7 @@ namespace WSCATProject.Purchase
                 if (zhekou > 100 || zhekou < 0)
                 {
                     MessageBox.Show("折扣率不能大于100或者不能小于0！");
-                    labtextboxTop7.FindForm();
+                    labtextboxTop7.Focus();
                     labtextboxTop7.Text = "100.00";
                 }
                 decimal bencishoukuan = hexiao * (Convert.ToDecimal(labtextboxTop7.Text) / 100);
@@ -941,6 +950,61 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：-整单折扣输入的值为非法字符，请重新输入:" + ex.Message, "付款单温馨提示！");
             }
         }
+        private string skipComma(string str)
+        {
+            string[] ss = null;
+            string strnew = "";
+            if (str == "")
+            {
+                strnew = "0";
+            }
+            else
+            {
+                ss = str.Split(',');
+                for (int i = 0; i < ss.Length; i++)
+                {
+                    strnew += ss[i];
+                }
+            }
+            return strnew;
+        }
+
+        /// <summary>
+        /// 本次核销金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBenCiHeXiao_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(labtextboxTop3.Text))
+                return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(labtextboxTop3.Text));
+            labtextboxTop3.Text = string.Format("{0:#,#}", d);
+            // 确保输入光标在最右侧
+            labtextboxTop3.Select(labtextboxTop3.Text.Length, 0);
+        }
+
+        /// <summary>
+        /// 本次收款金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(labtextboxTop6.Text))
+                return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(skipComma(labtextboxTop6.Text));
+            labtextboxTop6.Text = string.Format("{0:#,#}", d);
+
+            // 确保输入光标在最右侧
+            labtextboxTop6.Select(labtextboxTop6.Text.Length, 0);
+        }
+
 
         private void Save()
         {

@@ -143,6 +143,17 @@ namespace WSCATProject.Sales
             gr.Cells["WeuFuMoney"].Value = 0;
             gr.Cells["WeuFuMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["WeuFuMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            #region 表格最后一行不能点击
+            gr.Cells["yuandanCode"].AllowSelection = false;
+            gr.Cells["danjuDate"].AllowSelection = false;
+            gr.Cells["yuandanType"].AllowSelection = false;
+            gr.Cells["danjuMoney"].AllowSelection = false;
+            gr.Cells["YiHeXiaoMoney"].AllowSelection = false;
+            gr.Cells["WeiHeXiaoMoney"].AllowSelection = false;
+            gr.Cells["BenCiHeXiao"].AllowSelection = false;
+            gr.Cells["WeuFuMoney"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
