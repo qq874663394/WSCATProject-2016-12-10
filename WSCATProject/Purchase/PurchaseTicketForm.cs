@@ -911,5 +911,89 @@ namespace WSCATProject.Purchase
             DataTable dt = purchaseOrderinter.GetJoinSearch(XYEEncoding.strCodeHex(_purchaseMainCodel),XYEEncoding.strCodeHex(_purchaseCode));
              
         }
+
+        /// <summary>
+        /// 本次收款
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtBenCiShouKuan_Validated(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal BenCiFuKuan = Convert.ToDecimal(labtextboxTop3.Text);
+                decimal BenCiHeXiao = Convert.ToDecimal(labtextboxTop5.Text);
+                if (BenCiFuKuan>BenCiHeXiao)
+                {
+                    MessageBox.Show("本次付款不能大于所付金额！");
+                    labtextboxTop3.Focus();
+                    labtextboxTop3.Text = BenCiHeXiao.ToString("0.00");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-验证本次收款金额出错！请检查:" + ex.Message, "购货单温馨提示！");
+            }
+        }
+        /// <summary>
+        /// 验证本次收款
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtBenCiShouKuan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
+                {
+                    if (labtextboxTop3.Text.Length <= 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
+                    {
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(labtextboxTop3.Text, out oldf);
+                        b2 = float.TryParse(labtextboxTop3.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
+                    }
+
+                }
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+                {
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                            e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-本次付款输入的值为非法字符，请重新输入:" + ex.Message, "购货单单温馨提示！");
+            }
+        }
+
     }
 }
