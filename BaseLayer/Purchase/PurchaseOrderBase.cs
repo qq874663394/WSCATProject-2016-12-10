@@ -27,11 +27,10 @@ namespace BaseLayer.Purchase
             StringBuilder sqlDetail = new StringBuilder();
             try
             {
-
                 sqlMain.Append("insert into [T_PurchaseOrder] (");
-                sqlMain.Append("supplierCode,deliversDate,deliversMethod,remark,code,date,deliversLocation,operation,makeMan,examine,checkState,depositReceived,examineDate,payDate,offersSubject,invoicedAmount,unbilledAmount,purchaseAmount)");
+                sqlMain.Append("supplierCode,deliversDate,deliversMethod,remark,code,date,deliversLocation,operation,makeMan,examine,checkState,depositReceived)");
                 sqlMain.Append(" values (");
-                sqlMain.Append("@supplierCode,@deliversDate,@deliversMethod,@remark,@code,@date,@deliversLocation,@operation,@makeMan,@examine,@checkState,@depositReceived,@examineDate,@payDate,@offersSubject,@invoicedAmount,@unbilledAmount,@purchaseAmount)");
+                sqlMain.Append("@supplierCode,@deliversDate,@deliversMethod,@remark,@code,@date,@deliversLocation,@operation,@makeMan,@examine,@checkState,@depositReceived)");
                 sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
@@ -46,13 +45,7 @@ namespace BaseLayer.Purchase
                     new SqlParameter("@makeMan", SqlDbType.NVarChar,40),
                     new SqlParameter("@examine", SqlDbType.NVarChar,40),
                     new SqlParameter("@checkState", SqlDbType.Int,4),
-                    new SqlParameter("@depositReceived", SqlDbType.Decimal,9),
-                    new SqlParameter("@examineDate", SqlDbType.DateTime),
-                    new SqlParameter("@payDate", SqlDbType.DateTime),
-                    new SqlParameter("@offersSubject", SqlDbType.NVarChar,40),
-                    new SqlParameter("@invoicedAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@unbilledAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@purchaseAmount", SqlDbType.Decimal,9)
+                    new SqlParameter("@depositReceived", SqlDbType.Decimal,9)
                 };
                 spsMain[0].Value = model.supplierCode;
                 spsMain[1].Value = model.deliversDate;
@@ -66,20 +59,14 @@ namespace BaseLayer.Purchase
                 spsMain[9].Value = model.examine;
                 spsMain[10].Value = model.checkState;
                 spsMain[11].Value = model.depositReceived;
-                spsMain[12].Value = model.examineDate;
-                spsMain[13].Value = model.payDate;
-                spsMain[14].Value = model.offersSubject;
-                spsMain[15].Value = model.invoicedAmount;
-                spsMain[16].Value = model.unbilledAmount;
-                spsMain[17].Value = model.purchaseAmount;
 
                 hashTable.Add(sqlMain, spsMain);
+
                 sqlDetail.Append("insert into [T_PurchaseOrderDetail] (");
                 sqlDetail.Append("materialCode,materialNumber,materialPrice,materialMoney,discountRate,VATRate,discountMoney,purchaseAmount,tax,taxTotal,remark,deliveryNumber,mainCode,code,amount)");
                 sqlDetail.Append(" values (");
                 sqlDetail.Append("@materialCode,@materialNumber,@materialPrice,@materialMoney,@discountRate,@VATRate,@discountMoney,@purchaseAmount,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code,@amount)");
                 sqlDetail.Append(";select @@IDENTITY");
-
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
@@ -115,6 +102,7 @@ namespace BaseLayer.Purchase
                     spsDetail[12].Value = item.mainCode;
                     spsDetail[13].Value = item.code;
                     spsDetail[14].Value = item.amount;
+
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -151,18 +139,12 @@ namespace BaseLayer.Purchase
                 sqlMain.Append("makeMan=@makeMan,");
                 sqlMain.Append("examine=@examine,");
                 sqlMain.Append("checkState=@checkState,");
-                sqlMain.Append("depositReceived=@depositReceived,");
-                sqlMain.Append("examineDate=@examineDate,");
-                sqlMain.Append("payDate=@payDate,");
-                sqlMain.Append("offersSubject=@offersSubject,");
-                sqlMain.Append("invoicedAmount=@invoicedAmount,");
-                sqlMain.Append("unbilledAmount=@unbilledAmount,");
-                sqlMain.Append("purchaseAmount=@purchaseAmount");
-                sqlMain.Append(" where code=@code ");
+                sqlMain.Append("depositReceived=@depositReceived");
+                sqlMain.Append("where code=@code");
                 sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
-new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
+                    new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@deliversDate", SqlDbType.Date,3),
                     new SqlParameter("@deliversMethod", SqlDbType.Int,4),
                     new SqlParameter("@remark", SqlDbType.NVarChar,200),
@@ -173,14 +155,7 @@ new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@makeMan", SqlDbType.NVarChar,40),
                     new SqlParameter("@examine", SqlDbType.NVarChar,40),
                     new SqlParameter("@checkState", SqlDbType.Int,4),
-                    new SqlParameter("@depositReceived", SqlDbType.Decimal,9),
-                    new SqlParameter("@examineDate", SqlDbType.DateTime),
-                    new SqlParameter("@payDate", SqlDbType.DateTime),
-                    new SqlParameter("@offersSubject", SqlDbType.NVarChar,40),
-                    new SqlParameter("@invoicedAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@unbilledAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@purchaseAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@id", SqlDbType.Int,4)
+                    new SqlParameter("@depositReceived", SqlDbType.Decimal,9)
                 };
                 spsMain[0].Value = model.supplierCode;
                 spsMain[1].Value = model.deliversDate;
@@ -194,7 +169,6 @@ new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
                 spsMain[9].Value = model.examine;
                 spsMain[10].Value = model.checkState;
                 spsMain[11].Value = model.depositReceived;
-                spsMain[12].Value = model.examineDate;
 
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail.Append("update [T_PurchaseOrderDetail] set ");
@@ -211,13 +185,14 @@ new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
                 sqlDetail.Append("remark=@remark,");
                 sqlDetail.Append("deliveryNumber=@deliveryNumber,");
                 sqlDetail.Append("amount=@amount");
-                sqlDetail.Append(" where mainCode=@mainCode and code=@code");
+                sqlDetail.Append(" where code=@code and mainCode=@mainCode ");
+                sqlDetail.Append(";select @@IDENTITY");
 
                 StringBuilder sqlInsert = new StringBuilder();
                 sqlInsert.Append("insert into [T_PurchaseOrderDetail] (");
-                sqlInsert.Append("materialCode,materialNumber,materialPrice,materialMoney,discountRate,VATRate,discountMoney,tax,taxTotal,remark,deliveryNumber,mainCode,code)");
+                sqlInsert.Append("materialCode,materialNumber,materialPrice,materialMoney,discountRate,VATRate,discountMoney,purchaseAmount,tax,taxTotal,remark,deliveryNumber,mainCode,code,amount)");
                 sqlInsert.Append(" values (");
-                sqlInsert.Append("@materialCode,@materialNumber,@materialPrice,@materialMoney,@discountRate,@VATRate,@discountMoney,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code)");
+                sqlInsert.Append("@materialCode,@materialNumber,@materialPrice,@materialMoney,@discountRate,@VATRate,@discountMoney,@purchaseAmount,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code,@amount)");
                 sqlInsert.Append(";select @@IDENTITY");
 
                 foreach (var item in modelDetail)
@@ -255,7 +230,6 @@ new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
                     spsDetail[12].Value = item.mainCode;
                     spsDetail[13].Value = item.code;
                     spsDetail[14].Value = item.amount;
-                    spsDetail[15].Value = item.id;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), sqlInsert.ToString(), list);
@@ -323,6 +297,22 @@ new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
                         wm.allNumber 
                         from T_PurchaseOrderDetail pod,T_BaseMaterial bm,T_WarehouseMain wm
                         where pod.materialCode = bm.code and wm.materialCode = pod.materialCode";
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
+        public DataTable GetJoinSearch(string code, string detailCode)
+        {
+            string sql = "";
+            DataTable dt = null;
+            try
+            {
+                sql = string.Format(@"select bm.materialDaima,bm.name,bm.model,bm.barCode,bm.unit,pod.deliveryNumber,pod.materialPrice,pod.discountRate,pod.VATRate,pod.discountMoney,pod.materialMoney,pod.tax,pod.purchaseAmount,pod.taxTotal,bm.createDate,bm.qualityDate,bm.effectiveDate,pod.remark,pod.mainCode,pod.code from T_BaseMaterial bm,T_PurchaseOrderDetail pod
+where bm.code=pod.materialCode and pod.mainCode='{0}' and pod.code='{1}'", code, detailCode);
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)

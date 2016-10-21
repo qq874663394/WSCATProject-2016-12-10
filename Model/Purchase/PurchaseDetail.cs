@@ -34,6 +34,9 @@ namespace Model
         private DateTime? _productiondate;
         private DateTime? _qualitydate;
         private DateTime? _effectivedate;
+        private decimal? _vatrate;
+        private decimal? _purchaseamount;
+        private string _mainCode;
         /// <summary>
         /// 栏号自增
         /// </summary>
@@ -218,8 +221,36 @@ namespace Model
             set { _effectivedate = value; }
             get { return _effectivedate; }
         }
-        #endregion Model
+        /// <summary>
+        /// 采购费用合计
+        /// </summary>
+        public decimal? purchaseAmount
+        {
+            set { _purchaseamount = value; }
+            get { return _purchaseamount; }
+        }
+        /// <summary>
+        /// 增值税税率
+        /// </summary>
+        public decimal? VATRate
+        {
+            set { _vatrate = value; }
+            get { return _vatrate; }
+        }
 
+        public string mainCode
+        {
+            get
+            {
+                return _mainCode;
+            }
+
+            set
+            {
+                _mainCode = value;
+            }
+        }
+        #endregion Model
     }
 }
 

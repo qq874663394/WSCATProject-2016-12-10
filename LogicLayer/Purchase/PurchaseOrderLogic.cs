@@ -129,5 +129,34 @@ namespace LogicLayer.Purchase
             }
             return dt;
         }
+        public DataTable GetJoinSearch(string code, string detailCode)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_PurchaseOrderDetail/T_BaseMaterial",
+                operationTime = DateTime.Now,
+                objective = "查询采购订单详细表信息",
+                operationContent = string.Format("查询T_PurchaseOrderDetail表的数据，条件:code={0},mainCode={1}",detailCode,code)
+            };
+            try
+            {
+                dt = _dal.GetJoinSearch(code, detailCode);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return dt;
+        }
     }
 }

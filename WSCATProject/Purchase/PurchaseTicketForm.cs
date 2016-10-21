@@ -2,7 +2,6 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
-using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,26 +76,22 @@ namespace WSCATProject.Purchase
         /// </summary>
         private DataTable _AllMaterial = null;
         /// <summary>
-        /// 保存商品code
-        /// </summary>
-        private string _materialCode;
-
-        /// <summary>
-        /// 销售单code
-        /// </summary>
-        private string _PurchaseMainCode;
-        /// <summary>
-        /// 保存仓库的字典集合
-        /// </summary>
-        private KeyValuePair<string, string> _ClickStorageList;
-        /// <summary>
         /// 统计数量
         /// </summary>
         private decimal _Materialnumber;
         /// <summary>
-        /// 订购数量
+        /// 销售订单code
         /// </summary>
-        private decimal _dingGouShuLiang;
+        private string _SalesOrderCode;
+        /// <summary>
+        /// 保存仓库的字典集合
+        /// </summary>
+        private KeyValuePair<string, string> _ClickStorageList;
+
+        /// <summary>
+        /// 统计发货数量
+        /// </summary>
+        private decimal _FaHuoShuLiang;
         /// <summary>
         /// 统计金额
         /// </summary>
@@ -109,50 +104,46 @@ namespace WSCATProject.Purchase
         /// 统计价税合计
         /// </summary>
         private decimal _PriceAndTaxMoney;
+        private string _shangPinCode;
         /// <summary>
-        /// 统计采购费用
+        /// 成本金额
         /// </summary>
-        private decimal _CaiGouMoney;
+        private decimal _chengBenJinE;
+        /// <summary>
+        /// 本次收款
+        /// </summary>
+        private decimal _benCiShouKuan;
+        /// <summary>
+        /// 总金额
+        /// </summary>
+        private decimal _zongJinE;
+        /// <summary>
+        /// 未付款金额
+        /// </summary>
+        private decimal _weiFuKuan;
+        /// <summary>
+        /// 缺少数量
+        /// </summary>
+        private decimal _lostNumber;
+        /// <summary>
+        /// 发货数量
+        /// </summary>
+        private decimal _faHuoShuLiang;
+        /// <summary>
+        /// 订购数量
+        /// </summary>
+        private decimal _dingGouShuLiang;
         /// <summary>
         /// 商品code
         /// </summary>
-        private string _shangPinCode;
         public string ShangPinCode
         {
             get { return _shangPinCode; }
             set { _shangPinCode = value; }
         }
-
         private decimal _MaterialNumber;
-        /// <summary>
-        /// 采购主表code
-        /// </summary>
-        private string _purchaseMainCodel;
-        public string PurchaseMainCodel
-        {
-            get { return _purchaseMainCodel; }
-            set { _purchaseMainCodel = value; }
-        }
-
-        /// <summary>
-        /// 采购明细的code
-        /// </summary>
-        private string _purchaseCode;
-        public string PurchaseCode
-        {
-            get { return _purchaseCode; }
-            set { _purchaseCode = value; }
-        }
-        /// <summary>
-        /// 交货方式
-        /// </summary>
-        public string JiaoHuoFangShi
-        {
-            get { return _jiaoHuoFangShi; }
-            set { _jiaoHuoFangShi = value; }
-        }
-        private string _jiaoHuoFangShi;
         #endregion
+
         #region 初始化数据
         /// <summary>
         /// 初始化供应商
@@ -295,7 +286,7 @@ namespace WSCATProject.Purchase
                     dgvc.HeaderText = "仓库地址";
                     dgvc.DataPropertyName = "address";
                     dataGridViewFuJia.Columns.Add(dgvc);
-
+                    
                     //查询仓库的方法
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
                     resizablePanel1.Visible = true;
@@ -406,69 +397,6 @@ namespace WSCATProject.Purchase
             gr.Cells["gridColumnjiashuiheji"].Value = 0;
             gr.Cells["gridColumnjiashuiheji"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnjiashuiheji"].CellStyles.Default.Background.Color1 = Color.Orange;
-            #region 最后一行不能点击
-            gr.Cells["material"].AllowSelection = false;
-            gr.Cells["gridColumnStock"].AllowSelection = false;
-            gr.Cells["gridColumnname"].AllowSelection = false;
-            gr.Cells["gridColumnModel"].AllowSelection = false;
-            gr.Cells["gridColumntiaoxingma"].AllowSelection = false;
-            gr.Cells["gridColumnunit"].AllowSelection = false;
-            gr.Cells["gridColumndinggoushu"].AllowSelection = false;
-            gr.Cells["gridColumnNumber"].AllowSelection = false;
-            gr.Cells["gridColumndanjia"].AllowSelection = false;
-            gr.Cells["gridColumnzhekoul"].AllowSelection = false;
-            gr.Cells["gridColumnzengzhishiu"].AllowSelection = false;
-            gr.Cells["gridColumnzhekoue"].AllowSelection = false;
-            gr.Cells["gridColumnMoney"].AllowSelection = false;
-            gr.Cells["gridColumnshuie"].AllowSelection = false;
-            gr.Cells["gridColumncaihouMoney"].AllowSelection = false;
-            gr.Cells["gridColumnjiashuiheji"].AllowSelection = false;
-            gr.Cells["gridColumnshengchandate"].AllowSelection = false;
-            gr.Cells["gridColumnbaozhiqi"].AllowSelection = false;
-            gr.Cells["gridColumnyouxiaoqi"].AllowSelection = false;
-            gr.Cells["gridColumnbeizhu"].AllowSelection = false;
-            gr.Cells["gridColumnyuandancode"].AllowSelection = false;
-            gr.Cells["gridColumndingdanbianhao"].AllowSelection = false;
-            #endregion
-        }
-
-        /// <summary>
-        /// 非空验证
-        /// </summary>
-        private bool isNUllValidate()
-        {
-            if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
-            {
-                MessageBox.Show("供应商不能为空！");
-                labtextboxTop2.Focus();
-                return false;
-            }
-            //if (txtLinkMan.Text.Trim() == null || txtLinkMan.Text == "")
-            //{
-            //    MessageBox.Show("联系人不能为空！");
-            //    txtLinkMan.Focus();
-            //    return false;
-            //}
-            //if (txtPhone.Text.Trim() == null || txtPhone.Text == "")
-            //{
-            //    MessageBox.Show("电话不能为空！");
-            //    txtPhone.Focus();
-            //    return false;
-            //}
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
-            if (gr.Cells["gridColumnname"].Value == null || gr.Cells["gridColumnname"].Value.ToString() == "")
-            {
-                MessageBox.Show("商品代码不能为空！");
-                superGridControlShangPing.Focus();
-                return false;
-            }
-            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
-            {
-                MessageBox.Show("采购员不能为空！");
-                ltxtbSalsMan.Focus();
-                return false;
-            }
-            return true;
         }
         #endregion
 
@@ -521,19 +449,18 @@ namespace WSCATProject.Purchase
                 #endregion
 
                 //生成销售单code和显示条形码
-                _PurchaseMainCode = BuildCode.ModuleCode("PCT");
-                textBoxOddNumbers.Text = _PurchaseMainCode;
+                _SalesOrderCode = BuildCode.ModuleCode("PCT");
+                textBoxOddNumbers.Text = _SalesOrderCode;
                 barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxTiaoXiangMa.Image = imgTemp;
                 //审核图标
-                picShengHe.Parent = pictureBoxtitle;
+                //pictureBoxShengHe.Parent = pictureBoxtitle;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：3301-窗体加载时，初始化数据失败！请检查：" + ex.Message, "购货单温馨提示！");
-                this.Close();
                 return;
             }
         }
@@ -545,7 +472,6 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
-            XuanYuanDan();
         }
 
         /// <summary>
@@ -555,7 +481,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-
+     
         }
 
         /// <summary>
@@ -565,10 +491,8 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnSave_Click(object sender, EventArgs e)
         {
-
+ 
         }
-
-        #region 小箭头和两个附表的点击事件
         /// <summary>
         /// 商品附表的点击事件
         /// </summary>
@@ -594,7 +518,7 @@ namespace WSCATProject.Purchase
                 //供应商
                 if (_Click == 1 || _Click == 7)
                 {
-                    _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
+                     _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//供应商名称
                     string linkman = dataGridViewFuJia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
                     string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
@@ -627,7 +551,7 @@ namespace WSCATProject.Purchase
                 //结算账户
                 if (_Click == 4 || _Click == 6)
                 {
-
+                  
                     _bankCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
                     labtextboxTop4.Text = Name;
@@ -677,7 +601,6 @@ namespace WSCATProject.Purchase
             }
             _Click = 6;
         }
-
         /// <summary>
         /// 采购员的点击事件
         /// </summary>
@@ -691,39 +614,6 @@ namespace WSCATProject.Purchase
             }
             _Click = 5;
         }
-        /// <summary>
-        /// 第一列的第一格的点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
-        {
-            try
-            {
-                if (e.GridCell.GridColumn.Name == "gridColumnStock")
-                {
-                    if (_Click != 3)
-                    {
-                        InitStorage();
-                    }
-                    _Click = 8;
-                    return;
-                }
-                if (e.GridCell.GridColumn.Name == "material")
-                {
-                    this.resizablePanelData.Visible = false;
-                    toolStripButtonXuanYuanDan.PerformClick();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：330-选择表格第一个数据错误！" + ex.Message);
-                return;
-            }
-
-        }
-
-        #endregion
 
         #region 模糊查询
         /// <summary>
@@ -906,55 +796,21 @@ namespace WSCATProject.Purchase
             }
         }
 
-
         #endregion
 
-        /// <summary>
-        /// 表格按回车的时候
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void superGridControlShangPing_KeyDown(object sender, KeyEventArgs e)
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.GridCell.GridColumn.Name == "gridColumnStock")
             {
-                int jishu = 0;
-                //GridRow gr=superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Coun]
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count; i++)
+                if (_Click != 3)
                 {
-                    GridRow gr = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    if (gr["material"].Value == null || gr["material"].Value.ToString() == "")
-                    {
-                        jishu++;
-                        if (jishu >= 2)
-                        {
-                            superGridControlShangPing.PrimaryGrid.Rows.RemoveAt(i);
-                        }
-                    }
+                    InitStorage();
                 }
-
-                labtextboxTop2.Focus();
-            }
-        }
-
-        /// <summary>
-        /// 选源单的封装函数
-        /// </summary>
-        private void XuanYuanDan()
-        {
-            if (_supplierCode == "" || labtextboxTop2.Text == "")
-            {
-                MessageBox.Show("请先选择供应商！");
+                _Click = 8;
                 return;
             }
-            //显示窗体
-            PurchaseOrderReportForm purchaseOrder = new PurchaseOrderReportForm();
-            purchaseOrder.SupplierCode = _supplierCode;
-            purchaseOrder.ShowDialog(this);
-
-
         }
-        
+            }
         /// <summary>
         /// 验证和统计数据
         /// </summary>
