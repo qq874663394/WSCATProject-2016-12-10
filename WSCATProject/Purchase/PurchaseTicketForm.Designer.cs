@@ -456,7 +456,7 @@
             // 
             // resizablePanelData
             // 
-            this.resizablePanelData.Location = new System.Drawing.Point(517, 242);
+            this.resizablePanelData.Location = new System.Drawing.Point(517, 313);
             // 
             // labeldata
             // 
@@ -502,12 +502,13 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
-            this.resizablePanel1.Location = new System.Drawing.Point(78, 242);
+            this.resizablePanel1.Location = new System.Drawing.Point(78, 311);
             // 
             // pictureBoxMax
             // 
@@ -749,6 +750,7 @@
             // 
             // gridColumnname
             // 
+            this.gridColumnname.AllowSelection = false;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
             // 
@@ -760,23 +762,27 @@
             // 
             // gridColumnModel
             // 
+            this.gridColumnModel.AllowSelection = false;
             this.gridColumnModel.HeaderText = "规格型号";
             this.gridColumnModel.Name = "gridColumnModel";
             this.gridColumnModel.Width = 60;
             // 
             // gridColumntiaoxingma
             // 
+            this.gridColumntiaoxingma.AllowSelection = false;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.AllowSelection = false;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.Width = 60;
             // 
             // gridColumndinggoushu
             // 
+            this.gridColumndinggoushu.AllowSelection = false;
             this.gridColumndinggoushu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumndinggoushu.HeaderText = "订购数量";
             this.gridColumndinggoushu.Name = "gridColumndinggoushu";
@@ -791,6 +797,7 @@
             // 
             // gridColumndanjia
             // 
+            this.gridColumndanjia.AllowSelection = false;
             this.gridColumndanjia.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumndanjia.HeaderText = "单价";
             this.gridColumndanjia.Name = "gridColumndanjia";
@@ -798,6 +805,7 @@
             // 
             // gridColumnzhekoul
             // 
+            this.gridColumnzhekoul.AllowSelection = false;
             this.gridColumnzhekoul.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnzhekoul.HeaderText = "折扣率";
             this.gridColumnzhekoul.Name = "gridColumnzhekoul";
@@ -805,6 +813,7 @@
             // 
             // gridColumnzengzhishiu
             // 
+            this.gridColumnzengzhishiu.AllowSelection = false;
             this.gridColumnzengzhishiu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnzengzhishiu.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnzengzhishiu.HeaderText = "增值税税率%";
@@ -813,6 +822,7 @@
             // 
             // gridColumnzhekoue
             // 
+            this.gridColumnzhekoue.AllowSelection = false;
             this.gridColumnzhekoue.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnzhekoue.HeaderText = "折扣额";
             this.gridColumnzhekoue.Name = "gridColumnzhekoue";
@@ -820,6 +830,7 @@
             // 
             // gridColumnMoney
             // 
+            this.gridColumnMoney.AllowSelection = false;
             this.gridColumnMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnMoney.HeaderText = "金额";
             this.gridColumnMoney.Name = "gridColumnMoney";
@@ -827,6 +838,7 @@
             // 
             // gridColumnshuie
             // 
+            this.gridColumnshuie.AllowSelection = false;
             this.gridColumnshuie.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnshuie.HeaderText = "税额";
             this.gridColumnshuie.Name = "gridColumnshuie";
@@ -834,6 +846,7 @@
             // 
             // gridColumncaihouMoney
             // 
+            this.gridColumncaihouMoney.AllowSelection = false;
             this.gridColumncaihouMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumncaihouMoney.HeaderText = "采购费用";
             this.gridColumncaihouMoney.Name = "gridColumncaihouMoney";
@@ -841,6 +854,7 @@
             // 
             // gridColumnjiashuiheji
             // 
+            this.gridColumnjiashuiheji.AllowSelection = false;
             this.gridColumnjiashuiheji.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnjiashuiheji.HeaderText = "价税合计";
             this.gridColumnjiashuiheji.Name = "gridColumnjiashuiheji";
@@ -848,44 +862,52 @@
             // 
             // gridColumnshengchandate
             // 
+            this.gridColumnshengchandate.AllowSelection = false;
             this.gridColumnshengchandate.HeaderText = "生产日期";
             this.gridColumnshengchandate.Name = "gridColumnshengchandate";
             this.gridColumnshengchandate.Width = 80;
             // 
             // gridColumnbaozhiqi
             // 
+            this.gridColumnbaozhiqi.AllowSelection = false;
             this.gridColumnbaozhiqi.HeaderText = "保质期";
             this.gridColumnbaozhiqi.Name = "gridColumnbaozhiqi";
             this.gridColumnbaozhiqi.Width = 70;
             // 
             // gridColumnyouxiaoqi
             // 
+            this.gridColumnyouxiaoqi.AllowSelection = false;
             this.gridColumnyouxiaoqi.HeaderText = "有效期";
             this.gridColumnyouxiaoqi.Name = "gridColumnyouxiaoqi";
             this.gridColumnyouxiaoqi.Width = 80;
             // 
             // gridColumnbeizhu
             // 
+            this.gridColumnbeizhu.AllowSelection = false;
             this.gridColumnbeizhu.HeaderText = "备注";
             this.gridColumnbeizhu.Name = "gridColumnbeizhu";
             this.gridColumnbeizhu.Width = 80;
             // 
             // gridColumnyuandancode
             // 
+            this.gridColumnyuandancode.AllowSelection = false;
             this.gridColumnyuandancode.HeaderText = "源单编号";
             this.gridColumnyuandancode.Name = "gridColumnyuandancode";
             this.gridColumnyuandancode.Width = 80;
             // 
             // gridColumndingdanbianhao
             // 
+            this.gridColumndingdanbianhao.AllowSelection = false;
             this.gridColumndingdanbianhao.HeaderText = "订单编号";
             this.gridColumndingdanbianhao.Name = "gridColumndingdanbianhao";
             this.gridColumndingdanbianhao.Width = 80;
             // 
             // gridColumncode
             // 
+            this.gridColumncode.AllowSelection = false;
             this.gridColumncode.HeaderText = "仓库code";
             this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.Visible = false;
             // 
             // checkBoxJiaoJi
             // 
@@ -893,6 +915,9 @@
             // 
             // 
             this.checkBoxJiaoJi.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxJiaoJi.Checked = true;
+            this.checkBoxJiaoJi.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxJiaoJi.CheckValue = "Y";
             this.checkBoxJiaoJi.Location = new System.Drawing.Point(100, 101);
             this.checkBoxJiaoJi.Name = "checkBoxJiaoJi";
             this.checkBoxJiaoJi.Size = new System.Drawing.Size(100, 23);
