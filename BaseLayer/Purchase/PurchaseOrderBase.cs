@@ -311,8 +311,29 @@ namespace BaseLayer.Purchase
             DataTable dt = null;
             try
             {
-                sql = string.Format(@"select bm.materialDaima,bm.name,bm.model,bm.barCode,bm.unit,pod.deliveryNumber,pod.materialPrice,pod.discountRate,pod.VATRate,pod.discountMoney,pod.materialMoney,pod.tax,pod.purchaseAmount,pod.taxTotal,bm.createDate,bm.qualityDate,bm.effectiveDate,pod.remark,pod.mainCode,pod.code from T_BaseMaterial bm,T_PurchaseOrderDetail pod
-where bm.code=pod.materialCode and pod.mainCode='{0}' and pod.code='{1}'", code, detailCode);
+                sql = string.Format(@"select bm.materialDaima,
+                bm.code as materialCode,
+                bm.name,
+                bm.model,
+                bm.barCode,
+                bm.unit,
+                bm.isDouble,
+                pod.deliveryNumber,
+                pod.materialPrice,
+                pod.discountRate,
+                pod.VATRate,
+                pod.discountMoney,
+                pod.materialMoney,
+                pod.tax,
+                pod.purchaseAmount,
+                pod.taxTotal,
+                bm.createDate,
+                bm.qualityDate,
+                bm.effectiveDate,
+                pod.remark,
+                pod.mainCode,
+                pod.code from T_BaseMaterial bm,T_PurchaseOrderDetail pod
+                where bm.code=pod.materialCode and pod.mainCode='{0}' and pod.code='{1}'", code, detailCode);
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)
