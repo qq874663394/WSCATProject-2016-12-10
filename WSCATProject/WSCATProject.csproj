@@ -432,6 +432,8 @@
     <Content Include="Resources\banner.jpg" />
     <Content Include="Resources\banner.png" />
     <None Include="Resources\big.PNG" />
+    <Content Include="Resources\black.png" />
+    <Content Include="Resources\blue.png" />
     <Content Include="Resources\bottomBtnBackgroup.png" />
     <Content Include="Resources\btnRightBackgroup.png" />
     <Content Include="Resources\btn_enter.png" />

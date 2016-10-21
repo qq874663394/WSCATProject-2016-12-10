@@ -38,5 +38,9 @@ namespace InterfaceLayer.Purchase
         {
             return _dal.GetMinorTable();
         }
+        public DataTable GetJoinSearch(string mainCode, string detailCode)
+        {
+            return _dal.GetJoinSearch(mainCode, detailCode);
+        }
     }
 }

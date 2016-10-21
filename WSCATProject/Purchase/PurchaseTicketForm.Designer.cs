@@ -96,7 +96,6 @@
             this.gridColumndingdanbianhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.checkBoxJiaoJi = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.picShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -114,7 +113,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTiaoXiangMa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -134,16 +132,6 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1037, 82);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.picShengHe);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
-            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
-            this.panel1.Controls.SetChildIndex(this.picShengHe, 0);
             // 
             // labelTitle
             // 
@@ -501,7 +489,7 @@
             // 
             // resizablePanelData
             // 
-            this.resizablePanelData.Location = new System.Drawing.Point(517, 313);
+            this.resizablePanelData.Location = new System.Drawing.Point(517, 242);
             // 
             // labeldata
             // 
@@ -547,13 +535,12 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
             // 
-            this.resizablePanel1.Location = new System.Drawing.Point(78, 311);
+            this.resizablePanel1.Location = new System.Drawing.Point(78, 242);
             // 
             // pictureBoxMax
             // 
@@ -808,7 +795,6 @@
             // 
             // gridColumnname
             // 
-            this.gridColumnname.AllowSelection = false;
             background1.Color1 = System.Drawing.Color.Azure;
             this.gridColumnname.CellStyles.Default.Background = background1;
             this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -825,7 +811,6 @@
             // 
             // gridColumnModel
             // 
-            this.gridColumnModel.AllowSelection = false;
             background2.Color1 = System.Drawing.Color.Azure;
             this.gridColumnModel.CellStyles.Default.Background = background2;
             this.gridColumnModel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -836,7 +821,6 @@
             // 
             // gridColumntiaoxingma
             // 
-            this.gridColumntiaoxingma.AllowSelection = false;
             background3.Color1 = System.Drawing.Color.Azure;
             this.gridColumntiaoxingma.CellStyles.Default.Background = background3;
             this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -846,7 +830,6 @@
             // 
             // gridColumnunit
             // 
-            this.gridColumnunit.AllowSelection = false;
             background4.Color1 = System.Drawing.Color.Azure;
             this.gridColumnunit.CellStyles.Default.Background = background4;
             this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -857,7 +840,6 @@
             // 
             // gridColumndinggoushu
             // 
-            this.gridColumndinggoushu.AllowSelection = false;
             background5.Color1 = System.Drawing.Color.Azure;
             this.gridColumndinggoushu.CellStyles.Default.Background = background5;
             this.gridColumndinggoushu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -877,7 +859,6 @@
             // 
             // gridColumndanjia
             // 
-            this.gridColumndanjia.AllowSelection = false;
             background6.Color1 = System.Drawing.Color.Azure;
             this.gridColumndanjia.CellStyles.Default.Background = background6;
             this.gridColumndanjia.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -908,7 +889,6 @@
             // 
             // gridColumnzhekoue
             // 
-            this.gridColumnzhekoue.AllowSelection = false;
             background8.Color1 = System.Drawing.Color.Azure;
             this.gridColumnzhekoue.CellStyles.Default.Background = background8;
             this.gridColumnzhekoue.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -920,7 +900,6 @@
             // 
             // gridColumnMoney
             // 
-            this.gridColumnMoney.AllowSelection = false;
             background9.Color1 = System.Drawing.Color.Azure;
             this.gridColumnMoney.CellStyles.Default.Background = background9;
             this.gridColumnMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -932,7 +911,6 @@
             // 
             // gridColumnshuie
             // 
-            this.gridColumnshuie.AllowSelection = false;
             background10.Color1 = System.Drawing.Color.Azure;
             this.gridColumnshuie.CellStyles.Default.Background = background10;
             this.gridColumnshuie.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -944,7 +922,6 @@
             // 
             // gridColumncaihouMoney
             // 
-            this.gridColumncaihouMoney.AllowSelection = false;
             background11.Color1 = System.Drawing.Color.Azure;
             this.gridColumncaihouMoney.CellStyles.Default.Background = background11;
             this.gridColumncaihouMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -956,7 +933,6 @@
             // 
             // gridColumnjiashuiheji
             // 
-            this.gridColumnjiashuiheji.AllowSelection = false;
             background12.Color1 = System.Drawing.Color.Azure;
             this.gridColumnjiashuiheji.CellStyles.Default.Background = background12;
             this.gridColumnjiashuiheji.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -968,7 +944,6 @@
             // 
             // gridColumnshengchandate
             // 
-            this.gridColumnshengchandate.AllowSelection = false;
             background13.Color1 = System.Drawing.Color.Azure;
             this.gridColumnshengchandate.CellStyles.Default.Background = background13;
             this.gridColumnshengchandate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -979,7 +954,6 @@
             // 
             // gridColumnbaozhiqi
             // 
-            this.gridColumnbaozhiqi.AllowSelection = false;
             background14.Color1 = System.Drawing.Color.Azure;
             this.gridColumnbaozhiqi.CellStyles.Default.Background = background14;
             this.gridColumnbaozhiqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -990,7 +964,6 @@
             // 
             // gridColumnyouxiaoqi
             // 
-            this.gridColumnyouxiaoqi.AllowSelection = false;
             background15.Color1 = System.Drawing.Color.Azure;
             this.gridColumnyouxiaoqi.CellStyles.Default.Background = background15;
             this.gridColumnyouxiaoqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -1001,7 +974,6 @@
             // 
             // gridColumnbeizhu
             // 
-            this.gridColumnbeizhu.AllowSelection = false;
             background16.Color1 = System.Drawing.Color.Azure;
             this.gridColumnbeizhu.CellStyles.Default.Background = background16;
             this.gridColumnbeizhu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -1012,7 +984,6 @@
             // 
             // gridColumnyuandancode
             // 
-            this.gridColumnyuandancode.AllowSelection = false;
             background17.Color1 = System.Drawing.Color.Azure;
             this.gridColumnyuandancode.CellStyles.Default.Background = background17;
             this.gridColumnyuandancode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -1023,7 +994,6 @@
             // 
             // gridColumndingdanbianhao
             // 
-            this.gridColumndingdanbianhao.AllowSelection = false;
             background18.Color1 = System.Drawing.Color.Azure;
             this.gridColumndingdanbianhao.CellStyles.Default.Background = background18;
             this.gridColumndingdanbianhao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -1034,11 +1004,9 @@
             // 
             // gridColumncode
             // 
-            this.gridColumncode.AllowSelection = false;
             this.gridColumncode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumncode.HeaderText = "仓库code";
             this.gridColumncode.Name = "gridColumncode";
-            this.gridColumncode.Visible = false;
             // 
             // checkBoxJiaoJi
             // 
@@ -1046,27 +1014,12 @@
             // 
             // 
             this.checkBoxJiaoJi.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxJiaoJi.Checked = true;
-            this.checkBoxJiaoJi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxJiaoJi.CheckValue = "Y";
             this.checkBoxJiaoJi.Location = new System.Drawing.Point(100, 101);
             this.checkBoxJiaoJi.Name = "checkBoxJiaoJi";
             this.checkBoxJiaoJi.Size = new System.Drawing.Size(100, 23);
             this.checkBoxJiaoJi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxJiaoJi.TabIndex = 71;
             this.checkBoxJiaoJi.Text = "加急";
-            // 
-            // picShengHe
-            // 
-            this.picShengHe.BackColor = System.Drawing.Color.Transparent;
-            this.picShengHe.Image = global::WSCATProject.Properties.Resources.审核;
-            this.picShengHe.Location = new System.Drawing.Point(663, 5);
-            this.picShengHe.Name = "picShengHe";
-            this.picShengHe.Size = new System.Drawing.Size(71, 54);
-            this.picShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picShengHe.TabIndex = 47;
-            this.picShengHe.TabStop = false;
-            this.picShengHe.Visible = false;
             // 
             // PurchaseTicketForm
             // 
@@ -1098,7 +1051,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTiaoXiangMa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1156,6 +1108,5 @@
         private DevComponents.Editors.ComboItem comboItem12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxJiaoJi;
-        private System.Windows.Forms.PictureBox picShengHe;
     }
 }
