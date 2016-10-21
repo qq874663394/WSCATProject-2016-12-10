@@ -31,7 +31,7 @@ namespace LogicLayer.Purchase
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_Purchase",
+                operationTable = "T_PurchaseMain",
                 operationTime = DateTime.Now,
                 objective = "查询采购表"
             };
@@ -49,16 +49,16 @@ namespace LogicLayer.Purchase
                         strWhere += string.Format("supplierCode='{0}'", fieldValue);
                         break;
                     case 3:
-                        strWhere += string.Format("code ='{0}'",fieldValue);
+                        strWhere += string.Format("code ='{0}'", fieldValue);
                         break;
                     case 4:
-                        strWhere += string.Format("type='{0}'",fieldValue);
+                        strWhere += string.Format("type='{0}'", fieldValue);
                         break;
                     case 5:
                         strWhere += string.Format("");
                         break;
                 }
-                logModel.operationContent = "查询T_Purchase表的所有数据,条件:" + strWhere;
+                logModel.operationContent = "查询T_PurchaseMain表的数据,条件:" + strWhere;
                 dt = _dal.GetList(strWhere);
                 logModel.result = 1;
             }
