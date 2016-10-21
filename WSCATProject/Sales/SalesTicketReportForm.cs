@@ -59,6 +59,7 @@ namespace WSCATProject.Sales
                 {
                     return;
                 }
+
                 SalesMainInterface salesMainInter = new SalesMainInterface();
                 DataTable dt = ch.DataTableReCoding(salesMainInter.GetExamineAndPay(XYEEncoding.strCodeHex(_clientCode)));
                 _SalesTicketNumber = dt.Rows.Count;

@@ -717,34 +717,7 @@ namespace WSCATProject.Sales
                         g.Cells["gridColumnshuie"].Value = gridColumnshuie;
                         g.Cells["gridColumnjiashuiheji"].Value = gridColumnjiashuiheji;
                         g.Cells["gridColumnchengbenjine"].Value = gridColumnchengbenjine;
-                        //逐行统计数据总数
-                        decimal tempAllMaterialNumber = 0;
-                        decimal tempAllMoney = 0;
-                        decimal tempAllTaxMoney = 0;
-                        decimal tempAllPriceAndTax = 0;
-                        decimal tempAllChengBenJine = 0;
-                        for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                        {
-                            GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                            tempAllMaterialNumber += Convert.ToDecimal(tempGR["gridColumnfahuoshu"].FormattedValue);
-                            tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
-                            tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
-                            tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
-                            tempAllChengBenJine += Convert.ToDecimal(tempGR["gridColumnchengbenjine"].FormattedValue);
-                        }
-                        _MaterialNumber = tempAllMaterialNumber;
-                        _Money = tempAllMoney;
-                        _TaxMoney = tempAllTaxMoney;
-                        _PriceAndTaxMoney = tempAllPriceAndTax;
-                        _chengBenJinE = tempAllChengBenJine;
-                        grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                        grid["gridColumnfahuoshu"].Value = _MaterialNumber;
-                        grid["gridColumnmoney"].Value = _Money.ToString();
-                        grid["gridColumnshuie"].Value = _TaxMoney.ToString();
-                        grid["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
-                        grid["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
-                        labtextboxTop9.Text = _PriceAndTaxMoney.ToString();
-                        labtextboxTop7.Text = _PriceAndTaxMoney.ToString();
+                        TongJi();
                         resizablePanelData.Visible = false;
                         return;
                     }
@@ -788,37 +761,7 @@ namespace WSCATProject.Sales
 
             try
             {
-                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                //逐行统计数据总数
-                decimal tempAllNumber = 0;
-                decimal tempAllMoney = 0;
-                decimal tempAllTaxMoney = 0;
-                decimal tempAllPriceAndTax = 0;
-                decimal tempAllChengBenJine = 0;
-                decimal tempAllFaHuoShuliang = 0;
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                {
-                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllFaHuoShuliang += Convert.ToDecimal(tempGR["gridColumnfahuoshu"].FormattedValue);
-                    tempAllNumber += Convert.ToDecimal(tempGR["gridColumndinggoushu"].FormattedValue);
-                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
-                    tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
-                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
-                    tempAllChengBenJine += Convert.ToDecimal(tempGR["gridColumnchengbenjine"].FormattedValue);
-                }
-                _Materialnumber = tempAllNumber;
-                _Money = tempAllMoney;
-                _TaxMoney = tempAllTaxMoney;
-                _PriceAndTaxMoney = tempAllPriceAndTax;
-                _chengBenJinE = tempAllChengBenJine;
-                _faHuoShuLiang = tempAllFaHuoShuliang;
-                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["gridColumndinggoushu"].Value = _Materialnumber.ToString();
-                gr["gridColumnfahuoshu"].Value = _faHuoShuLiang;
-                gr["gridColumnmoney"].Value = _Money.ToString();
-                gr["gridColumnshuie"].Value = _TaxMoney.ToString();
-                gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
-                gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+                TongJi();
                 labtextboxTop9.Text = _PriceAndTaxMoney.ToString();
                 labtextboxTop7.Text = _PriceAndTaxMoney.ToString();
             }
@@ -1893,6 +1836,39 @@ namespace WSCATProject.Sales
             }
         }
 
-        
+        private void TongJi()
+        {
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            //逐行统计数据总数
+            decimal tempAllNumber = 0;
+            decimal tempAllMoney = 0;
+            decimal tempAllTaxMoney = 0;
+            decimal tempAllPriceAndTax = 0;
+            decimal tempAllChengBenJine = 0;
+            decimal tempAllFaHuoShuliang = 0;
+            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                tempAllFaHuoShuliang += Convert.ToDecimal(tempGR["gridColumnfahuoshu"].FormattedValue);
+                tempAllNumber += Convert.ToDecimal(tempGR["gridColumndinggoushu"].FormattedValue);
+                tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoney"].FormattedValue);
+                tempAllTaxMoney += Convert.ToDecimal(tempGR["gridColumnshuie"].FormattedValue);
+                tempAllPriceAndTax += Convert.ToDecimal(tempGR["gridColumnjiashuiheji"].FormattedValue);
+                tempAllChengBenJine += Convert.ToDecimal(tempGR["gridColumnchengbenjine"].FormattedValue);
+            }
+            _Materialnumber = tempAllNumber;
+            _Money = tempAllMoney;
+            _TaxMoney = tempAllTaxMoney;
+            _PriceAndTaxMoney = tempAllPriceAndTax;
+            _chengBenJinE = tempAllChengBenJine;
+            _faHuoShuLiang = tempAllFaHuoShuliang;
+            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+            gr["gridColumndinggoushu"].Value = _Materialnumber.ToString();
+            gr["gridColumnfahuoshu"].Value = _faHuoShuLiang;
+            gr["gridColumnmoney"].Value = _Money.ToString();
+            gr["gridColumnshuie"].Value = _TaxMoney.ToString();
+            gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
+            gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+        }
     }
 }

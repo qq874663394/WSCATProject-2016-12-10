@@ -20,6 +20,7 @@ using InterfaceLayer.Warehouse;
 using HelperUtility.Encrypt;
 using WSCATProject.Warehouse;
 using WSCATProject.Sales;
+using WSCATProject.Purchase;
 
 namespace WSCATProject
 {
@@ -130,6 +131,7 @@ namespace WSCATProject
                 {
                     panel12.Location = new Point(200, 100);
                     panelsales.Location = new Point(200, 100);
+                    panelCaiGou.Location = new Point(200, 100);
                     return;
                 }
             }
@@ -465,11 +467,6 @@ namespace WSCATProject
                 }));
         }
 
-        private void picbox_inInsert_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void getIPAddress()
         {
             var hostName = Dns.GetHostName();
@@ -540,8 +537,8 @@ namespace WSCATProject
         #region 显示与调用窗体
         private void picbox_inSelect_Click_1(object sender, EventArgs e)
         {
-            //InStorageForm f = new InStorageForm();
-            //f.Show();
+            PurchaseOrderForm purchaseOrder = new Purchase.PurchaseOrderForm();
+            purchaseOrder.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -552,8 +549,8 @@ namespace WSCATProject
 
         private void picbox_inInsert_Click_1(object sender, EventArgs e)
         {
-            //PayOrderForm f = new PayOrderForm();
-            //f.Show();
+            PurchasePaymentForm purchase = new PurchasePaymentForm();
+            purchase.Show();
         }
 
         private void pbMarketReceipts_Click(object sender, EventArgs e)
@@ -835,15 +832,14 @@ namespace WSCATProject
 
         private void picbox_inSelect_Click(object sender, EventArgs e)
         {
-            //BuyInForm bif = new BuyInForm();
-            //bif.AuditStatus = 1;
-            //bif.ShowDialog();
+            PurchaseOrderForm purchase = new PurchaseOrderForm();
+            purchase.Show();
         }
 
         private void picbox_inInsert_Click_2(object sender, EventArgs e)
         {
-            //Buys.BuyPayment bp = new Buys.BuyPayment();
-            //bp.ShowDialog();
+            PurchasePaymentForm purchasePay = new PurchasePaymentForm();
+            purchasePay.Show();
         }
 
         private void buttonInBusiness_Click(object sender, EventArgs e)
@@ -1872,6 +1868,17 @@ namespace WSCATProject
         {
             SalesReceivablesForm salesreceivables = new SalesReceivablesForm();
             salesreceivables.Show();
+        }
+
+        private void pbWarehome_Click(object sender, EventArgs e)
+        {
+            PurchaseTicketForm purchaseTicke = new Purchase.PurchaseTicketForm();
+            purchaseTicke.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

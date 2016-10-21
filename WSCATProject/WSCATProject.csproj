@@ -438,11 +438,14 @@
     <Content Include="Resources\btnRightBackgroup.png" />
     <Content Include="Resources\btn_enter.png" />
     <None Include="Resources\BTN_FUND_SKD.png" />
+    <None Include="Resources\BTN_FUND_FKD.png" />
     <Content Include="Resources\btn_hover.png" />
     <Content Include="Resources\btn_None.png" />
     <None Include="Resources\business.png" />
     <None Include="Resources\BTN_SAIL_XSD.png" />
     <None Include="Resources\BTN_SAIL_XSDD.png" />
+    <None Include="Resources\BTN_STOCK_GHD.png" />
+    <None Include="Resources\BTN_STOCK_CGDD.png" />
     <Content Include="Resources\businessQuery.png" />
     <Content Include="Resources\caigou.PNG" />
     <Content Include="Resources\caigouxitong.png" />

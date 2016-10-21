@@ -1,4 +1,6 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility.Encrypt;
+using InterfaceLayer.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,25 +21,81 @@ namespace WSCATProject.Purchase
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 供应商Code
+        /// </summary>
+        private string _suppilerCode;
+        public string SuppilerCode
+        {
+            get { return _suppilerCode;}
+            set{_suppilerCode = value;}
+        }
+
+        public List<string> PursachList
+        {
+            get { return _pursachList; }
+            set { _pursachList = value; }
+        }
+
+        private List<string> _pursachList;
+        CodingHelper ch = new CodingHelper();
+
         private void PurchaseTicketReportForm_Load(object sender, EventArgs e)
         {
-            this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
+            try
+            {
+                this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
 
-            //不可自动添加列
-            this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            //表格内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+                //不可自动添加列
+                this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                //表格内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+
+                PurchaseInterface purchaseInter = new PurchaseInterface();
+                DataTable dt = ch.DataTableReCoding(purchaseInter.GetList(2, XYEEncoding.strCodeHex(_suppilerCode)));
+                if (dt.Rows.Count == 0 )
+                {
+                    MessageBox.Show("此供应商暂无购货单信息！请重新选择");
+                    this.Close();
+                    return;
+                }
+                PurchasePaymentForm purchase = (PurchasePaymentForm)this.Owner;
+                _pursachList = purchase.PurchaseMainList;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    foreach (var liat in _pursachList)
+                    {
+                        if (dt.Rows[i][1].ToString() == liat)
+                        {
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3401-购货单报告表数据加载失败！"+ex.Message);
+                this.Close();
+            }
+
+
+
         }
 
         #region  设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+
+
+
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
@@ -138,7 +196,33 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
         {
-
+            try
+            {
+                if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
+                {
+                    SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
+                    if (col.Count > 0)
+                    {
+                        GridRow row = col[0] as GridRow;
+                        string mainCode = row.Cells["BillCode"].Value.ToString();
+                        PurchasePaymentForm purchasePay = (PurchasePaymentForm)this.Owner;
+                        purchasePay.PurchaseMainCode = mainCode;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("请先选择要操作的行！");
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3406-尝试双击表格选中行失败！请检查：" + ex.Message, "销售单序时薄温馨提示！");
+            }
         }
     }
 }

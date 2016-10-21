@@ -818,7 +818,7 @@
             // gridColumnfahuoshu
             // 
             this.gridColumnfahuoshu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.gridColumnfahuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
+            this.gridColumnfahuoshu.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridIntegerInputEditControl);
             this.gridColumnfahuoshu.HeaderText = "发货数量";
             this.gridColumnfahuoshu.Name = "gridColumnfahuoshu";
             this.gridColumnfahuoshu.Width = 60;

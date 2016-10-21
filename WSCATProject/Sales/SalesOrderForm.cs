@@ -1128,28 +1128,7 @@ namespace WSCATProject.Sales
                             g.Cells["priceANDtax"].Value = priceandtax;
                             resizablePanelData.Visible = false;
 
-                            //逐行统计数据总数
-                            decimal TempAllNumber = 0;
-                            decimal tempallMoney = 0;
-                            decimal tempallTaxMoney = 0;
-                            decimal tempallPriceAndTax = 0;
-                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                            {
-                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                                TempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
-                                tempallMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
-                                tempallTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
-                                tempallPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
-                            }
-                            _MaterialNumber = TempAllNumber;
-                            _Money = tempallMoney;
-                            _TaxMoney = tempallTaxMoney;
-                            _PriceAndTaxMoney = tempallPriceAndTax;
-                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                            gr["dinggouNumber"].Value = _MaterialNumber.ToString();
-                            gr["money"].Value = _Money.ToString();
-                            gr["TaxMoney"].Value = _TaxMoney.ToString();
-                            gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+                            TongJi();
                             resizablePanelData.Visible = false;
                             return;
                         }
@@ -1197,29 +1176,7 @@ namespace WSCATProject.Sales
                 gr.Cells["priceANDtax"].Value = priceAndtax;
                 resizablePanelData.Visible = false;
 
-                //逐行统计数据总数
-                decimal tempAllNumber = 0;
-                decimal tempAllMoney = 0;
-                decimal tempAllTaxMoney = 0;
-                decimal tempAllPriceAndTax = 0;
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                {
-                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
-                    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
-                    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
-                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
-                }
-                _Materialnumber = tempAllNumber;
-                _Money = tempAllMoney;
-                _TaxMoney = tempAllTaxMoney;
-                _PriceAndTaxMoney = tempAllPriceAndTax;
-                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["dinggouNumber"].Value = _Materialnumber.ToString();
-                gr["money"].Value = _Money.ToString();
-                gr["TaxMoney"].Value = _TaxMoney.ToString();
-                gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
-
+                TongJi();
                 //新增一行
                 if (newAdd)
                 {
@@ -1429,28 +1386,7 @@ namespace WSCATProject.Sales
                 decimal priceAndtax = money + rateMoney;//价税合计
                 gr.Cells["priceANDtax"].Value = priceAndtax;
 
-                //逐行统计数据总数
-                decimal tempAllNumber = 0;
-                decimal tempAllMoney = 0;
-                decimal tempAllTaxMoney = 0;
-                decimal tempAllPriceAndTax = 0;
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                {
-                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
-                    tempAllMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
-                    tempAllTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
-                    tempAllPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
-                }
-                _Materialnumber = tempAllNumber;
-                _Money = tempAllMoney;
-                _TaxMoney = tempAllTaxMoney;
-                _PriceAndTaxMoney = tempAllPriceAndTax;
-                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["dinggouNumber"].Value = _Materialnumber.ToString();
-                gr["money"].Value = _Money.ToString();
-                gr["TaxMoney"].Value = _TaxMoney.ToString();
-                gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+                TongJi();
             }
             catch (Exception ex)
             {
@@ -1644,7 +1580,35 @@ namespace WSCATProject.Sales
             superGridControlShangPing_KeyDown(sender, e);
         }
 
-
+        /// <summary>
+        /// 统计数据行
+        /// </summary>
+        private void TongJi()
+        {
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            //逐行统计数据总数
+            decimal TempAllNumber = 0;
+            decimal tempallMoney = 0;
+            decimal tempallTaxMoney = 0;
+            decimal tempallPriceAndTax = 0;
+            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                TempAllNumber += Convert.ToDecimal(tempGR["dinggouNumber"].FormattedValue);
+                tempallMoney += Convert.ToDecimal(tempGR["money"].FormattedValue);
+                tempallTaxMoney += Convert.ToDecimal(tempGR["TaxMoney"].FormattedValue);
+                tempallPriceAndTax += Convert.ToDecimal(tempGR["priceANDtax"].FormattedValue);
+            }
+            _MaterialNumber = TempAllNumber;
+            _Money = tempallMoney;
+            _TaxMoney = tempallTaxMoney;
+            _PriceAndTaxMoney = tempallPriceAndTax;
+            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+            gr["dinggouNumber"].Value = _MaterialNumber.ToString();
+            gr["money"].Value = _Money.ToString();
+            gr["TaxMoney"].Value = _TaxMoney.ToString();
+            gr["priceANDtax"].Value = _PriceAndTaxMoney.ToString();
+        }
     }
 }
 

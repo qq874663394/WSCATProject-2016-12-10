@@ -930,6 +930,8 @@ namespace WSCATProject.Purchase
             purchaseOrder.SupplierCode = _supplierCode;
             purchaseOrder.ShowDialog(this);
 
+            labTop1.ForeColor = Color.Gray;
+            comboBoxExType.Enabled = false;
             GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
             GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
 
