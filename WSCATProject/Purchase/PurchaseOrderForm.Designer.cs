@@ -85,12 +85,14 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1053, 65);
-            this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1055, 84);
+            this.textBoxOddNumbers.Size = new System.Drawing.Size(137, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(1017, 10);
+            this.labelprie.Location = new System.Drawing.Point(1021, 12);
+            this.labelprie.Size = new System.Drawing.Size(29, 12);
+            this.labelprie.Text = "单号";
             // 
             // panel1
             // 
@@ -114,6 +116,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.cboMethod);
             this.panel2.Controls.Add(this.txtRemark);
             this.panel2.Controls.Add(this.picBarCode);
@@ -327,12 +330,16 @@
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(363, 78);
-            this.labTop7.Text = "传    真：";
+            this.labTop7.Location = new System.Drawing.Point(356, 78);
+            this.labTop7.Size = new System.Drawing.Size(71, 12);
+            this.labTop7.Tag = " ";
+            this.labTop7.Text = "传     真：";
             // 
             // labTop6
             // 
-            this.labTop6.Text = "已付定金：";
+            this.labTop6.Location = new System.Drawing.Point(28, 78);
+            this.labTop6.Size = new System.Drawing.Size(71, 12);
+            this.labTop6.Text = "已付定金 ：";
             // 
             // labTop5
             // 
@@ -347,13 +354,15 @@
             // 
             // labTop3
             // 
-            this.labTop3.Location = new System.Drawing.Point(34, 48);
-            this.labTop3.Text = "交货方式：";
+            this.labTop3.Location = new System.Drawing.Point(28, 48);
+            this.labTop3.Size = new System.Drawing.Size(71, 12);
+            this.labTop3.Text = "交货方式 ：";
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(363, 17);
-            this.labTop2.Text = "联 系 人：";
+            this.labTop2.Location = new System.Drawing.Point(356, 17);
+            this.labTop2.Size = new System.Drawing.Size(71, 12);
+            this.labTop2.Text = "联  系 人：";
             // 
             // labTop1
             // 
@@ -367,6 +376,7 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBoxEmployee
@@ -457,7 +467,7 @@
             // labeldata
             // 
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labeldata.Location = new System.Drawing.Point(1017, 86);
+            this.labeldata.Location = new System.Drawing.Point(1009, 86);
             // 
             // bar1
             // 
@@ -674,9 +684,10 @@
             // picBarCode
             // 
             this.picBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picBarCode.Location = new System.Drawing.Point(1052, 7);
+            this.picBarCode.Location = new System.Drawing.Point(1054, 11);
             this.picBarCode.Name = "picBarCode";
-            this.picBarCode.Size = new System.Drawing.Size(137, 55);
+            this.picBarCode.Size = new System.Drawing.Size(137, 70);
+            this.picBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBarCode.TabIndex = 66;
             this.picBarCode.TabStop = false;
             // 
@@ -814,10 +825,11 @@
             // 
             // picShengHe
             // 
+            this.picShengHe.BackColor = System.Drawing.Color.Transparent;
             this.picShengHe.Image = global::WSCATProject.Properties.Resources.审核;
-            this.picShengHe.Location = new System.Drawing.Point(714, 0);
+            this.picShengHe.Location = new System.Drawing.Point(714, 7);
             this.picShengHe.Name = "picShengHe";
-            this.picShengHe.Size = new System.Drawing.Size(71, 50);
+            this.picShengHe.Size = new System.Drawing.Size(71, 54);
             this.picShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picShengHe.TabIndex = 46;
             this.picShengHe.TabStop = false;

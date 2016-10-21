@@ -147,6 +147,22 @@ namespace WSCATProject.Purchase
             gr.Cells["priceANDrate"].Value = 0;
             gr.Cells["priceANDrate"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["priceANDrate"].CellStyles.Default.Background.Color1 = Color.Orange;
+            #region 最后一行不能点击
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["name"].AllowSelection = false;
+            gr.Cells["model"].AllowSelection = false;
+            gr.Cells["barCode"].AllowSelection = false;
+            gr.Cells["unit"].AllowSelection = false;
+            gr.Cells["CaiGouNumber"].AllowSelection = false;
+            gr.Cells["price"].AllowSelection = false;
+            gr.Cells["Money"].AllowSelection = false;
+            gr.Cells["discountRate"].AllowSelection = false;
+            gr.Cells["discountMoney"].AllowSelection = false;
+            gr.Cells["faxRate"].AllowSelection = false;
+            gr.Cells["faxMoney"].AllowSelection = false;
+            gr.Cells["priceANDrate"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
@@ -484,85 +500,9 @@ namespace WSCATProject.Purchase
         #endregion
 
         /// <summary>
-        /// 加载事件
+        /// 保存按钮函数
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PurchaseOrderForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                //供应商
-                _AllSupplier = supplier.SelSupplierTable();
-                //采购员
-                _AllEmployee = employee.SelSupplierTable(false);
-                //仓库
-                _AllStorage = storage.GetList(00, "");
-                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
-                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
-                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
-
-                #region 初始化窗体
-                picShengHe.Parent = pictureBoxtitle;
-                cboMethod.SelectedIndex = 0;
-                //禁用自动创建列
-                dataGridViewShangPing.AutoGenerateColumns = false;
-                dataGridViewFuJia.AutoGenerateColumns = false;
-                superGridControlShangPing.HScrollBarVisible = true;
-                // 将dataGridView中的内容居中显示
-                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                //显示行号
-                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-                //内容居中
-                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-                //调用合计行数据
-                InitDataGridView();
-
-                #endregion
-
-                //采购数量
-                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["CaiGouNumber"].EditControl as GridIntegerInputEditControl;
-                gdiecNumber.MinValue = 1;
-                gdiecNumber.MaxValue = 999999999;
-                //单价
-                GridDoubleInputEditControl gdiecPrice = superGridControlShangPing.PrimaryGrid.Columns["price"].EditControl as GridDoubleInputEditControl;
-                gdiecNumber.MinValue = 1;
-                gdiecNumber.MaxValue = 999999999;
-                //折扣率
-                GridDoubleInputEditControl gdiecDiscountRate = superGridControlShangPing.PrimaryGrid.Columns["discountRate"].EditControl as GridDoubleInputEditControl;
-                gdiecNumber.MinValue = 1;
-                gdiecNumber.MaxValue = 100;
-
-                //生成采购订单code和显示条形码
-                _PurchaseOrderCode = BuildCode.ModuleCode("POR");
-                textBoxOddNumbers.Text = _PurchaseOrderCode;
-                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-                _Code.ValueFont = new Font("微软雅黑", 20);
-                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-                picBarCode.Image = imgTemp;
-
-                //绑定事件 双击事填充内容并隐藏列表
-                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
-                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
-
-                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
-                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("错误代码：3101-窗体加载时，初始化数据错误！请检查：" + ex.Message,"采购订单温馨提示！");
-                return;
-            }
-        }
-
-        /// <summary>
-        /// 保存按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripBtnSave_Click(object sender, EventArgs e)
+        private void Save()
         {
             if (isNUllValidate() == false)
             {
@@ -723,11 +663,9 @@ namespace WSCATProject.Purchase
         }
 
         /// <summary>
-        /// 审核按钮
+        /// 审核按钮函数
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        private void Review()
         {
             if (isNUllValidate() == false)
             {
@@ -887,6 +825,100 @@ namespace WSCATProject.Purchase
                 InitForm();
                 MessageBox.Show("新增并审核采购订单数据成功", "采购订单温馨提示");
             }
+        }
+
+        /// <summary>
+        /// 加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PurchaseOrderForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                //供应商
+                _AllSupplier = supplier.SelSupplierTable();
+                //采购员
+                _AllEmployee = employee.SelSupplierTable(false);
+                //仓库
+                _AllStorage = storage.GetList(00, "");
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;//显示行号
+
+                #region 初始化窗体
+                picShengHe.Parent = pictureBoxtitle;
+                cboMethod.SelectedIndex = 0;
+                //禁用自动创建列
+                dataGridViewShangPing.AutoGenerateColumns = false;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //显示行号
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
+                //内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                //调用合计行数据
+                InitDataGridView();
+
+                #endregion
+
+                //采购数量
+                GridIntegerInputEditControl gdiecNumber = superGridControlShangPing.PrimaryGrid.Columns["CaiGouNumber"].EditControl as GridIntegerInputEditControl;
+                gdiecNumber.MinValue = 1;
+                gdiecNumber.MaxValue = 999999999;
+                //单价
+                GridDoubleInputEditControl gdiecPrice = superGridControlShangPing.PrimaryGrid.Columns["price"].EditControl as GridDoubleInputEditControl;
+                gdiecNumber.MinValue = 1;
+                gdiecNumber.MaxValue = 999999999;
+                //折扣率
+                GridDoubleInputEditControl gdiecDiscountRate = superGridControlShangPing.PrimaryGrid.Columns["discountRate"].EditControl as GridDoubleInputEditControl;
+                gdiecNumber.MinValue = 1;
+                gdiecNumber.MaxValue = 100;
+
+                //生成采购订单code和显示条形码
+                _PurchaseOrderCode = BuildCode.ModuleCode("POR");
+                textBoxOddNumbers.Text = _PurchaseOrderCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                picBarCode.Image = imgTemp;
+
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
+
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("错误代码：3101-窗体加载时，初始化数据错误！请检查：" + ex.Message,"采购订单温馨提示！");
+                return;
+            }
+        }
+
+        /// <summary>
+        /// 保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        /// <summary>
+        /// 审核按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+            Review();
         }
 
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
@@ -1551,13 +1583,13 @@ namespace WSCATProject.Purchase
             //保存
             if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
             {
-                toolStripBtnSave_Click(sender, e);
+                Save();
                 return;
             }
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                toolStripBtnShengHe_Click(sender, e);
+                Review();
                 return;
             }
             //打印

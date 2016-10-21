@@ -247,25 +247,26 @@ namespace BaseLayer.Purchase
             try
             {
                 sql = @"select po.date,
-po.depositReceived,
-po.code,
-po.checkState,
-po.supplierCode,
-bs.name,
-bs.linkMan,
-bs.phone,
-bs.fax,
-po.deliversMethod,
-po.deliversLocation,
-po.deliversDate,
-po.remark
-from 
-T_PurchaseOrder po,
-T_PurchaseOrderDetail pod,
-T_BaseSupplier bs
-where 
-po.code=pod.mainCode and 
-po.supplierCode=bs.name where po.supplierCode=" + supplierCode;
+                po.depositReceived,
+                po.code,
+                po.checkState,
+                po.supplierCode,
+                bs.name,
+                bs.linkMan,
+                bs.phone,
+                bs.fax,
+                po.deliversMethod,
+                po.deliversLocation,
+                po.deliversDate,
+                po.examine,
+                po.remark
+                from 
+                T_PurchaseOrder po,
+                T_PurchaseOrderDetail pod,
+                T_BaseSupplier bs
+                where 
+                po.code=pod.mainCode and 
+                po.supplierCode=bs.code and po.supplierCode='" + supplierCode + "'";
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)
@@ -280,10 +281,22 @@ po.supplierCode=bs.name where po.supplierCode=" + supplierCode;
             DataTable dt = null;
             try
             {
-                sql = @"select bm.materialDaima,bm.name,bm.model,
-bm.barCode,bm.unit,pod.deliveryNumber,bm.price,pod.discountRate,
-pod.VATRate,wm.allNumber from T_PurchaseOrderDetail pod,T_BaseMaterial bm,T_WarehouseMain wm
-where pod.materialCode = bm.code and wm.materialCode = pod.materialCode";
+                sql = @"select bm.materialDaima,
+                        bm.code as materialcode,
+                        bm.name,
+                        bm.model,
+                        bm.barCode,
+                        bm.unit,
+                        pod.deliveryNumber,
+                        bm.price,
+                        pod.discountRate,
+                        pod.VATRate,
+                        pod.mainCode,
+                        pod.materialMoney,
+                        pod.code,
+                        wm.allNumber 
+                        from T_PurchaseOrderDetail pod,T_BaseMaterial bm,T_WarehouseMain wm
+                        where pod.materialCode = bm.code and wm.materialCode = pod.materialCode";
                 dt = DbHelperSQL.Query(sql).Tables[0];
             }
             catch (Exception ex)

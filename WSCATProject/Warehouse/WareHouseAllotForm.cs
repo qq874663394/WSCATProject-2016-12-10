@@ -168,6 +168,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2801-初始化调拨窗体数据错误" + ex.Message,"调拨单温馨提示");
+                this.Close();
                 return;
             }
         }

@@ -1,4 +1,6 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
+using HelperUtility.Encrypt;
+using InterfaceLayer.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +20,16 @@ namespace WSCATProject.Purchase
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// 供应商code
+        /// </summary>
+        private string _supplierCode;
+        public string SupplierCode
+        {
+            get {return _supplierCode; }
+            set{ _supplierCode = value; }
+        }
+        CodingHelper ch = new CodingHelper();
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -38,6 +49,63 @@ namespace WSCATProject.Purchase
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
             DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+
+            PurchaseOrderInterface purchaseinter = new PurchaseOrderInterface();
+
+            DataTable dt1 = ch.DataTableReCoding(purchaseinter.GetMainTable(XYEEncoding.strCodeHex(_supplierCode)));//主表
+            this.labelPurchaseMain.Text = dt1.Rows.Count.ToString() + "张单据";
+
+            DataTable dt2 = ch.DataTableReCoding(purchaseinter.GetMinorTable());//从表
+
+            this.labelPurchaseDetile.Text = dt2.Rows.Count.ToString() + "条记录";
+
+            if (dt1.Rows.Count == 0 || dt2.Rows.Count == 0)
+            {
+                MessageBox.Show("此供应商暂无采购订单信息！请重新选择");
+                this.Close();
+                return;
+            }
+            for (int i = 0; i < dt1.Rows.Count; i++)
+            {
+                for (int j = 0; j < dt2.Rows.Count; j++)
+                {
+                    if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+                    {
+                        #region 绑定列
+                        superGridControlShangPing.PrimaryGrid.Rows.Insert(i, new GridRow(
+                            dt1.Rows[i]["code"],
+                            dt1.Rows[i]["date"],
+                            dt1.Rows[i]["name"],
+                            dt1.Rows[i]["phone"],
+                            dt1.Rows[i]["fax"],
+                            dt1.Rows[i]["deliversMethod"],
+                            dt1.Rows[i]["deliversDate"],
+                            dt1.Rows[i]["examine"],
+                            dt1.Rows[i]["remark"],
+                            dt1.Rows[i]["checkState"],
+                            dt2.Rows[j]["code"],
+                            dt2.Rows[j]["materialDaima"],
+                            dt2.Rows[j]["name"],
+                            dt2.Rows[j]["model"],
+                            dt2.Rows[j]["barCode"],
+                            dt2.Rows[j]["unit"],
+                            dt2.Rows[j]["deliveryNumber"],
+                            dt2.Rows[j]["price"],
+                            dt2.Rows[j]["materialMoney"],
+                            dt2.Rows[j]["discountRate"],
+                            dt2.Rows[j]["VATRate"],
+                            dt2.Rows[j]["allNumber"],
+                            dt2.Rows[j]["materialcode"]
+                            ));
+
+                        #endregion
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
         }
 
         #region 设置窗体无边框可以拖动
@@ -146,7 +214,40 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void superGridControlShangPing_CellDoubleClick(object sender, DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs e)
         {
-
+          
+            try
+            {
+                if (superGridControlShangPing.PrimaryGrid.GetSelectedRows() != null)
+                {
+                    SelectedElementCollection col = superGridControlShangPing.PrimaryGrid.GetSelectedRows();
+                    if (col.Count > 0)
+                    {
+                        GridRow row = col[0] as GridRow;
+                        string mainCode = row.Cells["DanJuCode"].Value.ToString();
+                        string code = row.Cells["purchaseDetilecode"].Value.ToString();
+                        string shangPinCode = row.Cells["gridColumnmaterialcode"].Value.ToString();
+                        string jiaohuofangshi = row.Cells["JiaoHuoMethod"].Value.ToString();
+                        PurchaseTicketForm purchaseTicket = (PurchaseTicketForm)this.Owner;
+                        purchaseTicket.PurchaseMainCodel = mainCode;
+                        purchaseTicket.PurchaseCode = code;
+                        purchaseTicket.ShangPinCode = shangPinCode;
+                        purchaseTicket.JiaoHuoFangShi = jiaohuofangshi;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("请先选择要操作的行！");
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3205-尝试双击表格选中行失败！请检查：" + ex.Message, "销售订单序时薄温馨提示！");
+            }
         }
     }
 }

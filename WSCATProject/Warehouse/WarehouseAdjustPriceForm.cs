@@ -164,6 +164,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2701-窗体加载时出错！请检查：" + ex.Message, "调价单温馨提示！");
+                this.Close();
                 return;
             }
         }

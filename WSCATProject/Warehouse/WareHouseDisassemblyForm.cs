@@ -393,6 +393,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2901-窗体初始化数据错误！请检查：" + ex.Message, "拆卸单温馨提示");
+                this.Close();
             }
         }
 

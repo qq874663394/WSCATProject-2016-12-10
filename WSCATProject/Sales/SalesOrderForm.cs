@@ -565,6 +565,7 @@ namespace WSCATProject.Sales
             {
 
                 MessageBox.Show("错误代码：1101-窗体加载时，初始化数据错误！请检查：" + ex.Message);
+                this.Close();
                 return;
             }
         }
@@ -575,6 +576,16 @@ namespace WSCATProject.Sales
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void toolStripBtnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        #region  调用的函数
+      
+        /// <summary>
+        /// 保存的函数
+        /// </summary>
+        private void Save()
         {
             if (isNUllValidate() == false)
             {
@@ -736,11 +747,9 @@ namespace WSCATProject.Sales
         }
 
         /// <summary>
-        /// 审核按钮
+        /// 审核的函数
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        private void ShengHe()
         {
             if (isNUllValidate() == false)
             {
@@ -901,6 +910,17 @@ namespace WSCATProject.Sales
                 InitForm();
                 this.picShengHe.Image = Properties.Resources.审核;
             }
+        }
+        #endregion
+
+        /// <summary>
+        /// 审核按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+            ShengHe();
         }
 
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
@@ -1509,6 +1529,18 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void SalesOrderForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //前单
+            if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("前单");
+                return;
+            }
+            //后单
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("后单");
+                return;
+            }
             //新增
             if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
             {
@@ -1518,13 +1550,13 @@ namespace WSCATProject.Sales
             //保存
             if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
             {
-                toolStripBtnSave_Click(sender, e);
+                Save();
                 return;
             }
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                toolStripBtnShengHe_Click(sender, e);
+                ShengHe();
                 return;
             }
             //打印

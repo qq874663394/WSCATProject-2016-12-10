@@ -618,7 +618,7 @@ namespace WSCATProject.Sales
                 toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
 
                 #region 初始化窗体
-               
+
                 comboBoxType.SelectedIndex = 0;//单据类型
                 comboBoxfapiaotype.SelectedIndex = 0;//发票类型
                 cboJiesuanMethod.SelectedIndex = 0;//结算方式
@@ -651,6 +651,7 @@ namespace WSCATProject.Sales
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：1301-窗体加载时，初始化数据失败！请检查：" + ex.Message, "销售单温馨提示！");
+                this.Close();
                 return;
             }
 
@@ -662,6 +663,15 @@ namespace WSCATProject.Sales
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
+        {
+            XuanYuanDan();
+        }
+
+        #region 选源单、保存、审核
+        /// <summary>
+        /// 选源单的函数
+        /// </summary>
+        private void XuanYuanDan()
         {
             try
             {
@@ -740,7 +750,7 @@ namespace WSCATProject.Sales
                     }
                     continue;
                 }
-         
+
                 superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(_storgeName, dt.Rows[0]["materialDaima"],
                     dt.Rows[0]["name"],
                     dt.Rows[0]["model"],
@@ -766,7 +776,7 @@ namespace WSCATProject.Sales
                     ));
                 if (dt.Rows[0]["isDouble"].ToString() == "0")
                 {
-                    GridRow gridrow =(GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
+                    GridRow gridrow = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 2];
                     gridrow.Cells["gridColumnfahuoshu"].EditorType = typeof(GridDoubleInputEditControl);
                 }
             }
@@ -818,11 +828,9 @@ namespace WSCATProject.Sales
             }
         }
         /// <summary>
-        /// 审核按钮的点击事件
+        /// 审核的函数
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
+        private void ShengHe()
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -984,13 +992,10 @@ namespace WSCATProject.Sales
 
             }
         }
-
         /// <summary>
-        /// 保存按钮的点击事件
+        /// 保存的函数
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripBtnSave_Click(object sender, EventArgs e)
+        private void Save()
         {
             //非空验证
             if (isNUllValidate() == false)
@@ -1182,6 +1187,27 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("新增销售单数据成功！", "销售单温馨提示");
             }
+        }
+        #endregion
+
+        /// <summary>
+        /// 审核按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+            ShengHe();
+        }
+
+        /// <summary>
+        /// 保存按钮的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripBtnSave_Click(object sender, EventArgs e)
+        {
+            Save();
         }
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -1586,22 +1612,40 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void SalesTicketForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //前单
+            if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("前单");
+                return;
+            }
+            //后单
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("后单");
+                return;
+            }
             //新增
             if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
             {
                 MessageBox.Show("新增");
                 return;
             }
+            //选源单
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+            {
+                XuanYuanDan();
+                return;
+            }
             //保存
             if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
             {
-                ToolStripBtnSave_Click(sender, e);
+                Save();
                 return;
             }
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                ToolStripBtnShengHe_Click(sender, e);
+                ShengHe();
                 return;
             }
             //打印

@@ -291,8 +291,8 @@
             this.toolStripButtonXuanYuanDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonXuanYuanDan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonXuanYuanDan.Name = "toolStripButtonXuanYuanDan";
-            this.toolStripButtonXuanYuanDan.Size = new System.Drawing.Size(55, 57);
-            this.toolStripButtonXuanYuanDan.Text = "选源单";
+            this.toolStripButtonXuanYuanDan.Size = new System.Drawing.Size(74, 57);
+            this.toolStripButtonXuanYuanDan.Text = "选源单(&C)";
             this.toolStripButtonXuanYuanDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonXuanYuanDan.Visible = false;
             // 

@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.picBarCode = new System.Windows.Forms.PictureBox();
             this.cboType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
@@ -71,12 +79,13 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1053, 61);
-            this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
+            this.textBoxOddNumbers.Size = new System.Drawing.Size(137, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(1013, 8);
+            this.labelprie.Location = new System.Drawing.Point(1020, 11);
+            this.labelprie.Size = new System.Drawing.Size(29, 12);
+            this.labelprie.Text = "单号";
             // 
             // dateTimePicker1
             // 
@@ -169,6 +178,8 @@
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.Location = new System.Drawing.Point(411, 76);
             this.labtextboxTop7.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
+            this.labtextboxTop7.Validated += new System.EventHandler(this.txtDiscount_Validated);
             // 
             // labtextboxTop9
             // 
@@ -403,8 +414,8 @@
             // 
             // labBotton1
             // 
-            this.labBotton1.Size = new System.Drawing.Size(71, 12);
-            this.labBotton1.Text = "业 务 员*：";
+            this.labBotton1.Size = new System.Drawing.Size(59, 12);
+            this.labBotton1.Text = "付款员*：";
             // 
             // resizablePanelData
             // 
@@ -413,7 +424,7 @@
             // labeldata
             // 
             this.labeldata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labeldata.Location = new System.Drawing.Point(1016, 84);
+            this.labeldata.Location = new System.Drawing.Point(1008, 84);
             // 
             // bar1
             // 
@@ -435,6 +446,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shengyuMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
             // 
             // resizablePanel1
@@ -452,9 +464,10 @@
             // picBarCode
             // 
             this.picBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picBarCode.Location = new System.Drawing.Point(1052, 6);
+            this.picBarCode.Location = new System.Drawing.Point(1052, 9);
             this.picBarCode.Name = "picBarCode";
-            this.picBarCode.Size = new System.Drawing.Size(137, 50);
+            this.picBarCode.Size = new System.Drawing.Size(137, 70);
+            this.picBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBarCode.TabIndex = 53;
             this.picBarCode.TabStop = false;
             // 
@@ -529,15 +542,23 @@
             // 
             // BillCode
             // 
+            this.BillCode.AllowSelection = false;
             this.BillCode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.BillCode.CellStyles.Default.Background = background1;
             this.BillCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.BillCode.HeaderText = "源单编号";
             this.BillCode.Name = "BillCode";
+            this.BillCode.ReadOnly = true;
             // 
             // BillDate
             // 
+            this.BillDate.AllowSelection = false;
             this.BillDate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.BillDate.CellStyles.Default.Background = background2;
             this.BillDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.BillDate.EnableFiltering = DevComponents.DotNetBar.SuperGrid.Style.Tbool.False;
             this.BillDate.HeaderText = "源单日期";
             this.BillDate.Name = "BillDate";
             this.BillDate.ReadOnly = true;
@@ -545,7 +566,10 @@
             // 
             // BillType
             // 
+            this.BillType.AllowSelection = false;
             this.BillType.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.BillType.CellStyles.Default.Background = background3;
             this.BillType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.BillType.HeaderText = "源单类型";
             this.BillType.Name = "BillType";
@@ -553,7 +577,10 @@
             // 
             // BillMoney
             // 
+            this.BillMoney.AllowSelection = false;
             this.BillMoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.BillMoney.CellStyles.Default.Background = background4;
             this.BillMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.BillMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.BillMoney.HeaderText = "单据金额";
@@ -562,7 +589,10 @@
             // 
             // yiHeXiao
             // 
+            this.yiHeXiao.AllowSelection = false;
             this.yiHeXiao.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.yiHeXiao.CellStyles.Default.Background = background5;
             this.yiHeXiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yiHeXiao.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.yiHeXiao.HeaderText = "已核销金额";
@@ -571,7 +601,10 @@
             // 
             // weiHeXiao
             // 
+            this.weiHeXiao.AllowSelection = false;
             this.weiHeXiao.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.weiHeXiao.CellStyles.Default.Background = background6;
             this.weiHeXiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.weiHeXiao.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.weiHeXiao.HeaderText = "未核销金额";
@@ -588,7 +621,10 @@
             // 
             // remark
             // 
+            this.remark.AllowSelection = false;
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background8;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
@@ -596,7 +632,10 @@
             // 
             // shengyuMoney
             // 
+            this.shengyuMoney.AllowSelection = false;
             this.shengyuMoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.shengyuMoney.CellStyles.Default.Background = background7;
             this.shengyuMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.shengyuMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.shengyuMoney.HeaderText = "剩余尾款";

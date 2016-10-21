@@ -190,6 +190,7 @@ namespace WSCATProject.Warehouse
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：2301-窗体加载时，初始化数据错误！" + ex.Message,"盘点表温馨提示！");
+                this.Close();
                 return;
             }
      
