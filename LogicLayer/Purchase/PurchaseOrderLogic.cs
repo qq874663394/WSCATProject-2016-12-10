@@ -44,13 +44,13 @@ namespace LogicLayer.Purchase
                 if (_dal.Exists(model.code) == false)
                 {
                     result = _dal.AddPurchaseOrderOrToDetail(model, modelDetail);
-                    logModel.objective = "新增采购单,新增采购详情";
+                    logModel.objective = "新增采购订单,新增采购订单详情";
                     logModel.operationContent = "新增T_Purchase和T_PurchaseDetail表的数据";
                 }
                 else
                 {
                     result = _dal.UpdateSalesOrToDetail(model, modelDetail);
-                    logModel.objective = "修改销售,修改销售详情";
+                    logModel.objective = "修改采购订单,修改采购订单详情";
                     logModel.operationContent = "修改T_Purchase和T_PurchaseDetail表的数据";
                 }
                 if (result == null)

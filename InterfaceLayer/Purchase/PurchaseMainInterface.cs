@@ -1,4 +1,5 @@
 ﻿using LogicLayer.Purchase;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayer.Purchase
 {
-    public class PurchaseInterface
+    public class PurchaseMainInterface
     {
-        PurchaseLogic pl = new PurchaseLogic();
+        PurchaseMainLogic _dal = new PurchaseMainLogic();
         /// <summary>
         /// 复合查询
         /// </summary>
@@ -19,16 +20,11 @@ namespace InterfaceLayer.Purchase
         /// <returns></returns>
         public DataTable GetList(int fieldName, string fieldValue)
         {
-            DataTable dt = null;
-            try
-            {
-                dt = pl.GetList(fieldName,fieldValue);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return dt;
+            return _dal.GetList(fieldName, fieldValue);
+        }
+        public object AddOrUpdateToMainOrDetail(PurchaseMain model, List<PurchaseDetail> modelDetail)
+        {
+            return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
     }
 }
