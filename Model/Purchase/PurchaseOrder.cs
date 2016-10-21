@@ -152,6 +152,7 @@ namespace Model.Purchase
             set { _paydate = value; }
             get { return _paydate; }
         }
+
         /// <summary>
         /// 优惠项目
         /// </summary>

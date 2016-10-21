@@ -122,6 +122,34 @@ namespace WSCATProject.Purchase
             get { return _shangPinCode; }
             set { _shangPinCode = value; }
         }
+        /// <summary>
+        /// 采购主表code
+        /// </summary>
+        private string _purchaseMainCodel;
+        public string PurchaseMainCodel
+        {
+            get { return _purchaseMainCodel; }
+            set { _purchaseMainCodel = value; }
+        }
+
+        /// <summary>
+        /// 采购明细的code
+        /// </summary>
+        private string _purchaseCode;
+        public string PurchaseCode
+        {
+            get { return _purchaseCode; }
+            set { _purchaseCode = value; }
+        }
+        /// <summary>
+        /// 交货方式
+        /// </summary>
+        public string JiaoHuoFangShi
+        {
+            get { return _jiaoHuoFangShi;}
+            set{_jiaoHuoFangShi = value;}
+        }
+        private string _jiaoHuoFangShi;
         #endregion
         #region 初始化数据
         /// <summary>
@@ -513,7 +541,8 @@ namespace WSCATProject.Purchase
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
-        {
+        {   
+            XuanYuanDan();
         }
         /// <summary>
         /// 审核按钮事件
@@ -904,6 +933,25 @@ namespace WSCATProject.Purchase
         }
 
         /// <summary>
+        /// 选源单的封装函数
+        /// </summary>
+        private void XuanYuanDan()
+        {
+            if (_supplierCode == "" || labtextboxTop2.Text == "")
+            {
+                MessageBox.Show("请先选择供应商！");
+                return;
+            }
+            //显示窗体
+            PurchaseOrderReportForm purchaseOrder = new PurchaseOrderReportForm();
+            purchaseOrder.SupplierCode = _supplierCode;
+            purchaseOrder.ShowDialog(this);
+
+             
+        }
+
+
+        /// <summary>
         /// 验证和统计数据
         /// </summary>
         /// <param name="sender"></param>
@@ -1162,6 +1210,5 @@ namespace WSCATProject.Purchase
             //{
             //    MessageBox.Show("新增采购订单数据成功", "采购订单温馨提示");
             //}
-        }
-    }
+        }    }
 }

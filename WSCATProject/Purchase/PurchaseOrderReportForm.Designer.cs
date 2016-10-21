@@ -51,11 +51,10 @@
             this.fax = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.JiaoHuoMethod = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.JiaoHuoDate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.makeMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.shengheMan = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.ZhaiYao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.shengheState = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.salesDetilecode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.purchaseDetilecode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialDaiMa = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialName = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.materialModel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -66,9 +65,8 @@
             this.materialMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.discountRate = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.discountMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.shouhuoNumber = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.ZongKuCun = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.labelPurchaseDetile = new System.Windows.Forms.Label();
             this.labelPurchaseMain = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -161,6 +159,7 @@
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "采  购  订  单  序  时  薄";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -175,6 +174,7 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // toolStrip1
             // 
@@ -192,6 +192,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1170, 70);
             this.toolStrip1.TabIndex = 53;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -278,11 +279,10 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.fax);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.JiaoHuoMethod);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.JiaoHuoDate);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.makeMan);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shengheMan);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZhaiYao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shengheState);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.salesDetilecode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.purchaseDetilecode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialDaiMa);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialName);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialModel);
@@ -293,14 +293,12 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountRate);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.discountMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shouhuoNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.ZongKuCun);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControlShangPing.Size = new System.Drawing.Size(1170, 435);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";
             this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
-            this.superGridControlShangPing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // DanJuCode
             // 
@@ -323,7 +321,7 @@
             // 
             // MobilPhone
             // 
-            this.MobilPhone.DataPropertyName = "mobilephone";
+            this.MobilPhone.DataPropertyName = "phone";
             this.MobilPhone.HeaderText = "电话";
             this.MobilPhone.Name = "MobilPhone";
             this.MobilPhone.Width = 80;
@@ -331,6 +329,7 @@
             // fax
             // 
             this.fax.DataPropertyName = "fax";
+            this.fax.DefaultNewRowCellValue = "";
             this.fax.HeaderText = "传真";
             this.fax.Name = "fax";
             this.fax.Width = 80;
@@ -350,15 +349,9 @@
             this.JiaoHuoDate.Name = "JiaoHuoDate";
             this.JiaoHuoDate.Width = 80;
             // 
-            // makeMan
-            // 
-            this.makeMan.DataPropertyName = "examine";
-            this.makeMan.HeaderText = "制单人";
-            this.makeMan.Name = "makeMan";
-            this.makeMan.Width = 60;
-            // 
             // shengheMan
             // 
+            this.shengheMan.DataPropertyName = "examine";
             this.shengheMan.HeaderText = "审核人";
             this.shengheMan.Name = "shengheMan";
             this.shengheMan.Width = 60;
@@ -378,11 +371,11 @@
             this.shengheState.Name = "shengheState";
             this.shengheState.Width = 60;
             // 
-            // salesDetilecode
+            // purchaseDetilecode
             // 
-            this.salesDetilecode.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
-            this.salesDetilecode.HeaderText = "销售订单详细号";
-            this.salesDetilecode.Name = "salesDetilecode";
+            this.purchaseDetilecode.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            this.purchaseDetilecode.HeaderText = "销售订单详细号";
+            this.purchaseDetilecode.Name = "purchaseDetilecode";
             // 
             // materialDaiMa
             // 
@@ -454,13 +447,6 @@
             this.discountMoney.Name = "discountMoney";
             this.discountMoney.Width = 80;
             // 
-            // shouhuoNumber
-            // 
-            this.shouhuoNumber.DataPropertyName = "deliveryNumber";
-            this.shouhuoNumber.HeaderText = "收货数量";
-            this.shouhuoNumber.Name = "shouhuoNumber";
-            this.shouhuoNumber.Width = 60;
-            // 
             // ZongKuCun
             // 
             this.ZongKuCun.DataPropertyName = "allNumber";
@@ -469,11 +455,11 @@
             this.ZongKuCun.Name = "ZongKuCun";
             this.ZongKuCun.Width = 60;
             // 
-            // gridColumncode
+            // gridColumnmaterialcode
             // 
-            this.gridColumncode.HeaderText = "物流code";
-            this.gridColumncode.Name = "gridColumncode";
-            this.gridColumncode.Visible = false;
+            this.gridColumnmaterialcode.HeaderText = "物流code";
+            this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
+            this.gridColumnmaterialcode.Visible = false;
             // 
             // labelPurchaseDetile
             // 
@@ -566,11 +552,10 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn fax;
         private DevComponents.DotNetBar.SuperGrid.GridColumn JiaoHuoMethod;
         private DevComponents.DotNetBar.SuperGrid.GridColumn JiaoHuoDate;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn makeMan;
         private DevComponents.DotNetBar.SuperGrid.GridColumn shengheMan;
         private DevComponents.DotNetBar.SuperGrid.GridColumn ZhaiYao;
         private DevComponents.DotNetBar.SuperGrid.GridColumn shengheState;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn salesDetilecode;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn purchaseDetilecode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialDaiMa;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialName;
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialModel;
@@ -581,12 +566,11 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn materialMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn discountRate;
         private DevComponents.DotNetBar.SuperGrid.GridColumn discountMoney;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn shouhuoNumber;
         private DevComponents.DotNetBar.SuperGrid.GridColumn ZongKuCun;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
         private System.Windows.Forms.Label labelPurchaseDetile;
         private System.Windows.Forms.Label labelPurchaseMain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
     }
 }
