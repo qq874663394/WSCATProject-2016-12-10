@@ -537,6 +537,7 @@ namespace WSCATProject.Purchase
                 return;
             }
         }
+
         /// <summary>
         /// 选源单按钮事件
         /// </summary>
@@ -546,6 +547,7 @@ namespace WSCATProject.Purchase
         {
             XuanYuanDan();
         }
+
         /// <summary>
         /// 审核按钮事件
         /// </summary>
@@ -555,6 +557,7 @@ namespace WSCATProject.Purchase
         {
 
         }
+
         /// <summary>
         /// 保存按钮事件
         /// </summary>
@@ -951,8 +954,7 @@ namespace WSCATProject.Purchase
 
 
         }
-
-
+        
         /// <summary>
         /// 验证和统计数据
         /// </summary>
