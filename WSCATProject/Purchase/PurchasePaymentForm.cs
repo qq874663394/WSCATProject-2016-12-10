@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -438,7 +439,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
-
+            XuanYuanDan();
         }
 
         /// <summary>
@@ -891,6 +892,7 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：-验证整单折扣金额出错！请检查:" + ex.Message, "付款单温馨提示！");
             }
         }
+
         /// <summary>
         /// 验证整单折扣
         /// </summary>
@@ -1004,8 +1006,52 @@ namespace WSCATProject.Purchase
             // 确保输入光标在最右侧
             labtextboxTop6.Select(labtextboxTop6.Text.Length, 0);
         }
+        /// <summary>
+        /// 选源单封函数
+        /// </summary>
+        private void XuanYuanDan()
+        {
+            PurchaseTicketReportForm purchaseTicketReport = new PurchaseTicketReportForm();
+            purchaseTicketReport.SuppilerCode = _supplyCode;
+            purchaseTicketReport.ShowDialog(this);
 
+            PurchaseInterface purchaseInter = new PurchaseInterface();
 
+            if (_purchaseMainCode == null)
+            {
+                return;
+            }
+            labTop1.ForeColor = Color.Gray;
+            cboType.Enabled = false;
+            GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+            GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            DataTable dt = ch.DataTableReCoding(purchaseInter.GetList(3, XYEEncoding.strCodeHex(_purchaseMainCode)));
+
+            superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow(dt.Rows[0]["code"],
+           dt.Rows[0]["data"],
+           dt.Rows[0]["type"],
+           dt.Rows[0]["oddMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddMoney"],
+           dt.Rows[0]["inMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["inMoney"],
+           dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+             0.0M,
+             0.0M,
+           dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+           ));
+
+            TongJi();
+            foreach (GridRow g in grs)
+            {
+                if (g.Cells["BillCode"].Value == null || g.Cells["BillCode"].Value.ToString() == "")
+                {
+                    continue;
+                }
+                PurchaseMainList.Add(g.Cells["BillCode"].Value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 保存按钮封装的函数
+        /// </summary>
         private void Save()
         {
             if (isNUllValidate() == false)
@@ -1047,7 +1093,7 @@ namespace WSCATProject.Purchase
             try
             {
                 //最后一行做统计行
-               
+
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
                 if (gr.Cells["BillCode"].FormattedValue == null || gr.Cells["BillCode"].FormattedValue == "")
                 {
@@ -1067,41 +1113,50 @@ namespace WSCATProject.Purchase
                 decimal weifuMoney = weiHeXiaoMoney - benciHeXiaoMoney;//未付金额
                 gr.Cells["shengyuMoney"].Value = weifuMoney;
 
-                //逐行统计数据总数
-                decimal tempDanJuMoney = 0;
-                decimal tempYiHeXiaoMoney = 0;
-                decimal tempWeiHeXiaoMoney = 0;
-                decimal tempBenCiHeXiao = 0;
-                decimal tempShengYuMoney = 0;
-                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                {
-                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                    tempDanJuMoney += Convert.ToDecimal(tempGR["BillMoney"].FormattedValue);
-                    tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["yiHeXiao"].FormattedValue);
-                    tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["weiHeXiao"].FormattedValue);
-                    tempBenCiHeXiao += Convert.ToDecimal(tempGR["benciHeXiao"].FormattedValue);
-                    tempShengYuMoney += Convert.ToDecimal(tempGR["shengyuMoney"].FormattedValue);
-                }
-                _danJuMoney = tempDanJuMoney;
-                _yiHeXiaoMoney = tempYiHeXiaoMoney;
-                _weiHeXiaoMoney = tempWeiHeXiaoMoney;
-                _benCiHeXiaoMoney = tempBenCiHeXiao;
-                _shengYuMoney = tempShengYuMoney;
-                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                gr["BillMoney"].Value = _danJuMoney.ToString();
-                gr["yiHeXiao"].Value = _yiHeXiaoMoney.ToString();
-                gr["weiHeXiao"].Value = _weiHeXiaoMoney.ToString();
-                gr["benciHeXiao"].Value = _benCiHeXiaoMoney.ToString();
-                gr["shengyuMoney"].Value = tempShengYuMoney.ToString();
+                TongJi();
 
                 labtextboxTop3.Text = _benCiHeXiaoMoney.ToString("0.00");
                 labtextboxTop6.Text = _benCiHeXiaoMoney.ToString("0.00");
-              
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：1513-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "收款单温馨提示！");
             }
+        }
+
+        /// <summary>
+        /// 统计数据行
+        /// </summary>
+        private void TongJi()
+        {
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            //逐行统计数据总数
+            decimal tempDanJuMoney = 0;
+            decimal tempYiHeXiaoMoney = 0;
+            decimal tempWeiHeXiaoMoney = 0;
+            decimal tempBenCiHeXiao = 0;
+            decimal tempShengYuMoney = 0;
+            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                tempDanJuMoney += Convert.ToDecimal(tempGR["BillMoney"].FormattedValue);
+                tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["yiHeXiao"].FormattedValue);
+                tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["weiHeXiao"].FormattedValue);
+                tempBenCiHeXiao += Convert.ToDecimal(tempGR["benciHeXiao"].FormattedValue);
+                tempShengYuMoney += Convert.ToDecimal(tempGR["shengyuMoney"].FormattedValue);
+            }
+            _danJuMoney = tempDanJuMoney;
+            _yiHeXiaoMoney = tempYiHeXiaoMoney;
+            _weiHeXiaoMoney = tempWeiHeXiaoMoney;
+            _benCiHeXiaoMoney = tempBenCiHeXiao;
+            _shengYuMoney = tempShengYuMoney;
+            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+            gr["BillMoney"].Value = _danJuMoney.ToString();
+            gr["yiHeXiao"].Value = _yiHeXiaoMoney.ToString();
+            gr["weiHeXiao"].Value = _weiHeXiaoMoney.ToString();
+            gr["benciHeXiao"].Value = _benCiHeXiaoMoney.ToString();
+            gr["shengyuMoney"].Value = tempShengYuMoney.ToString();
         }
     }
 }

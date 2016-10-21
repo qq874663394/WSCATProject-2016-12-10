@@ -488,6 +488,7 @@ namespace WSCATProject.Sales
             SalesTicketReportForm salesTickeReport = new SalesTicketReportForm();
             salesTickeReport.ClientCode = _clientCode;
             salesTickeReport.ShowDialog(this);
+
             SalesMainInterface salesInterface = new SalesMainInterface();
             if (_salesMainCode == null)
             {
@@ -509,28 +510,7 @@ namespace WSCATProject.Sales
              0.0M,
            dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
            ));
-            //逐行统计数据总数
-            decimal tempDanJuMoney = 0;
-            decimal tempYiHeXiaoMoney = 0;
-            decimal tempWeiHeXiaoMoney = 0;
-            decimal tempBenCiHeXiao = 0;
-            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-            {
-                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                tempDanJuMoney += Convert.ToDecimal(tempGR["danjuMoney"].FormattedValue);
-                tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["YiHeXiaoMoney"].FormattedValue);
-                tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["WeiHeXiaoMoney"].FormattedValue);
-                tempBenCiHeXiao += Convert.ToDecimal(tempGR["BenCiHeXiao"].FormattedValue);
-            }
-            _danJuMoney = tempDanJuMoney;
-            _yiHeXiaoMoney = tempYiHeXiaoMoney;
-            _weiHeXiaoMoney = tempWeiHeXiaoMoney;
-            _benCiHeXiaoMoney = tempBenCiHeXiao;
-            grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-            grid["danjuMoney"].Value = _danJuMoney.ToString();
-            grid["YiHeXiaoMoney"].Value = _yiHeXiaoMoney.ToString();
-            grid["WeiHeXiaoMoney"].Value = _weiHeXiaoMoney.ToString();
-            grid["BenCiHeXiao"].Value = _benCiHeXiaoMoney.ToString();
+            TongJi();
 
             foreach (GridRow g in grs)
             {
@@ -787,7 +767,7 @@ namespace WSCATProject.Sales
                         financecollectionDetail.nowMoney = Convert.ToDecimal(gr["BenCiHeXiao"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["BenCiHeXiao"].Value));//本次收款金额
                         financecollectionDetail.unCollection = Convert.ToDecimal(gr["WeuFuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["WeuFuMoney"].Value));//未收金额
                         financecollectionDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
-                        
+
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         financecollectionList.Add(financecollectionDetail);
                     }
@@ -1387,7 +1367,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("新增");
                 return;
             }
-            if (e.KeyCode==Keys.C && e.Modifiers==Keys.Control)
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
                 XuanYuanDan();
                 return;
@@ -1462,6 +1442,36 @@ namespace WSCATProject.Sales
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
         {
             MessageBox.Show("Test");
+        }
+
+        /// <summary>
+        /// 统计行数据
+        /// </summary>
+        private void TongJi()
+        {
+            GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+            //逐行统计数据总数
+            decimal tempDanJuMoney = 0;
+            decimal tempYiHeXiaoMoney = 0;
+            decimal tempWeiHeXiaoMoney = 0;
+            decimal tempBenCiHeXiao = 0;
+            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            {
+                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                tempDanJuMoney += Convert.ToDecimal(tempGR["danjuMoney"].FormattedValue);
+                tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["YiHeXiaoMoney"].FormattedValue);
+                tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["WeiHeXiaoMoney"].FormattedValue);
+                tempBenCiHeXiao += Convert.ToDecimal(tempGR["BenCiHeXiao"].FormattedValue);
+            }
+            _danJuMoney = tempDanJuMoney;
+            _yiHeXiaoMoney = tempYiHeXiaoMoney;
+            _weiHeXiaoMoney = tempWeiHeXiaoMoney;
+            _benCiHeXiaoMoney = tempBenCiHeXiao;
+            grid = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+            grid["danjuMoney"].Value = _danJuMoney.ToString();
+            grid["YiHeXiaoMoney"].Value = _yiHeXiaoMoney.ToString();
+            grid["WeiHeXiaoMoney"].Value = _weiHeXiaoMoney.ToString();
+            grid["BenCiHeXiao"].Value = _benCiHeXiaoMoney.ToString();
         }
     }
 }

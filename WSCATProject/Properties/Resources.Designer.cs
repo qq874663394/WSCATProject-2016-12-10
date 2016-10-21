@@ -233,6 +233,16 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap BTN_FUND_FKD {
+            get {
+                object obj = ResourceManager.GetObject("BTN_FUND_FKD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap BTN_FUND_SKD {
             get {
                 object obj = ResourceManager.GetObject("BTN_FUND_SKD", resourceCulture);
@@ -276,6 +286,26 @@ namespace WSCATProject.Properties {
         internal static System.Drawing.Bitmap BTN_SAIL_XSDD {
             get {
                 object obj = ResourceManager.GetObject("BTN_SAIL_XSDD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BTN_STOCK_CGDD {
+            get {
+                object obj = ResourceManager.GetObject("BTN_STOCK_CGDD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BTN_STOCK_GHD {
+            get {
+                object obj = ResourceManager.GetObject("BTN_STOCK_GHD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
