@@ -78,6 +78,7 @@
             this.gridColumndingdanbianhao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumncode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.checkBoxJiaoJi = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.picShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -95,6 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTiaoXiangMa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -114,6 +116,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1037, 82);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.picShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.picShengHe, 0);
             // 
             // labelTitle
             // 
@@ -900,6 +912,18 @@
             this.checkBoxJiaoJi.TabIndex = 71;
             this.checkBoxJiaoJi.Text = "加急";
             // 
+            // picShengHe
+            // 
+            this.picShengHe.BackColor = System.Drawing.Color.Transparent;
+            this.picShengHe.Image = global::WSCATProject.Properties.Resources.审核;
+            this.picShengHe.Location = new System.Drawing.Point(663, 5);
+            this.picShengHe.Name = "picShengHe";
+            this.picShengHe.Size = new System.Drawing.Size(71, 54);
+            this.picShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picShengHe.TabIndex = 47;
+            this.picShengHe.TabStop = false;
+            this.picShengHe.Visible = false;
+            // 
             // PurchaseTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -930,6 +954,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTiaoXiangMa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -987,5 +1012,6 @@
         private DevComponents.Editors.ComboItem comboItem12;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumncode;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxJiaoJi;
+        private System.Windows.Forms.PictureBox picShengHe;
     }
 }

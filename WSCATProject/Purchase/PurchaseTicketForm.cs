@@ -141,7 +141,7 @@ namespace WSCATProject.Purchase
             get { return _shangPinCode; }
             set { _shangPinCode = value; }
         }
-        
+
         private decimal _MaterialNumber;
         /// <summary>
         /// 采购主表code
@@ -167,8 +167,8 @@ namespace WSCATProject.Purchase
         /// </summary>
         public string JiaoHuoFangShi
         {
-            get { return _jiaoHuoFangShi;}
-            set{_jiaoHuoFangShi = value;}
+            get { return _jiaoHuoFangShi; }
+            set { _jiaoHuoFangShi = value; }
         }
         private string _jiaoHuoFangShi;
         #endregion
@@ -315,7 +315,7 @@ namespace WSCATProject.Purchase
                     dgvc.HeaderText = "仓库地址";
                     dgvc.DataPropertyName = "address";
                     dataGridViewFuJia.Columns.Add(dgvc);
-                    
+
                     //查询仓库的方法
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
                     resizablePanel1.Visible = true;
@@ -485,7 +485,7 @@ namespace WSCATProject.Purchase
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxTiaoXiangMa.Image = imgTemp;
                 //审核图标
-                //pictureBoxShengHe.Parent = pictureBoxtitle;
+                picShengHe.Parent = pictureBoxtitle;
             }
             catch (Exception ex)
             {
@@ -500,7 +500,7 @@ namespace WSCATProject.Purchase
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
-        {   
+        {
             XuanYuanDan();
         }
         /// <summary>
@@ -510,7 +510,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-     
+
         }
         /// <summary>
         /// 保存按钮事件
@@ -519,7 +519,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnSave_Click(object sender, EventArgs e)
         {
- 
+
         }
 
         #region 小箭头和两个附表的点击事件
@@ -548,7 +548,7 @@ namespace WSCATProject.Purchase
                 //供应商
                 if (_Click == 1 || _Click == 7)
                 {
-                     _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
+                    _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//供应商名称
                     string linkman = dataGridViewFuJia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
                     string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
@@ -581,7 +581,7 @@ namespace WSCATProject.Purchase
                 //结算账户
                 if (_Click == 4 || _Click == 6)
                 {
-                  
+
                     _bankCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
                     labtextboxTop4.Text = Name;
@@ -671,10 +671,10 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：330-选择表格第一个数据错误！"+ex.Message);
+                MessageBox.Show("错误代码：330-选择表格第一个数据错误！" + ex.Message);
                 return;
             }
-    
+
         }
 
         #endregion
@@ -906,7 +906,7 @@ namespace WSCATProject.Purchase
             purchaseOrder.SupplierCode = _supplierCode;
             purchaseOrder.ShowDialog(this);
 
-             
+
         }
     }
 }
