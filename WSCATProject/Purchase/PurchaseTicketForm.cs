@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -141,7 +142,9 @@ namespace WSCATProject.Purchase
             get { return _shangPinCode; }
             set { _shangPinCode = value; }
         }
+
         private decimal _MaterialNumber;
+        private decimal _caiGouMoney;
         #endregion
 
         #region 初始化数据
@@ -286,7 +289,7 @@ namespace WSCATProject.Purchase
                     dgvc.HeaderText = "仓库地址";
                     dgvc.DataPropertyName = "address";
                     dataGridViewFuJia.Columns.Add(dgvc);
-                    
+
                     //查询仓库的方法
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllStorage);
                     resizablePanel1.Visible = true;
@@ -481,7 +484,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-     
+
         }
 
         /// <summary>
@@ -491,7 +494,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnSave_Click(object sender, EventArgs e)
         {
- 
+
         }
         /// <summary>
         /// 商品附表的点击事件
@@ -518,7 +521,7 @@ namespace WSCATProject.Purchase
                 //供应商
                 if (_Click == 1 || _Click == 7)
                 {
-                     _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
+                    _supplierCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
                     string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//供应商名称
                     string linkman = dataGridViewFuJia.Rows[e.RowIndex].Cells["linkMan"].Value.ToString();//联系人
                     string phone = dataGridViewFuJia.Rows[e.RowIndex].Cells["mobilePhone"].Value.ToString();//电话
@@ -551,7 +554,7 @@ namespace WSCATProject.Purchase
                 //结算账户
                 if (_Click == 4 || _Click == 6)
                 {
-                  
+
                     _bankCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();
                     labtextboxTop4.Text = Name;
@@ -810,7 +813,7 @@ namespace WSCATProject.Purchase
                 return;
             }
         }
-            }
+
         /// <summary>
         /// 验证和统计数据
         /// </summary>
@@ -865,7 +868,7 @@ namespace WSCATProject.Purchase
                 _Money = tempAllMoney;
                 _TaxMoney = tempAllTaxMoney;
                 _PriceAndTaxMoney = tempAllPriceAndTax;
-                _CaiGouMoney = tempAllCaiGouMoney;
+                _caiGouMoney = tempAllCaiGouMoney;
                 gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
                 gr["gridColumndinggoushu"].Value = _dingGouShuLiang.ToString();
                 gr["gridColumnNumber"].EditorType = typeof(GridDoubleIntInputEditControl);
@@ -873,8 +876,8 @@ namespace WSCATProject.Purchase
                 gr["gridColumnMoney"].Value = _Money.ToString();
                 gr["gridColumnshuie"].Value = _TaxMoney.ToString();
                 gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
-                gr["gridColumncaihouMoney"].Value = _CaiGouMoney;
-                labtextboxTop7.Text = _CaiGouMoney.ToString("0.00");
+                gr["gridColumncaihouMoney"].Value = _caiGouMoney;
+                labtextboxTop7.Text = _caiGouMoney.ToString("0.00");
             }
             catch (Exception ex)
             {
@@ -911,7 +914,7 @@ namespace WSCATProject.Purchase
                 }
                 purchasemain.payMethod = XYEEncoding.strCodeHex(comboBoxExJieSuaType.Text == null ? "" : comboBoxExJieSuaType.Text.Trim());//付款方式
                 purchasemain.accountCode = XYEEncoding.strCodeHex(_bankCode);//账户code
-                //加急状态
+                                                                             //加急状态
                 if (checkBoxJiaoJi.Checked == true)
                 {
                     purchasemain.urgentState = 1;
@@ -921,7 +924,7 @@ namespace WSCATProject.Purchase
                     purchasemain.urgentState = 0;
                 }
                 purchasemain.purchaseManCode = XYEEncoding.strCodeHex(_employeeCode);//采购员code
-                //采购员名称
+                                                                                     //采购员名称
                 if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
                 {
                     purchasemain.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
@@ -934,7 +937,7 @@ namespace WSCATProject.Purchase
                 }
                 purchasemain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
                 purchasemain.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
-                purchasemain.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text==null?"": labtextboxBotton2.Text.Trim());//摘要
+                purchasemain.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text.Trim());//摘要
                 purchasemain.checkState = 0;//审核状态
                 purchasemain.logisticsCode = XYEEncoding.strCodeHex(textBoxKuaiDiDanHao.Text);//物流单号
                 purchasemain.logistics = XYEEncoding.strCodeHex(comboBoxEWuLiuType.Text);//物流类型
@@ -972,13 +975,13 @@ namespace WSCATProject.Purchase
                         purchaseDetail.PurchaseCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购单code
                         purchaseDetail.code = XYEEncoding.strCodeHex(_PurchaseMainCode + i.ToString());//采购单明细code
                         purchaseDetail.storageCode = XYEEncoding.strCodeHex(gr["gridColumncode"].Value == null ? "" : gr["gridColumncode"].Value.ToString());//仓库code
-                        //仓库名称
+                                                                                                                                                             //仓库名称
                         if (gr["gridColumnStock"].Value != null || gr["gridColumnStock"].Value.ToString() != "")
                         {
                             purchaseDetail.storageCode = XYEEncoding.strCodeHex(gr["gridColumnStock"].Value);
                         }
                         purchaseDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
-                        //商品代码
+                                                                                            //商品代码
                         if (gr["CaiGouNumber"].Value != null || gr["CaiGouNumber"].Value.ToString() != "")
                         {
                             purchaseDetail.materialDaima = XYEEncoding.strCodeHex(gr["CaiGouNumber"].Value);
@@ -989,12 +992,12 @@ namespace WSCATProject.Purchase
                             superGridControlShangPing.Focus();
                             return;
                         }
-                        purchaseDetail.materialName= XYEEncoding.strCodeHex(gr["gridColumnname"].Value==null?"": gr["gridColumnname"].Value.ToString());//商品名称
+                        purchaseDetail.materialName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value == null ? "" : gr["gridColumnname"].Value.ToString());//商品名称
                         purchaseDetail.materialModel = XYEEncoding.strCodeHex(gr["materialModel"].Value == null ? "" : gr["materialModel"].Value.ToString());//规格型号
                         purchaseDetail.unit = XYEEncoding.strCodeHex(gr["unit"].Value == null ? "" : gr["unit"].Value.ToString());//单位
-                        purchaseDetail.number= Convert.ToDecimal(gr["gridColumnNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnNumber"].Value));//数量
-                        purchaseDetail.discountBeforePrice= Convert.ToDecimal(gr["gridColumndanjia"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumndanjia"].Value));//价格
-                        //判断表格里的金额与实际值是否相符     
+                        purchaseDetail.number = Convert.ToDecimal(gr["gridColumnNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnNumber"].Value));//数量
+                        purchaseDetail.discountBeforePrice = Convert.ToDecimal(gr["gridColumndanjia"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumndanjia"].Value));//价格
+                                                                                                                                                                                       //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["gridColumnNumber"].Value) * Convert.ToDecimal(gr["gridColumndanjia"].Value);
                         if (money == Convert.ToDecimal(gr["gridColumnMoney"].Value))
                         {
@@ -1070,5 +1073,7 @@ namespace WSCATProject.Purchase
             //{
             //    MessageBox.Show("新增采购订单数据成功", "采购订单温馨提示");
             //}
-        }    }
+        }
+    }
 }
+
