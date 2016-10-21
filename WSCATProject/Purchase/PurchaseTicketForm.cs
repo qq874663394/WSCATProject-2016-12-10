@@ -2,6 +2,7 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Purchase;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -906,6 +907,8 @@ namespace WSCATProject.Purchase
             purchaseOrder.SupplierCode = _supplierCode;
             purchaseOrder.ShowDialog(this);
 
+            PurchaseOrderInterface purchaseOrderinter = new PurchaseOrderInterface();
+            DataTable dt = purchaseOrderinter.GetJoinSearch(XYEEncoding.strCodeHex(_purchaseMainCodel),XYEEncoding.strCodeHex(_purchaseCode));
              
         }
     }
