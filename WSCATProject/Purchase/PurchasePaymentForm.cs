@@ -136,6 +136,7 @@ namespace WSCATProject.Purchase
             gr.Cells["benciHeXiao"].Value = 0;
             gr.Cells["benciHeXiao"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["benciHeXiao"].CellStyles.Default.Background.Color1 = Color.Orange;
+            gr.Cells["benciHeXiao"].AllowSelection = false;
             gr.Cells["shengyuMoney"].Value = 0;
             gr.Cells["shengyuMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["shengyuMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
@@ -443,29 +444,35 @@ namespace WSCATProject.Purchase
                 case "采购付款":
                     labTop6.ForeColor = Color.Black;
                     labtextboxTop6.ReadOnly = false;
+                    labtextboxTop6.ForeColor = Color.Black;
                     labtextboxTop6.Border.BorderBottomColor = Color.Black;
                     labTop7.ForeColor = Color.Black;
                     labtextboxTop7.ReadOnly = false;
+                    labtextboxTop7.ForeColor = Color.Black;
                     labtextboxTop7.Border.BorderBottomColor = Color.Black;
                     break;
                 case "预付款":
                     labTop6.ForeColor = Color.Gray;
                     labtextboxTop6.ReadOnly = true;
                     labtextboxTop6.BackColor = Color.White;
+                    labtextboxTop6.ForeColor = Color.Gray;
                     labtextboxTop6.Border.BorderBottomColor = Color.Gray;
                     labTop7.ForeColor = Color.Gray;
                     labtextboxTop7.ReadOnly = true;
                     labtextboxTop7.BackColor = Color.White;
+                    labtextboxTop7.ForeColor = Color.Gray;
                     labtextboxTop7.Border.BorderBottomColor = Color.Gray;
                     break;
                 case "预付退款":
                     labTop6.ForeColor = Color.Gray;
                     labtextboxTop6.ReadOnly = true;
                     labtextboxTop6.BackColor = Color.White;
+                    labtextboxTop6.ForeColor = Color.Gray;
                     labtextboxTop6.Border.BorderBottomColor = Color.Gray;
                     labTop7.ForeColor = Color.Gray;
                     labtextboxTop7.ReadOnly = true;
                     labtextboxTop7.BackColor = Color.White;
+                    labtextboxTop7.ForeColor = Color.Gray;
                     labtextboxTop7.Border.BorderBottomColor = Color.Gray;
                     break;
             }
@@ -745,7 +752,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1512-模糊查询付款员数据失败！" + ex.Message,"付款单温馨提示！");
+                MessageBox.Show("错误代码：1512-模糊查询付款员数据失败！" + ex.Message, "付款单温馨提示！");
             }
         }
         #endregion
@@ -848,7 +855,7 @@ namespace WSCATProject.Purchase
                 labtextboxTop2.Focus();
             }
         }
-        
+
         /// <summary>
         /// 整单折扣
         /// </summary>
@@ -943,7 +950,7 @@ namespace WSCATProject.Purchase
             }
             ////获得界面上的数据,准备传给base层新增数据
             //PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
-          ///付款单
+            ///付款单
         }
 
         /// <summary>
@@ -964,6 +971,73 @@ namespace WSCATProject.Purchase
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// 验证、统计数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                //最后一行做统计行
+               
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                if (gr.Cells["BillCode"].FormattedValue == null || gr.Cells["BillCode"].FormattedValue == "")
+                {
+                    MessageBox.Show("请先选择源单：");
+                    gr.Cells["benciHeXiao"].Value = 0.00;
+                    return;
+                }
+                ////计算金额
+                decimal benciHeXiaoMoney = Convert.ToDecimal(gr.Cells["benciHeXiao"].FormattedValue);//本次核销金额
+                decimal weiHeXiaoMoney = Convert.ToDecimal(gr.Cells["weiHeXiao"].FormattedValue);//未核销金额
+                if (benciHeXiaoMoney > weiHeXiaoMoney)
+                {
+                    MessageBox.Show("本次核销金额不能大于未核销金额！");
+                    return;
+                }
+
+                decimal weifuMoney = weiHeXiaoMoney - benciHeXiaoMoney;//未付金额
+                gr.Cells["shengyuMoney"].Value = weifuMoney;
+
+                //逐行统计数据总数
+                decimal tempDanJuMoney = 0;
+                decimal tempYiHeXiaoMoney = 0;
+                decimal tempWeiHeXiaoMoney = 0;
+                decimal tempBenCiHeXiao = 0;
+                decimal tempShengYuMoney = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempDanJuMoney += Convert.ToDecimal(tempGR["BillMoney"].FormattedValue);
+                    tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["yiHeXiao"].FormattedValue);
+                    tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["weiHeXiao"].FormattedValue);
+                    tempBenCiHeXiao += Convert.ToDecimal(tempGR["benciHeXiao"].FormattedValue);
+                    tempShengYuMoney += Convert.ToDecimal(tempGR["shengyuMoney"].FormattedValue);
+                }
+                _danJuMoney = tempDanJuMoney;
+                _yiHeXiaoMoney = tempYiHeXiaoMoney;
+                _weiHeXiaoMoney = tempWeiHeXiaoMoney;
+                _benCiHeXiaoMoney = tempBenCiHeXiao;
+                _shengYuMoney = tempShengYuMoney;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["BillMoney"].Value = _danJuMoney.ToString();
+                gr["yiHeXiao"].Value = _yiHeXiaoMoney.ToString();
+                gr["weiHeXiao"].Value = _weiHeXiaoMoney.ToString();
+                gr["benciHeXiao"].Value = _benCiHeXiaoMoney.ToString();
+                gr["shengyuMoney"].Value = tempShengYuMoney.ToString();
+
+                labtextboxTop3.Text = _benCiHeXiaoMoney.ToString("0.00");
+                labtextboxTop6.Text = _benCiHeXiaoMoney.ToString("0.00");
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1513-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "收款单温馨提示！");
+            }
         }
     }
 }

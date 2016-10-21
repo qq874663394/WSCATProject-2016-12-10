@@ -147,6 +147,22 @@ namespace WSCATProject.Purchase
             gr.Cells["priceANDrate"].Value = 0;
             gr.Cells["priceANDrate"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["priceANDrate"].CellStyles.Default.Background.Color1 = Color.Orange;
+            #region 最后一行不能点击
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["name"].AllowSelection = false;
+            gr.Cells["model"].AllowSelection = false;
+            gr.Cells["barCode"].AllowSelection = false;
+            gr.Cells["unit"].AllowSelection = false;
+            gr.Cells["CaiGouNumber"].AllowSelection = false;
+            gr.Cells["price"].AllowSelection = false;
+            gr.Cells["Money"].AllowSelection = false;
+            gr.Cells["discountRate"].AllowSelection = false;
+            gr.Cells["discountMoney"].AllowSelection = false;
+            gr.Cells["faxRate"].AllowSelection = false;
+            gr.Cells["faxMoney"].AllowSelection = false;
+            gr.Cells["priceANDrate"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
