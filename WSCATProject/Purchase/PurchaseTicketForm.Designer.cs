@@ -810,6 +810,7 @@
             // 
             // gridColumnname
             // 
+            this.gridColumnname.AllowSelection = false;
             background1.Color1 = System.Drawing.Color.Azure;
             this.gridColumnname.CellStyles.Default.Background = background1;
             this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -826,6 +827,7 @@
             // 
             // gridColumnModel
             // 
+            this.gridColumnModel.AllowSelection = false;
             background2.Color1 = System.Drawing.Color.Azure;
             this.gridColumnModel.CellStyles.Default.Background = background2;
             this.gridColumnModel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -836,6 +838,7 @@
             // 
             // gridColumntiaoxingma
             // 
+            this.gridColumntiaoxingma.AllowSelection = false;
             background3.Color1 = System.Drawing.Color.Azure;
             this.gridColumntiaoxingma.CellStyles.Default.Background = background3;
             this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -845,6 +848,7 @@
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.AllowSelection = false;
             background4.Color1 = System.Drawing.Color.Azure;
             this.gridColumnunit.CellStyles.Default.Background = background4;
             this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -855,6 +859,7 @@
             // 
             // gridColumndinggoushu
             // 
+            this.gridColumndinggoushu.AllowSelection = false;
             background5.Color1 = System.Drawing.Color.Azure;
             this.gridColumndinggoushu.CellStyles.Default.Background = background5;
             this.gridColumndinggoushu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -880,7 +885,6 @@
             this.gridColumndanjia.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumndanjia.HeaderText = "单价";
             this.gridColumndanjia.Name = "gridColumndanjia";
-            this.gridColumndanjia.ReadOnly = true;
             this.gridColumndanjia.Width = 70;
             // 
             // gridColumnzhekoul
@@ -904,6 +908,7 @@
             // 
             // gridColumnzhekoue
             // 
+            this.gridColumnzhekoue.AllowSelection = false;
             background8.Color1 = System.Drawing.Color.Azure;
             this.gridColumnzhekoue.CellStyles.Default.Background = background8;
             this.gridColumnzhekoue.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -915,6 +920,7 @@
             // 
             // gridColumnMoney
             // 
+            this.gridColumnMoney.AllowSelection = false;
             background9.Color1 = System.Drawing.Color.Azure;
             this.gridColumnMoney.CellStyles.Default.Background = background9;
             this.gridColumnMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -926,6 +932,7 @@
             // 
             // gridColumnshuie
             // 
+            this.gridColumnshuie.AllowSelection = false;
             background10.Color1 = System.Drawing.Color.Azure;
             this.gridColumnshuie.CellStyles.Default.Background = background10;
             this.gridColumnshuie.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -937,17 +944,17 @@
             // 
             // gridColumncaihouMoney
             // 
-            background11.Color1 = System.Drawing.Color.Azure;
+            background11.Color1 = System.Drawing.Color.White;
             this.gridColumncaihouMoney.CellStyles.Default.Background = background11;
             this.gridColumncaihouMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumncaihouMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumncaihouMoney.HeaderText = "采购费用";
             this.gridColumncaihouMoney.Name = "gridColumncaihouMoney";
-            this.gridColumncaihouMoney.ReadOnly = true;
             this.gridColumncaihouMoney.Width = 70;
             // 
             // gridColumnjiashuiheji
             // 
+            this.gridColumnjiashuiheji.AllowSelection = false;
             background12.Color1 = System.Drawing.Color.Azure;
             this.gridColumnjiashuiheji.CellStyles.Default.Background = background12;
             this.gridColumnjiashuiheji.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -959,6 +966,7 @@
             // 
             // gridColumnshengchandate
             // 
+            this.gridColumnshengchandate.AllowSelection = false;
             background13.Color1 = System.Drawing.Color.Azure;
             this.gridColumnshengchandate.CellStyles.Default.Background = background13;
             this.gridColumnshengchandate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -969,6 +977,7 @@
             // 
             // gridColumnbaozhiqi
             // 
+            this.gridColumnbaozhiqi.AllowSelection = false;
             background14.Color1 = System.Drawing.Color.Azure;
             this.gridColumnbaozhiqi.CellStyles.Default.Background = background14;
             this.gridColumnbaozhiqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -979,6 +988,7 @@
             // 
             // gridColumnyouxiaoqi
             // 
+            this.gridColumnyouxiaoqi.AllowSelection = false;
             background15.Color1 = System.Drawing.Color.Azure;
             this.gridColumnyouxiaoqi.CellStyles.Default.Background = background15;
             this.gridColumnyouxiaoqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -989,6 +999,7 @@
             // 
             // gridColumnbeizhu
             // 
+            this.gridColumnbeizhu.AllowSelection = false;
             background18.Color1 = System.Drawing.Color.Azure;
             this.gridColumnbeizhu.CellStyles.Default.Background = background18;
             this.gridColumnbeizhu.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -999,6 +1010,7 @@
             // 
             // gridColumnyuandancode
             // 
+            this.gridColumnyuandancode.AllowSelection = false;
             background16.Color1 = System.Drawing.Color.Azure;
             this.gridColumnyuandancode.CellStyles.Default.Background = background16;
             this.gridColumnyuandancode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -1009,6 +1021,7 @@
             // 
             // gridColumndingdanbianhao
             // 
+            this.gridColumndingdanbianhao.AllowSelection = false;
             background17.Color1 = System.Drawing.Color.Azure;
             this.gridColumndingdanbianhao.CellStyles.Default.Background = background17;
             this.gridColumndingdanbianhao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
@@ -1019,9 +1032,11 @@
             // 
             // gridColumncode
             // 
+            this.gridColumncode.AllowSelection = false;
             this.gridColumncode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumncode.HeaderText = "仓库code";
             this.gridColumncode.Name = "gridColumncode";
+            this.gridColumncode.ReadOnly = true;
             this.gridColumncode.Visible = false;
             // 
             // checkBoxJiaoJi
@@ -1049,7 +1064,9 @@
             // 
             // gridColumnwuliaocode
             // 
+            this.gridColumnwuliaocode.AllowSelection = false;
             this.gridColumnwuliaocode.Name = "gridColumnwuliaocode";
+            this.gridColumnwuliaocode.ReadOnly = true;
             this.gridColumnwuliaocode.Visible = false;
             // 
             // PurchaseTicketForm
