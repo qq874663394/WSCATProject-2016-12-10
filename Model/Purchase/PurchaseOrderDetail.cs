@@ -21,7 +21,7 @@ namespace Model.Purchase
         private decimal? _discountrate;
         private decimal? _vatrate;
         private decimal? _discountmoney;
-        private string _purchaseamount;
+        private decimal? _purchaseamount;
         private decimal? _tax;
         private decimal? _taxtotal;
         private string _remark;
@@ -29,6 +29,7 @@ namespace Model.Purchase
         private string _maincode;
         private string _code;
         private string _amount;
+        private string _mainCode;
         /// <summary>
         /// 
         /// </summary>
@@ -96,7 +97,7 @@ namespace Model.Purchase
         /// <summary>
         /// 采购费用合计
         /// </summary>
-        public string purchaseAmount
+        public decimal? purchaseAmount
         {
             set { _purchaseamount = value; }
             get { return _purchaseamount; }
