@@ -147,7 +147,7 @@ namespace WSCATProject.Purchase
             gr.Cells["priceANDrate"].Value = 0;
             gr.Cells["priceANDrate"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["priceANDrate"].CellStyles.Default.Background.Color1 = Color.Orange;
-            #region 最后一行不能点击
+            #region 合计行不能点击
             gr.Cells["material"].AllowSelection = false;
             gr.Cells["name"].AllowSelection = false;
             gr.Cells["model"].AllowSelection = false;
@@ -1397,6 +1397,9 @@ namespace WSCATProject.Purchase
                 if (g.Cells["name"].Value == null || g.Cells["name"].Value.ToString() == "")
                 {
                     MessageBox.Show("请选择商品代码：");
+                    g.Cells["CaiGouNumber"].Value = 0.00;
+                    g.Cells["price"].Value = 0.00;
+                    g.Cells["discountRate"].Value = 100.00;
                     return;
                 }
                 //最后一行做统计行
