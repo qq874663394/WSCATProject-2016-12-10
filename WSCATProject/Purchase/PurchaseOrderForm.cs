@@ -538,7 +538,7 @@ namespace WSCATProject.Purchase
                 else
                 {
                     MessageBox.Show("交货地点员不能为空！");
-                    txtAddress.FindForm();
+                    txtAddress.Focus();
                     return;
                 }
 
@@ -552,7 +552,7 @@ namespace WSCATProject.Purchase
                 else
                 {
                     MessageBox.Show("采购员不能为空！");
-                    ltxtbSalsMan.FindForm();
+                    ltxtbSalsMan.Focus();
                     return;
                 }
                 purchaseorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人

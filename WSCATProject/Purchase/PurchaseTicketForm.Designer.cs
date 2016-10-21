@@ -65,7 +65,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxWeiKaiPiao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelYiKaiPiao = new System.Windows.Forms.Label();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxYiKaiPiao = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.comboBoxEWuLiuType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem8 = new DevComponents.Editors.ComboItem();
             this.comboItem9 = new DevComponents.Editors.ComboItem();
@@ -161,7 +161,7 @@
             // 
             this.panel2.Controls.Add(this.checkBoxJiaoJi);
             this.panel2.Controls.Add(this.comboBoxEWuLiuType);
-            this.panel2.Controls.Add(this.textBoxX2);
+            this.panel2.Controls.Add(this.textBoxYiKaiPiao);
             this.panel2.Controls.Add(this.labelYiKaiPiao);
             this.panel2.Controls.Add(this.textBoxWeiKaiPiao);
             this.panel2.Controls.Add(this.label3);
@@ -214,7 +214,7 @@
             this.panel2.Controls.SetChildIndex(this.label3, 0);
             this.panel2.Controls.SetChildIndex(this.textBoxWeiKaiPiao, 0);
             this.panel2.Controls.SetChildIndex(this.labelYiKaiPiao, 0);
-            this.panel2.Controls.SetChildIndex(this.textBoxX2, 0);
+            this.panel2.Controls.SetChildIndex(this.textBoxYiKaiPiao, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxEWuLiuType, 0);
             this.panel2.Controls.SetChildIndex(this.checkBoxJiaoJi, 0);
             // 
@@ -741,28 +741,28 @@
             this.labelYiKaiPiao.TabIndex = 67;
             this.labelYiKaiPiao.Text = "已开票金额：";
             // 
-            // textBoxX2
+            // textBoxYiKaiPiao
             // 
-            this.textBoxX2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxYiKaiPiao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
-            this.textBoxX2.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.textBoxX2.Border.BorderBottomColor = System.Drawing.Color.Gray;
-            this.textBoxX2.Border.BorderBottomWidth = 1;
-            this.textBoxX2.Border.BorderGradientAngle = 0;
-            this.textBoxX2.Border.Class = "SideNavStrip";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX2.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxX2.Location = new System.Drawing.Point(592, 101);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.ReadOnly = true;
-            this.textBoxX2.Size = new System.Drawing.Size(120, 16);
-            this.textBoxX2.TabIndex = 69;
-            this.textBoxX2.Text = "0.00";
-            this.textBoxX2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxYiKaiPiao.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.textBoxYiKaiPiao.Border.BorderBottomColor = System.Drawing.Color.Gray;
+            this.textBoxYiKaiPiao.Border.BorderBottomWidth = 1;
+            this.textBoxYiKaiPiao.Border.BorderGradientAngle = 0;
+            this.textBoxYiKaiPiao.Border.Class = "SideNavStrip";
+            this.textBoxYiKaiPiao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxYiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxYiKaiPiao.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxYiKaiPiao.Location = new System.Drawing.Point(592, 101);
+            this.textBoxYiKaiPiao.Name = "textBoxYiKaiPiao";
+            this.textBoxYiKaiPiao.PreventEnterBeep = true;
+            this.textBoxYiKaiPiao.ReadOnly = true;
+            this.textBoxYiKaiPiao.Size = new System.Drawing.Size(120, 16);
+            this.textBoxYiKaiPiao.TabIndex = 69;
+            this.textBoxYiKaiPiao.Text = "0.00";
+            this.textBoxYiKaiPiao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // comboBoxEWuLiuType
             // 
@@ -1102,7 +1102,7 @@
         protected DevComponents.DotNetBar.Controls.TextBoxX textBoxKuaiDiDanHao;
         private System.Windows.Forms.Label labelWuLiuDanHao;
         private System.Windows.Forms.Label labelYiKaiPiao;
-        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        protected DevComponents.DotNetBar.Controls.TextBoxX textBoxYiKaiPiao;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEWuLiuType;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnStock;
         private DevComponents.DotNetBar.SuperGrid.GridColumn material;

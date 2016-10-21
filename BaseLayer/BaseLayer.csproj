@@ -59,7 +59,7 @@
     <Compile Include="Finance\FinanceCollectionBase.cs" />
     <Compile Include="LogBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Purchase\PurchaseBase.cs" />
+    <Compile Include="Purchase\PurchaseMainBase.cs" />
     <Compile Include="Purchase\PurchaseDetailBase.cs" />
     <Compile Include="Purchase\PurchaseOrderBase.cs" />
     <Compile Include="Purchase\PurchaseOrderDetailBase.cs" />
