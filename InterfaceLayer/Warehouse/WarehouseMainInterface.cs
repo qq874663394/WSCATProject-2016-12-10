@@ -60,5 +60,14 @@ namespace InterfaceLayer.Warehouse
         {
             return wo.GetWMainAndMaterialByWMCode(fieldName, fieldValue, storageCode);
         }
+        /// <summary>
+        /// true存在，false不存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return wo.Exists(code);
+        }
     }
 }

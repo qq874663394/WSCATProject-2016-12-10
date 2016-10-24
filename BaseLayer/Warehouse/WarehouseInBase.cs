@@ -314,16 +314,18 @@ VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@nu
         /// <returns></returns>
         public bool Exists(string code)
         {
+            bool isflag = false;
             string sql = "";
             try
             {
                 sql = string.Format("select count(1) from T_WarehouseIn where code='{0}'", code);
+                isflag = DbHelperSQL.Exists(sql);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return DbHelperSQL.Exists(sql);
+            return isflag;
         }
     }
 }

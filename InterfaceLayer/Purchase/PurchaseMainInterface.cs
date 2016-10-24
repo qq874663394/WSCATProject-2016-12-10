@@ -26,5 +26,9 @@ namespace InterfaceLayer.Purchase
         {
             return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
+        }
     }
 }

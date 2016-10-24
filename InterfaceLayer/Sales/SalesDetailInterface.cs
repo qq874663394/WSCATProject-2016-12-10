@@ -34,5 +34,9 @@ namespace InterfaceLayer.Sales
         {
             return sdl.GetWhereList(fieldValue,salesCode);
         }
+        public bool Exists(string code)
+        {
+            return sdl.Exists(code);
+        }
     }
 }

@@ -32,6 +32,13 @@ namespace InterfaceLayer.Sales
             return _dal.GetTableByClientCode(clientCode);
         }
         /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
+        }
+        /// <summary>
         /// 保存审核公用
         /// </summary>
         /// <param name="model"></param>

@@ -42,5 +42,9 @@ namespace InterfaceLayer.Purchase
         {
             return _dal.GetJoinSearch(mainCode, detailCode);
         }
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
+        }
     }
 }

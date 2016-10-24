@@ -120,6 +120,12 @@ namespace BaseLayer
                 return true;
             }
         }
+        /// <summary>
+        /// 查询单行单列，false不存在，true存在
+        /// </summary>
+        /// <param name="strSql"></param>
+        /// <param name="cmdParms"></param>
+        /// <returns></returns>
         public static bool Exists(string strSql, params SqlParameter[] cmdParms)
         {
             object obj = GetSingle(strSql, cmdParms);

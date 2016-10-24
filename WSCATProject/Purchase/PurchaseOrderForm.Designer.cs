@@ -636,8 +636,8 @@
             this.txtYiFuDingJin.TabIndex = 62;
             this.txtYiFuDingJin.Text = "0.00";
             this.txtYiFuDingJin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtYiFuDingJin.TextChanged += new System.EventHandler(this.txtYiFuDingJin_TextChanged);
             this.txtYiFuDingJin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYiFuDingJin_KeyPress);
+            this.txtYiFuDingJin.Validated += new System.EventHandler(this.txtYiFuDingJin_Validated);
             // 
             // txtLinkMan
             // 

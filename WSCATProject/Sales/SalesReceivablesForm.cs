@@ -541,8 +541,6 @@ namespace WSCATProject.Sales
             try
             {
                 financecollection.code = XYEEncoding.strCodeHex(_SaleReceivablesCode);//收款单单号
-                financecollection.date = this.dateTimePicker1.Value;//开单日期
-                financecollection.type = XYEEncoding.strCodeHex(cboDanJuType.Text.Trim());//单据类型
                 financecollection.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户编号
                 if (txtClient.Text != null || txtClient.Text != "")
                 {
@@ -565,10 +563,6 @@ namespace WSCATProject.Sales
                     txtBank.Focus();
                     return;
                 }
-                financecollection.settlementMethod = XYEEncoding.strCodeHex(cboJieSuanMethod.Text.Trim());//结算方式
-                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtDiscount.Text));//整单折扣率
-                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtBenCiShouKuan.Text));//整单收款   
-                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim() == null ? "" : txtRemark.Text.ToString());//摘要 
                 financecollection.salesCode = XYEEncoding.strCodeHex(_employeeCode);//收款员code
                 if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
                 {
@@ -580,6 +574,12 @@ namespace WSCATProject.Sales
                     ltxtbSalsMan.Focus();
                     return;
                 }
+                financecollection.date = this.dateTimePicker1.Value;//开单日期
+                financecollection.type = XYEEncoding.strCodeHex(cboDanJuType.Text.Trim());//单据类型     
+                financecollection.settlementMethod = XYEEncoding.strCodeHex(cboJieSuanMethod.Text.Trim());//结算方式
+                financecollection.discount = Convert.ToDecimal(txtDiscount.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtDiscount.Text));//整单折扣率
+                financecollection.totalCollection = Convert.ToDecimal(txtBenCiShouKuan.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtBenCiShouKuan.Text));//整单收款   
+                financecollection.remark = XYEEncoding.strCodeHex(txtRemark.Text.Trim() == null ? "" : txtRemark.Text.ToString());//摘要                
                 financecollection.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim() == null ? "" : ltxtbMakeMan.Text);//制单人
                 financecollection.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim() == null ? "" : ltxtbShengHeMan.Text);//审核人   
                 financecollection.isClear = 1;
@@ -617,9 +617,6 @@ namespace WSCATProject.Sales
                         i++;
                         FinanceCollectionDetail financecollectionDetail = new FinanceCollectionDetail();
                         financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
-                        financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
-                        financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
-                        financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
                         if (gr["yuandanType"].Value.ToString() != "" || gr["yuandanType"].Value != null)
                         {
                             financecollectionDetail.salesType = XYEEncoding.strCodeHex(gr["yuandanType"].Value.ToString());//销售单类型
@@ -630,6 +627,10 @@ namespace WSCATProject.Sales
                             superGridControlShangPing.Focus();
                             return;
                         }
+                        financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
+                        financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
+                        financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
+                    
                         financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["danjuMoney"].Value));//应收金额
                         financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["YiHeXiaoMoney"].Value));//已核销金额
                         financecollectionDetail.amountUnpaid = Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["WeiHeXiaoMoney"].Value));//未核销金额

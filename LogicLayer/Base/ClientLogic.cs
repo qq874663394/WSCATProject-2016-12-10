@@ -26,10 +26,10 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_Client",
+                operationTable = "T_BaseClient",
                 operationTime = DateTime.Now,
-                objective = "查询客户信息",
-                operationContent = "查询T_Client表的所有数据,显示全部:" + isflag.ToString()
+                objective = "查询信息",
+                operationContent = "查询T_BaseClient表的所有数据,显示全部:" + isflag.ToString()
             };
             try
             {
@@ -63,9 +63,9 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_Client",
+                operationTable = "T_BaseClient",
                 operationTime = DateTime.Now,
-                objective = "查询客户信息"
+                objective = "查询信息"
             };
             try
             {
@@ -84,7 +84,7 @@ namespace LogicLayer.Base
                         strWhere += string.Format("code = '{0}'", fieldValue);
                         break;
                 }
-                model.operationContent = "查询T_Client表的所有数据,条件:" + strWhere;
+                model.operationContent = "查询T_BaseClient表的所有数据,条件:" + strWhere;
                 dt = cb.GetList(strWhere);
                 model.result = 1;
             }
@@ -98,6 +98,36 @@ namespace LogicLayer.Base
                 lb.Add(model);
             }
             return dt;
+        }
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseClient",
+                operationTime = DateTime.Now,
+                objective = "查询指定code的数据是否存在",
+                operationContent = "查询数据"
+            };
+            try
+            {
+                cb.Exists(code);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return isflag;
         }
     }
 }

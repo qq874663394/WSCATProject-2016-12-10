@@ -32,5 +32,9 @@ namespace InterfaceLayer.Sales
         {
             return _dal.GetSelectedDetail(salesCode, salesDetailCode);
         }
-    }
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
+        }
+        }
 }
