@@ -517,7 +517,15 @@ namespace WSCATProject.Purchase
             try
             {
                 //验证单号
-                purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);//采购订单code
+                if (purchaseOrderinterface.Exists(XYEEncoding.strCodeHex(_PurchaseOrderCode)))
+                {
+                    _PurchaseOrderCode = BuildCode.ModuleCode("POR");
+                    purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);
+                }
+                else
+                {
+                    purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);//采购订单code
+                }
                 //判断必须验证的
                 if (txtSupply.Text.Trim() != null || txtSupply.Text != "")
                 {

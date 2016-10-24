@@ -39,7 +39,7 @@ namespace InterfaceLayer.Warehouse
         /// <returns></returns>
         public bool Exists(string code)
         {
-            return _dal.Exists(code);
+            return dal.Exists(code);
         }
     }
 }

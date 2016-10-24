@@ -615,7 +615,15 @@ namespace WSCATProject.Sales
             List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
             try
             {
-                salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code               
+                if (saleorderinterface.Exists(XYEEncoding.strCodeHex(_SalesOrderCode)))
+                {
+                    _SalesOrderCode = BuildCode.ModuleCode("SOR");
+                    salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);
+                }
+                else
+                {
+                    salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code 
+                }
                 //客户code
                 if (labtxtDanJuType.Text != null || labtxtDanJuType.Text.Trim() != "")
                 {
