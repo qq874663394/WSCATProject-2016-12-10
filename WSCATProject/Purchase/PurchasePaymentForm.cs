@@ -1015,7 +1015,7 @@ namespace WSCATProject.Purchase
             purchaseTicketReport.SuppilerCode = _supplyCode;
             purchaseTicketReport.ShowDialog(this);
 
-            PurchaseInterface purchaseInter = new PurchaseInterface();
+            PurchaseMainInterface purchaseInter = new PurchaseMainInterface();
 
             if (_purchaseMainCode == null)
             {
