@@ -118,5 +118,25 @@ where T_WarehouseMain.materialCode = T_BaseMaterial.code and T_WarehouseMain.sto
             }
             return dt;
         }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_WarehouseMain where code='{0}'", code);
+                isflag = DbHelperSQL.Exists(sql);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return isflag;
+        }
     }
 }

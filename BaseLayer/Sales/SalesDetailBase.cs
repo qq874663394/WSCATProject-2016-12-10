@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,18 @@ whm.code = whd.mainCode and sd.salesMainCode = '{0}'", SalesCode);
                 throw ex;
             }
             return dt;
+        }
+        public bool Exists(string code)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from [T_PurchaseMain]");
+            strSql.Append(" where code=@code ");
+
+            SqlParameter[] parameters = {
+                    new SqlParameter("@code", SqlDbType.NVarChar,50)};
+            parameters[0].Value = code;
+
+            return DbHelperSQL.Exists(strSql.ToString(), parameters);
         }
     }
 }

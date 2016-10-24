@@ -23,5 +23,14 @@ namespace InterfaceLayer.Base
         {
             return _dal.GetList(fieldName, fieldValue, isClear, isEnable);
         }
+        /// <summary>
+        /// true存在，false不存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
+        }
     }
 }

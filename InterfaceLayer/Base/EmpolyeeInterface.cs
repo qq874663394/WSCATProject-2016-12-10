@@ -29,5 +29,9 @@ namespace InterfaceLayer.Base
         {
             return el.Exists(name, pwd);
         }
+        public bool Exists(string code)
+        {
+            return el.Exists(code);
+        }
     }
 }

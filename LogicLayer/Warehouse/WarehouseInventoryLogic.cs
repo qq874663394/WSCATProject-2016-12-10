@@ -65,5 +65,40 @@ namespace LogicLayer.Warehouse
                 lb.Add(model);
             }
         }
+        public bool Exists(string code)
+        {
+            bool result = false;
+            WarehouseInBase warehouseInBase = new WarehouseInBase();
+            LogBase lb = new LogBase();
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseInventory",
+                operationTime = DateTime.Now,
+                objective = "判断入库单是否存在",
+                operationContent = "查询T_WarehouseInventory表的数据是否存在,条件code为:" + code
+            };
+            try
+            {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
+                result = warehouseInBase.Exists(code);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                logModel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(logModel);
+            }
+            return result;
+        }
     }
 }

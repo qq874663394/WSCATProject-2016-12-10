@@ -32,5 +32,14 @@ namespace InterfaceLayer.Warehouse
         {
             return dal.AddAndModify(model, listModel);
         }
+        /// <summary>
+        /// true存在，false不存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return _dal.Exists(code);
+        }
     }
 }

@@ -34,5 +34,25 @@ namespace BaseLayer.Warehouse
             }
             return ds;
         }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_WarehouseInventory where code='{0}'", code);
+                isflag = DbHelperSQL.Exists(sql);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return isflag;
+        }
     }
 }

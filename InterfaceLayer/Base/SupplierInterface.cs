@@ -38,5 +38,14 @@ namespace InterfaceLayer.Base
         {
             return sl.GetPurchaseList(code);
         }
+        /// <summary>
+        /// true存在，false不存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return sl.Exists(code);
+        }
     }
 }
