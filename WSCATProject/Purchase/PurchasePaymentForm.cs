@@ -992,7 +992,7 @@ namespace WSCATProject.Purchase
         /// 本次收款金额
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e"></param>            
         private void txtBenCiShouKuan_TextChanged(object sender, EventArgs e)
         {
 
