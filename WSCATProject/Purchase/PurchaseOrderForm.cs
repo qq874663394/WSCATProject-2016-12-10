@@ -508,28 +508,26 @@ namespace WSCATProject.Purchase
             {
                 return;
             }
-            ////获得界面上的数据,准备传给base层新增数据
+            //获得界面上的数据,准备传给base层新增数据
             PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
-            ////采购订单
+           //采购订单
             PurchaseOrder purchaseorder = new PurchaseOrder();
-            ////采购订单商品列表
+            //采购订单商品列表
             List<PurchaseOrderDetail> purchaseorderList = new List<PurchaseOrderDetail>();
             try
             {
+                //验证单号
                 purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);//采购订单code
-                purchaseorder.date = this.dateTimePicker1.Value;//开单日期
-                purchaseorder.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
-                switch (cboMethod.Text.Trim())//交货方式
+                //判断必须验证的
+                if (txtSupply.Text.Trim() != null || txtSupply.Text != "")
                 {
-                    case "提货":
-                        purchaseorder.deliversMethod = 0;
-                        break;
-                    case "送货":
-                        purchaseorder.deliversMethod = 1;
-                        break;
-                    case "发货":
-                        purchaseorder.deliversMethod = 2;
-                        break;
+                    purchaseorder.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    txtSupply.Focus();
+                    return;
                 }
                 if (txtAddress.Text != null || txtAddress.Text != "")
                 {
@@ -542,9 +540,6 @@ namespace WSCATProject.Purchase
                     return;
                 }
 
-                purchaseorder.deliversDate = this.dateTimePicker2.Value;//交货日期
-                purchaseorder.depositReceived = Convert.ToDecimal(txtYiFuDingJin.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtYiFuDingJin.Text));//已付订金
-                purchaseorder.remark = XYEEncoding.strCodeHex(txtRemark.Text == null ? "" : txtRemark.Text.Trim());//摘要
                 if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text != "")
                 {
                     purchaseorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
@@ -555,6 +550,23 @@ namespace WSCATProject.Purchase
                     ltxtbSalsMan.Focus();
                     return;
                 }
+                //绑定平常数据
+                purchaseorder.date = this.dateTimePicker1.Value;//开单日期
+                switch (cboMethod.Text.Trim())//交货方式
+                {
+                    case "提货":
+                        purchaseorder.deliversMethod = 0;
+                        break;
+                    case "送货":
+                        purchaseorder.deliversMethod = 1;
+                        break;
+                    case "发货":
+                        purchaseorder.deliversMethod = 2;
+                        break;
+                }
+                purchaseorder.deliversDate = this.dateTimePicker2.Value;//交货日期
+                purchaseorder.depositReceived = Convert.ToDecimal(txtYiFuDingJin.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtYiFuDingJin.Text));//已付订金
+                purchaseorder.remark = XYEEncoding.strCodeHex(txtRemark.Text == null ? "" : txtRemark.Text.Trim());//摘要
                 purchaseorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
                 purchaseorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
                 purchaseorder.checkState = 0;//审核状态
@@ -579,11 +591,6 @@ namespace WSCATProject.Purchase
 
                         i++;
                         PurchaseOrderDetail purchaseorderDetail = new PurchaseOrderDetail();
-                        purchaseorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购订单单据code
-                        purchaseorderDetail.code = XYEEncoding.strCodeHex(_PurchaseOrderCode + i.ToString());//采购订单明细code
-                        purchaseorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
-                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["CaiGouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["CaiGouNumber"].Value));//数量
-                        purchaseorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
                         //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["CaiGouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
                         if (money == Convert.ToDecimal(gr["Money"].Value))
@@ -595,7 +602,6 @@ namespace WSCATProject.Purchase
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["discountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["discountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["discountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -608,7 +614,6 @@ namespace WSCATProject.Purchase
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["faxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["faxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["faxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["faxMoney"].Value))
@@ -631,7 +636,6 @@ namespace WSCATProject.Purchase
                             MessageBox.Show("表格里价税合计的值错误！");
                             return;
                         }
-                        purchaseorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
                         if (gr["shouHuoNumber"].Value == null || gr["shouHuoNumber"].Value.ToString() == "")
                         {
                             purchaseorderDetail.deliveryNumber = Convert.ToDecimal(0.00);
@@ -641,8 +645,14 @@ namespace WSCATProject.Purchase
                             purchaseorderDetail.deliveryNumber = Convert.ToDecimal(gr["shouHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["shouHuoNumber"].Value));//收货数量    
                         }
 
-
-
+                        purchaseorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购订单单据code
+                        purchaseorderDetail.code = XYEEncoding.strCodeHex(_PurchaseOrderCode + i.ToString());//采购订单明细code
+                        purchaseorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
+                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["CaiGouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["CaiGouNumber"].Value));//数量
+                        purchaseorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
+                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["discountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["discountRate"].Value));//折扣率
+                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["faxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["faxRate"].Value));//增值税税率
+                        purchaseorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         purchaseorderList.Add(purchaseorderDetail);
                     }
@@ -679,9 +689,40 @@ namespace WSCATProject.Purchase
             List<PurchaseOrderDetail> purchaseorderList = new List<PurchaseOrderDetail>();
             try
             {
+                if (txtSupply.Text.Trim() != null || txtSupply.Text != "")
+                {
+                    purchaseorder.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    txtSupply.Focus();
+                    return;
+                }
+
+                if (txtAddress.Text != null || txtAddress.Text != "")
+                {
+                    purchaseorder.deliversLocation = XYEEncoding.strCodeHex(txtAddress.Text.Trim());//交货地点
+                }
+                else
+                {
+                    MessageBox.Show("交货地点员不能为空！");
+                    txtAddress.FindForm();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text != "")
+                {
+                    purchaseorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("采购员不能为空！");
+                    ltxtbSalsMan.FindForm();
+                    return;
+                }
+
                 purchaseorder.code = XYEEncoding.strCodeHex(_PurchaseOrderCode);//采购订单code
                 purchaseorder.date = this.dateTimePicker1.Value;//开单日期
-                purchaseorder.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
                 switch (cboMethod.Text.Trim())//交货方式
                 {
                     case "提货":
@@ -694,33 +735,12 @@ namespace WSCATProject.Purchase
                         purchaseorder.deliversMethod = 2;
                         break;
                 }
-                if (txtAddress.Text != null || txtAddress.Text != "")
-                {
-                    purchaseorder.deliversLocation = XYEEncoding.strCodeHex(txtAddress.Text.Trim());//交货地点
-                }
-                else
-                {
-                    MessageBox.Show("交货地点员不能为空！");
-                    txtAddress.FindForm();
-                    return;
-                }
-
                 purchaseorder.deliversDate = this.dateTimePicker2.Value;//交货日期
                 purchaseorder.depositReceived = Convert.ToDecimal(txtYiFuDingJin.Text.Trim() == "" ? 0.0M : Convert.ToDecimal(txtYiFuDingJin.Text));//已付订金
                 purchaseorder.remark = XYEEncoding.strCodeHex(txtRemark.Text == null ? "" : txtRemark.Text.Trim());//摘要
-                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text != "")
-                {
-                    purchaseorder.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
-                }
-                else
-                {
-                    MessageBox.Show("采购员不能为空！");
-                    ltxtbSalsMan.FindForm();
-                    return;
-                }
                 purchaseorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
                 purchaseorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
-                purchaseorder.checkState = 0;//审核状态
+                purchaseorder.checkState = 1;//审核状态
             }
             catch (Exception ex)
             {
@@ -742,11 +762,6 @@ namespace WSCATProject.Purchase
 
                         i++;
                         PurchaseOrderDetail purchaseorderDetail = new PurchaseOrderDetail();
-                        purchaseorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购订单单据code
-                        purchaseorderDetail.code = XYEEncoding.strCodeHex(_PurchaseOrderCode + i.ToString());//采购订单明细code
-                        purchaseorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
-                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["CaiGouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["CaiGouNumber"].Value));//数量
-                        purchaseorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
                         //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["CaiGouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
                         if (money == Convert.ToDecimal(gr["Money"].Value))
@@ -758,7 +773,6 @@ namespace WSCATProject.Purchase
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["discountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["discountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["discountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -771,7 +785,6 @@ namespace WSCATProject.Purchase
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["faxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["faxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["faxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["faxMoney"].Value))
@@ -794,7 +807,7 @@ namespace WSCATProject.Purchase
                             MessageBox.Show("表格里价税合计的值错误！");
                             return;
                         }
-                        purchaseorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
+                      
                         if (gr["shouHuoNumber"].Value == null || gr["shouHuoNumber"].Value.ToString() == "")
                         {
                             purchaseorderDetail.deliveryNumber = Convert.ToDecimal(0.00);
@@ -804,8 +817,14 @@ namespace WSCATProject.Purchase
                             purchaseorderDetail.deliveryNumber = Convert.ToDecimal(gr["shouHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["shouHuoNumber"].Value));//收货数量    
                         }
 
-
-
+                        purchaseorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//采购订单单据code
+                        purchaseorderDetail.code = XYEEncoding.strCodeHex(_PurchaseOrderCode + i.ToString());//采购订单明细code
+                        purchaseorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//商品code
+                        purchaseorderDetail.materialNumber = Convert.ToDecimal(gr["CaiGouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["CaiGouNumber"].Value));//数量
+                        purchaseorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价   
+                        purchaseorderDetail.discountRate = Convert.ToDecimal(gr["discountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["discountRate"].Value));//折扣率
+                        purchaseorderDetail.VATRate = Convert.ToDecimal(gr["faxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["faxRate"].Value));//增值税税率
+                        purchaseorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         purchaseorderList.Add(purchaseorderDetail);
                     }

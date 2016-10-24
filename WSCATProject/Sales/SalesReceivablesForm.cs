@@ -520,7 +520,9 @@ namespace WSCATProject.Sales
                 }
                 SalesMainList.Add(g.Cells["yuandanCode"].Value.ToString());
             }
+            _salesMainCode = null;
         }
+
         /// <summary>
         /// 保存的函数
         /// </summary>
