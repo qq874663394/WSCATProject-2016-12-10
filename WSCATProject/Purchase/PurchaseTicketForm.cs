@@ -1363,14 +1363,12 @@ namespace WSCATProject.Purchase
                 return;
             }
 
-            ////增加一条采购单和采购单详细数据
-            //object purchaseOrderResult = purchaseOrderinterface.AddOrUpdateToMainOrDetail(purchasemain, purchasedetailList);
-            //if (purchaseOrderResult != null)
-            //{
-            //    MessageBox.Show("新增采购单数据成功", "采购单温馨提示");
-            //}
-
-
+            //增加一条采购单和采购单详细数据
+            object purchaseOrderResult = purchaseOrderinterface.AddOrUpdateToMainOrDetail(purchasemain, purchasedetailList);
+            if (purchaseOrderResult != null)
+            {
+                MessageBox.Show("新增采购单数据成功", "采购单温馨提示");
+            }
         }
 
     }
