@@ -615,20 +615,17 @@ namespace WSCATProject.Sales
             List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
             try
             {
-                salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
-                salesorder.date = this.dateTimePicker1.Value;//开单日期
-                salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户code
-                switch (cboMethod.Text.Trim())//交货方式
+                salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code               
+                //客户code
+                if (labtxtDanJuType.Text != null || labtxtDanJuType.Text.Trim() != "")
                 {
-                    case "提货":
-                        salesorder.deliversMethod = 0;
-                        break;
-                    case "送货":
-                        salesorder.deliversMethod = 1;
-                        break;
-                    case "发货":
-                        salesorder.deliversMethod = 2;
-                        break;
+                    salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);
+                }
+                else
+                {
+                    MessageBox.Show("客户不能为空！");
+                    labtxtDanJuType.Focus();
+                    return;
                 }
                 //判断交货地点是否为空
                 if (labtextboxTop5.Text.Trim() != null || labtextboxTop5.Text != "")
@@ -650,9 +647,6 @@ namespace WSCATProject.Sales
                 {
                     salesorder.depositReceived = Convert.ToDecimal(labtextboxTop7.Text);
                 }
-
-                salesorder.deliversDate = dateTimePicker2.Value;//交货日期
-                salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
                 //判断销售员是否为空
                 if (ltxtbSalsMan.Text.Trim() != null || ltxtbSalsMan.Text != "")
                 {
@@ -664,6 +658,21 @@ namespace WSCATProject.Sales
                     ltxtbSalsMan.Focus();
                     return;
                 }
+                switch (cboMethod.Text.Trim())//交货方式
+                {
+                    case "提货":
+                        salesorder.deliversMethod = 0;
+                        break;
+                    case "送货":
+                        salesorder.deliversMethod = 1;
+                        break;
+                    case "发货":
+                        salesorder.deliversMethod = 2;
+                        break;
+                }
+                salesorder.date = this.dateTimePicker1.Value;//开单日期
+                salesorder.deliversDate = dateTimePicker2.Value;//交货日期
+                salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要           
                 salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
                 salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
                 salesorder.checkState = 0;//审核状态
@@ -690,9 +699,17 @@ namespace WSCATProject.Sales
                         SalesOrderDetail salesorderDetail = new SalesOrderDetail();
                         salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
                         salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
-                        salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
-                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
+                        //物料code
+                        if (gr.Cells["name"].Value != null || gr.Cells["name"].Value.ToString() != "")
+                        {
+                            salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);                         
+                        }
+                        else
+                        {
+                            MessageBox.Show("商品代码不能为空！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
                         //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["dinggouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
                         if (money == Convert.ToDecimal(gr["money"].Value))
@@ -704,7 +721,6 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -717,7 +733,6 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
@@ -740,6 +755,10 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里价税合计的值错误！");
                             return;
                         }
+                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
+                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价                         
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率                   
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率                 
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
                         salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
@@ -780,19 +799,16 @@ namespace WSCATProject.Sales
             try
             {
                 salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
-                salesorder.date = this.dateTimePicker1.Value;//开单日期
-                salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);//客户code
-                switch (cboMethod.Text.Trim())//交货方式
+                 //客户code
+                if (labtxtDanJuType.Text != null || labtxtDanJuType.Text.Trim() != "")
                 {
-                    case "提货":
-                        salesorder.deliversMethod = 0;
-                        break;
-                    case "送货":
-                        salesorder.deliversMethod = 1;
-                        break;
-                    case "发货":
-                        salesorder.deliversMethod = 2;
-                        break;
+                    salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);
+                }
+                else
+                {
+                    MessageBox.Show("客户不能为空！");
+                    labtxtDanJuType.Focus();
+                    return;
                 }
                 //判断交货地点是否为空
                 if (labtextboxTop5.Text.Trim() != null || labtextboxTop5.Text != "")
@@ -814,9 +830,6 @@ namespace WSCATProject.Sales
                 {
                     salesorder.depositReceived = Convert.ToDecimal(labtextboxTop7.Text);
                 }
-
-                salesorder.deliversDate = dateTimePicker2.Value;//交货日期
-                salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text == null ? "" : labtextboxTop9.Text.ToString());//摘要
                 //判断销售员是否为空
                 if (ltxtbSalsMan.Text.Trim() != null || ltxtbSalsMan.Text != "")
                 {
@@ -828,6 +841,21 @@ namespace WSCATProject.Sales
                     ltxtbSalsMan.Focus();
                     return;
                 }
+                salesorder.date = this.dateTimePicker1.Value;//开单日期
+                switch (cboMethod.Text.Trim())//交货方式
+                {
+                    case "提货":
+                        salesorder.deliversMethod = 0;
+                        break;
+                    case "送货":
+                        salesorder.deliversMethod = 1;
+                        break;
+                    case "发货":
+                        salesorder.deliversMethod = 2;
+                        break;
+                }
+                salesorder.deliversDate = dateTimePicker2.Value;//交货日期
+                salesorder.remark = XYEEncoding.strCodeHex(labtextboxTop9.Text == null ? "" : labtextboxTop9.Text.ToString());//摘要               
                 salesorder.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.ToString());//制单人
                 salesorder.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.ToString());//审核人
                 salesorder.checkState = 1;//审核状态
@@ -854,9 +882,17 @@ namespace WSCATProject.Sales
                         SalesOrderDetail salesorderDetail = new SalesOrderDetail();
                         salesorderDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//销售订单单据Code
                         salesorderDetail.code = XYEEncoding.strCodeHex(_SalesOrderCode + i.ToString());//销售订单明细Code
-                        salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);//物料code
-                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
-                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价    
+                        //物料code
+                        if (gr.Cells["name"].Value != null || gr.Cells["name"].Value.ToString() != "")
+                        {
+                            salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("商品代码不能为空！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
                         //判断表格里的金额与实际值是否相符     
                         decimal money = Convert.ToDecimal(gr["dinggouNumber"].Value) * Convert.ToDecimal(gr["price"].Value);
                         if (money == Convert.ToDecimal(gr["money"].Value))
@@ -868,7 +904,6 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里金额的值错误！");
                             return;
                         }
-                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率
                         decimal discountAfter = money * (Convert.ToDecimal(gr["DiscountRate"].Value) / 100);
                         decimal discountMoney = money - discountAfter;
                         //判断表格里的折扣额与实际值是否相符
@@ -881,7 +916,6 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里折扣额的值错误！");
                             return;
                         }
-                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率
                         //判断表格里的税额与实际值是否相符
                         decimal rateMoney = money * (Convert.ToDecimal(gr["TaxRate"].Value) / 100);
                         if (rateMoney == Convert.ToDecimal(gr["TaxMoney"].Value))
@@ -904,6 +938,10 @@ namespace WSCATProject.Sales
                             MessageBox.Show("表格里价税合计的值错误！");
                             return;
                         }
+                        salesorderDetail.materialNumber = Convert.ToDecimal(gr["dinggouNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["dinggouNumber"].Value));//数量
+                        salesorderDetail.materialPrice = Convert.ToDecimal(gr["price"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["price"].Value));//单价                      
+                        salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率                  
+                        salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率                    
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
                         salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 

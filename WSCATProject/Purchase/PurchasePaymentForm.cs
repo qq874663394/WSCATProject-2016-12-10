@@ -1018,7 +1018,7 @@ namespace WSCATProject.Purchase
             PurchaseMainInterface purchaseInter = new PurchaseMainInterface();
 
             if (_purchaseMainCode == null)
-            {
+            { 
                 return;
             }
             labTop1.ForeColor = Color.Gray;
@@ -1047,6 +1047,7 @@ namespace WSCATProject.Purchase
                 }
                 PurchaseMainList.Add(g.Cells["BillCode"].Value.ToString());
             }
+            _purchaseMainCode = null;
         }
 
         /// <summary>
