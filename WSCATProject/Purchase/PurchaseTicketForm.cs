@@ -1268,7 +1268,15 @@ namespace WSCATProject.Purchase
             List<PurchaseDetail> purchasedetailList = new List<PurchaseDetail>();
             try
             {
-                purchasemain.code = XYEEncoding.strCodeHex(_purchaseMainCode);//采购单code
+                if (purchaseMianInterface.Exists(XYEEncoding.strCodeHex(_purchaseMainCode)))
+                {
+                    _purchaseMainCode= BuildCode.ModuleCode("PCT");
+                    purchasemain.code = XYEEncoding.strCodeHex(_purchaseMainCode);
+                }
+                else
+                {
+                    purchasemain.code = XYEEncoding.strCodeHex(_purchaseMainCode);//采购单code
+                }
                 purchasemain.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
                 //供应商
                 if (labtextboxTop2.Text != null || labtextboxTop2.Text != "")
@@ -1316,7 +1324,6 @@ namespace WSCATProject.Purchase
                 purchasemain.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
                 purchasemain.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
                 purchasemain.checkState = 0;//审核状态
-
                 purchasemain.purchaseOrderState = 0;
                 purchasemain.isPay = 0;
                 purchasemain.putStorageState = 0;

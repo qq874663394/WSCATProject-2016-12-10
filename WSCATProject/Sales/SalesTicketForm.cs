@@ -968,8 +968,15 @@ namespace WSCATProject.Sales
             List<SalesDetail> salesdetialList = new List<SalesDetail>();
             try
             {
-                salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
-
+                if (salesMainInterface.Exists(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)))
+                {
+                    _SalesOrderCode = BuildCode.ModuleCode("ST");
+                    salesMain.code = XYEEncoding.strCodeHex(_SalesOrderCode);
+                }
+                else
+                {
+                    salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
+                }
                 if (labtextboxTop2.Text.Trim() != null || labtextboxTop2.Text.Trim() != "")
                 {
                     salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
