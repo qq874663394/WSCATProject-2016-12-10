@@ -282,7 +282,6 @@ SET barCode=@barCode
             }
             catch (Exception ex)
             {
-                isflag = false;
                 throw ex;
             }
             return false;

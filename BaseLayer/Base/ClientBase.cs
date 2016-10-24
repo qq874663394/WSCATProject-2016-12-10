@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace BaseLayer.Base
 {
@@ -53,6 +54,18 @@ namespace BaseLayer.Base
                 throw ex;
             }
             return ds.Tables[0];
+        }
+        public bool Exists(string code)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from [T_BaseClient]");
+            strSql.Append(" where code=@code ");
+
+            SqlParameter[] parameters = {
+                    new SqlParameter("@code", SqlDbType.NVarChar,50)};
+            parameters[0].Value = code;
+
+            return DbHelperSQL.Exists(strSql.ToString(), parameters);
         }
     }
 

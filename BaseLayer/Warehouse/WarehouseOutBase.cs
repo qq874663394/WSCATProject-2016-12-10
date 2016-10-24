@@ -55,8 +55,6 @@ namespace BaseLayer
             }
             return dt;
         }
-
-
         /// <summary>
         /// 事务新增
         /// </summary>
@@ -325,7 +323,6 @@ WHERE code = @code";  //主表的
             }
             return result;
         }
-
         /// <summary>
         /// 上下一单
         /// </summary>
@@ -384,6 +381,26 @@ WHERE code = @code";  //主表的
                 throw ex;
             }
             return null;
+        }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            string sql = "";
+            try
+            {
+                sql = string.Format("select count(1) from T_WarehouseMain where code='{0}'", code);
+                isflag = DbHelperSQL.Exists(sql);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return isflag;
         }
     }
 }

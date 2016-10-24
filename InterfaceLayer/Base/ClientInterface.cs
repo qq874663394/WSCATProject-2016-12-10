@@ -16,6 +16,15 @@ namespace InterfaceLayer.Base
             return cb.GetClientByBool(isflag);
         }
         /// <summary>
+        /// true存在，false不存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return cb.Exists(code);
+        }
+        /// <summary>
         /// 复合查询
         /// </summary>
         /// <param name="fieldName">0：模糊name,1:cityName,2:name,3:code</param>

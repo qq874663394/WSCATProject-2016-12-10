@@ -16,5 +16,14 @@ namespace InterfaceLayer.Base
         {
             return otl.GetList(fieldName, fieldValue);
         }
+        /// <summary>
+        /// true存在，false不存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return otl.Exists(code);
+        }
     }
 }

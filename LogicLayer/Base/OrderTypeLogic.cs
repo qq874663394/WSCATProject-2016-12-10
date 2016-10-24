@@ -31,7 +31,7 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_OrderType",
+                operationTable = "T_BaseOrderType",
                 operationTime = DateTime.Now,
                 objective = "查询客户信息"
             };
@@ -63,6 +63,36 @@ namespace LogicLayer.Base
                 lb.Add(model);
             }
             return dt;
+        }
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseOrderType",
+                operationTime = DateTime.Now,
+                objective = "查询指定code的数据是否存在",
+                operationContent = "查询数据"
+            };
+            try
+            {
+                otb.Exists(code);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return isflag;
         }
     }
 }

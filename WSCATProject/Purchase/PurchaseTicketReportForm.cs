@@ -59,25 +59,25 @@ namespace WSCATProject.Purchase
 
                 PurchaseMainInterface purchaseInter = new PurchaseMainInterface();
                 DataTable dt = ch.DataTableReCoding(purchaseInter.GetList(2, XYEEncoding.strCodeHex(_suppilerCode)));
-                if (dt.Rows.Count == 0 )
-                {
-                    MessageBox.Show("此供应商暂无购货单信息！请重新选择");
-                    this.Close();
-                    return;
-                }
+
                 PurchasePaymentForm purchase = (PurchasePaymentForm)this.Owner;
                 _pursachList = purchase.PurchaseMainList;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     foreach (var liat in _pursachList)
                     {
-                        if (dt.Rows[i][1].ToString() == liat)
+                        if (dt.Rows[i][2].ToString() == liat)
                         {
                             dt.Rows.RemoveAt(i);
                         }
                     }
                 }
-
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此供应商暂无购货单信息！请重新选择");
+                    this.Close();
+                    return;
+                }
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
             catch (Exception ex)

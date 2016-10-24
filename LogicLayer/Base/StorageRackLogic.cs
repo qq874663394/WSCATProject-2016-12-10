@@ -31,7 +31,7 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_StorageRack",
+                operationTable = "T_BaseStorageRack",
                 operationTime = DateTime.Now,
                 objective = "查询货架信息",
                 operationContent = "查询T_StorageRack表的数据,条件为:ParentId=" + parentId
@@ -69,7 +69,7 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_StorageRack",
+                operationTable = "T_BaseStorageRack",
                 operationTime = DateTime.Now,
                 objective = "查询货架信息",
                 operationContent = "查询T_StorageRack表的数据"
@@ -104,10 +104,10 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_StorageRack",
+                operationTable = "T_BaseStorageRack",
                 operationTime = DateTime.Now,
                 objective = "删除货架信息",
-                operationContent = "删除T_StorageRack表的数据,条件为:code=" + code
+                operationContent = "删除T_BaseStorageRack表的数据,条件为:code=" + code
             };
             try
             {
@@ -148,10 +148,10 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_StorageRack",
+                operationTable = "T_BaseStorageRack",
                 operationTime = DateTime.Now,
                 objective = "修改货架信息",
-                operationContent = string.Format("修改T_StorageRack表的数据,条件为:fieldName={1},fieldValue={2},code={3}", fieldName, fieldValue, code)
+                operationContent = string.Format("修改T_BaseStorageRack表的数据,条件为:fieldName={1},fieldValue={2},code={3}", fieldName, fieldValue, code)
             };
             try
             {
@@ -193,10 +193,10 @@ namespace LogicLayer.Base
                 code = BuildCode.ModuleCode("log"),
                 operationCode = "操作人code",
                 operationName = "操作人名",
-                operationTable = "T_StorageRack",
+                operationTable = "T_BaseStorageRack",
                 operationTime = DateTime.Now,
                 objective = "新增货架信息",
-                operationContent = "新增T_StorageRack表的数据,条件:code=" + srb.code
+                operationContent = "新增T_BaseStorageRack表的数据,条件:code=" + srb.code
             };
             try
             {
@@ -222,6 +222,36 @@ namespace LogicLayer.Base
                 lb.Add(logModel);
             }
             return result;
+        }
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_BaseBankAccount",
+                operationTime = DateTime.Now,
+                objective = "查询指定code的数据是否存在",
+                operationContent = "查询数据"
+            };
+            try
+            {
+                sr.Exists(code);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return isflag;
         }
     }
 }

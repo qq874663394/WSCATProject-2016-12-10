@@ -62,7 +62,6 @@
     <Compile Include="Purchase\PurchaseMainBase.cs" />
     <Compile Include="Purchase\PurchaseDetailBase.cs" />
     <Compile Include="Purchase\PurchaseOrderBase.cs" />
-    <Compile Include="Purchase\PurchaseOrderDetailBase.cs" />
     <Compile Include="Sales\SalesDetailBase.cs" />
     <Compile Include="Sales\SalesMainBase.cs" />
     <Compile Include="Sales\SalesOrderBase.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="Warehouse\WarehouseAllotDetailBase.cs" />
     <Compile Include="Warehouse\WarehouseAssemblyBase.cs" />
     <Compile Include="Warehouse\WarehouseDisassemblyBase.cs" />
-    <Compile Include="Warehouse\WarehouseDisassemblyDetailBase.cs" />
     <Compile Include="Warehouse\WarehouseInBase.cs" />
     <Compile Include="Warehouse\WarehouseInDetailBase.cs" />
     <Compile Include="Warehouse\WarehouseInProcessBase.cs" />
