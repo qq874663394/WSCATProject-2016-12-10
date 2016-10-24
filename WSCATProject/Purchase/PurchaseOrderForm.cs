@@ -1447,17 +1447,20 @@ namespace WSCATProject.Purchase
             }
         }
 
-        private void txtYiFuDingJin_TextChanged(object sender, EventArgs e)
+        private void txtYiFuDingJin_Validated(object sender, EventArgs e)
         {
             try
             {
                 if (txtYiFuDingJin.MaxLength > 12)
                 {
-                    MessageBox.Show("输入的值超出了范围！");
+                    txtYiFuDingJin.Focus();
                     txtYiFuDingJin.Text = "0.00";
-                    return;
                 }
-
+                else
+                {
+                    decimal yishou = Convert.ToDecimal(txtYiFuDingJin.Text);
+                    txtYiFuDingJin.Text = yishou.ToString("0.00");
+                }
             }
             catch (Exception ex)
             {
@@ -1553,5 +1556,7 @@ namespace WSCATProject.Purchase
             gr["faxMoney"].Value = _TaxMoney.ToString();
             gr["priceANDrate"].Value = _PriceAndTaxMoney.ToString();
         }
+
+     
     }
 }
