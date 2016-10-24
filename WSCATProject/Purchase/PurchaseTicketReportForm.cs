@@ -57,7 +57,7 @@ namespace WSCATProject.Purchase
                 DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
                 superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
 
-                PurchaseInterface purchaseInter = new PurchaseInterface();
+                PurchaseMainInterface purchaseInter = new PurchaseMainInterface();
                 DataTable dt = ch.DataTableReCoding(purchaseInter.GetList(2, XYEEncoding.strCodeHex(_suppilerCode)));
                 if (dt.Rows.Count == 0 )
                 {
