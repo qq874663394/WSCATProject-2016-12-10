@@ -78,6 +78,7 @@
     <Compile Include="Finance\FinanceOtherExpensesOut.cs" />
     <Compile Include="Finance\FinanceOtherExpensesOutDetail.cs" />
     <Compile Include="Finance\FinancePayment.cs" />
+    <Compile Include="Finance\FinancePaymentDetail.cs" />
     <Compile Include="Finance\FinancePaymentWait.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
