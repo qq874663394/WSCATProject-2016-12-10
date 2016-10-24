@@ -615,6 +615,7 @@ namespace WSCATProject.Sales
             List<SalesOrderDetail> salesorderList = new List<SalesOrderDetail>();
             try
             {
+
                 salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code               
                 //客户code
                 if (labtxtDanJuType.Text != null || labtxtDanJuType.Text.Trim() != "")
