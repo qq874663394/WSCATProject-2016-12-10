@@ -92,53 +92,53 @@ namespace BaseLayer
                     new SqlParameter("@unbilledAmount", SqlDbType.Decimal,9),
                     new SqlParameter("@purchaseAmount", SqlDbType.Decimal,9)
                 };
-                spsMain[0].Value = model.isClear;
-                spsMain[1].Value = model.code;
-                spsMain[2].Value = model.type;
-                spsMain[3].Value = model.data;
-                spsMain[4].Value = model.supplierCode;
-                spsMain[5].Value = model.supplierName;
-                spsMain[6].Value = model.purchaseOrderState;
-                spsMain[7].Value = model.checkState;
-                spsMain[8].Value = model.purchaseManCode;
+                spsMain[0].Value =model.isClear;
+                spsMain[1].Value =model.code;
+                spsMain[2].Value =model.type;
+                spsMain[3].Value =model.data;
+                spsMain[4].Value =model.supplierCode;
+                spsMain[5].Value =model.supplierName;
+                spsMain[6].Value =model.purchaseOrderState;
+                spsMain[7].Value =model.checkState;
+                spsMain[8].Value =model.purchaseManCode;
                 spsMain[9].Value = model.salesMan;
-                spsMain[10].Value = model.operationMan;
-                spsMain[11].Value = model.checkMan;
-                spsMain[12].Value = model.isPay;
-                spsMain[13].Value = model.payMethod;
-                spsMain[14].Value = model.putStorageState;
-                spsMain[15].Value = model.deliveryDate;
-                spsMain[16].Value = model.logistics;
-                spsMain[17].Value = model.logisticsCode;
-                spsMain[18].Value = model.logisticsPhone;
-                spsMain[19].Value = model.oddMoney;
-                spsMain[20].Value = model.accountCode;
-                spsMain[21].Value = model.inMoney;
-                spsMain[22].Value = model.lastMoney;
-                spsMain[23].Value = model.updateDate;
-                spsMain[24].Value = model.urgentState;
-                spsMain[25].Value = model.remark;
-                spsMain[26].Value = model.reserved1;
-                spsMain[27].Value = model.reserved2;
-                spsMain[28].Value = model.examineDate;
-                spsMain[29].Value = model.payDate;
-                spsMain[30].Value = model.offersSubject;
-                spsMain[31].Value = model.invoicedAmount;
-                spsMain[32].Value = model.unbilledAmount;
+                spsMain[10].Value =model.operationMan;
+                spsMain[11].Value =model.checkMan;
+                spsMain[12].Value =model.isPay;
+                spsMain[13].Value =model.payMethod;
+                spsMain[14].Value =model.putStorageState;
+                spsMain[15].Value =model.deliveryDate;
+                spsMain[16].Value =model.logistics;
+                spsMain[17].Value =model.logisticsCode;
+                spsMain[18].Value =model.logisticsPhone;
+                spsMain[19].Value =model.oddMoney;
+                spsMain[20].Value =model.accountCode;
+                spsMain[21].Value =model.inMoney;
+                spsMain[22].Value =model.lastMoney;
+                spsMain[23].Value =model.updateDate;
+                spsMain[24].Value =model.urgentState;
+                spsMain[25].Value =model.remark;
+                spsMain[26].Value =model.reserved1;
+                spsMain[27].Value =model.reserved2;
+                spsMain[28].Value =model.examineDate;
+                spsMain[29].Value =model.payDate;
+                spsMain[30].Value =model.offersSubject;
+                spsMain[31].Value =model.invoicedAmount;
+                spsMain[32].Value =model.unbilledAmount;
                 spsMain[33].Value = model.purchaseAmount;
 
                 hashTable.Add(sqlMain, spsMain);
 
-                sqlDetail.Append("insert into [T_PurchaseDetail] (");
-                sqlDetail.Append("isClear,materialDaima,zhujima,barCode,code,purchaseCode,storageCode,storageName,materialCode,materialName,materialModel,unit,number,discountBeforePrice,discount,discountAfterPrice,money,remark,updateDate,reserved1,reserved2,productionDate,qualityDate,effectiveDate,VATRate)");
+               sqlDetail.Append("insert into [T_PurchaseDetail] (");
+                sqlDetail.Append("isClear,materialDaima,zhujima,barCode,code,purchaseCode,storageCode,storageName,materialCode,materialName,materialModel,unit,number,discountBeforePrice,discount,discountAfterPrice,money,remark,updateDate,reserved1,reserved2,productionDate,qualityDate,effectiveDate,VATRate,tax,taxTotal,discountMoney)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append("@isClear,@materialDaima,@zhujima,@barCode,@code,@purchaseCode,@storageCode,@storageName,@materialCode,@materialName,@materialModel,@unit,@number,@discountBeforePrice,@discount,@discountAfterPrice,@money,@remark,@updateDate,@reserved1,@reserved2,@productionDate,@qualityDate,@effectiveDate,@VATRate)");
+                sqlDetail.Append("@isClear,@materialDaima,@zhujima,@barCode,@code,@purchaseCode,@storageCode,@storageName,@materialCode,@materialName,@materialModel,@unit,@number,@discountBeforePrice,@discount,@discountAfterPrice,@money,@remark,@updateDate,@reserved1,@reserved2,@productionDate,@qualityDate,@effectiveDate,@VATRate,@tax,@taxTotal,@discountMoney)");
                 sqlDetail.Append(";select @@IDENTITY");
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
                     {
-                        new SqlParameter("@isClear", SqlDbType.Int,4),
+                     new SqlParameter("@isClear", SqlDbType.Int,4),
                     new SqlParameter("@materialDaima", SqlDbType.NVarChar,45),
                     new SqlParameter("@zhujima", SqlDbType.NVarChar,45),
                     new SqlParameter("@barCode", SqlDbType.NVarChar,45),
@@ -162,33 +162,40 @@ namespace BaseLayer
                     new SqlParameter("@productionDate", SqlDbType.DateTime),
                     new SqlParameter("@qualityDate", SqlDbType.Decimal,9),
                     new SqlParameter("@effectiveDate", SqlDbType.DateTime),
-                    new SqlParameter("@VATRate", SqlDbType.NChar,10)
+                    new SqlParameter("@VATRate", SqlDbType.Decimal,9),
+                    new SqlParameter("@tax", SqlDbType.Decimal,9),
+                    new SqlParameter("@taxTotal", SqlDbType.Decimal,9),
+                    new SqlParameter("@discountMoney", SqlDbType.Decimal,9)
                     };
-                    spsMain[0].Value = item.isClear;
-                    spsMain[1].Value = item.materialDaima;
-                    spsMain[2].Value = item.zhujima;
-                    spsMain[3].Value = item.barCode;
-                    spsMain[4].Value = item.code;
-                    spsMain[5].Value = item.purchaseCode;
-                    spsMain[6].Value = item.storageCode;
-                    spsMain[7].Value = item.storageName;
-                    spsMain[8].Value = item.materialCode;
-                    spsMain[9].Value = item.materialName;
-                    spsMain[10].Value = item.materialModel;
-                    spsMain[11].Value = item.unit;
-                    spsMain[12].Value = item.number;
-                    spsMain[13].Value = item.discountBeforePrice;
-                    spsMain[14].Value = item.discount;
-                    spsMain[15].Value = item.discountAfterPrice;
-                    spsMain[16].Value = item.money;
-                    spsMain[17].Value = item.remark;
-                    spsMain[18].Value = item.updateDate;
-                    spsMain[19].Value = item.reserved1;
-                    spsMain[20].Value = item.reserved2;
-                    spsMain[21].Value = item.productionDate;
-                    spsMain[22].Value = item.qualityDate;
-                    spsMain[23].Value = item.effectiveDate;
-                    spsMain[24].Value = item.VATRate;
+                    spsDetail[0].Value =item.isClear;
+                    spsDetail[1].Value =item.materialDaima;
+                    spsDetail[2].Value =item.zhujima;
+                    spsDetail[3].Value =item.barCode;
+                    spsDetail[4].Value =item.code;
+                    spsDetail[5].Value =item.purchaseCode;
+                    spsDetail[6].Value =item.storageCode;
+                    spsDetail[7].Value =item.storageName;
+                    spsDetail[8].Value =item.materialCode;
+                    spsDetail[9].Value = item.materialName;
+                    spsDetail[10].Value =item.materialModel;
+                    spsDetail[11].Value =item.unit;
+                    spsDetail[12].Value =item.number;
+                    spsDetail[13].Value =item.discountBeforePrice;
+                    spsDetail[14].Value =item.discount;
+                    spsDetail[15].Value =item.discountAfterPrice;
+                    spsDetail[16].Value =item.money;
+                    spsDetail[17].Value =item.remark;
+                    spsDetail[18].Value =item.updateDate;
+                    spsDetail[19].Value =item.reserved1;
+                    spsDetail[20].Value =item.reserved2;
+                    spsDetail[21].Value =item.productionDate;
+                    spsDetail[22].Value =item.qualityDate;
+                    spsDetail[23].Value =item.effectiveDate;
+                    spsDetail[24].Value =item.VATRate;
+                    spsDetail[25].Value =item.tax;
+                    spsDetail[26].Value =item.taxTotal;
+                    spsDetail[27].Value = item.discountMoney;
+
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -351,11 +358,11 @@ namespace BaseLayer
                 sqlMain.Append(";select @@IDENTITY");
 
                 StringBuilder sqlInsert = new StringBuilder();
-                sqlInsert.Append("insert into [T_PurchaseDetail] (");
-                sqlInsert.Append("isClear,materialDaima,zhujima,barCode,code,purchaseCode,storageCode,storageName,materialCode,materialName,materialModel,unit,number,discountBeforePrice,discount,discountAfterPrice,money,remark,updateDate,reserved1,reserved2,productionDate,qualityDate,effectiveDate,VATRate)");
-                sqlInsert.Append(" values (");
-                sqlInsert.Append("@isClear,@materialDaima,@zhujima,@barCode,@code,@purchaseCode,@storageCode,@storageName,@materialCode,@materialName,@materialModel,@unit,@number,@discountBeforePrice,@discount,@discountAfterPrice,@money,@remark,@updateDate,@reserved1,@reserved2,@productionDate,@qualityDate,@effectiveDate,@VATRate)");
-                sqlInsert.Append(";select @@IDENTITY");
+                sqlMain.Append("insert into [T_PurchaseMain] (");
+                sqlMain.Append("isClear,code,type,data,supplierCode,supplierName,purchaseOrderState,checkState,purchaseManCode,salesMan,operationMan,checkMan,isPay,payMethod,putStorageState,deliveryDate,logistics,logisticsCode,logisticsPhone,oddMoney,accountCode,inMoney,lastMoney,updateDate,urgentState,remark,reserved1,reserved2,examineDate,payDate,offersSubject,invoicedAmount,unbilledAmount,purchaseAmount)");
+                sqlMain.Append(" values (");
+                sqlMain.Append("@isClear,@code,@type,@data,@supplierCode,@supplierName,@purchaseOrderState,@checkState,@purchaseManCode,@salesMan,@operationMan,@checkMan,@isPay,@payMethod,@putStorageState,@deliveryDate,@logistics,@logisticsCode,@logisticsPhone,@oddMoney,@accountCode,@inMoney,@lastMoney,@updateDate,@urgentState,@remark,@reserved1,@reserved2,@examineDate,@payDate,@offersSubject,@invoicedAmount,@unbilledAmount,@purchaseAmount)");
+                sqlMain.Append(";select @@IDENTITY");
 
                 foreach (var item in modelDetail)
                 {
