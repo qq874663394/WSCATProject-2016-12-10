@@ -447,7 +447,7 @@
     <None Include="Resources\BTN_STOCK_GHD.png" />
     <None Include="Resources\BTN_STOCK_CGDD.png" />
     <Content Include="Resources\businessQuery.png" />
-    <Content Include="Resources\caigou.PNG" />
+    <None Include="Resources\caigou.png" />
     <Content Include="Resources\caigouxitong.png" />
     <Content Include="Resources\caiwuxitong.png" />
     <Content Include="Resources\cangkuxinxi.png" />
@@ -485,6 +485,7 @@
     <None Include="Resources\green.PNG" />
     <None Include="Resources\gr.jpg" />
     <None Include="Resources\guanbi.PNG" />
+    <None Include="Resources\gouhuodan.png" />
     <Content Include="Resources\guanyu.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\huanyuan.PNG" />
