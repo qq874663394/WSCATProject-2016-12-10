@@ -130,3 +130,15 @@ E:\619项目\619项目20160924\ManagerLayer\bin\Debug\Model.pdb
 E:\619项目\619项目20160924\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
 E:\619项目\619项目20160924\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
 E:\619项目\619项目20160924\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\UpdateManagerLayer.dll
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\UpdateManagerLayer.pdb
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\BaseLayer.dll
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\HelperUtility.dll
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\Model.dll
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\NPOI.dll
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\BaseLayer.pdb
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\HelperUtility.pdb
+E:\619项目\新建文件夹\ManagerLayer\bin\Debug\Model.pdb
+E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
+E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
+E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb

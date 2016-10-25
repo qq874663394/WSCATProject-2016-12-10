@@ -599,13 +599,17 @@ namespace WSCATProject.Sales
                 financecollection.Reserved1 = "";
                 financecollection.Reserved2 = "";
 
-                if (_shengYuMoney < _danJuMoney)
-                {
-                    financecollection.financeCollectionState = 0;//单据状态 (0为部分付款)
-                }
                 if (_shengYuMoney == _danJuMoney)
                 {
-                    financecollection.financeCollectionState = 1;//单据状态（1为已付款）
+                    financecollection.financeCollectionState = 0;//单据状态 (0为未收款)
+                }
+                if (_shengYuMoney < _danJuMoney)
+                {
+                    financecollection.financeCollectionState = 1;//单据状态 (1为部分收款)
+                }
+                if (_shengYuMoney ==Convert.ToDecimal(0.00))
+                {
+                    financecollection.financeCollectionState = 2;//单据状态（2为已收款）
                 }
             }
             catch (Exception ex)
@@ -733,13 +737,17 @@ namespace WSCATProject.Sales
                 financecollection.checkState = 1;//审核状态
                 financecollection.Reserved1 = "";
                 financecollection.Reserved2 = "";
-                if (_shengYuMoney < _danJuMoney)
-                {
-                    financecollection.financeCollectionState = 0;//单据状态 (0为部分付款)
-                }
                 if (_shengYuMoney == _danJuMoney)
                 {
-                    financecollection.financeCollectionState = 1;//单据状态（1为已付款）
+                    financecollection.financeCollectionState = 0;//单据状态 (0为未收款)
+                }
+                if (_shengYuMoney < _danJuMoney)
+                {
+                    financecollection.financeCollectionState = 1;//单据状态 (1为部分收款)
+                }
+                if (_shengYuMoney == Convert.ToDecimal(0.00))
+                {
+                    financecollection.financeCollectionState = 2;//单据状态（2为已收款）
                 }
             }
             catch (Exception ex)
