@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseTicketReportForm));
-            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMax = new System.Windows.Forms.PictureBox();
@@ -144,6 +144,7 @@
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "采  购  单  序  时  薄";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseTicketReportForm_MouseDown);
             // 
             // pictureBoxtitle
             // 
@@ -158,6 +159,7 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 1;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseTicketReportForm_MouseDown);
             // 
             // toolStrip1
             // 
@@ -175,6 +177,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1186, 70);
             this.toolStrip1.TabIndex = 59;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseTicketReportForm_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -263,8 +266,8 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.YiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeiHeXiaoMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
-            background1.Color1 = System.Drawing.Color.Azure;
-            this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background2;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1186, 397);
             this.superGridControlShangPing.TabIndex = 1;

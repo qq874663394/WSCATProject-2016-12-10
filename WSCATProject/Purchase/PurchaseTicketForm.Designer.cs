@@ -403,6 +403,7 @@
             // 
             // labTop6
             // 
+            this.labTop6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.labTop6.Location = new System.Drawing.Point(527, 77);
             this.labTop6.Size = new System.Drawing.Size(71, 12);
             this.labTop6.Text = "物流 类型：";
@@ -675,6 +676,8 @@
             // labelWuLiuDanHao
             // 
             this.labelWuLiuDanHao.AutoSize = true;
+            this.labelWuLiuDanHao.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelWuLiuDanHao.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.labelWuLiuDanHao.Location = new System.Drawing.Point(785, 77);
             this.labelWuLiuDanHao.Name = "labelWuLiuDanHao";
             this.labelWuLiuDanHao.Size = new System.Drawing.Size(65, 12);
@@ -683,6 +686,7 @@
             // 
             // textBoxKuaiDiDanHao
             // 
+            this.textBoxKuaiDiDanHao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -693,9 +697,11 @@
             this.textBoxKuaiDiDanHao.Border.Class = "SideNavStrip";
             this.textBoxKuaiDiDanHao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxKuaiDiDanHao.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxKuaiDiDanHao.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBoxKuaiDiDanHao.Location = new System.Drawing.Point(850, 74);
             this.textBoxKuaiDiDanHao.Name = "textBoxKuaiDiDanHao";
             this.textBoxKuaiDiDanHao.PreventEnterBeep = true;
+            this.textBoxKuaiDiDanHao.ReadOnly = true;
             this.textBoxKuaiDiDanHao.Size = new System.Drawing.Size(120, 16);
             this.textBoxKuaiDiDanHao.TabIndex = 64;
             // 
@@ -771,6 +777,7 @@
             // 
             this.comboBoxEWuLiuType.DisplayMember = "Text";
             this.comboBoxEWuLiuType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEWuLiuType.Enabled = false;
             this.comboBoxEWuLiuType.FormattingEnabled = true;
             this.comboBoxEWuLiuType.ItemHeight = 15;
             this.comboBoxEWuLiuType.Items.AddRange(new object[] {

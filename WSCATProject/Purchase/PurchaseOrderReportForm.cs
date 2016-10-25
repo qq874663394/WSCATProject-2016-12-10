@@ -91,7 +91,7 @@ namespace WSCATProject.Purchase
                                 dt2.Rows[j]["model"],
                                 dt2.Rows[j]["barCode"],
                                 dt2.Rows[j]["unit"],
-                                dt2.Rows[j]["deliveryNumber"],
+                                dt2.Rows[j]["materialNumber"],
                                 dt2.Rows[j]["price"],
                                 dt2.Rows[j]["materialMoney"],
                                 dt2.Rows[j]["discountRate"],

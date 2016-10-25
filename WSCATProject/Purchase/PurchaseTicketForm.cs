@@ -592,7 +592,7 @@ namespace WSCATProject.Purchase
 
         private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 try
                 {
@@ -659,9 +659,9 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3303-点击选源单数据错误！"+ex.Message,"购货单温馨提示：");
+                MessageBox.Show("错误代码：3303-点击选源单数据错误！" + ex.Message, "购货单温馨提示：");
             }
-           
+
         }
 
         /// <summary>
@@ -1078,12 +1078,19 @@ namespace WSCATProject.Purchase
 
             labTop1.ForeColor = Color.Gray;
             comboBoxExType.Enabled = false;
+            if (_jiaoHuoFangShi == "2")
+            {
+                labTop6.ForeColor = Color.Black;
+                comboBoxEWuLiuType.Enabled = true;
+                labelWuLiuDanHao.ForeColor = Color.Black;
+                textBoxKuaiDiDanHao.ReadOnly = false;
+            }
             GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
             GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
 
 
             PurchaseOrderInterface purchaseOrderinter = new PurchaseOrderInterface();
-            if (_purchaseMainCodel==null)
+            if (_purchaseMainCodel == null)
             {
                 return;
             }
@@ -1131,8 +1138,8 @@ namespace WSCATProject.Purchase
                 dt.Rows[0]["model"],
                 dt.Rows[0]["barCode"],
                 dt.Rows[0]["unit"],
-                dt.Rows[0]["deliveryNumber"].ToString() == "" ? 1.0M : dt.Rows[0]["deliveryNumber"],
-                1.00,
+                dt.Rows[0]["materialNumber"].ToString() == "" ? 1.0M : dt.Rows[0]["materialNumber"],
+                dt.Rows[0]["materialNumber"].ToString() == "" ? 1.0M : dt.Rows[0]["materialNumber"],
                 dt.Rows[0]["materialPrice"].ToString() == "" ? 0.0M : dt.Rows[0]["materialPrice"],
                 dt.Rows[0]["discountRate"].ToString() == "" ? 0.0M : dt.Rows[0]["discountRate"],
                 dt.Rows[0]["VATRate"].ToString() == "" ? 0.0M : dt.Rows[0]["VATRate"],
@@ -1202,7 +1209,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3312-逐行统计数据总数错误！"+ex.Message,"购货单温馨提示:");
+                MessageBox.Show("错误代码：3312-逐行统计数据总数错误！" + ex.Message, "购货单温馨提示:");
             }
 
         }
@@ -1354,7 +1361,7 @@ namespace WSCATProject.Purchase
             {
                 if (purchaseMianInterface.Exists(XYEEncoding.strCodeHex(_purchaseMainCode)))
                 {
-                    _purchaseMainCode= BuildCode.ModuleCode("PCT");
+                    _purchaseMainCode = BuildCode.ModuleCode("PCT");
                     purchasemain.code = XYEEncoding.strCodeHex(_purchaseMainCode);
                 }
                 else
@@ -1373,14 +1380,14 @@ namespace WSCATProject.Purchase
                     labtextboxTop2.Focus();
                     return;
                 }
-                //加急状态  0为不加急，1为加急
-                if (checkBoxJiaoJi.Checked == true)
+                if (_jiaoHuoFangShi == "2")
                 {
-                    purchasemain.urgentState = 1;
-                }
-                else
-                {
-                    purchasemain.urgentState = 0;
+                    if (textBoxKuaiDiDanHao.Text == "")
+                    {
+                        MessageBox.Show("请选择快递公司和输入快递单号！");
+                        textBoxKuaiDiDanHao.Focus();
+                        return;
+                    }
                 }
                 purchasemain.purchaseManCode = XYEEncoding.strCodeHex(_employeeCode);//采购员code
                 //采购员
@@ -1393,6 +1400,15 @@ namespace WSCATProject.Purchase
                     MessageBox.Show("采购员不能为空！");
                     ltxtbSalsMan.Focus();
                     return;
+                }
+                //加急状态  0为不加急，1为加急
+                if (checkBoxJiaoJi.Checked == true)
+                {
+                    purchasemain.urgentState = 1;
+                }
+                else
+                {
+                    purchasemain.urgentState = 0;
                 }
                 purchasemain.data = this.dateTimePicker1.Value;//开单日期
                 purchasemain.type = XYEEncoding.strCodeHex(comboBoxExType.Text);//单据类别
@@ -1739,7 +1755,7 @@ namespace WSCATProject.Purchase
             {
                 pictureBoxShengHe.Visible = true;
                 InitForm();
-                MessageBox.Show("新增并审核购货单数据成功", "购货单温馨提示");              
+                MessageBox.Show("新增并审核购货单数据成功", "购货单温馨提示");
             }
         }
     }

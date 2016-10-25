@@ -59,7 +59,7 @@ namespace WSCATProject.Purchase
 
                 PurchaseMainInterface purchaseInter = new PurchaseMainInterface();
                 DataTable dt = ch.DataTableReCoding(purchaseInter.GetList(2, XYEEncoding.strCodeHex(_suppilerCode)));
-
+                
                 PurchasePaymentForm purchase = (PurchasePaymentForm)this.Owner;
                 _pursachList = purchase.PurchaseMainList;
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -78,6 +78,7 @@ namespace WSCATProject.Purchase
                     this.Close();
                     return;
                 }
+                this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
             catch (Exception ex)
@@ -85,9 +86,6 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：3401-购货单报告表数据加载失败！"+ex.Message,"购货单序时薄温馨提示：");
                 this.Close();
             }
-
-
-
         }
 
         #region  设置窗体无边框可以拖动
