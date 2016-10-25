@@ -1557,9 +1557,6 @@ namespace WSCATProject.Purchase
                 if (g.Cells["name"].Value == null || g.Cells["name"].Value.ToString() == "")
                 {
                     MessageBox.Show("请选择商品代码：");
-                    g.Cells["CaiGouNumber"].Value = 0.00;
-                    g.Cells["price"].Value = 0.00;
-                    g.Cells["discountRate"].Value = 100.00;
                     return;
                 }
                 //最后一行做统计行
@@ -1653,6 +1650,10 @@ namespace WSCATProject.Purchase
         {
             try
             {
+                if (txtYiFuDingJin.Text == null || txtYiFuDingJin.Text.Trim() == "")
+                {
+                    txtYiFuDingJin.Text = 0.00.ToString();
+                }
                 if (txtYiFuDingJin.MaxLength > 12)
                 {
                     txtYiFuDingJin.Text = "0.00";

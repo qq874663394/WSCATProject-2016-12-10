@@ -499,7 +499,8 @@
             // 
             // labBotton1
             // 
-            this.labBotton1.Text = "采 购 员：";
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "采 购 员*：";
             // 
             // resizablePanelData
             // 
