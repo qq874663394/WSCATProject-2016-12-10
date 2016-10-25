@@ -575,7 +575,7 @@ namespace WSCATProject.Sales
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
-
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
             }
             catch (Exception ex)
             {
@@ -583,6 +583,51 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码：1101-窗体加载时，初始化数据错误！请检查：" + ex.Message);
                 this.Close();
                 return;
+            }
+        }
+
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    //客户
+                    if (_Click == 1 || _Click == 4)
+                    {
+                        _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
+                        string linkman = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["linkMan"].Value.ToString();//联系人
+                        string phone = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["mobilePhone"].Value.ToString();//电话
+                        string fax = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["fax"].Value.ToString();//传真
+                        labtxtDanJuType.Text = name;
+                        labtextboxTop2.Text = linkman;
+                        labtextboxTop3.Text = phone;
+                        labtextboxTop8.Text = fax;
+                        resizablePanel1.Visible = false;
+                    }
+                    //销售员
+                    if (_Click == 2 || _Click == 5)
+                    {
+                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//销售员code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//销售员
+                        ltxtbSalsMan.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //仓库
+                    if (_Click == 3 || _Click == 6)
+                    {
+                        _storgeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//仓库code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//仓库
+                        labtextboxTop5.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：1110-按回车绑定客户或者销售员或者仓库数据错误！请检查：" + ex.Message, "销售订单温馨提示！");
+                }
+
             }
         }
 
@@ -710,7 +755,7 @@ namespace WSCATProject.Sales
                         //物料code
                         if (gr.Cells["name"].Value != null || gr.Cells["name"].Value.ToString() != "")
                         {
-                            salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);                         
+                            salesorderDetail.materialCode = XYEEncoding.strCodeHex(_materialCode);
                         }
                         else
                         {
@@ -807,7 +852,7 @@ namespace WSCATProject.Sales
             try
             {
                 salesorder.code = XYEEncoding.strCodeHex(_SalesOrderCode);//销售订单Code
-                 //客户code
+                                                                          //客户code
                 if (labtxtDanJuType.Text != null || labtxtDanJuType.Text.Trim() != "")
                 {
                     salesorder.clientCode = XYEEncoding.strCodeHex(_clientCode);
@@ -987,7 +1032,7 @@ namespace WSCATProject.Sales
             {
                 ShengHe();
             }
-           
+
         }
 
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
@@ -1002,6 +1047,7 @@ namespace WSCATProject.Sales
             if (_Click != 1)
             {
                 InitClient();
+                dataGridViewFuJia.Focus();
             }
             _Click = 4;
         }
@@ -1016,6 +1062,7 @@ namespace WSCATProject.Sales
             if (_Click != 2)
             {
                 InitEmployee();
+                dataGridViewFuJia.Focus();
             }
             _Click = 5;
         }
@@ -1030,6 +1077,7 @@ namespace WSCATProject.Sales
             if (_Click != 3)
             {
                 InitStorage();
+                dataGridViewFuJia.Focus();
             }
             _Click = 6;
         }
@@ -1610,6 +1658,7 @@ namespace WSCATProject.Sales
                 labtxtDanJuType.Focus();
             }
         }
+
         /// <summary>
         /// 点击panel隐藏控件
         /// </summary>

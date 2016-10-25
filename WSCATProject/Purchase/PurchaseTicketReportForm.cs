@@ -82,7 +82,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3401-购货单报告表数据加载失败！"+ex.Message);
+                MessageBox.Show("错误代码：3401-购货单报告表数据加载失败！"+ex.Message,"购货单序时薄温馨提示：");
                 this.Close();
             }
 
@@ -221,7 +221,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3406-尝试双击表格选中行失败！请检查：" + ex.Message, "销售单序时薄温馨提示！");
+                MessageBox.Show("错误代码：3402-尝试双击表格选中行失败！请检查：" + ex.Message, "购货单序时薄温馨提示！");
             }
         }
     }

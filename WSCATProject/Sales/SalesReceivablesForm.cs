@@ -453,6 +453,7 @@ namespace WSCATProject.Sales
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮 
                 toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
             }
             catch (Exception ex)
             {
@@ -461,6 +462,45 @@ namespace WSCATProject.Sales
                 return;
             }
 
+        }
+
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                try
+                {
+                    //客户
+                    if (_Click == 1 || _Click == 4)
+                    {
+                        _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
+                        txtClient.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //结算账户
+                    if (_Click == 2 || _Click == 5)
+                    {
+                        _bankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//银行账户code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//账户名称
+                        txtBank.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //收款员
+                    if (_Click == 3 || _Click == 6)
+                    {
+                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//收款员code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//收款员
+                        ltxtbSalsMan.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：1509-按回车绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
+                }
+            }
         }
 
         /// <summary>
@@ -864,6 +904,7 @@ namespace WSCATProject.Sales
             if (_Click != 1)
             {
                 InitClient();
+                dataGridViewFuJia.Focus();
             }
             _Click = 4;
         }
@@ -878,6 +919,7 @@ namespace WSCATProject.Sales
             if (_Click != 2)
             {
                 InitBank();
+                dataGridViewFuJia.Focus();
             }
             _Click = 5;
         }
@@ -892,6 +934,7 @@ namespace WSCATProject.Sales
             if (_Click != 3)
             {
                 InitEmployee();
+                dataGridViewFuJia.Focus();
             }
             _Click = 6;
         }

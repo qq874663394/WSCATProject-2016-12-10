@@ -616,6 +616,7 @@ namespace WSCATProject.Sales
                 toolStripBtnSave.Click += ToolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += ToolStripBtnShengHe_Click;//审核按钮
                 toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
 
                 #region 初始化窗体
 
@@ -655,6 +656,66 @@ namespace WSCATProject.Sales
                 return;
             }
 
+        }
+
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+
+                try
+                {
+                    //客户
+                    if (_Click == 1 || _Click == 5)
+                    {
+                        _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
+                        string linkman = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["linkMan"].Value.ToString();//联系人
+                        string phone = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["mobilePhone"].Value.ToString();//电话
+                        string fax = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["fax"].Value.ToString();//传真
+                        labtextboxTop2.Text = name;
+                        labtextboxTop8.Text = linkman;
+                        labtextboxTop3.Text = phone;
+                        labtextboxTop6.Text = fax;
+                        resizablePanel1.Visible = false;
+                    }
+                    //销售员
+                    if (_Click == 2 || _Click == 6)
+                    {
+                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//销售员code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//销售员
+                        ltxtbSalsMan.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //仓库
+                    if (_Click == 3 || _Click == 7)
+                    {
+                        GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                        string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                        string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                        gr.Cells["gridColumnStock"].Value = Name;
+                        gr.Cells["gridColumncode"].Value = code;
+                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                        _storgeCode = code;
+                        _storgeName = Name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //结算账户
+                    if (_Click == 4 || _Click == 8)
+                    {
+                        GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                        string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                        string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();
+                        txtBank.Text = Name;
+                        _bankCode = code;
+                        resizablePanel1.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：1311-按回车绑定客户、销售员、仓库、结算账户数据错误！请检查：" + ex.Message, "销售单温馨提示！");
+                }
+            }
         }
 
         /// <summary>
@@ -1256,6 +1317,7 @@ namespace WSCATProject.Sales
             if (_Click != 1)
             {
                 InitClient();
+                dataGridViewFuJia.Focus();
             }
             _Click = 5;
         }
@@ -1269,6 +1331,7 @@ namespace WSCATProject.Sales
             if (_Click != 2)
             {
                 InitEmployee();
+                dataGridViewFuJia.Focus();
             }
             _Click = 6;
         }
@@ -1282,6 +1345,7 @@ namespace WSCATProject.Sales
             if (_Click != 4)
             {
                 InitBank();
+                dataGridViewFuJia.Focus();
             }
             _Click = 8;
         }
