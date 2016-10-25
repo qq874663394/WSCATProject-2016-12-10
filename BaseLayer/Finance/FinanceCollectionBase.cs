@@ -208,6 +208,21 @@ namespace BaseLayer.Finance
                 spsMain[21].Value = model.totalCollection;
 
                 hashTable.Add(sqlMain, spsMain);
+                StringBuilder strInsert = new StringBuilder();
+                strInsert.Append("insert into [T_FinanceCollectionDetail] (");
+                strInsert.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                strInsert.Append(" values (");
+                strInsert.Append(@"@mainCode,
+                    @code,
+@salesCode,
+@salesDate,
+@salesType,
+@amountReceivable,
+@amountReceived,
+@amountUnpaid,
+@nowMoney,
+@unCollection,@remark)");
+
                 sqlMain.Append("update [T_FinanceCollectionDetail] set ");
                 sqlMain.Append("mainCode=@mainCode,");
                 sqlMain.Append("salesCode=@salesCode,");
@@ -249,7 +264,7 @@ namespace BaseLayer.Finance
                     spsDetail[11].Value = item.remark;
                     list.Add(spsDetail);
                 }
-                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
+                result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(),strInsert.ToString(), list);
             }
             catch (Exception ex)
             {

@@ -918,13 +918,64 @@ namespace WSCATProject.Purchase
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
-
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
+          
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show("错误代码：3101-窗体加载时，初始化数据错误！请检查：" + ex.Message, "采购订单温馨提示！");
                 return;
+            }
+        }
+
+
+        /// <summary>
+        /// 小表格的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    //供应商
+                    if (_Click == 1 || _Click == 4)
+                    {
+                        _supplierCode = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
+                        string name = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//供应商名称
+                        string linkman = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["linkMan"].Value.ToString();//联系人
+                        string phone = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["mobilePhone"].Value.ToString();//电话
+                        string fax = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["fax"].Value.ToString();//传真
+                        txtSupply.Text = name;
+                        txtLinkMan.Text = linkman;
+                        txtPhone.Text = phone;
+                        txtFax.Text = fax;
+                        resizablePanel1.Visible = false;
+                    }
+                    //采购员
+                    if (_Click == 2 || _Click == 5)
+                    {
+                        _employeeCode = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//采购员code
+                        string name = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//采购员
+                        ltxtbSalsMan.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //仓库
+                    if (_Click == 3 || _Click == 6)
+                    {
+                        _storgeCode = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//仓库code
+                        string name = dataGridViewFuJia.Rows[this.dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//仓库
+                        txtAddress.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：3110-双击绑定供应商或者采购员或者交货地点数据错误！请检查：" + ex.Message, "采购订单温馨提示！");
+                }
             }
         }
 
@@ -945,7 +996,12 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            Review();
+            DialogResult  result= MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result==DialogResult.OK)
+            {
+                Review();
+            }
+            
         }
 
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
@@ -960,6 +1016,7 @@ namespace WSCATProject.Purchase
             if (_Click != 1)
             {
                 InitSupplier();
+                this.dataGridViewFuJia.Focus();
             }
             _Click = 4;
         }
@@ -974,6 +1031,7 @@ namespace WSCATProject.Purchase
             if (_Click != 2)
             {
                 InitEmployee();
+                this.dataGridViewFuJia.Focus();
             }
             _Click = 5;
         }
@@ -988,6 +1046,7 @@ namespace WSCATProject.Purchase
             if (_Click != 3)
             {
                 InitStorage();
+                this.dataGridViewFuJia.Focus();
             }
             _Click = 6;
         }
@@ -1010,6 +1069,7 @@ namespace WSCATProject.Purchase
                 }
                 else if (e.GridCell.GridColumn.Name == "material")
                 {
+                 
                     SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
                     GridCell gc = ge[0] as GridCell;
                     string materialDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
@@ -1025,7 +1085,9 @@ namespace WSCATProject.Purchase
                         _AllMaterial = materialInterface.GetList(999, "");
                         InitMaterialDataGridView();
                     }
+
                     dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
+                  
                 }
             }
             catch (Exception ex)
@@ -1353,6 +1415,7 @@ namespace WSCATProject.Purchase
         private void PurchaseOrderForm_Activated(object sender, EventArgs e)
         {
             txtSupply.Focus();//焦点在供应商
+           
         }
 
         /// <summary>

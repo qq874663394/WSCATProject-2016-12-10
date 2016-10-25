@@ -13,6 +13,7 @@ namespace Model.Finance
         #region Model
         private int _id;
         private string _code;
+
         private string _suppiercode;
         private string _suppiername;
         private string _accountcode;
@@ -53,6 +54,7 @@ namespace Model.Finance
         /// <summary>
         /// 客户编号
         /// </summary>
+
         public string suppierCode
         {
             set { _suppiercode = value; }
@@ -63,6 +65,7 @@ namespace Model.Finance
         /// </summary>
         public string suppierName
         {
+
             set { _suppiername = value; }
             get { return _suppiername; }
         }
