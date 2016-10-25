@@ -193,6 +193,8 @@ E:\619项目\2016年10月21日105415\InterfaceLayer\obj\Debug\InterfaceLayer.csp
 E:\619项目\2016年10月21日105415\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 E:\619项目\2016年10月21日105415\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
 E:\619项目\619项目20160924\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
+E:\619项目\新建文件夹 (2)\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
+E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\InterfaceLayer.dll
 E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\InterfaceLayer.pdb
 E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\BaseLayer.dll
@@ -208,7 +210,5 @@ E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\LogicLayer.pdb
 E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.xml
 E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\UpdateManagerLayer.pdb
-E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
-E:\619项目\新建文件夹 (2)\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache

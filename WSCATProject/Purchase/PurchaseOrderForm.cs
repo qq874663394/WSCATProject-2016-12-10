@@ -1480,8 +1480,8 @@ namespace WSCATProject.Purchase
             {
                 if (txtYiFuDingJin.MaxLength > 12)
                 {
-                    txtYiFuDingJin.Focus();
                     txtYiFuDingJin.Text = "0.00";
+                    txtYiFuDingJin.Focus();
                 }
                 else
                 {

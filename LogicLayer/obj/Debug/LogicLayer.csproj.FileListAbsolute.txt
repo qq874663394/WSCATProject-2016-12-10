@@ -152,6 +152,8 @@ E:\619项目\619项目20160924\LogicLayer\bin\Debug\Model.pdb
 E:\619项目\619项目20160924\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\619项目20160924\LogicLayer\obj\Debug\LogicLayer.dll
 E:\619项目\619项目20160924\LogicLayer\obj\Debug\LogicLayer.pdb
+E:\619项目\新建文件夹 (2)\WSCATProject\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
+E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\LogicLayer\bin\Debug\LogicLayer.dll
 E:\619项目\新建文件夹\LogicLayer\bin\Debug\LogicLayer.pdb
 E:\619项目\新建文件夹\LogicLayer\bin\Debug\BaseLayer.dll
@@ -163,7 +165,5 @@ E:\619项目\新建文件夹\LogicLayer\bin\Debug\BaseLayer.pdb
 E:\619项目\新建文件夹\LogicLayer\bin\Debug\HelperUtility.pdb
 E:\619项目\新建文件夹\LogicLayer\bin\Debug\UpdateManagerLayer.pdb
 E:\619项目\新建文件夹\LogicLayer\bin\Debug\Model.pdb
-E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.dll
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.pdb
-E:\619项目\新建文件夹 (2)\WSCATProject\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache

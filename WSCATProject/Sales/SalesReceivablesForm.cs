@@ -356,54 +356,46 @@ namespace WSCATProject.Sales
         /// </summary>
         private void InitForm()
         {
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
             pictureBoxShengHe.Visible = true;
-            pictureBoxShengHe.Parent = pictureBoxtitle;
-            textBoxOddNumbers.ReadOnly = true;
-
-            labTop1.ForeColor = Color.Gray;
-            labTop1.ForeColor = Color.Gray;
-            labTop1.ForeColor = Color.Gray;
-            labTop1.ForeColor = Color.Gray;
-            labTop1.ForeColor = Color.Gray;
-            labTop1.ForeColor = Color.Gray;
-            labTop1.ForeColor = Color.Gray;
-            labBotton1.ForeColor = Color.Gray;
-            labBotton2.ForeColor = Color.Gray;
-            labBotton3.ForeColor = Color.Gray;
-            labBotton4.ForeColor = Color.Gray;
-            labelprie.ForeColor = Color.Gray;
-            labeldata.ForeColor = Color.Gray;
-
-            cboDanJuType.Enabled = false;
-            cboJieSuanMethod.Enabled = false;
-            dateTimePicker1.Enabled = false;
-
-            txtClient.ReadOnly = true;
-            txtClient.Border.BorderBottomColor = Color.Gray;
-            txtBank.ReadOnly = true;
-            txtBank.Border.BorderBottomColor = Color.Gray;
-            txtBenCiHeXiao.ReadOnly = true;
-            txtBenCiHeXiao.Border.BorderBottomColor = Color.Gray;
-            txtBenCiShouKuan.ReadOnly = true;
-            txtBenCiShouKuan.Border.BorderBottomColor = Color.Gray;
-            txtDiscount.ReadOnly = true;
-            txtDiscount.Border.BorderBottomColor = Color.Gray;
-            txtRemark.ReadOnly = true;
-            txtRemark.Border.BorderBottomColor = Color.Gray;
-            ltxtbSalsMan.ReadOnly = true;
-            ltxtbSalsMan.Border.BorderBottomColor = Color.Gray;
-            ltxtbMakeMan.ReadOnly = true;
-            ltxtbMakeMan.Border.BorderBottomColor = Color.Gray;
-            ltxtbShengHeMan.ReadOnly = true;
-            ltxtbShengHeMan.Border.BorderBottomColor = Color.Gray;
-
-            superGridControlShangPing.Enabled = false;
-            toolStripButtonXuanYuanDan.Enabled = false;
-            toolStripBtnSave.Enabled = false;
-            toolStripBtnShengHe.Enabled = false;
-            panel2.BackColor = Color.FromArgb(240, 240, 240);
-            panel5.BackColor = Color.FromArgb(240, 240, 240);
-
         }
 
         #endregion
@@ -413,6 +405,7 @@ namespace WSCATProject.Sales
             try
             {
                 #region 初始化窗体
+                pictureBoxShengHe.Parent = pictureBoxtitle;
                 cboDanJuType.SelectedIndex = 0;
                 cboJieSuanMethod.SelectedIndex = 0;
                 toolStripButtonXuanYuanDan.Visible = true;
@@ -807,7 +800,6 @@ namespace WSCATProject.Sales
             {
                 MessageBox.Show("新增并审核收款单数据成功", "收款单温馨提示");
                 InitForm();
-                pictureBoxShengHe.Image = Properties.Resources.审核;
             }
         }
         #endregion

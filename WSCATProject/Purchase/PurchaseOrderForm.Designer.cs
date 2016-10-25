@@ -630,6 +630,7 @@
             this.txtYiFuDingJin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtYiFuDingJin.DisabledBackColor = System.Drawing.Color.White;
             this.txtYiFuDingJin.Location = new System.Drawing.Point(95, 76);
+            this.txtYiFuDingJin.MaxLength = 12;
             this.txtYiFuDingJin.Name = "txtYiFuDingJin";
             this.txtYiFuDingJin.PreventEnterBeep = true;
             this.txtYiFuDingJin.Size = new System.Drawing.Size(150, 16);
