@@ -55,7 +55,7 @@ namespace Model.Finance
         /// 客户编号
         /// </summary>
 
-        public string suppierCode
+        public string supplierCode
         {
             set { _suppiercode = value; }
             get { return _suppiercode; }
@@ -63,7 +63,7 @@ namespace Model.Finance
         /// <summary>
         /// 客户名称
         /// </summary>
-        public string suppierName
+        public string supplierName
         {
 
             set { _suppiername = value; }

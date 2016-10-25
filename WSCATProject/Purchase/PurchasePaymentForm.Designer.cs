@@ -168,6 +168,8 @@
             this.labtextboxTop6.MaxLength = 12;
             this.labtextboxTop6.ReadOnly = true;
             this.labtextboxTop6.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop6.Text = "0.00";
+            this.labtextboxTop6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop6.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
             // 
             // labtextboxTop3
@@ -189,6 +191,8 @@
             this.labtextboxTop3.MaxLength = 12;
             this.labtextboxTop3.ReadOnly = true;
             this.labtextboxTop3.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop3.Text = "0.00";
+            this.labtextboxTop3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop3.TextChanged += new System.EventHandler(this.txtBenCiHeXiao_TextChanged);
             // 
             // labtextboxTop7
@@ -207,6 +211,7 @@
             this.labtextboxTop7.Location = new System.Drawing.Point(411, 76);
             this.labtextboxTop7.MaxLength = 12;
             this.labtextboxTop7.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             this.labtextboxTop7.Validated += new System.EventHandler(this.txtDiscount_Validated);
             // 
