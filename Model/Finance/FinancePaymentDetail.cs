@@ -17,7 +17,7 @@ namespace Model.Finance
         #region Model
         private int _id;
         private string _maincode;
-        private string _code = "收款详细单";
+        private string _code;
         private string _salescode;
         private DateTime? _salesdate;
         private string _salestype;
