@@ -61,6 +61,25 @@
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.outContorlAllPannel = new System.Windows.Forms.Panel();
+            this.panelsales = new System.Windows.Forms.Panel();
+            this.outContorlBottomPannel = new System.Windows.Forms.Panel();
+            this.outContorlRightPannel = new System.Windows.Forms.Panel();
+            this.btnClientProfit = new System.Windows.Forms.Button();
+            this.btnMarketProfitList = new System.Windows.Forms.Button();
+            this.btnMarketprofitAll = new System.Windows.Forms.Button();
+            this.btnMarketReceiptsList = new System.Windows.Forms.Button();
+            this.btnMarketReceiptsAll = new System.Windows.Forms.Button();
+            this.superTabItemOut = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.inContorlAllPannel = new System.Windows.Forms.Panel();
+            this.panelCaiGou = new System.Windows.Forms.Panel();
+            this.inContorlBottomPannel = new System.Windows.Forms.Panel();
+            this.inContorlRightPannel = new System.Windows.Forms.Panel();
+            this.btnInReceiptsList = new System.Windows.Forms.Button();
+            this.btnInReceiptsAll = new System.Windows.Forms.Button();
+            this.superTabItemIn = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel8 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
             this.superGridControlhandl = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
@@ -74,25 +93,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.inContorlAllPannel = new System.Windows.Forms.Panel();
-            this.panelCaiGou = new System.Windows.Forms.Panel();
-            this.inContorlBottomPannel = new System.Windows.Forms.Panel();
-            this.inContorlRightPannel = new System.Windows.Forms.Panel();
-            this.btnInReceiptsList = new System.Windows.Forms.Button();
-            this.btnInReceiptsAll = new System.Windows.Forms.Button();
-            this.superTabItemIn = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.outContorlAllPannel = new System.Windows.Forms.Panel();
-            this.panelsales = new System.Windows.Forms.Panel();
-            this.outContorlBottomPannel = new System.Windows.Forms.Panel();
-            this.outContorlRightPannel = new System.Windows.Forms.Panel();
-            this.btnClientProfit = new System.Windows.Forms.Button();
-            this.btnMarketProfitList = new System.Windows.Forms.Button();
-            this.btnMarketprofitAll = new System.Windows.Forms.Button();
-            this.btnMarketReceiptsList = new System.Windows.Forms.Button();
-            this.btnMarketReceiptsAll = new System.Windows.Forms.Button();
-            this.superTabItemOut = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.storageControlAllPanel = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -159,17 +159,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox23 = new System.Windows.Forms.PictureBox();
-            this.picbox_inSelect = new System.Windows.Forms.PictureBox();
-            this.picbox_inInsert = new System.Windows.Forms.PictureBox();
-            this.pbWarehome = new System.Windows.Forms.PictureBox();
-            this.buttonInBusiness = new System.Windows.Forms.Button();
-            this.buttonInOrder = new System.Windows.Forms.Button();
-            this.buttonInDistributo = new System.Windows.Forms.Button();
-            this.buttonInRegion = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pbMarketGet = new System.Windows.Forms.PictureBox();
             this.pbMarketReceipts = new System.Windows.Forms.PictureBox();
@@ -181,6 +170,17 @@
             this.buttonMarketClient = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.picbox_inSelect = new System.Windows.Forms.PictureBox();
+            this.picbox_inInsert = new System.Windows.Forms.PictureBox();
+            this.pbWarehome = new System.Windows.Forms.PictureBox();
+            this.buttonInBusiness = new System.Windows.Forms.Button();
+            this.buttonInOrder = new System.Windows.Forms.Button();
+            this.buttonInDistributo = new System.Windows.Forms.Button();
+            this.buttonInRegion = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBoxdiaassembly = new System.Windows.Forms.PictureBox();
@@ -350,22 +350,22 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
+            this.superTabControlPanel3.SuspendLayout();
+            this.outContorlAllPannel.SuspendLayout();
+            this.panelsales.SuspendLayout();
+            this.outContorlBottomPannel.SuspendLayout();
+            this.outContorlRightPannel.SuspendLayout();
+            this.superTabControlPanel2.SuspendLayout();
+            this.inContorlAllPannel.SuspendLayout();
+            this.panelCaiGou.SuspendLayout();
+            this.inContorlBottomPannel.SuspendLayout();
+            this.inContorlRightPannel.SuspendLayout();
             this.superTabControlPanel8.SuspendLayout();
             this.expandablePanel2.SuspendLayout();
             this.expandablePanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.superTabControlPanel2.SuspendLayout();
-            this.inContorlAllPannel.SuspendLayout();
-            this.panelCaiGou.SuspendLayout();
-            this.inContorlBottomPannel.SuspendLayout();
-            this.inContorlRightPannel.SuspendLayout();
-            this.superTabControlPanel3.SuspendLayout();
-            this.outContorlAllPannel.SuspendLayout();
-            this.panelsales.SuspendLayout();
-            this.outContorlBottomPannel.SuspendLayout();
-            this.outContorlRightPannel.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
             this.storageControlAllPanel.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -389,18 +389,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbox_inSelect)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbox_inInsert)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbWarehome)).BeginInit();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMarketGet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMarketReceipts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMarketReturned)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbox_inSelect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbox_inInsert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbWarehome)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxdiaassembly)).BeginInit();
@@ -941,9 +941,9 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
+            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel6);
@@ -969,6 +969,224 @@
             this.superTabItemSys});
             this.superTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.WinMediaPlayer12;
             this.superTabControl1.Text = "superTabControl1";
+            // 
+            // superTabControlPanel3
+            // 
+            this.superTabControlPanel3.Controls.Add(this.outContorlAllPannel);
+            this.superTabControlPanel3.Controls.Add(this.outContorlBottomPannel);
+            this.superTabControlPanel3.Controls.Add(this.outContorlRightPannel);
+            this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 26);
+            this.superTabControlPanel3.Name = "superTabControlPanel3";
+            this.superTabControlPanel3.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel3.TabIndex = 0;
+            this.superTabControlPanel3.TabItem = this.superTabItemOut;
+            // 
+            // outContorlAllPannel
+            // 
+            this.outContorlAllPannel.BackColor = System.Drawing.Color.White;
+            this.outContorlAllPannel.Controls.Add(this.panelsales);
+            this.outContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.outContorlAllPannel.Location = new System.Drawing.Point(0, 0);
+            this.outContorlAllPannel.Name = "outContorlAllPannel";
+            this.outContorlAllPannel.Size = new System.Drawing.Size(745, 381);
+            this.outContorlAllPannel.TabIndex = 16;
+            // 
+            // panelsales
+            // 
+            this.panelsales.Controls.Add(this.pictureBox3);
+            this.panelsales.Controls.Add(this.pbMarketGet);
+            this.panelsales.Controls.Add(this.pbMarketReceipts);
+            this.panelsales.Controls.Add(this.pbMarketReturned);
+            this.panelsales.Controls.Add(this.pictureBox1);
+            this.panelsales.Location = new System.Drawing.Point(0, 0);
+            this.panelsales.Name = "panelsales";
+            this.panelsales.Size = new System.Drawing.Size(745, 381);
+            this.panelsales.TabIndex = 0;
+            // 
+            // outContorlBottomPannel
+            // 
+            this.outContorlBottomPannel.BackColor = System.Drawing.Color.MintCream;
+            this.outContorlBottomPannel.Controls.Add(this.button10);
+            this.outContorlBottomPannel.Controls.Add(this.buttonMarketOrder);
+            this.outContorlBottomPannel.Controls.Add(this.buttonMarketBusiness);
+            this.outContorlBottomPannel.Controls.Add(this.buttonMarketClient);
+            this.outContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.outContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
+            this.outContorlBottomPannel.Name = "outContorlBottomPannel";
+            this.outContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
+            this.outContorlBottomPannel.TabIndex = 16;
+            this.outContorlBottomPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanelBorder_Paint);
+            // 
+            // outContorlRightPannel
+            // 
+            this.outContorlRightPannel.BackColor = System.Drawing.Color.MintCream;
+            this.outContorlRightPannel.Controls.Add(this.panel7);
+            this.outContorlRightPannel.Controls.Add(this.btnClientProfit);
+            this.outContorlRightPannel.Controls.Add(this.btnMarketProfitList);
+            this.outContorlRightPannel.Controls.Add(this.btnMarketprofitAll);
+            this.outContorlRightPannel.Controls.Add(this.btnMarketReceiptsList);
+            this.outContorlRightPannel.Controls.Add(this.btnMarketReceiptsAll);
+            this.outContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.outContorlRightPannel.Location = new System.Drawing.Point(745, 0);
+            this.outContorlRightPannel.Name = "outContorlRightPannel";
+            this.outContorlRightPannel.Size = new System.Drawing.Size(125, 468);
+            this.outContorlRightPannel.TabIndex = 14;
+            this.outContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
+            // 
+            // btnClientProfit
+            // 
+            this.btnClientProfit.FlatAppearance.BorderSize = 0;
+            this.btnClientProfit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientProfit.Location = new System.Drawing.Point(1, 197);
+            this.btnClientProfit.Name = "btnClientProfit";
+            this.btnClientProfit.Size = new System.Drawing.Size(123, 35);
+            this.btnClientProfit.TabIndex = 10;
+            this.btnClientProfit.Text = "客户利润分析表";
+            this.btnClientProfit.UseVisualStyleBackColor = true;
+            // 
+            // btnMarketProfitList
+            // 
+            this.btnMarketProfitList.FlatAppearance.BorderSize = 0;
+            this.btnMarketProfitList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarketProfitList.Location = new System.Drawing.Point(1, 150);
+            this.btnMarketProfitList.Name = "btnMarketProfitList";
+            this.btnMarketProfitList.Size = new System.Drawing.Size(123, 35);
+            this.btnMarketProfitList.TabIndex = 9;
+            this.btnMarketProfitList.Text = "销售毛利明细表";
+            this.btnMarketProfitList.UseVisualStyleBackColor = true;
+            // 
+            // btnMarketprofitAll
+            // 
+            this.btnMarketprofitAll.FlatAppearance.BorderSize = 0;
+            this.btnMarketprofitAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarketprofitAll.Location = new System.Drawing.Point(1, 112);
+            this.btnMarketprofitAll.Name = "btnMarketprofitAll";
+            this.btnMarketprofitAll.Size = new System.Drawing.Size(123, 35);
+            this.btnMarketprofitAll.TabIndex = 8;
+            this.btnMarketprofitAll.Text = "销售毛利汇总表";
+            this.btnMarketprofitAll.UseVisualStyleBackColor = true;
+            // 
+            // btnMarketReceiptsList
+            // 
+            this.btnMarketReceiptsList.FlatAppearance.BorderSize = 0;
+            this.btnMarketReceiptsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarketReceiptsList.Location = new System.Drawing.Point(1, 67);
+            this.btnMarketReceiptsList.Name = "btnMarketReceiptsList";
+            this.btnMarketReceiptsList.Size = new System.Drawing.Size(123, 35);
+            this.btnMarketReceiptsList.TabIndex = 7;
+            this.btnMarketReceiptsList.Text = "销售开单明细表";
+            this.btnMarketReceiptsList.UseVisualStyleBackColor = true;
+            // 
+            // btnMarketReceiptsAll
+            // 
+            this.btnMarketReceiptsAll.FlatAppearance.BorderSize = 0;
+            this.btnMarketReceiptsAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarketReceiptsAll.Location = new System.Drawing.Point(1, 29);
+            this.btnMarketReceiptsAll.Name = "btnMarketReceiptsAll";
+            this.btnMarketReceiptsAll.Size = new System.Drawing.Size(123, 35);
+            this.btnMarketReceiptsAll.TabIndex = 6;
+            this.btnMarketReceiptsAll.Text = "销售开单汇总表";
+            this.btnMarketReceiptsAll.UseVisualStyleBackColor = true;
+            // 
+            // superTabItemOut
+            // 
+            this.superTabItemOut.AttachedControl = this.superTabControlPanel3;
+            this.superTabItemOut.GlobalItem = false;
+            this.superTabItemOut.Name = "superTabItemOut";
+            this.superTabItemOut.Text = "销售系统";
+            // 
+            // superTabControlPanel2
+            // 
+            this.superTabControlPanel2.Controls.Add(this.inContorlAllPannel);
+            this.superTabControlPanel2.Controls.Add(this.inContorlBottomPannel);
+            this.superTabControlPanel2.Controls.Add(this.inContorlRightPannel);
+            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 26);
+            this.superTabControlPanel2.Name = "superTabControlPanel2";
+            this.superTabControlPanel2.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel2.TabIndex = 0;
+            this.superTabControlPanel2.TabItem = this.superTabItemIn;
+            // 
+            // inContorlAllPannel
+            // 
+            this.inContorlAllPannel.BackColor = System.Drawing.Color.White;
+            this.inContorlAllPannel.Controls.Add(this.panelCaiGou);
+            this.inContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inContorlAllPannel.Location = new System.Drawing.Point(0, 0);
+            this.inContorlAllPannel.Name = "inContorlAllPannel";
+            this.inContorlAllPannel.Size = new System.Drawing.Size(745, 381);
+            this.inContorlAllPannel.TabIndex = 14;
+            // 
+            // panelCaiGou
+            // 
+            this.panelCaiGou.Controls.Add(this.pictureBox2);
+            this.panelCaiGou.Controls.Add(this.pictureBox23);
+            this.panelCaiGou.Controls.Add(this.picbox_inSelect);
+            this.panelCaiGou.Controls.Add(this.picbox_inInsert);
+            this.panelCaiGou.Controls.Add(this.pbWarehome);
+            this.panelCaiGou.Location = new System.Drawing.Point(0, 3);
+            this.panelCaiGou.Name = "panelCaiGou";
+            this.panelCaiGou.Size = new System.Drawing.Size(742, 378);
+            this.panelCaiGou.TabIndex = 0;
+            // 
+            // inContorlBottomPannel
+            // 
+            this.inContorlBottomPannel.BackColor = System.Drawing.Color.MintCream;
+            this.inContorlBottomPannel.Controls.Add(this.buttonInBusiness);
+            this.inContorlBottomPannel.Controls.Add(this.buttonInOrder);
+            this.inContorlBottomPannel.Controls.Add(this.buttonInDistributo);
+            this.inContorlBottomPannel.Controls.Add(this.buttonInRegion);
+            this.inContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.inContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
+            this.inContorlBottomPannel.Name = "inContorlBottomPannel";
+            this.inContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
+            this.inContorlBottomPannel.TabIndex = 14;
+            this.inContorlBottomPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanelBorder_Paint);
+            // 
+            // inContorlRightPannel
+            // 
+            this.inContorlRightPannel.BackColor = System.Drawing.Color.MintCream;
+            this.inContorlRightPannel.Controls.Add(this.btnInReceiptsList);
+            this.inContorlRightPannel.Controls.Add(this.btnInReceiptsAll);
+            this.inContorlRightPannel.Controls.Add(this.panel5);
+            this.inContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.inContorlRightPannel.Location = new System.Drawing.Point(745, 0);
+            this.inContorlRightPannel.Name = "inContorlRightPannel";
+            this.inContorlRightPannel.Size = new System.Drawing.Size(125, 468);
+            this.inContorlRightPannel.TabIndex = 12;
+            this.inContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
+            // 
+            // btnInReceiptsList
+            // 
+            this.btnInReceiptsList.BackColor = System.Drawing.Color.MintCream;
+            this.btnInReceiptsList.FlatAppearance.BorderSize = 0;
+            this.btnInReceiptsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInReceiptsList.Location = new System.Drawing.Point(1, 67);
+            this.btnInReceiptsList.Name = "btnInReceiptsList";
+            this.btnInReceiptsList.Size = new System.Drawing.Size(123, 35);
+            this.btnInReceiptsList.TabIndex = 6;
+            this.btnInReceiptsList.Text = "采购开单明细表";
+            this.btnInReceiptsList.UseVisualStyleBackColor = false;
+            // 
+            // btnInReceiptsAll
+            // 
+            this.btnInReceiptsAll.BackColor = System.Drawing.Color.MintCream;
+            this.btnInReceiptsAll.FlatAppearance.BorderSize = 0;
+            this.btnInReceiptsAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInReceiptsAll.Location = new System.Drawing.Point(1, 29);
+            this.btnInReceiptsAll.Name = "btnInReceiptsAll";
+            this.btnInReceiptsAll.Size = new System.Drawing.Size(123, 35);
+            this.btnInReceiptsAll.TabIndex = 5;
+            this.btnInReceiptsAll.Text = "采购开单汇总表";
+            this.btnInReceiptsAll.UseVisualStyleBackColor = false;
+            // 
+            // superTabItemIn
+            // 
+            this.superTabItemIn.AttachedControl = this.superTabControlPanel2;
+            this.superTabItemIn.GlobalItem = false;
+            this.superTabItemIn.Name = "superTabItemIn";
+            this.superTabItemIn.Text = "采购系统";
             // 
             // superTabControlPanel8
             // 
@@ -1149,224 +1367,6 @@
             this.superTabItem1.GlobalItem = false;
             this.superTabItem1.Name = "superTabItem1";
             this.superTabItem1.Text = "工作日志";
-            // 
-            // superTabControlPanel2
-            // 
-            this.superTabControlPanel2.Controls.Add(this.inContorlAllPannel);
-            this.superTabControlPanel2.Controls.Add(this.inContorlBottomPannel);
-            this.superTabControlPanel2.Controls.Add(this.inContorlRightPannel);
-            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 26);
-            this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(870, 468);
-            this.superTabControlPanel2.TabIndex = 0;
-            this.superTabControlPanel2.TabItem = this.superTabItemIn;
-            // 
-            // inContorlAllPannel
-            // 
-            this.inContorlAllPannel.BackColor = System.Drawing.Color.White;
-            this.inContorlAllPannel.Controls.Add(this.panelCaiGou);
-            this.inContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inContorlAllPannel.Location = new System.Drawing.Point(0, 0);
-            this.inContorlAllPannel.Name = "inContorlAllPannel";
-            this.inContorlAllPannel.Size = new System.Drawing.Size(745, 381);
-            this.inContorlAllPannel.TabIndex = 14;
-            // 
-            // panelCaiGou
-            // 
-            this.panelCaiGou.Controls.Add(this.pictureBox2);
-            this.panelCaiGou.Controls.Add(this.pictureBox23);
-            this.panelCaiGou.Controls.Add(this.picbox_inSelect);
-            this.panelCaiGou.Controls.Add(this.picbox_inInsert);
-            this.panelCaiGou.Controls.Add(this.pbWarehome);
-            this.panelCaiGou.Location = new System.Drawing.Point(0, 3);
-            this.panelCaiGou.Name = "panelCaiGou";
-            this.panelCaiGou.Size = new System.Drawing.Size(742, 378);
-            this.panelCaiGou.TabIndex = 0;
-            // 
-            // inContorlBottomPannel
-            // 
-            this.inContorlBottomPannel.BackColor = System.Drawing.Color.MintCream;
-            this.inContorlBottomPannel.Controls.Add(this.buttonInBusiness);
-            this.inContorlBottomPannel.Controls.Add(this.buttonInOrder);
-            this.inContorlBottomPannel.Controls.Add(this.buttonInDistributo);
-            this.inContorlBottomPannel.Controls.Add(this.buttonInRegion);
-            this.inContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
-            this.inContorlBottomPannel.Name = "inContorlBottomPannel";
-            this.inContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
-            this.inContorlBottomPannel.TabIndex = 14;
-            this.inContorlBottomPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanelBorder_Paint);
-            // 
-            // inContorlRightPannel
-            // 
-            this.inContorlRightPannel.BackColor = System.Drawing.Color.MintCream;
-            this.inContorlRightPannel.Controls.Add(this.btnInReceiptsList);
-            this.inContorlRightPannel.Controls.Add(this.btnInReceiptsAll);
-            this.inContorlRightPannel.Controls.Add(this.panel5);
-            this.inContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.inContorlRightPannel.Location = new System.Drawing.Point(745, 0);
-            this.inContorlRightPannel.Name = "inContorlRightPannel";
-            this.inContorlRightPannel.Size = new System.Drawing.Size(125, 468);
-            this.inContorlRightPannel.TabIndex = 12;
-            this.inContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
-            // 
-            // btnInReceiptsList
-            // 
-            this.btnInReceiptsList.BackColor = System.Drawing.Color.MintCream;
-            this.btnInReceiptsList.FlatAppearance.BorderSize = 0;
-            this.btnInReceiptsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInReceiptsList.Location = new System.Drawing.Point(1, 67);
-            this.btnInReceiptsList.Name = "btnInReceiptsList";
-            this.btnInReceiptsList.Size = new System.Drawing.Size(123, 35);
-            this.btnInReceiptsList.TabIndex = 6;
-            this.btnInReceiptsList.Text = "采购开单明细表";
-            this.btnInReceiptsList.UseVisualStyleBackColor = false;
-            // 
-            // btnInReceiptsAll
-            // 
-            this.btnInReceiptsAll.BackColor = System.Drawing.Color.MintCream;
-            this.btnInReceiptsAll.FlatAppearance.BorderSize = 0;
-            this.btnInReceiptsAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInReceiptsAll.Location = new System.Drawing.Point(1, 29);
-            this.btnInReceiptsAll.Name = "btnInReceiptsAll";
-            this.btnInReceiptsAll.Size = new System.Drawing.Size(123, 35);
-            this.btnInReceiptsAll.TabIndex = 5;
-            this.btnInReceiptsAll.Text = "采购开单汇总表";
-            this.btnInReceiptsAll.UseVisualStyleBackColor = false;
-            // 
-            // superTabItemIn
-            // 
-            this.superTabItemIn.AttachedControl = this.superTabControlPanel2;
-            this.superTabItemIn.GlobalItem = false;
-            this.superTabItemIn.Name = "superTabItemIn";
-            this.superTabItemIn.Text = "采购系统";
-            // 
-            // superTabControlPanel3
-            // 
-            this.superTabControlPanel3.Controls.Add(this.outContorlAllPannel);
-            this.superTabControlPanel3.Controls.Add(this.outContorlBottomPannel);
-            this.superTabControlPanel3.Controls.Add(this.outContorlRightPannel);
-            this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 26);
-            this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(870, 468);
-            this.superTabControlPanel3.TabIndex = 0;
-            this.superTabControlPanel3.TabItem = this.superTabItemOut;
-            // 
-            // outContorlAllPannel
-            // 
-            this.outContorlAllPannel.BackColor = System.Drawing.Color.White;
-            this.outContorlAllPannel.Controls.Add(this.panelsales);
-            this.outContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.outContorlAllPannel.Location = new System.Drawing.Point(0, 0);
-            this.outContorlAllPannel.Name = "outContorlAllPannel";
-            this.outContorlAllPannel.Size = new System.Drawing.Size(745, 381);
-            this.outContorlAllPannel.TabIndex = 16;
-            // 
-            // panelsales
-            // 
-            this.panelsales.Controls.Add(this.pictureBox3);
-            this.panelsales.Controls.Add(this.pbMarketGet);
-            this.panelsales.Controls.Add(this.pbMarketReceipts);
-            this.panelsales.Controls.Add(this.pbMarketReturned);
-            this.panelsales.Controls.Add(this.pictureBox1);
-            this.panelsales.Location = new System.Drawing.Point(0, 0);
-            this.panelsales.Name = "panelsales";
-            this.panelsales.Size = new System.Drawing.Size(745, 381);
-            this.panelsales.TabIndex = 0;
-            // 
-            // outContorlBottomPannel
-            // 
-            this.outContorlBottomPannel.BackColor = System.Drawing.Color.MintCream;
-            this.outContorlBottomPannel.Controls.Add(this.button10);
-            this.outContorlBottomPannel.Controls.Add(this.buttonMarketOrder);
-            this.outContorlBottomPannel.Controls.Add(this.buttonMarketBusiness);
-            this.outContorlBottomPannel.Controls.Add(this.buttonMarketClient);
-            this.outContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.outContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
-            this.outContorlBottomPannel.Name = "outContorlBottomPannel";
-            this.outContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
-            this.outContorlBottomPannel.TabIndex = 16;
-            this.outContorlBottomPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.bottomPanelBorder_Paint);
-            // 
-            // outContorlRightPannel
-            // 
-            this.outContorlRightPannel.BackColor = System.Drawing.Color.MintCream;
-            this.outContorlRightPannel.Controls.Add(this.panel7);
-            this.outContorlRightPannel.Controls.Add(this.btnClientProfit);
-            this.outContorlRightPannel.Controls.Add(this.btnMarketProfitList);
-            this.outContorlRightPannel.Controls.Add(this.btnMarketprofitAll);
-            this.outContorlRightPannel.Controls.Add(this.btnMarketReceiptsList);
-            this.outContorlRightPannel.Controls.Add(this.btnMarketReceiptsAll);
-            this.outContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.outContorlRightPannel.Location = new System.Drawing.Point(745, 0);
-            this.outContorlRightPannel.Name = "outContorlRightPannel";
-            this.outContorlRightPannel.Size = new System.Drawing.Size(125, 468);
-            this.outContorlRightPannel.TabIndex = 14;
-            this.outContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
-            // 
-            // btnClientProfit
-            // 
-            this.btnClientProfit.FlatAppearance.BorderSize = 0;
-            this.btnClientProfit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientProfit.Location = new System.Drawing.Point(1, 197);
-            this.btnClientProfit.Name = "btnClientProfit";
-            this.btnClientProfit.Size = new System.Drawing.Size(123, 35);
-            this.btnClientProfit.TabIndex = 10;
-            this.btnClientProfit.Text = "客户利润分析表";
-            this.btnClientProfit.UseVisualStyleBackColor = true;
-            // 
-            // btnMarketProfitList
-            // 
-            this.btnMarketProfitList.FlatAppearance.BorderSize = 0;
-            this.btnMarketProfitList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarketProfitList.Location = new System.Drawing.Point(1, 150);
-            this.btnMarketProfitList.Name = "btnMarketProfitList";
-            this.btnMarketProfitList.Size = new System.Drawing.Size(123, 35);
-            this.btnMarketProfitList.TabIndex = 9;
-            this.btnMarketProfitList.Text = "销售毛利明细表";
-            this.btnMarketProfitList.UseVisualStyleBackColor = true;
-            // 
-            // btnMarketprofitAll
-            // 
-            this.btnMarketprofitAll.FlatAppearance.BorderSize = 0;
-            this.btnMarketprofitAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarketprofitAll.Location = new System.Drawing.Point(1, 112);
-            this.btnMarketprofitAll.Name = "btnMarketprofitAll";
-            this.btnMarketprofitAll.Size = new System.Drawing.Size(123, 35);
-            this.btnMarketprofitAll.TabIndex = 8;
-            this.btnMarketprofitAll.Text = "销售毛利汇总表";
-            this.btnMarketprofitAll.UseVisualStyleBackColor = true;
-            // 
-            // btnMarketReceiptsList
-            // 
-            this.btnMarketReceiptsList.FlatAppearance.BorderSize = 0;
-            this.btnMarketReceiptsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarketReceiptsList.Location = new System.Drawing.Point(1, 67);
-            this.btnMarketReceiptsList.Name = "btnMarketReceiptsList";
-            this.btnMarketReceiptsList.Size = new System.Drawing.Size(123, 35);
-            this.btnMarketReceiptsList.TabIndex = 7;
-            this.btnMarketReceiptsList.Text = "销售开单明细表";
-            this.btnMarketReceiptsList.UseVisualStyleBackColor = true;
-            // 
-            // btnMarketReceiptsAll
-            // 
-            this.btnMarketReceiptsAll.FlatAppearance.BorderSize = 0;
-            this.btnMarketReceiptsAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarketReceiptsAll.Location = new System.Drawing.Point(1, 29);
-            this.btnMarketReceiptsAll.Name = "btnMarketReceiptsAll";
-            this.btnMarketReceiptsAll.Size = new System.Drawing.Size(123, 35);
-            this.btnMarketReceiptsAll.TabIndex = 6;
-            this.btnMarketReceiptsAll.Text = "销售开单汇总表";
-            this.btnMarketReceiptsAll.UseVisualStyleBackColor = true;
-            // 
-            // superTabItemOut
-            // 
-            this.superTabItemOut.AttachedControl = this.superTabControlPanel3;
-            this.superTabItemOut.GlobalItem = false;
-            this.superTabItemOut.Name = "superTabItemOut";
-            this.superTabItemOut.Text = "销售系统";
             // 
             // superTabControlPanel4
             // 
@@ -2138,6 +2138,133 @@
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::WSCATProject.Properties.Resources.arrows;
+            this.pictureBox3.Location = new System.Drawing.Point(454, 180);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(133, 24);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 21;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pbMarketGet
+            // 
+            this.pbMarketGet.BackgroundImage = global::WSCATProject.Properties.Resources.marketGet;
+            this.pbMarketGet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMarketGet.Location = new System.Drawing.Point(612, 145);
+            this.pbMarketGet.Name = "pbMarketGet";
+            this.pbMarketGet.Size = new System.Drawing.Size(76, 85);
+            this.pbMarketGet.TabIndex = 19;
+            this.pbMarketGet.TabStop = false;
+            this.pbMarketGet.Click += new System.EventHandler(this.pbMarketGet_Click_1);
+            // 
+            // pbMarketReceipts
+            // 
+            this.pbMarketReceipts.BackgroundImage = global::WSCATProject.Properties.Resources.marketReceipts;
+            this.pbMarketReceipts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMarketReceipts.Location = new System.Drawing.Point(339, 151);
+            this.pbMarketReceipts.Name = "pbMarketReceipts";
+            this.pbMarketReceipts.Size = new System.Drawing.Size(76, 85);
+            this.pbMarketReceipts.TabIndex = 17;
+            this.pbMarketReceipts.TabStop = false;
+            this.pbMarketReceipts.Click += new System.EventHandler(this.pbMarketReceipts_Click_1);
+            // 
+            // pbMarketReturned
+            // 
+            this.pbMarketReturned.BackgroundImage = global::WSCATProject.Properties.Resources.marketReturned;
+            this.pbMarketReturned.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMarketReturned.Location = new System.Drawing.Point(56, 151);
+            this.pbMarketReturned.Name = "pbMarketReturned";
+            this.pbMarketReturned.Size = new System.Drawing.Size(76, 85);
+            this.pbMarketReturned.TabIndex = 18;
+            this.pbMarketReturned.TabStop = false;
+            this.pbMarketReturned.Click += new System.EventHandler(this.pbMarketReturned_Click_1);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WSCATProject.Properties.Resources.arrows;
+            this.pictureBox1.Location = new System.Drawing.Point(170, 180);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(133, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button10
+            // 
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Image = global::WSCATProject.Properties.Resources.stockData;
+            this.button10.Location = new System.Drawing.Point(356, 11);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(80, 73);
+            this.button10.TabIndex = 20;
+            this.button10.Text = "仓库管理";
+            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarketOrder
+            // 
+            this.buttonMarketOrder.FlatAppearance.BorderSize = 0;
+            this.buttonMarketOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMarketOrder.Image = global::WSCATProject.Properties.Resources.goodsData;
+            this.buttonMarketOrder.Location = new System.Drawing.Point(227, 11);
+            this.buttonMarketOrder.Name = "buttonMarketOrder";
+            this.buttonMarketOrder.Size = new System.Drawing.Size(80, 73);
+            this.buttonMarketOrder.TabIndex = 19;
+            this.buttonMarketOrder.Text = "货品资料";
+            this.buttonMarketOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonMarketOrder.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarketBusiness
+            // 
+            this.buttonMarketBusiness.FlatAppearance.BorderSize = 0;
+            this.buttonMarketBusiness.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMarketBusiness.Image = global::WSCATProject.Properties.Resources.businessQuery;
+            this.buttonMarketBusiness.Location = new System.Drawing.Point(493, 11);
+            this.buttonMarketBusiness.Name = "buttonMarketBusiness";
+            this.buttonMarketBusiness.Size = new System.Drawing.Size(80, 73);
+            this.buttonMarketBusiness.TabIndex = 18;
+            this.buttonMarketBusiness.Text = "业务查找";
+            this.buttonMarketBusiness.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonMarketBusiness.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarketClient
+            // 
+            this.buttonMarketClient.FlatAppearance.BorderSize = 0;
+            this.buttonMarketClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMarketClient.Image = global::WSCATProject.Properties.Resources.clientData;
+            this.buttonMarketClient.Location = new System.Drawing.Point(90, 11);
+            this.buttonMarketClient.Name = "buttonMarketClient";
+            this.buttonMarketClient.Size = new System.Drawing.Size(80, 73);
+            this.buttonMarketClient.TabIndex = 17;
+            this.buttonMarketClient.Text = "客户资料";
+            this.buttonMarketClient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonMarketClient.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
+            this.panel7.Controls.Add(this.label4);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(125, 28);
+            this.panel7.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label4.Location = new System.Drawing.Point(31, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "报表中心";
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WSCATProject.Properties.Resources.arrows;
@@ -2266,133 +2393,6 @@
             this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "报表中心";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::WSCATProject.Properties.Resources.arrows;
-            this.pictureBox3.Location = new System.Drawing.Point(454, 180);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(133, 24);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 21;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pbMarketGet
-            // 
-            this.pbMarketGet.BackgroundImage = global::WSCATProject.Properties.Resources.marketGet;
-            this.pbMarketGet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMarketGet.Location = new System.Drawing.Point(612, 145);
-            this.pbMarketGet.Name = "pbMarketGet";
-            this.pbMarketGet.Size = new System.Drawing.Size(76, 85);
-            this.pbMarketGet.TabIndex = 19;
-            this.pbMarketGet.TabStop = false;
-            this.pbMarketGet.Click += new System.EventHandler(this.pbMarketGet_Click_1);
-            // 
-            // pbMarketReceipts
-            // 
-            this.pbMarketReceipts.BackgroundImage = global::WSCATProject.Properties.Resources.marketReceipts;
-            this.pbMarketReceipts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMarketReceipts.Location = new System.Drawing.Point(339, 151);
-            this.pbMarketReceipts.Name = "pbMarketReceipts";
-            this.pbMarketReceipts.Size = new System.Drawing.Size(76, 85);
-            this.pbMarketReceipts.TabIndex = 17;
-            this.pbMarketReceipts.TabStop = false;
-            this.pbMarketReceipts.Click += new System.EventHandler(this.pbMarketReceipts_Click_1);
-            // 
-            // pbMarketReturned
-            // 
-            this.pbMarketReturned.BackgroundImage = global::WSCATProject.Properties.Resources.marketReturned;
-            this.pbMarketReturned.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMarketReturned.Location = new System.Drawing.Point(56, 151);
-            this.pbMarketReturned.Name = "pbMarketReturned";
-            this.pbMarketReturned.Size = new System.Drawing.Size(76, 85);
-            this.pbMarketReturned.TabIndex = 18;
-            this.pbMarketReturned.TabStop = false;
-            this.pbMarketReturned.Click += new System.EventHandler(this.pbMarketReturned_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WSCATProject.Properties.Resources.arrows;
-            this.pictureBox1.Location = new System.Drawing.Point(170, 180);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button10
-            // 
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Image = global::WSCATProject.Properties.Resources.stockData;
-            this.button10.Location = new System.Drawing.Point(356, 11);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(80, 73);
-            this.button10.TabIndex = 20;
-            this.button10.Text = "仓库管理";
-            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarketOrder
-            // 
-            this.buttonMarketOrder.FlatAppearance.BorderSize = 0;
-            this.buttonMarketOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMarketOrder.Image = global::WSCATProject.Properties.Resources.goodsData;
-            this.buttonMarketOrder.Location = new System.Drawing.Point(227, 11);
-            this.buttonMarketOrder.Name = "buttonMarketOrder";
-            this.buttonMarketOrder.Size = new System.Drawing.Size(80, 73);
-            this.buttonMarketOrder.TabIndex = 19;
-            this.buttonMarketOrder.Text = "货品资料";
-            this.buttonMarketOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonMarketOrder.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarketBusiness
-            // 
-            this.buttonMarketBusiness.FlatAppearance.BorderSize = 0;
-            this.buttonMarketBusiness.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMarketBusiness.Image = global::WSCATProject.Properties.Resources.businessQuery;
-            this.buttonMarketBusiness.Location = new System.Drawing.Point(493, 11);
-            this.buttonMarketBusiness.Name = "buttonMarketBusiness";
-            this.buttonMarketBusiness.Size = new System.Drawing.Size(80, 73);
-            this.buttonMarketBusiness.TabIndex = 18;
-            this.buttonMarketBusiness.Text = "业务查找";
-            this.buttonMarketBusiness.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonMarketBusiness.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarketClient
-            // 
-            this.buttonMarketClient.FlatAppearance.BorderSize = 0;
-            this.buttonMarketClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMarketClient.Image = global::WSCATProject.Properties.Resources.clientData;
-            this.buttonMarketClient.Location = new System.Drawing.Point(90, 11);
-            this.buttonMarketClient.Name = "buttonMarketClient";
-            this.buttonMarketClient.Size = new System.Drawing.Size(80, 73);
-            this.buttonMarketClient.TabIndex = 17;
-            this.buttonMarketClient.Text = "客户资料";
-            this.buttonMarketClient.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonMarketClient.UseVisualStyleBackColor = true;
-            // 
-            // panel7
-            // 
-            this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(125, 28);
-            this.panel7.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label4.Location = new System.Drawing.Point(31, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "报表中心";
             // 
             // pictureBox12
             // 
@@ -3290,10 +3290,11 @@
             // pictureBox5
             // 
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.newBackImage1;
+            this.pictureBox5.Image = global::WSCATProject.Properties.Resources.newBackImage_1_;
             this.pictureBox5.Location = new System.Drawing.Point(5, 179);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(994, 71);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
             // 
@@ -4036,22 +4037,22 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
+            this.superTabControlPanel3.ResumeLayout(false);
+            this.outContorlAllPannel.ResumeLayout(false);
+            this.panelsales.ResumeLayout(false);
+            this.outContorlBottomPannel.ResumeLayout(false);
+            this.outContorlRightPannel.ResumeLayout(false);
+            this.superTabControlPanel2.ResumeLayout(false);
+            this.inContorlAllPannel.ResumeLayout(false);
+            this.panelCaiGou.ResumeLayout(false);
+            this.inContorlBottomPannel.ResumeLayout(false);
+            this.inContorlRightPannel.ResumeLayout(false);
             this.superTabControlPanel8.ResumeLayout(false);
             this.expandablePanel2.ResumeLayout(false);
             this.expandablePanel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.superTabControlPanel2.ResumeLayout(false);
-            this.inContorlAllPannel.ResumeLayout(false);
-            this.panelCaiGou.ResumeLayout(false);
-            this.inContorlBottomPannel.ResumeLayout(false);
-            this.inContorlRightPannel.ResumeLayout(false);
-            this.superTabControlPanel3.ResumeLayout(false);
-            this.outContorlAllPannel.ResumeLayout(false);
-            this.panelsales.ResumeLayout(false);
-            this.outContorlBottomPannel.ResumeLayout(false);
-            this.outContorlRightPannel.ResumeLayout(false);
             this.superTabControlPanel4.ResumeLayout(false);
             this.storageControlAllPanel.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
@@ -4077,13 +4078,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbox_inSelect)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picbox_inInsert)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbWarehome)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMarketGet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMarketReceipts)).EndInit();
@@ -4091,6 +4085,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbox_inSelect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picbox_inInsert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbWarehome)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxdiaassembly)).EndInit();

@@ -604,7 +604,11 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            Review();
+            DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Review();
+            }
         }
         /// <summary>
         /// 保存按钮事件

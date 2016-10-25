@@ -983,6 +983,16 @@ namespace WSCATProject.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap newBackImage_1_ {
+            get {
+                object obj = ResourceManager.GetObject("newBackImage_1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap newBackImage1 {
             get {
                 object obj = ResourceManager.GetObject("newBackImage1", resourceCulture);
