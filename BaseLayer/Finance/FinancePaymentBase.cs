@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Finance;
 using System;
 using System.Collections;
 using System.Collections.Generic;
