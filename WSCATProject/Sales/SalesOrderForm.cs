@@ -813,7 +813,7 @@ namespace WSCATProject.Sales
                         salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率                   
                         salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率                 
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value == null ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesorderList.Add(salesorderDetail);
@@ -996,7 +996,7 @@ namespace WSCATProject.Sales
                         salesorderDetail.discountRate = Convert.ToDecimal(gr["DiscountRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["DiscountRate"].Value));//折扣率                  
                         salesorderDetail.VATRate = Convert.ToDecimal(gr["TaxRate"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["TaxRate"].Value));//增值税税率                    
                         salesorderDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value == null ? "" : gr["remark"].Value.ToString());//备注
-                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
+                        salesorderDetail.deliveryNumber = Convert.ToDecimal(gr["FaHuoNumber"].Value ==null ? 0.0M : Convert.ToDecimal(gr["FaHuoNumber"].Value));//发货数量    
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         salesorderList.Add(salesorderDetail);
@@ -1557,6 +1557,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (labtextboxTop7.Text == null || labtextboxTop7.Text.Trim() == "")
+                {
+                    labtextboxTop7.Text = 0.00.ToString();
+                }
                 if (labtextboxTop7.MaxLength > 12)
                 {
                     labtextboxTop7.Focus();

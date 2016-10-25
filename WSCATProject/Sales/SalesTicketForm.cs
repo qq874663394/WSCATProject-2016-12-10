@@ -1826,6 +1826,10 @@ namespace WSCATProject.Sales
         {
             try
             {
+                if (labtextboxTop7.Text == null || labtextboxTop7.Text.Trim() == "")
+                {
+                    labtextboxTop7.Text = 0.00.ToString();
+                }
                 if (labtextboxTop7.MaxLength > 12)
                 {
                     labtextboxTop7.Focus();
