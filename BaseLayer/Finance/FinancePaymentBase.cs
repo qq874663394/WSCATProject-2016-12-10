@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Finance;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace BaseLayer.Finance
 {
     public class FinancePaymentBase
     {
-        public object AddToMainOrDetail(FinanceCollection model, List<FinanceCollectionDetail> modelDetail)
+        public object AddToMainOrDetail(FinancePayment model, List<FinancePaymentDetail> modelDetail)
         {
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();
@@ -21,16 +22,16 @@ namespace BaseLayer.Finance
             object result = null;
             try
             {
-                sqlMain.Append("insert into [T_FinanceCollection] (");
-                sqlMain.Append("code,clientCode,clientName,accountCode,accountName,saleCode,date,operationMan,checkMan,salesMan,salesCode,checkState,remark,Reserved1,Reserved2,isClear,financeCollectionState,updatedate,type,settlementMethod,discount,totalCollection)");
+                sqlMain.Append("insert into [T_FinancePayment] (");
+                sqlMain.Append("code,supplierCode,supplierName,accountCode,accountName,saleCode,date,operationMan,checkMan,salesMan,salesCode,checkState,remark,Reserved1,Reserved2,isClear,financeCollectionState,updatedate,type,settlementMethod,discount,totalCollection)");
                 sqlMain.Append(" values (");
-                sqlMain.Append("@code,@clientCode,@clientName,@accountCode,@accountName,@saleCode,@date,@operationMan,@checkMan,@salesMan,@salesCode,@checkState,@remark,@Reserved1,@Reserved2,@isClear,@financeCollectionState,@updatedate,@type,@settlementMethod,@discount,@totalCollection)");
+                sqlMain.Append("@code,@supplierCode,@supplierName,@accountCode,@accountName,@saleCode,@date,@operationMan,@checkMan,@salesMan,@salesCode,@checkState,@remark,@Reserved1,@Reserved2,@isClear,@financeCollectionState,@updatedate,@type,@settlementMethod,@discount,@totalCollection)");
                 sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code", SqlDbType.NVarChar,45),
-                    new SqlParameter("@clientCode", SqlDbType.NVarChar,45),
-                    new SqlParameter("@clientName", SqlDbType.NVarChar,40),
+                    new SqlParameter("@supplierCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@supplierName", SqlDbType.NVarChar,40),
                     new SqlParameter("@accountCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@accountName", SqlDbType.NVarChar,40),
                     new SqlParameter("@saleCode", SqlDbType.NVarChar,45),
@@ -52,8 +53,8 @@ namespace BaseLayer.Finance
                     new SqlParameter("@totalCollection", SqlDbType.Decimal,9)
                 };
                 spsMain[0].Value = model.code;
-                spsMain[1].Value = model.clientCode;
-                spsMain[2].Value = model.clientName;
+                spsMain[1].Value = model.supplierCode;
+                spsMain[2].Value = model.supplierName;
                 spsMain[3].Value = model.accountCode;
                 spsMain[4].Value = model.accountName;
                 spsMain[5].Value = model.saleCode;
@@ -75,19 +76,12 @@ namespace BaseLayer.Finance
                 spsMain[21].Value = model.totalCollection;
 
                 hashTable.Add(sqlMain, spsMain);
-                sqlDetail.Append("insert into [T_FinanceCollectionDetail] (");
+
+                sqlDetail.Append("insert into [T_FinancePaymentDetail] (");
                 sqlDetail.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append(@"@mainCode,
-                    @code,
-@salesCode,
-@salesDate,
-@salesType,
-@amountReceivable,
-@amountReceived,
-@amountUnpaid,
-@nowMoney,
-@unCollection,@remark)");
+                sqlDetail.Append("@mainCode,@code,@salesCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
+                sqlDetail.Append(";select @@IDENTITY");
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
@@ -115,6 +109,7 @@ namespace BaseLayer.Finance
                     spsDetail[8].Value = item.nowMoney;
                     spsDetail[9].Value = item.unCollection;
                     spsDetail[10].Value = item.remark;
+
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -134,35 +129,35 @@ namespace BaseLayer.Finance
             object result = null;
             try
             {
-
-                sqlDetail.Append("update [T_FinanceCollection] set ");
-                sqlDetail.Append("clientCode=@clientCode,");
-                sqlDetail.Append("clientName=@clientName,");
-                sqlDetail.Append("accountCode=@accountCode,");
-                sqlDetail.Append("accountName=@accountName,");
-                sqlDetail.Append("saleCode=@saleCode,");
-                sqlDetail.Append("date=@date,");
-                sqlDetail.Append("operationMan=@operationMan,");
-                sqlDetail.Append("checkMan=@checkMan,");
-                sqlDetail.Append("salesMan=@salesMan,");
-                sqlDetail.Append("salesCode=@salesCode,");
-                sqlDetail.Append("checkState=@checkState,");
-                sqlDetail.Append("remark=@remark,");
-                sqlDetail.Append("Reserved1=@Reserved1,");
-                sqlDetail.Append("Reserved2=@Reserved2,");
-                sqlDetail.Append("isClear=@isClear,");
-                sqlDetail.Append("financeCollectionState=@financeCollectionState,");
-                sqlDetail.Append("updatedate=@updatedate,");
-                sqlDetail.Append("type=@type,");
-                sqlDetail.Append("settlementMethod=@settlementMethod,");
-                sqlDetail.Append("discount=@discount,");
-                sqlDetail.Append("totalCollection=@totalCollection");
-                sqlDetail.Append(" where code=@code ");
+                sqlMain.Append("update [T_FinancePayment] set ");
+                sqlMain.Append("supplierCode=@supplierCode,");
+                sqlMain.Append("supplierName=@supplierName,");
+                sqlMain.Append("accountCode=@accountCode,");
+                sqlMain.Append("accountName=@accountName,");
+                sqlMain.Append("saleCode=@saleCode,");
+                sqlMain.Append("date=@date,");
+                sqlMain.Append("operationMan=@operationMan,");
+                sqlMain.Append("checkMan=@checkMan,");
+                sqlMain.Append("salesMan=@salesMan,");
+                sqlMain.Append("salesCode=@salesCode,");
+                sqlMain.Append("checkState=@checkState,");
+                sqlMain.Append("remark=@remark,");
+                sqlMain.Append("Reserved1=@Reserved1,");
+                sqlMain.Append("Reserved2=@Reserved2,");
+                sqlMain.Append("isClear=@isClear,");
+                sqlMain.Append("financeCollectionState=@financeCollectionState,");
+                sqlMain.Append("updatedate=@updatedate,");
+                sqlMain.Append("type=@type,");
+                sqlMain.Append("settlementMethod=@settlementMethod,");
+                sqlMain.Append("discount=@discount,");
+                sqlMain.Append("totalCollection=@totalCollection");
+                sqlMain.Append(" where code=@code ");
                 sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
-                    new SqlParameter("@clientCode", SqlDbType.NVarChar,45),
-                    new SqlParameter("@clientName", SqlDbType.NVarChar,40),
+                    new SqlParameter("@code", SqlDbType.NVarChar,45),
+                    new SqlParameter("@supplierCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@supplierName", SqlDbType.NVarChar,40),
                     new SqlParameter("@accountCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@accountName", SqlDbType.NVarChar,40),
                     new SqlParameter("@saleCode", SqlDbType.NVarChar,45),
@@ -181,50 +176,58 @@ namespace BaseLayer.Finance
                     new SqlParameter("@type", SqlDbType.NVarChar,40),
                     new SqlParameter("@settlementMethod", SqlDbType.NVarChar,40),
                     new SqlParameter("@discount", SqlDbType.Decimal,9),
-                    new SqlParameter("@totalCollection", SqlDbType.Decimal,9),
-                    new SqlParameter("@code", SqlDbType.NVarChar,45)
+                    new SqlParameter("@totalCollection", SqlDbType.Decimal,9)
                 };
-                spsMain[0].Value = model.code;
-                spsMain[1].Value = model.clientCode;
-                spsMain[2].Value = model.clientName;
-                spsMain[3].Value = model.accountCode;
-                spsMain[4].Value = model.accountName;
-                spsMain[5].Value = model.saleCode;
-                spsMain[6].Value = model.date;
-                spsMain[7].Value = model.operationMan;
-                spsMain[8].Value = model.checkMan;
+                spsMain[0].Value =model.code;
+                spsMain[1].Value =model.supplierCode;
+                spsMain[2].Value =model.supplierName;
+                spsMain[3].Value =model.accountCode;
+                spsMain[4].Value =model.accountName;
+                spsMain[5].Value =model.saleCode;
+                spsMain[6].Value =model.date;
+                spsMain[7].Value =model.operationMan;
+                spsMain[8].Value =model.checkMan;
                 spsMain[9].Value = model.salesMan;
-                spsMain[10].Value = model.salesCode;
-                spsMain[11].Value = model.checkState;
-                spsMain[12].Value = model.remark;
-                spsMain[13].Value = model.Reserved1;
-                spsMain[14].Value = model.Reserved2;
-                spsMain[15].Value = model.isClear;
-                spsMain[16].Value = model.financeCollectionState;
-                spsMain[17].Value = model.updatedate;
-                spsMain[18].Value = model.type;
-                spsMain[19].Value = model.settlementMethod;
-                spsMain[20].Value = model.discount;
+                spsMain[10].Value =model.salesCode;
+                spsMain[11].Value =model.checkState;
+                spsMain[12].Value =model.remark;
+                spsMain[13].Value =model.Reserved1;
+                spsMain[14].Value =model.Reserved2;
+                spsMain[15].Value =model.isClear;
+                spsMain[16].Value =model.financeCollectionState;
+                spsMain[17].Value =model.updatedate;
+                spsMain[18].Value =model.type;
+                spsMain[19].Value =model.settlementMethod;
+                spsMain[20].Value =model.discount;
                 spsMain[21].Value = model.totalCollection;
 
                 hashTable.Add(sqlMain, spsMain);
-                sqlMain.Append("update [T_FinanceCollectionDetail] set ");
-                sqlMain.Append("mainCode=@mainCode,");
-                sqlMain.Append("salesCode=@salesCode,");
-                sqlMain.Append("salesDate=@salesDate,");
-                sqlMain.Append("salesType=@salesType,");
-                sqlMain.Append("amountReceivable=@amountReceivable,");
-                sqlMain.Append("amountReceived=@amountReceived,");
-                sqlMain.Append("amountUnpaid=@amountUnpaid,");
-                sqlMain.Append("nowMoney=@nowMoney,");
-                sqlMain.Append("unCollection=@unCollection,");
-                sqlMain.Append("remark=@remark");
-                sqlMain.Append(" where code=@code and mainCode=@mainCode");
+                StringBuilder strInsert = new StringBuilder();
+                strInsert.Append("insert into [T_FinancePaymentDetail] (");
+                strInsert.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                strInsert.Append(" values (");
+                strInsert.Append("@mainCode,@code,@salesCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
+                strInsert.Append(";select @@IDENTITY");
+
+                sqlDetail.Append("update [T_FinancePaymentDetail] set ");
+                sqlDetail.Append("mainCode=@mainCode,");
+                sqlDetail.Append("salesCode=@salesCode,");
+                sqlDetail.Append("salesDate=@salesDate,");
+                sqlDetail.Append("salesType=@salesType,");
+                sqlDetail.Append("amountReceivable=@amountReceivable,");
+                sqlDetail.Append("amountReceived=@amountReceived,");
+                sqlDetail.Append("amountUnpaid=@amountUnpaid,");
+                sqlDetail.Append("nowMoney=@nowMoney,");
+                sqlDetail.Append("unCollection=@unCollection,");
+                sqlDetail.Append("remark=@remark");
+                sqlDetail.Append(" where code=@code ");
+                strInsert.Append(";select @@IDENTITY");
                 foreach (var item in modelDetail)
                 {
                     SqlParameter[] spsDetail =
                     {
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@code", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesDate", SqlDbType.DateTime),
                     new SqlParameter("@salesType", SqlDbType.NVarChar,40),
@@ -233,20 +236,19 @@ namespace BaseLayer.Finance
                     new SqlParameter("@amountUnpaid", SqlDbType.Decimal,9),
                     new SqlParameter("@nowMoney", SqlDbType.Decimal,9),
                     new SqlParameter("@unCollection", SqlDbType.Decimal,9),
-                    new SqlParameter("@remark", SqlDbType.NVarChar,400),
-                    new SqlParameter("@code", SqlDbType.NVarChar,45)
+                    new SqlParameter("@remark", SqlDbType.NVarChar,400)
                     };
-                    spsDetail[1].Value = item.mainCode;
-                    spsDetail[2].Value = item.code;
-                    spsDetail[3].Value = item.salesCode;
-                    spsDetail[4].Value = item.salesDate;
-                    spsDetail[5].Value = item.salesType;
-                    spsDetail[6].Value = item.amountReceivable;
-                    spsDetail[7].Value = item.amountReceived;
-                    spsDetail[8].Value = item.amountUnpaid;
-                    spsDetail[9].Value = item.nowMoney;
-                    spsDetail[10].Value = item.unCollection;
-                    spsDetail[11].Value = item.remark;
+                    spsDetail[0].Value =item.mainCode;
+                    spsDetail[1].Value =item.code;
+                    spsDetail[2].Value =item.salesCode;
+                    spsDetail[3].Value =item.salesDate;
+                    spsDetail[4].Value =item.salesType;
+                    spsDetail[5].Value =item.amountReceivable;
+                    spsDetail[6].Value =item.amountReceived;
+                    spsDetail[7].Value =item.amountUnpaid;
+                    spsDetail[8].Value =item.nowMoney;
+                    spsDetail[9].Value = item.unCollection;
+                    spsDetail[10].Value = item.remark;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
