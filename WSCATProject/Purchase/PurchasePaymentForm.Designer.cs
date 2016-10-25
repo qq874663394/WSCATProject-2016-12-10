@@ -56,6 +56,7 @@
             this.benciHeXiao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.remark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.shengyuMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.pictureBoxShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -73,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBarCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -90,6 +92,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1053, 80);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBoxShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxShengHe, 0);
             // 
             // labelTitle
             // 
@@ -150,9 +162,14 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop6.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.labtextboxTop6.FocusHighlightEnabled = true;
             this.labtextboxTop6.ForeColor = System.Drawing.Color.Gray;
+            this.labtextboxTop6.MaxLength = 12;
             this.labtextboxTop6.ReadOnly = true;
             this.labtextboxTop6.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop6.Text = "0.00";
+            this.labtextboxTop6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop6.TextChanged += new System.EventHandler(this.txtBenCiShouKuan_TextChanged);
             // 
             // labtextboxTop3
@@ -167,10 +184,15 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop3.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.labtextboxTop3.FocusHighlightEnabled = true;
             this.labtextboxTop3.ForeColor = System.Drawing.Color.Gray;
             this.labtextboxTop3.Location = new System.Drawing.Point(91, 47);
+            this.labtextboxTop3.MaxLength = 12;
             this.labtextboxTop3.ReadOnly = true;
             this.labtextboxTop3.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop3.Text = "0.00";
+            this.labtextboxTop3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop3.TextChanged += new System.EventHandler(this.txtBenCiHeXiao_TextChanged);
             // 
             // labtextboxTop7
@@ -184,8 +206,12 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop7.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.labtextboxTop7.FocusHighlightEnabled = true;
             this.labtextboxTop7.Location = new System.Drawing.Point(411, 76);
+            this.labtextboxTop7.MaxLength = 12;
             this.labtextboxTop7.Size = new System.Drawing.Size(150, 16);
+            this.labtextboxTop7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             this.labtextboxTop7.Validated += new System.EventHandler(this.txtDiscount_Validated);
             // 
@@ -243,6 +269,8 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop4.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.labtextboxTop4.FocusHighlightEnabled = true;
             this.labtextboxTop4.Location = new System.Drawing.Point(411, 47);
             this.labtextboxTop4.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop4.TextChanged += new System.EventHandler(this.txtBank_TextChanged);
@@ -258,6 +286,8 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxTop2.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.labtextboxTop2.FocusHighlightEnabled = true;
             this.labtextboxTop2.Location = new System.Drawing.Point(411, 16);
             this.labtextboxTop2.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop2.TextChanged += new System.EventHandler(this.txtSupply_TextChanged);
@@ -363,6 +393,8 @@
             this.ltxtbShengHeMan.Border.BorderGradientAngle = 0;
             this.ltxtbShengHeMan.Border.Class = "SideNavStrip";
             this.ltxtbShengHeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbShengHeMan.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.ltxtbShengHeMan.FocusHighlightEnabled = true;
             this.ltxtbShengHeMan.Location = new System.Drawing.Point(726, 21);
             this.ltxtbShengHeMan.Size = new System.Drawing.Size(150, 16);
             // 
@@ -377,6 +409,8 @@
             this.ltxtbMakeMan.Border.BorderGradientAngle = 0;
             this.ltxtbMakeMan.Border.Class = "SideNavStrip";
             this.ltxtbMakeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbMakeMan.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.ltxtbMakeMan.FocusHighlightEnabled = true;
             this.ltxtbMakeMan.Location = new System.Drawing.Point(411, 21);
             this.ltxtbMakeMan.Size = new System.Drawing.Size(150, 16);
             // 
@@ -391,6 +425,8 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtextboxBotton2.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.labtextboxBotton2.FocusHighlightEnabled = true;
             this.labtextboxBotton2.Location = new System.Drawing.Point(726, 76);
             this.labtextboxBotton2.Size = new System.Drawing.Size(150, 16);
             // 
@@ -405,6 +441,8 @@
             this.ltxtbSalsMan.Border.BorderGradientAngle = 0;
             this.ltxtbSalsMan.Border.Class = "SideNavStrip";
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ltxtbSalsMan.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.ltxtbSalsMan.FocusHighlightEnabled = true;
             this.ltxtbSalsMan.Location = new System.Drawing.Point(97, 19);
             this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
@@ -484,6 +522,8 @@
             this.cboType.DisplayMember = "Text";
             this.cboType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.cboType.FocusHighlightEnabled = true;
             this.cboType.FormattingEnabled = true;
             this.cboType.ItemHeight = 15;
             this.cboType.Items.AddRange(new object[] {
@@ -514,6 +554,8 @@
             this.cboMethod.DisplayMember = "Text";
             this.cboMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMethod.FocusHighlightColor = System.Drawing.Color.AliceBlue;
+            this.cboMethod.FocusHighlightEnabled = true;
             this.cboMethod.FormattingEnabled = true;
             this.cboMethod.ItemHeight = 15;
             this.cboMethod.Items.AddRange(new object[] {
@@ -650,6 +692,18 @@
             this.shengyuMoney.Name = "shengyuMoney";
             this.shengyuMoney.ReadOnly = true;
             // 
+            // pictureBoxShengHe
+            // 
+            this.pictureBoxShengHe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxShengHe.Image = global::WSCATProject.Properties.Resources.审核;
+            this.pictureBoxShengHe.Location = new System.Drawing.Point(692, 3);
+            this.pictureBoxShengHe.Name = "pictureBoxShengHe";
+            this.pictureBoxShengHe.Size = new System.Drawing.Size(64, 64);
+            this.pictureBoxShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxShengHe.TabIndex = 46;
+            this.pictureBoxShengHe.TabStop = false;
+            this.pictureBoxShengHe.Visible = false;
+            // 
             // PurchasePaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -662,6 +716,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchasePaymentForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PurchasePaymentForm_KeyPress);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -682,6 +737,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBarCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,5 +765,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn benciHeXiao;
         private DevComponents.DotNetBar.SuperGrid.GridColumn remark;
         private DevComponents.DotNetBar.SuperGrid.GridColumn shengyuMoney;
+        private System.Windows.Forms.PictureBox pictureBoxShengHe;
     }
 }

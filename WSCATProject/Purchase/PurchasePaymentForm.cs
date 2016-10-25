@@ -2,7 +2,9 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Finance;
 using InterfaceLayer.Purchase;
+using Model.Finance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -371,6 +373,53 @@ namespace WSCATProject.Purchase
             }
         }
 
+        /// <summary>
+        /// 标记那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
+            pictureBoxShengHe.Visible = true;
+        }
+
         #endregion
 
         /// <summary>
@@ -383,12 +432,11 @@ namespace WSCATProject.Purchase
             try
             {
                 #region 初始化窗体
+                pictureBoxShengHe.Parent = pictureBoxtitle;
                 cboType.SelectedIndex = 0;
                 cboMethod.SelectedIndex = 0;
                 toolStripButtonXuanYuanDan.Visible = true;
                 labtextboxTop7.Text = "100.00";
-                labtextboxTop3.Text = "0.00";
-                labtextboxTop6.Text = "0.00";
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
                 dataGridViewFuJia.AutoGenerateColumns = false;
@@ -983,7 +1031,8 @@ namespace WSCATProject.Purchase
 
             // 按千分位逗号格式显示！
             double d = Convert.ToDouble(skipComma(labtextboxTop3.Text));
-            labtextboxTop3.Text = string.Format("{0:#,#}", d);
+            // labtextboxTop3.Text = string.Format("{0:#,#}", d);
+            labtextboxTop3.Text = d.ToString("0.00");
             // 确保输入光标在最右侧
             labtextboxTop3.Select(labtextboxTop3.Text.Length, 0);
         }
@@ -1001,8 +1050,8 @@ namespace WSCATProject.Purchase
 
             // 按千分位逗号格式显示！
             double d = Convert.ToDouble(skipComma(labtextboxTop6.Text));
-            labtextboxTop6.Text = string.Format("{0:#,#}", d);
-
+            //labtextboxTop6.Text = string.Format("{0:#,#}", d);
+            labtextboxTop6.Text = d.ToString("0.00");
             // 确保输入光标在最右侧
             labtextboxTop6.Select(labtextboxTop6.Text.Length, 0);
         }
@@ -1018,7 +1067,7 @@ namespace WSCATProject.Purchase
             PurchaseMainInterface purchaseInter = new PurchaseMainInterface();
 
             if (_purchaseMainCode == null)
-            { 
+            {
                 return;
             }
             labTop1.ForeColor = Color.Gray;
@@ -1059,9 +1108,290 @@ namespace WSCATProject.Purchase
             {
                 return;
             }
-            ////获得界面上的数据,准备传给base层新增数据
-            //PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
+            //获得界面上的数据,准备传给base层新增数据
+            FinancePaymentInterface financePaymentinterface = new FinancePaymentInterface();
             ///付款单
+            FinancePayment financepayment = new FinancePayment();
+            //付款单详细列表
+            List<FinancePaymentDetail> financelpaymentDetailList = new List<FinancePaymentDetail>();
+            try
+            {
+                //付款单单号
+                if (financePaymentinterface.Exists(XYEEncoding.strCodeHex(_PurchasePaymentCode)))
+                {
+                    _PurchasePaymentCode = BuildCode.ModuleCode("PPM");
+                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
+                }
+                else
+                {
+                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
+                }             
+                //供应商
+                if (labtextboxTop2.Text != null || labtextboxTop2.Text.Trim() != "")
+                {
+                    financepayment.supplierName = XYEEncoding.strCodeHex(labtextboxTop2.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！请选择");
+                    labtextboxTop2.Focus();
+                    return;
+                }                
+                //结算账户
+                if (labtextboxTop4.Text != null || labtextboxTop4.Text.Trim() != "")
+                {
+                    financepayment.accountName = XYEEncoding.strCodeHex(labtextboxTop4.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("结算账户不能为空！请选择");
+                    labtextboxTop4.Focus();
+                    return;
+                }               
+                //付款员
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financepayment.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("付款员不能为空！请选择");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financepayment.supplierCode = XYEEncoding.strCodeHex(_supplyCode);//供应商code
+                financepayment.accountCode = XYEEncoding.strCodeHex(_bankCode);//结算账户code
+                financepayment.salesCode = XYEEncoding.strCodeHex(_employeeCode);//付款员编号
+                financepayment.date = this.dateTimePicker1.Value;//开单日期
+                financepayment.type = XYEEncoding.strCodeHex(cboType.Text);//单据类型
+                financepayment.settlementMethod = XYEEncoding.strCodeHex(cboMethod.Text);//结算方式
+                financepayment.discount = Convert.ToDecimal(labtextboxTop7.Text.Trim() == "" ? 0.00M : Convert.ToDecimal(labtextboxTop7.Text));//整单折扣
+                financepayment.totalCollection = Convert.ToDecimal(labtextboxTop6.Text.Trim() == "" ? 0.00M : Convert.ToDecimal(labtextboxTop6.Text));//本次付款
+                financepayment.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text.Trim());//摘要
+                financepayment.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
+                financepayment.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
+                financepayment.checkState = 0;//审核状态
+                if(_shengYuMoney == _danJuMoney)
+                {
+                    financepayment.financeCollectionState = 0;//单据状态 (0为未付款)
+                }
+                if (_shengYuMoney < _danJuMoney)
+                {
+                    financepayment.financeCollectionState = 1;//单据状态 (1为部分付款)
+                }
+                if (_shengYuMoney == Convert.ToDecimal(0.00))
+                {
+                    financepayment.financeCollectionState = 2;//单据状态（2为已付款）
+                }
+                financepayment.isClear = 1;
+                financepayment.updatedate = DateTime.Now;
+                financepayment.Reserved1 = "";
+                financepayment.Reserved2 = "";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:-尝试创建付款单数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                return;
+            }
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["BillCode"].Value != null)
+                    {
+                        i++;
+                        FinancePaymentDetail finanPaymentDetail = new FinancePaymentDetail();
+                        if (gr["BillType"].Value.ToString() != "" || gr["BillType"].Value != null)
+                        {
+                            finanPaymentDetail.salesType = XYEEncoding.strCodeHex(gr["BillType"].Value.ToString());//销售单类型
+                        }
+                        else
+                        {
+                            MessageBox.Show("选源单不能为空，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        finanPaymentDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
+                        finanPaymentDetail.code = XYEEncoding.strCodeHex(_PurchasePaymentCode + i.ToString());//付款详单code
+                        finanPaymentDetail.salesCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
+                        finanPaymentDetail.salesDate = Convert.ToDateTime(gr["BillDate"].Value);//销售单开单日期                     
+                        finanPaymentDetail.amountReceivable = Convert.ToDecimal(gr["BillMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["BillMoney"].Value));//单据金额
+                        finanPaymentDetail.amountReceived = Convert.ToDecimal(gr["yiHeXiao"].Value == null ? 0.0M : Convert.ToDecimal(gr["yiHeXiao"].Value));//已核销金额
+                        finanPaymentDetail.amountUnpaid = Convert.ToDecimal(gr["weiHeXiao"].Value == null ? 0.0M : Convert.ToDecimal(gr["weiHeXiao"].Value));//未核销金额
+                        finanPaymentDetail.nowMoney = Convert.ToDecimal(gr["benciHeXiao"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["benciHeXiao"].Value));//本次核销金额
+                        finanPaymentDetail.unCollection = Convert.ToDecimal(gr["shengyuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["shengyuMoney"].Value));//未付金额
+                        finanPaymentDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
+
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        financelpaymentDetailList.Add(finanPaymentDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                return;
+            }
+            //增加一条付款单和付款单详细数据
+            object financePaymentResult = financePaymentinterface.AddOrUpdateToMainOrDetail(financepayment, financelpaymentDetailList);
+            if (financePaymentResult != null)
+            {
+                MessageBox.Show("新增付款单数据成功", "付款单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 审核按钮封装的函数
+        /// </summary>
+        private void Review()
+        {
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+            FinancePaymentInterface financePaymentinterface = new FinancePaymentInterface();
+            ///付款单
+            FinancePayment financepayment = new FinancePayment();
+            //付款单详细列表
+            List<FinancePaymentDetail> financelpaymentDetailList = new List<FinancePaymentDetail>();
+            try
+            {
+                //付款单单号
+                if (financePaymentinterface.Exists(XYEEncoding.strCodeHex(_PurchasePaymentCode)))
+                {
+                    _PurchasePaymentCode = BuildCode.ModuleCode("PPM");
+                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
+                }
+                else
+                {
+                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
+                }
+                //供应商
+                if (labtextboxTop2.Text != null || labtextboxTop2.Text.Trim() != "")
+                {
+                    financepayment.supplierName = XYEEncoding.strCodeHex(labtextboxTop2.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！请选择");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                //结算账户
+                if (labtextboxTop4.Text != null || labtextboxTop4.Text.Trim() != "")
+                {
+                    financepayment.accountName = XYEEncoding.strCodeHex(labtextboxTop4.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("结算账户不能为空！请选择");
+                    labtextboxTop4.Focus();
+                    return;
+                }
+                //付款员
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financepayment.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("付款员不能为空！请选择");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financepayment.supplierCode = XYEEncoding.strCodeHex(_supplyCode);//供应商code
+                financepayment.accountCode = XYEEncoding.strCodeHex(_bankCode);//结算账户code
+                financepayment.salesCode = XYEEncoding.strCodeHex(_employeeCode);//付款员编号
+                financepayment.date = this.dateTimePicker1.Value;//开单日期
+                financepayment.type = XYEEncoding.strCodeHex(cboType.Text);//单据类型
+                financepayment.settlementMethod = XYEEncoding.strCodeHex(cboMethod.Text);//结算方式
+                financepayment.discount = Convert.ToDecimal(labtextboxTop7.Text.Trim() == "" ? 0.00M : Convert.ToDecimal(labtextboxTop7.Text));//整单折扣
+                financepayment.totalCollection = Convert.ToDecimal(labtextboxTop6.Text.Trim() == "" ? 0.00M : Convert.ToDecimal(labtextboxTop6.Text));//本次付款
+                financepayment.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text.Trim());//摘要
+                financepayment.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
+                financepayment.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
+                financepayment.checkState = 1;//审核状态
+                if (_shengYuMoney == _danJuMoney)
+                {
+                    financepayment.financeCollectionState = 0;//单据状态 (0为未付款)
+                }
+                if (_shengYuMoney < _danJuMoney)
+                {
+                    financepayment.financeCollectionState = 1;//单据状态 (1为部分付款)
+                }
+                if (_shengYuMoney == Convert.ToDecimal(0.00))
+                {
+                    financepayment.financeCollectionState = 2;//单据状态（2为已付款）
+                }
+                financepayment.isClear = 1;
+                financepayment.updatedate = DateTime.Now;
+                financepayment.Reserved1 = "";
+                financepayment.Reserved2 = "";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:-尝试创建并审核付款单数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                return;
+            }
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["BillCode"].Value != null)
+                    {
+                        i++;
+                        FinancePaymentDetail finanPaymentDetail = new FinancePaymentDetail();
+                        if (gr["BillType"].Value.ToString() != "" || gr["BillType"].Value != null)
+                        {
+                            finanPaymentDetail.salesType = XYEEncoding.strCodeHex(gr["BillType"].Value.ToString());//销售单类型
+                        }
+                        else
+                        {
+                            MessageBox.Show("选源单不能为空，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        finanPaymentDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
+                        finanPaymentDetail.code = XYEEncoding.strCodeHex(_PurchasePaymentCode + i.ToString());//付款详单code
+                        finanPaymentDetail.salesCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
+                        finanPaymentDetail.salesDate = Convert.ToDateTime(gr["BillDate"].Value);//销售单开单日期                     
+                        finanPaymentDetail.amountReceivable = Convert.ToDecimal(gr["BillMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["BillMoney"].Value));//单据金额
+                        finanPaymentDetail.amountReceived = Convert.ToDecimal(gr["yiHeXiao"].Value == null ? 0.0M : Convert.ToDecimal(gr["yiHeXiao"].Value));//已核销金额
+                        finanPaymentDetail.amountUnpaid = Convert.ToDecimal(gr["weiHeXiao"].Value == null ? 0.0M : Convert.ToDecimal(gr["weiHeXiao"].Value));//未核销金额
+                        finanPaymentDetail.nowMoney = Convert.ToDecimal(gr["benciHeXiao"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["benciHeXiao"].Value));//本次核销金额
+                        finanPaymentDetail.unCollection = Convert.ToDecimal(gr["shengyuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["shengyuMoney"].Value));//未付金额
+                        finanPaymentDetail.remark = XYEEncoding.strCodeHex(gr["remark"].Value.ToString());//备注  
+
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        financelpaymentDetailList.Add(finanPaymentDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-尝试创建并审核付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                return;
+            }
+            //增加一条付款单和付款单详细数据
+            object financePaymentResult = financePaymentinterface.AddOrUpdateToMainOrDetail(financepayment, financelpaymentDetailList);
+            if (financePaymentResult != null)
+            {
+                InitForm();
+                MessageBox.Show("新增并审核付款单数据成功", "付款单温馨提示");
+            }
         }
 
         /// <summary>
@@ -1071,7 +1401,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
-
+            Save();
         }
 
         /// <summary>
@@ -1081,7 +1411,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-
+            Review();
         }
 
         /// <summary>
@@ -1108,6 +1438,7 @@ namespace WSCATProject.Purchase
                 if (benciHeXiaoMoney > weiHeXiaoMoney)
                 {
                     MessageBox.Show("本次核销金额不能大于未核销金额！");
+                    gr.Cells["benciHeXiao"].Value = "0.00";
                     return;
                 }
 
@@ -1115,10 +1446,6 @@ namespace WSCATProject.Purchase
                 gr.Cells["shengyuMoney"].Value = weifuMoney;
 
                 TongJi();
-
-                labtextboxTop3.Text = _benCiHeXiaoMoney.ToString("0.00");
-                labtextboxTop6.Text = _benCiHeXiaoMoney.ToString("0.00");
-
             }
             catch (Exception ex)
             {
@@ -1158,6 +1485,9 @@ namespace WSCATProject.Purchase
             gr["weiHeXiao"].Value = _weiHeXiaoMoney.ToString();
             gr["benciHeXiao"].Value = _benCiHeXiaoMoney.ToString();
             gr["shengyuMoney"].Value = tempShengYuMoney.ToString();
+
+            labtextboxTop3.Text = _benCiHeXiaoMoney.ToString("0.00");
+            labtextboxTop6.Text = _benCiHeXiaoMoney.ToString("0.00");
         }
     }
 }

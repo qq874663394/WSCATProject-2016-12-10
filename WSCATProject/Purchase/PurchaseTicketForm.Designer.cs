@@ -245,7 +245,7 @@
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop3.Location = new System.Drawing.Point(96, 74);
-            this.labtextboxTop3.MaxLength = 999999999;
+            this.labtextboxTop3.MaxLength = 12;
             this.labtextboxTop3.Size = new System.Drawing.Size(121, 16);
             this.labtextboxTop3.Text = "0.00";
             this.labtextboxTop3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -313,6 +313,7 @@
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop5.ForeColor = System.Drawing.Color.Gray;
             this.labtextboxTop5.Location = new System.Drawing.Point(339, 74);
+            this.labtextboxTop5.MaxLength = 12;
             this.labtextboxTop5.ReadOnly = true;
             this.labtextboxTop5.Size = new System.Drawing.Size(122, 16);
             this.labtextboxTop5.Text = "0.00";
@@ -723,6 +724,7 @@
             this.textBoxWeiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxWeiKaiPiao.ForeColor = System.Drawing.Color.Gray;
             this.textBoxWeiKaiPiao.Location = new System.Drawing.Point(339, 101);
+            this.textBoxWeiKaiPiao.MaxLength = 12;
             this.textBoxWeiKaiPiao.Name = "textBoxWeiKaiPiao";
             this.textBoxWeiKaiPiao.PreventEnterBeep = true;
             this.textBoxWeiKaiPiao.ReadOnly = true;
@@ -756,6 +758,7 @@
             this.textBoxYiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxYiKaiPiao.ForeColor = System.Drawing.Color.Gray;
             this.textBoxYiKaiPiao.Location = new System.Drawing.Point(592, 101);
+            this.textBoxYiKaiPiao.MaxLength = 12;
             this.textBoxYiKaiPiao.Name = "textBoxYiKaiPiao";
             this.textBoxYiKaiPiao.PreventEnterBeep = true;
             this.textBoxYiKaiPiao.ReadOnly = true;

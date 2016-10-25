@@ -807,9 +807,12 @@
             // 
             // pictureBoxShengHe
             // 
+            this.pictureBoxShengHe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxShengHe.Image = global::WSCATProject.Properties.Resources.审核;
             this.pictureBoxShengHe.Location = new System.Drawing.Point(685, 5);
             this.pictureBoxShengHe.Name = "pictureBoxShengHe";
-            this.pictureBoxShengHe.Size = new System.Drawing.Size(71, 53);
+            this.pictureBoxShengHe.Size = new System.Drawing.Size(64, 56);
+            this.pictureBoxShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxShengHe.TabIndex = 46;
             this.pictureBoxShengHe.TabStop = false;
             this.pictureBoxShengHe.Visible = false;

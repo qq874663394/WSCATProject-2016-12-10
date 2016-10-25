@@ -16,3 +16,6 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Releas
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Release\InterfaceLayer.csprojResolveAssemblyReference.cache
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Release\InterfaceLayer.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Release\InterfaceLayer.pdb
+E:\619项目\新建文件夹\InterfaceLayer\obj\Release\InterfaceLayer.csprojResolveAssemblyReference.cache
+E:\619项目\新建文件夹\InterfaceLayer\obj\Release\InterfaceLayer.dll
+E:\619项目\新建文件夹\InterfaceLayer\obj\Release\InterfaceLayer.pdb
