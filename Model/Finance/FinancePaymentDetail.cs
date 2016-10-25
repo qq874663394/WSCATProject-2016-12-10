@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model.Finance
 {
+    /// <summary>
+    /// 采购付款详情表
+    /// </summary>
+    [Serializable]
     public class FinancePaymentDetail
     {
         public FinancePaymentDetail()

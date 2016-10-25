@@ -1,11 +1,11 @@
 ﻿
 using System;
-namespace Model
+namespace Model.Finance
 {
-	/// <summary>
-	/// 上下班时刻表
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 采购付款表
+    /// </summary>
+    [Serializable]
 	public partial class FinancePayment
 	{
         public FinancePayment()
