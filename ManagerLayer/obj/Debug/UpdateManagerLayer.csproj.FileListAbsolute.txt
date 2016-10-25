@@ -142,3 +142,4 @@ E:\619项目\新建文件夹\ManagerLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
 E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb
+E:\619项目\新建文件夹 (2)\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache

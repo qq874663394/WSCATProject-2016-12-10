@@ -118,3 +118,4 @@ E:\619项目\新建文件夹\BaseLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\BaseLayer\obj\Debug\BaseLayer.dll
 E:\619项目\新建文件夹\BaseLayer\obj\Debug\BaseLayer.pdb
+E:\619项目\新建文件夹 (2)\WSCATProject\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache

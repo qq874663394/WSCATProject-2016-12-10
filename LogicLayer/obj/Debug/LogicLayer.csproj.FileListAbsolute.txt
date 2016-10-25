@@ -166,3 +166,4 @@ E:\619项目\新建文件夹\LogicLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.dll
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.pdb
+E:\619项目\新建文件夹 (2)\WSCATProject\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache

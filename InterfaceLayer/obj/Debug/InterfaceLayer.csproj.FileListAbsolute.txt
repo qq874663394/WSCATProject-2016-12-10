@@ -211,3 +211,4 @@ E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\UpdateManagerLayer.pdb
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
+E:\619项目\新建文件夹 (2)\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
