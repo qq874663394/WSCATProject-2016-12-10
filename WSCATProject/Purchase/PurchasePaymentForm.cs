@@ -252,7 +252,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3106-尝试点击供应商数据出错或者无数据！请检查：" + ex.Message, "采购订单温馨提示！");
+                MessageBox.Show("错误代码：3502-尝试点击供应商数据出错或者无数据！请检查：" + ex.Message, "采购订单温馨提示！");
             }
         }
 
@@ -322,7 +322,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1507-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
+                MessageBox.Show("错误代码：3503-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -369,7 +369,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1508-尝试点击收款员，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
+                MessageBox.Show("错误代码：3504-尝试点击收款员，数据显示失败或者无数据！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -471,12 +471,52 @@ namespace WSCATProject.Purchase
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮 
                 toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单的点击事件
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-窗体加载时，初始化数据失败！" + ex.Message, "付款单温馨提示！");
+                MessageBox.Show("错误代码：3501-窗体加载时，初始化数据失败！" + ex.Message, "付款单温馨提示！");
                 this.Close();
                 return;
+            }
+        }
+
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                try
+                {
+                    //供应商
+                    if (_Click == 1 || _Click == 4)
+                    {
+                        _supplyCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//供应商名称
+                        labtextboxTop2.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //结算账户
+                    if (_Click == 2 || _Click == 5)
+                    {
+                        _bankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//银行账户code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//账户名称
+                        labtextboxTop4.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+                    //收款员
+                    if (_Click == 3 || _Click == 6)
+                    {
+                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//收款员code
+                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//收款员
+                        ltxtbSalsMan.Text = name;
+                        resizablePanel1.Visible = false;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("错误代码：3506-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
+                }
             }
         }
 
@@ -487,7 +527,15 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
-            XuanYuanDan();
+            try
+            {
+                XuanYuanDan();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3505-点击选源单数据显示错误！"+ex.Message,"付款单温馨提示：");
+            }
+            
         }
 
         /// <summary>
@@ -548,6 +596,7 @@ namespace WSCATProject.Purchase
             if (_Click != 1)
             {
                 InitSupplier();
+                dataGridViewFuJia.Focus();
             }
             _Click = 4;
         }
@@ -562,6 +611,7 @@ namespace WSCATProject.Purchase
             if (_Click != 2)
             {
                 InitBank();
+                dataGridViewFuJia.Focus();
             }
             _Click = 5;
         }
@@ -576,6 +626,7 @@ namespace WSCATProject.Purchase
             if (_Click != 3)
             {
                 InitEmployee();
+                dataGridViewFuJia.Focus();
             }
             _Click = 6;
         }
@@ -621,7 +672,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1509-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
+                MessageBox.Show("错误代码：3506-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
             }
         }
 
@@ -691,7 +742,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-模糊查询供应商数据错误" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码：3507-模糊查询供应商数据错误" + ex.Message, "付款单温馨提示");
             }
         }
 
@@ -761,7 +812,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-模糊查询结算账户数据错误" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码：3508-模糊查询结算账户数据错误" + ex.Message, "付款单温馨提示");
             }
         }
 
@@ -810,7 +861,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1512-模糊查询付款员数据失败！" + ex.Message, "付款单温馨提示！");
+                MessageBox.Show("错误代码：3509-模糊查询付款员数据失败！" + ex.Message, "付款单温馨提示！");
             }
         }
         #endregion
@@ -937,7 +988,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-验证整单折扣金额出错！请检查:" + ex.Message, "付款单温馨提示！");
+                MessageBox.Show("错误代码：3510-验证整单折扣金额出错！请检查:" + ex.Message, "付款单温馨提示！");
             }
         }
 
@@ -997,7 +1048,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-整单折扣输入的值为非法字符，请重新输入:" + ex.Message, "付款单温馨提示！");
+                MessageBox.Show("错误代码：3511-整单折扣输入的值为非法字符，请重新输入:" + ex.Message, "付款单温馨提示！");
             }
         }
         private string skipComma(string str)
@@ -1191,7 +1242,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-尝试创建付款单数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码:3512-尝试创建付款单数据出错!请检查:" + ex.Message, "付款单温馨提示");
                 return;
             }
             try
@@ -1235,7 +1286,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码：3513-尝试创建付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
                 return;
             }
             //增加一条付款单和付款单详细数据
@@ -1264,15 +1315,7 @@ namespace WSCATProject.Purchase
             try
             {
                 //付款单单号
-                if (financePaymentinterface.Exists(XYEEncoding.strCodeHex(_PurchasePaymentCode)))
-                {
-                    _PurchasePaymentCode = BuildCode.ModuleCode("PPM");
                     financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
-                }
-                else
-                {
-                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
-                }
                 //供应商
                 if (labtextboxTop2.Text != null || labtextboxTop2.Text.Trim() != "")
                 {
@@ -1338,7 +1381,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-尝试创建并审核付款单数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码:3514-尝试创建并审核付款单数据出错!请检查:" + ex.Message, "付款单温馨提示");
                 return;
             }
             try
@@ -1382,7 +1425,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-尝试创建并审核付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码：3515-尝试创建并审核付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
                 return;
             }
             //增加一条付款单和付款单详细数据
@@ -1449,7 +1492,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：1513-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "收款单温馨提示！");
+                MessageBox.Show("错误代码：3516-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "付款单温馨提示！");
             }
         }
 
@@ -1458,36 +1501,44 @@ namespace WSCATProject.Purchase
         /// </summary>
         private void TongJi()
         {
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-            //逐行统计数据总数
-            decimal tempDanJuMoney = 0;
-            decimal tempYiHeXiaoMoney = 0;
-            decimal tempWeiHeXiaoMoney = 0;
-            decimal tempBenCiHeXiao = 0;
-            decimal tempShengYuMoney = 0;
-            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            try
             {
-                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                tempDanJuMoney += Convert.ToDecimal(tempGR["BillMoney"].FormattedValue);
-                tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["yiHeXiao"].FormattedValue);
-                tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["weiHeXiao"].FormattedValue);
-                tempBenCiHeXiao += Convert.ToDecimal(tempGR["benciHeXiao"].FormattedValue);
-                tempShengYuMoney += Convert.ToDecimal(tempGR["shengyuMoney"].FormattedValue);
-            }
-            _danJuMoney = tempDanJuMoney;
-            _yiHeXiaoMoney = tempYiHeXiaoMoney;
-            _weiHeXiaoMoney = tempWeiHeXiaoMoney;
-            _benCiHeXiaoMoney = tempBenCiHeXiao;
-            _shengYuMoney = tempShengYuMoney;
-            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-            gr["BillMoney"].Value = _danJuMoney.ToString();
-            gr["yiHeXiao"].Value = _yiHeXiaoMoney.ToString();
-            gr["weiHeXiao"].Value = _weiHeXiaoMoney.ToString();
-            gr["benciHeXiao"].Value = _benCiHeXiaoMoney.ToString();
-            gr["shengyuMoney"].Value = tempShengYuMoney.ToString();
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                //逐行统计数据总数
+                decimal tempDanJuMoney = 0;
+                decimal tempYiHeXiaoMoney = 0;
+                decimal tempWeiHeXiaoMoney = 0;
+                decimal tempBenCiHeXiao = 0;
+                decimal tempShengYuMoney = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempDanJuMoney += Convert.ToDecimal(tempGR["BillMoney"].FormattedValue);
+                    tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["yiHeXiao"].FormattedValue);
+                    tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["weiHeXiao"].FormattedValue);
+                    tempBenCiHeXiao += Convert.ToDecimal(tempGR["benciHeXiao"].FormattedValue);
+                    tempShengYuMoney += Convert.ToDecimal(tempGR["shengyuMoney"].FormattedValue);
+                }
+                _danJuMoney = tempDanJuMoney;
+                _yiHeXiaoMoney = tempYiHeXiaoMoney;
+                _weiHeXiaoMoney = tempWeiHeXiaoMoney;
+                _benCiHeXiaoMoney = tempBenCiHeXiao;
+                _shengYuMoney = tempShengYuMoney;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["BillMoney"].Value = _danJuMoney.ToString();
+                gr["yiHeXiao"].Value = _yiHeXiaoMoney.ToString();
+                gr["weiHeXiao"].Value = _weiHeXiaoMoney.ToString();
+                gr["benciHeXiao"].Value = _benCiHeXiaoMoney.ToString();
+                gr["shengyuMoney"].Value = tempShengYuMoney.ToString();
 
-            labtextboxTop3.Text = _benCiHeXiaoMoney.ToString("0.00");
-            labtextboxTop6.Text = _benCiHeXiaoMoney.ToString("0.00");
+                labtextboxTop3.Text = _benCiHeXiaoMoney.ToString("0.00");
+                labtextboxTop6.Text = _benCiHeXiaoMoney.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3517-逐行统计数据总数错误！"+ex.Message,"付款单温馨提示：");
+            }
+
         }
     }
 }

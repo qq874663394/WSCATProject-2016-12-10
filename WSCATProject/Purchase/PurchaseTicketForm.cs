@@ -220,7 +220,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3305-尝试点击供应商数据出错或者无数据！请检查：" + ex.Message, "购货温馨提示！");
+                MessageBox.Show("错误代码：3304-尝试点击供应商数据出错或者无数据！请检查：" + ex.Message, "购货温馨提示！");
             }
         }
 
@@ -267,7 +267,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3306-尝试点击采购员数据出错或者无数据！请检查：" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3305-尝试点击采购员数据出错或者无数据！请检查：" + ex.Message, "购货单温馨提示！");
             }
         }
 
@@ -314,7 +314,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3307-尝试点击仓库数据出错或者无数据！请检查：" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3306-尝试点击仓库数据出错或者无数据！请检查：" + ex.Message, "购货单温馨提示！");
             }
         }
 
@@ -380,7 +380,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3308-尝试点击结算账户，数据显示失败或者无数据！" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3307-尝试点击结算账户，数据显示失败或者无数据！" + ex.Message, "购货单温馨提示！");
             }
         }
 
@@ -663,6 +663,7 @@ namespace WSCATProject.Purchase
             }
            
         }
+
         /// <summary>
         /// 审核按钮事件
         /// </summary>
@@ -676,6 +677,7 @@ namespace WSCATProject.Purchase
                 Review();
             }
         }
+
         /// <summary>
         /// 保存按钮事件
         /// </summary>
@@ -754,7 +756,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3304-双击绑定供应商、采购员、结算账户数据错误！请检查：" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3302-双击绑定供应商、采购员、结算账户数据错误！请检查：" + ex.Message, "购货单温馨提示！");
             }
         }
 
@@ -838,7 +840,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3309-选择表格第一个数据错误！" + ex.Message);
+                MessageBox.Show("错误代码：3308-选择表格第一个数据错误！" + ex.Message);
                 return;
             }
 
@@ -905,7 +907,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3310-模糊查询供应商数据错误" + ex.Message, "购货单温馨提示");
+                MessageBox.Show("错误代码：3309-模糊查询供应商数据错误" + ex.Message, "购货单温馨提示");
             }
         }
         /// <summary>
@@ -975,7 +977,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3311-模糊查询结算账户数据错误！请检查：" + ex.Message, "购货单温馨提示");
+                MessageBox.Show("错误代码：3310-模糊查询结算账户数据错误！请检查：" + ex.Message, "购货单温馨提示");
             }
         }
         /// <summary>
@@ -1023,7 +1025,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3312-模糊查询采购员数据错误！" + ex.Message, "购货单单温馨提示！");
+                MessageBox.Show("错误代码：3311-模糊查询采购员数据错误！" + ex.Message, "购货单单温馨提示！");
             }
         }
 
@@ -1200,7 +1202,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3313-逐行统计数据总数错误！"+ex.Message,"购货单温馨提示:");
+                MessageBox.Show("错误代码：3312-逐行统计数据总数错误！"+ex.Message,"购货单温馨提示:");
             }
 
         }
@@ -1225,7 +1227,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3314-验证本次付款金额出错！请检查:" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3313-验证本次付款金额出错！请检查:" + ex.Message, "购货单温馨提示！");
             }
         }
         /// <summary>
@@ -1284,7 +1286,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3315-本次付款输入的值为非法字符，请重新输入:" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3314-本次付款输入的值为非法字符，请重新输入:" + ex.Message, "购货单温馨提示！");
             }
         }
         /// <summary>
@@ -1329,7 +1331,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3316-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "购货单温馨提示！");
+                MessageBox.Show("错误代码：3315-验证表格里的金额以及统计数量出错！请检查：" + ex.Message, "购货单温馨提示！");
             }
         }
 
@@ -1421,7 +1423,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:3317-尝试创建购货单数据出错！请检查：" + ex.Message, "购货单温馨提示");
+                MessageBox.Show("错误代码:3316-尝试创建购货单数据出错！请检查：" + ex.Message, "购货单温馨提示");
                 return;
             }
 
@@ -1528,7 +1530,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3318-尝试创建购货单商品详细数据出错!请检查:" + ex.Message, "购货单温馨提示");
+                MessageBox.Show("错误代码：3317-尝试创建购货单商品详细数据出错!请检查:" + ex.Message, "购货单温馨提示");
                 return;
             }
 
@@ -1621,7 +1623,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:3319-尝试创建并审核购货单数据出错！请检查：" + ex.Message, "购货单温馨提示");
+                MessageBox.Show("错误代码:3318-尝试创建并审核购货单数据出错！请检查：" + ex.Message, "购货单温馨提示");
                 return;
             }
 
@@ -1727,7 +1729,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3320-尝试创建并审核购货单商品详细数据出错!请检查:" + ex.Message, "购货单温馨提示");
+                MessageBox.Show("错误代码：3319-尝试创建并审核购货单商品详细数据出错!请检查:" + ex.Message, "购货单温馨提示");
                 return;
             }
 
