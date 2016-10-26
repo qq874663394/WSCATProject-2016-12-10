@@ -73,6 +73,7 @@ namespace WSCATProject.Warehouse
         EmpolyeeInterface employee = new EmpolyeeInterface();
         StorageInterface storage = new StorageInterface();
         WarehouseMainInterface waremain = new WarehouseMainInterface();
+        WarehouseDisassemblyInterface warehouseDisassemblyinterface = new WarehouseDisassemblyInterface();
         #endregion
 
         #region 初始化数据
@@ -137,6 +138,17 @@ namespace WSCATProject.Warehouse
             gr.Cells["number"].Value = 0;
             gr.Cells["number"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["number"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            #region 合计行不能点击
+            gr.Cells["gridColumnStockIn"].AllowSelection = false;
+            gr.Cells["sup1material"].AllowSelection = false;
+            gr.Cells["name"].AllowSelection = false;
+            gr.Cells["model"].AllowSelection = false;
+            gr.Cells["barcode"].AllowSelection = false;
+            gr.Cells["unit"].AllowSelection = false;
+            gr.Cells["number"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
@@ -187,26 +199,51 @@ namespace WSCATProject.Warehouse
         /// </summary>
         private void InitForm()
         {
-            this.cbotype.Enabled = false;
-            cbotype.BackColor = Color.FromArgb(240, 240, 240);
-            this.labtextboxTop6.ReadOnly = true;
-            labtextboxTop6.BackColor = Color.FromArgb(240, 240, 240);
-            this.labtextboxTop9.ReadOnly = true;
-            labtextboxTop9.BackColor = Color.FromArgb(240, 240, 240);
-            this.textBoxOddNumbers.ReadOnly = true;
-            textBoxOddNumbers.BackColor = Color.FromArgb(240, 240, 240);
-            this.superGridControlShangPing.PrimaryGrid.ReadOnly = true;
-            this.superGridControlShangPing.BackColor = Color.FromArgb(240, 240, 240);
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            
+            this.superGridControlShangPing.PrimaryGrid.ReadOnly = true;;
             this.superGridControlChaiXei.PrimaryGrid.ReadOnly = true;
-            this.superGridControlChaiXei.BackColor = Color.FromArgb(240, 240, 240);
             this.toolStripBtnSave.Enabled = false;
-            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
-            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
-            this.ltxtbSalsMan.ReadOnly = true;
-            this.ltxtbMakeMan.ReadOnly = true;
-            this.ltxtbShengHeMan.ReadOnly = true;
-            this.resizablePanel1.Visible = false;
-            this.dateTimePicker1.Enabled = false;
+            pictureBoxshenghe.Parent = pictureBoxtitle;
+            pictureBoxshenghe.Image = Properties.Resources.审核;
+            pictureBoxshenghe.Visible = true;
         }
 
         /// <summary>
@@ -376,6 +413,8 @@ namespace WSCATProject.Warehouse
                 //绑定事件 双击事填充内容并隐藏列表
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
                 dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
+                dataGridViewShangPing.KeyDown += DataGridViewShangPing_KeyDown;
                 //调用表格初始化
                 superGridControlShangPing.PrimaryGrid.EnsureVisible();
                 InitDataGridView();
@@ -404,98 +443,10 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            //非空验证
-            if (isNUllValidate() == false)
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
             {
-                return;
-            }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseDisassemblyInterface warehouseDisassemblyinterface = new WarehouseDisassemblyInterface();
-            //拆卸单
-            WarehouseDisassembly warehousedisassembly = new WarehouseDisassembly();
-            //拆卸单商品列表
-            List<WarehouseDisassemblyDetail> warehousedisassemblydetailList = new List<WarehouseDisassemblyDetail>();
-            try
-            {
-                warehousedisassembly.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
-                warehousedisassembly.date = dateTimePicker1.Value;//单据日期
-                warehousedisassembly.type = cbotype.Text == "" ? "" : XYEEncoding.strCodeHex(cbotype.Text);//费用类型
-                warehousedisassembly.disAssemblyCost = Convert.ToDecimal(labtextboxTop6.Text == "" ? "" : labtextboxTop6.Text);//拆卸费用
-                warehousedisassembly.Abstract = labtextboxTop2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
-                warehousedisassembly.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//拆卸员
-                warehousedisassembly.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-                warehousedisassembly.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-                warehousedisassembly.checkState = 1;//审核状态
-                warehousedisassembly.isClear = 1;
-                warehousedisassembly.updatetime = DateTime.Now;
-                warehousedisassembly.reserved1 = "";
-                warehousedisassembly.reserved2 = "";
-                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
-                warehousedisassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
-                warehousedisassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
-                warehousedisassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
-                warehousedisassembly.materialName = gr.Cells["gridColumnname"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnname"].Value.ToString());//商品名称
-                warehousedisassembly.materialMode = gr.Cells["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnmodel"].Value.ToString());//规格型号
-                warehousedisassembly.materialUnit = gr.Cells["gridColumnunit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnunit"].Value.ToString());//单位
-                warehousedisassembly.stockCode = gr.Cells["gridColumnstockCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnstockCode"].Value.ToString());//仓库code
-                warehousedisassembly.stockName = gr.Cells["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStock"].Value.ToString());//仓库名称
-                warehousedisassembly.number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].Value == null ? 0 : gr.Cells["gridColumnnumber"].Value);//数量
-                warehousedisassembly.materialremark = gr.Cells["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnremark"].Value.ToString());//备注
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码:2902-尝试创建和审核拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
-                return;
-            }
-
-            try
-            {
-                //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                int i = 0;
-                DateTime nowDataTime = DateTime.Now;
-                foreach (GridRow gr in grs)
-                {
-                    if (gr["name"].Value != null)
-                    {
-                        i++;
-                        WarehouseDisassemblyDetail warehosuedisassemblydetail = new WarehouseDisassemblyDetail();
-                        warehosuedisassemblydetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehosuedisassemblydetail.materialCode = gr.Cells["code"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["code"].Value.ToString());//商品code
-                        warehosuedisassemblydetail.materialDaima = gr.Cells["sup1material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["sup1material"].Value.ToString());//商品代码
-                        warehosuedisassemblydetail.barCode = gr.Cells["barcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["barcode"].Value.ToString());//条形码
-                        warehosuedisassemblydetail.materialName = gr.Cells["name"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["name"].Value.ToString());//商品名称
-                        warehosuedisassemblydetail.materialMode = gr.Cells["model"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["model"].Value.ToString());//规格型号
-                        warehosuedisassemblydetail.materialUnit = gr.Cells["unit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["unit"].Value.ToString());//单位
-                        warehosuedisassemblydetail.stockCode = gr.Cells["stockInCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["stockInCode"].Value.ToString());//仓库code
-                        warehosuedisassemblydetail.stockName = gr.Cells["gridColumnStockIn"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStockIn"].Value.ToString());//仓库名称
-                        warehosuedisassemblydetail.number = Convert.ToDecimal(gr.Cells["number"].Value == null ? 0 : gr.Cells["number"].Value);//数量
-                        warehosuedisassemblydetail.price = Convert.ToDecimal(gr.Cells["price"].Value == null ? 0 : gr.Cells["price"].Value);//单价
-                        warehosuedisassemblydetail.money = Convert.ToDecimal(gr.Cells["money"].Value == null ? 0 : gr.Cells["money"].Value);//金额
-                        warehosuedisassemblydetail.remark = gr.Cells["remark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["remark"].Value.ToString());//备注
-                        warehosuedisassemblydetail.isClear = 1;
-                        warehosuedisassemblydetail.updatetime = DateTime.Now;
-                        warehosuedisassemblydetail.reserved1 = "";
-                        warehosuedisassemblydetail.reserved2 = "";
-                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        warehousedisassemblydetailList.Add(warehosuedisassemblydetail);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2903-尝试创建审核拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
-                return;
-            }
-
-            //增加一条拆卸单和拆卸详细数据
-            object warehouseDisAssemblyResult = warehouseDisassemblyinterface.AddAndModify(warehousedisassembly, warehousedisassemblydetailList);
-            if (warehouseDisAssemblyResult != null)
-            {
-                MessageBox.Show("新增并审核拆卸单数据成功", "拆卸单温馨提示");
-                InitForm();
+                Review();
             }
         }
 
@@ -506,241 +457,27 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
-            //非空验证
-            if (isNUllValidate() == false)
-            {
-                return;
-            }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseDisassemblyInterface warehouseDisassemblyinterface = new WarehouseDisassemblyInterface();
-            //拆卸单
-            WarehouseDisassembly warehousedisassembly = new WarehouseDisassembly();
-            //拆卸单商品列表
-            List<WarehouseDisassemblyDetail> warehousedisassemblydetailList = new List<WarehouseDisassemblyDetail>();
-            try
-            {
-                warehousedisassembly.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
-                warehousedisassembly.date = dateTimePicker1.Value;//单据日期
-                warehousedisassembly.type = cbotype.Text == "" ? "" : XYEEncoding.strCodeHex(cbotype.Text);//费用类型
-                warehousedisassembly.disAssemblyCost = Convert.ToDecimal(labtextboxTop6.Text == "" ? "" : labtextboxTop6.Text);//拆卸费用
-                warehousedisassembly.Abstract = labtextboxTop2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
-                warehousedisassembly.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//拆卸员
-                warehousedisassembly.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-                warehousedisassembly.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-                warehousedisassembly.checkState = 0;//审核状态
-                warehousedisassembly.isClear = 1;
-                warehousedisassembly.updatetime = DateTime.Now;
-                warehousedisassembly.reserved1 = "";
-                warehousedisassembly.reserved2 = "";
-                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
-                warehousedisassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
-                warehousedisassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
-                warehousedisassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
-                warehousedisassembly.materialName = gr.Cells["gridColumnname"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnname"].Value.ToString());//商品名称
-                warehousedisassembly.materialMode = gr.Cells["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnmodel"].Value.ToString());//规格型号
-                warehousedisassembly.materialUnit = gr.Cells["gridColumnunit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnunit"].Value.ToString());//单位
-                warehousedisassembly.stockCode = gr.Cells["gridColumnstockCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnstockCode"].Value.ToString());//仓库code
-                warehousedisassembly.stockName = gr.Cells["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStock"].Value.ToString());//仓库名称
-                warehousedisassembly.number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].Value == null ? 0 : gr.Cells["gridColumnnumber"].Value);//数量
-                warehousedisassembly.materialremark = gr.Cells["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnremark"].Value.ToString());//备注
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码:2904-尝试创建拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
-                return;
-            }
-
-            try
-            {
-                //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                int i = 0;
-                DateTime nowDataTime = DateTime.Now;
-                foreach (GridRow gr in grs)
-                {
-                    if (gr["name"].Value != null)
-                    {
-                        i++;
-                        WarehouseDisassemblyDetail warehosuedisassemblydetail = new WarehouseDisassemblyDetail();
-                        warehosuedisassemblydetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehosuedisassemblydetail.materialCode = gr.Cells["code"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["code"].Value.ToString());//商品code
-                        warehosuedisassemblydetail.materialDaima = gr.Cells["sup1material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["sup1material"].Value.ToString());//商品代码
-                        warehosuedisassemblydetail.barCode = gr.Cells["barcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["barcode"].Value.ToString());//条形码
-                        warehosuedisassemblydetail.materialName = gr.Cells["name"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["name"].Value.ToString());//商品名称
-                        warehosuedisassemblydetail.materialMode = gr.Cells["model"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["model"].Value.ToString());//规格型号
-                        warehosuedisassemblydetail.materialUnit = gr.Cells["unit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["unit"].Value.ToString());//单位
-                        warehosuedisassemblydetail.stockCode = gr.Cells["stockInCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["stockInCode"].Value.ToString());//仓库code
-                        warehosuedisassemblydetail.stockName = gr.Cells["gridColumnStockIn"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStockIn"].Value.ToString());//仓库名称
-                        warehosuedisassemblydetail.number = Convert.ToDecimal(gr.Cells["number"].Value == null ? 0 : gr.Cells["number"].Value);//数量
-                        warehosuedisassemblydetail.price = Convert.ToDecimal(gr.Cells["price"].Value == null ? 0 : gr.Cells["price"].Value);//单价
-                        warehosuedisassemblydetail.money = Convert.ToDecimal(gr.Cells["money"].Value == null ? 0 : gr.Cells["money"].Value);//金额
-                        warehosuedisassemblydetail.remark = gr.Cells["remark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["remark"].Value.ToString());//备注
-                        warehosuedisassemblydetail.isClear = 1;
-                        warehosuedisassemblydetail.updatetime = DateTime.Now;
-                        warehosuedisassemblydetail.reserved1 = "";
-                        warehosuedisassemblydetail.reserved2 = "";
-                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        warehousedisassemblydetailList.Add(warehosuedisassemblydetail);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2905-尝试创建拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
-                return;
-            }
-
-            //增加一条拆卸单和拆卸详细数据
-            object warehouseDisAssemblyResult = warehouseDisassemblyinterface.AddAndModify(warehousedisassembly, warehousedisassemblydetailList);
-            if (warehouseDisAssemblyResult != null)
-            {
-                MessageBox.Show("新增拆卸单数据成功", "拆卸单温馨提示");
-            }
+            Save();
         }
 
         #region 两个副框的双击事件和下拉箭头的点击事件
 
         private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                if (_Material == 2)
-                {
-                    GridRow grs = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
-                    grs.Cells["gridColumncode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
-                    grs.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
-                    grs.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
-                    grs.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                    grs.Cells["gridColumnbarcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                    grs.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                    grs.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//商品数量
-                    grs.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注  
-                    resizablePanelData.Visible = false;
-                }
-                if (_Material == 1)
-                {
-                    ////是否要新增一行的标记
-                    bool newAdd = false;
-                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                    GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                    //id字段为空 说明是没有数据的行 不是修改而是新增
-                    if (gr.Cells["gridColumnid"].Value == null)
-                    {
-                        newAdd = true;
-                    }
-                    foreach (GridRow g in grs)
-                    {
-                        if (g.Cells["code"].Value == null)
-                        {
-                            newAdd = true;
-                            continue;
-                        }
-                        if (g.Cells["code"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value))
-                        {
-                            decimal shuliang = Convert.ToDecimal(g.Cells["number"].Value);
-                            decimal needNumber = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
-                            shuliang += needNumber;
-                            g.Cells["number"].Value = shuliang;
-                            //逐行统计数据总数
-                            decimal tempAllNumber = 0;
-                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                            {
-                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                                tempAllNumber += Convert.ToDecimal(tempGR["number"].FormattedValue);
-                            }
-                            _MaterialNumber = tempAllNumber;
-                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                            gr["number"].Value = _MaterialNumber.ToString();
-                            resizablePanelData.Visible = false;
-                            return;
-                        }
-                        continue;
-                    }
-                    gr.Cells["code"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
-                    gr.Cells["sup1material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
-                    gr.Cells["name"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
-                    gr.Cells["model"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                    gr.Cells["barcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                    gr.Cells["unit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                    gr.Cells["number"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//商品数量
-                    gr.Cells["price"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
-                    decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
-                    decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);
-                    decimal money = number * price;
-                    gr.Cells["money"].Value = money;
-                    gr.Cells["remark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注       
-
-                    _number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);
-                    //当上一次有选择仓库时 默认本次也为上次选择仓库
-                    if (!string.IsNullOrEmpty(_ClickStorageList.Value) && !string.IsNullOrEmpty(_ClickStorageList.Key))
-                    {
-                        gr.Cells["stockInCode"].Value = _ClickStorageList.Key;
-                        gr.Cells["gridColumnStockIn"].Value = _ClickStorageList.Value;
-                    }
-                    //新增一行 
-                    if (newAdd)
-                    {
-                        superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
-                        //递增数量 默认为1 
-                        gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                        _MaterialNumber += _number;
-                        gr.Cells["number"].Value = _MaterialNumber;
-                    }
-                    superGridControlShangPing.Focus();
-                    SendKeys.Send("^{End}{Home}");
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2906-双击绑定物料信息数据错误！请检查：" + ex.Message);
-            }
+            dataGridViewShangPingTableClick();
         }
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                //调价员
-                if (_Click == 1 || _Click == 3)
-                {
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    ltxtbSalsMan.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //仓库信息
-                if (_Click == 2)
-                {
-                    if (_WareHouse == 2)
-                    {
-                        GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
-                        string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                        string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                        gr.Cells["gridColumnstockCode"].Value = code;
-                        gr.Cells["gridColumnStock"].Value = Name;
-                        _StorageCode = code;
-                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
-                        //_StorageCode = code;
-                        resizablePanel1.Visible = false;
-                    }
-                    if (_WareHouse == 1)
-                    {
-                        GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                        string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                        string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                        gr.Cells["stockInCode"].Value = code;
-                        gr.Cells["gridColumnStockIn"].Value = Name;
-                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
-                        _StorageCode = code;
-                        resizablePanel1.Visible = false;
-                    }
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2907-双击绑定拆卸员或仓库信息数据错误！请检查：" + ex.Message);
-            }
+            dataGridViewFuJiTableClick();
         }
 
         private void pictureBoxEmployee_Click(object sender, EventArgs e)
@@ -1055,6 +792,440 @@ namespace WSCATProject.Warehouse
             if (e.KeyCode == Keys.Enter)
             {
                 panel2.Focus();
+            }
+        }
+
+        /// <summary>
+        /// 验证单号是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string validateCode()
+        {
+            //验证单号
+            if (warehouseDisassemblyinterface.Exists(XYEEncoding.strCodeHex(_WareHouseDisassemblyCode)))
+            {
+                _WareHouseDisassemblyCode = BuildCode.ModuleCode("WAP");
+            }
+            else
+            {
+                _WareHouseDisassemblyCode = textBoxOddNumbers.Text;
+            }
+
+            return _WareHouseDisassemblyCode;
+        }
+
+        /// <summary>
+        /// 保存按钮函数
+        /// </summary>
+        private void Save()
+        {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+            //WarehouseDisassemblyInterface warehouseDisassemblyinterface = new WarehouseDisassemblyInterface();
+            //拆卸单
+            WarehouseDisassembly warehousedisassembly = new WarehouseDisassembly();
+            //拆卸单商品列表
+            List<WarehouseDisassemblyDetail> warehousedisassemblydetailList = new List<WarehouseDisassemblyDetail>();
+            try
+            {
+                warehousedisassembly.code = XYEEncoding.strCodeHex(validateCode());//单据code
+                warehousedisassembly.date = dateTimePicker1.Value;//单据日期
+                warehousedisassembly.type = cbotype.Text == "" ? "" : XYEEncoding.strCodeHex(cbotype.Text);//费用类型
+                warehousedisassembly.disAssemblyCost = Convert.ToDecimal(labtextboxTop6.Text == "" ? "" : labtextboxTop6.Text);//拆卸费用
+                warehousedisassembly.Abstract = labtextboxTop2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
+                warehousedisassembly.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//拆卸员
+                warehousedisassembly.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
+                warehousedisassembly.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehousedisassembly.checkState = 0;//审核状态
+                warehousedisassembly.isClear = 1;
+                warehousedisassembly.updatetime = DateTime.Now;
+                warehousedisassembly.reserved1 = "";
+                warehousedisassembly.reserved2 = "";
+                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
+                warehousedisassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
+                warehousedisassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
+                warehousedisassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
+                warehousedisassembly.materialName = gr.Cells["gridColumnname"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnname"].Value.ToString());//商品名称
+                warehousedisassembly.materialMode = gr.Cells["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnmodel"].Value.ToString());//规格型号
+                warehousedisassembly.materialUnit = gr.Cells["gridColumnunit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnunit"].Value.ToString());//单位
+                warehousedisassembly.stockCode = gr.Cells["gridColumnstockCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnstockCode"].Value.ToString());//仓库code
+                warehousedisassembly.stockName = gr.Cells["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStock"].Value.ToString());//仓库名称
+                warehousedisassembly.number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].Value == null ? 0 : gr.Cells["gridColumnnumber"].Value);//数量
+                warehousedisassembly.materialremark = gr.Cells["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnremark"].Value.ToString());//备注
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2904-尝试创建拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].Value != null)
+                    {
+                        i++;
+                        WarehouseDisassemblyDetail warehosuedisassemblydetail = new WarehouseDisassemblyDetail();
+                        warehosuedisassemblydetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehosuedisassemblydetail.materialCode = gr.Cells["code"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["code"].Value.ToString());//商品code
+                        warehosuedisassemblydetail.materialDaima = gr.Cells["sup1material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["sup1material"].Value.ToString());//商品代码
+                        warehosuedisassemblydetail.barCode = gr.Cells["barcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["barcode"].Value.ToString());//条形码
+                        warehosuedisassemblydetail.materialName = gr.Cells["name"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["name"].Value.ToString());//商品名称
+                        warehosuedisassemblydetail.materialMode = gr.Cells["model"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["model"].Value.ToString());//规格型号
+                        warehosuedisassemblydetail.materialUnit = gr.Cells["unit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["unit"].Value.ToString());//单位
+                        warehosuedisassemblydetail.stockCode = gr.Cells["stockInCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["stockInCode"].Value.ToString());//仓库code
+                        warehosuedisassemblydetail.stockName = gr.Cells["gridColumnStockIn"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStockIn"].Value.ToString());//仓库名称
+                        warehosuedisassemblydetail.number = Convert.ToDecimal(gr.Cells["number"].Value == null ? 0 : gr.Cells["number"].Value);//数量
+                        warehosuedisassemblydetail.price = Convert.ToDecimal(gr.Cells["price"].Value == null ? 0 : gr.Cells["price"].Value);//单价
+                        warehosuedisassemblydetail.money = Convert.ToDecimal(gr.Cells["money"].Value == null ? 0 : gr.Cells["money"].Value);//金额
+                        warehosuedisassemblydetail.remark = gr.Cells["remark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["remark"].Value.ToString());//备注
+                        warehosuedisassemblydetail.isClear = 1;
+                        warehosuedisassemblydetail.updatetime = DateTime.Now;
+                        warehosuedisassemblydetail.reserved1 = "";
+                        warehosuedisassemblydetail.reserved2 = "";
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        warehousedisassemblydetailList.Add(warehosuedisassemblydetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2905-尝试创建拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                return;
+            }
+
+            //增加一条拆卸单和拆卸详细数据
+            object warehouseDisAssemblyResult = warehouseDisassemblyinterface.AddAndModify(warehousedisassembly, warehousedisassemblydetailList);
+            if (warehouseDisAssemblyResult != null)
+            {
+                MessageBox.Show("新增拆卸单数据成功", "拆卸单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 审核按钮函数
+        /// </summary>
+        private void Review()
+        {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+           // WarehouseDisassemblyInterface warehouseDisassemblyinterface = new WarehouseDisassemblyInterface();
+            //拆卸单
+            WarehouseDisassembly warehousedisassembly = new WarehouseDisassembly();
+            //拆卸单商品列表
+            List<WarehouseDisassemblyDetail> warehousedisassemblydetailList = new List<WarehouseDisassemblyDetail>();
+            try
+            {
+                warehousedisassembly.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
+                warehousedisassembly.date = dateTimePicker1.Value;//单据日期
+                warehousedisassembly.type = cbotype.Text == "" ? "" : XYEEncoding.strCodeHex(cbotype.Text);//费用类型
+                warehousedisassembly.disAssemblyCost = Convert.ToDecimal(labtextboxTop6.Text == "" ? "" : labtextboxTop6.Text);//拆卸费用
+                warehousedisassembly.Abstract = labtextboxTop2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop9.Text);//摘要
+                warehousedisassembly.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//拆卸员
+                warehousedisassembly.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
+                warehousedisassembly.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
+                warehousedisassembly.checkState = 1;//审核状态
+                warehousedisassembly.isClear = 1;
+                warehousedisassembly.updatetime = DateTime.Now;
+                warehousedisassembly.reserved1 = "";
+                warehousedisassembly.reserved2 = "";
+                GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[0];
+                warehousedisassembly.materialCode = gr.Cells["gridColumncode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumncode"].Value.ToString());//商品code
+                warehousedisassembly.materialDaima = gr.Cells["material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["material"].Value.ToString());//商品代码
+                warehousedisassembly.barCode = gr.Cells["gridColumnbarcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnbarcode"].Value.ToString());//条形码
+                warehousedisassembly.materialName = gr.Cells["gridColumnname"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnname"].Value.ToString());//商品名称
+                warehousedisassembly.materialMode = gr.Cells["gridColumnmodel"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnmodel"].Value.ToString());//规格型号
+                warehousedisassembly.materialUnit = gr.Cells["gridColumnunit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnunit"].Value.ToString());//单位
+                warehousedisassembly.stockCode = gr.Cells["gridColumnstockCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnstockCode"].Value.ToString());//仓库code
+                warehousedisassembly.stockName = gr.Cells["gridColumnStock"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStock"].Value.ToString());//仓库名称
+                warehousedisassembly.number = Convert.ToDecimal(gr.Cells["gridColumnnumber"].Value == null ? 0 : gr.Cells["gridColumnnumber"].Value);//数量
+                warehousedisassembly.materialremark = gr.Cells["gridColumnremark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnremark"].Value.ToString());//备注
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2902-尝试创建和审核拆卸单商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].Value != null)
+                    {
+                        i++;
+                        WarehouseDisassemblyDetail warehosuedisassemblydetail = new WarehouseDisassemblyDetail();
+                        warehosuedisassemblydetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehosuedisassemblydetail.materialCode = gr.Cells["code"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["code"].Value.ToString());//商品code
+                        warehosuedisassemblydetail.materialDaima = gr.Cells["sup1material"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["sup1material"].Value.ToString());//商品代码
+                        warehosuedisassemblydetail.barCode = gr.Cells["barcode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["barcode"].Value.ToString());//条形码
+                        warehosuedisassemblydetail.materialName = gr.Cells["name"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["name"].Value.ToString());//商品名称
+                        warehosuedisassemblydetail.materialMode = gr.Cells["model"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["model"].Value.ToString());//规格型号
+                        warehosuedisassemblydetail.materialUnit = gr.Cells["unit"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["unit"].Value.ToString());//单位
+                        warehosuedisassemblydetail.stockCode = gr.Cells["stockInCode"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["stockInCode"].Value.ToString());//仓库code
+                        warehosuedisassemblydetail.stockName = gr.Cells["gridColumnStockIn"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["gridColumnStockIn"].Value.ToString());//仓库名称
+                        warehosuedisassemblydetail.number = Convert.ToDecimal(gr.Cells["number"].Value == null ? 0 : gr.Cells["number"].Value);//数量
+                        warehosuedisassemblydetail.price = Convert.ToDecimal(gr.Cells["price"].Value == null ? 0 : gr.Cells["price"].Value);//单价
+                        warehosuedisassemblydetail.money = Convert.ToDecimal(gr.Cells["money"].Value == null ? 0 : gr.Cells["money"].Value);//金额
+                        warehosuedisassemblydetail.remark = gr.Cells["remark"].Value == null ? "" : XYEEncoding.strCodeHex(gr.Cells["remark"].Value.ToString());//备注
+                        warehosuedisassemblydetail.isClear = 1;
+                        warehosuedisassemblydetail.updatetime = DateTime.Now;
+                        warehosuedisassemblydetail.reserved1 = "";
+                        warehosuedisassemblydetail.reserved2 = "";
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        warehousedisassemblydetailList.Add(warehosuedisassemblydetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2903-尝试创建审核拆卸单详情商品数据出错,请检查输入" + ex.Message, "拆卸单温馨提示");
+                return;
+            }
+
+            //增加一条拆卸单和拆卸详细数据
+            object warehouseDisAssemblyResult = warehouseDisassemblyinterface.AddAndModify(warehousedisassembly, warehousedisassemblydetailList);
+            if (warehouseDisAssemblyResult != null)
+            {
+                MessageBox.Show("新增并审核拆卸单数据成功", "拆卸单温馨提示");
+                InitForm();
+            }
+        }
+
+        /// <summary>
+        /// dataGridViewFuJia的点击事件函数
+        /// </summary>
+        private void dataGridViewFuJiTableClick()
+        {
+            try
+            {
+                //调价员
+                if (_Click == 1 || _Click == 3)
+                {
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //仓库信息
+                if (_Click == 2)
+                {
+                    if (_WareHouse == 2)
+                    {
+                        GridRow gr = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
+                        string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                        string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                        gr.Cells["gridColumnstockCode"].Value = code;
+                        gr.Cells["gridColumnStock"].Value = Name;
+                        _StorageCode = code;
+                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                        //_StorageCode = code;
+                        resizablePanel1.Visible = false;
+                    }
+                    if (_WareHouse == 1)
+                    {
+                        GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                        string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                        string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                        gr.Cells["stockInCode"].Value = code;
+                        gr.Cells["gridColumnStockIn"].Value = Name;
+                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                        _StorageCode = code;
+                        resizablePanel1.Visible = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2907-双击绑定拆卸员或仓库信息数据错误！请检查：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// dataGridViewShangPing的点击事件函数
+        /// </summary>
+        private void dataGridViewShangPingTableClick()
+        {
+            try
+            {
+                if (_Material == 2)
+                {
+                    GridRow grs = (GridRow)superGridControlChaiXei.PrimaryGrid.Rows[ClickRowIndex];
+                    grs.Cells["gridColumncode"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["code"].Value;//商品code
+                    grs.Cells["material"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["materialDaima"].Value;//商品代码
+                    grs.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["name"].Value;//商品名称
+                    grs.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["model"].Value;//规格型号
+                    grs.Cells["gridColumnbarcode"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["barCode"].Value;//条码
+                    grs.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["unit"].Value;//单位
+                    grs.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value;//商品数量
+                    grs.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["remark"].Value;//备注  
+                    resizablePanelData.Visible = false;
+                }
+                if (_Material == 1)
+                {
+                    ////是否要新增一行的标记
+                    bool newAdd = false;
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                    //id字段为空 说明是没有数据的行 不是修改而是新增
+                    if (gr.Cells["gridColumnid"].Value == null)
+                    {
+                        newAdd = true;
+                    }
+                    foreach (GridRow g in grs)
+                    {
+                        if (g.Cells["code"].Value == null)
+                        {
+                            newAdd = true;
+                            continue;
+                        }
+                        if (g.Cells["code"].Value.Equals(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["code"].Value))
+                        {
+                            decimal shuliang = Convert.ToDecimal(g.Cells["number"].Value);
+                            decimal needNumber = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value);
+                            shuliang += needNumber;
+                            g.Cells["number"].Value = shuliang;
+                            //逐行统计数据总数
+                            decimal tempAllNumber = 0;
+                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                            {
+                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                                tempAllNumber += Convert.ToDecimal(tempGR["number"].FormattedValue);
+                            }
+                            _MaterialNumber = tempAllNumber;
+                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                            gr["number"].Value = _MaterialNumber.ToString();
+                            resizablePanelData.Visible = false;
+                            return;
+                        }
+                        continue;
+                    }
+                    gr.Cells["code"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["code"].Value;//商品code
+                    gr.Cells["sup1material"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["materialDaima"].Value;//商品代码
+                    gr.Cells["name"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["name"].Value;//商品名称
+                    gr.Cells["model"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["model"].Value;//规格型号
+                    gr.Cells["barcode"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["barCode"].Value;//条码
+                    gr.Cells["unit"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["unit"].Value;//单位
+                    gr.Cells["number"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value;//商品数量
+                    gr.Cells["price"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value;//单价
+                    decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value);
+                    decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value);
+                    decimal money = number * price;
+                    gr.Cells["money"].Value = money;
+                    gr.Cells["remark"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["remark"].Value;//备注       
+
+                    _number = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value);
+                    //当上一次有选择仓库时 默认本次也为上次选择仓库
+                    if (!string.IsNullOrEmpty(_ClickStorageList.Value) && !string.IsNullOrEmpty(_ClickStorageList.Key))
+                    {
+                        gr.Cells["stockInCode"].Value = _ClickStorageList.Key;
+                        gr.Cells["gridColumnStockIn"].Value = _ClickStorageList.Value;
+                    }
+                    //新增一行 
+                    if (newAdd)
+                    {
+                        superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
+                        //递增数量 默认为1 
+                        gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                        _MaterialNumber += _number;
+                        gr.Cells["number"].Value = _MaterialNumber;
+                    }
+                    superGridControlShangPing.Focus();
+                    SendKeys.Send("^{End}{Home}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2906-双击绑定物料信息数据错误！请检查：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 小表格的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewFuJiTableClick();
+            }
+        }
+        private void DataGridViewShangPing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewShangPingTableClick();
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseDisassemblyForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                Save();
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Review();
+                }
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
             }
         }
     }

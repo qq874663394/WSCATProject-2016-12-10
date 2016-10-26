@@ -462,38 +462,7 @@ namespace WSCATProject.Sales
         {
             if (e.KeyCode == Keys.Enter)
             {
-                try
-                {
-                    //客户
-                    if (_Click == 1 || _Click == 4)
-                    {
-                        _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
-                        txtClient.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-                    //结算账户
-                    if (_Click == 2 || _Click == 5)
-                    {
-                        _bankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//银行账户code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//账户名称
-                        txtBank.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-                    //收款员
-                    if (_Click == 3 || _Click == 6)
-                    {
-                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//收款员code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//收款员
-                        ltxtbSalsMan.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("错误代码：1509-按回车绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
-                }
+                dataGridViewFuJiaTableClick();
             }
         }
 

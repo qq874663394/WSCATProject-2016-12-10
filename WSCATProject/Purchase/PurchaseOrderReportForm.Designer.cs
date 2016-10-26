@@ -299,6 +299,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             background1.Color1 = System.Drawing.Color.Azure;
             this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 3;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1170, 435);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControl1";

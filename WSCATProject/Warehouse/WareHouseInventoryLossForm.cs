@@ -383,6 +383,24 @@ namespace WSCATProject.Warehouse
             gr.Cells["pankuimoney"].Value = 0;
             gr.Cells["pankuimoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["pankuimoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+            #region 合计行不能点击
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["name"].AllowSelection = false;
+            gr.Cells["model"].AllowSelection = false;
+            gr.Cells["tiaoxingma"].AllowSelection = false;
+            gr.Cells["storge"].AllowSelection = false;
+            gr.Cells["unit"].AllowSelection = false;
+            gr.Cells["zhangcunnumber"].AllowSelection = false;
+            gr.Cells["pandiannumber"].AllowSelection = false;
+            gr.Cells["pankuinumber"].AllowSelection = false;
+            gr.Cells["price"].AllowSelection = false;
+            gr.Cells["pankuimoney"].AllowSelection = false;
+            gr.Cells["shengchandate"].AllowSelection = false;
+            gr.Cells["baozhiqi"].AllowSelection = false;
+            gr.Cells["youxiaoqi"].AllowSelection = false;
+            gr.Cells["remark"].AllowSelection = false;
+            #endregion
+
         }
 
         /// <summary>
@@ -628,5 +646,6 @@ namespace WSCATProject.Warehouse
         {
             cboOutType.Focus();
         }
+
     }
 }

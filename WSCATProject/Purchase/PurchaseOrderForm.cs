@@ -964,7 +964,6 @@ namespace WSCATProject.Purchase
             {
                 Review();
             }
-
         }
 
         #region 小箭头和表格点击事件以及两个表格双击绑定数据
@@ -1070,7 +1069,6 @@ namespace WSCATProject.Purchase
             {
                 return;
             }
-
             dataGridViewFuJiTableClick();
         }
 
@@ -1650,5 +1648,6 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：3112-双击绑定物料数据错误" + ex.Message, "采购订单温馨提示！");
             }
         }
+
     }
 }

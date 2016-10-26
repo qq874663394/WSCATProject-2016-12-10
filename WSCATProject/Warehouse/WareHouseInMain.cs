@@ -924,7 +924,9 @@ namespace WSCATProject.Warehouse
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            superGridControlShangPing.PrimaryGrid.NewRow(true);
+            superGridControlShangPing.PrimaryGrid.NewRow(true);  
+
+
             //最后一行做统计行
             GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.
                 Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
@@ -936,6 +938,23 @@ namespace WSCATProject.Warehouse
             gr.Cells["gridColumnnumber"].Value = 0;
             gr.Cells["gridColumnnumber"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnnumber"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            #region 合计行不能点击
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["gridColumnname"].AllowSelection = false;
+            gr.Cells["gridColumnmodel"].AllowSelection = false;
+            gr.Cells["gridColumntiaoxingma"].AllowSelection = false;
+            gr.Cells["gridColumnunit"].AllowSelection = false;
+            gr.Cells["gridColumnnumber"].AllowSelection = false;
+            gr.Cells["gridColumnprice"].AllowSelection = false;
+            gr.Cells["gridColumnmoney"].AllowSelection = false;
+            gr.Cells["griCoulumcangku"].AllowSelection = false;
+            gr.Cells["griCoulumhuojia"].AllowSelection = false;
+            gr.Cells["gridColumndate"].AllowSelection = false;
+            gr.Cells["gridColumnbaozhe"].AllowSelection = false;
+            gr.Cells["gridColumnyouxiao"].AllowSelection = false;
+            gr.Cells["gridColumnremark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>

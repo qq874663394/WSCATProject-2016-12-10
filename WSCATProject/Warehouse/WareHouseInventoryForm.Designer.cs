@@ -30,6 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouseInventoryForm));
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -349,6 +361,9 @@
             // 
             // storge
             // 
+            this.storge.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.storge.CellStyles.Default.Background = background1;
             this.storge.DataPropertyName = "storageName";
             this.storge.HeaderText = "仓库";
             this.storge.Name = "storge";
@@ -357,6 +372,8 @@
             // daima
             // 
             this.daima.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.daima.CellStyles.Default.Background = background2;
             this.daima.DataPropertyName = "materialDaima";
             this.daima.HeaderText = "商品代码";
             this.daima.Name = "daima";
@@ -365,6 +382,8 @@
             // name
             // 
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.name.CellStyles.Default.Background = background3;
             this.name.DataPropertyName = "name";
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
@@ -372,6 +391,8 @@
             // 
             // model
             // 
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.model.CellStyles.Default.Background = background4;
             this.model.DataPropertyName = "model";
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -381,6 +402,8 @@
             // tiaoxingma
             // 
             this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.tiaoxingma.CellStyles.Default.Background = background5;
             this.tiaoxingma.DataPropertyName = "barcode";
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
@@ -389,6 +412,8 @@
             // 
             // shengchandate
             // 
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.shengchandate.CellStyles.Default.Background = background6;
             this.shengchandate.DataPropertyName = "productionDate";
             this.shengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengchandate.HeaderText = "生产/采购日期";
@@ -397,6 +422,8 @@
             // 
             // baozhiqi
             // 
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.baozhiqi.CellStyles.Default.Background = background7;
             this.baozhiqi.DataPropertyName = "qualityDate";
             this.baozhiqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.baozhiqi.HeaderText = "  保质期   （天）";
@@ -406,6 +433,8 @@
             // 
             // unit
             // 
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.unit.CellStyles.Default.Background = background8;
             this.unit.DataPropertyName = "unit";
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
@@ -414,6 +443,8 @@
             // 
             // zhangcunnumber
             // 
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.zhangcunnumber.CellStyles.Default.Background = background9;
             this.zhangcunnumber.DataPropertyName = "number";
             this.zhangcunnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.zhangcunnumber.HeaderText = "账存数量";
@@ -429,6 +460,8 @@
             // 
             // panyingnumber
             // 
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.panyingnumber.CellStyles.Default.Background = background10;
             this.panyingnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.panyingnumber.HeaderText = "盘盈数量";
             this.panyingnumber.Name = "panyingnumber";
@@ -437,6 +470,8 @@
             // 
             // pankuinumber
             // 
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.pankuinumber.CellStyles.Default.Background = background11;
             this.pankuinumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuinumber.HeaderText = "盘亏数量";
             this.pankuinumber.Name = "pankuinumber";
@@ -446,6 +481,8 @@
             // remark
             // 
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background12;
             this.remark.DataPropertyName = "remark";
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";

@@ -381,6 +381,24 @@ namespace WSCATProject.Warehouse
             gr.Cells["gridColumnmoney"].Value = 0;
             gr.Cells["gridColumnmoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnmoney"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            #region 合计行不能点击
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["gridColumnname"].AllowSelection = false;
+            gr.Cells["gridColumnmodel"].AllowSelection = false;
+            gr.Cells["gridColumntiaoxingma"].AllowSelection = false;
+            gr.Cells["gridColumnStock"].AllowSelection = false;
+            gr.Cells["gridColumnunit"].AllowSelection = false;
+            gr.Cells["gridColumnzhangmianshu"].AllowSelection = false;
+            gr.Cells["gridColumnpandianshu"].AllowSelection = false;
+            gr.Cells["gridColumnpanyingshu"].AllowSelection = false;
+            gr.Cells["gridColumnprice"].AllowSelection = false;
+            gr.Cells["gridColumnmoney"].AllowSelection = false;
+            gr.Cells["gridColumndate"].AllowSelection = false;
+            gr.Cells["gridColumnbaozhe"].AllowSelection = false;
+            gr.Cells["gridColumnyouxiao"].AllowSelection = false;
+            gr.Cells["gridColumnremark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
