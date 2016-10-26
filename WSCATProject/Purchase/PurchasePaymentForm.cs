@@ -29,6 +29,7 @@ namespace WSCATProject.Purchase
         SupplierInterface supplier = new SupplierInterface();//供应商
         BankAccountInterface bank = new BankAccountInterface();//结算账户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工
+        FinancePaymentInterface financePaymentinterface = new FinancePaymentInterface();
         #endregion
 
         #region 数据字段
@@ -638,42 +639,11 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                if (e.RowIndex == -1)
-                {
-                    return;
-                }
-                //供应商
-                if (_Click == 1 || _Click == 4)
-                {
-                    _supplyCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//供应商code
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//供应商名称
-                    labtextboxTop2.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //结算账户
-                if (_Click == 2 || _Click == 5)
-                {
-                    _bankCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//银行账户code
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();//账户名称
-                    labtextboxTop4.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //收款员
-                if (_Click == 3 || _Click == 6)
-                {
-                    _employeeCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//收款员code
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//收款员
-                    ltxtbSalsMan.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：3506-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
-            }
+            dataGridViewFuJiaTableClick();
         }
 
         #endregion
@@ -901,13 +871,17 @@ namespace WSCATProject.Purchase
             //保存
             if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
             {
-                toolStripBtnSave_Click(sender, e);
+                Save();
                 return;
             }
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                toolStripBtnShengHe_Click(sender, e);
+                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Review();
+                }
                 return;
             }
             //打印
@@ -952,6 +926,7 @@ namespace WSCATProject.Purchase
                              1,
                              ButtonBorderStyle.Solid);
         }
+
         /// <summary>
         /// 表格回车键
         /// </summary>
@@ -1106,6 +1081,7 @@ namespace WSCATProject.Purchase
             // 确保输入光标在最右侧
             labtextboxTop6.Select(labtextboxTop6.Text.Length, 0);
         }
+
         /// <summary>
         /// 选源单封函数
         /// </summary>
@@ -1160,23 +1136,15 @@ namespace WSCATProject.Purchase
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            FinancePaymentInterface financePaymentinterface = new FinancePaymentInterface();
+           // FinancePaymentInterface financePaymentinterface = new FinancePaymentInterface();
             ///付款单
             FinancePayment financepayment = new FinancePayment();
             //付款单详细列表
             List<FinancePaymentDetail> financelpaymentDetailList = new List<FinancePaymentDetail>();
             try
             {
-                //付款单单号
-                if (financePaymentinterface.Exists(XYEEncoding.strCodeHex(_PurchasePaymentCode)))
-                {
-                    _PurchasePaymentCode = BuildCode.ModuleCode("PPM");
-                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
-                }
-                else
-                {
-                    financepayment.code = XYEEncoding.strCodeHex(_PurchasePaymentCode);
-                }             
+                //付款单单号           
+                    financepayment.code = XYEEncoding.strCodeHex(validateCode());           
                 //供应商
                 if (labtextboxTop2.Text != null || labtextboxTop2.Text.Trim() != "")
                 {
@@ -1454,7 +1422,11 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            Review();
+            DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Review();
+            }
         }
 
         /// <summary>
@@ -1539,6 +1511,62 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：3517-逐行统计数据总数错误！"+ex.Message,"付款单温馨提示：");
             }
 
+        }
+
+        /// <summary>
+        /// 验证单号是否重复
+        /// </summary>
+        private string validateCode()
+        {
+            //付款单单号
+            if (financePaymentinterface.Exists(XYEEncoding.strCodeHex(_PurchasePaymentCode)))
+            {
+                _PurchasePaymentCode = BuildCode.ModuleCode("PPM");
+            }
+            else
+            {
+                _PurchasePaymentCode = textBoxOddNumbers.Text;
+            }
+            return _PurchasePaymentCode;
+        }
+
+        /// <summary>
+        /// dataGridViewFuJia双击事件函数
+        /// </summary>
+        private void dataGridViewFuJiaTableClick()
+        {
+            try
+            {
+                //供应商
+                if (_Click == 1 || _Click == 4)
+                {
+                    _supplyCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//供应商名称
+                    labtextboxTop2.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //结算账户
+                if (_Click == 2 || _Click == 5)
+                {
+                    _bankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//银行账户code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//账户名称
+                    labtextboxTop4.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //收款员
+                if (_Click == 3 || _Click == 6)
+                {
+                    _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//收款员code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//收款员
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3506-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
+            }
         }
     }
 }

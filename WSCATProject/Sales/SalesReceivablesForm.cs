@@ -30,6 +30,7 @@ namespace WSCATProject.Sales
         ClientInterface client = new ClientInterface();//客户
         BankAccountInterface bank = new BankAccountInterface();//结算账户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工
+        FinanceCollectionInterface financeCollectionInterface = new FinanceCollectionInterface();
         #endregion
 
         #region 数据字段
@@ -459,7 +460,7 @@ namespace WSCATProject.Sales
 
         private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 try
                 {
@@ -566,23 +567,14 @@ namespace WSCATProject.Sales
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            FinanceCollectionInterface financeCollectionInterface = new FinanceCollectionInterface();
+            //FinanceCollectionInterface financeCollectionInterface = new FinanceCollectionInterface();
             //收款单
             FinanceCollection financecollection = new FinanceCollection();
             //收款详单
             List<FinanceCollectionDetail> financecollectionList = new List<FinanceCollectionDetail>();
             try
             {
-                if (financeCollectionInterface.Exists(XYEEncoding.strCodeHex(_SaleReceivablesCode)))
-                {
-                    _SaleReceivablesCode = BuildCode.ModuleCode("SRS");
-                    financecollection.code = XYEEncoding.strCodeHex(_SaleReceivablesCode);
-                }
-                else
-                {
-                    financecollection.code = XYEEncoding.strCodeHex(_SaleReceivablesCode);//收款单单号
-                }
-   
+                financecollection.code = XYEEncoding.strCodeHex(validateCode());//收款单单号
                 if (txtClient.Text != null || txtClient.Text != "")
                 {
                     financecollection.clientName = XYEEncoding.strCodeHex(txtClient.Text.Trim());//客户名称
@@ -593,7 +585,7 @@ namespace WSCATProject.Sales
                     txtClient.Focus();
                     return;
                 }
-               
+
                 if (txtBank.Text != null || txtBank.Text.Trim() != "")
                 {
                     financecollection.accountName = XYEEncoding.strCodeHex(txtBank.Text.Trim());//账户名称
@@ -604,7 +596,7 @@ namespace WSCATProject.Sales
                     txtBank.Focus();
                     return;
                 }
-             
+
                 if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
                 {
                     financecollection.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//收款员
@@ -640,7 +632,7 @@ namespace WSCATProject.Sales
                 {
                     financecollection.financeCollectionState = 1;//单据状态 (1为部分收款)
                 }
-                if (_shengYuMoney ==Convert.ToDecimal(0.00))
+                if (_shengYuMoney == Convert.ToDecimal(0.00))
                 {
                     financecollection.financeCollectionState = 2;//单据状态（2为已收款）
                 }
@@ -938,42 +930,11 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                if (e.RowIndex == -1)
-                {
-                    return;
-                }
-                //客户
-                if (_Click == 1 || _Click == 4)
-                {
-                    _clientCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//客户code
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//客户名称
-                    txtClient.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //结算账户
-                if (_Click == 2 || _Click == 5)
-                {
-                    _bankCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//银行账户code
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["openBank"].Value.ToString();//账户名称
-                    txtBank.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //收款员
-                if (_Click == 3 || _Click == 6)
-                {
-                    _employeeCode = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();//收款员code
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();//收款员
-                    ltxtbSalsMan.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：1509-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
-            }
+            dataGridViewFuJiaTableClick();
         }
 
         #endregion
@@ -1442,7 +1403,11 @@ namespace WSCATProject.Sales
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                ShengHe();
+                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    ShengHe();
+                }
                 return;
             }
             //打印
@@ -1533,6 +1498,62 @@ namespace WSCATProject.Sales
             grid["YiHeXiaoMoney"].Value = _yiHeXiaoMoney.ToString();
             grid["WeiHeXiaoMoney"].Value = _weiHeXiaoMoney.ToString();
             grid["BenCiHeXiao"].Value = _benCiHeXiaoMoney.ToString();
+        }
+
+        /// <summary>
+        /// 验证单号是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string validateCode()
+        {
+            if (financeCollectionInterface.Exists(XYEEncoding.strCodeHex(_SaleReceivablesCode)))
+            {
+                _SaleReceivablesCode = BuildCode.ModuleCode("SRS");
+            }
+            else
+            {
+                _SaleReceivablesCode = textBoxOddNumbers.Text;//收款单单号
+            }
+            return _SaleReceivablesCode;
+        }
+
+        /// <summary>
+        /// dataGridViewFuJia表格双击事件函数
+        /// </summary>
+        private void dataGridViewFuJiaTableClick()
+        {
+            try
+            {
+                //客户
+                if (_Click == 1 || _Click == 4)
+                {
+                    _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
+                    txtClient.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //结算账户
+                if (_Click == 2 || _Click == 5)
+                {
+                    _bankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//银行账户code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//账户名称
+                    txtBank.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //收款员
+                if (_Click == 3 || _Click == 6)
+                {
+                    _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//收款员code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//收款员
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1509-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
+            }
         }
     }
 }
