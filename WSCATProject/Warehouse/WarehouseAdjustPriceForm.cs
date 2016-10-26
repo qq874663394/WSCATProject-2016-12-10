@@ -143,6 +143,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
 
                 cboadjType.SelectedIndex = 0;
                 // 将dataGridView中的内容居中显示
@@ -176,7 +177,30 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            ShengHe();
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                ShengHe();
+            }
+        }
+
+        /// <summary>
+        /// 验证单号
+        /// </summary>
+        /// <returns></returns>
+        private string validateCode()
+        {
+            //验证单号
+            if (warehouseAdjust.Exists(XYEEncoding.strCodeHex(_WareHouseAdjCode)))
+            {
+                _WareHouseAdjCode = BuildCode.ModuleCode("WAP");
+            }
+            else
+            {
+                _WareHouseAdjCode = textBoxOddNumbers.Text;
+            }
+
+            return _WareHouseAdjCode;
         }
 
         /// <summary>
@@ -190,14 +214,14 @@ namespace WSCATProject.Warehouse
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            WarehouseAdjustPriceInterface warehouseAdjpriceinterface = new WarehouseAdjustPriceInterface();
+            //WarehouseAdjustPriceInterface warehouseAdjpriceinterface = new WarehouseAdjustPriceInterface();
             //调价单
             WarehouseAdjustPrice warehouseADJprice = new WarehouseAdjustPrice();
             //调价单商品列表
             List<WarehouseAdjustPriceDetail> warehouseADJpriceList = new List<WarehouseAdjustPriceDetail>();
             try
             {
-                warehouseADJprice.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
+                warehouseADJprice.code = XYEEncoding.strCodeHex(validateCode());//单据code
                 warehouseADJprice.date = dateTimePicker1.Value;//单据日期
                 warehouseADJprice.type = cboadjType.Text == "" ? "" : XYEEncoding.strCodeHex(cboadjType.Text);//调价类别
                 warehouseADJprice.operationMan = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//调价员
@@ -264,13 +288,14 @@ namespace WSCATProject.Warehouse
             }
 
             //增加一条调价单和调价详细数据
-            object warehouseAdjResult = warehouseAdjpriceinterface.AddAndModify(warehouseADJprice, warehouseADJpriceList);
+            object warehouseAdjResult = warehouseAdjust.AddAndModify(warehouseADJprice, warehouseADJpriceList);
             //this.textBoxid.Text = warehouseProfitResult.ToString();
             if (warehouseAdjResult != null)
             {
                 MessageBox.Show("新增调价单数据成功", "调价单温馨提示");
             }
         }
+
         /// <summary>
         /// 审核的封装函数
         /// </summary>
@@ -407,6 +432,21 @@ namespace WSCATProject.Warehouse
             gr.Cells["gridColumnmoneyadj"].Value = 0;
             gr.Cells["gridColumnmoneyadj"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnmoneyadj"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            #region 合计行不能点击
+            gr.Cells["gridColumnStock"].AllowSelection = false;
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["gridColumnname"].AllowSelection = false;
+            gr.Cells["gridColumnmodel"].AllowSelection = false;
+            gr.Cells["gridColumntiaoma"].AllowSelection = false;
+            gr.Cells["gridColumnunit"].AllowSelection = false;
+            gr.Cells["gridColumnbeforeprice"].AllowSelection = false;
+            gr.Cells["gridColumnbeforemoney"].AllowSelection = false;
+            gr.Cells["gridColumnafterprice"].AllowSelection = false;
+            gr.Cells["gridColumnaftermoney"].AllowSelection = false;
+            gr.Cells["gridColumnmoneyadj"].AllowSelection = false;
+            gr.Cells["gridColumnremark"].AllowSelection = false;
+            #endregion
         }
 
         /// <summary>
@@ -620,33 +660,57 @@ namespace WSCATProject.Warehouse
         }
 
         /// <summary>
-        /// 初始化窗体控件可用不可用
+        /// 标示那个控件不可用
         /// </summary>
         private void InitForm()
         {
-            cboadjType.Enabled = false;
-            labtextboxTop9.ReadOnly = true;
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
             superGridControlShangPing.PrimaryGrid.ReadOnly = true;
-            dateTimePicker1.Enabled = false;
-            textBoxOddNumbers.ReadOnly = true;
-            ltxtbSalsMan.ReadOnly = true;
-            pictureBoxEmployee.Enabled = false;
-            ltxtbMakeMan.ReadOnly = true;
-            ltxtbShengHeMan.ReadOnly = true;
             this.picAdj.Parent = pictureBoxtitle;
             this.picAdj.Image = Properties.Resources.审核;
             picAdj.Visible = true;
             this.toolStripBtnInsert.Enabled = false;
             this.toolStripBtnSave.Enabled = false;
             this.toolStripBtnShengHe.Enabled = false;
-            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
-            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
-            this.superGridControlShangPing.BackColor = Color.FromArgb(240, 240, 240);
-            this.labtextboxTop9.BackColor = Color.FromArgb(240, 240, 240);
-            this.ltxtbSalsMan.BackColor = Color.FromArgb(240, 240, 240);
-            this.ltxtbMakeMan.BackColor = Color.FromArgb(240, 240, 240);
-            this.ltxtbShengHeMan.BackColor = Color.FromArgb(240, 240, 240);
         }
+
         #endregion
 
         #region 小箭头图标和表格数据的点击事件
@@ -667,33 +731,11 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                //调价员
-                if (_Click == 1 || _Click == 3)
-                {
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    ltxtbSalsMan.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //仓库信息
-                if (_Click == 2)
-                {
-
-                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                    string code = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                    string Name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    gr.Cells["gridColumnStock"].Value = Name;
-                    //gr.Cells["gridColumncode"].Value = code;
-                    _ClickStorageList = new KeyValuePair<string, string>(code, Name);
-                    _StorageCode = code;
-                    resizablePanel1.Visible = false;
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2708-双击绑定调价员或仓库信息数据错误！请检查：" + ex.Message);
-            }
+            dataGridViewFuJiaTableClick();
         }
 
         /// <summary>
@@ -703,55 +745,11 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                //是否要新增一行的标记
-                bool newAdd = false;
-                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                //id字段为空 说明是没有数据的行 不是修改而是新增
-                if (gr.Cells["gridColumnid"].Value == null)
-                {
-                    newAdd = true;
-                }
-                gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
-                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                gr.Cells["gridColumntiaoma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条码
-                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                gr.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//商品数量
-                gr.Cells["gridColumnbeforeprice"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
-                gr.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注
-                gr.Cells["gridColumnmaterialcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code
-
-                decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value);//数量
-                decimal beforeprice = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);//调前单价
-                _MaterialBeforeMoney = number * beforeprice;
-                gr.Cells["gridColumnbeforemoney"].Value = _MaterialBeforeMoney;//调前金额
-
-                //当上一次有选择仓库时 默认本次也为上次选择仓库
-                if (!string.IsNullOrEmpty(_ClickStorageList.Value) && !string.IsNullOrEmpty(_ClickStorageList.Key))
-                {
-                    gr.Cells["gridColumnstockcode"].Value = _ClickStorageList.Key;
-                    gr.Cells["gridColumnStock"].Value = _ClickStorageList.Value;
-                }
-                //新增一行 
-                if (newAdd)
-                {
-                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
-                    //递增数量和金额 默认为1和单价 
-                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                    _MaterialNumber += 1;
-                    _beforeMoney += _MaterialBeforeMoney;
-                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-                    gr.Cells["gridColumnbeforemoney"].Value = _beforeMoney;
-                }
-                superGridControlShangPing.Focus();
-                SendKeys.Send("^{End}{Home}");
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" 错误代码：2709-双击绑定物料信息数据错误！请检查：" + ex.Message);
-            }
+            dataGridViewShangPingTableClick();
         }
 
         #endregion
@@ -958,6 +956,159 @@ namespace WSCATProject.Warehouse
             if (e.KeyCode == Keys.Enter)
             {
                 panel2.Focus();
+            }
+        }
+
+        /// <summary>
+        /// dataGridViewFuJia双击表格函数
+        /// </summary>
+        private void dataGridViewFuJiaTableClick()
+        {
+            try
+            {
+                //调价员
+                if (_Click == 1 || _Click == 3)
+                {
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //仓库信息
+                if (_Click == 2)
+                {
+
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                    string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                    gr.Cells["gridColumnStock"].Value = Name;
+                    //gr.Cells["gridColumncode"].Value = code;
+                    _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                    _StorageCode = code;
+                    resizablePanel1.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2708-双击绑定调价员或仓库信息数据错误！请检查：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// dataGridViewShangPing双击表格函数
+        /// </summary>
+        private void dataGridViewShangPingTableClick()
+
+        {
+            try
+            {
+                //是否要新增一行的标记
+                bool newAdd = false;
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                //id字段为空 说明是没有数据的行 不是修改而是新增
+                if (gr.Cells["gridColumnid"].Value == null)
+                {
+                    newAdd = true;
+                }
+                gr.Cells["material"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["materialDaima"].Value;//商品代码
+                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["name"].Value;//商品名称
+                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["model"].Value;//规格型号
+                gr.Cells["gridColumntiaoma"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["barCode"].Value;//条码
+                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["unit"].Value;//单位
+                gr.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value;//商品数量
+                gr.Cells["gridColumnbeforeprice"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value;//单价
+                gr.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["remark"].Value;//备注
+                gr.Cells["gridColumnmaterialcode"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["code"].Value;//商品code
+
+                decimal number = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value);//数量
+                decimal beforeprice = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value);//调前单价
+                _MaterialBeforeMoney = number * beforeprice;
+                gr.Cells["gridColumnbeforemoney"].Value = _MaterialBeforeMoney;//调前金额
+
+                //当上一次有选择仓库时 默认本次也为上次选择仓库
+                if (!string.IsNullOrEmpty(_ClickStorageList.Value) && !string.IsNullOrEmpty(_ClickStorageList.Key))
+                {
+                    gr.Cells["gridColumnstockcode"].Value = _ClickStorageList.Key;
+                    gr.Cells["gridColumnStock"].Value = _ClickStorageList.Value;
+                }
+                //新增一行 
+                if (newAdd)
+                {
+                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
+                    //递增数量和金额 默认为1和单价 
+                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                    _MaterialNumber += 1;
+                    _beforeMoney += _MaterialBeforeMoney;
+                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
+                    gr.Cells["gridColumnbeforemoney"].Value = _beforeMoney;
+                }
+                superGridControlShangPing.Focus();
+                SendKeys.Send("^{End}{Home}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" 错误代码：2709-双击绑定物料信息数据错误！请检查：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseAdjustPriceForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                Save();
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    ShengHe();
+                }
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 小表格的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewFuJiaTableClick();
             }
         }
     }

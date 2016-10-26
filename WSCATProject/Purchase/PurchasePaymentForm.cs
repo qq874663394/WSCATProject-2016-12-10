@@ -486,38 +486,7 @@ namespace WSCATProject.Purchase
         {
             if (e.KeyCode==Keys.Enter)
             {
-                try
-                {
-                    //供应商
-                    if (_Click == 1 || _Click == 4)
-                    {
-                        _supplyCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//供应商名称
-                        labtextboxTop2.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-                    //结算账户
-                    if (_Click == 2 || _Click == 5)
-                    {
-                        _bankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//银行账户code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//账户名称
-                        labtextboxTop4.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-                    //收款员
-                    if (_Click == 3 || _Click == 6)
-                    {
-                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//收款员code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//收款员
-                        ltxtbSalsMan.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("错误代码：3506-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "收款单温馨提示！");
-                }
+                dataGridViewFuJiaTableClick();
             }
         }
 

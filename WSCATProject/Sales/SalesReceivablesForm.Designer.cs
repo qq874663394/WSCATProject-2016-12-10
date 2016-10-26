@@ -513,6 +513,7 @@
             this.cboDanJuType.DisplayMember = "Text";
             this.cboDanJuType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboDanJuType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDanJuType.FocusHighlightColor = System.Drawing.Color.Empty;
             this.cboDanJuType.FormattingEnabled = true;
             this.cboDanJuType.ItemHeight = 15;
             this.cboDanJuType.Items.AddRange(new object[] {
@@ -550,6 +551,7 @@
             this.txtClient.Border.Class = "SideNavStrip";
             this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtClient.DisabledBackColor = System.Drawing.Color.White;
+            this.txtClient.FocusHighlightColor = System.Drawing.Color.Empty;
             this.txtClient.Location = new System.Drawing.Point(374, 16);
             this.txtClient.Name = "txtClient";
             this.txtClient.PreventEnterBeep = true;

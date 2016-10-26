@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cboOutType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -433,7 +445,8 @@
             // labBotton1
             // 
             this.labBotton1.Location = new System.Drawing.Point(32, 23);
-            this.labBotton1.Text = "盘 点 员：";
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "盘 点 员*：";
             // 
             // resizablePanelData
             // 
@@ -535,6 +548,7 @@
             // 
             // material
             // 
+            this.material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.material.DataPropertyName = "materialDaima";
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
@@ -542,13 +556,22 @@
             // 
             // name
             // 
+            this.name.AllowSelection = false;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.name.CellStyles.Default.Background = background1;
+            this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.name.DataPropertyName = "materialName";
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
+            this.name.ReadOnly = true;
             // 
             // tiaoxingma
             // 
+            this.tiaoxingma.AllowSelection = false;
             this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.tiaoxingma.CellStyles.Default.Background = background3;
+            this.tiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.tiaoxingma.DataPropertyName = "barCode";
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
@@ -557,27 +580,39 @@
             // 
             // storge
             // 
+            this.storge.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.storge.DataPropertyName = "stockName";
             this.storge.HeaderText = "仓库";
             this.storge.Name = "storge";
             // 
             // unit
             // 
+            this.unit.AllowSelection = false;
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.unit.CellStyles.Default.Background = background4;
+            this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.unit.DataPropertyName = "materialUnit";
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
+            this.unit.ReadOnly = true;
             this.unit.Width = 60;
             // 
             // zhangcunnumber
             // 
+            this.zhangcunnumber.AllowSelection = false;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.zhangcunnumber.CellStyles.Default.Background = background5;
+            this.zhangcunnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.zhangcunnumber.DataPropertyName = "curNumber";
             this.zhangcunnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.zhangcunnumber.HeaderText = "账存数量";
             this.zhangcunnumber.Name = "zhangcunnumber";
+            this.zhangcunnumber.ReadOnly = true;
             this.zhangcunnumber.Width = 80;
             // 
             // pandiannumber
             // 
+            this.pandiannumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.pandiannumber.DataPropertyName = "checkNumber";
             this.pandiannumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pandiannumber.HeaderText = "盘点数量";
@@ -586,56 +621,91 @@
             // 
             // pankuinumber
             // 
+            this.pankuinumber.AllowSelection = false;
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.pankuinumber.CellStyles.Default.Background = background6;
+            this.pankuinumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.pankuinumber.DataPropertyName = "lossNumber";
             this.pankuinumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuinumber.HeaderText = "盘亏数量";
             this.pankuinumber.Name = "pankuinumber";
+            this.pankuinumber.ReadOnly = true;
             this.pankuinumber.Width = 80;
             // 
             // price
             // 
+            this.price.AllowSelection = false;
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.price.CellStyles.Default.Background = background7;
+            this.price.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.price.DataPropertyName = "price";
             this.price.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.price.HeaderText = "单价";
             this.price.Name = "price";
+            this.price.ReadOnly = true;
             this.price.Width = 80;
             // 
             // pankuimoney
             // 
+            this.pankuimoney.AllowSelection = false;
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.pankuimoney.CellStyles.Default.Background = background8;
+            this.pankuimoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.pankuimoney.DataPropertyName = "lossMoney";
             this.pankuimoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuimoney.HeaderText = "盘亏金额";
             this.pankuimoney.Name = "pankuimoney";
+            this.pankuimoney.ReadOnly = true;
             this.pankuimoney.Width = 80;
             // 
             // shengchandate
             // 
+            this.shengchandate.AllowSelection = false;
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.shengchandate.CellStyles.Default.Background = background9;
+            this.shengchandate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.shengchandate.DataPropertyName = "productionDate";
             this.shengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengchandate.HeaderText = "生产/采购日期";
             this.shengchandate.Name = "shengchandate";
+            this.shengchandate.ReadOnly = true;
             this.shengchandate.Width = 80;
             // 
             // baozhiqi
             // 
+            this.baozhiqi.AllowSelection = false;
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.baozhiqi.CellStyles.Default.Background = background10;
+            this.baozhiqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.baozhiqi.DataPropertyName = "qualityDate";
             this.baozhiqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.baozhiqi.HeaderText = "保质期（天）";
             this.baozhiqi.Name = "baozhiqi";
+            this.baozhiqi.ReadOnly = true;
             this.baozhiqi.Width = 50;
             // 
             // youxiaoqi
             // 
+            this.youxiaoqi.AllowSelection = false;
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.youxiaoqi.CellStyles.Default.Background = background11;
+            this.youxiaoqi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.youxiaoqi.DataPropertyName = "effectiveDate";
             this.youxiaoqi.HeaderText = "有效期至";
             this.youxiaoqi.Name = "youxiaoqi";
+            this.youxiaoqi.ReadOnly = true;
             this.youxiaoqi.Width = 80;
             // 
             // remark
             // 
+            this.remark.AllowSelection = false;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background12;
+            this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.DataPropertyName = "remark";
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
+            this.remark.ReadOnly = true;
             this.remark.Width = 80;
             // 
             // pictureBox9
@@ -649,6 +719,10 @@
             // 
             // model
             // 
+            this.model.AllowSelection = false;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.model.CellStyles.Default.Background = background2;
+            this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.model.DataPropertyName = "materialModel";
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -657,9 +731,12 @@
             // 
             // materialcode
             // 
+            this.materialcode.AllowSelection = false;
+            this.materialcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialcode.DataPropertyName = "materialCode";
             this.materialcode.HeaderText = "商品Code";
             this.materialcode.Name = "materialcode";
+            this.materialcode.ReadOnly = true;
             this.materialcode.Visible = false;
             // 
             // pictureBoxshenghe
