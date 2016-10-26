@@ -31,6 +31,7 @@ namespace WSCATProject.Warehouse
         ClientInterface client = new ClientInterface();//客户
         InterfaceLayer.Sales.SalesMainInterface sales = new InterfaceLayer.Sales.SalesMainInterface();
         SalesDetailInterface salesdinterface = new SalesDetailInterface();
+        WarehouseOutInterface warehouseoutinterface = new WarehouseOutInterface();
         #endregion
 
         #region 数据字段
@@ -148,7 +149,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
                 ShengHe();
@@ -1101,9 +1102,7 @@ namespace WSCATProject.Warehouse
             {
                 return;
             }
-            //获得界面上的数据,准备传给base层新增数据
-            //string warehouseIncode = "";
-            WarehouseOutInterface warehouseoutinterface = new WarehouseOutInterface();
+
             //入库单
             WarehouseOut warehouseout = new WarehouseOut();
             //入库商品列表
@@ -1112,7 +1111,7 @@ namespace WSCATProject.Warehouse
             {
                 warehouseout.checkState = 0;
                 warehouseout.clientCode = _clientcode;//客户code
-                warehouseout.code = XYEEncoding.strCodeHex(_warehouseoutcode);//单号
+                warehouseout.code = XYEEncoding.strCodeHex(YanZhengCode());//单号
                 warehouseout.date = this.dateTimePicker1.Value;//开单日期
                 warehouseout.defaultType = XYEEncoding.strCodeHex("出库开单");//默认单据类型
                 warehouseout.delivery = XYEEncoding.strCodeHex(comboBoxExsonghuo.Text);//配送方式
@@ -1211,7 +1210,7 @@ namespace WSCATProject.Warehouse
             {
                 return;
             }
-            WarehouseOutInterface warehouseoutinterface = new WarehouseOutInterface();
+
             //入库单
             WarehouseOut warehouseout = new WarehouseOut();
             //入库商品列表
@@ -1345,7 +1344,7 @@ namespace WSCATProject.Warehouse
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     ShengHe();
@@ -1408,6 +1407,23 @@ namespace WSCATProject.Warehouse
             {
                 MessageBox.Show("错误代码：2211-双击绑定客户或者出库员数据错误！请检查：" + ex.Message, "出库单温馨提示！");
             }
+        }
+
+        /// <summary>
+        /// 验证Code是否重复函数
+        /// </summary>
+        /// <returns></returns>
+        private string YanZhengCode()
+        {
+            if (warehouseoutinterface.Exists(XYEEncoding.strCodeHex(_warehouseoutcode)))
+            {
+                _warehouseoutcode = BuildCode.ModuleCode("WHO");
+            }
+            else
+            {
+                _warehouseoutcode = textBoxOddNumbers.Text;
+            }
+            return _warehouseoutcode;
         }
     }
 }

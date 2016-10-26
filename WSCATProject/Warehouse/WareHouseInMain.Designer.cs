@@ -776,6 +776,7 @@
             this.Text = "WareHouseInMain";
             this.Activated += new System.EventHandler(this.WareHouseInMain_Activated);
             this.Load += new System.EventHandler(this.WareHouseInMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseInMain_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInMain_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

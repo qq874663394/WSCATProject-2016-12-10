@@ -28,6 +28,7 @@ namespace WSCATProject.Warehouse
         CodingHelper ch = new CodingHelper();
         EmpolyeeInterface employee = new EmpolyeeInterface();
         WarehouseInventoryDetailInterface warehouseinv = new WarehouseInventoryDetailInterface();
+        WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
         #endregion
 
         #region  数据字段
@@ -180,7 +181,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
                 ShengHe();
@@ -474,8 +475,7 @@ namespace WSCATProject.Warehouse
             {
                 return;
             }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
+
             //盘亏单
             WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
             //盘亏商品列表
@@ -483,7 +483,7 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseloss.checkState = 0;
-                warehouseloss.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                warehouseloss.code = YanZhengCode() == "" ? "" : XYEEncoding.strCodeHex(YanZhengCode());
                 warehouseloss.date = dateTimePicker1.Value;
                 warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseloss.isClear = 1;
@@ -566,8 +566,6 @@ namespace WSCATProject.Warehouse
             {
                 return;
             }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
             //盘亏单
             WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
             //盘亏商品列表
@@ -683,7 +681,7 @@ namespace WSCATProject.Warehouse
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     ShengHe();
@@ -730,5 +728,24 @@ namespace WSCATProject.Warehouse
                 MessageBox.Show("错误代码：2508-双击绑定盘盈员数据出错！请检查：" + ex.Message, "盘盈单温馨提示");
             }
         }
+
+        /// <summary>
+        /// 判断code是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string YanZhengCode()
+        {
+            if (warehouseinvloss.Exists(XYEEncoding.strCodeHex(_WareHousePanKuiCode)))
+            {
+                //生成code 和显示条形码
+                _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
+            }
+            else
+            {
+                _WareHousePanKuiCode = textBoxOddNumbers.Text;
+            }
+            return _WareHousePanKuiCode;
+        }
+
     }
 }
