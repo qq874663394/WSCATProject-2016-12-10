@@ -1907,6 +1907,7 @@ namespace WSCATProject.Sales
             gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
             gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
         }
+
         /// <summary>
         /// 验证单号是否重复
         /// </summary>
@@ -1923,6 +1924,7 @@ namespace WSCATProject.Sales
             }
             return _SalesOrderCode;
         }
+
         /// <summary>
         /// 小表格点击事件函数
         /// </summary>

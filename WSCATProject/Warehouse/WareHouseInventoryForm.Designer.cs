@@ -160,8 +160,8 @@
             this.toolStripButtonAdd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(41, 67);
-            this.toolStripButtonAdd.Text = "添加";
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(61, 67);
+            this.toolStripButtonAdd.Text = "添加(&A)";
             this.toolStripButtonAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonAdd.ToolTipText = "添加商品";
@@ -173,8 +173,8 @@
             this.toolStripButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonClear.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonClear.Name = "toolStripButtonClear";
-            this.toolStripButtonClear.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonClear.Text = "清除";
+            this.toolStripButtonClear.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtonClear.Text = "清除(&C)";
             this.toolStripButtonClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClear.ToolTipText = "清除盘点数量（Del）";
@@ -186,8 +186,8 @@
             this.toolStripButtonBianZhi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBianZhi.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonBianZhi.Name = "toolStripButtonBianZhi";
-            this.toolStripButtonBianZhi.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonBianZhi.Text = "编制";
+            this.toolStripButtonBianZhi.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtonBianZhi.Text = "编制(&Z)";
             this.toolStripButtonBianZhi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonBianZhi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonBianZhi.ToolTipText = "编制盘点报告";
@@ -201,8 +201,8 @@
             this.toolStripButtonShuaiXin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonShuaiXin.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.toolStripButtonShuaiXin.Name = "toolStripButtonShuaiXin";
-            this.toolStripButtonShuaiXin.Size = new System.Drawing.Size(41, 67);
-            this.toolStripButtonShuaiXin.Text = "刷新";
+            this.toolStripButtonShuaiXin.Size = new System.Drawing.Size(60, 67);
+            this.toolStripButtonShuaiXin.Text = "刷新(&F5)";
             this.toolStripButtonShuaiXin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonShuaiXin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonShuaiXin.ToolTipText = "刷新（F5）";
@@ -214,8 +214,8 @@
             this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondayin.Name = "toolStripButtondayin";
-            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtondayin.Text = "打印";
+            this.toolStripButtondayin.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtondayin.Text = "打印(&P)";
             this.toolStripButtondayin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondayin.ToolTipText = "打印盘点表(Ctrl+P)";
@@ -227,8 +227,8 @@
             this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondaochu.Name = "toolStripButtondaochu";
-            this.toolStripButtondaochu.Size = new System.Drawing.Size(75, 66);
-            this.toolStripButtondaochu.Text = "导出Excel";
+            this.toolStripButtondaochu.Size = new System.Drawing.Size(93, 66);
+            this.toolStripButtondaochu.Text = "导出Excel(&T)";
             this.toolStripButtondaochu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
@@ -240,8 +240,8 @@
             this.toolStripButtonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonClose.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonClose.Name = "toolStripButtonClose";
-            this.toolStripButtonClose.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonClose.Text = "关闭";
+            this.toolStripButtonClose.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtonClose.Text = "关闭(&X)";
             this.toolStripButtonClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
@@ -285,7 +285,7 @@
             this.cboPanDianIdea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPanDianIdea.FormattingEnabled = true;
             this.cboPanDianIdea.ItemHeight = 15;
-            this.cboPanDianIdea.Location = new System.Drawing.Point(504, 81);
+            this.cboPanDianIdea.Location = new System.Drawing.Point(528, 81);
             this.cboPanDianIdea.Name = "cboPanDianIdea";
             this.cboPanDianIdea.Size = new System.Drawing.Size(121, 21);
             this.cboPanDianIdea.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -300,7 +300,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(443, 81);
+            this.labelX2.Location = new System.Drawing.Point(467, 81);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 51;
@@ -619,6 +619,7 @@
             this.Text = "录入盘点数据";
             this.Activated += new System.EventHandler(this.WareHouseInventoryForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseInventoryForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();

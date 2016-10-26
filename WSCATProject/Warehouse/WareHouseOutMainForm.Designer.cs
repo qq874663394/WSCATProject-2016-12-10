@@ -751,6 +751,7 @@
             this.Text = "WareHouseOutMainForm";
             this.Activated += new System.EventHandler(this.WareHouseOutMainForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseOutMainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseOutMainForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseOutMainForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

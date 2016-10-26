@@ -466,6 +466,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyouxiao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 371);
             // 
             // pictureBoxMax
@@ -673,6 +674,7 @@
             this.Text = "WareHouseInventoryProfit";
             this.Activated += new System.EventHandler(this.WareHouseInventoryProfit_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryProfit_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseInventoryProfitForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInventoryProfit_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
