@@ -1162,7 +1162,7 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void ToolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
                 ShengHe();
@@ -1584,6 +1584,7 @@ namespace WSCATProject.Sales
         /// <param name="e"></param>
         private void SalesTicketForm_KeyDown(object sender, KeyEventArgs e)
         {
+
             //前单
             if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
             {
@@ -1617,7 +1618,7 @@ namespace WSCATProject.Sales
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     ShengHe();
@@ -1907,6 +1908,7 @@ namespace WSCATProject.Sales
             gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
             gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
         }
+
         /// <summary>
         /// 验证单号是否重复
         /// </summary>
@@ -1923,6 +1925,7 @@ namespace WSCATProject.Sales
             }
             return _SalesOrderCode;
         }
+
         /// <summary>
         /// 小表格点击事件函数
         /// </summary>

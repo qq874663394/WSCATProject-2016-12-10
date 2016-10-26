@@ -652,5 +652,50 @@ namespace WSCATProject.Warehouse
         {
             cboPanDianIdea.Focus();
         }
+
+        /// <summary>
+        /// 快捷方式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseInventoryForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //前单
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("添加");
+                return;
+            }
+            //后单
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("清除");
+                return;
+            }
+            //新增
+            if (e.KeyCode == Keys.Z && e.Modifiers == Keys.Control)
+            {
+                toolStripButtonBianZhi_Click(sender,e);
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
     }
 }

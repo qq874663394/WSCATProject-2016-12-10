@@ -959,7 +959,7 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
                 Review();
@@ -1402,6 +1402,18 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void PurchaseOrderForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //前单
+            if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("前单");
+                return;
+            }
+            //后单
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("后单");
+                return;
+            }
             //新增
             if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
             {
@@ -1417,7 +1429,7 @@ namespace WSCATProject.Purchase
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     Review();

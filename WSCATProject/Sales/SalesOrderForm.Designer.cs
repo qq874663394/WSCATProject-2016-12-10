@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background15 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background16 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background18 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background19 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background20 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background21 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background17 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background22 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background23 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background24 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cboMethod = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -497,6 +497,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.FaHuoNumber);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
@@ -567,8 +568,8 @@
             // 
             this.name.AllowSelection = false;
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background13.Color1 = System.Drawing.Color.Azure;
-            this.name.CellStyles.Default.Background = background13;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.name.CellStyles.Default.Background = background1;
             this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
@@ -579,8 +580,8 @@
             // 
             this.model.AllowSelection = false;
             this.model.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
-            background14.Color1 = System.Drawing.Color.Azure;
-            this.model.CellStyles.Default.Background = background14;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.model.CellStyles.Default.Background = background2;
             this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -591,8 +592,8 @@
             // 
             this.barcode.AllowSelection = false;
             this.barcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background15.Color1 = System.Drawing.Color.Azure;
-            this.barcode.CellStyles.Default.Background = background15;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.barcode.CellStyles.Default.Background = background3;
             this.barcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.barcode.HeaderText = "条形码";
             this.barcode.Name = "barcode";
@@ -603,8 +604,8 @@
             // 
             this.unit.AllowSelection = false;
             this.unit.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
-            background16.Color1 = System.Drawing.Color.Azure;
-            this.unit.CellStyles.Default.Background = background16;
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.unit.CellStyles.Default.Background = background4;
             this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
@@ -642,8 +643,8 @@
             // 
             this.DiscountMoney.AllowSelection = false;
             this.DiscountMoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.None;
-            background18.Color1 = System.Drawing.Color.Azure;
-            this.DiscountMoney.CellStyles.Default.Background = background18;
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.DiscountMoney.CellStyles.Default.Background = background6;
             this.DiscountMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.DiscountMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.DiscountMoney.HeaderText = "折扣额";
@@ -665,8 +666,8 @@
             // 
             this.TaxMoney.AllowSelection = false;
             this.TaxMoney.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background19.Color1 = System.Drawing.Color.Azure;
-            this.TaxMoney.CellStyles.Default.Background = background19;
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.TaxMoney.CellStyles.Default.Background = background7;
             this.TaxMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.TaxMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.TaxMoney.HeaderText = "税额";
@@ -678,8 +679,8 @@
             // 
             this.priceANDtax.AllowSelection = false;
             this.priceANDtax.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background20.Color1 = System.Drawing.Color.Azure;
-            this.priceANDtax.CellStyles.Default.Background = background20;
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.priceANDtax.CellStyles.Default.Background = background8;
             this.priceANDtax.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.priceANDtax.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.priceANDtax.HeaderText = "价税合计";
@@ -691,8 +692,8 @@
             // 
             this.remark.AllowSelection = false;
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background21.Color1 = System.Drawing.Color.Azure;
-            this.remark.CellStyles.Default.Background = background21;
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background9;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
@@ -703,8 +704,8 @@
             // 
             this.money.AllowSelection = false;
             this.money.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background17.Color1 = System.Drawing.Color.Azure;
-            this.money.CellStyles.Default.Background = background17;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.money.CellStyles.Default.Background = background5;
             this.money.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.money.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.money.HeaderText = "金额";
@@ -715,8 +716,8 @@
             // gridColumnid
             // 
             this.gridColumnid.AllowSelection = false;
-            background22.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnid.CellStyles.Default.Background = background22;
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnid.CellStyles.Default.Background = background10;
             this.gridColumnid.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.ReadOnly = true;
@@ -732,8 +733,8 @@
             // materialCode
             // 
             this.materialCode.AllowSelection = false;
-            background23.Color1 = System.Drawing.Color.Azure;
-            this.materialCode.CellStyles.Default.Background = background23;
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.materialCode.CellStyles.Default.Background = background11;
             this.materialCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.materialCode.HeaderText = "商品code";
             this.materialCode.Name = "materialCode";
@@ -743,8 +744,8 @@
             // FaHuoNumber
             // 
             this.FaHuoNumber.AllowSelection = false;
-            background24.Color1 = System.Drawing.Color.Azure;
-            this.FaHuoNumber.CellStyles.Default.Background = background24;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.FaHuoNumber.CellStyles.Default.Background = background12;
             this.FaHuoNumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.FaHuoNumber.HeaderText = "发货数量";
             this.FaHuoNumber.Name = "FaHuoNumber";

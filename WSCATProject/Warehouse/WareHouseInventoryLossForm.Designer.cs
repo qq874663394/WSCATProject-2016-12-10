@@ -496,6 +496,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.youxiaoqi);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialcode);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 409);
             this.superGridControlShangPing.Text = "单号:";
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -757,6 +758,7 @@
             this.Text = "盘亏单";
             this.Activated += new System.EventHandler(this.WareHouseInventoryLossForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryLossForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseInventoryLossForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseInventoryLossForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
