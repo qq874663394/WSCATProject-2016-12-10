@@ -31,7 +31,7 @@ namespace WSCATProject.Sales
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
         StorageInterface storage = new StorageInterface();//仓库
         BankAccountInterface bank = new BankAccountInterface();//结算账户
-
+        SalesMainInterface salesMainInterface = new SalesMainInterface();
         #endregion
 
         #region 数据字段
@@ -660,61 +660,9 @@ namespace WSCATProject.Sales
 
         private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-
-                try
-                {
-                    //客户
-                    if (_Click == 1 || _Click == 5)
-                    {
-                        _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
-                        string linkman = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["linkMan"].Value.ToString();//联系人
-                        string phone = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["mobilePhone"].Value.ToString();//电话
-                        string fax = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["fax"].Value.ToString();//传真
-                        labtextboxTop2.Text = name;
-                        labtextboxTop8.Text = linkman;
-                        labtextboxTop3.Text = phone;
-                        labtextboxTop6.Text = fax;
-                        resizablePanel1.Visible = false;
-                    }
-                    //销售员
-                    if (_Click == 2 || _Click == 6)
-                    {
-                        _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//销售员code
-                        string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//销售员
-                        ltxtbSalsMan.Text = name;
-                        resizablePanel1.Visible = false;
-                    }
-                    //仓库
-                    if (_Click == 3 || _Click == 7)
-                    {
-                        GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                        string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
-                        string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
-                        gr.Cells["gridColumnStock"].Value = Name;
-                        gr.Cells["gridColumncode"].Value = code;
-                        _ClickStorageList = new KeyValuePair<string, string>(code, Name);
-                        _storgeCode = code;
-                        _storgeName = Name;
-                        resizablePanel1.Visible = false;
-                    }
-                    //结算账户
-                    if (_Click == 4 || _Click == 8)
-                    {
-                        GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                        string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
-                        string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();
-                        txtBank.Text = Name;
-                        _bankCode = code;
-                        resizablePanel1.Visible = false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("错误代码：1311-按回车绑定客户、销售员、仓库、结算账户数据错误！请检查：" + ex.Message, "销售单温馨提示！");
-                }
+                dataGridViewTableClick();
             }
         }
 
@@ -832,6 +780,7 @@ namespace WSCATProject.Sales
                 MessageBox.Show("错误代码：1320-表格里统计数量出错！请检查：" + ex.Message);
             }
         }
+
         /// <summary>
         /// 审核的函数
         /// </summary>
@@ -1011,6 +960,7 @@ namespace WSCATProject.Sales
 
             }
         }
+
         /// <summary>
         /// 保存的函数
         /// </summary>
@@ -1022,22 +972,13 @@ namespace WSCATProject.Sales
                 return;
             }
 
-            SalesMainInterface salesMainInterface = new SalesMainInterface();
-            //入库单
             SalesMain salesMain = new SalesMain();
-            //入库商品列表
+
             List<SalesDetail> salesdetialList = new List<SalesDetail>();
             try
             {
-                if (salesMainInterface.Exists(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)))
-                {
-                    _SalesOrderCode = BuildCode.ModuleCode("ST");
-                    salesMain.code = XYEEncoding.strCodeHex(_SalesOrderCode);
-                }
-                else
-                {
-                    salesMain.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//编号
-                }
+                salesMain.code = XYEEncoding.strCodeHex(YanZhengCode());//编号
+
                 if (labtextboxTop2.Text.Trim() != null || labtextboxTop2.Text.Trim() != "")
                 {
                     salesMain.clientName = XYEEncoding.strCodeHex(labtextboxTop2.Text);//客户姓名
@@ -1676,7 +1617,11 @@ namespace WSCATProject.Sales
             //审核
             if (e.KeyCode == Keys.F4)
             {
-                ShengHe();
+                DialogResult result = MessageBox.Show("是否一键保存审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    ShengHe();
+                }
                 return;
             }
             //打印
@@ -1961,6 +1906,80 @@ namespace WSCATProject.Sales
             gr["gridColumnshuie"].Value = _TaxMoney.ToString();
             gr["gridColumnjiashuiheji"].Value = _PriceAndTaxMoney.ToString();
             gr["gridColumnchengbenjine"].Value = _chengBenJinE.ToString();
+        }
+        /// <summary>
+        /// 验证单号是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string YanZhengCode()
+        {
+            if (salesMainInterface.Exists(XYEEncoding.strCodeHex(textBoxOddNumbers.Text)))
+            {
+                _SalesOrderCode = BuildCode.ModuleCode("ST");
+            }
+            else
+            {
+                _SalesOrderCode = textBoxOddNumbers.Text;
+            }
+            return _SalesOrderCode;
+        }
+        /// <summary>
+        /// 小表格点击事件函数
+        /// </summary>
+        private void dataGridViewTableClick()
+        {
+            try
+            {
+                //客户
+                if (_Click == 1 || _Click == 5)
+                {
+                    _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
+                    string linkman = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["linkMan"].Value.ToString();//联系人
+                    string phone = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["mobilePhone"].Value.ToString();//电话
+                    string fax = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["fax"].Value.ToString();//传真
+                    labtextboxTop2.Text = name;
+                    labtextboxTop8.Text = linkman;
+                    labtextboxTop3.Text = phone;
+                    labtextboxTop6.Text = fax;
+                    resizablePanel1.Visible = false;
+                }
+                //销售员
+                if (_Click == 2 || _Click == 6)
+                {
+                    _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//销售员code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//销售员
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //仓库
+                if (_Click == 3 || _Click == 7)
+                {
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                    string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                    gr.Cells["gridColumnStock"].Value = Name;
+                    gr.Cells["gridColumncode"].Value = code;
+                    _ClickStorageList = new KeyValuePair<string, string>(code, Name);
+                    _storgeCode = code;
+                    _storgeName = Name;
+                    resizablePanel1.Visible = false;
+                }
+                //结算账户
+                if (_Click == 4 || _Click == 8)
+                {
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    string code = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                    string Name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();
+                    txtBank.Text = Name;
+                    _bankCode = code;
+                    resizablePanel1.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：1311-按回车绑定客户、销售员、仓库、结算账户数据错误！请检查：" + ex.Message, "销售单温馨提示！");
+            }
         }
     }
 }

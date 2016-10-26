@@ -30,6 +30,7 @@ namespace WSCATProject.Purchase
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
         StorageInterface storage = new StorageInterface();//交货地点
         MaterialInterface materialInterface = new MaterialInterface();
+        PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
         #endregion
 
         #region 数据字段
@@ -509,7 +510,7 @@ namespace WSCATProject.Purchase
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
+
             //采购订单
             PurchaseOrder purchaseorder = new PurchaseOrder();
             //采购订单商品列表
@@ -682,7 +683,6 @@ namespace WSCATProject.Purchase
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
             //采购订单
             PurchaseOrder purchaseorder = new PurchaseOrder();
             //采购订单商品列表
@@ -1070,10 +1070,8 @@ namespace WSCATProject.Purchase
             {
                 return;
             }
-            else
-            {
-                dataGridViewFuJiTableClick();
-            }
+
+            dataGridViewFuJiTableClick();
         }
 
         /// <summary>
@@ -1087,10 +1085,9 @@ namespace WSCATProject.Purchase
             {
                 return;
             }
-            else
-            {
-                dataGridViewShangPingTableClick();
-            }
+
+            dataGridViewShangPingTableClick();
+
             superGridControlShangPing.Focus();
             SendKeys.Send("^{End}{Home}");
         }
@@ -1478,15 +1475,15 @@ namespace WSCATProject.Purchase
             gr["faxMoney"].Value = _TaxMoney.ToString();
             gr["priceANDrate"].Value = _PriceAndTaxMoney.ToString();
         }
+
         /// <summary>
         /// 验证单号是否重复
         /// </summary>
         /// <returns></returns>
-        public string YanZhengCode()
+        private string YanZhengCode()
         {
-            PurchaseOrderInterface purchaseinterface = new PurchaseOrderInterface();
             //验证单号
-            if (purchaseinterface.Exists(XYEEncoding.strCodeHex(_PurchaseOrderCode)))
+            if (purchaseOrderinterface.Exists(XYEEncoding.strCodeHex(_PurchaseOrderCode)))
             {
                 _PurchaseOrderCode = BuildCode.ModuleCode("POR");
             }
@@ -1497,10 +1494,11 @@ namespace WSCATProject.Purchase
 
             return _PurchaseOrderCode;
         }
+
         /// <summary>
         /// dataGridViewFuJia的点击事件函数
         /// </summary>
-        public void dataGridViewFuJiTableClick()
+        private void dataGridViewFuJiTableClick()
         {
             try
             {
@@ -1540,10 +1538,11 @@ namespace WSCATProject.Purchase
                 MessageBox.Show("错误代码：3110-按回车绑定供应商或者采购员或者交货地点数据错误！请检查：" + ex.Message, "采购订单温馨提示！");
             }
         }
+
         /// <summary>
         /// 商品小表格的点击函数
         /// </summary>
-        public void dataGridViewShangPingTableClick()
+        private void dataGridViewShangPingTableClick()
         {
             try
             {

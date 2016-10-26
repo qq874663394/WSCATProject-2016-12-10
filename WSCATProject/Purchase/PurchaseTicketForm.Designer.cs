@@ -1090,6 +1090,7 @@
             this.Text = "PurchaseTicketForm";
             this.Activated += new System.EventHandler(this.PurchaseTicketForm_Activated);
             this.Load += new System.EventHandler(this.PurchaseTicketForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchaseTicketForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
