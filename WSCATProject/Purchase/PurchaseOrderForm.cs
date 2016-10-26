@@ -30,6 +30,7 @@ namespace WSCATProject.Purchase
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
         StorageInterface storage = new StorageInterface();//交货地点
         MaterialInterface materialInterface = new MaterialInterface();
+        PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
         #endregion
 
         #region 数据字段
@@ -682,7 +683,7 @@ namespace WSCATProject.Purchase
                 return;
             }
             //获得界面上的数据,准备传给base层新增数据
-            PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
+            //PurchaseOrderInterface purchaseOrderinterface = new PurchaseOrderInterface();
             //采购订单
             PurchaseOrder purchaseorder = new PurchaseOrder();
             //采购订单商品列表
