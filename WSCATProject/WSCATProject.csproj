@@ -99,6 +99,18 @@
     <Compile Include="Finance\FinanceOtherPaymentForm.Designer.cs">
       <DependentUpon>FinanceOtherPaymentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finance\FinanceOtherReceivablesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceOtherReceivablesForm.Designer.cs">
+      <DependentUpon>FinanceOtherReceivablesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinanceVerificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceVerificationForm.Designer.cs">
+      <DependentUpon>FinanceVerificationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GridStateEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -290,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinanceOtherPaymentForm.resx">
       <DependentUpon>FinanceOtherPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceOtherReceivablesForm.resx">
+      <DependentUpon>FinanceOtherReceivablesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceVerificationForm.resx">
+      <DependentUpon>FinanceVerificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
