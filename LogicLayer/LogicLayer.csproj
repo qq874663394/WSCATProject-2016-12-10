@@ -46,6 +46,8 @@
     <Compile Include="Base\EmpolyeeLogic.cs" />
     <Compile Include="Base\MaterialLogic.cs" />
     <Compile Include="Base\OrderTypeLogic.cs" />
+    <Compile Include="Base\ProjectCostLogic.cs" />
+    <Compile Include="Base\ProjectInCostLogic.cs" />
     <Compile Include="Base\StorageLogic.cs" />
     <Compile Include="Base\StorageRackLogic.cs" />
     <Compile Include="Base\SupplierLogic.cs" />
