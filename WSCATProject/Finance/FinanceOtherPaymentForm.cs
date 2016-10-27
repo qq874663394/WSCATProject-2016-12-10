@@ -264,6 +264,53 @@ namespace WSCATProject.Finance
             gr.Cells["gridColumnMoney"].AllowSelection = false;
             gr.Cells["gridColumnbeizhu"].AllowSelection = false;
         }
+
+        /// <summary>
+        /// 标记那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
+            pictureBoxshenghe.Visible = true;
+        }
         #endregion
 
         /// <summary>
