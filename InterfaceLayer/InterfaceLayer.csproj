@@ -49,6 +49,8 @@
     <Compile Include="Base\EmpolyeeInterface.cs" />
     <Compile Include="Base\MaterialInterface.cs" />
     <Compile Include="Base\OrderTypeInterface.cs" />
+    <Compile Include="Base\ProjectCostInterface.cs" />
+    <Compile Include="Base\ProjectInCostInterface.cs" />
     <Compile Include="Base\StorageInterface.cs" />
     <Compile Include="Base\StorageRackInterface.cs" />
     <Compile Include="Base\SupplierInterface.cs" />
