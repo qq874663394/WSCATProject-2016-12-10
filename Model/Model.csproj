@@ -74,6 +74,7 @@
     <Compile Include="Finance\FinanceEmbezzlement.cs" />
     <Compile Include="Finance\FinanceEmbezzlementDetail.cs" />
     <Compile Include="Finance\FinanceOtherExpenseInDetail.cs" />
+    <Compile Include="Finance\FinanceOtherExpensesInDetail.cs" />
     <Compile Include="Finance\FinanceOtherExpensesIn.cs" />
     <Compile Include="Finance\FinanceOtherExpensesOut.cs" />
     <Compile Include="Finance\FinanceOtherExpensesOutDetail.cs" />

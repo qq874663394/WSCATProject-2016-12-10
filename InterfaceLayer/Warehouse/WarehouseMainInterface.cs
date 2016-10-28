@@ -69,5 +69,14 @@ namespace InterfaceLayer.Warehouse
         {
             return wo.Exists(code);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public DataTable ExistsNumber(string code)
+        {
+            return wo.ExistsNumber(code);
+        }
     }
 }

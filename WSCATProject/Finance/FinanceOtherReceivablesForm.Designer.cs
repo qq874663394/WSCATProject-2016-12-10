@@ -351,7 +351,7 @@
             // 
             this.labTop2.Location = new System.Drawing.Point(357, 17);
             this.labTop2.Size = new System.Drawing.Size(71, 12);
-            this.labTop2.Text = "客    户 ：";
+            this.labTop2.Text = "客   户 *：";
             // 
             // labTop1
             // 
@@ -470,6 +470,7 @@
             // 
             // superGridControlShangPing
             // 
+            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Left;
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
             // 
@@ -480,6 +481,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.NoRowsText = "";
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.Size = new System.Drawing.Size(636, 369);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             // 

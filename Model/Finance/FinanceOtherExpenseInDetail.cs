@@ -12,7 +12,8 @@ namespace Model
 		{}
 		#region Model
 		private int _id;
-		private string _incode;
+		private string _code;
+        private string _maincode;
 		private string _projectincode;
 		private decimal? _money;
 		private string _abstract;
@@ -28,17 +29,25 @@ namespace Model
 			get{return _id;}
 		}
 		/// <summary>
+		/// 收入编码
+		/// </summary>
+		public string code
+		{
+			set{ _code=value;}
+			get{return _code;}
+		}
+        /// <summary>
 		/// 收入主表编码
 		/// </summary>
-		public string inCode
-		{
-			set{ _incode=value;}
-			get{return _incode;}
-		}
-		/// <summary>
-		/// 收入项目编码
-		/// </summary>
-		public string projectInCode
+		public string mainCode
+        {
+            set { _maincode = value; }
+            get { return _maincode; }
+        }
+        /// <summary>
+        /// 收入项目编码
+        /// </summary>
+        public string projectInCode
 		{
 			set{ _projectincode=value;}
 			get{return _projectincode;}
