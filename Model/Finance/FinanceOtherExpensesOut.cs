@@ -2,7 +2,7 @@
 using System;
 namespace Model
 {
-<<<<<<< HEAD
+
     /// <summary>
     /// 上下班时刻表
     /// </summary>
@@ -11,16 +11,7 @@ namespace Model
     {
         public FinanceOtherExpensesOut()
         { }
-=======
-	/// <summary>
-	/// 上下班时刻表
-	/// </summary>
-	[Serializable]
-	public partial class FinanceOtherExpensesOut
-	{
-		public FinanceOtherExpensesOut()
-		{}
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
+
         #region Model
         private int _id;
         private string _code;
@@ -31,10 +22,8 @@ namespace Model
         private string _settlementtype;
         private string _settlementnumber;
         private decimal? _settlementmoney;
-<<<<<<< HEAD
-=======
+
         private int? _checkstate;
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
         private DateTime? _date = DateTime.Now;
         private string _salescode;
         private string _salesman;
@@ -43,10 +32,7 @@ namespace Model
         private string _abstract;
         private int? _isclear = 1;
         private DateTime? _updatedate;
-<<<<<<< HEAD
-        private int? _checkstate;
-=======
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
+
         /// <summary>
         /// 自增ID
         /// </summary>
@@ -112,7 +98,6 @@ namespace Model
             get { return _settlementnumber; }
         }
         /// <summary>
-<<<<<<< HEAD
         /// 结算金额
         /// </summary>
         public decimal? settlementMoney
@@ -121,8 +106,6 @@ namespace Model
             get { return _settlementmoney; }
         }
         /// <summary>
-=======
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
         /// 日期
         /// </summary>
         public DateTime? date
@@ -187,7 +170,6 @@ namespace Model
             get { return _updatedate; }
         }
         /// <summary>
-<<<<<<< HEAD
         /// 审核状态，0、未审核，1、已审核
         /// </summary>
         public int? checkState
@@ -195,15 +177,12 @@ namespace Model
             set { _checkstate = value; }
             get { return _checkstate; }
         }
-        #endregion Model
-
-=======
         /// 结算金额
         /// </summary>
         public decimal? Settlementmoney
         {
             get { return _settlementmoney; }
-            set {  _settlementmoney = value;}
+            set { _settlementmoney = value; }
         }
         /// <summary>
         /// 审核状态0、未审核，1、已审核
@@ -222,8 +201,7 @@ namespace Model
         }
 
         #endregion Model
-
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
     }
 }
+
 

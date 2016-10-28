@@ -2,7 +2,7 @@
 using System;
 namespace Model
 {
-<<<<<<< HEAD
+
     /// <summary>
     /// 上下班时刻表
     /// </summary>
@@ -11,16 +11,7 @@ namespace Model
     {
         public FinanceOtherExpensesIn()
         { }
-=======
-	/// <summary>
-	/// 上下班时刻表
-	/// </summary>
-	[Serializable]
-	public partial class FinanceOtherExpensesIn
-	{
-		public FinanceOtherExpensesIn()
-		{}
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
+
         #region Model
         private int _id;
         private string _code;
@@ -30,11 +21,10 @@ namespace Model
         private string _accountcode;
         private string _settlementtype;
         private string _settlementnumber;
-<<<<<<< HEAD
-=======
+
         private decimal? _settlementmoney;
         private int? _checkstate;
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
+
         private DateTime? _date;
         private string _salescode;
         private string _salesman;
@@ -171,16 +161,15 @@ namespace Model
             set { _updatedate = value; }
             get { return _updatedate; }
         }
-<<<<<<< HEAD
-        #endregion Model
-=======
+
+
         /// <summary>
         /// 结算金额
         /// </summary>
         public decimal? Settlementmoney
         {
-            get {return _settlementmoney; }
-            set  {  _settlementmoney = value;}
+            get { return _settlementmoney; }
+            set { _settlementmoney = value; }
         }
         /// <summary>
         /// 审核状态
@@ -199,7 +188,6 @@ namespace Model
         }
         #endregion Model
 
->>>>>>> 50c4cf3946f33db562f5f03ac56585c0e51eb07c
     }
 }
 
