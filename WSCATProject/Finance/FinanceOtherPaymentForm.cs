@@ -620,5 +620,15 @@ namespace WSCATProject.Finance
         {
 
         }
+
+        /// <summary>
+        /// 表格的第一个格子的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        {
+
+        }
     }
 }

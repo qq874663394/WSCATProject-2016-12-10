@@ -33,7 +33,7 @@
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
             this.pictureBoxshenghe = new System.Windows.Forms.PictureBox();
-            this.gridColumntype = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnbeizhu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
@@ -433,10 +433,11 @@
             // 
             // 
             // 
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumntype);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.material);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             // 
             // pictureBoxMax
             // 
@@ -491,12 +492,12 @@
             this.pictureBoxshenghe.TabStop = false;
             this.pictureBoxshenghe.Visible = false;
             // 
-            // gridColumntype
+            // material
             // 
-            this.gridColumntype.HeaderText = "支出类别";
-            this.gridColumntype.Name = "gridColumntype";
-            this.gridColumntype.ToolTip = "";
-            this.gridColumntype.Width = 250;
+            this.material.HeaderText = "支出类别";
+            this.material.Name = "material";
+            this.material.ToolTip = "";
+            this.material.Width = 250;
             // 
             // gridColumnMoney
             // 
@@ -553,7 +554,7 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxType;
         private System.Windows.Forms.PictureBox pictureBoxtiaoxingma;
         private System.Windows.Forms.PictureBox pictureBoxshenghe;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumntype;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnbeizhu;
         private DevComponents.Editors.ComboItem comboItem1;
