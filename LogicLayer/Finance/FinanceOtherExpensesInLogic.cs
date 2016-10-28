@@ -16,7 +16,7 @@ namespace LogicLayer.Finance
         FinanceOtherExpensesInBase _dal = new FinanceOtherExpensesInBase();
         LogBase _logDal = new LogBase();
         FinanceUpdataManager _update = new FinanceUpdataManager();
-        public object AddOrUpdateToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpensesInDetail> modelDetail)
+        public object AddOrUpdateToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpenseInDetail> modelDetail)
         {
             object result = 0;
             Log logModel = new Log()
