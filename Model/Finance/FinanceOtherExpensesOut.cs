@@ -19,6 +19,7 @@ namespace Model
         private string _accountcode;
         private string _settlementtype;
         private string _settlementnumber;
+        private decimal? _settlementmoney;
         private DateTime? _date = DateTime.Now;
         private string _salescode;
         private string _salesman;
@@ -154,6 +155,14 @@ namespace Model
         {
             set { _updatedate = value; }
             get { return _updatedate; }
+        }
+        /// <summary>
+        /// 结算金额
+        /// </summary>
+        public decimal? Settlementmoney
+        {
+            get { return _settlementmoney; }
+            set {  _settlementmoney = value;}
         }
         #endregion Model
 

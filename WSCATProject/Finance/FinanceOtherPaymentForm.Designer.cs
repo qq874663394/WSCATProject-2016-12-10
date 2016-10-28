@@ -36,6 +36,7 @@
             this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnbeizhu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.comboBoxjiesuanfangshi = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -96,6 +97,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBoxjiesuanfangshi);
             this.panel2.Controls.Add(this.pictureBoxtiaoxingma);
             this.panel2.Controls.Add(this.comboBoxType);
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
@@ -127,6 +129,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
             this.panel2.Controls.SetChildIndex(this.comboBoxType, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBoxtiaoxingma, 0);
+            this.panel2.Controls.SetChildIndex(this.comboBoxjiesuanfangshi, 0);
             // 
             // labtextboxTop6
             // 
@@ -202,6 +205,7 @@
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop8.Location = new System.Drawing.Point(721, 45);
             this.labtextboxTop8.Size = new System.Drawing.Size(145, 16);
+            this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
             // 
@@ -512,6 +516,18 @@
             this.gridColumnbeizhu.Name = "gridColumnbeizhu";
             this.gridColumnbeizhu.Width = 200;
             // 
+            // comboBoxjiesuanfangshi
+            // 
+            this.comboBoxjiesuanfangshi.DisplayMember = "Text";
+            this.comboBoxjiesuanfangshi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxjiesuanfangshi.FormattingEnabled = true;
+            this.comboBoxjiesuanfangshi.ItemHeight = 15;
+            this.comboBoxjiesuanfangshi.Location = new System.Drawing.Point(721, 40);
+            this.comboBoxjiesuanfangshi.Name = "comboBoxjiesuanfangshi";
+            this.comboBoxjiesuanfangshi.Size = new System.Drawing.Size(145, 21);
+            this.comboBoxjiesuanfangshi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxjiesuanfangshi.TabIndex = 55;
+            // 
             // FinanceOtherPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -559,5 +575,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnbeizhu;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxjiesuanfangshi;
     }
 }

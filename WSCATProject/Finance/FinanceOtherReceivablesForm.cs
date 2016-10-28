@@ -930,8 +930,7 @@ namespace WSCATProject.Finance
             }
         }
 
-
-
+        
         /// <summary>
         /// 表格验证事件
         /// </summary>
