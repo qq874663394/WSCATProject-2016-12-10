@@ -77,6 +77,8 @@ namespace WSCATProject
                 st.Dispose();
                 st.Close();
             }
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
         }
 
         #region 设置窗体无边框可以拖动
@@ -105,8 +107,7 @@ namespace WSCATProject
         /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
-            this.Dispose();
+            Environment.Exit(0);
         }
         /// <summary>
         /// 登录按钮

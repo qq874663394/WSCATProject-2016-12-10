@@ -94,6 +94,12 @@
     <Compile Include="Base\Shelves\ShelvesListForm.Designer.cs">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finance\FinanceBankAccessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceBankAccessForm.Designer.cs">
+      <DependentUpon>FinanceBankAccessForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Finance\FinanceOtherPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,6 +307,9 @@
     <EmbeddedResource Include="Base\Shelves\ShelvesListForm.resx">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceBankAccessForm.resx">
+      <DependentUpon>FinanceBankAccessForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinanceOtherPaymentForm.resx">
       <DependentUpon>FinanceOtherPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -476,6 +485,7 @@
     <None Include="Resources\BTN_STOCK_CGDD.png" />
     <Content Include="Resources\businessQuery.png" />
     <None Include="Resources\caigou.png" />
+    <None Include="Resources\caigoumain.png" />
     <Content Include="Resources\caigouxitong.png" />
     <Content Include="Resources\caiwuxitong.png" />
     <Content Include="Resources\cangkuxinxi.png" />
@@ -515,6 +525,7 @@
     <None Include="Resources\guanbi.PNG" />
     <None Include="Resources\gouhuodan.png" />
     <Content Include="Resources\guanyu.png" />
+    <None Include="Resources\hexiao.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\huanyuan.PNG" />
     <None Include="Resources\houdan.png" />
@@ -575,6 +586,7 @@
     <None Include="Resources\shenghe.png" />
     <None Include="Resources\shanchu.png" />
     <None Include="Resources\shangjiantuo.png" />
+    <None Include="Resources\shangjintou.png" />
     <Content Include="Resources\shoukuan.png" />
     <None Include="Resources\shuaxin.PNG" />
     <None Include="Resources\small.PNG" />
@@ -612,6 +624,7 @@
     <Content Include="Resources\warehomeShift.png" />
     <Content Include="Resources\wuliuxinxi.png" />
     <None Include="Resources\xiajiantuo.png" />
+    <None Include="Resources\xiajiantou.png" />
     <Content Include="Resources\xiaoshou.png" />
     <Content Include="Resources\xitongweihu.png" />
     <None Include="Resources\yellow.PNG" />
