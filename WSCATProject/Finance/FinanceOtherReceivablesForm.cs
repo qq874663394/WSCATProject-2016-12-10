@@ -1052,7 +1052,9 @@ namespace WSCATProject.Finance
                 financeOtherExpensesIn.salesCode = XYEEncoding.strCodeHex(_employeeCode);//经手人code
                 financeOtherExpensesIn.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim());//制单人
                 financeOtherExpensesIn.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim());//审核人
+                financeOtherExpensesIn.Checkstate = 0;//审核状态
                 financeOtherExpensesIn.isClear = 1;
+                financeOtherExpensesIn.updateDate = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -1081,11 +1083,11 @@ namespace WSCATProject.Finance
                         }
                         else
                         {
-                            MessageBox.Show("选源单不能为空，请输入：");
+                            MessageBox.Show("收入类别不能为空，请输入：");
                             superGridControlShangPing.Focus();
                             return;
                         }
-                        //financeOtherExpenseInDetail.m = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（qi收款单code）
+                        //financeOtherExpenseInDetail.mai = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（qi收款单code）
                         //financeOtherExpenseInDetail.code = XYEEncoding.strCodeHex(_PurchasePaymentCode + i.ToString());//付款详单code
                         //financeOtherExpenseInDetail.salesCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
                         financeOtherExpenseInDetail.money = Convert.ToDecimal(gr["gridColumnMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnMoney"].Value));//未付金额
