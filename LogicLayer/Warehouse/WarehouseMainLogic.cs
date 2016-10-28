@@ -183,7 +183,7 @@ namespace LogicLayer.Warehouse
             }
             return dt;
         }
-        public DataTable GetWMainAndMaterialByWMCode(int fieldName, string fieldValue,string storageCode)
+        public DataTable GetWMainAndMaterialByWMCode(int fieldName, string fieldValue, string storageCode)
         {
             string strWhere = "";
             DataTable dt = null;
@@ -202,16 +202,16 @@ namespace LogicLayer.Warehouse
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("materialDaima like '%{0}%'",fieldValue);
+                        strWhere += string.Format("materialDaima like '%{0}%'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("name like '%{0}%'",fieldValue);
+                        strWhere += string.Format("name like '%{0}%'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format("barCode like '%{0}%'",fieldValue);
+                        strWhere += string.Format("barCode like '%{0}%'", fieldValue);
                         break;
                     case 3:
-                        strWhere += string.Format("zhujima like '%{0}%'",fieldValue);
+                        strWhere += string.Format("zhujima like '%{0}%'", fieldValue);
                         break;
                 }
                 dt = wo.GetWMainAndMaterialByWMCode(strWhere, storageCode);
@@ -258,6 +258,41 @@ namespace LogicLayer.Warehouse
                 lb.Add(model);
             }
             return isflag;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public DataTable ExistsNumber(string code)
+        {
+            DataTable dt = null;
+            LogBase lb = new LogBase();
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTable = "T_WarehouseMain",
+                operationTime = DateTime.Now,
+                objective = "查询指定code的数量是否足够出库",
+                operationContent = "查询数据"
+            };
+            try
+            {
+                dt=wo.ExistsNumber(code);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                lb.Add(model);
+            }
+            return dt;
         }
     }
 }

@@ -140,8 +140,8 @@ namespace BaseLayer.Purchase
                 sqlMain.Append("examine=@examine,");
                 sqlMain.Append("checkState=@checkState,");
                 sqlMain.Append("depositReceived=@depositReceived");
-                sqlMain.Append("where code=@code");
-                sqlMain.Append(";select @@IDENTITY");
+                sqlMain.Append(" where code=@code");
+                sqlMain.Append(";select id from T_PurchaseOrder where code=@code");
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@supplierCode", SqlDbType.NVarChar,50),
@@ -186,14 +186,15 @@ namespace BaseLayer.Purchase
                 sqlDetail.Append("deliveryNumber=@deliveryNumber,");
                 sqlDetail.Append("amount=@amount");
                 sqlDetail.Append(" where code=@code and mainCode=@mainCode ");
-                sqlDetail.Append(";select @@IDENTITY");
+                sqlDetail.Append(";select id from T_PurchaseOrderDetail where code=@code");
 
                 StringBuilder sqlInsert = new StringBuilder();
                 sqlInsert.Append("insert into [T_PurchaseOrderDetail] (");
                 sqlInsert.Append("materialCode,materialNumber,materialPrice,materialMoney,discountRate,VATRate,discountMoney,purchaseAmount,tax,taxTotal,remark,deliveryNumber,mainCode,code,amount)");
                 sqlInsert.Append(" values (");
-                sqlInsert.Append("@materialCode,@materialNumber,@materialPrice,@materialMoney,@discountRate,@VATRate,@discountMoney,@purchaseAmount,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code,@amount)");
-                sqlInsert.Append(";select @@IDENTITY");
+                sqlInsert.Append(@"@materialCode,@materialNumber,@materialPrice,@materialMoney,@discountRate,
+                    @VATRate,@discountMoney,@purchaseAmount,@tax,@taxTotal,@remark,@deliveryNumber,@mainCode,@code,@amount)");
+                sqlInsert.Append(";select @@identity");
 
                 foreach (var item in modelDetail)
                 {
