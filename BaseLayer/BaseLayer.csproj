@@ -52,11 +52,17 @@
     <Compile Include="Base\EmpolyeeBase.cs" />
     <Compile Include="Base\MaterialBase.cs" />
     <Compile Include="Base\OrderTypeBase.cs" />
+    <Compile Include="Base\ProjectInCostBase.cs" />
+    <Compile Include="Base\ProjectCostBase.cs" />
     <Compile Include="Base\StorageBase.cs" />
     <Compile Include="Base\StorageRackBase.cs" />
     <Compile Include="Base\SupplierBase.cs" />
     <Compile Include="DbHelperSQL.cs" />
+    <Compile Include="Finance\FinanceOtherExpenseInDetailBase.cs" />
+    <Compile Include="Finance\FinanceOtherExpensesInBase.cs" />
     <Compile Include="Finance\FinanceCollectionBase.cs" />
+    <Compile Include="Finance\FinanceOtherExpensesOutBase.cs" />
+    <Compile Include="Finance\FinanceOtherExpensesOutDetailBase.cs" />
     <Compile Include="Finance\FinancePaymentBase.cs" />
     <Compile Include="LogBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -138,5 +138,25 @@ where T_WarehouseMain.materialCode = T_BaseMaterial.code and T_WarehouseMain.sto
             }
             return isflag;
         }
+        /// <summary>
+        /// 判断该客户编号判断是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public DataTable ExistsNumber(string code)
+        {
+            DataTable dt = null;
+            string sql = "";
+            try
+            {
+                sql = string.Format("select top 1 allNumber,enaNumber,floorNumber from T_WarehouseMain where code='{0}'", code);
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dt;
+        }
     }
 }

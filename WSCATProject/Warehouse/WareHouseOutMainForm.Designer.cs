@@ -59,6 +59,8 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.gridColumnmaterialcode = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnmoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn2 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -478,6 +480,8 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmoney);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumn1);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumn2);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 345);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -742,6 +746,20 @@
             this.gridColumnmoney.Name = "gridColumnmoney";
             this.gridColumnmoney.Visible = false;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.DataPropertyName = "enaNumber";
+            this.gridColumn1.HeaderText = "enaNumber";
+            this.gridColumn1.Name = "gridColumnenaNumber";
+            this.gridColumn1.Visible = false;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.DataPropertyName = "floorNumber";
+            this.gridColumn2.HeaderText = "floorNumber";
+            this.gridColumn2.Name = "gridColumnfloorNumber";
+            this.gridColumn2.Visible = false;
+            // 
             // WareHouseOutMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -812,5 +830,7 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmaterialcode;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnmoney;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn2;
     }
 }

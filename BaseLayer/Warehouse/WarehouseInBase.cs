@@ -92,9 +92,9 @@ namespace BaseLayer
             string sqlMain = "";
             try
             {
-
                 sqlMain = @"INSERT INTO T_WarehouseIn(code,type,goodsCode,defaultType,stock,operation,makeMan,examine,state,date,purchaseCode,checkState,isClear,updateDate,reserved1,reserved2,remark,supplierCode,supplierName,supplierPhone)   
-VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone);select scope_identity()";
+VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@state,@date,@purchaseCode,
+@checkState,@isClear,@updateDate,@reserved1,@reserved2,@remark,@supplierCode,@supplierName,@supplierPhone);select scope_identity()";
                 SqlParameter[] spsMain =
                 {
                     new SqlParameter("@code",warehouseIn.code),
@@ -122,7 +122,8 @@ VALUES(@code,@type,@goodsCode,@defaultType,@stock,@operation,@makeMan,@examine,@
                 sqlDetail = @"INSERT INTO T_WarehouseInDetail(zhujima,materialDaima,code,materiaName,materiaModel,materiaUnit,number,price,money,barcode,rfid,
 updateDate,state,date,isClear,remark,reserved1,reserved2,storageRackName,storageRackCode,isArrive,warehouseCode,warehouseName,MainCode,productionDate,qualityDate,effectiveDate) 
 VALUES(@zhujima,@materialDaima,@code,@materiaName,@materiaModel,@materiaUnit,@number,@price,@money,@barcode,@rfid,@updateDate,@state,@date,@isClear,@remark,@reserved1,
-@reserved2,@storageRackName,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,@qualityDate,@effectiveDate)";
+@reserved2,@storageRackName,@storageRackCode,@isArrive,@warehouseCode,@warehouseName,@mainCode,@productionDate,
+@qualityDate,@effectiveDate);select scope_identity()";
 
                 foreach (var item in warehouseInDetail)
                 {

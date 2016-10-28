@@ -197,7 +197,6 @@ E:\619项目\新建文件夹 (2)\WSCATProject\InterfaceLayer\obj\Debug\Interface
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\InterfaceLayer.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\InterfaceLayer.pdb
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\BaseLayer.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\HelperUtility.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\LogicLayer.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\Model.dll
@@ -212,3 +211,4 @@ D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.dll

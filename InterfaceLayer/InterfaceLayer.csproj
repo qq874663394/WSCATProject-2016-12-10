@@ -49,10 +49,14 @@
     <Compile Include="Base\EmpolyeeInterface.cs" />
     <Compile Include="Base\MaterialInterface.cs" />
     <Compile Include="Base\OrderTypeInterface.cs" />
+    <Compile Include="Base\ProjectInCostInterface.cs" />
+    <Compile Include="Base\ProjectCostInterface.cs" />
     <Compile Include="Base\StorageInterface.cs" />
     <Compile Include="Base\StorageRackInterface.cs" />
     <Compile Include="Base\SupplierInterface.cs" />
     <Compile Include="Finance\FinanceCollectionInterface.cs" />
+    <Compile Include="Finance\FinanceOtherExpensesInInterface.cs" />
+    <Compile Include="Finance\FinanceOtherExpensesOutInterface.cs" />
     <Compile Include="Finance\FinancePaymentInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\PurchaseDetailInterface.cs" />
