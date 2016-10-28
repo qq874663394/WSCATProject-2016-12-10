@@ -12,7 +12,7 @@ namespace BaseLayer.Finance
 {
     public class FinanceOtherExpensesInBase
     {
-        public object AddToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpensesInDetail> modelDetail)
+        public object AddToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpenseInDetail> modelDetail)
         {
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();
@@ -98,7 +98,7 @@ namespace BaseLayer.Finance
             }
             return result;
         }
-        public object UpdateToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpensesInDetail> modelDetail)
+        public object UpdateToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpenseInDetail> modelDetail)
         {
             List<SqlParameter[]> list = new List<SqlParameter[]>();
             Hashtable hashTable = new Hashtable();

@@ -707,7 +707,7 @@ namespace WSCATProject.Purchase
                 else
                 {
                     MessageBox.Show("交货地点员不能为空！");
-                    txtAddress.FindForm();
+                    txtAddress.Focus();
                     return;
                 }
                 if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text != "")
@@ -717,7 +717,7 @@ namespace WSCATProject.Purchase
                 else
                 {
                     MessageBox.Show("采购员不能为空！");
-                    ltxtbSalsMan.FindForm();
+                    ltxtbSalsMan.Focus();
                     return;
                 }
 
@@ -915,7 +915,6 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("错误代码：3101-窗体加载时，初始化数据错误！请检查：" + ex.Message, "采购订单温馨提示！");
                 return;
             }

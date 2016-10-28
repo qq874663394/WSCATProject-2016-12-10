@@ -11,7 +11,7 @@ namespace InterfaceLayer.Finance
     public class FinanceOtherExpensesInInterface
     {
         FinanceOtherExpensesInLogic _dal = new FinanceOtherExpensesInLogic();
-        public object AddOrUpdateToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpensesInDetail> modelDetail)
+        public object AddOrUpdateToMainOrDetail(FinanceOtherExpensesIn model, List<FinanceOtherExpenseInDetail> modelDetail)
         {
             return _dal.AddOrUpdateToMainOrDetail(model, modelDetail);
         }
