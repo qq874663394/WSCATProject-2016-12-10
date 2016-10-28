@@ -28,6 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.comboBoxExxiaos = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -343,7 +357,8 @@
             // labTop2
             // 
             this.labTop2.Location = new System.Drawing.Point(276, 17);
-            this.labTop2.Text = "客    户：";
+            this.labTop2.Size = new System.Drawing.Size(71, 12);
+            this.labTop2.Text = "客    户*：";
             // 
             // labTop1
             // 
@@ -445,7 +460,12 @@
             // labBotton1
             // 
             this.labBotton1.Location = new System.Drawing.Point(17, 24);
-            this.labBotton1.Text = "出 库 员：";
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "出 库 员*：";
+            // 
+            // resizablePanelData
+            // 
+            this.resizablePanelData.Location = new System.Drawing.Point(517, 270);
             // 
             // bar1
             // 
@@ -488,6 +508,10 @@
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             this.superGridControlShangPing.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlShangPing_KeyDown);
+            // 
+            // resizablePanel1
+            // 
+            this.resizablePanel1.Location = new System.Drawing.Point(95, 268);
             // 
             // pictureBoxMax
             // 
@@ -580,7 +604,10 @@
             // 
             // gridColumnname
             // 
+            this.gridColumnname.AllowSelection = false;
             this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnname.CellStyles.Default.Background = background1;
             this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
@@ -589,7 +616,10 @@
             // 
             // gridColumnmodel
             // 
+            this.gridColumnmodel.AllowSelection = false;
             this.gridColumnmodel.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmodel.CellStyles.Default.Background = background2;
             this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
@@ -598,7 +628,10 @@
             // 
             // gridColumntiaoxingma
             // 
+            this.gridColumntiaoxingma.AllowSelection = false;
             this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.gridColumntiaoxingma.CellStyles.Default.Background = background3;
             this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
@@ -607,6 +640,9 @@
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.AllowSelection = false;
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnunit.CellStyles.Default.Background = background4;
             this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
@@ -623,6 +659,10 @@
             // 
             // gridColumnprice
             // 
+            this.gridColumnprice.AllowSelection = false;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnprice.CellStyles.Default.Background = background5;
+            this.gridColumnprice.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnprice.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnprice.HeaderText = "单价";
             this.gridColumnprice.Name = "gridColumnprice";
@@ -631,6 +671,10 @@
             // 
             // griCoulumcangku
             // 
+            this.griCoulumcangku.AllowSelection = false;
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.griCoulumcangku.CellStyles.Default.Background = background6;
+            this.griCoulumcangku.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.griCoulumcangku.HeaderText = "仓库";
             this.griCoulumcangku.Name = "griCoulumcangku";
             this.griCoulumcangku.ReadOnly = true;
@@ -638,7 +682,10 @@
             // 
             // griCoulumhuojia
             // 
+            this.griCoulumhuojia.AllowSelection = false;
             this.griCoulumhuojia.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.griCoulumhuojia.CellStyles.Default.Background = background7;
             this.griCoulumhuojia.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.griCoulumhuojia.HeaderText = "区域/排/行/列";
             this.griCoulumhuojia.Name = "griCoulumhuojia";
@@ -647,13 +694,20 @@
             // 
             // gridColumnid
             // 
+            this.gridColumnid.AllowSelection = false;
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnid.CellStyles.Default.Background = background8;
+            this.gridColumnid.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.Visible = false;
             this.gridColumnid.Width = 80;
             // 
             // gridColumndate
             // 
+            this.gridColumndate.AllowSelection = false;
             this.gridColumndate.CellStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.gridColumndate.CellStyles.Default.Background = background9;
             this.gridColumndate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumndate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumndate.HeaderText = "生产/采购日期";
@@ -663,6 +717,9 @@
             // 
             // gridColumnbaozhe
             // 
+            this.gridColumnbaozhe.AllowSelection = false;
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnbaozhe.CellStyles.Default.Background = background10;
             this.gridColumnbaozhe.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbaozhe.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnbaozhe.HeaderText = "保质期（天）";
@@ -672,6 +729,9 @@
             // 
             // gridColumnyouxiao
             // 
+            this.gridColumnyouxiao.AllowSelection = false;
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnyouxiao.CellStyles.Default.Background = background11;
             this.gridColumnyouxiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnyouxiao.HeaderText = "有效期至";
             this.gridColumnyouxiao.Name = "gridColumnyouxiao";
@@ -680,7 +740,10 @@
             // 
             // gridColumnremark
             // 
+            this.gridColumnremark.AllowSelection = false;
             this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnremark.CellStyles.Default.Background = background12;
             this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
@@ -736,12 +799,17 @@
             // 
             // gridColumnmaterialcode
             // 
+            background13.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmaterialcode.CellStyles.Default.Background = background13;
+            this.gridColumnmaterialcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmaterialcode.HeaderText = "商品code";
             this.gridColumnmaterialcode.Name = "gridColumnmaterialcode";
             this.gridColumnmaterialcode.Visible = false;
             // 
             // gridColumnmoney
             // 
+            background14.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmoney.CellStyles.Default.Background = background14;
             this.gridColumnmoney.HeaderText = "金额";
             this.gridColumnmoney.Name = "gridColumnmoney";
             this.gridColumnmoney.Visible = false;
@@ -769,6 +837,7 @@
             this.Text = "WareHouseOutMainForm";
             this.Activated += new System.EventHandler(this.WareHouseOutMainForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseOutMainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseOutMainForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WareHouseOutMainForm_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

@@ -13,8 +13,9 @@ namespace Model.Finance
         #region Model
         private int _id;
         private string _code;
-        private string _suppliercode;
-        private string _suppliername;
+
+        private string _suppiercode;
+        private string _suppiername;
         private string _accountcode;
         private string _accountname;
         private string _salecode;
@@ -53,18 +54,20 @@ namespace Model.Finance
         /// <summary>
         /// 客户编号
         /// </summary>
+
         public string supplierCode
         {
-            set { _suppliercode = value; }
-            get { return _suppliercode; }
+            set { _suppiercode = value; }
+            get { return _suppiercode; }
         }
         /// <summary>
         /// 客户名称
         /// </summary>
         public string supplierName
         {
-            set { _suppliername = value; }
-            get { return _suppliername; }
+
+            set { _suppiername = value; }
+            get { return _suppiername; }
         }
         /// <summary>
         /// 账户编号

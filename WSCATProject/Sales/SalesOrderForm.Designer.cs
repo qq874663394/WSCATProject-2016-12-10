@@ -201,10 +201,11 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(91, 78);
-            this.labtextboxTop7.MaxLength = 11;
+            this.labtextboxTop7.Location = new System.Drawing.Point(102, 78);
+            this.labtextboxTop7.MaxLength = 12;
             this.labtextboxTop7.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop7.Text = "0.00";
+            this.labtextboxTop7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ltxtTopYiShouDingJin_KeyPress);
             this.labtextboxTop7.Validated += new System.EventHandler(this.labtextboxTop7_Validated);
             // 
@@ -290,6 +291,7 @@
             this.labtxtDanJuType.Border.BorderGradientAngle = 0;
             this.labtxtDanJuType.Border.Class = "SideNavStrip";
             this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labtxtDanJuType.Location = new System.Drawing.Point(102, 15);
             this.labtxtDanJuType.Size = new System.Drawing.Size(130, 16);
             this.labtxtDanJuType.TextChanged += new System.EventHandler(this.labtxtDanJuType_TextChanged);
             // 
@@ -305,7 +307,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(554, 46);
+            this.pictureBox2.Location = new System.Drawing.Point(556, 46);
             this.toolTip1.SetToolTip(this.pictureBox2, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBoxAddress_Click);
             // 
@@ -315,7 +317,7 @@
             // 
             // pictureBoxDanJuType
             // 
-            this.pictureBoxDanJuType.Location = new System.Drawing.Point(223, 12);
+            this.pictureBoxDanJuType.Location = new System.Drawing.Point(230, 12);
             this.toolTip1.SetToolTip(this.pictureBoxDanJuType, "单击鼠标右键关闭或者按Esc关闭");
             this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBoxDanJuType_Click);
             // 
@@ -342,7 +344,8 @@
             // labTop5
             // 
             this.labTop5.Location = new System.Drawing.Point(365, 50);
-            this.labTop5.Text = "交货地点：";
+            this.labTop5.Size = new System.Drawing.Size(71, 12);
+            this.labTop5.Text = "交货地点*：";
             // 
             // labTop4
             // 
@@ -362,7 +365,7 @@
             // labTop1
             // 
             this.labTop1.Size = new System.Drawing.Size(71, 12);
-            this.labTop1.Text = "客    户：*";
+            this.labTop1.Text = "客    户*：";
             this.labTop1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBoxClose
@@ -494,6 +497,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.FaHuoNumber);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
@@ -524,7 +528,7 @@
             this.comboItem1,
             this.comboItem2,
             this.comboItem3});
-            this.cboMethod.Location = new System.Drawing.Point(91, 46);
+            this.cboMethod.Location = new System.Drawing.Point(102, 46);
             this.cboMethod.Name = "cboMethod";
             this.cboMethod.Size = new System.Drawing.Size(130, 21);
             this.cboMethod.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

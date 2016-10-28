@@ -28,6 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background16 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background15 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background17 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background18 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background19 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background20 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cboType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -191,6 +201,8 @@
             this.labtextboxTop7.ForeColor = System.Drawing.Color.Gray;
             this.labtextboxTop7.Location = new System.Drawing.Point(648, 22);
             this.labtextboxTop7.Size = new System.Drawing.Size(162, 16);
+            this.labtextboxTop7.Text = "0.00";
+            this.labtextboxTop7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labtextboxTop9
             // 
@@ -440,7 +452,8 @@
             // labBotton1
             // 
             this.labBotton1.Location = new System.Drawing.Point(34, 21);
-            this.labBotton1.Text = "调 拨 员：";
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "调 拨 员*：";
             // 
             // resizablePanelData
             // 
@@ -488,6 +501,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnoutcode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMaterialcode);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 4;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 361);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -568,7 +582,10 @@
             // 
             // gridColumnname
             // 
+            this.gridColumnname.AllowSelection = false;
             this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnname.CellStyles.Default.Background = background11;
             this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
@@ -577,6 +594,9 @@
             // 
             // gridColumnmodel
             // 
+            this.gridColumnmodel.AllowSelection = false;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmodel.CellStyles.Default.Background = background12;
             this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
@@ -585,7 +605,10 @@
             // 
             // gridColumntiaoxingma
             // 
+            this.gridColumntiaoxingma.AllowSelection = false;
             this.gridColumntiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background13.Color1 = System.Drawing.Color.Azure;
+            this.gridColumntiaoxingma.CellStyles.Default.Background = background13;
             this.gridColumntiaoxingma.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumntiaoxingma.HeaderText = "条形码";
             this.gridColumntiaoxingma.Name = "gridColumntiaoxingma";
@@ -594,6 +617,9 @@
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.AllowSelection = false;
+            background14.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnunit.CellStyles.Default.Background = background14;
             this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
@@ -619,6 +645,9 @@
             // 
             // gridColumnmoneyin
             // 
+            this.gridColumnmoneyin.AllowSelection = false;
+            background16.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmoneyin.CellStyles.Default.Background = background16;
             this.gridColumnmoneyin.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmoneyin.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnmoneyin.HeaderText = "调入金额";
@@ -638,6 +667,9 @@
             // 
             // gridColumnmoneyout
             // 
+            this.gridColumnmoneyout.AllowSelection = false;
+            background15.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmoneyout.CellStyles.Default.Background = background15;
             this.gridColumnmoneyout.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmoneyout.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnmoneyout.HeaderText = "调出金额";
@@ -647,6 +679,9 @@
             // 
             // gridColumnshengchandate
             // 
+            this.gridColumnshengchandate.AllowSelection = false;
+            background17.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnshengchandate.CellStyles.Default.Background = background17;
             this.gridColumnshengchandate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnshengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnshengchandate.HeaderText = "生产/采购日期";
@@ -656,6 +691,9 @@
             // 
             // gridColumnbaozhi
             // 
+            this.gridColumnbaozhi.AllowSelection = false;
+            background18.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnbaozhi.CellStyles.Default.Background = background18;
             this.gridColumnbaozhi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbaozhi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.gridColumnbaozhi.HeaderText = "保质期（天）";
@@ -665,6 +703,9 @@
             // 
             // gridColumnyouxiao
             // 
+            this.gridColumnyouxiao.AllowSelection = false;
+            background19.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnyouxiao.CellStyles.Default.Background = background19;
             this.gridColumnyouxiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnyouxiao.HeaderText = "有效期至";
             this.gridColumnyouxiao.Name = "gridColumnyouxiao";
@@ -673,6 +714,9 @@
             // 
             // gridColumnremark
             // 
+            this.gridColumnremark.AllowSelection = false;
+            background20.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnremark.CellStyles.Default.Background = background20;
             this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
@@ -725,6 +769,7 @@
             this.Text = "WareHouseAllotForm";
             this.Activated += new System.EventHandler(this.WareHouseAllotForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseAllotForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseAllotForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

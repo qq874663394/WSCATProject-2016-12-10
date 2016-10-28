@@ -513,6 +513,7 @@
             this.cboDanJuType.DisplayMember = "Text";
             this.cboDanJuType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboDanJuType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDanJuType.FocusHighlightColor = System.Drawing.Color.Empty;
             this.cboDanJuType.FormattingEnabled = true;
             this.cboDanJuType.ItemHeight = 15;
             this.cboDanJuType.Items.AddRange(new object[] {
@@ -550,6 +551,7 @@
             this.txtClient.Border.Class = "SideNavStrip";
             this.txtClient.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtClient.DisabledBackColor = System.Drawing.Color.White;
+            this.txtClient.FocusHighlightColor = System.Drawing.Color.Empty;
             this.txtClient.Location = new System.Drawing.Point(374, 16);
             this.txtClient.Name = "txtClient";
             this.txtClient.PreventEnterBeep = true;
@@ -807,9 +809,12 @@
             // 
             // pictureBoxShengHe
             // 
+            this.pictureBoxShengHe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxShengHe.Image = global::WSCATProject.Properties.Resources.审核;
             this.pictureBoxShengHe.Location = new System.Drawing.Point(685, 5);
             this.pictureBoxShengHe.Name = "pictureBoxShengHe";
-            this.pictureBoxShengHe.Size = new System.Drawing.Size(71, 53);
+            this.pictureBoxShengHe.Size = new System.Drawing.Size(64, 56);
+            this.pictureBoxShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxShengHe.TabIndex = 46;
             this.pictureBoxShengHe.TabStop = false;
             this.pictureBoxShengHe.Visible = false;

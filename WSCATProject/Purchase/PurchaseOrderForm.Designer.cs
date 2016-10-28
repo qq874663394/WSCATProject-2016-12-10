@@ -508,6 +508,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.shouHuoNumber);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
@@ -630,6 +631,7 @@
             this.txtYiFuDingJin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtYiFuDingJin.DisabledBackColor = System.Drawing.Color.White;
             this.txtYiFuDingJin.Location = new System.Drawing.Point(95, 76);
+            this.txtYiFuDingJin.MaxLength = 12;
             this.txtYiFuDingJin.Name = "txtYiFuDingJin";
             this.txtYiFuDingJin.PreventEnterBeep = true;
             this.txtYiFuDingJin.Size = new System.Drawing.Size(150, 16);

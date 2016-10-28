@@ -258,7 +258,7 @@
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop7.ForeColor = System.Drawing.SystemColors.Desktop;
             this.labtextboxTop7.Location = new System.Drawing.Point(597, 85);
-            this.labtextboxTop7.MaxLength = 11;
+            this.labtextboxTop7.MaxLength = 12;
             this.labtextboxTop7.Size = new System.Drawing.Size(135, 16);
             this.labtextboxTop7.Text = "0.00";
             this.labtextboxTop7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBenCiShouKuan_KeyPress);
@@ -568,6 +568,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnyuandandanhao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 3;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 389);
             this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);

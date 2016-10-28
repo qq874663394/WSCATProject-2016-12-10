@@ -37,75 +37,84 @@ namespace WSCATProject.Purchase
         /// <param name="e"></param>
         private void PurchaseOrderReportForm_Load(object sender, EventArgs e)
         {
-            this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
-            this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
-
-            //不可自动添加列
-            this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            //表格内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
-            DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
-
-            PurchaseOrderInterface purchaseinter = new PurchaseOrderInterface();
-
-            DataTable dt1 = ch.DataTableReCoding(purchaseinter.GetMainTable(XYEEncoding.strCodeHex(_supplierCode)));//主表
-            this.labelPurchaseMain.Text = dt1.Rows.Count.ToString() + "张单据";
-
-            DataTable dt2 = ch.DataTableReCoding(purchaseinter.GetMinorTable());//从表
-
-            this.labelPurchaseDetile.Text = dt2.Rows.Count.ToString() + "条记录";
-
-            if (dt1.Rows.Count == 0 || dt2.Rows.Count == 0)
+            try
             {
-                MessageBox.Show("此供应商暂无采购订单信息！请重新选择");
-                this.Close();
-                return;
-            }
-            for (int i = 0; i < dt1.Rows.Count; i++)
-            {
-                for (int j = 0; j < dt2.Rows.Count; j++)
+                this.labelTitle.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMax.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxMin.BackColor = Color.FromArgb(85, 177, 238);
+                this.pictureBoxClose.BackColor = Color.FromArgb(85, 177, 238);
+
+                //不可自动添加列
+                this.superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                //表格内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment =
+                DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
+
+                PurchaseOrderInterface purchaseinter = new PurchaseOrderInterface();
+
+                DataTable dt1 = ch.DataTableReCoding(purchaseinter.GetMainTable(XYEEncoding.strCodeHex(_supplierCode)));//主表
+                this.labelPurchaseMain.Text = dt1.Rows.Count.ToString() + "张单据";
+
+                DataTable dt2 = ch.DataTableReCoding(purchaseinter.GetMinorTable());//从表
+
+                this.labelPurchaseDetile.Text = dt2.Rows.Count.ToString() + "条记录";
+
+                if (dt1.Rows.Count == 0 || dt2.Rows.Count == 0)
                 {
-                    if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+                    MessageBox.Show("此供应商暂无采购订单信息！请重新选择");
+                    this.Close();
+                    return;
+                }
+                for (int i = 0; i < dt1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dt2.Rows.Count; j++)
                     {
-                        #region 绑定列
-                        superGridControlShangPing.PrimaryGrid.Rows.Insert(i, new GridRow(
-                            dt1.Rows[i]["code"],
-                            dt1.Rows[i]["date"],
-                            dt1.Rows[i]["name"],
-                            dt1.Rows[i]["phone"],
-                            dt1.Rows[i]["fax"],
-                            dt1.Rows[i]["deliversMethod"],
-                            dt1.Rows[i]["deliversDate"],
-                            dt1.Rows[i]["examine"],
-                            dt1.Rows[i]["remark"],
-                            dt1.Rows[i]["checkState"],
-                            dt2.Rows[j]["code"],
-                            dt2.Rows[j]["materialDaima"],
-                            dt2.Rows[j]["name"],
-                            dt2.Rows[j]["model"],
-                            dt2.Rows[j]["barCode"],
-                            dt2.Rows[j]["unit"],
-                            dt2.Rows[j]["deliveryNumber"],
-                            dt2.Rows[j]["price"],
-                            dt2.Rows[j]["materialMoney"],
-                            dt2.Rows[j]["discountRate"],
-                            dt2.Rows[j]["VATRate"],
-                            dt2.Rows[j]["allNumber"],
-                            dt2.Rows[j]["materialcode"]
-                            ));
+                        if (dt1.Rows[i]["code"].Equals(dt2.Rows[j]["mainCode"]))
+                        {
+                            #region 绑定列
+                            superGridControlShangPing.PrimaryGrid.Rows.Insert(i, new GridRow(
+                                dt1.Rows[i]["code"],
+                                dt1.Rows[i]["date"],
+                                dt1.Rows[i]["name"],
+                                dt1.Rows[i]["phone"],
+                                dt1.Rows[i]["fax"],
+                                dt1.Rows[i]["deliversMethod"],
+                                dt1.Rows[i]["deliversDate"],
+                                dt1.Rows[i]["examine"],
+                                dt1.Rows[i]["remark"],
+                                dt1.Rows[i]["checkState"],
+                                dt2.Rows[j]["code"],
+                                dt2.Rows[j]["materialDaima"],
+                                dt2.Rows[j]["name"],
+                                dt2.Rows[j]["model"],
+                                dt2.Rows[j]["barCode"],
+                                dt2.Rows[j]["unit"],
+                                dt2.Rows[j]["materialNumber"],
+                                dt2.Rows[j]["price"],
+                                dt2.Rows[j]["materialMoney"],
+                                dt2.Rows[j]["discountRate"],
+                                dt2.Rows[j]["VATRate"],
+                                dt2.Rows[j]["allNumber"],
+                                dt2.Rows[j]["materialcode"]
+                                ));
 
-                        #endregion
-                    }
-                    else
-                    {
-                        continue;
+                            #endregion
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：3201-采购订单序时薄初始化数据错误！"+ex.Message, "销售订单序时薄温馨提示！");
+                this.Close();
+            }
+
         }
 
         #region 设置窗体无边框可以拖动
@@ -246,7 +255,7 @@ namespace WSCATProject.Purchase
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3205-尝试双击表格选中行失败！请检查：" + ex.Message, "销售订单序时薄温馨提示！");
+                MessageBox.Show("错误代码：3202-尝试双击表格选中行失败！请检查：" + ex.Message, "销售订单序时薄温馨提示！");
             }
         }
     }

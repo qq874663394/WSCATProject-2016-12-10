@@ -28,6 +28,7 @@ namespace WSCATProject.Warehouse
         EmpolyeeInterface employee = new EmpolyeeInterface();
         StorageInterface storage = new StorageInterface();
         WarehouseMainInterface waremain = new WarehouseMainInterface();
+        WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
         #endregion
 
         #region  数据字段
@@ -163,11 +164,12 @@ namespace WSCATProject.Warehouse
 
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2801-初始化调拨窗体数据错误" + ex.Message,"调拨单温馨提示");
+                MessageBox.Show("错误代码：2801-初始化调拨窗体数据错误" + ex.Message, "调拨单温馨提示");
                 this.Close();
                 return;
             }
@@ -179,95 +181,10 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            //非空验证
-            if (isNUllValidate() == false)
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
             {
-                return;
-            }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
-            //调拨单
-            WarehouseAllot warehouseallot = new WarehouseAllot();
-            //调拨商品列表
-            List<WarehouseAllotDetail> wareHouseallList = new List<WarehouseAllotDetail>();
-            try
-            {
-                warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
-                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
-                warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
-                warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
-                warehouseallot.checkState = 1;
-                warehouseallot.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                warehouseallot.date = dateTimePicker1.Value;
-                warehouseallot.isClear = 1;
-                warehouseallot.makeMan = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
-                warehouseallot.operationMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
-                warehouseallot.remark = "";
-                warehouseallot.reserved1 = "";
-                warehouseallot.reserved2 = "";
-                warehouseallot.updateDate = DateTime.Now;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码:2804;尝试创建和审核调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
-                return;
-            }
-            try
-            {
-                //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                int i = 0;
-                DateTime nowDataTime = DateTime.Now;
-                foreach (GridRow gr in grs)
-                {
-                    if (gr["gridColumnname"].Value != null)
-                    {
-                        i++;
-                        WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
-                        warehousealld.allotInPrice = gr["gridColumnpricein"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpricein"].Value.ToString());
-                        warehousealld.allotInSummoney = gr["gridColumnmoneyin"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyin"].Value.ToString());
-                        warehousealld.allotOutPrice = gr["gridColumnpriceout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpriceout"].Value.ToString());
-                        warehousealld.allotOutSummoney = gr["gridColumnmoneyout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyout"].Value.ToString());
-                        warehousealld.barcode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());
-                        warehousealld.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehousealld.curNumber = gr["gridColumnnumber"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());
-                        warehousealld.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);
-                        warehousealld.isClear = 1;
-                        warehousealld.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehousealld.materialCode = gr["gridColumnMaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnMaterialcode"].Value.ToString());
-                        warehousealld.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
-                        warehousealld.materiaModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
-                        warehousealld.materiaName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
-                        warehousealld.materiaUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
-                        warehousealld.productionDate = gr["gridColumnshengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnshengchandate"].Value);
-                        warehousealld.qualityDate = gr["gridColumnbaozhi"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnbaozhi"].Value.ToString());
-                        warehousealld.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());
-                        warehousealld.reserved1 = "";
-                        warehousealld.reserved2 = "";
-                        warehousealld.stoIncode = _InStorage == "" ? "" : XYEEncoding.strCodeHex(_InStorage);
-                        warehousealld.stoInName = gr["gridColumnStockIn"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStockIn"].Value.ToString());
-                        warehousealld.stoOutcode = _OutStorage == "" ? "" : XYEEncoding.strCodeHex(_OutStorage);
-                        warehousealld.stoOutName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());
-                        warehousealld.updateDate = DateTime.Now;
-                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        wareHouseallList.Add(warehousealld);
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2805-尝试创建和审核调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
-                return;
-            }
-            //增加一条入库单和入库单详细数据
-            object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
-            if (warehouseInResult != null)
-            {
-                MessageBox.Show("新增并保存调拨数据成功", "调拨单温馨提示");
-                InitForm();
+                Review();
             }
         }
 
@@ -278,97 +195,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
-            //非空验证
-            if (isNUllValidate() == false)
-            {
-                return;
-            }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
-            //调拨单
-            WarehouseAllot warehouseallot = new WarehouseAllot();
-            //调拨商品列表
-            List<WarehouseAllotDetail> wareHouseallList = new List<WarehouseAllotDetail>();
-            try
-            {
-                warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
-                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
-                warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
-                warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
-                warehouseallot.checkState = 0;
-                warehouseallot.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                warehouseallot.date = dateTimePicker1.Value;
-                warehouseallot.isClear = 1;
-                warehouseallot.makeMan = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
-                warehouseallot.operationMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
-                warehouseallot.remark = "";
-                warehouseallot.reserved1 = "";
-                warehouseallot.reserved2 = "";
-                warehouseallot.updateDate = DateTime.Now;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码:2802;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
-                return;
-            }
-            try
-            {
-                //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                int i = 0;
-                DateTime nowDataTime = DateTime.Now;
-                foreach (GridRow gr in grs)
-                {
-                    if (gr["gridColumnname"].Value != null)
-                    {
-                        i++;
-                        WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
-                        warehousealld.allotInPrice = gr["gridColumnpricein"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpricein"].Value.ToString());
-                        warehousealld.allotInSummoney = gr["gridColumnmoneyin"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyin"].Value.ToString());
-                        warehousealld.allotOutPrice = gr["gridColumnpriceout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpriceout"].Value.ToString());
-                        warehousealld.allotOutSummoney = gr["gridColumnmoneyout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyout"].Value.ToString());
-                        warehousealld.barcode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());
-                        warehousealld.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehousealld.curNumber = gr["gridColumnnumber"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());
-                        warehousealld.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);
-                        warehousealld.isClear = 1;
-                        warehousealld.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehousealld.materialCode = gr["gridColumnMaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnMaterialcode"].Value.ToString());
-                        warehousealld.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
-                        warehousealld.materiaModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
-                        warehousealld.materiaName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
-                        warehousealld.materiaUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
-                        warehousealld.productionDate = gr["gridColumnshengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnshengchandate"].Value);
-                        warehousealld.qualityDate = gr["gridColumnbaozhi"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnbaozhi"].Value.ToString());
-                        warehousealld.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());
-                        warehousealld.reserved1 = "";
-                        warehousealld.reserved2 = "";
-                        warehousealld.stoIncode = _InStorage == "" ? "" : XYEEncoding.strCodeHex(_InStorage);
-                        warehousealld.stoInName = gr["gridColumnStockIn"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStockIn"].Value.ToString());
-                        warehousealld.stoOutcode = _OutStorage == "" ? "" : XYEEncoding.strCodeHex(_OutStorage);
-                        warehousealld.stoOutName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());
-                        warehousealld.updateDate = DateTime.Now;
-                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        wareHouseallList.Add(warehousealld);
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2803-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
-                return;
-            }
-            //增加一条入库单和入库单详细数据
-            object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
-            //this.textBoxid.Text = warehouseInResult.ToString();
-            if (warehouseInResult != null)
-            {
-                MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
-                this.toolStripBtnSave.Enabled = false;
-            }
+            Save();
         }
 
         #region  初始化数据
@@ -400,6 +227,16 @@ namespace WSCATProject.Warehouse
             gr.Cells["gridColumnmoneyin"].Value = 0;
             gr.Cells["gridColumnmoneyin"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnmoneyin"].CellStyles.Default.Background.Color1 = Color.Orange;
+
+            #region 合计行不能点击
+            gr.Cells["gridColumnStock"].AllowSelection = false;
+            gr.Cells["material"].AllowSelection = false;
+            gr.Cells["gridColumnStockIn"].AllowSelection = false;
+            gr.Cells["gridColumnnumber"].AllowSelection = false;
+            gr.Cells["gridColumnpriceout"].AllowSelection = false;
+            gr.Cells["gridColumnpricein"].AllowSelection = false;
+
+            #endregion
         }
 
         /// <summary>
@@ -523,9 +360,9 @@ namespace WSCATProject.Warehouse
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：2807-初始化仓库数据错误！"+ex.Message,"调拨单微信提示");
+                MessageBox.Show("错误代码：2807-初始化仓库数据错误！" + ex.Message, "调拨单微信提示");
             }
-       
+
 
         }
 
@@ -638,34 +475,57 @@ namespace WSCATProject.Warehouse
             dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllMaterial);
 
         }
+
         /// <summary>
         /// 初始化窗体控件可用不可用
         /// </summary>
         private void InitForm()
         {
-            cboType.Enabled = false;
-            cboType.BackColor = Color.FromArgb(240, 240, 240);
-            labtextboxTop6.ReadOnly = true;
-            labtextboxTop6.BackColor = Color.FromArgb(240, 240, 240);
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
             superGridControlShangPing.PrimaryGrid.ReadOnly = true;
-            superGridControlShangPing.BackColor = Color.FromArgb(240, 240, 240);
-            dateTimePicker1.Enabled = false;
-            textBoxOddNumbers.ReadOnly = true;
-            ltxtbSalsMan.ReadOnly = true;
-            ltxtbSalsMan.BackColor = Color.FromArgb(240, 240, 240);
-            pictureBoxEmployee.Enabled = false;
-            ltxtbMakeMan.ReadOnly = true;
-            ltxtbMakeMan.BackColor = Color.FromArgb(240, 240, 240);
-            ltxtbShengHeMan.ReadOnly = true;
-            ltxtbShengHeMan.BackColor = Color.FromArgb(240, 240, 240);
             this.pictureBox6.Parent = pictureBoxtitle;
             this.pictureBox6.Image = Properties.Resources.审核;
             pictureBox6.Visible = true;
             this.toolStripBtnShengHe.Enabled = false;
             this.toolStripBtnSave.Enabled = false;
             this.toolStripBtnInsert.Enabled = false;
-            this.panel2.BackColor = Color.FromArgb(240, 240, 240);
-            this.panel5.BackColor = Color.FromArgb(240, 240, 240);
         }
         #endregion
 
@@ -681,163 +541,20 @@ namespace WSCATProject.Warehouse
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                //业务员
-                if (_Click == 1 || _Click == 3)
-                {
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    ltxtbSalsMan.Text = name;
-                    resizablePanel1.Visible = false;
-                }
-                //仓库信息
-                if (_Click == 2)
-                {
-
-                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                    //判断是调入还是调出仓库
-                    if (_StorageState == 1)
-                    {
-                        string codeout = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                        string OutName = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                        gr.Cells["gridColumnStock"].Value = OutName;
-                        gr.Cells["gridColumnoutcode"].Value = codeout;
-                        _ClickOutStorageList = new KeyValuePair<string, string>(codeout, OutName);
-                        _OutStorage = codeout;
-
-                    }
-                    else
-                    {
-                        string codein = dataGridViewFuJia.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                        string Inname = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                        gr.Cells["gridColumnStockIn"].Value = Inname;
-                        gr.Cells["gridColumnincode"].Value = codein;
-                        _ClickInStorageList = new KeyValuePair<string, string>(codein, Inname);
-                        _InStorage = codein;
-                    }
-                    resizablePanel1.Visible = false;
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2808-双击绑定仓库或者业务员错误！请检查：" + ex.Message);
-            }
+            dataGridViewFuJiaTableClick();
         }
 
         private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                //是否要新增一行的标记
-                bool newAdd = false;
-                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                //id字段为空 说明是没有数据的行 不是修改而是新增
-                if (gr.Cells["gridColumnid"].Value == null)
-                {
-                    newAdd = true;
-                }
-                foreach (GridRow g in grs)
-                {
-                    if (g.Cells["gridColumnMaterialcode"].Value == null)
-                    {
-                        newAdd = true;
-                        continue;
-                    }
-                    if (g.Cells["gridColumnMaterialcode"].Value.Equals(dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value))
-                    {
-                        decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnnumber"].Value);
-                        shuliang += 1;
-                        g.Cells["gridColumnnumber"].Value = shuliang;
-                        try
-                        {
-                            decimal tempAllNumber = 0;//统计数量
-                            decimal tempAllMoney = 0;//调出金额
-
-                            decimal priceout = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);
-                            decimal allOutPrice = shuliang * priceout;
-                            g.Cells["gridColumnmoneyout"].Value = allOutPrice;
-
-                            //逐行统计数据总数
-                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
-                            {
-                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                                tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
-                                tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoneyout"].FormattedValue);
-                            }
-                            _MaterialNumber = tempAllNumber;
-                            _MaterialMoney = tempAllMoney;
-                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                            gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
-                            gr["gridColumnmoneyout"].Value = _MaterialMoney.ToString();
-                            labtextboxTop7.Text = (_MaterInMoney - _MaterialMoney).ToString();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("金额转换错误" + ex.Message);
-                        }
-                        resizablePanelData.Visible = false;
-                        return;
-                    }
-                    continue;
-                }
-                gr.Cells["material"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["materialDaima"].Value;//商品代码
-                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["name"].Value;//商品名称
-                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["model"].Value;//规格型号
-                gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["barCode"].Value;//条形码
-                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["unit"].Value;//单位
-                if (true)
-                {
-
-                }
-                gr.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["currentNumber"].Value;//数量
-                gr.Cells["gridColumnpriceout"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value;//单价
-                gr.Cells["gridColumnshengchandate"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["productionDate"].Value;//生产/采购日期
-                gr.Cells["gridColumnbaozhi"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["qualityDate"].Value;//保质期
-                gr.Cells["gridColumnyouxiao"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["effectiveDate"].Value;//有效期
-                gr.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["remark"].Value;//备注
-                gr.Cells["gridColumnincode"].Value = _InStorage;//调入仓库code
-                gr.Cells["gridColumnoutcode"].Value = _OutStorage;//调出仓库code
-                gr.Cells["gridColumnMaterialcode"].Value = dataGridViewShangPing.Rows[e.RowIndex].Cells["code"].Value;//商品code 
-
-                gr.Cells["gridColumnnumber"].Value = 1;
-
-                decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value.Equals("") ?
-                    0 : dataGridViewShangPing.Rows[e.RowIndex].Cells["price"].Value);
-                gr.Cells["gridColumnpriceout"].Value = price;
-                gr.Cells["gridColumnmoneyout"].Value = price;
-                resizablePanelData.Visible = false;
-
-                //当上一次有选择仓库时 默认本次也为上次选择仓库
-                if (!string.IsNullOrEmpty(_ClickOutStorageList.Value) && !string.IsNullOrEmpty(_ClickOutStorageList.Key))
-                {
-                    if (!string.IsNullOrEmpty(_ClickInStorageList.Value) && !string.IsNullOrEmpty(_ClickInStorageList.Key))
-                    {
-                        gr.Cells["gridColumnoutcode"].Value = _ClickOutStorageList.Key;
-                        gr.Cells["gridColumnStock"].Value = _ClickOutStorageList.Value;
-                        gr.Cells["gridColumnincode"].Value = _ClickInStorageList.Key;
-                        gr.Cells["gridColumnStockIn"].Value = _ClickInStorageList.Value;
-                    }
-                }
-                //新增一行 
-                if (newAdd)
-                {
-                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
-                    //递增数量和金额 默认为1和单价 
-                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-                    _MaterialNumber += 1;
-                    _MaterialMoney += price;
-                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
-                    gr.Cells["gridColumnmoneyout"].Value = _MaterialMoney;
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2809-绑定商品数据错误" + ex.Message);
-            }
-
-            superGridControlShangPing.Focus();
-            SendKeys.Send("^{End}{Home}");
+            dataGridViewShangPingTableClick();
         }
 
         #endregion
@@ -847,7 +564,7 @@ namespace WSCATProject.Warehouse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected  void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        protected void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
             try
             {
@@ -1097,6 +814,448 @@ namespace WSCATProject.Warehouse
             if (e.KeyCode == Keys.Enter)
             {
                 panel2.Focus();
+            }
+        }
+
+        /// <summary>
+        /// 验证单号
+        /// </summary>
+        /// <returns></returns>
+        private string validateCode()
+        {
+            //验证单号
+            if (warehouseallterface.Exists(XYEEncoding.strCodeHex(_WareHouseAllotCode)))
+            {
+                _WareHouseAllotCode = BuildCode.ModuleCode("WIA");
+            }
+            else
+            {
+                _WareHouseAllotCode = textBoxOddNumbers.Text;
+            }
+
+            return _WareHouseAllotCode;
+        }
+
+        /// <summary>
+        /// 保存按钮函数
+        /// </summary>
+        private void Save()
+        {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+            //WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
+            //调拨单
+            WarehouseAllot warehouseallot = new WarehouseAllot();
+            //调拨商品列表
+            List<WarehouseAllotDetail> wareHouseallList = new List<WarehouseAllotDetail>();
+            try
+            {
+                warehouseallot.code = XYEEncoding.strCodeHex(validateCode());//调拨单单号
+                warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
+                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
+                warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
+                warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseallot.checkState = 0;              
+                warehouseallot.date = dateTimePicker1.Value;
+                warehouseallot.isClear = 1;
+                warehouseallot.makeMan = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseallot.operationMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseallot.remark = "";
+                warehouseallot.reserved1 = "";
+                warehouseallot.reserved2 = "";
+                warehouseallot.updateDate = DateTime.Now;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2802;尝试创建调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                return;
+            }
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+                        i++;
+                        WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
+                        warehousealld.allotInPrice = gr["gridColumnpricein"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpricein"].Value.ToString());
+                        warehousealld.allotInSummoney = gr["gridColumnmoneyin"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyin"].Value.ToString());
+                        warehousealld.allotOutPrice = gr["gridColumnpriceout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpriceout"].Value.ToString());
+                        warehousealld.allotOutSummoney = gr["gridColumnmoneyout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyout"].Value.ToString());
+                        warehousealld.barcode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());
+                        warehousealld.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
+                        warehousealld.curNumber = gr["gridColumnnumber"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());
+                        warehousealld.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);
+                        warehousealld.isClear = 1;
+                        warehousealld.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehousealld.materialCode = gr["gridColumnMaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnMaterialcode"].Value.ToString());
+                        warehousealld.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
+                        warehousealld.materiaModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
+                        warehousealld.materiaName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
+                        warehousealld.materiaUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
+                        warehousealld.productionDate = gr["gridColumnshengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnshengchandate"].Value);
+                        warehousealld.qualityDate = gr["gridColumnbaozhi"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnbaozhi"].Value.ToString());
+                        warehousealld.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());
+                        warehousealld.reserved1 = "";
+                        warehousealld.reserved2 = "";
+                        warehousealld.stoIncode = _InStorage == "" ? "" : XYEEncoding.strCodeHex(_InStorage);
+                        warehousealld.stoInName = gr["gridColumnStockIn"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStockIn"].Value.ToString());
+                        warehousealld.stoOutcode = _OutStorage == "" ? "" : XYEEncoding.strCodeHex(_OutStorage);
+                        warehousealld.stoOutName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());
+                        warehousealld.updateDate = DateTime.Now;
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouseallList.Add(warehousealld);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2803-尝试创建调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                return;
+            }
+            //增加一条入库单和入库单详细数据
+            object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
+            //this.textBoxid.Text = warehouseInResult.ToString();
+            if (warehouseInResult != null)
+            {
+                MessageBox.Show("新增调拨数据成功", "调拨单温馨提示");
+                this.toolStripBtnSave.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// 审核按钮函数
+        /// </summary>
+        private void Review()
+        {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //获得界面上的数据,准备传给base层新增数据
+            WarehouseAllotInterface warehouseallterface = new WarehouseAllotInterface();
+            //调拨单
+            WarehouseAllot warehouseallot = new WarehouseAllot();
+            //调拨商品列表
+            List<WarehouseAllotDetail> wareHouseallList = new List<WarehouseAllotDetail>();
+            try
+            {
+                warehouseallot.allotGap = labtextboxTop7.Text == "" ? 0.0M : Convert.ToDecimal(labtextboxTop7.Text);
+                warehouseallot.allotType = XYEEncoding.strCodeHex(cboType.Text);
+                warehouseallot.cause = labtextboxTop6.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop6.Text);
+                warehouseallot.checkMan = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseallot.checkState = 1;
+                warehouseallot.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                warehouseallot.date = dateTimePicker1.Value;
+                warehouseallot.isClear = 1;
+                warehouseallot.makeMan = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseallot.operationMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseallot.remark = "";
+                warehouseallot.reserved1 = "";
+                warehouseallot.reserved2 = "";
+                warehouseallot.updateDate = DateTime.Now;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2804;尝试创建和审核调拨单商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                return;
+            }
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["gridColumnname"].Value != null)
+                    {
+                        i++;
+                        WarehouseAllotDetail warehousealld = new WarehouseAllotDetail();
+                        warehousealld.allotInPrice = gr["gridColumnpricein"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpricein"].Value.ToString());
+                        warehousealld.allotInSummoney = gr["gridColumnmoneyin"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyin"].Value.ToString());
+                        warehousealld.allotOutPrice = gr["gridColumnpriceout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnpriceout"].Value.ToString());
+                        warehousealld.allotOutSummoney = gr["gridColumnmoneyout"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnmoneyout"].Value.ToString());
+                        warehousealld.barcode = gr["gridColumntiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());
+                        warehousealld.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
+                        warehousealld.curNumber = gr["gridColumnnumber"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString());
+                        warehousealld.effectiveDate = gr["gridColumnyouxiao"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnyouxiao"].Value);
+                        warehousealld.isClear = 1;
+                        warehousealld.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehousealld.materialCode = gr["gridColumnMaterialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnMaterialcode"].Value.ToString());
+                        warehousealld.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
+                        warehousealld.materiaModel = gr["gridColumnmodel"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());
+                        warehousealld.materiaName = gr["gridColumnname"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());
+                        warehousealld.materiaUnit = gr["gridColumnunit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());
+                        warehousealld.productionDate = gr["gridColumnshengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["gridColumnshengchandate"].Value);
+                        warehousealld.qualityDate = gr["gridColumnbaozhi"].Value.ToString() == "" ? 0.0M : Convert.ToDecimal(gr["gridColumnbaozhi"].Value.ToString());
+                        warehousealld.remark = gr["gridColumnremark"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnremark"].Value.ToString());
+                        warehousealld.reserved1 = "";
+                        warehousealld.reserved2 = "";
+                        warehousealld.stoIncode = _InStorage == "" ? "" : XYEEncoding.strCodeHex(_InStorage);
+                        warehousealld.stoInName = gr["gridColumnStockIn"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStockIn"].Value.ToString());
+                        warehousealld.stoOutcode = _OutStorage == "" ? "" : XYEEncoding.strCodeHex(_OutStorage);
+                        warehousealld.stoOutName = gr["gridColumnStock"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["gridColumnStock"].Value.ToString());
+                        warehousealld.updateDate = DateTime.Now;
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouseallList.Add(warehousealld);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2805-尝试创建和审核调拨单详商品数据出错,请检查输入" + ex.Message, "调拨单温馨提示");
+                return;
+            }
+            //增加一条入库单和入库单详细数据
+            object warehouseInResult = warehouseallterface.AddAndModify(warehouseallot, wareHouseallList);
+            if (warehouseInResult != null)
+            {
+                MessageBox.Show("新增并保存调拨数据成功", "调拨单温馨提示");
+                InitForm();
+            }
+        }
+
+        /// <summary>
+        /// dataGridViewFuJia双击表格函数
+        /// </summary>
+        private void dataGridViewFuJiaTableClick()
+        {
+            try
+            {
+                //业务员
+                if (_Click == 1 || _Click == 3)
+                {
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //仓库信息
+                if (_Click == 2)
+                {
+
+                    GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                    //判断是调入还是调出仓库
+                    if (_StorageState == 1)
+                    {
+                        string codeout = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                        string OutName = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                        gr.Cells["gridColumnStock"].Value = OutName;
+                        gr.Cells["gridColumnoutcode"].Value = codeout;
+                        _ClickOutStorageList = new KeyValuePair<string, string>(codeout, OutName);
+                        _OutStorage = codeout;
+
+                    }
+                    else
+                    {
+                        string codein = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();
+                        string Inname = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                        gr.Cells["gridColumnStockIn"].Value = Inname;
+                        gr.Cells["gridColumnincode"].Value = codein;
+                        _ClickInStorageList = new KeyValuePair<string, string>(codein, Inname);
+                        _InStorage = codein;
+                    }
+                    resizablePanel1.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2808-双击绑定仓库或者业务员错误！请检查：" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// dataGridViewShangPing双击表格函数
+        /// </summary>
+        private void dataGridViewShangPingTableClick()
+        {
+            try
+            {
+                //是否要新增一行的标记
+                bool newAdd = false;
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                //id字段为空 说明是没有数据的行 不是修改而是新增
+                if (gr.Cells["gridColumnid"].Value == null)
+                {
+                    newAdd = true;
+                }
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnMaterialcode"].Value == null)
+                    {
+                        newAdd = true;
+                        continue;
+                    }
+                    if (g.Cells["gridColumnMaterialcode"].Value.Equals(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["code"].Value))
+                    {
+                        decimal shuliang = Convert.ToDecimal(g.Cells["gridColumnnumber"].Value);
+                        shuliang += 1;
+                        g.Cells["gridColumnnumber"].Value = shuliang;
+                        try
+                        {
+                            decimal tempAllNumber = 0;//统计数量
+                            decimal tempAllMoney = 0;//调出金额
+
+                            decimal priceout = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value);
+                            decimal allOutPrice = shuliang * priceout;
+                            g.Cells["gridColumnmoneyout"].Value = allOutPrice;
+
+                            //逐行统计数据总数
+                            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                            {
+                                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                                tempAllNumber += Convert.ToDecimal(tempGR["gridColumnnumber"].FormattedValue);
+                                tempAllMoney += Convert.ToDecimal(tempGR["gridColumnmoneyout"].FormattedValue);
+                            }
+                            _MaterialNumber = tempAllNumber;
+                            _MaterialMoney = tempAllMoney;
+                            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                            gr["gridColumnnumber"].Value = _MaterialNumber.ToString();
+                            gr["gridColumnmoneyout"].Value = _MaterialMoney.ToString();
+                            labtextboxTop7.Text = (_MaterInMoney - _MaterialMoney).ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("金额转换错误" + ex.Message);
+                        }
+                        resizablePanelData.Visible = false;
+                        return;
+                    }
+                    continue;
+                }
+                gr.Cells["material"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["materialDaima"].Value;//商品代码
+                gr.Cells["gridColumnname"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["name"].Value;//商品名称
+                gr.Cells["gridColumnmodel"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["model"].Value;//规格型号
+                gr.Cells["gridColumntiaoxingma"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["barCode"].Value;//条形码
+                gr.Cells["gridColumnunit"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["unit"].Value;//单位
+                if (true)
+                {
+
+                }
+                gr.Cells["gridColumnnumber"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["currentNumber"].Value;//数量
+                gr.Cells["gridColumnpriceout"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value;//单价
+                gr.Cells["gridColumnshengchandate"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["productionDate"].Value;//生产/采购日期
+                gr.Cells["gridColumnbaozhi"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["qualityDate"].Value;//保质期
+                gr.Cells["gridColumnyouxiao"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["effectiveDate"].Value;//有效期
+                gr.Cells["gridColumnremark"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["remark"].Value;//备注
+                gr.Cells["gridColumnincode"].Value = _InStorage;//调入仓库code
+                gr.Cells["gridColumnoutcode"].Value = _OutStorage;//调出仓库code
+                gr.Cells["gridColumnMaterialcode"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["code"].Value;//商品code 
+
+                gr.Cells["gridColumnnumber"].Value = 1;
+
+                decimal price = Convert.ToDecimal(dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value.Equals("") ?
+                    0 : dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["price"].Value);
+                gr.Cells["gridColumnpriceout"].Value = price;
+                gr.Cells["gridColumnmoneyout"].Value = price;
+                resizablePanelData.Visible = false;
+
+                //当上一次有选择仓库时 默认本次也为上次选择仓库
+                if (!string.IsNullOrEmpty(_ClickOutStorageList.Value) && !string.IsNullOrEmpty(_ClickOutStorageList.Key))
+                {
+                    if (!string.IsNullOrEmpty(_ClickInStorageList.Value) && !string.IsNullOrEmpty(_ClickInStorageList.Key))
+                    {
+                        gr.Cells["gridColumnoutcode"].Value = _ClickOutStorageList.Key;
+                        gr.Cells["gridColumnStock"].Value = _ClickOutStorageList.Value;
+                        gr.Cells["gridColumnincode"].Value = _ClickInStorageList.Key;
+                        gr.Cells["gridColumnStockIn"].Value = _ClickInStorageList.Value;
+                    }
+                }
+                //新增一行 
+                if (newAdd)
+                {
+                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
+                    //递增数量和金额 默认为1和单价 
+                    gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                    _MaterialNumber += 1;
+                    _MaterialMoney += price;
+                    gr.Cells["gridColumnnumber"].Value = _MaterialNumber;
+                    gr.Cells["gridColumnmoneyout"].Value = _MaterialMoney;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2809-绑定商品数据错误" + ex.Message);
+            }
+            superGridControlShangPing.Focus();
+            SendKeys.Send("^{End}{Home}");
+        }
+
+        /// <summary>
+        /// 小表格的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewFuJiaTableClick();
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseAllotForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                Save();
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Review();
+                }
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
             }
         }
     }

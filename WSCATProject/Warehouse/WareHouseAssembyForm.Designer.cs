@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.pictureBoxTiaoXingMa = new System.Windows.Forms.PictureBox();
             this.name = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.model = new DevComponents.DotNetBar.SuperGrid.GridColumn();
@@ -270,6 +278,7 @@
             this.labtxtDanJuType.MaxLength = 999999999;
             this.labtxtDanJuType.Size = new System.Drawing.Size(162, 16);
             this.labtxtDanJuType.Text = "0.00";
+            this.labtxtDanJuType.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.labtxtDanJuType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.labtxtDanJuType_KeyPress);
             // 
             // pictureBox4
@@ -424,8 +433,9 @@
             // 
             // labBotton1
             // 
-            this.labBotton1.Location = new System.Drawing.Point(59, 21);
-            this.labBotton1.Text = "组 装 员：";
+            this.labBotton1.Location = new System.Drawing.Point(56, 21);
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "组 装 员*：";
             // 
             // bar1
             // 
@@ -489,6 +499,7 @@
             // 
             // name
             // 
+            this.name.AllowSelection = false;
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.name.HeaderText = "商品名称";
@@ -498,6 +509,7 @@
             // 
             // model
             // 
+            this.model.AllowSelection = false;
             this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -505,6 +517,7 @@
             // 
             // barcode
             // 
+            this.barcode.AllowSelection = false;
             this.barcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.barcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.barcode.HeaderText = "条形码";
@@ -521,6 +534,7 @@
             // 
             // unit
             // 
+            this.unit.AllowSelection = false;
             this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
@@ -537,6 +551,7 @@
             // 
             // remark
             // 
+            this.remark.AllowSelection = false;
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.HeaderText = "备注";
@@ -572,6 +587,7 @@
             // 
             // gridColumnStock
             // 
+            this.gridColumnStock.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnStock.HeaderText = "仓库";
             this.gridColumnStock.Name = "gridColumnStock";
             this.gridColumnStock.Width = 120;
@@ -579,13 +595,18 @@
             // material
             // 
             this.material.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            this.material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.material.HeaderText = "商品代码";
             this.material.Name = "material";
             this.material.Width = 120;
             // 
             // gridColumnname
             // 
+            this.gridColumnname.AllowSelection = false;
             this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnname.CellStyles.Default.Background = background1;
+            this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
             this.gridColumnname.ReadOnly = true;
@@ -593,6 +614,10 @@
             // 
             // gridColumnmodel
             // 
+            this.gridColumnmodel.AllowSelection = false;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmodel.CellStyles.Default.Background = background2;
+            this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
             this.gridColumnmodel.ReadOnly = true;
@@ -600,7 +625,11 @@
             // 
             // gridColumnbarcode
             // 
+            this.gridColumnbarcode.AllowSelection = false;
             this.gridColumnbarcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnbarcode.CellStyles.Default.Background = background3;
+            this.gridColumnbarcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbarcode.HeaderText = "条形码";
             this.gridColumnbarcode.Name = "gridColumnbarcode";
             this.gridColumnbarcode.ReadOnly = true;
@@ -608,6 +637,10 @@
             // 
             // gridColumnunit
             // 
+            this.gridColumnunit.AllowSelection = false;
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnunit.CellStyles.Default.Background = background4;
+            this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
             this.gridColumnunit.ReadOnly = true;
@@ -615,6 +648,10 @@
             // 
             // gridColumnnumber
             // 
+            this.gridColumnnumber.AllowSelection = false;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnnumber.CellStyles.Default.Background = background5;
+            this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
             this.gridColumnnumber.ReadOnly = true;
@@ -622,19 +659,31 @@
             // 
             // gridColumnremark
             // 
+            this.gridColumnremark.AllowSelection = false;
             this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnremark.CellStyles.Default.Background = background6;
+            this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
             this.gridColumnremark.ReadOnly = true;
             // 
             // gridColumnstockCode
             // 
+            this.gridColumnstockCode.AllowSelection = false;
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnstockCode.CellStyles.Default.Background = background7;
+            this.gridColumnstockCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnstockCode.Name = "gridColumnstockCode";
             this.gridColumnstockCode.ReadOnly = true;
             this.gridColumnstockCode.Visible = false;
             // 
             // gridColumncode
             // 
+            this.gridColumncode.AllowSelection = false;
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.gridColumncode.CellStyles.Default.Background = background8;
+            this.gridColumncode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumncode.Name = "gridColumncode";
             this.gridColumncode.ReadOnly = true;
             this.gridColumncode.Visible = false;
@@ -689,6 +738,7 @@
             // 
             // stockInCode
             // 
+            this.stockInCode.AllowSelection = false;
             this.stockInCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.stockInCode.HeaderText = "仓库code";
             this.stockInCode.Name = "stockInCode";
@@ -697,6 +747,7 @@
             // 
             // code
             // 
+            this.code.AllowSelection = false;
             this.code.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.code.HeaderText = "商品code";
             this.code.Name = "code";
@@ -705,12 +756,14 @@
             // 
             // gridColumnid
             // 
+            this.gridColumnid.AllowSelection = false;
             this.gridColumnid.Name = "gridColumnid";
             this.gridColumnid.ReadOnly = true;
             this.gridColumnid.Visible = false;
             // 
             // price
             // 
+            this.price.AllowSelection = false;
             this.price.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.price.Name = "price";
             this.price.ReadOnly = true;
@@ -718,6 +771,7 @@
             // 
             // money
             // 
+            this.money.AllowSelection = false;
             this.money.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.money.Name = "money";
             this.money.ReadOnly = true;
@@ -732,6 +786,7 @@
             this.Text = "WareHouseAssembyForm";
             this.Activated += new System.EventHandler(this.WareHouseAssembyForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseAssembyForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseAssembyForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

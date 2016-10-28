@@ -28,6 +28,7 @@ namespace WSCATProject.Warehouse
         CodingHelper ch = new CodingHelper();
         EmpolyeeInterface employee = new EmpolyeeInterface();
         WarehouseInventoryDetailInterface warehouseinv = new WarehouseInventoryDetailInterface();
+        WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
         #endregion
 
         #region  数据字段
@@ -103,6 +104,7 @@ namespace WSCATProject.Warehouse
                 dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
 
                 //生成code 和显示条形码
                 _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
@@ -164,6 +166,13 @@ namespace WSCATProject.Warehouse
             }
         }
 
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                dataGridViewFuJiTableClick();
+            }
+        }
 
         /// <summary>
         /// 审核按钮事件
@@ -172,91 +181,10 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnShengHe_Click(object sender, EventArgs e)
         {
-            //非空验证
-            if (isNUllValidate() == false)
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
             {
-                return;
-            }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
-            //盘亏单
-            WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
-            //盘亏商品列表
-            List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
-            try
-            {
-                warehouseloss.checkState = 1;
-                warehouseloss.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                warehouseloss.date = dateTimePicker1.Value;
-                warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
-                warehouseloss.isClear = 1;
-                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
-                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
-                warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
-                warehouseloss.reserved1 = "";
-                warehouseloss.reserved2 = "";
-                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
-                warehouseloss.updatetime = DateTime.Now;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码:2605-尝试创建并审核盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
-                return;
-            }
-            try
-            {
-                //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                int i = 0;
-                DateTime nowDataTime = DateTime.Now;
-                foreach (GridRow gr in grs)
-                {
-                    if (gr["name"].FormattedValue != "")
-                    {
-                        i++;
-                        WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
-                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
-                        warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value);
-                        warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
-                        warehouselossDetail.isClear = 1;
-                        warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
-                        warehouselossDetail.lossNumber = Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
-                        warehouselossDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehouselossDetail.materialCode = gr["materialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["materialcode"].Value.ToString());
-                        warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
-                        warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
-                        warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
-                        warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
-                        warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
-                        warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
-                        warehouselossDetail.productionDate = gr["shengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["shengchandate"].Value);
-                        warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
-                        warehouselossDetail.reserved1 = "";
-                        warehouselossDetail.reserved2 = "";
-                        warehouselossDetail.updateDate = DateTime.Now;
-                        warehouselossDetail.warehouseCode = "";
-                        warehouselossDetail.warehouseName = "";
-                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        wareHouselossList.Add(warehouselossDetail);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2606-尝试创建并审核盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
-                return;
-            }
-
-            //增加一条入库单和入库单详细数据
-            object Result = warehouseinvloss.AddAndModify(warehouseloss, wareHouselossList);
-            // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
-            if (Result != null)
-            {
-                MessageBox.Show("审核盘亏单数据成功", "盘亏单温馨提示");
-                pictureBoxshenghe.Image = Properties.Resources.审核;
-                InitForm();
+                ShengHe();
             }
         }
 
@@ -267,91 +195,7 @@ namespace WSCATProject.Warehouse
         /// <param name="e"></param>
         private void toolStripBtnSave_Click(object sender, EventArgs e)
         {
-            //非空验证
-            if (isNUllValidate() == false)
-            {
-                return;
-            }
-            //获得界面上的数据,准备传给base层新增数据
-            WarehouseInventoryLossInterface warehouseinvloss = new WarehouseInventoryLossInterface();
-            //盘亏单
-            WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
-            //盘亏商品列表
-            List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
-            try
-            {
-                warehouseloss.checkState = 0;
-                warehouseloss.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                warehouseloss.date = dateTimePicker1.Value;
-                warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
-                warehouseloss.isClear = 1;
-                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
-                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
-                warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
-                warehouseloss.reserved1 = "";
-                warehouseloss.reserved2 = "";
-                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
-                warehouseloss.updatetime = DateTime.Now;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码:2603-尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
-                return;
-            }
-
-            try
-            {
-                //获得商品列表数据,准备传给base层新增数据
-                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
-                int i = 0;
-                DateTime nowDataTime = DateTime.Now;
-                foreach (GridRow gr in grs)
-                {
-                    if (gr["name"].FormattedValue != "")
-                    {
-                        i++;
-                        WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
-                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
-                        warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
-                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value); ;
-                        warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
-                        warehouselossDetail.isClear = 1;
-                        warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
-                        warehouselossDetail.lossNumber = Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
-                        warehouselossDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
-                        warehouselossDetail.materialCode = gr["materialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["materialcode"].Value.ToString());
-                        warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
-                        warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
-                        warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
-                        warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
-                        warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
-                        warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
-                        warehouselossDetail.productionDate = gr["shengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["shengchandate"].Value);
-                        warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
-                        warehouselossDetail.reserved1 = "";
-                        warehouselossDetail.reserved2 = "";
-                        warehouselossDetail.updateDate = DateTime.Now;
-                        warehouselossDetail.warehouseCode = "";
-                        warehouselossDetail.warehouseName = "";
-                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
-                        wareHouselossList.Add(warehouselossDetail);
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2604-尝试创建盘亏单商品详细数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
-                return;
-            }
-            //增加一条入库单和入库单详细数据
-            object Result = warehouseinvloss.AddAndModify(warehouseloss, wareHouselossList);
-            // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
-            if (Result != null)
-            {
-                MessageBox.Show("新增盘亏单数据成功", "盘亏单温馨提示");
-            }
+            Save();
         }
 
         #region  初始化数据
@@ -476,6 +320,7 @@ namespace WSCATProject.Warehouse
             if (_Click != 1)
             {
                 InitEmployee();
+                dataGridViewFuJia.Focus();
             }
             _Click = 2;
         }
@@ -483,20 +328,11 @@ namespace WSCATProject.Warehouse
 
         private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex == -1)
             {
-                //业务员
-                if (_Click == 1 || _Click == 2)
-                {
-                    string name = dataGridViewFuJia.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                    ltxtbSalsMan.Text = name;
-                    resizablePanel1.Visible = false;
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：2608-双击绑定盘亏员数据出错！请检查：" + ex.Message,"盘亏单温馨提示");
-            }
+            dataGridViewFuJiTableClick();
         }
 
         private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -628,5 +464,288 @@ namespace WSCATProject.Warehouse
         {
             cboOutType.Focus();
         }
+
+        /// <summary>
+        /// 保存按钮的函数
+        /// </summary>
+        private void  Save()
+        {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+
+            //盘亏单
+            WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
+            //盘亏商品列表
+            List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
+            try
+            {
+                warehouseloss.checkState = 0;
+                warehouseloss.code = YanZhengCode() == "" ? "" : XYEEncoding.strCodeHex(YanZhengCode());
+                warehouseloss.date = dateTimePicker1.Value;
+                warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseloss.isClear = 1;
+                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
+                warehouseloss.reserved1 = "";
+                warehouseloss.reserved2 = "";
+                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                warehouseloss.updatetime = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2603-尝试创建盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                return;
+            }
+
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].FormattedValue != "")
+                    {
+                        i++;
+                        WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
+                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
+                        warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
+                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value); ;
+                        warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
+                        warehouselossDetail.isClear = 1;
+                        warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
+                        warehouselossDetail.lossNumber = Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
+                        warehouselossDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehouselossDetail.materialCode = gr["materialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["materialcode"].Value.ToString());
+                        warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
+                        warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
+                        warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
+                        warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
+                        warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
+                        warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
+                        warehouselossDetail.productionDate = gr["shengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["shengchandate"].Value);
+                        warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
+                        warehouselossDetail.reserved1 = "";
+                        warehouselossDetail.reserved2 = "";
+                        warehouselossDetail.updateDate = DateTime.Now;
+                        warehouselossDetail.warehouseCode = "";
+                        warehouselossDetail.warehouseName = "";
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouselossList.Add(warehouselossDetail);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2604-尝试创建盘亏单商品详细数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                return;
+            }
+            //增加一条入库单和入库单详细数据
+            object Result = warehouseinvloss.AddAndModify(warehouseloss, wareHouselossList);
+            // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
+            if (Result != null)
+            {
+                MessageBox.Show("新增盘亏单数据成功", "盘亏单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 审核按钮的函数
+        /// </summary>
+        private void ShengHe()
+        {
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            //盘亏单
+            WarehouseInventoryLoss warehouseloss = new WarehouseInventoryLoss();
+            //盘亏商品列表
+            List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
+            try
+            {
+                warehouseloss.checkState = 1;
+                warehouseloss.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                warehouseloss.date = dateTimePicker1.Value;
+                warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseloss.isClear = 1;
+                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
+                warehouseloss.reserved1 = "";
+                warehouseloss.reserved2 = "";
+                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                warehouseloss.updatetime = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:2605-尝试创建并审核盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                return;
+            }
+            try
+            {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["name"].FormattedValue != "")
+                    {
+                        i++;
+                        WarehouseInventoryLossDetail warehouselossDetail = new WarehouseInventoryLossDetail();
+                        warehouselossDetail.barCode = gr["tiaoxingma"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["tiaoxingma"].Value.ToString());
+                        warehouselossDetail.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text) + i.ToString();
+                        warehouselossDetail.effectiveDate = gr["youxiaoqi"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["youxiaoqi"].Value);
+                        warehouselossDetail.inventoryNumber = Convert.ToDecimal(gr["pandiannumber"].Value.ToString());
+                        warehouselossDetail.isClear = 1;
+                        warehouselossDetail.lossMoney = Convert.ToDecimal(gr["pankuimoney"].Value.ToString());
+                        warehouselossDetail.lossNumber = Convert.ToDecimal(gr["pankuinumber"].Value.ToString());
+                        warehouselossDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                        warehouselossDetail.materialCode = gr["materialcode"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["materialcode"].Value.ToString());
+                        warehouselossDetail.materialDaima = gr["material"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["material"].Value.ToString());
+                        warehouselossDetail.materialModel = gr["model"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["model"].Value.ToString());
+                        warehouselossDetail.materialName = gr["name"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["name"].Value.ToString());
+                        warehouselossDetail.materialUnit = gr["unit"].Value.ToString() == "" ? "" : XYEEncoding.strCodeHex(gr["unit"].Value.ToString());
+                        warehouselossDetail.number = Convert.ToDecimal(gr["zhangcunnumber"].Value.ToString());
+                        warehouselossDetail.price = Convert.ToDecimal(gr["price"].Value.ToString());
+                        warehouselossDetail.productionDate = gr["shengchandate"].Value == DBNull.Value ? Convert.ToDateTime("1990-01-01") : Convert.ToDateTime(gr["shengchandate"].Value);
+                        warehouselossDetail.qualityDate = Convert.ToDecimal(gr["baozhiqi"].Value.ToString());
+                        warehouselossDetail.reserved1 = "";
+                        warehouselossDetail.reserved2 = "";
+                        warehouselossDetail.updateDate = DateTime.Now;
+                        warehouselossDetail.warehouseCode = "";
+                        warehouselossDetail.warehouseName = "";
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        wareHouselossList.Add(warehouselossDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2606-尝试创建并审核盘亏单商品数据出错,请检查输入" + ex.Message, "盘亏单温馨提示");
+                return;
+            }
+
+            //增加一条入库单和入库单详细数据
+            object Result = warehouseinvloss.AddAndModify(warehouseloss, wareHouselossList);
+            // this.textBoxid.Text = warehouseInResult.ToString(); //前单后单
+            if (Result != null)
+            {
+                MessageBox.Show("审核盘亏单数据成功", "盘亏单温馨提示");
+                pictureBoxshenghe.Image = Properties.Resources.审核;
+                InitForm();
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式函数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseInventoryLossForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //前单
+            if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("前单");
+                return;
+            }
+            //后单
+            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("后单");
+                return;
+            }
+            //新增
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("新增");
+                return;
+            }
+            //保存
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            {
+                Save();
+                return;
+            }
+            //审核
+            if (e.KeyCode == Keys.F4)
+            {
+                DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    ShengHe();
+                }
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 小表格的点击事件
+        /// </summary>
+        private void dataGridViewFuJiTableClick()
+        {
+            try
+            {
+                //业务员
+                if (_Click == 1 || _Click == 2)
+                {
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2508-双击绑定盘盈员数据出错！请检查：" + ex.Message, "盘盈单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 判断code是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string YanZhengCode()
+        {
+            if (warehouseinvloss.Exists(XYEEncoding.strCodeHex(_WareHousePanKuiCode)))
+            {
+                //生成code 和显示条形码
+                _WareHousePanKuiCode = BuildCode.ModuleCode("WIL");
+            }
+            else
+            {
+                _WareHousePanKuiCode = textBoxOddNumbers.Text;
+            }
+            return _WareHousePanKuiCode;
+        }
+
     }
 }

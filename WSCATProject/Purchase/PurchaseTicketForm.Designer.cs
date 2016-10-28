@@ -245,7 +245,7 @@
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop3.Location = new System.Drawing.Point(96, 74);
-            this.labtextboxTop3.MaxLength = 999999999;
+            this.labtextboxTop3.MaxLength = 12;
             this.labtextboxTop3.Size = new System.Drawing.Size(121, 16);
             this.labtextboxTop3.Text = "0.00";
             this.labtextboxTop3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -313,6 +313,7 @@
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop5.ForeColor = System.Drawing.Color.Gray;
             this.labtextboxTop5.Location = new System.Drawing.Point(339, 74);
+            this.labtextboxTop5.MaxLength = 12;
             this.labtextboxTop5.ReadOnly = true;
             this.labtextboxTop5.Size = new System.Drawing.Size(122, 16);
             this.labtextboxTop5.Text = "0.00";
@@ -402,6 +403,7 @@
             // 
             // labTop6
             // 
+            this.labTop6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.labTop6.Location = new System.Drawing.Point(527, 77);
             this.labTop6.Size = new System.Drawing.Size(71, 12);
             this.labTop6.Text = "物流 类型：";
@@ -498,7 +500,8 @@
             // 
             // labBotton1
             // 
-            this.labBotton1.Text = "采 购 员：";
+            this.labBotton1.Size = new System.Drawing.Size(71, 12);
+            this.labBotton1.Text = "采 购 员*：";
             // 
             // resizablePanelData
             // 
@@ -547,6 +550,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnwuliaocode);
+            this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 3;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 349);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -674,6 +678,8 @@
             // labelWuLiuDanHao
             // 
             this.labelWuLiuDanHao.AutoSize = true;
+            this.labelWuLiuDanHao.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelWuLiuDanHao.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.labelWuLiuDanHao.Location = new System.Drawing.Point(785, 77);
             this.labelWuLiuDanHao.Name = "labelWuLiuDanHao";
             this.labelWuLiuDanHao.Size = new System.Drawing.Size(65, 12);
@@ -682,6 +688,7 @@
             // 
             // textBoxKuaiDiDanHao
             // 
+            this.textBoxKuaiDiDanHao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -692,9 +699,11 @@
             this.textBoxKuaiDiDanHao.Border.Class = "SideNavStrip";
             this.textBoxKuaiDiDanHao.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxKuaiDiDanHao.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxKuaiDiDanHao.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBoxKuaiDiDanHao.Location = new System.Drawing.Point(850, 74);
             this.textBoxKuaiDiDanHao.Name = "textBoxKuaiDiDanHao";
             this.textBoxKuaiDiDanHao.PreventEnterBeep = true;
+            this.textBoxKuaiDiDanHao.ReadOnly = true;
             this.textBoxKuaiDiDanHao.Size = new System.Drawing.Size(120, 16);
             this.textBoxKuaiDiDanHao.TabIndex = 64;
             // 
@@ -723,6 +732,7 @@
             this.textBoxWeiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxWeiKaiPiao.ForeColor = System.Drawing.Color.Gray;
             this.textBoxWeiKaiPiao.Location = new System.Drawing.Point(339, 101);
+            this.textBoxWeiKaiPiao.MaxLength = 12;
             this.textBoxWeiKaiPiao.Name = "textBoxWeiKaiPiao";
             this.textBoxWeiKaiPiao.PreventEnterBeep = true;
             this.textBoxWeiKaiPiao.ReadOnly = true;
@@ -756,6 +766,7 @@
             this.textBoxYiKaiPiao.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxYiKaiPiao.ForeColor = System.Drawing.Color.Gray;
             this.textBoxYiKaiPiao.Location = new System.Drawing.Point(592, 101);
+            this.textBoxYiKaiPiao.MaxLength = 12;
             this.textBoxYiKaiPiao.Name = "textBoxYiKaiPiao";
             this.textBoxYiKaiPiao.PreventEnterBeep = true;
             this.textBoxYiKaiPiao.ReadOnly = true;
@@ -768,6 +779,7 @@
             // 
             this.comboBoxEWuLiuType.DisplayMember = "Text";
             this.comboBoxEWuLiuType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEWuLiuType.Enabled = false;
             this.comboBoxEWuLiuType.FormattingEnabled = true;
             this.comboBoxEWuLiuType.ItemHeight = 15;
             this.comboBoxEWuLiuType.Items.AddRange(new object[] {
@@ -1079,6 +1091,7 @@
             this.Text = "PurchaseTicketForm";
             this.Activated += new System.EventHandler(this.PurchaseTicketForm_Activated);
             this.Load += new System.EventHandler(this.PurchaseTicketForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PurchaseTicketForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

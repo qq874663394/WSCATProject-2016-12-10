@@ -30,6 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WareHouseInventoryForm));
+            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.labelTitle = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -160,8 +172,8 @@
             this.toolStripButtonAdd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(41, 67);
-            this.toolStripButtonAdd.Text = "添加";
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(61, 67);
+            this.toolStripButtonAdd.Text = "添加(&A)";
             this.toolStripButtonAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonAdd.ToolTipText = "添加商品";
@@ -173,8 +185,8 @@
             this.toolStripButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonClear.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonClear.Name = "toolStripButtonClear";
-            this.toolStripButtonClear.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonClear.Text = "清除";
+            this.toolStripButtonClear.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtonClear.Text = "清除(&C)";
             this.toolStripButtonClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClear.ToolTipText = "清除盘点数量（Del）";
@@ -186,8 +198,8 @@
             this.toolStripButtonBianZhi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBianZhi.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonBianZhi.Name = "toolStripButtonBianZhi";
-            this.toolStripButtonBianZhi.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonBianZhi.Text = "编制";
+            this.toolStripButtonBianZhi.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtonBianZhi.Text = "编制(&Z)";
             this.toolStripButtonBianZhi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonBianZhi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonBianZhi.ToolTipText = "编制盘点报告";
@@ -201,8 +213,8 @@
             this.toolStripButtonShuaiXin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonShuaiXin.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.toolStripButtonShuaiXin.Name = "toolStripButtonShuaiXin";
-            this.toolStripButtonShuaiXin.Size = new System.Drawing.Size(41, 67);
-            this.toolStripButtonShuaiXin.Text = "刷新";
+            this.toolStripButtonShuaiXin.Size = new System.Drawing.Size(60, 67);
+            this.toolStripButtonShuaiXin.Text = "刷新(&F5)";
             this.toolStripButtonShuaiXin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonShuaiXin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonShuaiXin.ToolTipText = "刷新（F5）";
@@ -214,8 +226,8 @@
             this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondayin.Name = "toolStripButtondayin";
-            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtondayin.Text = "打印";
+            this.toolStripButtondayin.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtondayin.Text = "打印(&P)";
             this.toolStripButtondayin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondayin.ToolTipText = "打印盘点表(Ctrl+P)";
@@ -227,8 +239,8 @@
             this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondaochu.Name = "toolStripButtondaochu";
-            this.toolStripButtondaochu.Size = new System.Drawing.Size(75, 66);
-            this.toolStripButtondaochu.Text = "导出Excel";
+            this.toolStripButtondaochu.Size = new System.Drawing.Size(93, 66);
+            this.toolStripButtondaochu.Text = "导出Excel(&T)";
             this.toolStripButtondaochu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
@@ -240,8 +252,8 @@
             this.toolStripButtonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonClose.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonClose.Name = "toolStripButtonClose";
-            this.toolStripButtonClose.Size = new System.Drawing.Size(41, 66);
-            this.toolStripButtonClose.Text = "关闭";
+            this.toolStripButtonClose.Size = new System.Drawing.Size(60, 66);
+            this.toolStripButtonClose.Text = "关闭(&X)";
             this.toolStripButtonClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
@@ -285,7 +297,7 @@
             this.cboPanDianIdea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPanDianIdea.FormattingEnabled = true;
             this.cboPanDianIdea.ItemHeight = 15;
-            this.cboPanDianIdea.Location = new System.Drawing.Point(504, 81);
+            this.cboPanDianIdea.Location = new System.Drawing.Point(528, 81);
             this.cboPanDianIdea.Name = "cboPanDianIdea";
             this.cboPanDianIdea.Size = new System.Drawing.Size(121, 21);
             this.cboPanDianIdea.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -300,7 +312,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(443, 81);
+            this.labelX2.Location = new System.Drawing.Point(467, 81);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 51;
@@ -349,6 +361,9 @@
             // 
             // storge
             // 
+            this.storge.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background1.Color1 = System.Drawing.Color.Azure;
+            this.storge.CellStyles.Default.Background = background1;
             this.storge.DataPropertyName = "storageName";
             this.storge.HeaderText = "仓库";
             this.storge.Name = "storge";
@@ -357,6 +372,8 @@
             // daima
             // 
             this.daima.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background2.Color1 = System.Drawing.Color.Azure;
+            this.daima.CellStyles.Default.Background = background2;
             this.daima.DataPropertyName = "materialDaima";
             this.daima.HeaderText = "商品代码";
             this.daima.Name = "daima";
@@ -365,6 +382,8 @@
             // name
             // 
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background3.Color1 = System.Drawing.Color.Azure;
+            this.name.CellStyles.Default.Background = background3;
             this.name.DataPropertyName = "name";
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
@@ -372,6 +391,8 @@
             // 
             // model
             // 
+            background4.Color1 = System.Drawing.Color.Azure;
+            this.model.CellStyles.Default.Background = background4;
             this.model.DataPropertyName = "model";
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -381,6 +402,8 @@
             // tiaoxingma
             // 
             this.tiaoxingma.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background5.Color1 = System.Drawing.Color.Azure;
+            this.tiaoxingma.CellStyles.Default.Background = background5;
             this.tiaoxingma.DataPropertyName = "barcode";
             this.tiaoxingma.HeaderText = "条形码";
             this.tiaoxingma.Name = "tiaoxingma";
@@ -389,6 +412,8 @@
             // 
             // shengchandate
             // 
+            background6.Color1 = System.Drawing.Color.Azure;
+            this.shengchandate.CellStyles.Default.Background = background6;
             this.shengchandate.DataPropertyName = "productionDate";
             this.shengchandate.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.shengchandate.HeaderText = "生产/采购日期";
@@ -397,6 +422,8 @@
             // 
             // baozhiqi
             // 
+            background7.Color1 = System.Drawing.Color.Azure;
+            this.baozhiqi.CellStyles.Default.Background = background7;
             this.baozhiqi.DataPropertyName = "qualityDate";
             this.baozhiqi.HeaderStyles.Default.AllowWrap = DevComponents.DotNetBar.SuperGrid.Style.Tbool.True;
             this.baozhiqi.HeaderText = "  保质期   （天）";
@@ -406,6 +433,8 @@
             // 
             // unit
             // 
+            background8.Color1 = System.Drawing.Color.Azure;
+            this.unit.CellStyles.Default.Background = background8;
             this.unit.DataPropertyName = "unit";
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
@@ -414,6 +443,8 @@
             // 
             // zhangcunnumber
             // 
+            background9.Color1 = System.Drawing.Color.Azure;
+            this.zhangcunnumber.CellStyles.Default.Background = background9;
             this.zhangcunnumber.DataPropertyName = "number";
             this.zhangcunnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.zhangcunnumber.HeaderText = "账存数量";
@@ -429,6 +460,8 @@
             // 
             // panyingnumber
             // 
+            background10.Color1 = System.Drawing.Color.Azure;
+            this.panyingnumber.CellStyles.Default.Background = background10;
             this.panyingnumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.panyingnumber.HeaderText = "盘盈数量";
             this.panyingnumber.Name = "panyingnumber";
@@ -437,6 +470,8 @@
             // 
             // pankuinumber
             // 
+            background11.Color1 = System.Drawing.Color.Azure;
+            this.pankuinumber.CellStyles.Default.Background = background11;
             this.pankuinumber.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.pankuinumber.HeaderText = "盘亏数量";
             this.pankuinumber.Name = "pankuinumber";
@@ -446,6 +481,8 @@
             // remark
             // 
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
+            background12.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background12;
             this.remark.DataPropertyName = "remark";
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";
@@ -619,6 +656,7 @@
             this.Text = "录入盘点数据";
             this.Activated += new System.EventHandler(this.WareHouseInventoryForm_Activated);
             this.Load += new System.EventHandler(this.WareHouseInventoryForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WareHouseInventoryForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WareHouseInventoryForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();

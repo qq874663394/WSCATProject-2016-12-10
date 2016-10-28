@@ -337,6 +337,7 @@ namespace WSCATProject.Warehouse
             this.Dispose();
         }
         #endregion
+
         /// <summary>
         /// 生成盘亏单的点击事件
         /// </summary>
@@ -349,6 +350,7 @@ namespace WSCATProject.Warehouse
             wareinventloss.StorageName = _storageName;
             wareinventloss.ShowDialog();
         }
+
         /// <summary>
         /// 生成盘盈单的点击事件
         /// </summary>
@@ -365,6 +367,51 @@ namespace WSCATProject.Warehouse
         private void WareHouseInventoryReportForm_Activated(object sender, EventArgs e)
         {
             cboPanDianIdea.Focus();
+        }
+
+        /// <summary>
+        /// 快捷方式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WareHouseInventoryReportForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //盘盈单
+            if (e.KeyCode == Keys.Y && e.Modifiers == Keys.Control)
+            {
+                toolStripButtonProfit_Click(sender, e);
+                return;
+            }
+            //盘亏单
+            if (e.KeyCode == Keys.L && e.Modifiers == Keys.Control)
+            {
+                toolStripButtonLoss_Click(sender, e);
+                return;
+            }
+            //刷新
+            if (e.KeyCode == Keys.F5)
+            {
+                MessageBox.Show("刷新");
+                return;
+            }
+            //打印
+            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("打印");
+                return;
+            }
+            //导出Excel
+            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            {
+                MessageBox.Show("导出Excel");
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+                this.Dispose();
+            }
         }
     }
 }
