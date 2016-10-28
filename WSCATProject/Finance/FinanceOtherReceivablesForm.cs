@@ -26,6 +26,7 @@ namespace WSCATProject.Finance
         ClientInterface client = new ClientInterface();//客户
         BankAccountInterface bank = new BankAccountInterface();//结算账户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工
+        ProjectInCostInterface projectInCost = new ProjectInCostInterface();//收入类别
         #endregion
 
         #region 数据字段
@@ -63,6 +64,14 @@ namespace WSCATProject.Finance
         /// </summary>
         private string _financeReceivablesCode;
         /// <summary>
+        ///所有收入类别
+        /// </summary>
+        private DataTable _AllProjectInCost = null;
+        /// <summary>
+        /// 保存收入类别code
+        /// </summary>
+        private string _ProjectInCostCode;
+        /// <summary>
         /// 统计单据金额
         /// </summary>
         private decimal _Money;
@@ -83,14 +92,14 @@ namespace WSCATProject.Finance
                 Rows[superGridControlShangPing.PrimaryGrid.Rows.Count - 1];
             gr.ReadOnly = true;
             gr.CellStyles.Default.Background.Color1 = Color.SkyBlue;
-            //gr.Cells["gridColumnShouRuType"].Value = "合计";
-            //gr.Cells["gridColumnShouRuType"].CellStyles.Default.Alignment =
+            //gr.Cells["material"].Value = "合计";
+            //gr.Cells["material"].CellStyles.Default.Alignment =
             //    DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnMoney"].Value = 0;
             gr.Cells["gridColumnMoney"].CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             gr.Cells["gridColumnMoney"].CellStyles.Default.Background.Color1 = Color.Orange;
             #region 表格最后一行不能点击
-            gr.Cells["gridColumnShouRuType"].AllowSelection = false;
+            gr.Cells["material"].AllowSelection = false;
             gr.Cells["gridColumnMoney"].AllowSelection = false;
             gr.Cells["gridColumnRemark"].AllowSelection = false;
             #endregion
@@ -284,7 +293,51 @@ namespace WSCATProject.Finance
             }
         }
 
+        /// <summary>
+        /// 初始化收入类别
+        /// </summary>
+        private void InitProjectInCost()
+        {
+            try
+            {
+                dataGridViewShangPing.DataSource = null;
+                dataGridViewShangPing.Columns.Clear();
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "编号";
+                dgvc.DataPropertyName = "code";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewShangPing.Columns.Add(dgvc);
 
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "projectCode";
+                dgvc.HeaderText = "收入类别代码";
+                dgvc.DataPropertyName = "projectCode";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "收入类别名称";
+                dgvc.DataPropertyName = "name";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewShangPing.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "parentId";
+                dgvc.Visible = false;
+                dgvc.HeaderText = "parentId";
+                dgvc.DataPropertyName = "parentId";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewShangPing.Columns.Add(dgvc);
+                resizablePanelData.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("初始化收入类别失败，请检查：" + ex.Message);
+            }
+        }
 
         /// <summary>
         /// 标记那个控件不可用
@@ -382,8 +435,15 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
             //内容居中
             superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+            superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+            superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
             //调用合计行数据
             InitDataGridView();
+
+            //金额
+            GridDoubleInputEditControl gdiecMoney = superGridControlShangPing.PrimaryGrid.Columns["gridColumnMoney"].EditControl as GridDoubleInputEditControl;
+            gdiecMoney.MinValue = 1;
+            gdiecMoney.MaxValue = 999999999;
             #endregion
 
             //客户
@@ -392,6 +452,8 @@ namespace WSCATProject.Finance
             _AllBank = bank.GetList(999, "", false, false);
             //收款员
             _AllEmployee = employee.SelSupplierTable(false);
+            //收入类别
+            _AllProjectInCost = projectInCost.GetList(999, "");
 
             //生成其它收款单code和显示条形码
             _financeReceivablesCode = BuildCode.ModuleCode("SRS");
@@ -404,6 +466,7 @@ namespace WSCATProject.Finance
             toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
             toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
             dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;//表格双击事件
+            dataGridViewShangPing.CellDoubleClick += dataGridViewShangPing_CellDoubleClick;
             dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
         }
 
@@ -541,6 +604,83 @@ namespace WSCATProject.Finance
                 dataGridViewFuJiaTableClick();
             }
         }
+
+        /// <summary>
+        /// 表格里查询收入类别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            if (e.GridCell.GridColumn.Name == "material")
+            {
+                SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                string typeDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                {
+                    //模糊查询收入类别列表
+                    _AllProjectInCost = projectInCost.GetList(0, "" + typeDaima + "");
+                    InitProjectInCost();
+                }
+                else
+                {
+                    //查询收入类别列表
+                    _AllProjectInCost = projectInCost.GetList(999, "");
+                    InitProjectInCost();
+                }
+
+                dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllProjectInCost);
+
+            }
+        }
+
+        /// <summary>
+        /// 双击绑定商品数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridViewShangPing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            dataGridViewShangPingTableClick();
+        }
+
+        /// <summary>
+        /// dataGridViewShangPing表格双击事件函数
+        /// </summary>
+        private void dataGridViewShangPingTableClick()
+        {
+            try
+            {
+                //是否要新增一行的标记
+                bool newAdd = false;
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                //id字段为空 说明是没有数据的行 不是修改而是新增
+                if (gr.Cells["gridColumnid"].Value == null)
+                {
+                    newAdd = true;
+                }
+                gr.Cells["material"].Value = dataGridViewShangPing.Rows[dataGridViewShangPing.CurrentRow.Index].Cells["name"].Value;
+                resizablePanelData.Visible = false;
+                //新增一行
+                if (newAdd)
+                {
+                    superGridControlShangPing.PrimaryGrid.NewRow(superGridControlShangPing.PrimaryGrid.Rows.Count);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-双击绑定收入类别失败！" + ex.Message, "其它收款单温馨提示！");
+            }
+            superGridControlShangPing.Focus();
+            SendKeys.Send("^{End}{Home}");
+        }
+
         #endregion
 
         #region 模糊查询
@@ -790,15 +930,7 @@ namespace WSCATProject.Finance
             }
         }
 
-        /// <summary>
-        /// 表格里查询收入类别
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
-        {
 
-        }
 
         /// <summary>
         /// 表格验证事件
@@ -882,5 +1014,7 @@ namespace WSCATProject.Finance
         {
 
         }
+
+ 
     }
 }

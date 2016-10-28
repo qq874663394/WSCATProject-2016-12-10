@@ -889,12 +889,12 @@ namespace WSCATProject.Purchase
                 gdiecNumber.MaxValue = 999999999;
                 //单价
                 GridDoubleInputEditControl gdiecPrice = superGridControlShangPing.PrimaryGrid.Columns["price"].EditControl as GridDoubleInputEditControl;
-                gdiecNumber.MinValue = 1;
-                gdiecNumber.MaxValue = 999999999;
+                gdiecPrice.MinValue = 1;
+                gdiecPrice.MaxValue = 999999999;
                 //折扣率
                 GridDoubleInputEditControl gdiecDiscountRate = superGridControlShangPing.PrimaryGrid.Columns["discountRate"].EditControl as GridDoubleInputEditControl;
-                gdiecNumber.MinValue = 1;
-                gdiecNumber.MaxValue = 100;
+                gdiecDiscountRate.MinValue = 1;
+                gdiecDiscountRate.MaxValue = 100;
 
                 //生成采购订单code和显示条形码
                 _PurchaseOrderCode = BuildCode.ModuleCode("POR");

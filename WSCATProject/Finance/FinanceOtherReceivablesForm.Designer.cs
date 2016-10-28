@@ -40,9 +40,10 @@
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
             this.comboItem7 = new DevComponents.Editors.ComboItem();
-            this.gridColumnShouRuType = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnRemark = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -469,17 +470,16 @@
             // 
             // superGridControlShangPing
             // 
-            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Left;
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
             // 
             // 
             // 
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnShouRuType);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.material);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnRemark);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.NoRowsText = "";
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlShangPing.Size = new System.Drawing.Size(635, 369);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
             // 
@@ -581,12 +581,12 @@
             // 
             this.comboItem7.Text = "银行汇票";
             // 
-            // gridColumnShouRuType
+            // material
             // 
-            this.gridColumnShouRuType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
-            this.gridColumnShouRuType.HeaderText = "收入类别*";
-            this.gridColumnShouRuType.Name = "gridColumnShouRuType";
-            this.gridColumnShouRuType.Width = 250;
+            this.material.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
+            this.material.HeaderText = "收入类别*";
+            this.material.Name = "material";
+            this.material.Width = 250;
             // 
             // gridColumnMoney
             // 
@@ -605,6 +605,11 @@
             this.gridColumnRemark.HeaderText = "备注";
             this.gridColumnRemark.Name = "gridColumnRemark";
             this.gridColumnRemark.Width = 150;
+            // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.Visible = false;
             // 
             // FinanceOtherReceivablesForm
             // 
@@ -657,8 +662,9 @@
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.Editors.ComboItem comboItem6;
         private DevComponents.Editors.ComboItem comboItem7;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnShouRuType;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnMoney;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnRemark;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }
