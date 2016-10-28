@@ -20,6 +20,7 @@ namespace Model
         private string _settlementtype;
         private string _settlementnumber;
         private decimal? _settlementmoney;
+        private int? _checkstate;
         private DateTime? _date = DateTime.Now;
         private string _salescode;
         private string _salesman;
@@ -164,6 +165,22 @@ namespace Model
             get { return _settlementmoney; }
             set {  _settlementmoney = value;}
         }
+        /// <summary>
+        /// 审核状态0、未审核，1、已审核
+        /// </summary>
+        public int? Checkstate
+        {
+            get
+            {
+                return Checkstate;
+            }
+
+            set
+            {
+                Checkstate = value;
+            }
+        }
+
         #endregion Model
 
     }
