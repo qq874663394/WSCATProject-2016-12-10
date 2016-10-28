@@ -19,6 +19,8 @@ namespace Model
         private string _accountcode;
         private string _settlementtype;
         private string _settlementnumber;
+        private decimal? _settlementmoney;
+        private int? _checkstate;
         private DateTime? _date;
         private string _salescode;
         private string _salesman;
@@ -154,6 +156,29 @@ namespace Model
         {
             set { _updatedate = value; }
             get { return _updatedate; }
+        }
+        /// <summary>
+        /// 结算金额
+        /// </summary>
+        public decimal? Settlementmoney
+        {
+            get {return _settlementmoney; }
+            set  {  _settlementmoney = value;}
+        }
+        /// <summary>
+        /// 审核状态
+        /// </summary>
+        public int? Checkstate
+        {
+            get
+            {
+                return _checkstate;
+            }
+
+            set
+            {
+                _checkstate = value;
+            }
         }
         #endregion Model
 

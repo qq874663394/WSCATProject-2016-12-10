@@ -26,6 +26,7 @@ namespace WSCATProject.Finance
         SupplierInterface supplier = new SupplierInterface();//供应商
         BankAccountInterface bank = new BankAccountInterface();//结算账户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
+        ProjectCostInterface projectCostInterface = new ProjectCostInterface();//
         #endregion
 
         #region 数据字段
@@ -55,11 +56,19 @@ namespace WSCATProject.Finance
         /// </summary>
         private string _employeeCode;
 
+        /// <summary>
+        /// 账号code
+        /// </summary>
         private string _bankCode;
         /// <summary>
         /// 其他付款单的code
         /// </summary>
         private string _financeOtherPaymentCode;
+
+        /// <summary>
+        /// 所以其他付款项目
+        /// </summary>
+        private DataTable _AllProjectInCost;
         #endregion
 
         #region 初始化数据
@@ -619,6 +628,36 @@ namespace WSCATProject.Finance
         private void Review()
         {
 
+        }
+
+        /// <summary>
+        /// 表格的第一个格子的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
+        {
+            if (e.GridCell.GridColumn.Name == "material")
+            {
+                SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                string typeDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                {
+                    //模糊查询收入类别列表
+                    //_AllProjectInCost = projectInCost.GetList(0, "" + typeDaima + "");
+                    //InitProjectInCost();
+                }
+                else
+                {
+                    //查询收入类别列表
+                    //_AllProjectInCost = projectInCost.GetList(999, "");
+                    //InitProjectInCost();
+                }
+
+                dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllProjectInCost);
+
+            }
         }
     }
 }
