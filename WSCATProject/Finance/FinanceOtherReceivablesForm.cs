@@ -1019,7 +1019,7 @@ namespace WSCATProject.Finance
             {
                 //其它收款单
                 FinanceOtherExpensesIn financeOtherExpensesIn = new FinanceOtherExpensesIn();
-                financeOtherExpensesIn.code = XYEEncoding.strCodeHex(_financeReceivablesCode);//其它收款单单号
+                financeOtherExpensesIn.code = XYEEncoding.strCodeHex(validateCode());//其它收款单单号
                 if (labtextboxTop2.Text == null || labtextboxTop2.Text == "")
                 {
                     MessageBox.Show("客户不能为空！请输入：");
@@ -1087,10 +1087,20 @@ namespace WSCATProject.Finance
                             superGridControlShangPing.Focus();
                             return;
                         }
-                        //financeOtherExpenseInDetail.mai = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（qi收款单code）
-                        //financeOtherExpenseInDetail.code = XYEEncoding.strCodeHex(_PurchasePaymentCode + i.ToString());//付款详单code
-                        //financeOtherExpenseInDetail.salesCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
-                        financeOtherExpenseInDetail.money = Convert.ToDecimal(gr["gridColumnMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["gridColumnMoney"].Value));//未付金额
+                        double money = Convert.ToDouble(gr["gridColumnMoney"].Value);
+                        if (money == 0.00)
+                        {
+                            MessageBox.Show("表格里金额不能为0，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        else
+                        {
+                            financeOtherExpenseInDetail.money = Convert.ToDecimal(gr["gridColumnMoney"].Value);//金额
+                        }
+                        financeOtherExpenseInDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code
+                        financeOtherExpenseInDetail.code = XYEEncoding.strCodeHex(_financeReceivablesCode + i.ToString());//其它收款单详细code
+                        financeOtherExpenseInDetail.projectInCode = XYEEncoding.strCodeHex(_ProjectInCostCode);//收入类别code                   
                         financeOtherExpenseInDetail.remark = XYEEncoding.strCodeHex(gr["gridColumnRemark"].Value.ToString());//备注  
 
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
@@ -1100,14 +1110,14 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3513-尝试创建付款单详细数据出错!请检查:" + ex.Message, "付款单温馨提示");
+                MessageBox.Show("错误代码：-尝试创建其它收款单详细数据出错!请检查:" + ex.Message, "其它收款单温馨提示");
                 return;
             }
-            //增加一条付款单和付款单详细数据
+            //增加一条其他收款单和其它收款单详细数据
             //object financePaymentResult = financePaymentinterface.AddOrUpdateToMainOrDetail(financepayment, financelpaymentDetailList);
             //if (financePaymentResult != null)
             //{
-            //    MessageBox.Show("新增付款单数据成功", "付款单温馨提示");
+            //    MessageBox.Show("新增其它收款单数据成功", "其它收款单温馨提示");
             //}
         }
 
@@ -1119,6 +1129,13 @@ namespace WSCATProject.Finance
 
         }
 
-
+        /// <summary>
+        /// 验证其它收款单单号是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string validateCode()
+        {
+            return _financeReceivablesCode;
+        }
     }
 }
