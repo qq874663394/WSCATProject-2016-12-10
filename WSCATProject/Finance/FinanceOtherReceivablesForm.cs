@@ -421,7 +421,7 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void FinanceOtherReceivablesForm_Load(object sender, EventArgs e)
         {
-            #region
+            #region 初始化
             pictureBoxShengHe.Parent = pictureBoxtitle;
             cboType.SelectedIndex = 0;
             cboMethed.SelectedIndex = 0;

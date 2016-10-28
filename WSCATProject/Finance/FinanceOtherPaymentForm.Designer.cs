@@ -37,6 +37,7 @@
             this.gridColumnMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnbeizhu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.comboBoxjiesuanfangshi = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -440,8 +441,11 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.material);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
+            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
+            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
             // 
             // pictureBoxMax
             // 
@@ -528,6 +532,11 @@
             this.comboBoxjiesuanfangshi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxjiesuanfangshi.TabIndex = 55;
             // 
+            // gridColumnid
+            // 
+            this.gridColumnid.Name = "gridColumnid";
+            this.gridColumnid.Visible = false;
+            // 
             // FinanceOtherPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -576,5 +585,6 @@
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxjiesuanfangshi;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
     }
 }

@@ -38,7 +38,7 @@ namespace LogicLayer.Base
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("materialDaima like '%{0}%'", fieldValue);
+                        strWhere += string.Format("projectCode like '%{0}%'", fieldValue);
                         break;
                     case 1:
                         strWhere += string.Format("name like '%{0}%'", fieldValue);
