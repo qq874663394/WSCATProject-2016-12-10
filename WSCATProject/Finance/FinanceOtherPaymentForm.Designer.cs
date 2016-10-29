@@ -243,7 +243,7 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(389, 45);
+            this.labtextboxTop4.Location = new System.Drawing.Point(391, 45);
             this.labtextboxTop4.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop4.TextChanged += new System.EventHandler(this.labtextboxBank_TextChanged);
             // 
@@ -258,7 +258,7 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop2.Location = new System.Drawing.Point(389, 13);
+            this.labtextboxTop2.Location = new System.Drawing.Point(391, 13);
             this.labtextboxTop2.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxSupplier_TextChanged);
             // 
@@ -283,12 +283,12 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(520, 43);
+            this.pictureBox3.Location = new System.Drawing.Point(522, 42);
             this.pictureBox3.Click += new System.EventHandler(this.pictureBoxBank_Click);
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(520, 7);
+            this.pictureBox2.Location = new System.Drawing.Point(523, 6);
             this.pictureBox2.Click += new System.EventHandler(this.pictureBoxSupplier_Click);
             // 
             // checkBox1
@@ -330,7 +330,7 @@
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(329, 47);
+            this.labTop4.Location = new System.Drawing.Point(325, 47);
             this.labTop4.Text = "结算账户：";
             // 
             // labTop3
@@ -342,7 +342,7 @@
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(329, 17);
+            this.labTop2.Location = new System.Drawing.Point(325, 17);
             // 
             // labTop1
             // 
@@ -397,7 +397,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(389, 76);
+            this.labtextboxBotton2.Location = new System.Drawing.Point(391, 76);
             this.labtextboxBotton2.Size = new System.Drawing.Size(145, 16);
             // 
             // ltxtbSalsMan
@@ -420,7 +420,7 @@
             // 
             // labBotton2
             // 
-            this.labBotton2.Location = new System.Drawing.Point(328, 78);
+            this.labBotton2.Location = new System.Drawing.Point(325, 78);
             // 
             // labBotton3
             // 
