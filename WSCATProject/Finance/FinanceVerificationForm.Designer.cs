@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background49 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background50 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background51 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background52 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background53 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background54 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background55 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background56 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background43 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background44 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background45 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background46 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background47 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background48 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.pictureBoxBarCode = new System.Windows.Forms.PictureBox();
             this.cboHeXiaoType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
@@ -205,7 +205,8 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(522, 145);
+            this.labtextboxTop7.Location = new System.Drawing.Point(734, 15);
+            this.labtextboxTop7.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop7.Visible = false;
             // 
             // labtextboxTop9
@@ -233,7 +234,7 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop8.Location = new System.Drawing.Point(650, 156);
+            this.labtextboxTop8.Location = new System.Drawing.Point(650, 118);
             this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
@@ -243,13 +244,13 @@
             // 
             // 
             this.labtextboxTop5.Border.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.labtextboxTop5.Border.BorderBottomColor = System.Drawing.Color.Black;
+            this.labtextboxTop5.Border.BorderBottomColor = System.Drawing.SystemColors.GrayText;
             this.labtextboxTop5.Border.BorderBottomWidth = 1;
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop5.Enabled = false;
-            this.labtextboxTop5.Location = new System.Drawing.Point(733, 15);
+            this.labtextboxTop5.Location = new System.Drawing.Point(418, 51);
             this.labtextboxTop5.Size = new System.Drawing.Size(130, 16);
             // 
             // labtextboxTop4
@@ -263,11 +264,13 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(651, 121);
+            this.labtextboxTop4.Location = new System.Drawing.Point(734, 51);
+            this.labtextboxTop4.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
             // 
+            this.labtextboxTop2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -291,22 +294,25 @@
             this.labtxtDanJuType.Border.BorderGradientAngle = 0;
             this.labtxtDanJuType.Border.Class = "SideNavStrip";
             this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtxtDanJuType.Location = new System.Drawing.Point(99, 15);
+            this.labtxtDanJuType.Location = new System.Drawing.Point(138, 15);
             this.labtxtDanJuType.Visible = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(196, 119);
+            this.pictureBox4.Location = new System.Drawing.Point(864, 11);
             this.pictureBox4.Visible = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBoxClientIn_Click);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Enabled = false;
-            this.pictureBox3.Location = new System.Drawing.Point(864, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(548, 46);
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBoxSupply_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(548, 11);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBoxClient_Click);
             // 
             // checkBox1
             // 
@@ -315,7 +321,9 @@
             // 
             // pictureBoxDanJuType
             // 
+            this.pictureBoxDanJuType.Location = new System.Drawing.Point(864, 47);
             this.pictureBoxDanJuType.Visible = false;
+            this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBoxSupplyIn_Click);
             // 
             // labTop9
             // 
@@ -324,13 +332,13 @@
             // 
             // labTop8
             // 
-            this.labTop8.Location = new System.Drawing.Point(591, 156);
+            this.labTop8.Location = new System.Drawing.Point(591, 118);
             this.labTop8.Visible = false;
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(465, 145);
-            this.labTop7.Text = "说    明：";
+            this.labTop7.Location = new System.Drawing.Point(670, 17);
+            this.labTop7.Text = "转入客户：";
             this.labTop7.Visible = false;
             // 
             // labTop6
@@ -342,12 +350,14 @@
             // labTop5
             // 
             this.labTop5.ForeColor = System.Drawing.Color.Gray;
-            this.labTop5.Location = new System.Drawing.Point(674, 17);
+            this.labTop5.Location = new System.Drawing.Point(352, 53);
             this.labTop5.Text = "供 应 商：";
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(594, 123);
+            this.labTop4.Location = new System.Drawing.Point(658, 53);
+            this.labTop4.Size = new System.Drawing.Size(77, 12);
+            this.labTop4.Text = "转入供应商：";
             this.labTop4.Visible = false;
             // 
             // labTop3
@@ -357,7 +367,7 @@
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(361, 17);
+            this.labTop2.Location = new System.Drawing.Point(352, 17);
             this.labTop2.Text = "客    户：";
             // 
             // labTop1
@@ -376,6 +386,7 @@
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(228, 15);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -444,6 +455,10 @@
             // labBotton3
             // 
             this.labBotton3.Location = new System.Drawing.Point(361, 23);
+            // 
+            // labBotton1
+            // 
+            this.labBotton1.Text = "核 销 员：";
             // 
             // resizablePanelData
             // 
@@ -520,6 +535,7 @@
             // 
             this.cboHeXiaoType.DisplayMember = "Text";
             this.cboHeXiaoType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboHeXiaoType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboHeXiaoType.FormattingEnabled = true;
             this.cboHeXiaoType.ItemHeight = 15;
             this.cboHeXiaoType.Items.AddRange(new object[] {
@@ -533,6 +549,7 @@
             this.cboHeXiaoType.Size = new System.Drawing.Size(150, 21);
             this.cboHeXiaoType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cboHeXiaoType.TabIndex = 54;
+            this.cboHeXiaoType.SelectedIndexChanged += new System.EventHandler(this.cboHeXiaoType_SelectedIndexChanged);
             // 
             // comboItem1
             // 
@@ -591,8 +608,8 @@
             // 
             this.gridColumnYuanDanCode.AllowSelection = false;
             this.gridColumnYuanDanCode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background1.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnYuanDanCode.CellStyles.Default.Background = background1;
+            background49.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnYuanDanCode.CellStyles.Default.Background = background49;
             this.gridColumnYuanDanCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnYuanDanCode.HeaderText = "源单编号";
             this.gridColumnYuanDanCode.Name = "gridColumnYuanDanCode";
@@ -603,8 +620,8 @@
             // 
             this.gridColumnYuanDanDate.AllowSelection = false;
             this.gridColumnYuanDanDate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background2.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnYuanDanDate.CellStyles.Default.Background = background2;
+            background50.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnYuanDanDate.CellStyles.Default.Background = background50;
             this.gridColumnYuanDanDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnYuanDanDate.HeaderText = "单据日期";
             this.gridColumnYuanDanDate.Name = "gridColumnYuanDanDate";
@@ -615,8 +632,8 @@
             // 
             this.gridColumnYuanDanType.AllowSelection = false;
             this.gridColumnYuanDanType.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background3.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnYuanDanType.CellStyles.Default.Background = background3;
+            background51.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnYuanDanType.CellStyles.Default.Background = background51;
             this.gridColumnYuanDanType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnYuanDanType.HeaderText = "源单类型";
             this.gridColumnYuanDanType.Name = "gridColumnYuanDanType";
@@ -626,8 +643,8 @@
             // gridColumnDanJuMoney
             // 
             this.gridColumnDanJuMoney.AllowSelection = false;
-            background4.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnDanJuMoney.CellStyles.Default.Background = background4;
+            background52.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnDanJuMoney.CellStyles.Default.Background = background52;
             this.gridColumnDanJuMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnDanJuMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnDanJuMoney.HeaderText = "单据金额";
@@ -638,8 +655,8 @@
             // gridColumnYiHeXiao
             // 
             this.gridColumnYiHeXiao.AllowSelection = false;
-            background5.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnYiHeXiao.CellStyles.Default.Background = background5;
+            background53.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnYiHeXiao.CellStyles.Default.Background = background53;
             this.gridColumnYiHeXiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnYiHeXiao.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnYiHeXiao.HeaderText = "已核销金额";
@@ -650,8 +667,8 @@
             // gridColumnWeiHeXiao
             // 
             this.gridColumnWeiHeXiao.AllowSelection = false;
-            background6.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnWeiHeXiao.CellStyles.Default.Background = background6;
+            background54.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnWeiHeXiao.CellStyles.Default.Background = background54;
             this.gridColumnWeiHeXiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnWeiHeXiao.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnWeiHeXiao.HeaderText = "未核销金额";
@@ -662,8 +679,8 @@
             // gridColumnBenCi
             // 
             this.gridColumnBenCi.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background7.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnBenCi.CellStyles.Default.Background = background7;
+            background55.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnBenCi.CellStyles.Default.Background = background55;
             this.gridColumnBenCi.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnBenCi.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.gridColumnBenCi.HeaderText = "本次核销金额";
@@ -672,8 +689,8 @@
             // 
             // gridColumnRemark
             // 
-            background8.Color1 = System.Drawing.SystemColors.ControlLightLight;
-            this.gridColumnRemark.CellStyles.Default.Background = background8;
+            background56.Color1 = System.Drawing.SystemColors.ControlLightLight;
+            this.gridColumnRemark.CellStyles.Default.Background = background56;
             this.gridColumnRemark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnRemark.HeaderText = "备注";
             this.gridColumnRemark.Name = "gridColumnRemark";
@@ -703,8 +720,8 @@
             // 
             this.yuanDanCode.AllowSelection = false;
             this.yuanDanCode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background9.Color1 = System.Drawing.Color.Azure;
-            this.yuanDanCode.CellStyles.Default.Background = background9;
+            background43.Color1 = System.Drawing.Color.Azure;
+            this.yuanDanCode.CellStyles.Default.Background = background43;
             this.yuanDanCode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yuanDanCode.HeaderText = "源单编号";
             this.yuanDanCode.Name = "yuanDanCode";
@@ -715,8 +732,8 @@
             // 
             this.danJuDate.AllowSelection = false;
             this.danJuDate.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background10.Color1 = System.Drawing.Color.Azure;
-            this.danJuDate.CellStyles.Default.Background = background10;
+            background44.Color1 = System.Drawing.Color.Azure;
+            this.danJuDate.CellStyles.Default.Background = background44;
             this.danJuDate.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.danJuDate.HeaderText = "单据日期";
             this.danJuDate.Name = "danJuDate";
@@ -727,8 +744,8 @@
             // 
             this.yuanDanType.AllowSelection = false;
             this.yuanDanType.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background11.Color1 = System.Drawing.Color.Azure;
-            this.yuanDanType.CellStyles.Default.Background = background11;
+            background45.Color1 = System.Drawing.Color.Azure;
+            this.yuanDanType.CellStyles.Default.Background = background45;
             this.yuanDanType.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yuanDanType.HeaderText = "源单类型";
             this.yuanDanType.Name = "yuanDanType";
@@ -738,8 +755,8 @@
             // danJuMoney
             // 
             this.danJuMoney.AllowSelection = false;
-            background12.Color1 = System.Drawing.Color.Azure;
-            this.danJuMoney.CellStyles.Default.Background = background12;
+            background46.Color1 = System.Drawing.Color.Azure;
+            this.danJuMoney.CellStyles.Default.Background = background46;
             this.danJuMoney.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.danJuMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.danJuMoney.HeaderText = "单据金额";
@@ -750,8 +767,8 @@
             // yiHeXiao
             // 
             this.yiHeXiao.AllowSelection = false;
-            background13.Color1 = System.Drawing.Color.Azure;
-            this.yiHeXiao.CellStyles.Default.Background = background13;
+            background47.Color1 = System.Drawing.Color.Azure;
+            this.yiHeXiao.CellStyles.Default.Background = background47;
             this.yiHeXiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.yiHeXiao.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.yiHeXiao.HeaderText = "已核销金额";
@@ -762,8 +779,8 @@
             // weiHeXiao
             // 
             this.weiHeXiao.AllowSelection = false;
-            background14.Color1 = System.Drawing.Color.Azure;
-            this.weiHeXiao.CellStyles.Default.Background = background14;
+            background48.Color1 = System.Drawing.Color.Azure;
+            this.weiHeXiao.CellStyles.Default.Background = background48;
             this.weiHeXiao.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.weiHeXiao.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.weiHeXiao.HeaderText = "未核销金额";
