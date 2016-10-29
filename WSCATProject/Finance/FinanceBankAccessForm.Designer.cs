@@ -220,6 +220,7 @@
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop2.Location = new System.Drawing.Point(425, 15);
             this.labtextboxTop2.Size = new System.Drawing.Size(145, 16);
+            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxTopBank_TextChanged);
             // 
             // labtxtDanJuType
             // 
@@ -234,6 +235,7 @@
             this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtxtDanJuType.Location = new System.Drawing.Point(94, 15);
             this.labtxtDanJuType.Size = new System.Drawing.Size(145, 16);
+            this.labtxtDanJuType.TextChanged += new System.EventHandler(this.labtxtDanJuType_TextChanged);
             // 
             // pictureBox4
             // 
@@ -368,6 +370,7 @@
             this.ltxtbSalsMan.Border.Class = "SideNavStrip";
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ltxtbSalsMan.Size = new System.Drawing.Size(145, 16);
+            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
             // 
             // labBotton4
             // 

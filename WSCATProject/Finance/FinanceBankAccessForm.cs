@@ -473,6 +473,200 @@ namespace WSCATProject.Finance
 
         }
 
+        #region 模糊查询
+
+        /// <summary>
+        /// 付款账号的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtxtDanJuType_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtxtDanJuType.Text.Trim() == "")
+                {
+                    InitInBank();
+                    dataGridViewFuJia.Focus();
+                    _Click = 5;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "账户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "openBank";
+                dgvc.HeaderText = "开户行";
+                dgvc.DataPropertyName = "openBank";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "bankCard";
+                dgvc.HeaderText = "银行账户";
+                dgvc.DataPropertyName = "bankCard";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "cardHolder";
+                dgvc.HeaderText = "持卡人";
+                dgvc.DataPropertyName = "cardHolder";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "availableBalance";
+                dgvc.HeaderText = "可用额度";
+                dgvc.DataPropertyName = "availableBalance";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(250, 150);
+                string name = XYEEncoding.strCodeHex(this.labtxtDanJuType.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5215-模糊查询结算账户数据错误" + ex.Message, "其它收付款单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 收款账号的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxTopBank_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop2.Text.Trim() == "")
+                {
+                    InitOutBank();
+                    dataGridViewFuJia.Focus();
+                    _Click = 4;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "账户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "openBank";
+                dgvc.HeaderText = "开户行";
+                dgvc.DataPropertyName = "openBank";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "bankCard";
+                dgvc.HeaderText = "银行账户";
+                dgvc.DataPropertyName = "bankCard";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "cardHolder";
+                dgvc.HeaderText = "持卡人";
+                dgvc.DataPropertyName = "cardHolder";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "availableBalance";
+                dgvc.HeaderText = "可用额度";
+                dgvc.DataPropertyName = "availableBalance";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(570, 150);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5215-模糊查询结算账户数据错误" + ex.Message, "其它收付款单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 经手人模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ltxtbSalsMan.Text.Trim() == "")
+                {
+                    _Click = 6;
+                    InitEmployee();
+                    dataGridViewFuJia.Focus();
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(220, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 460);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5216-模糊查询收款员数据失败！" + ex.Message, "其他付款单温馨提示:");
+            }
+        }
+        #endregion
 
     }
 }
