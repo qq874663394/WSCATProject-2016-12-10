@@ -68,6 +68,7 @@
     <Compile Include="Base\BaseUnit.cs" />
     <Compile Include="Base\BaseUser.cs" />
     <Compile Include="Base\BaseWorkToTime.cs" />
+    <Compile Include="Finance\FinanceBankAccess.cs" />
     <Compile Include="Finance\FinanceCollection.cs" />
     <Compile Include="Finance\FinanceCollectionDetail.cs" />
     <Compile Include="Finance\FinanceCollectionWait.cs" />
