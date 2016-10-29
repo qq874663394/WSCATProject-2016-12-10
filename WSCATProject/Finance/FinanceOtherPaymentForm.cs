@@ -2,6 +2,8 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Finance;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,13 +29,14 @@ namespace WSCATProject.Finance
         BankAccountInterface bank = new BankAccountInterface();//结算账户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
         ProjectCostInterface projectCostInterface = new ProjectCostInterface();//其他付款项目
+        FinanceOtherExpensesOutInterface financeOtherExpensesoutinter = new FinanceOtherExpensesOutInterface();
         #endregion
 
         #region 数据字段
         /// <summary>
         /// 所有供应商
         /// </summary>
-        private DataTable _AllSupplier = null; 
+        private DataTable _AllSupplier = null;
 
         /// <summary>
         /// 所以经手人
@@ -140,7 +143,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3106-尝试点击供应商数据出错或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5208-尝试点击供应商数据出错或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -187,7 +190,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3107-尝试点击经手人数据出错或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5209-尝试点击经手人数据出错或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -257,7 +260,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3503-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5210-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -328,6 +331,7 @@ namespace WSCATProject.Finance
                 }
             }
             superGridControlShangPing.PrimaryGrid.ReadOnly = true;
+            dateTimePicker1.Enabled = false;
             pictureBoxshenghe.Visible = true;
         }
 
@@ -369,12 +373,51 @@ namespace WSCATProject.Finance
                 dgvc.DataPropertyName = "parentId";
                 dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dataGridViewShangPing.Columns.Add(dgvc);
-                resizablePanelData.Visible = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("初始化收入类别失败，请检查：" + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private bool isNUllValidate()
+        {
+            if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
+            {
+                MessageBox.Show("客户不能为空！");
+                labtextboxTop2.Focus();
+                return false;
+            }
+            if (labtextboxTop4.Text.Trim() == null || labtextboxTop4.Text == "")
+            {
+                MessageBox.Show("结算账户不能为空！");
+                labtextboxTop4.Focus();
+                return false;
+            }
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+            double money = Convert.ToDouble(gr.Cells["gridColumnMoney"].Value);
+            if (gr.Cells["material"].Value == null || gr.Cells["material"].Value.ToString() == "")
+            {
+                MessageBox.Show("表格里收入类别不能为空！");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            if (money == 0.00)
+            {
+                MessageBox.Show("金额不能为0，请检查：");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("经手人不能为空！");
+                ltxtbSalsMan.Focus();
+                return false;
+            }
+            return true;
         }
         #endregion
 
@@ -395,51 +438,62 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void FinanceOtherPaymentForm_Load(object sender, EventArgs e)
         {
+            try
+            {
+                //供应商
+                _AllSupplier = supplier.SelSupplierTable();
+                //经手人
+                _AllEmployee = employee.SelSupplierTable(false);
+                //结算账户
+                _AllBank = bank.GetList(999, "", false, false);
 
-            //供应商
-            _AllSupplier = supplier.SelSupplierTable();
-            //经手人
-            _AllEmployee = employee.SelSupplierTable(false);
-            //结算账户
-            _AllBank = bank.GetList(999, "", false, false);
+                //生成采购订单code和显示条形码
+                _financeOtherPaymentCode = BuildCode.ModuleCode("FOP");
+                textBoxOddNumbers.Text = _financeOtherPaymentCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBoxtiaoxingma.Image = imgTemp;
 
-            //生成采购订单code和显示条形码
-            _financeOtherPaymentCode = BuildCode.ModuleCode("FOP");
-            textBoxOddNumbers.Text = _financeOtherPaymentCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBoxtiaoxingma.Image = imgTemp;
+                #region 初始化数据
+                comboBoxType.SelectedIndex = 0;
+                comboBoxjiesuanfangshi.SelectedIndex = 0;
+                InitDataGridView();
+                //禁用自动创建列
+                dataGridViewShangPing.AutoGenerateColumns = false;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                superGridControlShangPing.HScrollBarVisible = true;
+                // 将dataGridView中的内容居中显示
+                dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewShangPing.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewShangPing.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //显示行号
+                superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
+                //内容居中
+                superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
+                superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
+                superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
+                                                                                                                                         //金额
+                GridDoubleInputEditControl gdiecMoney = superGridControlShangPing.PrimaryGrid.Columns["gridColumnMoney"].EditControl as GridDoubleInputEditControl;
+                gdiecMoney.MinValue = 1;
+                gdiecMoney.MaxValue = 999999999;
+                #endregion
 
-            #region 初始化数据
-            comboBoxType.SelectedIndex = 0;
-            InitDataGridView();
-            //禁用自动创建列
-            dataGridViewShangPing.AutoGenerateColumns = false;
-            dataGridViewFuJia.AutoGenerateColumns = false;
-            superGridControlShangPing.HScrollBarVisible = true;
-            // 将dataGridView中的内容居中显示
-            dataGridViewFuJia.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //显示行号
-            superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-            //内容居中
-            superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
-            superGridControlShangPing.PrimaryGrid.SortCycle = SortCycle.AscDesc;    //排序方式范围
-            superGridControlShangPing.PrimaryGrid.AddSort(superGridControlShangPing.PrimaryGrid.Columns[0], SortDirection.Ascending);//设置排序列和排序方式
-                                                                                                                                     //金额
-            GridDoubleInputEditControl gdiecMoney = superGridControlShangPing.PrimaryGrid.Columns["gridColumnMoney"].EditControl as GridDoubleInputEditControl;
-            gdiecMoney.MinValue = 1;
-            gdiecMoney.MaxValue = 999999999;
-            #endregion
-
-            //绑定事件 双击事填充内容并隐藏列表
-            dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
-            dataGridViewShangPing.CellDoubleClick += DataGridViewShangPing_CellDoubleClick;
-            toolStripBtnSave.Click += ToolStripBtnSave_Click;//保存
-            toolStripBtnShengHe.Click += ToolStripBtnShengHe_Click;//审核按钮
-            dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
+                //绑定事件 双击事填充内容并隐藏列表
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewShangPing.CellDoubleClick += DataGridViewShangPing_CellDoubleClick;
+                toolStripBtnSave.Click += ToolStripBtnSave_Click;//保存
+                toolStripBtnShengHe.Click += ToolStripBtnShengHe_Click;//审核按钮
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5201-其他付款单初始化加载数据错误！"+ex.Message,"其他付款单温馨提示:");
+                this.Close();
+            }
+            
         }
-        
+
         /// <summary>
         /// 小表格的回车事件
         /// </summary>
@@ -447,7 +501,7 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 dataGridViewFuJiTableClick();
             }
@@ -534,7 +588,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-双击绑定收入类别失败！" + ex.Message, "其它收款单温馨提示！");
+                MessageBox.Show("错误代码：5207-双击绑定收入类别失败！" + ex.Message, "其它收款单温馨提示！");
             }
             superGridControlShangPing.Focus();
             SendKeys.Send("^{End}{Home}");
@@ -617,7 +671,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：3506-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5202-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -732,7 +786,116 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Save()
         {
+            FinanceOtherExpensesOut financeOtherExpensesOut = new FinanceOtherExpensesOut();
+            //其它收款单详细列表
+            List<FinanceOtherExpensesOutDetail> financeOtherExpenseOutDetailList = new List<FinanceOtherExpensesOutDetail>();
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            try
+            {
+                //其它收款单
 
+                financeOtherExpensesOut.code = XYEEncoding.strCodeHex(YanZhengCode());//其它收款单单号
+                if (labtextboxTop2.Text == null || labtextboxTop2.Text == "")
+                {
+                    MessageBox.Show("客户不能为空！请输入：");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                if (labtextboxTop4.Text == null || labtextboxTop4.Text == "")
+                {
+                    MessageBox.Show("结算账户不能为空！请输入：");
+                    labtextboxTop4.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text == null || ltxtbSalsMan.Text == "")
+                {
+                    MessageBox.Show("经手人不能为空！请输入：");
+                    ltxtbSalsMan.Focus();
+                }
+                else
+                {
+                    financeOtherExpensesOut.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                }
+                financeOtherExpensesOut.type = XYEEncoding.strCodeHex(comboBoxType.Text);//单据类型
+                financeOtherExpensesOut.date = this.dateTimePicker1.Value;//开单日期
+                financeOtherExpensesOut.clientCode = "";
+                financeOtherExpensesOut.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                financeOtherExpensesOut.accountCode = XYEEncoding.strCodeHex(_bankCode);//结算账户code
+                financeOtherExpensesOut.settlementType = XYEEncoding.strCodeHex(comboBoxjiesuanfangshi.Text);//结算方式
+                financeOtherExpensesOut.settlementNumber = XYEEncoding.strCodeHex(labtextboxTop6.Text.Trim());//结算号
+                financeOtherExpensesOut.settlementMoney = Convert.ToDecimal(labtextboxTop3.Text);
+                financeOtherExpensesOut.Abstract = XYEEncoding.strCodeHex(labtextboxBotton2.Text.Trim());//摘要
+                financeOtherExpensesOut.salesCode = XYEEncoding.strCodeHex(_employeeCode);//经手人code
+                financeOtherExpensesOut.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim());//制单人
+                financeOtherExpensesOut.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim());//审核人
+                financeOtherExpensesOut.checkState = 0;//审核状态
+                financeOtherExpensesOut.isClear = 1;
+                financeOtherExpensesOut.updateDate = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:5203-尝试创建其它付款单数据出错!请检查:" + ex.Message, "其它付款单温馨提示");
+                return;
+            }
+
+            try
+            {
+
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["material"].Value != null)
+                    {
+                        i++;
+                        FinanceOtherExpensesOutDetail financeOtherExpenseOutDetail = new FinanceOtherExpensesOutDetail();
+                        if (gr["material"].Value.ToString() != "" || gr["material"].Value != null)
+                        {
+                            financeOtherExpenseOutDetail.Abstract = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//收入类别
+                        }
+                        else
+                        {
+                            MessageBox.Show("收入类别不能为空，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        double money = Convert.ToDouble(gr["gridColumnMoney"].Value);
+                        if (money == 0.00)
+                        {
+                            MessageBox.Show("表格里金额不能为0，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        else
+                        {
+                            financeOtherExpenseOutDetail.money = Convert.ToDecimal(gr["gridColumnMoney"].Value);//金额
+                        }
+                        financeOtherExpenseOutDetail.outCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code
+                        financeOtherExpenseOutDetail.projectOutCode = XYEEncoding.strCodeHex(_financeOtherPaymentCode + i.ToString());//其它收款单详细code                 
+                        financeOtherExpenseOutDetail.remark = gr["gridColumnbeizhu"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnbeizhu"].Value.ToString());//备注  
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        financeOtherExpenseOutDetailList.Add(financeOtherExpenseOutDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5204-尝试创建其它付款单详细数据出错!请检查:" + ex.Message, "其它付款单温馨提示");
+                return;
+            }
+            //增加一条其他收款单和其它收款单详细数据
+            object financePaymentResult = financeOtherExpensesoutinter.AddOrUpdateToMainOrDetail(financeOtherExpensesOut, financeOtherExpenseOutDetailList);
+            if (financePaymentResult != null)
+            {
+                MessageBox.Show("新增其它付款单数据成功", "其它付款单温馨提示");
+            }
         }
 
         /// <summary>
@@ -740,7 +903,119 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Review()
         {
+            FinanceOtherExpensesOut financeOtherExpensesOut = new FinanceOtherExpensesOut();
+            //其它收款单详细列表
+            List<FinanceOtherExpensesOutDetail> financeOtherExpenseOutDetailList = new List<FinanceOtherExpensesOutDetail>();
+            //非空验证
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            try
+            {
+                //其它收款单
 
+                financeOtherExpensesOut.code = XYEEncoding.strCodeHex(YanZhengCode());//其它收款单单号
+                if (labtextboxTop2.Text == null || labtextboxTop2.Text == "")
+                {
+                    MessageBox.Show("客户不能为空！请输入：");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                if (labtextboxTop4.Text == null || labtextboxTop4.Text == "")
+                {
+                    MessageBox.Show("结算账户不能为空！请输入：");
+                    labtextboxTop4.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text == null || ltxtbSalsMan.Text == "")
+                {
+                    MessageBox.Show("经手人不能为空！请输入：");
+                    ltxtbSalsMan.Focus();
+                }
+                else
+                {
+                    financeOtherExpensesOut.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());
+                }
+                financeOtherExpensesOut.type = XYEEncoding.strCodeHex(comboBoxType.Text);//单据类型
+                financeOtherExpensesOut.date = this.dateTimePicker1.Value;//开单日期
+                financeOtherExpensesOut.clientCode = "";
+                financeOtherExpensesOut.supplierCode = XYEEncoding.strCodeHex(_supplierCode);//供应商code
+                financeOtherExpensesOut.accountCode = XYEEncoding.strCodeHex(_bankCode);//结算账户code
+                financeOtherExpensesOut.settlementType = XYEEncoding.strCodeHex(comboBoxjiesuanfangshi.Text);//结算方式
+                financeOtherExpensesOut.settlementNumber = XYEEncoding.strCodeHex(labtextboxTop6.Text.Trim());//结算号
+                financeOtherExpensesOut.settlementMoney = Convert.ToDecimal(labtextboxTop3.Text);
+                financeOtherExpensesOut.Abstract = XYEEncoding.strCodeHex(labtextboxBotton2.Text.Trim());//摘要
+                financeOtherExpensesOut.salesCode = XYEEncoding.strCodeHex(_employeeCode);//经手人code
+                financeOtherExpensesOut.operationMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text.Trim());//制单人
+                financeOtherExpensesOut.checkMan = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text.Trim());//审核人
+                financeOtherExpensesOut.checkState = 1;//审核状态
+                financeOtherExpensesOut.isClear = 1;
+                financeOtherExpensesOut.updateDate = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:5205-尝试创建和审核其它付款单数据出错!请检查:" + ex.Message, "其它付款单温馨提示");
+                return;
+            }
+
+            try
+            {
+
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["material"].Value != null)
+                    {
+                        i++;
+                        FinanceOtherExpensesOutDetail financeOtherExpenseOutDetail = new FinanceOtherExpensesOutDetail();
+                        if (gr["material"].Value.ToString() != "" || gr["material"].Value != null)
+                        {
+                            financeOtherExpenseOutDetail.Abstract = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//收入类别
+                        }
+                        else
+                        {
+                            MessageBox.Show("收入类别不能为空，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        double money = Convert.ToDouble(gr["gridColumnMoney"].Value);
+                        if (money == 0.00)
+                        {
+                            MessageBox.Show("表格里金额不能为0，请输入：");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        else
+                        {
+                            financeOtherExpenseOutDetail.money = Convert.ToDecimal(gr["gridColumnMoney"].Value);//金额
+                        }
+                        financeOtherExpenseOutDetail.outCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code
+                        financeOtherExpenseOutDetail.projectOutCode = XYEEncoding.strCodeHex(_financeOtherPaymentCode + i.ToString());//其它收款单详细code                 
+                        financeOtherExpenseOutDetail.remark = gr["gridColumnbeizhu"].Value == null ? "" : XYEEncoding.strCodeHex(gr["gridColumnbeizhu"].Value.ToString());//备注  
+                        GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
+                        financeOtherExpenseOutDetailList.Add(financeOtherExpenseOutDetail);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5206-尝试创建和审核其它付款单详细数据出错!请检查:" + ex.Message, "其它付款单温馨提示");
+                return;
+            }
+            //增加一条其他收款单和其它收款单详细数据
+            object financePaymentResult = financeOtherExpensesoutinter.AddOrUpdateToMainOrDetail(financeOtherExpensesOut, financeOtherExpenseOutDetailList);
+            if (financePaymentResult != null)
+            {
+               
+                pictureBoxshenghe.Parent = pictureBoxtitle;
+                InitForm();
+                MessageBox.Show("保存和审核其它付款单数据成功", "其它付款单温馨提示");
+            }
         }
 
         /// <summary>
@@ -750,27 +1025,34 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void superGridControlShangPing_BeginEdit(object sender, GridEditEventArgs e)
         {
-            if (e.GridCell.GridColumn.Name == "material")
+            try
             {
-                SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
-                GridCell gc = ge[0] as GridCell;
-                string typeDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
-                if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                if (e.GridCell.GridColumn.Name == "material")
                 {
-                    //模糊查询收入类别列表
-                    _AllProjectInCost = projectCostInterface.GetList(0, "" + typeDaima + "");
-                    InitProjectCost();
-                }
-                else
-                {
-                    //查询收入类别列表
-                    _AllProjectInCost = projectCostInterface.GetList(999, "");
-                    InitProjectCost();
-                }
+                    SelectedElementCollection ge = superGridControlShangPing.PrimaryGrid.GetSelectedCells();
+                    GridCell gc = ge[0] as GridCell;
+                    string typeDaima = XYEEncoding.strCodeHex(e.EditControl.EditorValue.ToString());
+                    if (gc.GridRow.Cells[material].Value != null && (gc.GridRow.Cells[material].Value).ToString() != "")
+                    {
+                        //模糊查询收入类别列表
+                        _AllProjectInCost = projectCostInterface.GetList(0, "" + typeDaima + "");
+                        InitProjectCost();
+                    }
+                    else
+                    {
+                        //查询收入类别列表
+                        _AllProjectInCost = projectCostInterface.GetList(999, "");
+                        InitProjectCost();
+                    }
 
-                dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllProjectInCost);
-
+                    dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllProjectInCost);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5217-第一个显示数据错误或数据加载错误！"+ex.Message,"其他付款单温馨提示:");
+            }
+
         }
 
         /// <summary>
@@ -786,7 +1068,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-验证表格里的金额以及统计金额出错！请检查：" + ex.Message, "其它收款单温馨提示！");
+                MessageBox.Show("错误代码：5211-验证表格里的金额以及统计金额出错！请检查：" + ex.Message, "其它付款单温馨提示！");
             }
         }
 
@@ -795,19 +1077,27 @@ namespace WSCATProject.Finance
         /// </summary>
         private void TongJi()
         {
-            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
-            //逐行统计数据总数
-            decimal tempAllMoney = 0;
-            for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+            try
             {
-                GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
-                tempAllMoney += Convert.ToDecimal(tempGR["gridColumnMoney"].FormattedValue);
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                //逐行统计数据总数
+                decimal tempAllMoney = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempAllMoney += Convert.ToDecimal(tempGR["gridColumnMoney"].FormattedValue);
+                }
+                _Money = tempAllMoney;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["gridColumnMoney"].Value = _Money.ToString();
+                labtextboxTop3.Text = _Money.ToString("0.00");
+                labtextboxTop5.Text = _Money.ToString("0.00");
             }
-            _Money = tempAllMoney;
-            gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
-            gr["gridColumnMoney"].Value = _Money.ToString();
-            labtextboxTop3.Text = _Money.ToString("0.00");
-            labtextboxTop5.Text = _Money.ToString("0.00");
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5212-逐行统计数据总数数据错误！"+ex.Message,"其他付款单温馨提示:");
+            }
+
         }
 
         /// <summary>
@@ -825,15 +1115,230 @@ namespace WSCATProject.Finance
                 if (SS == "")
                 {
                     //模糊查询商品列表
-                    _AllProjectInCost = projectCostInterface.GetList( 0,""+ materialDaima + "");
+                    _AllProjectInCost = projectCostInterface.GetList(0, "" + materialDaima + "");
                     InitProjectCost();
                     dataGridViewShangPing.DataSource = ch.DataTableReCoding(_AllProjectInCost);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
+                MessageBox.Show("错误代码:5213-表格模糊查询错误，查询数据错误" + ex.Message, "入库单温馨提示");
             }
         }
+
+        /// <summary>
+        /// 按ESC关闭小表格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FinanceOtherPaymentForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                this.resizablePanel1.Visible = false;
+                this.resizablePanelData.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// 验证单号是否重复
+        /// </summary>
+        private string YanZhengCode()
+        {
+            if (financeOtherExpensesoutinter.Exists(XYEEncoding.strCodeHex(_financeOtherPaymentCode)))
+            {
+                _financeOtherPaymentCode = BuildCode.ModuleCode("FOP");
+            }
+            else
+            {
+                _financeOtherPaymentCode = textBoxOddNumbers.Text;
+            }
+            return _financeOtherPaymentCode;
+        }
+        
+        #region 模糊查询
+        /// <summary>
+        /// 供应商的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxSupplier_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop2.Text.Trim() == "")
+                {
+                    InitSupplier();
+                    _Click = 4;
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "编码";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "单位名称";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.HeaderText = "联系手机";
+                dgvc.DataPropertyName = "mobilePhone";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "linkMan";
+                dgvc.HeaderText = "联系人";
+                dgvc.DataPropertyName = "linkMan";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "fax";
+                dgvc.HeaderText = "传真";
+                dgvc.DataPropertyName = "fax";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(230, 160);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(supplier.GetList(0, name));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5214-模糊查询供应商数据错误" + ex.Message, "其他付款单温馨提示");
+            }
+        }
+
+
+        /// <summary>
+        /// 银行账户的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxBank_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop4.Text.Trim() == "")
+                {
+                    InitBank();
+                    _Click = 5;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "账户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "openBank";
+                dgvc.HeaderText = "开户行";
+                dgvc.DataPropertyName = "openBank";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "bankCard";
+                dgvc.HeaderText = "银行账户";
+                dgvc.DataPropertyName = "bankCard";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "cardHolder";
+                dgvc.HeaderText = "持卡人";
+                dgvc.DataPropertyName = "cardHolder";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "availableBalance";
+                dgvc.HeaderText = "可用额度";
+                dgvc.DataPropertyName = "availableBalance";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(500, 200);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop4.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5215-模糊查询结算账户数据错误" + ex.Message, "其它收付款单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 经手人的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ltxtbSalsMan.Text.Trim() == "")
+                {
+                    _Click = 6;
+                    InitEmployee();
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(220, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 460);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5216-模糊查询收款员数据失败！" + ex.Message,"其他付款单温馨提示:");
+            }
+        }
+
+        #endregion
     }
 }

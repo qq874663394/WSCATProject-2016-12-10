@@ -21,6 +21,7 @@ using HelperUtility.Encrypt;
 using WSCATProject.Warehouse;
 using WSCATProject.Sales;
 using WSCATProject.Purchase;
+using WSCATProject.Finance;
 
 namespace WSCATProject
 {
@@ -132,6 +133,7 @@ namespace WSCATProject
                     panel12.Location = new Point(200, 100);
                     panelsales.Location = new Point(200, 100);
                     panelCaiGou.Location = new Point(200, 100);
+                    panelcaiwu.Location = new Point(200, 100);
                     return;
                 }
             }
@@ -793,16 +795,26 @@ namespace WSCATProject
             buttonItemEmpolyee_Click(sender, e);
         }
 
+        /// <summary>
+        /// 其他收款单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pbFinanceOtherIn_Click(object sender, EventArgs e)
         {
-            //ProjectInCostType pict = new ProjectInCostType();
-            //pict.ShowDialog();
+            FinanceOtherReceivablesForm financeOtherReceivables = new Finance.FinanceOtherReceivablesForm();
+            financeOtherReceivables.Show();
         }
 
+        /// <summary>
+        /// 其他付款单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pbFinanceOtherOut_Click(object sender, EventArgs e)
         {
-            //ProjectCostType pct = new ProjectCostType();
-            //pct.ShowDialog();
+            FinanceOtherPaymentForm financeOtherpayment = new FinanceOtherPaymentForm();
+            financeOtherpayment.Show();
         }
 
         private void btnFinanceOtherIn_Click(object sender, EventArgs e)
@@ -1879,6 +1891,48 @@ namespace WSCATProject
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+        /// <summary>
+        /// 收款单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbFinanceGet_Click(object sender, EventArgs e)
+        {
+            SalesReceivablesForm receivables = new SalesReceivablesForm();
+            receivables.Show();
+        }
+
+        /// <summary>
+        /// 付款单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbFinancePay_Click(object sender, EventArgs e)
+        {
+            PurchasePaymentForm payment = new PurchasePaymentForm();
+            payment.Show();
+        }
+
+        /// <summary>
+        /// 核销单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbFinanceBorrow_Click(object sender, EventArgs e)
+        {
+            FinanceVerificationForm financeVerfication = new FinanceVerificationForm();
+            financeVerfication.Show();
+        }
+        /// <summary>
+        /// 银行存取
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pbFinanceBank_Click(object sender, EventArgs e)
+        {
+            FinanceBankAccessForm financeBank = new FinanceBankAccessForm();
+            financeBank.Show();
         }
     }
 }

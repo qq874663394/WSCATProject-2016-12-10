@@ -1,6 +1,6 @@
 ﻿namespace WSCATProject.Finance
 {
-    partial class FinanceOtherPaymentForm
+    partial class FinanceBankAccessForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
-            this.pictureBoxshenghe = new System.Windows.Forms.PictureBox();
-            this.material = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnMoney = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.gridColumnbeizhu = new DevComponents.DotNetBar.SuperGrid.GridColumn();
-            this.comboBoxjiesuanfangshi = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
-            this.comboItem5 = new DevComponents.Editors.ComboItem();
-            this.comboItem6 = new DevComponents.Editors.ComboItem();
-            this.comboItem7 = new DevComponents.Editors.ComboItem();
-            this.gridColumnid = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -60,36 +46,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtiaoxingma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1031, 84);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1038, 76);
             this.textBoxOddNumbers.ReadOnly = false;
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(991, 6);
+            this.labelprie.Location = new System.Drawing.Point(992, 6);
             this.labelprie.Size = new System.Drawing.Size(29, 12);
             this.labelprie.Text = "单号";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1031, 82);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pictureBoxshenghe);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
-            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
-            this.panel1.Controls.SetChildIndex(this.pictureBoxshenghe, 0);
+            this.dateTimePicker1.Location = new System.Drawing.Point(1040, 82);
             // 
             // labelTitle
             // 
@@ -99,13 +74,12 @@
             // 
             this.labelTitle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelTitle.Size = new System.Drawing.Size(200, 30);
-            this.labelTitle.Text = "其  他  付  款  单";
+            this.labelTitle.Text = "银  行  存  取  款 ";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBoxjiesuanfangshi);
             this.panel2.Controls.Add(this.pictureBoxtiaoxingma);
-            this.panel2.Controls.Add(this.comboBoxType);
+            this.panel2.Size = new System.Drawing.Size(1202, 95);
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
@@ -133,9 +107,7 @@
             this.panel2.Controls.SetChildIndex(this.labtextboxTop7, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop3, 0);
             this.panel2.Controls.SetChildIndex(this.labtextboxTop6, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxType, 0);
             this.panel2.Controls.SetChildIndex(this.pictureBoxtiaoxingma, 0);
-            this.panel2.Controls.SetChildIndex(this.comboBoxjiesuanfangshi, 0);
             // 
             // labtextboxTop6
             // 
@@ -148,12 +120,11 @@
             this.labtextboxTop6.Border.BorderGradientAngle = 0;
             this.labtextboxTop6.Border.Class = "SideNavStrip";
             this.labtextboxTop6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop6.Location = new System.Drawing.Point(101, 76);
-            this.labtextboxTop6.Size = new System.Drawing.Size(145, 16);
+            this.labtextboxTop6.Location = new System.Drawing.Point(91, 142);
+            this.labtextboxTop6.Visible = false;
             // 
             // labtextboxTop3
             // 
-            this.labtextboxTop3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -163,12 +134,8 @@
             this.labtextboxTop3.Border.BorderGradientAngle = 0;
             this.labtextboxTop3.Border.Class = "SideNavStrip";
             this.labtextboxTop3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.labtextboxTop3.Location = new System.Drawing.Point(101, 45);
-            this.labtextboxTop3.ReadOnly = true;
-            this.labtextboxTop3.Size = new System.Drawing.Size(145, 16);
-            this.labtextboxTop3.Text = "0.00";
-            this.labtextboxTop3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.labtextboxTop3.Location = new System.Drawing.Point(91, 111);
+            this.labtextboxTop3.Visible = false;
             // 
             // labtextboxTop7
             // 
@@ -181,7 +148,7 @@
             this.labtextboxTop7.Border.BorderGradientAngle = 0;
             this.labtextboxTop7.Border.Class = "SideNavStrip";
             this.labtextboxTop7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop7.Location = new System.Drawing.Point(846, 112);
+            this.labtextboxTop7.Location = new System.Drawing.Point(374, 144);
             this.labtextboxTop7.Visible = false;
             // 
             // labtextboxTop9
@@ -195,7 +162,7 @@
             this.labtextboxTop9.Border.BorderGradientAngle = 0;
             this.labtextboxTop9.Border.Class = "SideNavStrip";
             this.labtextboxTop9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop9.Location = new System.Drawing.Point(888, 110);
+            this.labtextboxTop9.Location = new System.Drawing.Point(888, 119);
             this.labtextboxTop9.Visible = false;
             // 
             // labtextboxTop8
@@ -209,13 +176,11 @@
             this.labtextboxTop8.Border.BorderGradientAngle = 0;
             this.labtextboxTop8.Border.Class = "SideNavStrip";
             this.labtextboxTop8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop8.Location = new System.Drawing.Point(721, 45);
-            this.labtextboxTop8.Size = new System.Drawing.Size(145, 16);
+            this.labtextboxTop8.Location = new System.Drawing.Point(650, 119);
             this.labtextboxTop8.Visible = false;
             // 
             // labtextboxTop5
             // 
-            this.labtextboxTop5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             // 
             // 
             // 
@@ -225,12 +190,8 @@
             this.labtextboxTop5.Border.BorderGradientAngle = 0;
             this.labtextboxTop5.Border.Class = "SideNavStrip";
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop5.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.labtextboxTop5.Location = new System.Drawing.Point(721, 13);
-            this.labtextboxTop5.ReadOnly = true;
+            this.labtextboxTop5.Location = new System.Drawing.Point(758, 18);
             this.labtextboxTop5.Size = new System.Drawing.Size(145, 16);
-            this.labtextboxTop5.Text = "0.00";
-            this.labtextboxTop5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labtextboxTop4
             // 
@@ -243,9 +204,8 @@
             this.labtextboxTop4.Border.BorderGradientAngle = 0;
             this.labtextboxTop4.Border.Class = "SideNavStrip";
             this.labtextboxTop4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop4.Location = new System.Drawing.Point(391, 45);
-            this.labtextboxTop4.Size = new System.Drawing.Size(130, 16);
-            this.labtextboxTop4.TextChanged += new System.EventHandler(this.labtextboxBank_TextChanged);
+            this.labtextboxTop4.Location = new System.Drawing.Point(374, 111);
+            this.labtextboxTop4.Visible = false;
             // 
             // labtextboxTop2
             // 
@@ -258,9 +218,8 @@
             this.labtextboxTop2.Border.BorderGradientAngle = 0;
             this.labtextboxTop2.Border.Class = "SideNavStrip";
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxTop2.Location = new System.Drawing.Point(391, 13);
-            this.labtextboxTop2.Size = new System.Drawing.Size(130, 16);
-            this.labtextboxTop2.TextChanged += new System.EventHandler(this.labtextboxSupplier_TextChanged);
+            this.labtextboxTop2.Location = new System.Drawing.Point(425, 15);
+            this.labtextboxTop2.Size = new System.Drawing.Size(145, 16);
             // 
             // labtxtDanJuType
             // 
@@ -273,82 +232,78 @@
             this.labtxtDanJuType.Border.BorderGradientAngle = 0;
             this.labtxtDanJuType.Border.Class = "SideNavStrip";
             this.labtxtDanJuType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtxtDanJuType.Location = new System.Drawing.Point(104, 15);
-            this.labtxtDanJuType.Visible = false;
+            this.labtxtDanJuType.Location = new System.Drawing.Point(94, 15);
+            this.labtxtDanJuType.Size = new System.Drawing.Size(145, 16);
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(196, 119);
+            this.pictureBox4.Location = new System.Drawing.Point(196, 140);
             this.pictureBox4.Visible = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(522, 42);
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBoxBank_Click);
+            this.pictureBox3.Location = new System.Drawing.Point(479, 109);
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(523, 6);
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBoxSupplier_Click);
+            this.pictureBox2.Location = new System.Drawing.Point(572, 12);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // checkBox1
             // 
+            this.checkBox1.Location = new System.Drawing.Point(199, 114);
             this.checkBox1.Visible = false;
             // 
             // pictureBoxDanJuType
             // 
-            this.pictureBoxDanJuType.Visible = false;
+            this.pictureBoxDanJuType.Location = new System.Drawing.Point(240, 10);
+            this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBoxDanJuType_Click);
             // 
             // labTop9
             // 
-            this.labTop9.Location = new System.Drawing.Point(831, 112);
+            this.labTop9.Location = new System.Drawing.Point(831, 121);
             this.labTop9.Visible = false;
             // 
             // labTop8
             // 
-            this.labTop8.Location = new System.Drawing.Point(655, 47);
-            this.labTop8.Size = new System.Drawing.Size(71, 12);
-            this.labTop8.Text = "结算 方式：";
+            this.labTop8.Location = new System.Drawing.Point(591, 119);
+            this.labTop8.Visible = false;
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(789, 112);
+            this.labTop7.Location = new System.Drawing.Point(317, 144);
             this.labTop7.Visible = false;
             // 
             // labTop6
             // 
-            this.labTop6.Location = new System.Drawing.Point(29, 78);
-            this.labTop6.Size = new System.Drawing.Size(77, 12);
-            this.labTop6.Text = "结  算  号：";
+            this.labTop6.Location = new System.Drawing.Point(34, 144);
+            this.labTop6.Visible = false;
             // 
             // labTop5
             // 
-            this.labTop5.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.labTop5.Location = new System.Drawing.Point(649, 17);
-            this.labTop5.Size = new System.Drawing.Size(77, 12);
-            this.labTop5.Text = "应结算金额：";
+            this.labTop5.Location = new System.Drawing.Point(696, 20);
+            this.labTop5.Text = "金    额：";
             // 
             // labTop4
             // 
-            this.labTop4.Location = new System.Drawing.Point(325, 47);
-            this.labTop4.Text = "结算账户：";
+            this.labTop4.Location = new System.Drawing.Point(317, 113);
+            this.labTop4.Visible = false;
             // 
             // labTop3
             // 
-            this.labTop3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.labTop3.Location = new System.Drawing.Point(29, 47);
-            this.labTop3.Size = new System.Drawing.Size(77, 12);
-            this.labTop3.Text = "已结算金额：";
+            this.labTop3.Location = new System.Drawing.Point(34, 113);
+            this.labTop3.Visible = false;
             // 
             // labTop2
             // 
-            this.labTop2.Location = new System.Drawing.Point(325, 17);
+            this.labTop2.Location = new System.Drawing.Point(365, 17);
+            this.labTop2.Text = "收款账号：";
             // 
             // labTop1
             // 
             this.labTop1.Location = new System.Drawing.Point(29, 17);
-            this.labTop1.Size = new System.Drawing.Size(77, 12);
-            this.labTop1.Text = "单据 类型*：";
+            this.labTop1.Text = "付款账号：";
             // 
             // pictureBoxClose
             // 
@@ -356,6 +311,7 @@
             // 
             // pictureBoxEmployee
             // 
+            this.pictureBoxEmployee.Location = new System.Drawing.Point(235, 15);
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
@@ -369,7 +325,7 @@
             this.ltxtbShengHeMan.Border.BorderGradientAngle = 0;
             this.ltxtbShengHeMan.Border.Class = "SideNavStrip";
             this.ltxtbShengHeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ltxtbShengHeMan.Location = new System.Drawing.Point(721, 21);
+            this.ltxtbShengHeMan.Location = new System.Drawing.Point(758, 21);
             this.ltxtbShengHeMan.Size = new System.Drawing.Size(145, 16);
             // 
             // ltxtbMakeMan
@@ -383,7 +339,7 @@
             this.ltxtbMakeMan.Border.BorderGradientAngle = 0;
             this.ltxtbMakeMan.Border.Class = "SideNavStrip";
             this.ltxtbMakeMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ltxtbMakeMan.Location = new System.Drawing.Point(389, 21);
+            this.ltxtbMakeMan.Location = new System.Drawing.Point(425, 21);
             this.ltxtbMakeMan.Size = new System.Drawing.Size(145, 16);
             // 
             // labtextboxBotton2
@@ -397,8 +353,8 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(391, 76);
-            this.labtextboxBotton2.Size = new System.Drawing.Size(145, 16);
+            this.labtextboxBotton2.Location = new System.Drawing.Point(94, 58);
+            this.labtextboxBotton2.Size = new System.Drawing.Size(250, 16);
             // 
             // ltxtbSalsMan
             // 
@@ -411,30 +367,27 @@
             this.ltxtbSalsMan.Border.BorderGradientAngle = 0;
             this.ltxtbSalsMan.Border.Class = "SideNavStrip";
             this.ltxtbSalsMan.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ltxtbSalsMan.Location = new System.Drawing.Point(101, 19);
-            this.ltxtbSalsMan.TextChanged += new System.EventHandler(this.ltxtbSalsMan_TextChanged);
+            this.ltxtbSalsMan.Size = new System.Drawing.Size(145, 16);
             // 
             // labBotton4
             // 
-            this.labBotton4.Location = new System.Drawing.Point(655, 23);
+            this.labBotton4.Location = new System.Drawing.Point(696, 23);
             // 
             // labBotton2
             // 
-            this.labBotton2.Location = new System.Drawing.Point(325, 78);
+            this.labBotton2.Location = new System.Drawing.Point(29, 60);
             // 
             // labBotton3
             // 
-            this.labBotton3.Location = new System.Drawing.Point(328, 23);
+            this.labBotton3.Location = new System.Drawing.Point(365, 23);
             // 
             // labBotton1
             // 
-            this.labBotton1.Location = new System.Drawing.Point(29, 23);
-            this.labBotton1.Size = new System.Drawing.Size(59, 12);
-            this.labBotton1.Text = "经手人*：";
+            this.labBotton1.Text = "经 手 人：";
             // 
             // labeldata
             // 
-            this.labeldata.Location = new System.Drawing.Point(991, 84);
+            this.labeldata.Location = new System.Drawing.Point(992, 84);
             // 
             // bar1
             // 
@@ -443,23 +396,14 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Location = new System.Drawing.Point(0, 216);
+            this.panel3.Size = new System.Drawing.Size(1202, 384);
             // 
             // superGridControlShangPing
             // 
-            this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.Left;
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            // 
-            // 
-            // 
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.material);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMoney);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
-            this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
-            this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlShangPing.Size = new System.Drawing.Size(639, 369);
-            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
-            this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);
-            this.superGridControlShangPing.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_EditorValueChanged);
+            this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 384);
+            this.superGridControlShangPing.Visible = false;
             // 
             // pictureBoxMax
             // 
@@ -469,126 +413,25 @@
             // 
             this.pictureBoxMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
-            // comboBoxType
-            // 
-            this.comboBoxType.DisplayMember = "Text";
-            this.comboBoxType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.ItemHeight = 15;
-            this.comboBoxType.Items.AddRange(new object[] {
-            this.comboItem1,
-            this.comboItem2});
-            this.comboBoxType.Location = new System.Drawing.Point(101, 13);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(145, 21);
-            this.comboBoxType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxType.TabIndex = 53;
-            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "费用结算";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "其他应付";
-            // 
             // pictureBoxtiaoxingma
             // 
-            this.pictureBoxtiaoxingma.Location = new System.Drawing.Point(1031, 6);
+            this.pictureBoxtiaoxingma.Location = new System.Drawing.Point(1038, 3);
             this.pictureBoxtiaoxingma.Name = "pictureBoxtiaoxingma";
             this.pictureBoxtiaoxingma.Size = new System.Drawing.Size(140, 70);
             this.pictureBoxtiaoxingma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxtiaoxingma.TabIndex = 54;
+            this.pictureBoxtiaoxingma.TabIndex = 53;
             this.pictureBoxtiaoxingma.TabStop = false;
             // 
-            // pictureBoxshenghe
-            // 
-            this.pictureBoxshenghe.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxshenghe.Image = global::WSCATProject.Properties.Resources.审核;
-            this.pictureBoxshenghe.Location = new System.Drawing.Point(730, -2);
-            this.pictureBoxshenghe.Name = "pictureBoxshenghe";
-            this.pictureBoxshenghe.Size = new System.Drawing.Size(64, 64);
-            this.pictureBoxshenghe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxshenghe.TabIndex = 46;
-            this.pictureBoxshenghe.TabStop = false;
-            this.pictureBoxshenghe.Visible = false;
-            // 
-            // material
-            // 
-            this.material.HeaderText = "支出类别";
-            this.material.Name = "material";
-            this.material.ToolTip = "";
-            this.material.Width = 250;
-            // 
-            // gridColumnMoney
-            // 
-            this.gridColumnMoney.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
-            this.gridColumnMoney.HeaderText = "金额";
-            this.gridColumnMoney.Name = "gridColumnMoney";
-            this.gridColumnMoney.Width = 200;
-            // 
-            // gridColumnbeizhu
-            // 
-            this.gridColumnbeizhu.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            this.gridColumnbeizhu.HeaderText = "备注";
-            this.gridColumnbeizhu.Name = "gridColumnbeizhu";
-            this.gridColumnbeizhu.Width = 150;
-            // 
-            // comboBoxjiesuanfangshi
-            // 
-            this.comboBoxjiesuanfangshi.DisplayMember = "Text";
-            this.comboBoxjiesuanfangshi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxjiesuanfangshi.FormattingEnabled = true;
-            this.comboBoxjiesuanfangshi.ItemHeight = 15;
-            this.comboBoxjiesuanfangshi.Items.AddRange(new object[] {
-            this.comboItem3,
-            this.comboItem4,
-            this.comboItem5,
-            this.comboItem6,
-            this.comboItem7});
-            this.comboBoxjiesuanfangshi.Location = new System.Drawing.Point(721, 40);
-            this.comboBoxjiesuanfangshi.Name = "comboBoxjiesuanfangshi";
-            this.comboBoxjiesuanfangshi.Size = new System.Drawing.Size(145, 21);
-            this.comboBoxjiesuanfangshi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxjiesuanfangshi.TabIndex = 55;
-            // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "现金";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "电汇";
-            // 
-            // comboItem5
-            // 
-            this.comboItem5.Text = "信汇";
-            // 
-            // comboItem6
-            // 
-            this.comboItem6.Text = "商业汇票";
-            // 
-            // comboItem7
-            // 
-            this.comboItem7.Text = "银行汇票";
-            // 
-            // gridColumnid
-            // 
-            this.gridColumnid.Name = "gridColumnid";
-            this.gridColumnid.Visible = false;
-            // 
-            // FinanceOtherPaymentForm
+            // FinanceBankAccessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 690);
-            this.Name = "FinanceOtherPaymentForm";
-            this.Text = "FinanceOtherPaymentForm";
-            this.Activated += new System.EventHandler(this.FinanceOtherPaymentForm_Activated);
-            this.Load += new System.EventHandler(this.FinanceOtherPaymentForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FinanceOtherPaymentForm_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FinanceOtherPaymentForm_KeyPress);
+            this.Name = "FinanceBankAccessForm";
+            this.Text = "FinanceBankAccessForm";
+            this.Activated += new System.EventHandler(this.FinanceBankAccessForm_Activated);
+            this.Load += new System.EventHandler(this.FinanceBankAccessForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FinanceBankAccessForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -610,7 +453,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtiaoxingma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxshenghe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -618,20 +460,6 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxType;
         private System.Windows.Forms.PictureBox pictureBoxtiaoxingma;
-        private System.Windows.Forms.PictureBox pictureBoxshenghe;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn material;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnMoney;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnbeizhu;
-        private DevComponents.Editors.ComboItem comboItem1;
-        private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxjiesuanfangshi;
-        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnid;
-        private DevComponents.Editors.ComboItem comboItem3;
-        private DevComponents.Editors.ComboItem comboItem4;
-        private DevComponents.Editors.ComboItem comboItem5;
-        private DevComponents.Editors.ComboItem comboItem6;
-        private DevComponents.Editors.ComboItem comboItem7;
     }
 }

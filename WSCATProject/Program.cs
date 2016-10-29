@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using WSCATProject.Finance;
 using WSCATProject.Purchase;
 using WSCATProject.Sales;
 using WSCATProject.Warehouse;
@@ -17,7 +16,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FinanceVerificationForm());
+            Application.Run(new Finance.FinanceBankAccessForm());
         }
     }
 }
