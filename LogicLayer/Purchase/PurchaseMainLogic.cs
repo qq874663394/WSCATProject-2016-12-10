@@ -55,7 +55,7 @@ namespace LogicLayer.Purchase
                         strWhere += string.Format("type='{0}'", fieldValue);
                         break;
                     case 5:
-                        strWhere += string.Format("");
+                        strWhere += string.Format("checkState=1 and (isPay=0 or isPay=1) and supplierCode='{0}'",fieldValue);
                         break;
                 }
                 logModel.operationContent = "查询T_PurchaseMain表的数据,条件:" + strWhere;
