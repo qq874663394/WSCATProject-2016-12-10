@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
-            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -65,8 +64,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1404, 82);
-            this.dateTimePicker1.Visible = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(1040, 82);
             // 
             // labelTitle
             // 
@@ -250,6 +248,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(572, 12);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // checkBox1
             // 
@@ -259,6 +258,7 @@
             // pictureBoxDanJuType
             // 
             this.pictureBoxDanJuType.Location = new System.Drawing.Point(240, 10);
+            this.pictureBoxDanJuType.Click += new System.EventHandler(this.pictureBoxDanJuType_Click);
             // 
             // labTop9
             // 
@@ -302,6 +302,7 @@
             // 
             // labTop1
             // 
+            this.labTop1.Location = new System.Drawing.Point(29, 17);
             this.labTop1.Text = "付款账号：";
             // 
             // pictureBoxClose
@@ -311,6 +312,7 @@
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Location = new System.Drawing.Point(235, 15);
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // ltxtbShengHeMan
             // 
@@ -351,7 +353,7 @@
             this.labtextboxBotton2.Border.BorderGradientAngle = 0;
             this.labtextboxBotton2.Border.Class = "SideNavStrip";
             this.labtextboxBotton2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labtextboxBotton2.Location = new System.Drawing.Point(91, 58);
+            this.labtextboxBotton2.Location = new System.Drawing.Point(94, 58);
             this.labtextboxBotton2.Size = new System.Drawing.Size(250, 16);
             // 
             // ltxtbSalsMan
@@ -373,7 +375,7 @@
             // 
             // labBotton2
             // 
-            this.labBotton2.Location = new System.Drawing.Point(34, 60);
+            this.labBotton2.Location = new System.Drawing.Point(29, 60);
             // 
             // labBotton3
             // 
@@ -420,33 +422,16 @@
             this.pictureBoxtiaoxingma.TabIndex = 53;
             this.pictureBoxtiaoxingma.TabStop = false;
             // 
-            // dateTimePickerDate
-            // 
-            this.dateTimePickerDate.Location = new System.Drawing.Point(1038, 78);
-            this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(140, 21);
-            this.dateTimePickerDate.TabIndex = 17;
-            // 
             // FinanceBankAccessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 690);
-            this.Controls.Add(this.dateTimePickerDate);
             this.Name = "FinanceBankAccessForm";
             this.Text = "FinanceBankAccessForm";
             this.Activated += new System.EventHandler(this.FinanceBankAccessForm_Activated);
             this.Load += new System.EventHandler(this.FinanceBankAccessForm_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
-            this.Controls.SetChildIndex(this.dateTimePicker1, 0);
-            this.Controls.SetChildIndex(this.labeldata, 0);
-            this.Controls.SetChildIndex(this.bar1, 0);
-            this.Controls.SetChildIndex(this.panel5, 0);
-            this.Controls.SetChildIndex(this.panel3, 0);
-            this.Controls.SetChildIndex(this.resizablePanel1, 0);
-            this.Controls.SetChildIndex(this.resizablePanelData, 0);
-            this.Controls.SetChildIndex(this.dateTimePickerDate, 0);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FinanceBankAccessForm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -476,6 +461,5 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxtiaoxingma;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDate;
     }
 }
