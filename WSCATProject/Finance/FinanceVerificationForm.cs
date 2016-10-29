@@ -51,9 +51,17 @@ namespace WSCATProject.Finance
         /// </summary>
         private string _clientCode;
         /// <summary>
+        /// 保存转入客户code
+        /// </summary>
+        private string _clientCodeIn;
+        /// <summary>
         /// 保存供应商code
         /// </summary>
         private string _supplierCode;
+        /// <summary>
+        /// 保存转入供应商code
+        /// </summary>
+        private string _supplierCodeIn;
         /// <summary>
         /// 保存核销员Code
         /// </summary>
@@ -234,7 +242,7 @@ namespace WSCATProject.Finance
                     dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
-                    resizablePanel1.Location = new Point(550, 160);
+                    //resizablePanel1.Location = new Point(550, 160);
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllClient);
                     resizablePanel1.Visible = true;
                 }
@@ -296,7 +304,7 @@ namespace WSCATProject.Finance
                     dgvc.Visible = false;
                     dataGridViewFuJia.Columns.Add(dgvc);
 
-                    resizablePanel1.Location = new Point(230, 160);
+                    //resizablePanel1.Location = new Point(230, 160);
                     dataGridViewFuJia.DataSource = ch.DataTableReCoding(_AllSupplier);
                     resizablePanel1.Visible = true;
                 }
@@ -492,6 +500,11 @@ namespace WSCATProject.Finance
                 _Code.ValueFont = new Font("微软雅黑", 20);
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxBarCode.Image = imgTemp;
+
+               // toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                //toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;//dataGridViewFuJia表格双击事件
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
             }
             catch (Exception ex)
             {
@@ -584,5 +597,623 @@ namespace WSCATProject.Finance
                 this.Dispose();
             }
         }
+
+        /// <summary>
+        /// 核销类型下拉框选择改变事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cboHeXiaoType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cboHeXiaoType.Text)
+            {
+                #region  预收冲应收
+                case "预收冲应收":
+                    //客户
+                    labTop2.ForeColor = Color.Black;
+                    labTop2.Text = "客户：";
+                    labTop2.Visible = true;
+                    labtextboxTop2.Enabled = true;
+                    labtextboxTop2.Visible = true;
+                    labtextboxTop2.Border.BorderBottomColor = Color.Black;
+                    labtextboxTop2.Clear();
+                    pictureBox2.Enabled = true;
+                    pictureBox2.Visible = true;
+                    //供应商
+                    labTop5.ForeColor = Color.Gray;
+                    labTop5.Visible = true;
+                    labTop5.Text = "供应商：";
+                    labtextboxTop5.Enabled = false;
+                    labtextboxTop5.Visible = true;
+                    labtextboxTop5.Clear();
+                    pictureBox3.Enabled = false;
+                    pictureBox3.Visible = true;
+                    //转入客户
+                    labTop7.Visible = false;
+                    labtextboxTop7.Visible = false;
+                    labtextboxTop7.Clear();
+                    pictureBox4.Visible = false;
+                    //转入供应商
+                    labTop4.Visible = false;
+                    labtextboxTop4.Visible = false;
+                    labtextboxTop4.Clear();
+                    pictureBoxDanJuType.Visible = false;
+                    //说明
+                    labtextboxTop6.Text = "预收";
+                    textBox1.Text = "应收";
+                    //表格
+                    superGridControlShangPing.Enabled = true;
+                    break;
+                #endregion
+                #region  预付冲应付
+                case "预付冲应付":
+                    //客户
+                    labTop2.ForeColor = Color.Gray;
+                    labTop2.Text = "客户：";
+                    labTop2.Visible = true;
+                    labtextboxTop2.Enabled = false;
+                    labtextboxTop2.Visible = true;
+                    labtextboxTop2.Border.BorderBottomColor = Color.Gray;
+                    labtextboxTop2.Clear();
+                    pictureBox2.Enabled = false;
+                    pictureBox2.Visible = true;
+                    //供应商
+                    labTop5.ForeColor = Color.Black;
+                    labTop5.Text = "供应商：";
+                    labTop5.Visible = true;
+                    labtextboxTop5.Enabled = true;
+                    labtextboxTop5.Visible = true;
+                    labtextboxTop5.Clear();
+                    labtextboxTop5.Border.BorderBottomColor = Color.Black;
+                    pictureBox3.Enabled = true;
+                    pictureBox3.Visible = true;
+                    //转入客户
+                    labTop7.Visible = false;
+                    labtextboxTop7.Visible = false;
+                    pictureBox4.Visible = false;
+                    //转入供应商
+                    labTop4.Visible = false;
+                    labtextboxTop4.Visible = false;
+                    pictureBoxDanJuType.Visible = false;
+                    //说明
+                    labtextboxTop6.Text = "预付";
+                    textBox1.Text = "应付";
+                    //表格
+                    superGridControlShangPing.Enabled = true;
+                    break;
+                #endregion
+                #region  应收冲应付
+                case "应收冲应付":
+                    //客户
+                    labTop2.ForeColor = Color.Black;
+                    labTop2.Text = "客户：";
+                    labTop2.Visible = true;
+                    labtextboxTop2.Enabled = true;
+                    labtextboxTop2.Visible = true;
+                    labtextboxTop2.Border.BorderBottomColor = Color.Black;
+                    labtextboxTop2.Clear();
+                    pictureBox2.Enabled = true;
+                    pictureBox2.Visible = true;
+                    //供应商
+                    labTop5.ForeColor = Color.Black;
+                    labTop5.Text = "供应商:";
+                    labTop5.Visible = true;
+                    labtextboxTop5.Enabled = true;
+                    labtextboxTop5.Visible = true;
+                    labtextboxTop5.Border.BorderBottomColor = Color.Black;
+                    labtextboxTop5.Clear();
+                    pictureBox3.Enabled = true;
+                    pictureBox3.Visible = true;
+                    //转入客户
+                    labTop7.Visible = false;
+                    labtextboxTop7.Visible = false;
+                    labtextboxTop7.Clear();
+                    pictureBox4.Visible = false;
+                    //转入供应商
+                    labTop4.Visible = false;
+                    labtextboxTop4.Visible = false;
+                    labtextboxTop4.Clear();
+                    pictureBoxDanJuType.Visible = false;
+                    //说明
+                    labtextboxTop6.Text = "应收";
+                    textBox1.Text = "应付";
+                    //表格
+                    superGridControlShangPing.Enabled = true;
+                    break;
+                #endregion
+                #region  应收转应收
+                case "应收转应收":
+                    //转出客户
+                    labTop2.ForeColor = Color.Black;
+                    labTop2.Text = "转出客户：";
+                    labTop2.Visible = true;
+                    labtextboxTop2.Enabled = true;
+                    labtextboxTop2.Visible = true;
+                    labtextboxTop2.Border.BorderBottomColor = Color.Black;
+                    labtextboxTop2.Clear();
+                    pictureBox2.Enabled = true;
+                    //供应商
+                    labTop5.Visible = false;
+                    labtextboxTop5.Visible = false;
+                    labtextboxTop5.Clear();
+                    pictureBox3.Visible = false;
+                    //转入客户
+                    labTop7.Visible = true;
+                    labtextboxTop7.Visible = true;
+                    labtextboxTop7.Clear();
+                    pictureBox4.Visible = true;
+                    //转入供应商
+                    labTop4.Visible = false;
+                    labtextboxTop4.Visible = false;
+                    labtextboxTop4.Clear();
+                    pictureBoxDanJuType.Visible = false;
+                    //说明
+                    labtextboxTop6.Text = "应收";
+                    textBox1.Text = "";
+                    //表格
+                    superGridControlShangPing.Enabled = false;
+                    break;
+                #endregion
+                #region  应付转应付
+                case "应付转应付":
+                    //转出供应商
+                    labTop5.Visible = true;
+                    labTop5.ForeColor = Color.Black;
+                    labTop5.Text = "转出供应商：";
+                    labtextboxTop5.Enabled = true;
+                    labtextboxTop5.Visible = true;
+                    labtextboxTop5.Border.BorderBottomColor = Color.Black;
+                    labtextboxTop5.Clear();
+                    pictureBox3.Enabled = true;
+                    pictureBox3.Visible = true;
+                    //客户
+                    labTop2.Visible = false;
+                    labtextboxTop2.Visible = false;
+                    labtextboxTop2.Clear();
+                    pictureBox2.Visible = false;
+                    //转入客户
+                    labTop7.Visible = false;
+                    labtextboxTop7.Visible = false;
+                    labtextboxTop7.Clear();
+                    pictureBox4.Visible = false;
+                    //转入供应商
+                    labTop4.Visible = true;
+                    labtextboxTop4.Visible = true;
+                    labtextboxTop4.Clear();
+                    pictureBoxDanJuType.Visible = true;
+                    //说明
+                    labtextboxTop6.Text = "应付";
+                    textBox1.Text = "";
+                    //表格
+                    superGridControlShangPing.Enabled = false;
+                    break;
+                    #endregion
+            }
+        }
+
+        #region  小箭头点击事件
+
+        /// <summary>
+        /// 客户小箭头点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxClient_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                InitClient();
+                resizablePanel1.Location = new Point(560, 155);
+                dataGridViewFuJia.Focus();
+            }
+            _Click = 4;
+        }
+
+        /// <summary>
+        /// 转入客户小箭头点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxClientIn_Click(object sender, EventArgs e)
+        {
+            if (_Click != 1)
+            {
+                InitClient();
+                resizablePanel1.Location = new Point(630, 155);
+                dataGridViewFuJia.Focus();
+            }
+            _Click =4;
+        }
+
+        /// <summary>
+        /// 供应商小箭头点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxSupply_Click(object sender, EventArgs e)
+        {
+            if (_Click != 2)
+            {
+                InitSupplier();
+                resizablePanel1.Location = new Point(560, 190);
+                dataGridViewFuJia.Focus();
+            }
+            _Click = 5;
+        }
+
+        /// <summary>
+        /// 转入供应商小箭头点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxSupplyIn_Click(object sender, EventArgs e)
+        {
+            if (_Click != 2)
+            {
+                InitSupplier();
+                resizablePanel1.Location = new Point(630, 190);
+                dataGridViewFuJia.Focus();
+            }
+            _Click = 5;
+        }
+
+        /// <summary>
+        ///核销员小箭头点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureBoxEmployee_Click(object sender, EventArgs e)
+        {
+            if (_Click != 3)
+            {
+                InitEmployee();
+                dataGridViewFuJia.Focus();
+            }
+            _Click = 6;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 双击绑定客户、供应商、核销员数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridViewFuJia_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            dataGridViewFuJiaTableClick();
+        }
+
+        /// <summary>
+        /// dataGridViewFuJia表格双击事件函数
+        /// </summary>
+        private void dataGridViewFuJiaTableClick()
+        {
+            try
+            {
+                //客户
+                if (_Click == 1 || _Click == 4)
+                {
+                    _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
+                    _clientCodeIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//转入客户code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
+                    string nameIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//转入客户名称
+                    labtextboxTop2.Text = name;
+                    labtextboxTop7.Text = nameIn;
+                    resizablePanel1.Visible = false;
+                }
+                //供应商
+                if (_Click == 2 || _Click == 5)
+                {
+                    _supplierCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
+                    _supplierCodeIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//转入供应商code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//供应商名称
+                    string nameIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//转入供应商名称
+                    labtextboxTop5.Text = name;
+                    labtextboxTop4.Text = nameIn;
+                    resizablePanel1.Visible = false;
+                }
+                //核销员
+                if (_Click == 3 || _Click == 6)
+                {
+                    _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//核销员code
+                    string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//核销员名称
+                    ltxtbSalsMan.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-双击绑定客户、供应商、核销员数据错误！请检查：" + ex.Message, "核销单温馨提示！");
+            }
+        }
+
+        /// <summary>
+        /// 表格按键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridViewFuJiaTableClick();
+            }
+        }
+
+        #region 模糊查询
+        /// <summary>
+        /// 客户模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtClient_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop2.Text.Trim() == "")
+                {
+                    InitClient();
+                    _Click = 4;
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "客户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "客户姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(560, 155);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-模糊查询客户数据错误" + ex.Message, "核销单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 转入客户模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtClientIn_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop7.Text.Trim() == "")
+                {
+                    InitClient();
+                    _Click = 4;
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "客户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "客户姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(630, 155);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop7.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(client.GetList(0, name));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-模糊查询转入客户数据错误" + ex.Message, "核销单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 供应商模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSupply_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop5.Text.Trim() == "")
+                {
+                    InitSupplier();
+                    _Click = 5;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "编码";
+                dgvc.DataPropertyName = "编码";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "单位名称";
+                dgvc.DataPropertyName = "单位名称";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.HeaderText = "联系手机";
+                dgvc.DataPropertyName = "联系手机";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "linkMan";
+                dgvc.HeaderText = "联系人";
+                dgvc.DataPropertyName = "联系人";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "fax";
+                dgvc.HeaderText = "传真";
+                dgvc.DataPropertyName = "传真";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(560, 190);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop5.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(supplier.GetList(0, name));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-模糊查询供应商数据错误" + ex.Message, "核销单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 转入供应商模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSupplyIn_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop4.Text.Trim() == "")
+                {
+                    InitSupplier();
+                    _Click = 5;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "编码";
+                dgvc.DataPropertyName = "编码";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "单位名称";
+                dgvc.DataPropertyName = "单位名称";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "mobilePhone";
+                dgvc.HeaderText = "联系手机";
+                dgvc.DataPropertyName = "联系手机";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "linkMan";
+                dgvc.HeaderText = "联系人";
+                dgvc.DataPropertyName = "联系人";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "fax";
+                dgvc.HeaderText = "传真";
+                dgvc.DataPropertyName = "传真";
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(630, 190);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop4.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(supplier.GetList(0, name));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-模糊查询转入供应商数据错误" + ex.Message, "核销单温馨提示");
+            }
+        }
+
+        /// <summary>
+        ///经手人模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ltxtbSalsMan.Text.Trim() == "")
+                {
+                    _Click = 6;
+                    InitEmployee();
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(220, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 460);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-模糊查询核销员数据失败！" + ex.Message);
+            }
+        }
+
+        #endregion
     }
 }
