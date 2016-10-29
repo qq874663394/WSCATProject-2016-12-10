@@ -43,6 +43,12 @@ namespace LogicLayer.Sales
                     case 0:
                         strWhere += string.Format("clientCode='{0}'", fieldValue);
                         break;
+                    case 1:
+                        strWhere += string.Format("checkState=1 and code='{0}'", fieldValue);
+                        break;
+                    case 2:
+                        strWhere += string.Format("checkState=1 and (payState=0 or payState=1) and clientCode='{0}'",fieldValue);
+                        break;
                 }
                 model.operationContent = "查询T_SalesMain表的数据,条件：where=" + strWhere;
                 dt = _dal.GetList(strWhere);
