@@ -13,7 +13,7 @@ namespace Model
 		private int _id;
 		private string _maincode;
         private string _code;
-		private string _salescode;
+		private string _salecode;
 		private DateTime? _salesdate;
 		private string _salestype;
 		private decimal? _amountreceivable;
@@ -49,10 +49,10 @@ namespace Model
         /// <summary>
         /// 销售单单号
         /// </summary>
-        public string salesCode
+        public string saleCode
 		{
-			set{ _salescode=value;}
-			get{return _salescode;}
+			set{ _salecode=value;}
+			get{return _salecode;}
 		}
 		/// <summary>
 		/// 销售单日期

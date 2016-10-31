@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceVerificationReportForm));
             DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.pictureBoxtitle = new System.Windows.Forms.PictureBox();
@@ -39,8 +40,15 @@
             this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.superGridControlShangPing = new DevComponents.DotNetBar.SuperGrid.SuperGridControl();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMax = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMin = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxtitle
@@ -54,12 +62,13 @@
             this.pictureBoxtitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxtitle.TabIndex = 2;
             this.pictureBoxtitle.TabStop = false;
+            this.pictureBoxtitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // labelTitle
             // 
             this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTitle.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.labelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
             // 
             // 
@@ -72,6 +81,7 @@
             this.labelTitle.TabIndex = 5;
             this.labelTitle.Text = "预  收  源  单";
             this.labelTitle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // toolStrip1
             // 
@@ -89,6 +99,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(1170, 70);
             this.toolStrip1.TabIndex = 54;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PurchaseOrderReportForm_MouseDown);
             // 
             // toolStripButtonProfit
             // 
@@ -166,12 +177,60 @@
             this.superGridControlShangPing.Size = new System.Drawing.Size(1170, 397);
             this.superGridControlShangPing.TabIndex = 55;
             this.superGridControlShangPing.Text = "superGridControl1";
+            this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);
+            // 
+            // pictureBoxClose
+            // 
+            this.pictureBoxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBoxClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxClose.Image = global::WSCATProject.Properties.Resources.clo;
+            this.pictureBoxClose.Location = new System.Drawing.Point(1105, 27);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxClose.TabIndex = 58;
+            this.pictureBoxClose.TabStop = false;
+            this.pictureBoxClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
+            // 
+            // pictureBoxMax
+            // 
+            this.pictureBoxMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBoxMax.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMax.Image = global::WSCATProject.Properties.Resources.zuidahua1;
+            this.pictureBoxMax.Location = new System.Drawing.Point(1076, 27);
+            this.pictureBoxMax.Name = "pictureBoxMax";
+            this.pictureBoxMax.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMax.TabIndex = 56;
+            this.pictureBoxMax.TabStop = false;
+            this.pictureBoxMax.Click += new System.EventHandler(this.pictureBoxMax_Click);
+            // 
+            // pictureBoxMin
+            // 
+            this.pictureBoxMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
+            this.pictureBoxMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMin.Image = global::WSCATProject.Properties.Resources.small;
+            this.pictureBoxMin.Location = new System.Drawing.Point(1049, 27);
+            this.pictureBoxMin.Name = "pictureBoxMin";
+            this.pictureBoxMin.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMin.TabIndex = 57;
+            this.pictureBoxMin.TabStop = false;
+            this.pictureBoxMin.Click += new System.EventHandler(this.pictureBoxMin_Click);
             // 
             // FinanceVerificationReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 528);
+            this.Controls.Add(this.pictureBoxClose);
+            this.Controls.Add(this.pictureBoxMax);
+            this.Controls.Add(this.pictureBoxMin);
             this.Controls.Add(this.superGridControlShangPing);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.labelTitle);
@@ -179,9 +238,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FinanceVerificationReportForm";
             this.Text = "FinanceVerificationReportForm";
+            this.Load += new System.EventHandler(this.FinanceVerificationReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -197,5 +260,9 @@
         protected System.Windows.Forms.ToolStripButton toolStripButtondaochu;
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private DevComponents.DotNetBar.SuperGrid.SuperGridControl superGridControlShangPing;
+        protected System.Windows.Forms.PictureBox pictureBoxClose;
+        public System.Windows.Forms.PictureBox pictureBoxMax;
+        public System.Windows.Forms.PictureBox pictureBoxMin;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -113,10 +113,10 @@ namespace LogicLayer.Finance
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("where supplierCode='{0}'", fieldValue);
+                        strWhere += string.Format(" supplierCode='{0}' and tf.code=pd.mainCode", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("where code='{0}'",fieldValue);
+                        strWhere += string.Format(" tf.code='{0}' and tf.code=pd.mainCode", fieldValue);
                         break;
                 }
                 model.operationContent = "查询T_FinancePayment表的所有数据,条件:" + strWhere;
