@@ -168,19 +168,19 @@ namespace WSCATProject.Purchase
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.P  )
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.T  )
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.X  )
             {
                 this.Close();
                 this.Dispose();

@@ -74,3 +74,4 @@ E:\619项目\新建文件夹\HelperUtility\bin\Debug\HelperUtility.pdb
 E:\619项目\新建文件夹\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\新建文件夹\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\新建文件夹\HelperUtility\obj\Debug\HelperUtility.pdb
+E:\619项目\2016年10月21日105415\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
