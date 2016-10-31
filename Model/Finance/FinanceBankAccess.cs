@@ -20,6 +20,12 @@ namespace Model.Finance
         private string _departmentcode;
         private string _operators;
         private string _auditors;
+        private int _checkstate;
+        /// <summary>
+        /// 审核状态
+        /// </summary>
+        public int checkState
+        { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -22,5 +22,12 @@ namespace InterfaceLayer.Finance
         {
             return _dal.Add(model);
         }
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool AddOrUpdate(FinanceBankAccess model)
+        {
+            return _dal.AddOrUpdate(model);
+        }
     }
 }
