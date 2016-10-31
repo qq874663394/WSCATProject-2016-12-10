@@ -122,6 +122,9 @@ namespace LogicLayer.Finance
                     case 1:
                         strWhere += string.Format("checkState=1 and financeCollectionState=1 and supplierCode='{0}'", fieldValue);
                         break;
+                    case 2:
+                        strWhere += string.Format("code='{0}'",fieldValue);
+                        break;
                 }
                 model.operationContent = "查询T_FinanceCollection表的所有数据,条件:" + strWhere;
                 dt = _dal.GetList(strWhere);
