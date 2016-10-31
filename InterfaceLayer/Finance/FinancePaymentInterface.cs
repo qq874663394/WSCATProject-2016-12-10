@@ -2,6 +2,7 @@
 using Model.Finance;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,10 @@ namespace InterfaceLayer.Finance
         public bool Exists(string code)
         {
             return _dal.Exists(code);
+        }
+        public DataTable GetList(int fieldName, string fieldValue)
+        {
+            return _dal.GetList(fieldName, fieldValue);
         }
     }
 }
