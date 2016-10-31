@@ -604,6 +604,7 @@ namespace WSCATProject.Finance
                 financeBankAccess.operators = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//制单人
                 financeBankAccess.auditors = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text);//审核人
                 financeBankAccess.departmentCode = "";
+                financeBankAccess.checkState = 0;//审核状态
             }
             catch (Exception ex)
             {
@@ -611,7 +612,7 @@ namespace WSCATProject.Finance
                 return;
             }
 
-            object financeBankAccessResult = finaceBankAccessInterface.Add(financeBankAccess);
+            object financeBankAccessResult = finaceBankAccessInterface.AddOrUpdate(financeBankAccess);
             if (financeBankAccessResult != null)
             {
                 MessageBox.Show("尝试创建银行存取款单成功！");
@@ -624,7 +625,73 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Review()
         {
-            
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            FinanceBankAccess financeBankAccess = new FinanceBankAccess();
+            try
+            {
+                financeBankAccess.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单号
+                financeBankAccess.date = this.dateTimePicker1.Value;
+                if (labtxtDanJuType.Text != null || labtxtDanJuType.Text != "")
+                {
+                    financeBankAccess.paymentAccount = XYEEncoding.strCodeHex(labtxtDanJuType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("付款账户不能为空！");
+                    labtxtDanJuType.Focus();
+                    return;
+                }
+                if (labtextboxTop2.Text != null || labtextboxTop2.Text != "")
+                {
+                    financeBankAccess.receiptAccount = XYEEncoding.strCodeHex(labtextboxTop2.Text);
+                }
+                else
+                {
+                    MessageBox.Show("收款账户不能为空！");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                double Money = Convert.ToDouble(labtextboxTop5.Text.Trim());
+                if (Money > 0.00)
+                {
+                    financeBankAccess.amount = Convert.ToDecimal(Money);
+                }
+                else
+                {
+                    MessageBox.Show("金额不能小于0！");
+                    labtextboxTop5.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financeBankAccess.handled = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("经手人不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financeBankAccess.summary = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text);//摘要
+                financeBankAccess.operators = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//制单人
+                financeBankAccess.auditors = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text);//审核人
+                financeBankAccess.departmentCode = "";
+                financeBankAccess.checkState = 1;//审核状态
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:-尝试创建并审核银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
+                return;
+            }
+
+            object financeBankAccessResult = finaceBankAccessInterface.AddOrUpdate(financeBankAccess);
+            if (financeBankAccessResult != null)
+            {
+                MessageBox.Show("尝试创建并审核银行存取款单成功！");
+            }
         }
 
         #region 模糊查询

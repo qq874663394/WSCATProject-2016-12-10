@@ -1087,7 +1087,7 @@ namespace WSCATProject.Finance
                 resizablePanel1.Location = new Point(560, 155);
                 dataGridViewFuJia.Focus();
             }
-            _Click = 4;
+            _Click = 6;
         }
 
         /// <summary>
@@ -1097,13 +1097,13 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void pictureBoxClientIn_Click(object sender, EventArgs e)
         {
-            if (_Click != 1)
+            if (_Click != 2)
             {
                 InitClient();
                 resizablePanel1.Location = new Point(630, 155);
                 dataGridViewFuJia.Focus();
             }
-            _Click = 4;
+            _Click = 7;
         }
 
         /// <summary>
@@ -1113,13 +1113,13 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void pictureBoxSupply_Click(object sender, EventArgs e)
         {
-            if (_Click != 2)
+            if (_Click != 3)
             {
                 InitSupplier();
                 resizablePanel1.Location = new Point(560, 190);
                 dataGridViewFuJia.Focus();
             }
-            _Click = 5;
+            _Click = 8;
         }
 
         /// <summary>
@@ -1129,13 +1129,13 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void pictureBoxSupplyIn_Click(object sender, EventArgs e)
         {
-            if (_Click != 2)
+            if (_Click != 4)
             {
                 InitSupplier();
                 resizablePanel1.Location = new Point(630, 190);
                 dataGridViewFuJia.Focus();
             }
-            _Click = 5;
+            _Click = 9;
         }
 
         /// <summary>
@@ -1145,12 +1145,12 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void pictureBoxEmployee_Click(object sender, EventArgs e)
         {
-            if (_Click != 3)
+            if (_Click != 5)
             {
                 InitEmployee();
                 dataGridViewFuJia.Focus();
             }
-            _Click = 6;
+            _Click = 10;
         }
 
         #endregion
@@ -1177,29 +1177,39 @@ namespace WSCATProject.Finance
             try
             {
                 //客户
-                if (_Click == 1 || _Click == 4)
+                if (_Click == 1 || _Click == 6)
                 {
                     _clientCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//客户code
-                    _clientCodeIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//转入客户code
                     string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//客户名称
-                    string nameIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//转入客户名称
                     labtextboxTop2.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //转入客户
+                if (_Click == 2 || _Click == 7)
+                {
+                    _clientCodeIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//转入客户code
+                    string nameIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//转入客户名称
                     labtextboxTop7.Text = nameIn;
                     resizablePanel1.Visible = false;
                 }
                 //供应商
-                if (_Click == 2 || _Click == 5)
+                if (_Click == 3 || _Click == 8)
                 {
                     _supplierCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
-                    _supplierCodeIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//转入供应商code
                     string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//供应商名称
-                    string nameIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//转入供应商名称
                     labtextboxTop5.Text = name;
+                    resizablePanel1.Visible = false;
+                }
+                //转入供应商
+                if (_Click == 4 || _Click == 9)
+                {
+                    _supplierCodeIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//转入供应商code
+                    string nameIn = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//转入供应商名称
                     labtextboxTop4.Text = nameIn;
                     resizablePanel1.Visible = false;
                 }
                 //核销员
-                if (_Click == 3 || _Click == 6)
+                if (_Click == 5 || _Click == 10)
                 {
                     _employeeCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//核销员code
                     string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["name"].Value.ToString();//核销员名称
