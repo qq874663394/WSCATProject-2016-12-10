@@ -670,11 +670,11 @@ namespace WSCATProject.Finance
                     break;
 
                 case "应收冲应付":
-
+                    YingShouXuanYuanDan();
                     break;
 
                 case "应收转应收":
-
+                    YingShouZhuanYingFuXuanYuanDan();
                     break;
 
                 case "应付转应付":
@@ -776,6 +776,103 @@ namespace WSCATProject.Finance
                  dt.Rows[0]["oddMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddMoney"],
                  dt.Rows[0]["inMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["inMoney"],
                  dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+            }
+        }
+        /// <summary>
+        /// 应收冲应付
+        /// </summary>
+        private void YingShouXuanYuanDan()
+        {
+            //如果点击了上面的表格
+            if (superGridControlTop.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.ClientCode = _clientCode;
+                financeReport.ShowDialog(this);
+
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
+
+                superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+            }
+
+            if (superGridControlShangPing.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.SupplierCode = _supplierCode;
+                financeReport.ShowDialog(this);
+
+                FinancePaymentInterface financePayment = new FinancePaymentInterface();
+                DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
+
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+            }
+        }
+
+        /// <summary>
+        /// 应收转应付
+        /// </summary>
+        private void YingShouZhuanYingFuXuanYuanDan()
+        {
+            //如果点击了上面的表格
+            if (superGridControlTop.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.ClientCode = _clientCode;
+                financeReport.ShowDialog(this);
+
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
+
+                superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+            }
+            //如果点击了上面的表格
+            if (superGridControlTop.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.ClientCode = _clientCode;
+                financeReport.ShowDialog(this);
+
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
+
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
                    0.0M,
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
