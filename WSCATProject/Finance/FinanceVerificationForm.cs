@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -105,6 +106,24 @@ namespace WSCATProject.Finance
         /// 统计下表格本次核销金额
         /// </summary>
         private decimal _benCiHeXiaoMoneyBottom;
+
+        /// <summary>
+        /// 付款单的单据code
+        /// </summary>
+        private string  _fuKuanCode;
+
+        public string FuKuanCode
+        {
+            get
+            {
+                return _fuKuanCode;
+            }
+
+            set
+            {
+                _fuKuanCode = value;
+            }
+        }
 
         #endregion
 
@@ -503,6 +522,7 @@ namespace WSCATProject.Finance
             panel5.Enabled = false;
         }
 
+
         #endregion
 
         #region 改变边框颜色
@@ -595,12 +615,44 @@ namespace WSCATProject.Finance
                 toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
                 toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;//dataGridViewFuJia表格双击事件
+                toolStripButtonXuanYuanDan.Click += ToolStripButtonXuanYuanDan_Click;//选源单
                 dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：-窗体加载时，初始化数据错误！请检查：" + ex.Message, "核销单温馨提示！");
                 return;
+            }
+        }
+
+        /// <summary>
+        /// 选源单的点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
+        {
+            XuanYuanDan();
+        }
+
+        private void XuanYuanDan()
+        {
+
+            //如果点击了上面的表格
+            if (superGridControlTop.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.ClientCode = _clientCode;
+                financeReport.Show();
+
+
+            }
+            //如果点击了下面的表格
+            if (superGridControlShangPing.Focused)
+            {
+                Finance.FinanceOtherReceivablesForm financeReport = new FinanceOtherReceivablesForm();
+                financeReport.Show();
+
             }
         }
 
