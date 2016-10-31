@@ -18,7 +18,7 @@ namespace Model.Finance
         private int _id;
         private string _maincode;
         private string _code;
-        private string _salescode;
+        private string _purchasecode;
         private DateTime? _salesdate;
         private string _salestype;
         private decimal? _amountreceivable;
@@ -54,10 +54,10 @@ namespace Model.Finance
         /// <summary>
         /// 销售单单号
         /// </summary>
-        public string salesCode
+        public string purchaseCode
         {
-            set { _salescode = value; }
-            get { return _salescode; }
+            set { _purchasecode = value; }
+            get { return _purchasecode; }
         }
         /// <summary>
         /// 销售单日期

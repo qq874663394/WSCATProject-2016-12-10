@@ -2,6 +2,8 @@
 using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Finance;
+using Model.Finance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +28,7 @@ namespace WSCATProject.Finance
         ClientInterface client = new ClientInterface();//客户
         SupplierInterface supplier = new SupplierInterface();//供应商
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工
+        FinanceVerificationMainInterface financeVerificationInterface = new FinanceVerificationMainInterface();
         #endregion
 
         #region 数据字段
@@ -71,22 +74,37 @@ namespace WSCATProject.Finance
         /// </summary>
         private string _financeVerificationCode;
         /// <summary>
-        /// 统计单据金额
+        /// 统计上表格单据金额
         /// </summary>
-        private decimal _danJuMoney;
+        private decimal _danJuMoneyTop;
         /// <summary>
-        /// 统计已核销金额
+        /// 统计上表格已核销金额
         /// </summary>
-        private decimal _yiHeXiaoMoney;
+        private decimal _yiHeXiaoMoneyTop;
         /// <summary>
-        /// 统计未核销金额
+        /// 统计上表格未核销金额
         /// </summary>
-        private decimal _weiHeXiaoMoney;
+        private decimal _weiHeXiaoMoneyTop;
         /// <summary>
-        /// 统计本次核销金额
+        /// 统计上表格本次核销金额
         /// </summary>
-        private decimal _benCiHeXiaoMoney;
-
+        private decimal _benCiHeXiaoMoneyTop;
+        /// <summary>
+        /// 统计下表格单据金额
+        /// </summary>
+        private decimal _danJuMoneyBottom;
+        /// <summary>
+        /// 统计下表格已核销金额
+        /// </summary>
+        private decimal _yiHeXiaoMoneyBottom;
+        /// <summary>
+        /// 统计下表格未核销金额
+        /// </summary>
+        private decimal _weiHeXiaoMoneyBottom;
+        /// <summary>
+        /// 统计下表格本次核销金额
+        /// </summary>
+        private decimal _benCiHeXiaoMoneyBottom;
 
         #endregion
 
@@ -180,38 +198,109 @@ namespace WSCATProject.Finance
         /// </summary>
         private bool isNUllValidate()
         {
-            //if (labtextboxTop2.Text.Trim() == null || labtextboxTop2.Text == "")
-            //{
-            //    MessageBox.Show("客户不能为空！");
-            //    labtextboxTop2.Focus();
-            //    return false;
-            //}
-            //if (labtextboxTop4.Text.Trim() == null || labtextboxTop4.Text == "")
-            //{
-            //    MessageBox.Show("结算账户不能为空！");
-            //    labtextboxTop4.Focus();
-            //    return false;
-            //}
-            //GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
-            //double BenCiMoney = Convert.ToDouble(gr.Cells["benCiHeXiao"].Value);
-            //if (gr.Cells["select"].Value == null || gr.Cells["material"].Value.ToString() == "合计")
-            //{
-            //    MessageBox.Show("表格里源单不能为空！请选择");
-            //    superGridControlShangPing.Focus();
-            //    return false;
-            //}
-            //if (BenCiMoney == 0.00)
-            //{
-            //    MessageBox.Show("金额不能为0，请检查：");
-            //    superGridControlShangPing.Focus();
-            //    return false;
-            //}
-            //if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
-            //{
-            //    MessageBox.Show("经手人不能为空！");
-            //    ltxtbSalsMan.Focus();
-            //    return false;
-            //}
+            #region 根据核销类型进行非空验证
+            if (cboHeXiaoType.Text == "预收冲应收")
+            {
+                if (labtextboxTop2.Text == null || labtextboxTop2.Text.Trim() == "")
+                {
+                    MessageBox.Show("客户不能为空！");
+                    labtextboxTop2.Focus();
+                }
+                return false;
+            }
+            if (cboHeXiaoType.Text == "预付冲应付")
+            {
+                if (labtextboxTop5.Text == null || labtextboxTop5.Text.Trim() == "")
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    labtextboxTop5.Focus();
+                }
+                return false;
+            }
+            if (cboHeXiaoType.Text == "应收冲应付")
+            {
+                if (labtextboxTop2.Text == null || labtextboxTop2.Text.Trim() == "")
+                {
+                    MessageBox.Show("客户不能为空！");
+                    labtextboxTop2.Focus();
+                }
+                if (labtextboxTop5.Text == null || labtextboxTop5.Text.Trim() == "")
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    labtextboxTop5.Focus();
+                }
+                return false;
+            }
+            if (cboHeXiaoType.Text == "应收转应收")
+            {
+                if (labtextboxTop2.Text == null || labtextboxTop2.Text.Trim() == "")
+                {
+                    MessageBox.Show("转出客户不能为空！");
+                    labtextboxTop2.Focus();
+                }
+                if (labtextboxTop7.Text == null || labtextboxTop7.Text.Trim() == "")
+                {
+                    MessageBox.Show("转入客户不能为空！");
+                    labtextboxTop7.Focus();
+                }
+                return false;
+            }
+            if (cboHeXiaoType.Text == "应付转应付")
+            {
+                if (labtextboxTop5.Text == null || labtextboxTop5.Text.Trim() == "")
+                {
+                    MessageBox.Show("转出供应商不能为空！");
+                    labtextboxTop5.Focus();
+                }
+                if (labtextboxTop4.Text == null || labtextboxTop4.Text.Trim() == "")
+                {
+                    MessageBox.Show("转入供应商不能为空！");
+                    labtextboxTop4.Focus();
+                }
+                return false;
+            }
+            #endregion
+
+            #region 上表格
+            GridRow grTop = (GridRow)superGridControlTop.PrimaryGrid.Rows[1];
+            double BenCiMoneyTop = Convert.ToDouble(grTop.Cells["gridColumnBenCi"].Value);
+            if (grTop.Cells["gridColumnYuanDanCode"].Value == null)
+            {
+                MessageBox.Show("表格里源单不能为空！请选择");
+                superGridControlTop.Focus();
+                return false;
+            }
+            if (BenCiMoneyTop == 0.00)
+            {
+                MessageBox.Show("金额不能为0，请检查：");
+                superGridControlTop.Focus();
+                return false;
+            }
+            #endregion
+
+            #region  下表格
+            GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[1];
+            double BenCiMoney = Convert.ToDouble(gr.Cells["benCiHeXiao"].Value);
+            if (gr.Cells["yuanDanCode"].Value == null)
+            {
+                MessageBox.Show("表格里源单不能为空！请选择");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            if (BenCiMoney == 0.00)
+            {
+                MessageBox.Show("金额不能为0，请检查：");
+                superGridControlShangPing.Focus();
+                return false;
+            }
+            #endregion
+
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("核销员不能为空！");
+                ltxtbSalsMan.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -262,7 +351,7 @@ namespace WSCATProject.Finance
             {
                 if (_Click != 2)
                 {
-                    _Click =2;
+                    _Click = 2;
                     dataGridViewFuJia.DataSource = null;
                     dataGridViewFuJia.Columns.Clear();
 
@@ -360,7 +449,7 @@ namespace WSCATProject.Finance
             {
                 MessageBox.Show("错误代码：5103-尝试点击经手人，数据显示失败或者无数据！请检查：" + ex.Message, "其它收款单温馨提示！");
             }
-        }      
+        }
 
         /// <summary>
         /// 标记那个控件不可用
@@ -405,11 +494,13 @@ namespace WSCATProject.Finance
                         break;
                 }
             }
-            superGridControlTop.PrimaryGrid.ReadOnly = true;
-            superGridControlShangPing.PrimaryGrid.ReadOnly = true;
+            superGridControlTop.Enabled = false;
+            superGridControlShangPing.Enabled = false;
             pictureBoxShengHe.Visible = true;
             toolStripBtnSave.Enabled = false;
             toolStripBtnShengHe.Enabled = false;
+            panel2.Enabled = false;
+            panel5.Enabled = false;
         }
 
         #endregion
@@ -501,8 +592,8 @@ namespace WSCATProject.Finance
                 System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
                 pictureBoxBarCode.Image = imgTemp;
 
-               // toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
-                //toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
                 dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;//dataGridViewFuJia表格双击事件
                 dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
             }
@@ -611,7 +702,7 @@ namespace WSCATProject.Finance
                 case "预收冲应收":
                     //客户
                     labTop2.ForeColor = Color.Black;
-                    labTop2.Text = "客户：";
+                    labTop2.Text = "客   户：";
                     labTop2.Visible = true;
                     labtextboxTop2.Enabled = true;
                     labtextboxTop2.Visible = true;
@@ -622,7 +713,7 @@ namespace WSCATProject.Finance
                     //供应商
                     labTop5.ForeColor = Color.Gray;
                     labTop5.Visible = true;
-                    labTop5.Text = "供应商：";
+                    labTop5.Text = "供 应 商：";
                     labtextboxTop5.Enabled = false;
                     labtextboxTop5.Visible = true;
                     labtextboxTop5.Clear();
@@ -822,7 +913,7 @@ namespace WSCATProject.Finance
                 resizablePanel1.Location = new Point(630, 155);
                 dataGridViewFuJia.Focus();
             }
-            _Click =4;
+            _Click = 4;
         }
 
         /// <summary>
@@ -1215,5 +1306,357 @@ namespace WSCATProject.Finance
         }
 
         #endregion
+
+        /// <summary>
+        /// 上表格验证统计
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlTop_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                if (gr.Cells["gridColumnSelect"].FormattedValue == null || gr.Cells["gridColumnSelect"].FormattedValue == "")
+                {
+                    MessageBox.Show("请先选择单据：");
+                    gr.Cells["gridColumnBenCi"].Value = 0.00;
+                    return;
+                }
+                decimal benciHeXiaoMoney = Convert.ToDecimal(gr.Cells["gridColumnBenCi"].FormattedValue);//本次核销金额
+                decimal weiHeXiaoMoney = Convert.ToDecimal(gr.Cells["gridColumnWeiHeXiao"].FormattedValue);//未核销金额
+                if (benciHeXiaoMoney > weiHeXiaoMoney)
+                {
+                    MessageBox.Show("本次核销金额不能大于未核销金额！");
+                    gr.Cells["gridColumnBenCi"].Value = "0.00";
+                    return;
+                }
+                TongJiTopTable();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-验证上表格里数据以及统计出错！请检查：" + ex.Message, "核销单温馨提示！");
+            }
+        }
+
+        /// <summary>
+        /// 统计上表格数据
+        /// </summary>
+        private void TongJiTopTable()
+        {
+            try
+            {
+                GridRow gr = (GridRow)superGridControlTop.PrimaryGrid.Rows[ClickRowIndex];
+                //逐行统计数据总数
+                decimal tempDanJuMoney = 0;
+                decimal tempYiHeXiaoMoney = 0;
+                decimal tempWeiHeXiaoMoney = 0;
+                decimal tempBenCiHeXiao = 0;
+                for (int i = 0; i < superGridControlTop.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlTop.PrimaryGrid.Rows[i] as GridRow;
+                    tempDanJuMoney += Convert.ToDecimal(tempGR["gridColumnDanJuMoney"].FormattedValue);
+                    tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["gridColumnYiHeXiao"].FormattedValue);
+                    tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["gridColumnWeiHeXiao"].FormattedValue);
+                    tempBenCiHeXiao += Convert.ToDecimal(tempGR["gridColumnBenCi"].FormattedValue);
+                }
+                _danJuMoneyTop = tempDanJuMoney;
+                _yiHeXiaoMoneyTop = tempYiHeXiaoMoney;
+                _weiHeXiaoMoneyTop = tempWeiHeXiaoMoney;
+                _benCiHeXiaoMoneyTop = tempBenCiHeXiao;
+                gr = (GridRow)superGridControlTop.PrimaryGrid.LastSelectableRow;
+                gr["gridColumnDanJuMoney"].Value = _danJuMoneyTop.ToString();
+                gr["gridColumnYiHeXiao"].Value = _yiHeXiaoMoneyTop.ToString();
+                gr["gridColumnWeiHeXiao"].Value = _weiHeXiaoMoneyTop.ToString();
+                gr["gridColumnBenCi"].Value = _benCiHeXiaoMoneyTop.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-逐行统计上表格数据错误！" + ex.Message, "核销单温馨提示：");
+            }
+        }
+
+        /// <summary>
+        /// 下表格验证统计
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superGridControlShangPing_CellValidated(object sender, GridCellValidatedEventArgs e)
+        {
+            try
+            {
+                GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
+                if (gr.Cells["select"].FormattedValue == null || gr.Cells["select"].FormattedValue == "")
+                {
+                    MessageBox.Show("请先选择单据：");
+                    gr.Cells["benCiHeXiao"].Value = 0.00;
+                    return;
+                }
+                decimal benciHeXiaoMoney = Convert.ToDecimal(gr.Cells["benCiHeXiao"].FormattedValue);//本次核销金额
+                decimal weiHeXiaoMoney = Convert.ToDecimal(gr.Cells["weiHeXiao"].FormattedValue);//未核销金额
+                if (benciHeXiaoMoney > weiHeXiaoMoney)
+                {
+                    MessageBox.Show("本次核销金额不能大于未核销金额！");
+                    gr.Cells["benCiHeXiao"].Value = "0.00";
+                    return;
+                }
+                TongJiBottomTable();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-验证下表格里的数据以及统计出错！请检查：" + ex.Message, "核销单温馨提示！");
+            }
+        }
+
+        /// <summary>
+        /// 统计下表格数据
+        /// </summary>
+        private void TongJiBottomTable()
+        {
+            try
+            {
+                GridRow gr = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                //逐行统计数据总数
+                decimal tempDanJuMoney = 0;
+                decimal tempYiHeXiaoMoney = 0;
+                decimal tempWeiHeXiaoMoney = 0;
+                decimal tempBenCiHeXiao = 0;
+                for (int i = 0; i < superGridControlShangPing.PrimaryGrid.Rows.Count - 1; i++)
+                {
+                    GridRow tempGR = superGridControlShangPing.PrimaryGrid.Rows[i] as GridRow;
+                    tempDanJuMoney += Convert.ToDecimal(tempGR["danJuMoney"].FormattedValue);
+                    tempYiHeXiaoMoney += Convert.ToDecimal(tempGR["yiHeXiao"].FormattedValue);
+                    tempWeiHeXiaoMoney += Convert.ToDecimal(tempGR["weiHeXiao"].FormattedValue);
+                    tempBenCiHeXiao += Convert.ToDecimal(tempGR["benCiHeXiao"].FormattedValue);
+                }
+                _danJuMoneyBottom = tempDanJuMoney;
+                _yiHeXiaoMoneyBottom = tempYiHeXiaoMoney;
+                _weiHeXiaoMoneyBottom = tempWeiHeXiaoMoney;
+                _benCiHeXiaoMoneyBottom = tempBenCiHeXiao;
+                gr = (GridRow)superGridControlShangPing.PrimaryGrid.LastSelectableRow;
+                gr["danJuMoney"].Value = _danJuMoneyBottom.ToString();
+                gr["yiHeXiao"].Value = _yiHeXiaoMoneyBottom.ToString();
+                gr["weiHeXiao"].Value = _weiHeXiaoMoneyBottom.ToString();
+                gr["benCiHeXiao"].Value = _benCiHeXiaoMoneyBottom.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-逐行统计下表格数据错误！" + ex.Message, "核销单温馨提示：");
+            }
+        }
+
+        /// <summary>
+        /// 保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        /// <summary>
+        /// 保存按钮函数
+        /// </summary>
+        private void Save()
+        {
+            //if (isNUllValidate() == false)
+            //{
+            //    return;
+            //}
+            ///核销单
+            FinanceVerificationMain financeVerification = new FinanceVerificationMain();
+            //核销单详细列表
+            List<FinanceVerificationDetail> financeVerificationList = new List<FinanceVerificationDetail>();
+
+            #region 核销单基本数据
+            try
+            {
+                financeVerification.code = XYEEncoding.strCodeHex(validateCode());//核销单单号
+                if (cboHeXiaoType.Text != null || cboHeXiaoType.Text.Trim() != "")
+                {
+                    financeVerification.verificationType = XYEEncoding.strCodeHex(cboHeXiaoType.Text);//核销类型
+                }
+                else
+                {
+                    MessageBox.Show("核销类型不能为空！请选择");
+                    cboHeXiaoType.Focus();
+                    return;
+                }
+
+                #region 根据核销类型判断是否为空
+
+                switch (cboHeXiaoType.Text)
+                {
+                    case "预收冲应收":
+                        if (labtextboxTop2.Text.Trim() != "")
+                        {
+                            financeVerification.outClientCode = XYEEncoding.strCodeHex(_clientCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("客户不能为空！请选择");
+                            labtextboxTop2.Focus();
+                            return;
+                        }
+                        break;
+                    case "预付冲应付":
+                        if (labtextboxTop5.Text.Trim() != "")
+                        {
+                            financeVerification.outSupplierCode = XYEEncoding.strCodeHex(_supplierCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("供应商不能为空！请选择");
+                            labtextboxTop5.Focus();
+                            return;
+                        }
+                        break;
+                    case "应收冲应付":
+                        if (labtextboxTop2.Text.Trim() != "")
+                        {
+                            financeVerification.outClientCode = XYEEncoding.strCodeHex(_clientCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("客户不能为空！请选择");
+                            labtextboxTop2.Focus();
+                            return;
+                        }
+                        if (labtextboxTop5.Text.Trim() != "")
+                        {
+                            financeVerification.outSupplierCode = XYEEncoding.strCodeHex(_supplierCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("供应商不能为空！请选择");
+                            labtextboxTop5.Focus();
+                            return;
+                        }
+                        break;
+                    case "应收转应收":
+                        if (labtextboxTop2.Text.Trim() != "")
+                        {
+                            financeVerification.outClientCode = XYEEncoding.strCodeHex(_clientCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("转出客户不能为空！请选择");
+                            labtextboxTop2.Focus();
+                            return;
+                        }
+                        if (labtextboxTop7.Text.Trim() != "")
+                        {
+                            financeVerification.inClientCode = XYEEncoding.strCodeHex(_clientCodeIn);
+                        }
+                        else
+                        {
+                            MessageBox.Show("转入客户不能为空！请选择");
+                            labtextboxTop7.Focus();
+                            return;
+                        }
+                        break;
+                    case "应付转应付":
+                        if (labtextboxTop5.Text.Trim() != "")
+                        {
+                            financeVerification.outSupplierCode = XYEEncoding.strCodeHex(_supplierCode);
+                        }
+                        else
+                        {
+                            MessageBox.Show("转出供应商不能为空！请选择");
+                            labtextboxTop5.Focus();
+                            return;
+                        }
+                        if (labtextboxTop4.Text.Trim() != "")
+                        {
+                            financeVerification.inSupplierCode = XYEEncoding.strCodeHex(_supplierCodeIn);
+                        }
+                        else
+                        {
+                            MessageBox.Show("转入供应商不能为空！请选择");
+                            labtextboxTop4.Focus();
+                            return;
+                        }
+                        break;
+                }
+                #endregion
+
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financeVerification.salesMan = XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim());//核销员
+                }
+                else
+                {
+                    MessageBox.Show("核销员不能为空！请选择");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financeVerification.date = this.dateTimePicker1.Value;//开单日期
+                financeVerification.description = XYEEncoding.strCodeHex(labtextboxTop6.Text == null ? "" : labtextboxTop6.Text.Trim());//说明
+                financeVerification.summary = XYEEncoding.strCodeHex(labtextboxTop3.Text == null ? "" : labtextboxTop3.Text.Trim());//摘要
+                financeVerification.operators = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.Trim());//制单人
+                financeVerification.auditors = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.Trim());//审核人
+                financeVerification.departmentCode = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:-尝试创建核销单数据出错!请检查:" + ex.Message, "核销单温馨提示");
+                return;
+            }
+            #endregion
+
+            #region 核销单表格详细数据
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            #endregion
+
+
+        }
+
+        /// <summary>
+        /// 验证单号是否重复
+        /// </summary>
+        /// <returns></returns>
+        private string validateCode()
+        {
+            if (financeVerificationInterface.Exists(XYEEncoding.strCodeHex(_financeVerificationCode)))
+            {
+                _financeVerificationCode = BuildCode.ModuleCode("FVC");
+            }
+            else
+            {
+                _financeVerificationCode = textBoxOddNumbers.Text;
+            }
+            return _financeVerificationCode;
+        }
+
+        /// <summary>
+        /// 审核按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Review();
+            }
+        }
+
+        /// <summary>
+        /// 审核按钮函数
+        /// </summary>
+        private void Review()
+        {
+
+        }
     }
 }

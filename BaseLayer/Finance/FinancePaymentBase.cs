@@ -78,9 +78,9 @@ namespace BaseLayer.Finance
                 hashTable.Add(sqlMain, spsMain);
 
                 sqlDetail.Append("insert into [T_FinancePaymentDetail] (");
-                sqlDetail.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                sqlDetail.Append("mainCode,code,purchaseCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append("@mainCode,@code,@salesCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
+                sqlDetail.Append("@mainCode,@code,@purchaseCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
                 sqlDetail.Append(";select @@IDENTITY");
                 foreach (var item in modelDetail)
                 {
@@ -88,7 +88,7 @@ namespace BaseLayer.Finance
                     {
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@code", SqlDbType.NVarChar,45),
-                    new SqlParameter("@salesCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@purchaseCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesDate", SqlDbType.DateTime),
                     new SqlParameter("@salesType", SqlDbType.NVarChar,40),
                     new SqlParameter("@amountReceivable", SqlDbType.Decimal,9),
@@ -100,7 +100,7 @@ namespace BaseLayer.Finance
                     };
                     spsDetail[0].Value = item.mainCode;
                     spsDetail[1].Value = item.code;
-                    spsDetail[2].Value = item.salesCode;
+                    spsDetail[2].Value = item.purchaseCode;
                     spsDetail[3].Value = item.salesDate;
                     spsDetail[4].Value = item.salesType;
                     spsDetail[5].Value = item.amountReceivable;
@@ -204,14 +204,14 @@ namespace BaseLayer.Finance
                 hashTable.Add(sqlMain, spsMain);
                 StringBuilder strInsert = new StringBuilder();
                 strInsert.Append("insert into [T_FinancePaymentDetail] (");
-                strInsert.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                strInsert.Append("mainCode,code,purchaseCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
                 strInsert.Append(" values (");
-                strInsert.Append("@mainCode,@code,@salesCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
+                strInsert.Append("@mainCode,@code,@purchaseCode,@salesDate,@salesType,@amountReceivable,@amountReceived,@amountUnpaid,@nowMoney,@unCollection,@remark)");
                 strInsert.Append(";select @@IDENTITY");
 
                 sqlDetail.Append("update [T_FinancePaymentDetail] set ");
                 sqlDetail.Append("mainCode=@mainCode,");
-                sqlDetail.Append("salesCode=@salesCode,");
+                sqlDetail.Append("purchaseCode=@purchaseCode,");
                 sqlDetail.Append("salesDate=@salesDate,");
                 sqlDetail.Append("salesType=@salesType,");
                 sqlDetail.Append("amountReceivable=@amountReceivable,");
@@ -228,7 +228,7 @@ namespace BaseLayer.Finance
                     {
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@code", SqlDbType.NVarChar,45),
-                    new SqlParameter("@salesCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@purchaseCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesDate", SqlDbType.DateTime),
                     new SqlParameter("@salesType", SqlDbType.NVarChar,40),
                     new SqlParameter("@amountReceivable", SqlDbType.Decimal,9),
@@ -240,7 +240,7 @@ namespace BaseLayer.Finance
                     };
                     spsDetail[0].Value =item.mainCode;
                     spsDetail[1].Value =item.code;
-                    spsDetail[2].Value =item.salesCode;
+                    spsDetail[2].Value =item.purchaseCode;
                     spsDetail[3].Value =item.salesDate;
                     spsDetail[4].Value =item.salesType;
                     spsDetail[5].Value =item.amountReceivable;

@@ -1,6 +1,8 @@
 ﻿using HelperUtility;
 using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
+using InterfaceLayer.Finance;
+using Model.Finance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,14 +26,14 @@ namespace WSCATProject.Finance
         CodingHelper ch = new CodingHelper();
         BankAccountInterface bank = new BankAccountInterface();//结算账户
         EmpolyeeInterface employee = new EmpolyeeInterface();//员工  
-
+        FinanceBankAccessInterface finaceBankAccessInterface = new FinanceBankAccessInterface();
         #endregion
 
         #region 数据字段
         /// <summary>
         /// 银行存取code
         /// </summary>
-        private string  _financeBankAccessCode;
+        private string _financeBankAccessCode;
         /// <summary>
         /// 所以经手人
         /// </summary>
@@ -250,6 +252,89 @@ namespace WSCATProject.Finance
                 MessageBox.Show("错误代码：5210-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
+
+        /// <summary>
+        /// 非空验证
+        /// </summary>
+        private bool isNUllValidate()
+        {
+            if (labtxtDanJuType.Text == null || labtxtDanJuType.Text.Trim() == "")
+            {
+                MessageBox.Show("付款账号不能为空！");
+                labtxtDanJuType.Focus();
+                return false;
+            }
+            if (labtextboxTop2.Text == null || labtextboxTop2.Text.Trim() == "")
+            {
+                MessageBox.Show("收款账号不能为空！");
+                labtextboxTop2.Focus();
+                return false;
+            }
+            double money = Convert.ToDouble(labtextboxTop5.Text.Trim());
+            if (money < 0.00)
+            {
+                MessageBox.Show("金额必须大于0！");
+                labtextboxTop5.Focus();
+                return false;
+            }
+            if (ltxtbSalsMan.Text.Trim() == null || ltxtbSalsMan.Text == "")
+            {
+                MessageBox.Show("经手人不能为空！");
+                ltxtbSalsMan.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 标记那个控件不可用
+        /// </summary>
+        private void InitForm()
+        {
+            foreach (Control c in panel2.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "ComboBoxEx":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            foreach (Control c in panel5.Controls)
+            {
+                switch (c.GetType().Name)
+                {
+                    case "Label":
+                        c.Enabled = false;
+                        c.ForeColor = Color.Gray;
+                        break;
+                    case "TextBoxX":
+                        c.Enabled = false;
+                        c.BackColor = Color.White;
+                        break;
+                    case "PictureBox":
+                        c.Enabled = false;
+                        break;
+                }
+            }
+            pictureBoxShengHe.Visible = true;
+            toolStripBtnSave.Enabled = false;
+            toolStripBtnShengHe.Enabled = false;
+            panel2.Enabled = false;
+            panel5.Enabled = false;
+        }
         #endregion
 
         private void FinanceBankAccessForm_Load(object sender, EventArgs e)
@@ -260,7 +345,7 @@ namespace WSCATProject.Finance
             //结算账户
             _AllBank = bank.GetList(999, "", false, false);
 
-
+            pictureBoxShengHe.Parent = pictureBoxtitle;
             dataGridViewFuJia.AutoGenerateColumns = false;
             dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
             dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
@@ -271,6 +356,9 @@ namespace WSCATProject.Finance
             _Code.ValueFont = new Font("微软雅黑", 20);
             System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
             pictureBoxtiaoxingma.Image = imgTemp;
+
+            toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+            toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
         }
 
         /// <summary>
@@ -280,7 +368,7 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void DataGridViewFuJia_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 dataGridViewFuJiTableClick();
             }
@@ -462,6 +550,72 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Save()
         {
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            FinanceBankAccess financeBankAccess = new FinanceBankAccess();
+            try
+            {
+                financeBankAccess.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单号
+                financeBankAccess.date = this.dateTimePicker1.Value;
+                if (labtxtDanJuType.Text != null || labtxtDanJuType.Text != "")
+                {
+                    financeBankAccess.paymentAccount = XYEEncoding.strCodeHex(labtxtDanJuType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("付款账户不能为空！");
+                    labtxtDanJuType.Focus();
+                    return;
+                }
+                if (labtextboxTop2.Text != null || labtextboxTop2.Text != "")
+                {
+                    financeBankAccess.receiptAccount = XYEEncoding.strCodeHex(labtextboxTop2.Text);
+                }
+                else
+                {
+                    MessageBox.Show("收款账户不能为空！");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                double Money = Convert.ToDouble(labtextboxTop5.Text.Trim());
+                if (Money > 0.00)
+                {
+                    financeBankAccess.amount = Convert.ToDecimal(Money);
+                }
+                else
+                {
+                    MessageBox.Show("金额不能小于0！");
+                    labtextboxTop5.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financeBankAccess.handled = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("经手人不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financeBankAccess.summary = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text);//摘要
+                financeBankAccess.operators = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//制单人
+                financeBankAccess.auditors = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text);//审核人
+                financeBankAccess.departmentCode = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:-尝试创建银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
+                return;
+            }
+
+            object financeBankAccessResult = finaceBankAccessInterface.Add(financeBankAccess);
+            if (financeBankAccessResult != null)
+            {
+                MessageBox.Show("尝试创建银行存取款单成功！");
+            }
 
         }
 
@@ -470,7 +624,7 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Review()
         {
-
+            
         }
 
         #region 模糊查询
@@ -668,5 +822,29 @@ namespace WSCATProject.Finance
         }
         #endregion
 
+        /// <summary>
+        /// 保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        /// <summary>
+        /// 审核按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnShengHe_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("是否一键审核？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+            {
+                Review();
+                InitForm();  
+            }
+        }
     }
 }
