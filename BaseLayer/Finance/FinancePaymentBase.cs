@@ -287,7 +287,7 @@ namespace BaseLayer.Finance
             DataSet ds = null;
             try
             {
-                sql = "select * from T_FinancePayment";
+                sql = "select * from T_FinancePayment tf ,T_FinancePaymentDetail pd";
                 if (strWhere.Trim() != "")
                 {
                     sql += " where " + strWhere;

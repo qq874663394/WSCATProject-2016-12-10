@@ -4,6 +4,9 @@ using HelperUtility.Encrypt;
 using InterfaceLayer.Base;
 using InterfaceLayer.Finance;
 using Model.Finance;
+using InterfaceLayer.Finance;
+using InterfaceLayer.Purchase;
+using InterfaceLayer.Sales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -112,6 +115,9 @@ namespace WSCATProject.Finance
         /// </summary>
         private string _fuKuanCode;
 
+        /// <summary>
+        /// 收款code
+        /// </summary>
         public string FuKuanCode
         {
             get
@@ -125,6 +131,26 @@ namespace WSCATProject.Finance
             }
         }
 
+        public string ShouKuanCode
+        {
+            get
+            {
+                return _shouKuanCode;
+            }
+
+            set
+            {
+                _shouKuanCode = value;
+            }
+        }
+
+        private string _shouKuanCode;
+
+
+        /// <summary>
+        /// 上面表格的code
+        /// </summary>
+        private string _mainCode;
         #endregion
 
         #region 初始化数据
@@ -632,10 +658,34 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void ToolStripButtonXuanYuanDan_Click(object sender, EventArgs e)
         {
-            XuanYuanDan();
-        }
+            switch (cboHeXiaoType.Text)
+            {
 
-        private void XuanYuanDan()
+                case "预收冲应收":
+                    XuanYuanDanYuShou();
+                    break;
+
+                case "预付冲应付":
+                    XuanYuanDanYuFu();
+                    break;
+
+                case "应收冲应付":
+
+                    break;
+
+                case "应收转应收":
+
+                    break;
+
+                case "应付转应付":
+
+                    break;
+            }
+        }
+        /// <summary>
+        /// 预收冲应收
+        /// </summary>
+        private void XuanYuanDanYuShou()
         {
 
             //如果点击了上面的表格
@@ -643,16 +693,93 @@ namespace WSCATProject.Finance
             {
                 Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
                 financeReport.ClientCode = _clientCode;
-                financeReport.Show();
+                financeReport.ShowDialog(this);
 
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
 
+                superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+
+                _mainCode = dt.Rows[0]["saleCode"].ToString();
             }
             //如果点击了下面的表格
             if (superGridControlShangPing.Focused)
             {
-                Finance.FinanceOtherReceivablesForm financeReport = new FinanceOtherReceivablesForm();
-                financeReport.Show();
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.SalerMainCode = _mainCode;
+                financeReport.ShowDialog(this);
 
+                SalesMainInterface salesMain = new SalesMainInterface();
+                DataTable dt = ch.DataTableReCoding(salesMain.GetList(1, XYEEncoding.strCodeHex(_mainCode)));
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["oddAllMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddAllMoney"],
+                 dt.Rows[0]["collectMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["collectMoney"],
+                 dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+            }
+        }
+
+        /// <summary>
+        /// 预付冲应付
+        /// </summary>
+        private void XuanYuanDanYuFu()
+        {
+            //如果点击了上面的表格
+            if (superGridControlTop.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.SupplierCode = _supplierCode;
+                financeReport.ShowDialog(this);
+
+                FinancePaymentInterface financePayment = new FinancePaymentInterface();
+                DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
+
+                superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+
+                _mainCode = dt.Rows[0]["purchaseCode"].ToString();
+            }
+            //如果点击了下面的表格
+            if (superGridControlShangPing.Focused)
+            {
+                Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
+                financeReport.PurchaseCode = _mainCode;
+                financeReport.ShowDialog(this);
+
+                PurchaseMainInterface purchase = new PurchaseMainInterface();
+                DataTable dt = ch.DataTableReCoding(purchase.GetList(3, XYEEncoding.strCodeHex(_mainCode)));
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["data"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["oddMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddMoney"],
+                 dt.Rows[0]["inMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["inMoney"],
+                 dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
             }
         }
 
@@ -690,6 +817,7 @@ namespace WSCATProject.Finance
             //前单
             if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
             {
+
                 MessageBox.Show("前单");
                 return;
             }
@@ -740,7 +868,6 @@ namespace WSCATProject.Finance
                 this.Dispose();
             }
         }
-
         /// <summary>
         /// 核销类型下拉框选择改变事件
         /// </summary>
@@ -754,7 +881,7 @@ namespace WSCATProject.Finance
                 case "预收冲应收":
                     //客户
                     labTop2.ForeColor = Color.Black;
-                    labTop2.Text = "客   户：";
+                    labTop2.Text = "客户：";
                     labTop2.Visible = true;
                     labtextboxTop2.Enabled = true;
                     labtextboxTop2.Visible = true;
@@ -765,7 +892,7 @@ namespace WSCATProject.Finance
                     //供应商
                     labTop5.ForeColor = Color.Gray;
                     labTop5.Visible = true;
-                    labTop5.Text = "供 应 商：";
+                    labTop5.Text = "供应商：";
                     labtextboxTop5.Enabled = false;
                     labtextboxTop5.Visible = true;
                     labtextboxTop5.Clear();
@@ -1752,3 +1879,4 @@ namespace WSCATProject.Finance
         }
     }
 }
+

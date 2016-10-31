@@ -296,7 +296,7 @@ strInsert.Append(";select @@IDENTITY");
             DataSet ds = null;
             try
             {
-                sql = "select * from T_FinanceCollection";
+                sql = "select * from T_FinanceCollection fin,T_FinanceCollectionDetail tf";
                 if (strWhere.Trim() != "")
                 {
                     sql += " where " + strWhere;

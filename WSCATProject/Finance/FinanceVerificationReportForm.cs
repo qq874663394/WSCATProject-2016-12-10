@@ -28,6 +28,7 @@ namespace WSCATProject.Finance
         FinanceCollectionInterface financeInterface = new FinanceCollectionInterface();
         SalesMainInterface salesMain = new SalesMainInterface();
         PurchaseMainInterface purchase = new PurchaseMainInterface();
+        FinancePaymentInterface financePay = new FinancePaymentInterface();
         #endregion
 
         #region 数据字段
@@ -85,6 +86,21 @@ namespace WSCATProject.Finance
                 _salerMainCode = value;
             }
         }
+
+        public string PurchaseCode
+        {
+            get
+            {
+                return _purchaseCode;
+            }
+
+            set
+            {
+                _purchaseCode = value;
+            }
+        }
+
+        private string _purchaseCode;
         DataTable dt = null;
         #endregion
 
@@ -112,9 +128,9 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "supplierName";
-            gc.Name = "supplierName";
-            gc.HeaderText = "供应商名称";
+            gc.DataPropertyName = "clientName";
+            gc.Name = "clientName";
+            gc.HeaderText = "客户名称";
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -147,22 +163,75 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "saleCode";
-            gc.Name = "saleCode";
+            gc.DataPropertyName = "salesCode";
+            gc.Name = "salesCode";
             gc.Visible = false;
             gc.HeaderText = "采购单code";
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
-            dt = ch.DataTableReCoding(financeInterface.GetList(0, XYEEncoding.strCodeHex(_clientCode)));
-            if (dt.Rows.Count > 0)
-            {
-                superGridControlShangPing.PrimaryGrid.DataSource = dt;
-            }
-            else
-            {
-                MessageBox.Show("查无数据!");
-            }
-        } 
+        }
+
+        private void InitShowDataGridView()
+        {
+            GridColumn gc = null;
+
+            superGridControlShangPing.PrimaryGrid.DataSource = null;
+            superGridControlShangPing.PrimaryGrid.Columns.Clear();
+            gc = new GridColumn();
+            gc.DataPropertyName = "type";
+            gc.Name = "type";
+            gc.HeaderText = "单据类型";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "code";
+            gc.Name = "code";
+            gc.HeaderText = "单据编号";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "clientName";
+            gc.Name = "clientName";
+            gc.HeaderText = "客户名称";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "date";
+            gc.Name = "date";
+            gc.HeaderText = "日期";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "oddAllMoney";
+            gc.Name = "oddAllMoney";
+            gc.HeaderText = "总金额";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "collectMoney";
+            gc.Name = "collectMoney";
+            gc.HeaderText = "已核销金额";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "lastMoney";
+            gc.Name = "lastMoney";
+            gc.HeaderText = "未核销金额";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "摘要";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "salesCode";
+            gc.Name = "salesCode";
+            gc.Visible = false;
+            gc.HeaderText = "采购单code";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+        }
 
         /// <summary>
         /// 初始化供应商列表
@@ -186,9 +255,9 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "clientName";
-            gc.Name = "clientName";
-            gc.HeaderText = "客户姓名";
+            gc.DataPropertyName = "supplierName";
+            gc.Name = "supplierName";
+            gc.HeaderText = "供应商姓名";
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
@@ -221,21 +290,73 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
             gc = new GridColumn();
-            gc.DataPropertyName = "saleCode";
-            gc.Name = "saleCode";
+            gc.DataPropertyName = "purchaseCode";
+            gc.Name = "purchaseCode";
             gc.Visible = false;
-            gc.HeaderText = "销售单code";
+            gc.HeaderText = "采购单code";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+        }
+
+        private void InitSupplierShowDataGridView()
+        {
+            GridColumn gc = null;
+
+            superGridControlShangPing.PrimaryGrid.DataSource = null;
+            superGridControlShangPing.PrimaryGrid.Columns.Clear();
+            gc = new GridColumn();
+            gc.DataPropertyName = "type";
+            gc.Name = "type";
+            gc.HeaderText = "单据类型";
             superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
 
-            dt = ch.DataTableReCoding(salesMain.GetList(1, XYEEncoding.strCodeHex(_clientCode)));
-            if (dt.Rows.Count > 0)
-            {
-                superGridControlShangPing.PrimaryGrid.DataSource = dt;
-            }
-            else
-            {
-                MessageBox.Show("查无数据!");
-            }
+            gc = new GridColumn();
+            gc.DataPropertyName = "code";
+            gc.Name = "code";
+            gc.HeaderText = "单据编号";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "supplierName";
+            gc.Name = "supplierName";
+            gc.HeaderText = "供应商姓名";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "date";
+            gc.Name = "date";
+            gc.HeaderText = "日期";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "oddMoney";
+            gc.Name = "oddMoney";
+            gc.HeaderText = "总金额";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "inMoney";
+            gc.Name = "inMoney";
+            gc.HeaderText = "已核销金额";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "lastMoney";
+            gc.Name = "lastMoney";
+            gc.HeaderText = "未核销金额";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "remark";
+            gc.Name = "remark";
+            gc.HeaderText = "摘要";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
+
+            gc = new GridColumn();
+            gc.DataPropertyName = "purchaseCode";
+            gc.Name = "purchaseCode";
+            gc.Visible = false;
+            gc.HeaderText = "采购单code";
+            superGridControlShangPing.PrimaryGrid.Columns.Add(gc);
         }
 
         #endregion
@@ -248,11 +369,68 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
             //显示行号
             superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-            if (_clientCode!="")
+            if ( _clientCode != null)
             {
                 InitClientDataGridView();
+                dt = ch.DataTableReCoding(financeInterface.GetList(0, XYEEncoding.strCodeHex(_clientCode)));
+                if (dt.Rows.Count > 0)
+                {
+                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("查无数据!");
+                    this.Close();
+                }
             }
-            
+            if (_salerMainCode != null)
+            {
+                InitShowDataGridView();
+                dt = ch.DataTableReCoding(salesMain.GetList(1, XYEEncoding.strCodeHex(_salerMainCode)));
+                if (dt.Rows.Count > 0)
+                {
+                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("查无数据!");
+                }
+            }
+
+            if (_supplierCode!=null)
+            {
+                InitSupplierDataGridView();
+                dt = ch.DataTableReCoding(financePay.GetList(0, XYEEncoding.strCodeHex(_supplierCode)));
+                if (dt.Rows.Count > 0)
+                {
+                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("查无数据!");
+                    this.Close();
+                }
+            }
+
+            if (_purchaseCode!=null)
+            {
+                InitSupplierShowDataGridView();
+                dt = ch.DataTableReCoding(purchase.GetList(3, XYEEncoding.strCodeHex(_purchaseCode)));
+                if (dt.Rows.Count > 0)
+                {
+                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("查无数据!");
+                    this.Close();
+                }
+            }
+
         }
 
         #region 最小化、最大化、关闭的点击事件
@@ -339,7 +517,14 @@ namespace WSCATProject.Finance
                         GridRow row = col[0] as GridRow;
                         string mainCode = row.Cells["code"].Value.ToString();
                         FinanceVerificationForm financeVerifict = (FinanceVerificationForm)this.Owner;
-                        financeVerifict.FuKuanCode = mainCode;
+                        if (_clientCode!=null)
+                        {
+                            financeVerifict.FuKuanCode = mainCode;
+                        }
+                        if (_supplierCode!=null)
+                        {
+                            financeVerifict.ShouKuanCode = mainCode;
+                        }
                         this.Close();
                     }
                     else

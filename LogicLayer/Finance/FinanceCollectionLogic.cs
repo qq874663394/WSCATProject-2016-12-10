@@ -117,13 +117,13 @@ namespace LogicLayer.Finance
                 switch (fieldName)
                 {
                     case 0:
-                        strWhere += string.Format("checkState=1 and financeCollectionState=1 and clientCode='{0}'", fieldValue);
+                        strWhere += string.Format("fin.checkState=1 and fin.financeCollectionState=1  and fin.code=tf.mainCode and fin.clientCode='{0}'", fieldValue);
                         break;
                     case 1:
-                        strWhere += string.Format("checkState=1 and financeCollectionState=1 and supplierCode='{0}'", fieldValue);
+                        strWhere += string.Format("fin.checkState=1 and fin.financeCollectionState=1 and fin.code=tf.mainCode and fin.supplierCode='{0}'", fieldValue);
                         break;
                     case 2:
-                        strWhere += string.Format("code='{0}'",fieldValue);
+                        strWhere += string.Format("fin.code='{0}'", fieldValue);
                         break;
                 }
                 model.operationContent = "查询T_FinanceCollection表的所有数据,条件:" + strWhere;
