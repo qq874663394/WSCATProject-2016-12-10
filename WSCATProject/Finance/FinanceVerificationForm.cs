@@ -587,6 +587,8 @@ namespace WSCATProject.Finance
             try
             {
                 #region 初始化窗体
+                superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
+                superGridControlTop.PrimaryGrid.ShowInsertRow = true;
                 pictureBoxShengHe.Parent = pictureBoxtitle;
                 cboHeXiaoType.SelectedIndex = 0;
                 toolStripButtonXuanYuanDan.Visible = true;
@@ -682,6 +684,7 @@ namespace WSCATProject.Finance
                     break;
             }
         }
+
         /// <summary>
         /// 预收冲应收
         /// </summary>
@@ -913,8 +916,6 @@ namespace WSCATProject.Finance
                     textBox1.Text = "应收";
                     //表格
                     superGridControlShangPing.Enabled = true;
-                    superGridControlShangPing.PrimaryGrid.DataSource = null;
-                    superGridControlTop.PrimaryGrid.DataSource = null;
                     break;
                 #endregion
                 #region  预付冲应付
