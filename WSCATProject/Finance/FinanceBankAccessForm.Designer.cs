@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBoxtiaoxingma = new System.Windows.Forms.PictureBox();
+            this.pictureBoxShengHe = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -46,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtiaoxingma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxOddNumbers
@@ -65,6 +67,16 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(1040, 82);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBoxShengHe);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxtitle, 0);
+            this.panel1.Controls.SetChildIndex(this.labelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMax, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxMin, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxClose, 0);
+            this.panel1.Controls.SetChildIndex(this.pictureBoxShengHe, 0);
             // 
             // labelTitle
             // 
@@ -192,6 +204,8 @@
             this.labtextboxTop5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop5.Location = new System.Drawing.Point(758, 18);
             this.labtextboxTop5.Size = new System.Drawing.Size(145, 16);
+            this.labtextboxTop5.Text = "0.00";
+            this.labtextboxTop5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labtextboxTop4
             // 
@@ -300,12 +314,14 @@
             // labTop2
             // 
             this.labTop2.Location = new System.Drawing.Point(365, 17);
-            this.labTop2.Text = "收款账号：";
+            this.labTop2.Size = new System.Drawing.Size(71, 12);
+            this.labTop2.Text = "收款账号*：";
             // 
             // labTop1
             // 
             this.labTop1.Location = new System.Drawing.Point(29, 17);
-            this.labTop1.Text = "付款账号：";
+            this.labTop1.Size = new System.Drawing.Size(71, 12);
+            this.labTop1.Text = "付款账号*：";
             // 
             // pictureBoxClose
             // 
@@ -425,6 +441,18 @@
             this.pictureBoxtiaoxingma.TabIndex = 53;
             this.pictureBoxtiaoxingma.TabStop = false;
             // 
+            // pictureBoxShengHe
+            // 
+            this.pictureBoxShengHe.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxShengHe.Image = global::WSCATProject.Properties.Resources.审核;
+            this.pictureBoxShengHe.Location = new System.Drawing.Point(734, 8);
+            this.pictureBoxShengHe.Name = "pictureBoxShengHe";
+            this.pictureBoxShengHe.Size = new System.Drawing.Size(66, 50);
+            this.pictureBoxShengHe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxShengHe.TabIndex = 46;
+            this.pictureBoxShengHe.TabStop = false;
+            this.pictureBoxShengHe.Visible = false;
+            // 
             // FinanceBankAccessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -456,6 +484,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtiaoxingma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShengHe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,5 +493,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxtiaoxingma;
+        private System.Windows.Forms.PictureBox pictureBoxShengHe;
     }
 }

@@ -337,8 +337,9 @@
             // 
             // labTop7
             // 
-            this.labTop7.Location = new System.Drawing.Point(670, 17);
-            this.labTop7.Text = "转入客户：";
+            this.labTop7.Location = new System.Drawing.Point(652, 17);
+            this.labTop7.Size = new System.Drawing.Size(83, 12);
+            this.labTop7.Text = "转 入 客 户：";
             this.labTop7.Visible = false;
             // 
             // labTop6
@@ -508,6 +509,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 258);
+            this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             // 
             // resizablePanel1
             // 
@@ -595,6 +597,7 @@
             this.superGridControlTop.Size = new System.Drawing.Size(1202, 77);
             this.superGridControlTop.TabIndex = 3;
             this.superGridControlTop.Text = "superGridControlZuZhuang";
+            this.superGridControlTop.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlTop_CellValidated);
             // 
             // gridColumnSelect
             // 

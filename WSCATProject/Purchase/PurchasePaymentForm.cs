@@ -1219,7 +1219,7 @@ namespace WSCATProject.Purchase
                         }
                         finanPaymentDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
                         finanPaymentDetail.code = XYEEncoding.strCodeHex(_PurchasePaymentCode + i.ToString());//付款详单code
-                        finanPaymentDetail.salesCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
+                        finanPaymentDetail.purchaseCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
                         finanPaymentDetail.salesDate = Convert.ToDateTime(gr["BillDate"].Value);//销售单开单日期                     
                         finanPaymentDetail.amountReceivable = Convert.ToDecimal(gr["BillMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["BillMoney"].Value));//单据金额
                         finanPaymentDetail.amountReceived = Convert.ToDecimal(gr["yiHeXiao"].Value == null ? 0.0M : Convert.ToDecimal(gr["yiHeXiao"].Value));//已核销金额
@@ -1358,7 +1358,7 @@ namespace WSCATProject.Purchase
                         }
                         finanPaymentDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
                         finanPaymentDetail.code = XYEEncoding.strCodeHex(_PurchasePaymentCode + i.ToString());//付款详单code
-                        finanPaymentDetail.salesCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
+                        finanPaymentDetail.purchaseCode = XYEEncoding.strCodeHex(gr["BillCode"].Value.ToString());//销售单code                   
                         finanPaymentDetail.salesDate = Convert.ToDateTime(gr["BillDate"].Value);//销售单开单日期                     
                         finanPaymentDetail.amountReceivable = Convert.ToDecimal(gr["BillMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["BillMoney"].Value));//单据金额
                         finanPaymentDetail.amountReceived = Convert.ToDecimal(gr["yiHeXiao"].Value == null ? 0.0M : Convert.ToDecimal(gr["yiHeXiao"].Value));//已核销金额

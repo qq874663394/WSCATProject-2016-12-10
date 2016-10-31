@@ -22,9 +22,9 @@ namespace BaseLayer.Finance
             try
             {
                 sqlMain.Append("insert into [T_FinanceCollection] (");
-                sqlMain.Append("code,clientCode,clientName,accountCode,accountName,saleCode,date,operationMan,checkMan,salesMan,salesCode,checkState,remark,Reserved1,Reserved2,isClear,financeCollectionState,updatedate,type,settlementMethod,discount,totalCollection)");
+                sqlMain.Append("code,clientCode,clientName,accountCode,accountName,saleMainCode,date,operationMan,checkMan,salesMan,salesCode,checkState,remark,Reserved1,Reserved2,isClear,financeCollectionState,updatedate,type,settlementMethod,discount,totalCollection)");
                 sqlMain.Append(" values (");
-                sqlMain.Append("@code,@clientCode,@clientName,@accountCode,@accountName,@saleCode,@date,@operationMan,@checkMan,@salesMan,@salesCode,@checkState,@remark,@Reserved1,@Reserved2,@isClear,@financeCollectionState,@updatedate,@type,@settlementMethod,@discount,@totalCollection)");
+                sqlMain.Append("@code,@clientCode,@clientName,@accountCode,@accountName,@saleMainCode,@date,@operationMan,@checkMan,@salesMan,@salesCode,@checkState,@remark,@Reserved1,@Reserved2,@isClear,@financeCollectionState,@updatedate,@type,@settlementMethod,@discount,@totalCollection)");
                 sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
@@ -33,7 +33,7 @@ namespace BaseLayer.Finance
                     new SqlParameter("@clientName", SqlDbType.NVarChar,40),
                     new SqlParameter("@accountCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@accountName", SqlDbType.NVarChar,40),
-                    new SqlParameter("@saleCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@saleMainCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@date", SqlDbType.DateTime),
                     new SqlParameter("@operationMan", SqlDbType.NVarChar,40),
                     new SqlParameter("@checkMan", SqlDbType.NChar,10),
@@ -76,11 +76,11 @@ namespace BaseLayer.Finance
 
                 hashTable.Add(sqlMain, spsMain);
                 sqlDetail.Append("insert into [T_FinanceCollectionDetail] (");
-                sqlDetail.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                sqlDetail.Append("mainCode,code,saleCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
                 sqlDetail.Append(" values (");
                 sqlDetail.Append(@"@mainCode,
                     @code,
-@salesCode,
+@saleCode,
 @salesDate,
 @salesType,
 @amountReceivable,
@@ -94,7 +94,7 @@ namespace BaseLayer.Finance
                     {
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@code", SqlDbType.NVarChar,45),
-                    new SqlParameter("@salesCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@saleCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesDate", SqlDbType.DateTime),
                     new SqlParameter("@salesType", SqlDbType.NVarChar,40),
                     new SqlParameter("@amountReceivable", SqlDbType.Decimal,9),
@@ -106,7 +106,7 @@ namespace BaseLayer.Finance
                     };
                     spsDetail[0].Value = item.mainCode;
                     spsDetail[1].Value = item.code;
-                    spsDetail[2].Value = item.salesCode;
+                    spsDetail[2].Value = item.saleCode;
                     spsDetail[3].Value = item.salesDate;
                     spsDetail[4].Value = item.salesType;
                     spsDetail[5].Value = item.amountReceivable;
@@ -140,7 +140,7 @@ namespace BaseLayer.Finance
                 sqlDetail.Append("clientName=@clientName,");
                 sqlDetail.Append("accountCode=@accountCode,");
                 sqlDetail.Append("accountName=@accountName,");
-                sqlDetail.Append("saleCode=@saleCode,");
+                sqlDetail.Append("saleMainCode=@saleMainCode,");
                 sqlDetail.Append("date=@date,");
                 sqlDetail.Append("operationMan=@operationMan,");
                 sqlDetail.Append("checkMan=@checkMan,");
@@ -165,7 +165,7 @@ namespace BaseLayer.Finance
                     new SqlParameter("@clientName", SqlDbType.NVarChar,40),
                     new SqlParameter("@accountCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@accountName", SqlDbType.NVarChar,40),
-                    new SqlParameter("@saleCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@saleMainCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@date", SqlDbType.DateTime),
                     new SqlParameter("@operationMan", SqlDbType.NVarChar,40),
                     new SqlParameter("@checkMan", SqlDbType.NChar,10),
@@ -210,11 +210,11 @@ namespace BaseLayer.Finance
                 hashTable.Add(sqlMain, spsMain);
                 StringBuilder strInsert = new StringBuilder();
                 strInsert.Append("insert into [T_FinanceCollectionDetail] (");
-                strInsert.Append("mainCode,code,salesCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
+                strInsert.Append("mainCode,code,saleCode,salesDate,salesType,amountReceivable,amountReceived,amountUnpaid,nowMoney,unCollection,remark)");
                 strInsert.Append(" values (");
                 strInsert.Append(@"@mainCode,
                     @code,
-                    @salesCode,
+                    @saleCode,
                     @salesDate,
                     @salesType,
                     @amountReceivable,
@@ -226,7 +226,7 @@ strInsert.Append(";select @@IDENTITY");
 
                 sqlMain.Append("update [T_FinanceCollectionDetail] set ");
                 sqlMain.Append("mainCode=@mainCode,");
-                sqlMain.Append("salesCode=@salesCode,");
+                sqlMain.Append("saleCode=@saleCode,");
                 sqlMain.Append("salesDate=@salesDate,");
                 sqlMain.Append("salesType=@salesType,");
                 sqlMain.Append("amountReceivable=@amountReceivable,");
@@ -241,7 +241,7 @@ strInsert.Append(";select @@IDENTITY");
                     SqlParameter[] spsDetail =
                     {
                     new SqlParameter("@mainCode", SqlDbType.NVarChar,45),
-                    new SqlParameter("@salesCode", SqlDbType.NVarChar,45),
+                    new SqlParameter("@saleCode", SqlDbType.NVarChar,45),
                     new SqlParameter("@salesDate", SqlDbType.DateTime),
                     new SqlParameter("@salesType", SqlDbType.NVarChar,40),
                     new SqlParameter("@amountReceivable", SqlDbType.Decimal,9),
@@ -254,7 +254,7 @@ strInsert.Append(";select @@IDENTITY");
                     };
                     spsDetail[1].Value = item.mainCode;
                     spsDetail[2].Value = item.code;
-                    spsDetail[3].Value = item.salesCode;
+                    spsDetail[3].Value = item.saleCode;
                     spsDetail[4].Value = item.salesDate;
                     spsDetail[5].Value = item.salesType;
                     spsDetail[6].Value = item.amountReceivable;

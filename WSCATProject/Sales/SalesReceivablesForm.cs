@@ -411,7 +411,7 @@ namespace WSCATProject.Sales
                 cboJieSuanMethod.SelectedIndex = 0;
                 toolStripButtonXuanYuanDan.Visible = true;
                 txtDiscount.Text = "100.00";
-                BenCiHeXiao.HeaderText = "0.00";
+                txtBenCiHeXiao.Text = "0.00";
                 txtBenCiShouKuan.Text = "0.00";
                 //禁用自动创建列
                 dataGridViewShangPing.AutoGenerateColumns = false;
@@ -637,7 +637,7 @@ namespace WSCATProject.Sales
                             return;
                         }
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
-                        financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
+                        financecollectionDetail.saleCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
                         financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
                         financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
                         financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["danjuMoney"].Value));//应收金额
@@ -775,7 +775,7 @@ namespace WSCATProject.Sales
                         }
                         financecollectionDetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//主表code（收款单code）
                         financecollectionDetail.code = XYEEncoding.strCodeHex(_SaleReceivablesCode + i.ToString());//收款详单code
-                        financecollectionDetail.salesCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
+                        financecollectionDetail.saleCode = XYEEncoding.strCodeHex(gr["yuandanCode"].Value.ToString());//销售单code
                         financecollectionDetail.salesDate = Convert.ToDateTime(gr["danjuDate"].Value);//销售单开单日期
                         financecollectionDetail.amountReceivable = Convert.ToDecimal(gr["danjuMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["danjuMoney"].Value));//应收金额
                         financecollectionDetail.amountReceived = Convert.ToDecimal(gr["YiHeXiaoMoney"].Value == null ? 0.0M : Convert.ToDecimal(gr["YiHeXiaoMoney"].Value));//已核销金额
@@ -1437,7 +1437,7 @@ namespace WSCATProject.Sales
 
         private void superGridControlShangPing_CellDoubleClick(object sender, GridCellDoubleClickEventArgs e)
         {
-            MessageBox.Show("Test");
+            //MessageBox.Show("Test");
         }
 
         /// <summary>
