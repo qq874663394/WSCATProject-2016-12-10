@@ -17,7 +17,7 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Finance.FinanceVerificationForm());
+            Application.Run(new FinanceVerificationForm());
         }
     }
 }

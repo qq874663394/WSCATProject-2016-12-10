@@ -1,4 +1,6 @@
-﻿using Model.Finance;
+﻿using HelperUtility;
+using Model;
+using Model.Finance;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,9 +17,9 @@ namespace BaseLayer.Finance
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into [T_FinanceBankAccess] (");
-            strSql.Append("code,date,paymentAccount,receiptAccount,amount,summary,handled,departmentCode,operators,auditors)");
+            strSql.Append("code,date,paymentAccount,receiptAccount,amount,summary,handled,departmentCode,operators,auditors,checkState)");
             strSql.Append(" values (");
-            strSql.Append("@code,@date,@paymentAccount,@receiptAccount,@amount,@summary,@handled,@departmentCode,@operators,@auditors)");
+            strSql.Append("@code,@date,@paymentAccount,@receiptAccount,@amount,@summary,@handled,@departmentCode,@operators,@auditors,@checkState)");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
                     new SqlParameter("@code", SqlDbType.NVarChar,50),
@@ -29,7 +31,9 @@ namespace BaseLayer.Finance
                     new SqlParameter("@handled", SqlDbType.NVarChar,20),
                     new SqlParameter("@departmentCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@operators", SqlDbType.NVarChar,20),
-                    new SqlParameter("@auditors", SqlDbType.NVarChar,20)};
+                    new SqlParameter("@auditors", SqlDbType.NVarChar,20),
+                    new SqlParameter("@checkState",SqlDbType.Int)
+            };
             parameters[0].Value = model.code;
             parameters[1].Value = model.date;
             parameters[2].Value = model.paymentAccount;
@@ -40,7 +44,7 @@ namespace BaseLayer.Finance
             parameters[7].Value = model.departmentCode;
             parameters[8].Value = model.operators;
             parameters[9].Value = model.auditors;
-
+            parameters[10].Value = model.checkState;
             try
             {
                 object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
@@ -74,6 +78,7 @@ namespace BaseLayer.Finance
             strSql.Append("departmentCode=@departmentCode,");
             strSql.Append("operators=@operators,");
             strSql.Append("auditors=@auditors");
+            strSql.Append("checkState=@checkState");
             strSql.Append(" where code=@code ");
             SqlParameter[] parameters =
                 {
@@ -86,7 +91,8 @@ namespace BaseLayer.Finance
                     new SqlParameter("@handled", SqlDbType.NVarChar,20),
                     new SqlParameter("@departmentCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@operators", SqlDbType.NVarChar,20),
-                    new SqlParameter("@auditors", SqlDbType.NVarChar,20)
+                    new SqlParameter("@auditors", SqlDbType.NVarChar,20),
+                    new SqlParameter("@checkState",SqlDbType.Int)
                 };
             parameters[0].Value = model.code;
             parameters[1].Value = model.date;
@@ -98,6 +104,7 @@ namespace BaseLayer.Finance
             parameters[7].Value = model.departmentCode;
             parameters[8].Value = model.operators;
             parameters[9].Value = model.auditors;
+            parameters[10].Value = model.checkState;
 
             try
             {
@@ -115,6 +122,18 @@ namespace BaseLayer.Finance
             {
                 throw ex;
             }
+        }
+        public bool Exists(string code)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from [T_FinanceBankAccess]");
+            strSql.Append(" where code=@code ");
+
+            SqlParameter[] parameters = {
+                    new SqlParameter("@code", SqlDbType.NVarChar,50)};
+            parameters[0].Value = code;
+
+            return DbHelperSQL.Exists(strSql.ToString(), parameters);
         }
     }
 }

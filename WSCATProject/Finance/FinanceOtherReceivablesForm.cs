@@ -1137,7 +1137,7 @@ namespace WSCATProject.Finance
                         FinanceOtherExpenseInDetail financeOtherExpensesInDetail = new FinanceOtherExpenseInDetail();
                         if (gr["material"].Value.ToString() != "" || gr["material"].Value != null)
                         {
-                            financeOtherExpensesInDetail.Abstract = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//收入类别
+                            financeOtherExpensesInDetail.Abstract = XYEEncoding.strCodeHex(gr["material"].Value);//收入类别
                         }
                         else
                         {

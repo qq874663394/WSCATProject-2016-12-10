@@ -28,8 +28,8 @@ namespace LogicLayer.Finance
         {
             int result = 0;
             _logmodel.code = BuildCode.ModuleCode("log");
-            _logmodel.objective = "查询指定code的数据是否存在";
-            _logmodel.operationContent = "查询数据";
+            _logmodel.objective = "新增银行存取信息";
+            _logmodel.operationContent = "新增银行存取信息";
             try
             {
                 result = _dal.Add(model);
@@ -53,11 +53,11 @@ namespace LogicLayer.Finance
         {
             bool result = false;
             _logmodel.code = BuildCode.ModuleCode("log");
-            _logmodel.objective = "查询指定code的数据是否存在";
-            _logmodel.operationContent = "查询数据";
+            _logmodel.objective = "修改银行存取信息";
+            _logmodel.operationContent = "修改银行存取信息";
             try
             {
-                result = _dal.Update(model);
+                    result = _dal.Update(model);
                 _logmodel.result = 1;
             }
             catch (Exception ex)
@@ -70,6 +70,65 @@ namespace LogicLayer.Finance
                 _logDal.Add(_logmodel);
             }
             return result;
+        }
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool AddOrUpdate(FinanceBankAccess model)
+        {
+            bool result = false;
+            _logmodel.code = BuildCode.ModuleCode("log");
+            try
+            {
+                if (Exists(model.code))
+                {
+                    _logmodel.objective = "修改银行存取信息";
+                    _logmodel.operationContent = "修改银行存取信息";
+                    result = _dal.Update(model);
+                }
+                else
+                {
+                    _logmodel.objective = "新增银行存取信息";
+                    _logmodel.operationContent = "新增银行存取信息";
+                    result = _dal.Update(model);
+                }
+                _logmodel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                _logmodel.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                _logDal.Add(_logmodel);
+            }
+            return result;
+        }
+        public bool Exists(string code)
+        {
+            bool isflag = false;
+            Log model = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                objective = "查询指定code的数据是否存在",
+                operationContent = "查询数据"
+            };
+            try
+            {
+                _dal.Exists(code);
+                model.result = 1;
+            }
+            catch (Exception ex)
+            {
+                model.result = 0;
+                throw ex;
+            }
+            finally
+            {
+                _logDal.Add(model);
+            }
+            return isflag;
         }
     }
 }
