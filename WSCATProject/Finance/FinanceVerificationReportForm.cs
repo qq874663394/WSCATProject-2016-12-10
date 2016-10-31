@@ -396,6 +396,7 @@ namespace WSCATProject.Finance
                 else
                 {
                     MessageBox.Show("查无数据!");
+                    this.Close();
                 }
             }
 
