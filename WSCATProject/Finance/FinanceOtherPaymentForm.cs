@@ -728,25 +728,25 @@ namespace WSCATProject.Finance
         private void FinanceOtherPaymentForm_KeyDown(object sender, KeyEventArgs e)
         {
             //前单
-            if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.B  )
             {
                 MessageBox.Show("前单");
                 return;
             }
             //后单
-            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.A  )
             {
                 MessageBox.Show("后单");
                 return;
             }
             //新增
-            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.N  )
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.S  )
             {
                 Save();
                 return;
@@ -762,19 +762,19 @@ namespace WSCATProject.Finance
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.P  )
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.T  )
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.X  )
             {
                 this.Close();
                 this.Dispose();

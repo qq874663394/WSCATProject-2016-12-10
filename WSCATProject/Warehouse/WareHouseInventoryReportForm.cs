@@ -377,13 +377,13 @@ namespace WSCATProject.Warehouse
         private void WareHouseInventoryReportForm_KeyDown(object sender, KeyEventArgs e)
         {
             //盘盈单
-            if (e.KeyCode == Keys.Y && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.Y  )
             {
                 toolStripButtonProfit_Click(sender, e);
                 return;
             }
             //盘亏单
-            if (e.KeyCode == Keys.L && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.L  )
             {
                 toolStripButtonLoss_Click(sender, e);
                 return;
@@ -395,19 +395,19 @@ namespace WSCATProject.Warehouse
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.P  )
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.T  )
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.X  )
             {
                 this.Close();
                 this.Dispose();
