@@ -57,7 +57,7 @@ namespace LogicLayer.Finance
             _logmodel.operationContent = "修改银行存取信息";
             try
             {
-                    result = _dal.Update(model);
+                result = _dal.Update(model);
                 _logmodel.result = 1;
             }
             catch (Exception ex)
@@ -108,25 +108,22 @@ namespace LogicLayer.Finance
         public bool Exists(string code)
         {
             bool isflag = false;
-            Log model = new Log()
-            {
-                code = BuildCode.ModuleCode("log"),
-                objective = "查询指定code的数据是否存在",
-                operationContent = "查询数据"
-            };
+            _logmodel.code = BuildCode.ModuleCode("log");
+            _logmodel.objective = "查询指定code的数据是否存在";
+            _logmodel.operationContent = "查询数据";
             try
             {
                 _dal.Exists(code);
-                model.result = 1;
+                _logmodel.result = 1;
             }
             catch (Exception ex)
             {
-                model.result = 0;
+                _logmodel.result = 0;
                 throw ex;
             }
             finally
             {
-                _logDal.Add(model);
+                _logDal.Add(_logmodel);
             }
             return isflag;
         }

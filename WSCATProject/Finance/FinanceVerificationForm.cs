@@ -1250,7 +1250,7 @@ namespace WSCATProject.Finance
                 if (this.labtextboxTop2.Text.Trim() == "")
                 {
                     InitClient();
-                    _Click = 4;
+                    _Click = 6;
                     return;
                 }
                 dataGridViewFuJia.DataSource = null;
@@ -1291,7 +1291,7 @@ namespace WSCATProject.Finance
                 if (this.labtextboxTop7.Text.Trim() == "")
                 {
                     InitClient();
-                    _Click = 4;
+                    _Click = 7;
                     return;
                 }
                 dataGridViewFuJia.DataSource = null;
@@ -1332,7 +1332,7 @@ namespace WSCATProject.Finance
                 if (this.labtextboxTop5.Text.Trim() == "")
                 {
                     InitSupplier();
-                    _Click = 5;
+                    _Click = 8;
                     return;
                 }
 
@@ -1400,7 +1400,7 @@ namespace WSCATProject.Finance
                 if (this.labtextboxTop4.Text.Trim() == "")
                 {
                     InitSupplier();
-                    _Click = 5;
+                    _Click =9;
                     return;
                 }
 
@@ -1467,7 +1467,7 @@ namespace WSCATProject.Finance
             {
                 if (ltxtbSalsMan.Text.Trim() == "")
                 {
-                    _Click = 6;
+                    _Click = 10;
                     InitEmployee();
                     return;
                 }

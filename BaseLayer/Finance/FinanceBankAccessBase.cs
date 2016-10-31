@@ -77,7 +77,7 @@ namespace BaseLayer.Finance
             strSql.Append("handled=@handled,");
             strSql.Append("departmentCode=@departmentCode,");
             strSql.Append("operators=@operators,");
-            strSql.Append("auditors=@auditors");
+            strSql.Append("auditors=@auditors,");
             strSql.Append("checkState=@checkState");
             strSql.Append(" where code=@code ");
             SqlParameter[] parameters =
