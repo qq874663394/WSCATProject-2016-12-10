@@ -494,7 +494,7 @@
             this.superGridControlShangPing.DefaultVisualStyles.CellStyles.Default.Alignment = DevComponents.DotNetBar.SuperGrid.Style.Alignment.MiddleCenter;
             this.superGridControlShangPing.Dock = System.Windows.Forms.DockStyle.None;
             this.superGridControlShangPing.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed;
-            this.superGridControlShangPing.Location = new System.Drawing.Point(0, 111);
+            this.superGridControlShangPing.Location = new System.Drawing.Point(0, 145);
             // 
             // 
             // 
@@ -508,7 +508,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.benCiHeXiao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 258);
+            this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 196);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             // 
             // resizablePanel1
@@ -594,7 +594,7 @@
             this.superGridControlTop.PrimaryGrid.Columns.Add(this.gridColumnBenCi);
             this.superGridControlTop.PrimaryGrid.Columns.Add(this.gridColumnRemark);
             this.superGridControlTop.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlTop.Size = new System.Drawing.Size(1202, 77);
+            this.superGridControlTop.Size = new System.Drawing.Size(1202, 114);
             this.superGridControlTop.TabIndex = 3;
             this.superGridControlTop.Text = "superGridControlZuZhuang";
             this.superGridControlTop.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlTop_CellValidated);
@@ -705,7 +705,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.Color.Gray;
-            this.labelX1.Location = new System.Drawing.Point(34, 84);
+            this.labelX1.Location = new System.Drawing.Point(34, 120);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(70, 23);
             this.labelX1.TabIndex = 4;
@@ -811,7 +811,7 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(100, 87);
+            this.textBox1.Location = new System.Drawing.Point(100, 123);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 14);

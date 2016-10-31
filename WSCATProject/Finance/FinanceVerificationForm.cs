@@ -110,7 +110,7 @@ namespace WSCATProject.Finance
         /// <summary>
         /// 付款单的单据code
         /// </summary>
-        private string  _fuKuanCode;
+        private string _fuKuanCode;
 
         public string FuKuanCode
         {
@@ -786,6 +786,8 @@ namespace WSCATProject.Finance
                     textBox1.Text = "应收";
                     //表格
                     superGridControlShangPing.Enabled = true;
+                    superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    superGridControlTop.PrimaryGrid.DataSource = null;
                     break;
                 #endregion
                 #region  预付冲应付
@@ -823,6 +825,8 @@ namespace WSCATProject.Finance
                     textBox1.Text = "应付";
                     //表格
                     superGridControlShangPing.Enabled = true;
+                    superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    superGridControlTop.PrimaryGrid.DataSource = null;
                     break;
                 #endregion
                 #region  应收冲应付
@@ -862,6 +866,8 @@ namespace WSCATProject.Finance
                     textBox1.Text = "应付";
                     //表格
                     superGridControlShangPing.Enabled = true;
+                    superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    superGridControlTop.PrimaryGrid.DataSource = null;
                     break;
                 #endregion
                 #region  应收转应收
@@ -895,6 +901,8 @@ namespace WSCATProject.Finance
                     textBox1.Text = "";
                     //表格
                     superGridControlShangPing.Enabled = false;
+                    superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    superGridControlTop.PrimaryGrid.DataSource = null;
                     break;
                 #endregion
                 #region  应付转应付
@@ -929,6 +937,8 @@ namespace WSCATProject.Finance
                     textBox1.Text = "";
                     //表格
                     superGridControlShangPing.Enabled = false;
+                    superGridControlShangPing.PrimaryGrid.DataSource = null;
+                    superGridControlTop.PrimaryGrid.DataSource = null;
                     break;
                     #endregion
             }
@@ -1369,7 +1379,7 @@ namespace WSCATProject.Finance
             try
             {
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-                if (gr.Cells["gridColumnSelect"].FormattedValue == null || gr.Cells["gridColumnSelect"].FormattedValue == "")
+                if (gr.Cells["gridColumnYuanDanCode"].FormattedValue == null || gr.Cells["gridColumnYuanDanCode"].FormattedValue == "")
                 {
                     MessageBox.Show("请先选择单据：");
                     gr.Cells["gridColumnBenCi"].Value = 0.00;
@@ -1380,7 +1390,7 @@ namespace WSCATProject.Finance
                 if (benciHeXiaoMoney > weiHeXiaoMoney)
                 {
                     MessageBox.Show("本次核销金额不能大于未核销金额！");
-                    gr.Cells["gridColumnBenCi"].Value = "0.00";
+                    gr.Cells["gridColumnBenCi"].Value = 0.00;
                     return;
                 }
                 TongJiTopTable();
@@ -1438,7 +1448,7 @@ namespace WSCATProject.Finance
             try
             {
                 GridRow gr = e.GridPanel.Rows[e.GridCell.RowIndex] as GridRow;
-                if (gr.Cells["select"].FormattedValue == null || gr.Cells["select"].FormattedValue == "")
+                if (gr.Cells["yuanDanCode"].FormattedValue == null || gr.Cells["yuanDanCode"].FormattedValue == "")
                 {
                     MessageBox.Show("请先选择单据：");
                     gr.Cells["benCiHeXiao"].Value = 0.00;
@@ -1449,7 +1459,7 @@ namespace WSCATProject.Finance
                 if (benciHeXiaoMoney > weiHeXiaoMoney)
                 {
                     MessageBox.Show("本次核销金额不能大于未核销金额！");
-                    gr.Cells["benCiHeXiao"].Value = "0.00";
+                    gr.Cells["benCiHeXiao"].Value = 0.00;
                     return;
                 }
                 TongJiBottomTable();
@@ -1512,10 +1522,10 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Save()
         {
-            //if (isNUllValidate() == false)
-            //{
-            //    return;
-            //}
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
             ///核销单
             FinanceVerificationMain financeVerification = new FinanceVerificationMain();
             //核销单详细列表
@@ -1660,7 +1670,37 @@ namespace WSCATProject.Finance
             #region 核销单表格详细数据
             try
             {
+                //获得商品列表数据,准备传给base层新增数据
+                GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                int i = 0;
+                DateTime nowDataTime = DateTime.Now;
+                foreach (GridRow gr in grs)
+                {
+                    if (gr["yuanDanCode"].Value != null)
+                    {
+                        i++;
+                        FinanceVerificationDetail financeverificationDetail = new FinanceVerificationDetail();
+                        if (gr.Cells["yuanDanCode"].Value != null || gr.Cells["yuanDanCode"].Value.ToString() != "")
+                        {
+                            financeverificationDetail.sourceCode = XYEEncoding.strCodeHex(gr.Cells["yuanDanCode"].Value);
+                        }
+                        else
+                        {
+                            MessageBox.Show("源单编号不能为空！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+                        financeverificationDetail.mainCode = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//主表code
+                        financeverificationDetail.code = XYEEncoding.strCodeHex(_financeVerificationCode + i.ToString());
+                        financeverificationDetail.sourceType = XYEEncoding.strCodeHex(gr.Cells["yuanDanType"].Value == null ? "" : gr.Cells["yuanDanType"].Value.ToString());//源单类型
+                        financeverificationDetail.date = Convert.ToDateTime(gr.Cells["danJuDate"].Value);//单据日期
+                        financeverificationDetail.sourceAmount = Convert.ToDecimal(gr.Cells["danJuMoney"].Value.ToString() == "" ? 0.0M : gr.Cells["danJuMoney"].Value);//单据金额
+                        financeverificationDetail.alreadyVerificationAmount = Convert.ToDecimal(gr.Cells["yiHeXiao"].Value.ToString() == "" ? 0.0M : gr.Cells["yiHeXiao"].Value);//已核销金额
+                        financeverificationDetail.notVerificationAmount = Convert.ToDecimal(gr.Cells["weiHeXiao"].Value.ToString() == "" ? 0.0M : gr.Cells["weiHeXiao"].Value);//未核销金额  
 
+                    }
+                }
             }
             catch (Exception)
             {
