@@ -100,8 +100,40 @@ namespace WSCATProject.Finance
             }
         }
 
+
+
         private string _purchaseCode;
         DataTable dt = null;
+
+        private List<string> _clientMainList = new List<string>();
+
+        public List<string> ClientMainList
+        {
+            get
+            {
+                return _clientMainList;
+            }
+
+            set
+            {
+                _clientMainList = value;
+            }
+        }
+
+        public List<string> SupplierList
+        {
+            get
+            {
+                return _SupplierList;
+            }
+
+            set
+            {
+                _SupplierList = value;
+            }
+        }
+
+        private List<string> _SupplierList = new List<string>();
         #endregion
 
         #region 初始化数据
@@ -369,67 +401,129 @@ namespace WSCATProject.Finance
             superGridControlShangPing.PrimaryGrid.SelectionGranularity = SelectionGranularity.Row;
             //显示行号
             superGridControlShangPing.PrimaryGrid.ShowRowGridIndex = true;
-            if ( _clientCode != null)
+            if (_clientCode != null)
             {
                 InitClientDataGridView();
                 dt = ch.DataTableReCoding(financeInterface.GetList(0, XYEEncoding.strCodeHex(_clientCode)));
-                if (dt.Rows.Count > 0)
+
+                Finance.FinanceVerificationForm finance = (FinanceVerificationForm)this.Owner;
+                _clientMainList = finance.ClientMainList;
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    foreach (var liat in _clientMainList)
+                    {
+                        if (dt.Rows[i][1].ToString() == liat)
+                        {
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此客户暂无预收源单信息！请重新选择");
+                    this.Close();
                     return;
                 }
-                else
-                {
-                    MessageBox.Show("查无数据!");
-                    this.Close();
-                }
+                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
+
             if (_salerMainCode != null)
             {
                 InitShowDataGridView();
                 dt = ch.DataTableReCoding(salesMain.GetList(1, XYEEncoding.strCodeHex(_salerMainCode)));
-                if (dt.Rows.Count > 0)
+
+                Finance.FinanceVerificationForm finance = (FinanceVerificationForm)this.Owner;
+                _SupplierList = finance.SupplierList;
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    foreach (var liat in _SupplierList)
+                    {
+                        if (dt.Rows[i][1].ToString() == liat)
+                        {
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此客户暂无应收源单信息！请重新选择");
+                    this.Close();
                     return;
                 }
-                else
-                {
-                    MessageBox.Show("查无数据!");
-                    this.Close();
-                }
+                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
 
-            if (_supplierCode!=null)
+            if (_supplierCode != null)
             {
                 InitSupplierDataGridView();
                 dt = ch.DataTableReCoding(financePay.GetList(0, XYEEncoding.strCodeHex(_supplierCode)));
-                if (dt.Rows.Count > 0)
+
+                Finance.FinanceVerificationForm finance = (FinanceVerificationForm)this.Owner;
+                _clientMainList = finance.ClientMainList;
+                _SupplierList = finance.SupplierList;
+                if (_clientMainList!=null)
                 {
-                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        foreach (var liat in _clientMainList)
+                        {
+                            if (dt.Rows[i][1].ToString() == liat)
+                            {
+                                dt.Rows.RemoveAt(i);
+                            }
+                        }
+                    }
+                }
+                if (_SupplierList!=null)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        foreach (var liat in _SupplierList)
+                        {
+                            if (dt.Rows[i][1].ToString() == liat)
+                            {
+                                dt.Rows.RemoveAt(i);
+                            }
+                        }
+                    }
+                }
+         
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此供应商暂无预收源单信息！请重新选择");
+                    this.Close();
                     return;
                 }
-                else
-                {
-                    MessageBox.Show("查无数据!");
-                    this.Close();
-                }
+                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
 
-            if (_purchaseCode!=null)
+            if (_purchaseCode != null)
             {
                 InitSupplierShowDataGridView();
                 dt = ch.DataTableReCoding(purchase.GetList(3, XYEEncoding.strCodeHex(_purchaseCode)));
-                if (dt.Rows.Count > 0)
+                Finance.FinanceVerificationForm finance = (FinanceVerificationForm)this.Owner;
+                _SupplierList = finance.SupplierList;
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    foreach (var liat in _SupplierList)
+                    {
+                        if (dt.Rows[i][1].ToString() == liat)
+                        {
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此供应商暂无应收源单信息！请重新选择");
+                    this.Close();
                     return;
                 }
-                else
-                {
-                    MessageBox.Show("查无数据!");
-                    this.Close();
-                }
+                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
 
         }
@@ -518,11 +612,11 @@ namespace WSCATProject.Finance
                         GridRow row = col[0] as GridRow;
                         string mainCode = row.Cells["code"].Value.ToString();
                         FinanceVerificationForm financeVerifict = (FinanceVerificationForm)this.Owner;
-                        if (_clientCode!=null)
+                        if (_clientCode != null)
                         {
                             financeVerifict.FuKuanCode = mainCode;
                         }
-                        if (_supplierCode!=null)
+                        if (_supplierCode != null)
                         {
                             financeVerifict.ShouKuanCode = mainCode;
                         }

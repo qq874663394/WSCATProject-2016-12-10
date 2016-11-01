@@ -103,7 +103,6 @@ namespace WSCATProject.Finance
         /// 统计下表格本次核销金额
         /// </summary>
         private decimal _benCiHeXiaoMoneyBottom;
-
         /// <summary>
         /// 付款单的单据code
         /// </summary>
@@ -137,14 +136,62 @@ namespace WSCATProject.Finance
                 _shouKuanCode = value;
             }
         }
-
+        
         private string _shouKuanCode;
-
-
+        
         /// <summary>
         /// 上面表格的code
         /// </summary>
         private string _mainCode;
+        /// <summary>
+        /// 客户List
+        /// </summary>
+        private List<string> _ClientMainList = new List<string>();
+        public List<string> ClientMainList
+        {
+            get
+            {
+                return _ClientMainList;
+            }
+
+            set
+            {
+                _ClientMainList = value;
+            }
+        }
+
+        /// <summary>
+        /// 供应商List
+        /// </summary>
+        public List<string> SupplierList
+        {
+            get
+            {
+                return _SupplierList;
+            }
+
+            set
+            {
+                _SupplierList = value;
+            }
+        }
+
+        public List<string> YingFuList
+        {
+            get
+            {
+                return _yingFuList;
+            }
+
+            set
+            {
+                _yingFuList = value;
+            }
+        }
+
+        private List<string> _SupplierList = new List<string>();
+
+        private List<string> _yingFuList = new List<string>();
         #endregion
 
         #region 初始化数据
@@ -698,6 +745,10 @@ namespace WSCATProject.Finance
                         financeReport.ClientCode = _clientCode;
                         financeReport.ShowDialog(this);
 
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                GridItemsCollection grs = superGridControlTop.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlTop.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
                         if (_fuKuanCode == null)
                         {
                             return;
@@ -717,6 +768,15 @@ namespace WSCATProject.Finance
                          ));
 
                         _mainCode = dt.Rows[0]["saleCode"].ToString();
+
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnYuanDanCode"].Value == null || g.Cells["gridColumnYuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _ClientMainList.Add(g.Cells["gridColumnYuanDanCode"].Value.ToString());
+                }
                         TongJiTopTable();
                         _fuKuanCode = null;
                     }
@@ -726,7 +786,9 @@ namespace WSCATProject.Finance
                         labtextboxTop2.Focus();
                     }
                 }
-            }
+
+
+            }}
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：5305-核销类型为预收冲应收时，绑定数据到上表格失败！请检查：" + ex.Message, "核销单温馨提示！");
@@ -768,6 +830,31 @@ namespace WSCATProject.Finance
                         labtextboxTop2.Focus();
                     }
                 }
+                SalesMainInterface salesMain = new SalesMainInterface();
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(salesMain.GetList(1, XYEEncoding.strCodeHex(_mainCode)));
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["oddAllMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddAllMoney"],
+                 dt.Rows[0]["collectMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["collectMoney"],
+                 dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["yuanDanCode"].Value == null || g.Cells["yuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _SupplierList.Add(g.Cells["yuanDanCode"].Value.ToString());
+                }
+
+                _mainCode = null;
             }
             catch (Exception ex)
             {
@@ -790,7 +877,10 @@ namespace WSCATProject.Finance
                         Finance.FinanceVerificationReportForm financeReport = new FinanceVerificationReportForm();
                         financeReport.SupplierCode = _supplierCode;
                         financeReport.ShowDialog(this);
-
+                FinancePaymentInterface financePayment = new FinancePaymentInterface();
+                GridItemsCollection grs = superGridControlTop.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlTop.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
                         if (_shouKuanCode == null)
                         {
                             return;
@@ -819,6 +909,16 @@ namespace WSCATProject.Finance
                         labtextboxTop5.Focus();
                     }
                 }
+
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnYuanDanCode"].Value == null || g.Cells["gridColumnYuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _ClientMainList.Add(g.Cells["gridColumnYuanDanCode"].Value.ToString());
+                }
+                _shouKuanCode = null;
             }
             catch (Exception ex)
             {
@@ -859,6 +959,30 @@ namespace WSCATProject.Finance
                         MessageBox.Show("请先选择供应商：");
                     }
                 }
+                PurchaseMainInterface purchase = new PurchaseMainInterface();
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(purchase.GetList(3, XYEEncoding.strCodeHex(_mainCode)));
+                superGridControlShangPing.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["data"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["oddMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["oddMoney"],
+                 dt.Rows[0]["inMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["inMoney"],
+                 dt.Rows[0]["lastMoney"].ToString() == "" ? 0.0M : dt.Rows[0]["lastMoney"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["yuanDanCode"].Value == null || g.Cells["yuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _SupplierList.Add(g.Cells["yuanDanCode"].Value.ToString());
+                }
+                _mainCode = null;
             }
             catch (Exception ex)
             {
@@ -908,6 +1032,31 @@ namespace WSCATProject.Finance
                         labtextboxTop2.Focus();
                     }
                 }
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                GridItemsCollection grs = superGridControlTop.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlTop.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
+
+                superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnYuanDanCode"].Value == null || g.Cells["gridColumnYuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _ClientMainList.Add(g.Cells["gridColumnYuanDanCode"].Value.ToString());
+                }
+                _fuKuanCode = null;
             }
             catch (Exception ex)
             {
@@ -928,6 +1077,10 @@ namespace WSCATProject.Finance
                         {
                             return;
                         }
+          FinancePaymentInterface financePayment = new FinancePaymentInterface();
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
 
                         FinancePaymentInterface financePayment = new FinancePaymentInterface();
                         DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
@@ -951,6 +1104,15 @@ namespace WSCATProject.Finance
                         labtextboxTop5.Focus();
                     }
                 }
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["yuanDanCode"].Value == null || g.Cells["yuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _SupplierList.Add(g.Cells["yuanDanCode"].Value.ToString());
+                }
+                _shouKuanCode = null;
             }
             catch (Exception ex)
             {
@@ -1000,6 +1162,30 @@ namespace WSCATProject.Finance
                         labtextboxTop2.Focus();
                     }
                 }
+                FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                GridItemsCollection grs = superGridControlTop.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlTop.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
+
+                superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
+                 dt.Rows[0]["date"],
+                 dt.Rows[0]["type"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                 dt.Rows[0]["totalCollection"].ToString() == "" ? 0.0M : dt.Rows[0]["totalCollection"],
+                   0.0M,
+                   0.0M,
+                 dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
+                 ));
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnYuanDanCode"].Value == null || g.Cells["gridColumnYuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _ClientMainList.Add(g.Cells["gridColumnYuanDanCode"].Value.ToString());
+                }
+                _fuKuanCode = null;
             }
             catch (Exception ex)
             {
@@ -1026,6 +1212,10 @@ namespace WSCATProject.Finance
                         {
                             return;
                         }
+       FinancePaymentInterface financePayment = new FinancePaymentInterface();
+                GridItemsCollection grs = superGridControlTop.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlTop.PrimaryGrid.Rows[ClickRowIndex];
+                DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
 
                         FinancePaymentInterface financePayment = new FinancePaymentInterface();
                         DataTable dt = ch.DataTableReCoding(financePayment.GetList(1, XYEEncoding.strCodeHex(_shouKuanCode)));
@@ -1049,12 +1239,22 @@ namespace WSCATProject.Finance
                         labtextboxTop5.Focus();
                     }
                 }
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnYuanDanCode"].Value == null || g.Cells["gridColumnYuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _ClientMainList.Add(g.Cells["gridColumnYuanDanCode"].Value.ToString());
+                }
+                _shouKuanCode = null;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("错误代码：5312-核销类型为应付转应付时，绑定数据到上表格失败！请检查：" + ex.Message, "核销单温馨提示！");
             }
         }
+
 
         /// <summary>
         /// 窗体加载时，焦点在核销类型上
