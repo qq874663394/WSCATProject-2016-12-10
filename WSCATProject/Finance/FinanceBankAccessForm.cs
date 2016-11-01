@@ -109,7 +109,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5209-尝试点击经手人数据出错或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5401-尝试点击经手人数据出错或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -179,7 +179,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5210-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5402-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -249,7 +249,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5210-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5403-尝试点击结算账户，数据显示失败或者无数据！请检查：" + ex.Message, "其他付款单温馨提示！");
             }
         }
 
@@ -342,26 +342,33 @@ namespace WSCATProject.Finance
 
         private void FinanceBankAccessForm_Load(object sender, EventArgs e)
         {
+            try
+            {
+                //经手人
+                _AllEmployee = employee.SelSupplierTable(false);
+                //结算账户
+                _AllBank = bank.GetList(999, "", false, false);
 
-            //经手人
-            _AllEmployee = employee.SelSupplierTable(false);
-            //结算账户
-            _AllBank = bank.GetList(999, "", false, false);
+                pictureBoxShengHe.Parent = pictureBoxtitle;
+                dataGridViewFuJia.AutoGenerateColumns = false;
+                dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
+                dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
 
-            pictureBoxShengHe.Parent = pictureBoxtitle;
-            dataGridViewFuJia.AutoGenerateColumns = false;
-            dataGridViewFuJia.CellDoubleClick += dataGridViewFuJia_CellDoubleClick;
-            dataGridViewFuJia.KeyDown += DataGridViewFuJia_KeyDown;
+                _financeBankAccessCode = BuildCode.ModuleCode("FBA");
+                textBoxOddNumbers.Text = _financeBankAccessCode;
+                barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
+                _Code.ValueFont = new Font("微软雅黑", 20);
+                System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
+                pictureBoxtiaoxingma.Image = imgTemp;
 
-            _financeBankAccessCode = BuildCode.ModuleCode("FBA");
-            textBoxOddNumbers.Text = _financeBankAccessCode;
-            barcodeXYE.Code128 _Code = new barcodeXYE.Code128();
-            _Code.ValueFont = new Font("微软雅黑", 20);
-            System.Drawing.Bitmap imgTemp = _Code.GetCodeImage(textBoxOddNumbers.Text, barcodeXYE.Code128.Encode.Code128A);
-            pictureBoxtiaoxingma.Image = imgTemp;
+                toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
+                toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
 
-            toolStripBtnSave.Click += toolStripBtnSave_Click;//保存按钮
-            toolStripBtnShengHe.Click += toolStripBtnShengHe_Click;//审核按钮
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5404-窗体加载时，初始化数据错误！请检查：" + ex.Message, "银行存取款单温馨提示！");
+            }
         }
 
         /// <summary>
@@ -482,7 +489,202 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5202-双击绑定客户、结算账户、收款员数据错误！请检查：" + ex.Message, "其他付款单温馨提示！");
+                MessageBox.Show("错误代码：5405-双击绑定付款账户、收款账户、经手人数据错误！请检查：" + ex.Message, "其他付款单温馨提示！");
+            }
+        }
+        #endregion
+
+        #region 模糊查询
+
+        /// <summary>
+        /// 付款账号的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtxtDanJuType_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtxtDanJuType.Text.Trim() == "")
+                {
+                    InitInBank();
+                    dataGridViewFuJia.Focus();
+                    _Click = 5;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "账户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "openBank";
+                dgvc.HeaderText = "开户行";
+                dgvc.DataPropertyName = "openBank";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "bankCard";
+                dgvc.HeaderText = "银行账户";
+                dgvc.DataPropertyName = "bankCard";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "cardHolder";
+                dgvc.HeaderText = "持卡人";
+                dgvc.DataPropertyName = "cardHolder";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "availableBalance";
+                dgvc.HeaderText = "可用额度";
+                dgvc.DataPropertyName = "availableBalance";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(250, 150);
+                string name = XYEEncoding.strCodeHex(this.labtxtDanJuType.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5406-模糊查询付款账户数据错误" + ex.Message, "其它收付款单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 收款账号的模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void labtextboxTopBank_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.labtextboxTop2.Text.Trim() == "")
+                {
+                    InitOutBank();
+                    dataGridViewFuJia.Focus();
+                    _Click = 4;
+                    return;
+                }
+
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "账户编号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "openBank";
+                dgvc.HeaderText = "开户行";
+                dgvc.DataPropertyName = "openBank";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "bankCard";
+                dgvc.HeaderText = "银行账户";
+                dgvc.DataPropertyName = "bankCard";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "cardHolder";
+                dgvc.HeaderText = "持卡人";
+                dgvc.DataPropertyName = "cardHolder";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "remark";
+                dgvc.HeaderText = "备注";
+                dgvc.DataPropertyName = "remark";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "availableBalance";
+                dgvc.HeaderText = "可用额度";
+                dgvc.DataPropertyName = "availableBalance";
+                dgvc.Visible = false;
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                resizablePanel1.Location = new Point(570, 150);
+                string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
+                resizablePanel1.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5407-模糊查询收款账户数据错误" + ex.Message, "其它收付款单温馨提示");
+            }
+        }
+
+        /// <summary>
+        /// 经手人模糊查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ltxtbSalsMan.Text.Trim() == "")
+                {
+                    _Click = 6;
+                    InitEmployee();
+                    dataGridViewFuJia.Focus();
+                    return;
+                }
+                dataGridViewFuJia.DataSource = null;
+                dataGridViewFuJia.Columns.Clear();
+
+                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "code";
+                dgvc.HeaderText = "员工工号";
+                dgvc.DataPropertyName = "code";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dgvc = new DataGridViewTextBoxColumn();
+                dgvc.Name = "name";
+                dgvc.HeaderText = "姓名";
+                dgvc.DataPropertyName = "name";
+                dataGridViewFuJia.Columns.Add(dgvc);
+
+                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
+                resizablePanel1.Visible = true;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    resizablePanel1.Location = new Point(220, 670);
+                    return;
+                }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    resizablePanel1.Location = new Point(234, 460);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：5408-模糊查询经手人数据失败！" + ex.Message, "其他付款单温馨提示:");
             }
         }
         #endregion
@@ -495,25 +697,25 @@ namespace WSCATProject.Finance
         private void FinanceBankAccessForm_KeyDown(object sender, KeyEventArgs e)
         {
             //前单
-            if (e.KeyCode == Keys.B  )
+            if (e.KeyCode == Keys.B)
             {
                 MessageBox.Show("前单");
                 return;
             }
             //后单
-            if (e.KeyCode == Keys.A  )
+            if (e.KeyCode == Keys.A)
             {
                 MessageBox.Show("后单");
                 return;
             }
             //新增
-            if (e.KeyCode == Keys.N  )
+            if (e.KeyCode == Keys.N)
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S  )
+            if (e.KeyCode == Keys.S)
             {
                 Save();
                 return;
@@ -529,19 +731,19 @@ namespace WSCATProject.Finance
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P  )
+            if (e.KeyCode == Keys.P)
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T  )
+            if (e.KeyCode == Keys.T)
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X  )
+            if (e.KeyCode == Keys.X)
             {
                 this.Close();
                 this.Dispose();
@@ -611,7 +813,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-尝试创建银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
+                MessageBox.Show("错误代码:5409-尝试创建银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
                 return;
             }
 
@@ -686,7 +888,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码:-尝试创建并审核银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
+                MessageBox.Show("错误代码:5410-尝试创建并审核银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
                 return;
             }
 
@@ -696,201 +898,6 @@ namespace WSCATProject.Finance
                 MessageBox.Show("创建并审核银行存取款单成功！");
             }
         }
-
-        #region 模糊查询
-
-        /// <summary>
-        /// 付款账号的模糊查询
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void labtxtDanJuType_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (this.labtxtDanJuType.Text.Trim() == "")
-                {
-                    InitInBank();
-                    dataGridViewFuJia.Focus();
-                    _Click = 5;
-                    return;
-                }
-
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "账户编号";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "openBank";
-                dgvc.HeaderText = "开户行";
-                dgvc.DataPropertyName = "openBank";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "bankCard";
-                dgvc.HeaderText = "银行账户";
-                dgvc.DataPropertyName = "bankCard";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "cardHolder";
-                dgvc.HeaderText = "持卡人";
-                dgvc.DataPropertyName = "cardHolder";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "remark";
-                dgvc.HeaderText = "备注";
-                dgvc.DataPropertyName = "remark";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "availableBalance";
-                dgvc.HeaderText = "可用额度";
-                dgvc.DataPropertyName = "availableBalance";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                resizablePanel1.Location = new Point(250, 150);
-                string name = XYEEncoding.strCodeHex(this.labtxtDanJuType.Text.Trim());
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
-                resizablePanel1.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：5215-模糊查询结算账户数据错误" + ex.Message, "其它收付款单温馨提示");
-            }
-        }
-
-        /// <summary>
-        /// 收款账号的模糊查询
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void labtextboxTopBank_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (this.labtextboxTop2.Text.Trim() == "")
-                {
-                    InitOutBank();
-                    dataGridViewFuJia.Focus();
-                    _Click = 4;
-                    return;
-                }
-
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "账户编号";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "openBank";
-                dgvc.HeaderText = "开户行";
-                dgvc.DataPropertyName = "openBank";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "bankCard";
-                dgvc.HeaderText = "银行账户";
-                dgvc.DataPropertyName = "bankCard";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "cardHolder";
-                dgvc.HeaderText = "持卡人";
-                dgvc.DataPropertyName = "cardHolder";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "remark";
-                dgvc.HeaderText = "备注";
-                dgvc.DataPropertyName = "remark";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "availableBalance";
-                dgvc.HeaderText = "可用额度";
-                dgvc.DataPropertyName = "availableBalance";
-                dgvc.Visible = false;
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                resizablePanel1.Location = new Point(570, 150);
-                string name = XYEEncoding.strCodeHex(this.labtextboxTop2.Text.Trim());
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(bank.GetList(1, name, false, false));
-                resizablePanel1.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：5215-模糊查询结算账户数据错误" + ex.Message, "其它收付款单温馨提示");
-            }
-        }
-
-        /// <summary>
-        /// 经手人模糊查询
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ltxtbSalsMan_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ltxtbSalsMan.Text.Trim() == "")
-                {
-                    _Click = 6;
-                    InitEmployee();
-                    dataGridViewFuJia.Focus();
-                    return;
-                }
-                dataGridViewFuJia.DataSource = null;
-                dataGridViewFuJia.Columns.Clear();
-
-                DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "code";
-                dgvc.HeaderText = "员工工号";
-                dgvc.DataPropertyName = "code";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dgvc = new DataGridViewTextBoxColumn();
-                dgvc.Name = "name";
-                dgvc.HeaderText = "姓名";
-                dgvc.DataPropertyName = "name";
-                dataGridViewFuJia.Columns.Add(dgvc);
-
-                dataGridViewFuJia.DataSource = ch.DataTableReCoding(employee.GetList(0, "" + XYEEncoding.strCodeHex(ltxtbSalsMan.Text.Trim()) + ""));
-                resizablePanel1.Visible = true;
-                if (this.WindowState == FormWindowState.Maximized)
-                {
-                    resizablePanel1.Location = new Point(220, 670);
-                    return;
-                }
-                if (this.WindowState == FormWindowState.Normal)
-                {
-                    resizablePanel1.Location = new Point(234, 460);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("错误代码：5216-模糊查询收款员数据失败！" + ex.Message, "其他付款单温馨提示:");
-            }
-        }
-        #endregion
 
         /// <summary>
         /// 保存按钮
@@ -913,7 +920,7 @@ namespace WSCATProject.Finance
             if (result == DialogResult.OK)
             {
                 Review();
-                InitForm();  
+                InitForm();
             }
         }
 
@@ -973,24 +980,31 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：-金额的值为非法字符，请重新输入:" + ex.Message, "银行收取款单温馨提示！");
+                MessageBox.Show("错误代码：5411-金额的值为非法字符，请重新输入:" + ex.Message, "银行收取款单温馨提示！");
             }
         }
+
         /// <summary>
         /// 本次核销金额
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtMoney_TextChanged(object sender, EventArgs e)
+        private void txtMoney_Validated(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(labtextboxTop5.Text))
                 return;
-
-            // 按千分位逗号格式显示！
             double d = Convert.ToDouble(labtextboxTop5.Text);
-            labtextboxTop5.Text = d.ToString("0.0M");
-            // 确保输入光标在最右侧
+            labtextboxTop5.Text = d.ToString("0.00");
+            //// 确保输入光标在最右侧
             labtextboxTop5.Select(labtextboxTop5.Text.Length, 0);
+        }
+
+        private void txtMoney_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ltxtbSalsMan.Focus();
+            }
         }
     }
 }

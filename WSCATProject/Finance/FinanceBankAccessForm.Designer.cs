@@ -206,8 +206,9 @@
             this.labtextboxTop5.Size = new System.Drawing.Size(145, 16);
             this.labtextboxTop5.Text = "0.00";
             this.labtextboxTop5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.labtextboxTop5.TextChanged += new System.EventHandler(this.txtMoney_TextChanged);
+            this.labtextboxTop5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMoney_KeyDown);
             this.labtextboxTop5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
+            this.labtextboxTop5.Validated += new System.EventHandler(this.txtMoney_Validated);
             // 
             // labtextboxTop4
             // 

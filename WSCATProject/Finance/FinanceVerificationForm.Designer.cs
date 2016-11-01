@@ -208,6 +208,7 @@
             this.labtextboxTop7.Location = new System.Drawing.Point(734, 15);
             this.labtextboxTop7.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop7.Visible = false;
+            this.labtextboxTop7.TextChanged += new System.EventHandler(this.txtClientIn_TextChanged);
             // 
             // labtextboxTop9
             // 
@@ -252,6 +253,7 @@
             this.labtextboxTop5.Enabled = false;
             this.labtextboxTop5.Location = new System.Drawing.Point(418, 51);
             this.labtextboxTop5.Size = new System.Drawing.Size(130, 16);
+            this.labtextboxTop5.TextChanged += new System.EventHandler(this.txtSupply_TextChanged);
             // 
             // labtextboxTop4
             // 
@@ -267,6 +269,7 @@
             this.labtextboxTop4.Location = new System.Drawing.Point(734, 51);
             this.labtextboxTop4.Size = new System.Drawing.Size(130, 16);
             this.labtextboxTop4.Visible = false;
+            this.labtextboxTop4.TextChanged += new System.EventHandler(this.txtSupplyIn_TextChanged);
             // 
             // labtextboxTop2
             // 
@@ -282,6 +285,7 @@
             this.labtextboxTop2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labtextboxTop2.Location = new System.Drawing.Point(418, 15);
             this.labtextboxTop2.Size = new System.Drawing.Size(130, 16);
+            this.labtextboxTop2.TextChanged += new System.EventHandler(this.txtClient_TextChanged);
             // 
             // labtxtDanJuType
             // 
