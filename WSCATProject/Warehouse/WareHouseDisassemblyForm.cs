@@ -1188,13 +1188,13 @@ namespace WSCATProject.Warehouse
         private void WareHouseDisassemblyForm_KeyDown(object sender, KeyEventArgs e)
         {
             //新增
-            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.N  )
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.S  )
             {
                 Save();
                 return;
@@ -1210,19 +1210,19 @@ namespace WSCATProject.Warehouse
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.P  )
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.T  )
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.X  )
             {
                 this.Close();
                 this.Dispose();

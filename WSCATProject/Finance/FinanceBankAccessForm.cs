@@ -310,6 +310,9 @@ namespace WSCATProject.Finance
                     case "PictureBox":
                         c.Enabled = false;
                         break;
+                    case "dateTimePicker":
+                        c.Enabled = false;
+                        break;
                 }
             }
             foreach (Control c in panel5.Controls)
@@ -492,25 +495,25 @@ namespace WSCATProject.Finance
         private void FinanceBankAccessForm_KeyDown(object sender, KeyEventArgs e)
         {
             //前单
-            if (e.KeyCode == Keys.B && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.B  )
             {
                 MessageBox.Show("前单");
                 return;
             }
             //后单
-            if (e.KeyCode == Keys.A && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.A  )
             {
                 MessageBox.Show("后单");
                 return;
             }
             //新增
-            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.N  )
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.S  )
             {
                 Save();
                 return;
@@ -526,19 +529,19 @@ namespace WSCATProject.Finance
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.P  )
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.T  )
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.X  )
             {
                 this.Close();
                 this.Dispose();
@@ -604,6 +607,7 @@ namespace WSCATProject.Finance
                 financeBankAccess.operators = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//制单人
                 financeBankAccess.auditors = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text);//审核人
                 financeBankAccess.departmentCode = "";
+                financeBankAccess.checkState = 0;//审核状态
             }
             catch (Exception ex)
             {
@@ -611,10 +615,10 @@ namespace WSCATProject.Finance
                 return;
             }
 
-            object financeBankAccessResult = finaceBankAccessInterface.Add(financeBankAccess);
+            object financeBankAccessResult = finaceBankAccessInterface.AddOrUpdate(financeBankAccess);
             if (financeBankAccessResult != null)
             {
-                MessageBox.Show("尝试创建银行存取款单成功！");
+                MessageBox.Show("创建银行存取款单成功！");
             }
 
         }
@@ -624,7 +628,73 @@ namespace WSCATProject.Finance
         /// </summary>
         private void Review()
         {
-            
+            if (isNUllValidate() == false)
+            {
+                return;
+            }
+            FinanceBankAccess financeBankAccess = new FinanceBankAccess();
+            try
+            {
+                financeBankAccess.code = XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单号
+                financeBankAccess.date = this.dateTimePicker1.Value;
+                if (labtxtDanJuType.Text != null || labtxtDanJuType.Text != "")
+                {
+                    financeBankAccess.paymentAccount = XYEEncoding.strCodeHex(labtxtDanJuType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("付款账户不能为空！");
+                    labtxtDanJuType.Focus();
+                    return;
+                }
+                if (labtextboxTop2.Text != null || labtextboxTop2.Text != "")
+                {
+                    financeBankAccess.receiptAccount = XYEEncoding.strCodeHex(labtextboxTop2.Text);
+                }
+                else
+                {
+                    MessageBox.Show("收款账户不能为空！");
+                    labtextboxTop2.Focus();
+                    return;
+                }
+                double Money = Convert.ToDouble(labtextboxTop5.Text.Trim());
+                if (Money > 0.00)
+                {
+                    financeBankAccess.amount = Convert.ToDecimal(Money);
+                }
+                else
+                {
+                    MessageBox.Show("金额不能小于0！");
+                    labtextboxTop5.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.Trim() != "")
+                {
+                    financeBankAccess.handled = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("经手人不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
+                financeBankAccess.summary = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text);//摘要
+                financeBankAccess.operators = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text);//制单人
+                financeBankAccess.auditors = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text);//审核人
+                financeBankAccess.departmentCode = "";
+                financeBankAccess.checkState = 1;//审核状态
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码:-尝试创建并审核银行存取款单数据出错!请检查:" + ex.Message, "银行存取款单温馨提示");
+                return;
+            }
+
+            object financeBankAccessResult = finaceBankAccessInterface.AddOrUpdate(financeBankAccess);
+            if (financeBankAccessResult != null)
+            {
+                MessageBox.Show("创建并审核银行存取款单成功！");
+            }
         }
 
         #region 模糊查询
@@ -845,6 +915,82 @@ namespace WSCATProject.Finance
                 Review();
                 InitForm();  
             }
+        }
+
+        /// <summary>
+        /// 验证金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
+                {
+                    if (labtextboxTop5.Text.Length <= 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
+                    {
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(labtextboxTop5.Text, out oldf);
+                        b2 = float.TryParse(labtextboxTop5.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
+                    }
+
+                }
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+                {
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                            e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-金额的值为非法字符，请重新输入:" + ex.Message, "银行收取款单温馨提示！");
+            }
+        }
+        /// <summary>
+        /// 本次核销金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtMoney_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(labtextboxTop5.Text))
+                return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(labtextboxTop5.Text);
+            labtextboxTop5.Text = d.ToString("0.0M");
+            // 确保输入光标在最右侧
+            labtextboxTop5.Select(labtextboxTop5.Text.Length, 0);
         }
     }
 }

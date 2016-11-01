@@ -25,7 +25,10 @@ namespace Model.Finance
         /// 审核状态
         /// </summary>
         public int checkState
-        { get; set; }
+        {
+            set { _checkstate = value; }
+            get { return _checkstate; }
+        }
         /// <summary>
         /// 
         /// </summary>
