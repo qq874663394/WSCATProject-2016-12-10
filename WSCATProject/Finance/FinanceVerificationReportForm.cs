@@ -100,8 +100,25 @@ namespace WSCATProject.Finance
             }
         }
 
+        
+
         private string _purchaseCode;
         DataTable dt = null;
+
+        private List<string> _salesMainList = new List<string>();
+
+        public List<string> SalesMainList
+        {
+            get
+            {
+                return _salesMainList;
+            }
+
+            set
+            {
+                _salesMainList = value;
+            }
+        }
         #endregion
 
         #region 初始化数据
@@ -373,17 +390,28 @@ namespace WSCATProject.Finance
             {
                 InitClientDataGridView();
                 dt = ch.DataTableReCoding(financeInterface.GetList(0, XYEEncoding.strCodeHex(_clientCode)));
-                if (dt.Rows.Count > 0)
+                Finance.FinanceVerificationForm  finance = (FinanceVerificationForm)this.Owner;
+                _salesMainList = finance.ClientMainList;
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    superGridControlShangPing.PrimaryGrid.DataSource = dt;
+                    foreach (var liat in _salesMainList)
+                    {
+                        if (dt.Rows[i][2].ToString() == liat)
+                        {
+                            dt.Rows.RemoveAt(i);
+                        }
+                    }
+                }
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("此供应商暂无购货单信息！请重新选择");
+                    this.Close();
                     return;
                 }
-                else
-                {
-                    MessageBox.Show("查无数据!");
-                    this.Close();
-                }
+                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
+                superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
+
             if (_salerMainCode != null)
             {
                 InitShowDataGridView();

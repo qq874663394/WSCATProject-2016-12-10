@@ -475,6 +475,7 @@
     <Content Include="Resources\arrowsDown.png" />
     <Content Include="Resources\arrowsUp.png" />
     <Content Include="Resources\backgroup2.png" />
+    <None Include="Resources\backImage.png" />
     <Content Include="Resources\banner.jpg" />
     <Content Include="Resources\banner.png" />
     <None Include="Resources\big.PNG" />

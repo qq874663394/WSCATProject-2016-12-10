@@ -109,7 +109,6 @@ namespace WSCATProject.Finance
         /// 统计下表格本次核销金额
         /// </summary>
         private decimal _benCiHeXiaoMoneyBottom;
-
         /// <summary>
         /// 付款单的单据code
         /// </summary>
@@ -144,6 +143,8 @@ namespace WSCATProject.Finance
             }
         }
 
+     
+
         private string _shouKuanCode;
 
 
@@ -151,6 +152,20 @@ namespace WSCATProject.Finance
         /// 上面表格的code
         /// </summary>
         private string _mainCode;
+
+        private List<string> _ClientMainList = new List<string>();
+        public List<string> ClientMainList
+        {
+            get
+            {
+                return _ClientMainList;
+            }
+
+            set
+            {
+                _ClientMainList = value;
+            }
+        }
         #endregion
 
         #region 初始化数据
@@ -703,6 +718,8 @@ namespace WSCATProject.Finance
                     return;
                 }
                 FinanceCollectionInterface financeCollection = new FinanceCollectionInterface();
+                GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
+                GridRow grid = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 DataTable dt = ch.DataTableReCoding(financeCollection.GetList(2, XYEEncoding.strCodeHex(_fuKuanCode)));
 
                 superGridControlTop.PrimaryGrid.Rows.Add(new GridRow("", dt.Rows[0]["code"],
@@ -717,6 +734,16 @@ namespace WSCATProject.Finance
                  ));
 
                 _mainCode = dt.Rows[0]["saleCode"].ToString();
+
+                foreach (GridRow g in grs)
+                {
+                    if (g.Cells["gridColumnYuanDanCode"] == null || g.Cells["gridColumnYuanDanCode"].Value.ToString() == "")
+                    {
+                        continue;
+                    }
+                    _ClientMainList.Add(g.Cells["gridColumnYuanDanCode"].Value.ToString());
+                }
+                _fuKuanCode = null;
             }
             //如果点击了下面的表格
             if (superGridControlShangPing.Focused)
@@ -741,6 +768,8 @@ namespace WSCATProject.Finance
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
                  ));
+
+                _mainCode = null;
             }
         }
 
@@ -775,6 +804,7 @@ namespace WSCATProject.Finance
                  ));
 
                 _mainCode = dt.Rows[0]["purchaseCode"].ToString();
+                _shouKuanCode = null;
             }
             //如果点击了下面的表格
             if (superGridControlShangPing.Focused)
@@ -798,6 +828,7 @@ namespace WSCATProject.Finance
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
                  ));
+                _mainCode = null;
             }
         }
 
@@ -830,6 +861,7 @@ namespace WSCATProject.Finance
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
                  ));
+                _fuKuanCode = null;
             }
 
             if (superGridControlShangPing.Focused)
@@ -856,6 +888,7 @@ namespace WSCATProject.Finance
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
                  ));
+                _shouKuanCode = null;
             }
         }
 
@@ -888,6 +921,7 @@ namespace WSCATProject.Finance
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
                  ));
+                _fuKuanCode = null;
             }
         }
 
@@ -920,8 +954,10 @@ namespace WSCATProject.Finance
                    0.0M,
                  dt.Rows[0]["remark"].ToString() == "" ? "" : dt.Rows[0]["remark"]
                  ));
+                _shouKuanCode = null;
             }
         }
+
 
         /// <summary>
         /// 窗体加载时，焦点在核销类型上
