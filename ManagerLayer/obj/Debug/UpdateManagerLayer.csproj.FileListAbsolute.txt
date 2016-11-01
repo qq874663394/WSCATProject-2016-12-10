@@ -107,18 +107,6 @@ E:\619项目\619项目20160924\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojR
 E:\619项目\619项目20160924\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
 E:\619项目\619项目20160924\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb
 E:\619项目\新建文件夹 (2)\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\UpdateManagerLayer.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\UpdateManagerLayer.pdb
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\BaseLayer.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\HelperUtility.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\Model.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\NPOI.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\BaseLayer.pdb
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\HelperUtility.pdb
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\Model.pdb
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb
 E:\619项目\2016年10月21日105415\ManagerLayer\bin\Debug\UpdateManagerLayer.dll
 E:\619项目\2016年10月21日105415\ManagerLayer\bin\Debug\UpdateManagerLayer.pdb
 E:\619项目\2016年10月21日105415\ManagerLayer\bin\Debug\BaseLayer.dll
@@ -143,3 +131,15 @@ E:\619项目\新建文件夹\ManagerLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
 E:\619项目\新建文件夹\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\UpdateManagerLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\UpdateManagerLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\BaseLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\HelperUtility.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\Model.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\NPOI.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\BaseLayer.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\HelperUtility.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\bin\Debug\Model.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.csprojResolveAssemblyReference.cache
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\ManagerLayer\obj\Debug\UpdateManagerLayer.pdb

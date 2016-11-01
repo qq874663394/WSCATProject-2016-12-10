@@ -23,6 +23,11 @@ namespace Model.Finance
         private string _insuppliercode;
         private string _outsuppliercode;
         private string _verificationtype;
+        private int _checkstate;
+        /// <summary>
+        /// 审核状态
+        /// </summary>
+        public int checkState { get; set; }
         /// <summary>
         /// 
         /// </summary>
