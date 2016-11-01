@@ -37,9 +37,9 @@ namespace BaseLayer.Finance
             try
             {
                 sqlMain.Append("insert into [T_FinanceVerificationMain] (");
-                sqlMain.Append("summary,description,code,date,salesMan,departmentCode,operators,auditors,inClientCode,outClientCode,inSupplierCode,outSupplierCode,verificationType)");
+                sqlMain.Append("summary,description,code,date,salesMan,departmentCode,operators,auditors,inClientCode,outClientCode,inSupplierCode,outSupplierCode,verificationType,checkState)");
                 sqlMain.Append(" values (");
-                sqlMain.Append("@summary,@description,@code,@date,@salesMan,@departmentCode,@operators,@auditors,@inClientCode,@outClientCode,@inSupplierCode,@outSupplierCode,@verificationType)");
+                sqlMain.Append("@summary,@description,@code,@date,@salesMan,@departmentCode,@operators,@auditors,@inClientCode,@outClientCode,@inSupplierCode,@outSupplierCode,@verificationType,@checkState)");
                 sqlMain.Append(";select @@IDENTITY");
                 SqlParameter[] spsMain =
                 {
@@ -55,7 +55,8 @@ namespace BaseLayer.Finance
                     new SqlParameter("@outClientCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@inSupplierCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@outSupplierCode", SqlDbType.NVarChar,50),
-                    new SqlParameter("@verificationType", SqlDbType.NVarChar,50)
+                    new SqlParameter("@verificationType", SqlDbType.NVarChar,50),
+                    new SqlParameter("@checkState",SqlDbType.Int)
                 };
                 spsMain[0].Value =model.summary;
                 spsMain[1].Value =model.description;
@@ -70,13 +71,14 @@ namespace BaseLayer.Finance
                 spsMain[10].Value =model.inSupplierCode;
                 spsMain[11].Value =model.outSupplierCode;
                 spsMain[12].Value = model.verificationType;
+                spsMain[13].Value = model.checkState;
 
                 hashTable.Add(sqlMain, spsMain);
 
                 sqlDetail.Append("insert into [T_FinanceVerificationDetail] (");
-                sqlDetail.Append("code,date,mainCode,sourceCode,sourceType,sourceAmount,alreadyVerificationAmount,notVerificationAmount,remark)");
+                sqlDetail.Append("code,date,mainCode,sourceCode,sourceType,sourceAmount,alreadyVerificationAmount,notVerificationAmount,remark,theVerificationAmount)");
                 sqlDetail.Append(" values (");
-                sqlDetail.Append("@code,@date,@mainCode,@sourceCode,@sourceType,@sourceAmount,@alreadyVerificationAmount,@notVerificationAmount,@remark)");
+                sqlDetail.Append("@code,@date,@mainCode,@sourceCode,@sourceType,@sourceAmount,@alreadyVerificationAmount,@notVerificationAmount,@remark,@theVerificationAmount)");
                 sqlDetail.Append(";select @@IDENTITY");
                 foreach (var item in modelDetail)
                 {
@@ -90,7 +92,8 @@ namespace BaseLayer.Finance
                     new SqlParameter("@sourceAmount", SqlDbType.Decimal,9),
                     new SqlParameter("@alreadyVerificationAmount", SqlDbType.Decimal,9),
                     new SqlParameter("@notVerificationAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@remark", SqlDbType.NVarChar,400)
+                    new SqlParameter("@remark", SqlDbType.NVarChar,400),
+                    new SqlParameter("@theVerificationAmount",SqlDbType.Decimal,9)
                     };
                     spsDetail[0].Value =item.code;
                     spsDetail[1].Value =item.date;
@@ -101,6 +104,7 @@ namespace BaseLayer.Finance
                     spsDetail[6].Value =item.alreadyVerificationAmount;
                     spsDetail[7].Value =item.notVerificationAmount;
                     spsDetail[8].Value = item.remark;
+                    spsDetail[9].Value = item.theVerificationAmount;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);
@@ -132,7 +136,8 @@ namespace BaseLayer.Finance
                 sqlMain.Append("outClientCode=@outClientCode,");
                 sqlMain.Append("inSupplierCode=@inSupplierCode,");
                 sqlMain.Append("outSupplierCode=@outSupplierCode,");
-                sqlMain.Append("verificationType=@verificationType");
+                sqlMain.Append("verificationType=@verificationType,");
+                sqlMain.Append("checkState=@checkState");
                 sqlMain.Append(" where code=@code ");
                 SqlParameter[] spsMain =
                 {
@@ -148,7 +153,8 @@ namespace BaseLayer.Finance
                     new SqlParameter("@outClientCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@inSupplierCode", SqlDbType.NVarChar,50),
                     new SqlParameter("@outSupplierCode", SqlDbType.NVarChar,50),
-                    new SqlParameter("@verificationType", SqlDbType.NVarChar,50)
+                    new SqlParameter("@verificationType", SqlDbType.NVarChar,50),
+                    new SqlParameter("@checkState",SqlDbType.Int)
                 };
                 spsMain[0].Value = model.summary;
                 spsMain[1].Value = model.description;
@@ -163,14 +169,15 @@ namespace BaseLayer.Finance
                 spsMain[10].Value = model.inSupplierCode;
                 spsMain[11].Value = model.outSupplierCode;
                 spsMain[12].Value = model.verificationType;
+                spsMain[13].Value = model.checkState;
 
                 hashTable.Add(sqlMain, spsMain);
 
                 StringBuilder strInsert = new StringBuilder();
                 strInsert.Append("insert into [T_FinanceVerificationDetail] (");
-                strInsert.Append("code,date,mainCode,sourceCode,sourceType,sourceAmount,alreadyVerificationAmount,notVerificationAmount,remark)");
+                strInsert.Append("code,date,mainCode,sourceCode,sourceType,sourceAmount,alreadyVerificationAmount,notVerificationAmount,remark,theVerificationAmount)");
                 strInsert.Append(" values (");
-                strInsert.Append("@code,@date,@mainCode,@sourceCode,@sourceType,@sourceAmount,@alreadyVerificationAmount,@notVerificationAmount,@remark)");
+                strInsert.Append("@code,@date,@mainCode,@sourceCode,@sourceType,@sourceAmount,@alreadyVerificationAmount,@notVerificationAmount,@remark,@theVerificationAmount)");
                 strInsert.Append(";select @@IDENTITY");
 
                 sqlDetail.Append("update [T_FinanceVerificationDetail] set ");
@@ -181,7 +188,8 @@ namespace BaseLayer.Finance
                 sqlDetail.Append("sourceAmount=@sourceAmount,");
                 sqlDetail.Append("alreadyVerificationAmount=@alreadyVerificationAmount,");
                 sqlDetail.Append("notVerificationAmount=@notVerificationAmount,");
-                sqlDetail.Append("remark=@remark");
+                sqlDetail.Append("remark=@remark,");
+                sqlDetail.Append("theVerificationAmount=@theVerificationAmount");
                 sqlDetail.Append(" where code=@code ");
                 foreach (var item in modelDetail)
                 {
@@ -195,7 +203,8 @@ namespace BaseLayer.Finance
                     new SqlParameter("@sourceAmount", SqlDbType.Decimal,9),
                     new SqlParameter("@alreadyVerificationAmount", SqlDbType.Decimal,9),
                     new SqlParameter("@notVerificationAmount", SqlDbType.Decimal,9),
-                    new SqlParameter("@remark", SqlDbType.NVarChar,400)
+                    new SqlParameter("@remark", SqlDbType.NVarChar,400),
+                    new SqlParameter("@theVerificationAmount",SqlDbType.Decimal,9)
                     };
                     spsDetail[0].Value = item.code;
                     spsDetail[1].Value = item.date;
@@ -206,6 +215,7 @@ namespace BaseLayer.Finance
                     spsDetail[6].Value = item.alreadyVerificationAmount;
                     spsDetail[7].Value = item.notVerificationAmount;
                     spsDetail[8].Value = item.remark;
+                    spsDetail[9].Value = item.theVerificationAmount;
                     list.Add(spsDetail);
                 }
                 result = DbHelperSQL.ExecuteSqlTranScalar(hashTable, sqlDetail.ToString(), list);

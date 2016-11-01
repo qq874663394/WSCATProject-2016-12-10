@@ -310,6 +310,9 @@ namespace WSCATProject.Finance
                     case "PictureBox":
                         c.Enabled = false;
                         break;
+                    case "dateTimePicker":
+                        c.Enabled = false;
+                        break;
                 }
             }
             foreach (Control c in panel5.Controls)
@@ -615,7 +618,7 @@ namespace WSCATProject.Finance
             object financeBankAccessResult = finaceBankAccessInterface.AddOrUpdate(financeBankAccess);
             if (financeBankAccessResult != null)
             {
-                MessageBox.Show("尝试创建银行存取款单成功！");
+                MessageBox.Show("创建银行存取款单成功！");
             }
 
         }
@@ -690,7 +693,7 @@ namespace WSCATProject.Finance
             object financeBankAccessResult = finaceBankAccessInterface.AddOrUpdate(financeBankAccess);
             if (financeBankAccessResult != null)
             {
-                MessageBox.Show("尝试创建并审核银行存取款单成功！");
+                MessageBox.Show("创建并审核银行存取款单成功！");
             }
         }
 
@@ -912,6 +915,82 @@ namespace WSCATProject.Finance
                 Review();
                 InitForm();  
             }
+        }
+
+        /// <summary>
+        /// 验证金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                //小数点的处理。
+                if ((int)e.KeyChar == 46)//小数点
+                {
+                    if (labtextboxTop5.Text.Length <= 0)
+                        e.Handled = true;   //小数点不能在第一位
+                    else
+                    {
+                        float f;
+                        float oldf;
+                        bool b1 = false, b2 = false;
+                        b1 = float.TryParse(labtextboxTop5.Text, out oldf);
+                        b2 = float.TryParse(labtextboxTop5.Text + e.KeyChar.ToString(), out f);
+                        if (b2 == false)
+                        {
+                            if (b1 == true)
+                                e.Handled = true;
+                            else
+                                e.Handled = false;
+                        }
+                    }
+
+                }
+                if (!(((e.KeyChar >= '0') && (e.KeyChar <= '9')) || e.KeyChar <= 31))
+                {
+                    if (e.KeyChar == '.')
+                    {
+                        if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                            e.Handled = true;
+                    }
+                    else
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (e.KeyChar <= 31)
+                    {
+                        e.Handled = false;
+                    }
+                    else if (((TextBox)sender).Text.Trim().IndexOf('.') > -1)
+                    {
+                        if (((TextBox)sender).Text.Trim().Substring(((TextBox)sender).Text.Trim().IndexOf('.') + 1).Length >= 2)
+                            e.Handled = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：-金额的值为非法字符，请重新输入:" + ex.Message, "银行收取款单温馨提示！");
+            }
+        }
+        /// <summary>
+        /// 本次核销金额
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtMoney_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(labtextboxTop5.Text))
+                return;
+
+            // 按千分位逗号格式显示！
+            double d = Convert.ToDouble(labtextboxTop5.Text);
+            labtextboxTop5.Text = d.ToString("0.0M");
+            // 确保输入光标在最右侧
+            labtextboxTop5.Select(labtextboxTop5.Text.Length, 0);
         }
     }
 }

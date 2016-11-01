@@ -19,6 +19,11 @@ namespace Model.Finance
         private decimal? _alreadyverificationamount;
         private decimal? _notverificationamount;
         private string _remark;
+        private decimal? _theVerificationamount;
+        /// <summary>
+        /// 本次核销
+        /// </summary>
+        public decimal? theVerificationAmount { get; set; }
         /// <summary>
         /// 
         /// </summary>
