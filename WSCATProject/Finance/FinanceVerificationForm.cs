@@ -1012,9 +1012,6 @@ namespace WSCATProject.Finance
                         labtextboxTop2.Focus();
                     }
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -1197,8 +1194,7 @@ namespace WSCATProject.Finance
                 MessageBox.Show("错误代码：5312-核销类型为应付转应付时，绑定数据到上表格失败！请检查：" + ex.Message, "核销单温馨提示！");
             }
         }
-
-
+        
         /// <summary>
         /// 窗体加载时，焦点在核销类型上
         /// </summary>
