@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\AccountingSubjectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\AccountingSubjectsForm.Designer.cs">
+      <DependentUpon>AccountingSubjectsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\Material\MaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     <Compile Include="Warehouse\WareHuseStorageRack.Designer.cs">
       <DependentUpon>WareHuseStorageRack.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Base\AccountingSubjectsForm.resx">
+      <DependentUpon>AccountingSubjectsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Base\Material\MaterialForm.resx">
       <DependentUpon>MaterialForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,8 +511,10 @@
     <Content Include="Resources\cangkuxitong.png" />
     <None Include="Resources\caozuo.png" />
     <None Include="Resources\chaixie.png" />
+    <None Include="Resources\car.png" />
     <Content Include="Resources\changePassword.png" />
     <Content Include="Resources\checkMore.png" />
+    <None Include="Resources\chengben.png" />
     <Content Include="Resources\clientData.png" />
     <Content Include="Resources\clientManager.png" />
     <None Include="Resources\countExc.png" />
@@ -526,6 +537,7 @@
     <Content Include="Resources\financeOut.png" />
     <Content Include="Resources\financePay.png" />
     <Content Include="Resources\fukuan.png" />
+    <None Include="Resources\fuzhai.png" />
     <Content Include="Resources\godDownIn.png" />
     <Content Include="Resources\godDownOut.png" />
     <Content Include="Resources\goodsData.png" />
@@ -581,6 +593,7 @@
     <None Include="Resources\red.PNG" />
     <None Include="Resources\red.jpg" />
     <None Include="Resources\qiandan.PNG" />
+    <None Include="Resources\quanyi.png" />
     <Content Include="Resources\Redocn_2012040703034492.png" />
     <None Include="Resources\red大.png" />
     <Content Include="Resources\regionData.png" />
@@ -600,6 +613,7 @@
     <Content Include="Resources\shoukuan.png" />
     <None Include="Resources\shuaxin.PNG" />
     <None Include="Resources\small.PNG" />
+    <None Include="Resources\shouyi.png" />
     <Content Include="Resources\souhouweihu.png" />
     <Content Include="Resources\staffData.png" />
     <Content Include="Resources\staffSetting.png" />
@@ -687,7 +701,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Base\Supplier\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

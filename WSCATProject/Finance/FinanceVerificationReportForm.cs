@@ -424,7 +424,6 @@ namespace WSCATProject.Finance
                     this.Close();
                     return;
                 }
-                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
 
@@ -451,7 +450,6 @@ namespace WSCATProject.Finance
                     this.Close();
                     return;
                 }
-                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
 
@@ -496,10 +494,8 @@ namespace WSCATProject.Finance
                     this.Close();
                     return;
                 }
-                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
-
             if (_purchaseCode != null)
             {
                 InitSupplierShowDataGridView();
@@ -522,10 +518,8 @@ namespace WSCATProject.Finance
                     this.Close();
                     return;
                 }
-                //this.lbldanju.Text = dt.Rows.Count.ToString() + "张单据";
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
-
         }
 
         #region 最小化、最大化、关闭的点击事件
