@@ -124,6 +124,12 @@
     <Compile Include="Finance\FinanceVerificationReportForm.Designer.cs">
       <DependentUpon>FinanceVerificationReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finance\FinanceVoucherEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceVoucherEntryForm.Designer.cs">
+      <DependentUpon>FinanceVoucherEntryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GridStateEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinanceVerificationReportForm.resx">
       <DependentUpon>FinanceVerificationReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceVoucherEntryForm.resx">
+      <DependentUpon>FinanceVoucherEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
