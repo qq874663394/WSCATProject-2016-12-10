@@ -522,6 +522,7 @@
     <None Include="Resources\chaixie.png" />
     <None Include="Resources\car.png" />
     <Content Include="Resources\changePassword.png" />
+    <None Include="Resources\charu.PNG" />
     <Content Include="Resources\checkMore.png" />
     <None Include="Resources\chengben.png" />
     <Content Include="Resources\clientData.png" />
@@ -535,6 +536,8 @@
     <None Include="Resources\daying副本.png" />
     <None Include="Resources\daying.jpg" />
     <None Include="Resources\daying.png" />
+    <None Include="Resources\delete.PNG" />
+    <None Include="Resources\daima.PNG" />
     <Content Include="Resources\deliverManager.png" />
     <Content Include="Resources\diquziliao.png" />
     <Content Include="Resources\financeBank.png" />
@@ -560,11 +563,14 @@
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\huanyuan.PNG" />
     <None Include="Resources\houdan.png" />
+    <None Include="Resources\huifu.png" />
     <Content Include="Resources\huopinziliao.png" />
     <Content Include="Resources\inInsert.png" />
     <Content Include="Resources\inSelect.png" />
     <Content Include="Resources\inUpdate.png" />
     <Content Include="Resources\jindutiaotubiao_4253210.png" />
+    <None Include="Resources\jisuanqi.png" />
+    <None Include="Resources\liuliang.png" />
     <Content Include="Resources\loadedtruck.png" />
     <Content Include="Resources\locationBannel.jpg" />
     <None Include="Resources\login%281%29.png" />
@@ -643,9 +649,11 @@
     <None Include="Resources\tiaoma2.PNG" />
     <None Include="Resources\tiaoma.png" />
     <None Include="Resources\tianjia.png" />
+    <None Include="Resources\tiaozhuan.png" />
     <Content Include="Resources\today.PNG" />
     <Content Include="Resources\undo.png" />
     <Content Include="Resources\undo_2.png" />
+    <None Include="Resources\waibi.png" />
     <Content Include="Resources\wallet.png" />
     <Content Include="Resources\wanglaidanwei.png" />
     <Content Include="Resources\warehomeAdjust.png" />

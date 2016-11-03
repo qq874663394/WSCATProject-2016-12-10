@@ -730,4 +730,28 @@
   <data name="shouyi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shouyi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="charu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\charu.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="daima" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\daima.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="huifu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huifu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jisuanqi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jisuanqi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="liuliang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\liuliang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tiaozhuan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tiaozhuan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="waibi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\waibi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -30,143 +30,143 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinanceVoucherEntryForm));
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor349 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern235 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness241 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor350 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern236 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness242 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor351 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern237 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness243 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor352 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor353 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern238 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness244 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor354 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor355 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern239 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness245 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor356 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor357 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern240 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness246 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor358 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor359 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness247 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor360 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor361 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern241 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness248 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor362 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor363 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern242 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness249 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor364 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor365 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern243 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness250 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor366 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor367 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern244 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness251 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor368 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor369 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern245 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness252 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor370 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor371 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern246 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness253 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor372 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor373 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern247 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness254 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor374 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor375 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern248 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness255 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor376 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor377 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern249 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness256 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor378 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor379 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern250 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness257 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor380 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor381 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern251 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness258 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor382 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor383 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern252 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness259 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor384 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor385 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern253 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness260 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor386 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor387 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern254 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness261 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor388 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor389 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern255 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness262 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor390 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern256 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness263 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor391 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern257 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness264 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor392 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern258 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness265 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor393 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern259 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness266 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor394 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern260 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness267 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor395 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern261 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness268 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor396 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern262 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness269 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor397 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern263 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness270 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor398 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern264 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness271 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor399 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern265 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness272 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor400 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern266 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness273 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor401 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern267 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness274 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor402 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern268 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness275 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor403 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern269 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness276 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor404 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern270 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness277 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor405 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern271 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness278 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor406 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern272 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness279 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
-            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern273 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
-            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness280 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor1 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern1 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness1 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor2 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern2 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness2 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor3 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern3 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness3 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor4 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor5 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern4 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness4 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor6 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor7 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern5 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness5 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor8 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor9 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern6 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness6 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor10 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor11 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness7 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor12 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor13 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern7 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness8 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor14 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor15 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern8 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness9 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor16 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor17 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern9 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness10 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor18 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor19 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern10 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness11 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor20 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor21 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern11 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness12 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor22 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor23 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern12 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness13 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor24 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor25 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern13 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness14 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor26 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor27 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern14 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness15 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor28 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor29 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern15 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness16 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor30 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor31 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern16 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness17 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor32 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor33 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern17 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness18 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor34 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor35 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern18 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness19 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor36 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor37 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern19 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness20 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor38 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor39 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern20 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness21 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor40 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor41 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern21 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness22 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor42 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern22 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness23 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor43 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern23 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness24 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor44 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern24 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness25 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor45 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern25 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness26 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor46 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern26 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness27 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor47 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern27 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness28 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor48 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern28 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness29 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor49 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern29 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness30 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor50 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern30 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness31 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor51 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern31 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness32 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor52 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern32 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness33 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor53 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern33 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness34 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor54 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern34 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness35 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor55 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern35 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness36 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor56 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern36 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness37 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor57 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern37 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness38 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderColor borderColor58 = new DevComponents.DotNetBar.SuperGrid.Style.BorderColor();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern38 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness39 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
+            DevComponents.DotNetBar.SuperGrid.Style.BorderPattern borderPattern39 = new DevComponents.DotNetBar.SuperGrid.Style.BorderPattern();
+            DevComponents.DotNetBar.SuperGrid.Style.Thickness thickness40 = new DevComponents.DotNetBar.SuperGrid.Style.Thickness();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.pictureBoxMin = new System.Windows.Forms.PictureBox();
@@ -178,22 +178,24 @@
             this.toolStripBtnHouDan = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnInsert = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnShengHe = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonXuanYuanDan = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnDaYing = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnDaoChu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnHuanYuan = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonChaRu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnShangChu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnWaiBi = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnDaiMa = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnLiuLiang = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnJiSuanQi = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnTiaoZhuan = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnClose = new System.Windows.Forms.ToolStripButton();
             this.labBotton2 = new System.Windows.Forms.Label();
             this.labTop5 = new System.Windows.Forms.Label();
             this.labTop8 = new System.Windows.Forms.Label();
             this.labTop9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dupXuHao = new System.Windows.Forms.DomainUpDown();
-            this.dupFuJian = new System.Windows.Forms.DomainUpDown();
+            this.lblmonth = new System.Windows.Forms.Label();
+            this.lblyear = new System.Windows.Forms.Label();
+            this.numericUpDownXuHao = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFuJian = new System.Windows.Forms.NumericUpDown();
             this.cboPingZhengHao = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem5 = new DevComponents.Editors.ComboItem();
             this.comboItem6 = new DevComponents.Editors.ComboItem();
@@ -264,6 +266,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxtitle)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXuHao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFuJian)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -371,14 +375,14 @@
             this.toolStripBtnHouDan,
             this.toolStripBtnInsert,
             this.toolStripBtnSave,
-            this.toolStripBtnShengHe,
-            this.toolStripButtonXuanYuanDan,
-            this.toolStripBtnDaYing,
-            this.toolStripBtnDaoChu,
-            this.toolStripButton3,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton4,
+            this.toolStripBtnHuanYuan,
+            this.toolStripButtonChaRu,
+            this.toolStripBtnShangChu,
+            this.toolStripBtnWaiBi,
+            this.toolStripBtnDaiMa,
+            this.toolStripBtnLiuLiang,
+            this.toolStripBtnJiSuanQi,
+            this.toolStripBtnTiaoZhuan,
             this.toolStripBtnClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 61);
             this.toolStrip1.Name = "toolStrip1";
@@ -433,93 +437,96 @@
             this.toolStripBtnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnSave.ToolTipText = "保存凭证";
             // 
-            // toolStripBtnShengHe
+            // toolStripBtnHuanYuan
             // 
-            this.toolStripBtnShengHe.Image = global::WSCATProject.Properties.Resources.shenghe;
-            this.toolStripBtnShengHe.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnShengHe.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnShengHe.Name = "toolStripBtnShengHe";
-            this.toolStripBtnShengHe.Size = new System.Drawing.Size(60, 57);
-            this.toolStripBtnShengHe.Text = "还原(&Z)";
-            this.toolStripBtnShengHe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnShengHe.ToolTipText = "取消所做的更改";
+            this.toolStripBtnHuanYuan.Image = global::WSCATProject.Properties.Resources.huifu;
+            this.toolStripBtnHuanYuan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnHuanYuan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnHuanYuan.Name = "toolStripBtnHuanYuan";
+            this.toolStripBtnHuanYuan.Size = new System.Drawing.Size(60, 57);
+            this.toolStripBtnHuanYuan.Text = "还原(&Z)";
+            this.toolStripBtnHuanYuan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnHuanYuan.ToolTipText = "取消所做的更改";
+            this.toolStripBtnHuanYuan.Click += new System.EventHandler(this.toolStripBtnHuanYuan_Click);
             // 
-            // toolStripButtonXuanYuanDan
+            // toolStripButtonChaRu
             // 
-            this.toolStripButtonXuanYuanDan.Image = global::WSCATProject.Properties.Resources.business;
-            this.toolStripButtonXuanYuanDan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonXuanYuanDan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonXuanYuanDan.Name = "toolStripButtonXuanYuanDan";
-            this.toolStripButtonXuanYuanDan.Size = new System.Drawing.Size(55, 57);
-            this.toolStripButtonXuanYuanDan.Text = "插入(&I)";
-            this.toolStripButtonXuanYuanDan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonXuanYuanDan.ToolTipText = "插入一条分录";
+            this.toolStripButtonChaRu.Image = global::WSCATProject.Properties.Resources.charu;
+            this.toolStripButtonChaRu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonChaRu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonChaRu.Name = "toolStripButtonChaRu";
+            this.toolStripButtonChaRu.Size = new System.Drawing.Size(55, 57);
+            this.toolStripButtonChaRu.Text = "插入(&I)";
+            this.toolStripButtonChaRu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonChaRu.ToolTipText = "插入一条分录";
+            this.toolStripButtonChaRu.Click += new System.EventHandler(this.toolStripButtonChaRu_Click);
             // 
-            // toolStripBtnDaYing
+            // toolStripBtnShangChu
             // 
-            this.toolStripBtnDaYing.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripBtnDaYing.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnDaYing.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnDaYing.Name = "toolStripBtnDaYing";
-            this.toolStripBtnDaYing.Size = new System.Drawing.Size(62, 57);
-            this.toolStripBtnDaYing.Text = "删除(&D)";
-            this.toolStripBtnDaYing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnDaYing.ToolTipText = "删除当前分录";
+            this.toolStripBtnShangChu.Image = global::WSCATProject.Properties.Resources.delete;
+            this.toolStripBtnShangChu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnShangChu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnShangChu.Name = "toolStripBtnShangChu";
+            this.toolStripBtnShangChu.Size = new System.Drawing.Size(62, 57);
+            this.toolStripBtnShangChu.Text = "删除(&D)";
+            this.toolStripBtnShangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnShangChu.ToolTipText = "删除当前分录";
             // 
-            // toolStripBtnDaoChu
+            // toolStripBtnWaiBi
             // 
-            this.toolStripBtnDaoChu.Image = global::WSCATProject.Properties.Resources.countExc;
-            this.toolStripBtnDaoChu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripBtnDaoChu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnDaoChu.Name = "toolStripBtnDaoChu";
-            this.toolStripBtnDaoChu.Size = new System.Drawing.Size(59, 57);
-            this.toolStripBtnDaoChu.Text = "外币(&T)";
-            this.toolStripBtnDaoChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBtnDaoChu.ToolTipText = "查看外币/数量";
+            this.toolStripBtnWaiBi.Image = global::WSCATProject.Properties.Resources.waibi;
+            this.toolStripBtnWaiBi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnWaiBi.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnWaiBi.Name = "toolStripBtnWaiBi";
+            this.toolStripBtnWaiBi.Size = new System.Drawing.Size(41, 57);
+            this.toolStripBtnWaiBi.Text = "外币";
+            this.toolStripBtnWaiBi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnWaiBi.ToolTipText = "查看外币/数量";
             // 
-            // toolStripButton3
+            // toolStripBtnDaiMa
             // 
-            this.toolStripButton3.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(66, 57);
-            this.toolStripButton3.Text = "代码(&F7)";
-            this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton3.ToolTipText = "查看代码";
+            this.toolStripBtnDaiMa.Image = global::WSCATProject.Properties.Resources.daima;
+            this.toolStripBtnDaiMa.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnDaiMa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnDaiMa.Name = "toolStripBtnDaiMa";
+            this.toolStripBtnDaiMa.Size = new System.Drawing.Size(66, 57);
+            this.toolStripBtnDaiMa.Text = "代码(&F7)";
+            this.toolStripBtnDaiMa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnDaiMa.ToolTipText = "查看代码";
             // 
-            // toolStripButton1
+            // toolStripBtnLiuLiang
             // 
-            this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(60, 57);
-            this.toolStripButton1.Text = "流量(&P)";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.ToolTipText = "现金流量项目指定";
+            this.toolStripBtnLiuLiang.Image = global::WSCATProject.Properties.Resources.liuliang;
+            this.toolStripBtnLiuLiang.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnLiuLiang.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnLiuLiang.Name = "toolStripBtnLiuLiang";
+            this.toolStripBtnLiuLiang.Size = new System.Drawing.Size(41, 57);
+            this.toolStripBtnLiuLiang.Text = "流量";
+            this.toolStripBtnLiuLiang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnLiuLiang.ToolTipText = "现金流量项目指定";
             // 
-            // toolStripButton2
+            // toolStripBtnJiSuanQi
             // 
-            this.toolStripButton2.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(74, 57);
-            this.toolStripButton2.Text = "计算器(&P)";
-            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.ToolTipText = "计算器";
+            this.toolStripBtnJiSuanQi.Image = global::WSCATProject.Properties.Resources.jisuanqi;
+            this.toolStripBtnJiSuanQi.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnJiSuanQi.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnJiSuanQi.Name = "toolStripBtnJiSuanQi";
+            this.toolStripBtnJiSuanQi.Size = new System.Drawing.Size(55, 57);
+            this.toolStripBtnJiSuanQi.Text = "计算器";
+            this.toolStripBtnJiSuanQi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnJiSuanQi.ToolTipText = "计算器";
+            this.toolStripBtnJiSuanQi.Click += new System.EventHandler(this.toolStripBtnJiSuanQi_Click);
             // 
-            // toolStripButton4
+            // toolStripBtnTiaoZhuan
             // 
-            this.toolStripButton4.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(41, 57);
-            this.toolStripButton4.Text = "跳转";
-            this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton4.ToolTipText = "跳转到....";
+            this.toolStripBtnTiaoZhuan.Image = global::WSCATProject.Properties.Resources.tiaozhuan;
+            this.toolStripBtnTiaoZhuan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripBtnTiaoZhuan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnTiaoZhuan.Name = "toolStripBtnTiaoZhuan";
+            this.toolStripBtnTiaoZhuan.Size = new System.Drawing.Size(41, 57);
+            this.toolStripBtnTiaoZhuan.Text = "跳转";
+            this.toolStripBtnTiaoZhuan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBtnTiaoZhuan.ToolTipText = "跳转到....";
             // 
             // toolStripBtnClose
             // 
@@ -576,8 +583,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel2.Controls.Add(this.dupXuHao);
-            this.panel2.Controls.Add(this.dupFuJian);
+            this.panel2.Controls.Add(this.lblmonth);
+            this.panel2.Controls.Add(this.lblyear);
+            this.panel2.Controls.Add(this.numericUpDownXuHao);
+            this.panel2.Controls.Add(this.numericUpDownFuJian);
             this.panel2.Controls.Add(this.cboPingZhengHao);
             this.panel2.Controls.Add(this.cboPingZhengZi);
             this.panel2.Controls.Add(this.labeldata);
@@ -594,25 +603,49 @@
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FinanceVoucherEntryForm_MouseDown);
             // 
-            // dupXuHao
+            // lblmonth
             // 
-            this.dupXuHao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dupXuHao.Location = new System.Drawing.Point(1094, 69);
-            this.dupXuHao.Name = "dupXuHao";
-            this.dupXuHao.Size = new System.Drawing.Size(90, 21);
-            this.dupXuHao.TabIndex = 55;
-            this.dupXuHao.Text = "0";
-            this.dupXuHao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lblmonth.AutoSize = true;
+            this.lblmonth.Location = new System.Drawing.Point(676, 62);
+            this.lblmonth.Name = "lblmonth";
+            this.lblmonth.Size = new System.Drawing.Size(41, 12);
+            this.lblmonth.TabIndex = 58;
+            this.lblmonth.Text = "label2";
             // 
-            // dupFuJian
+            // lblyear
             // 
-            this.dupFuJian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dupFuJian.Location = new System.Drawing.Point(1094, 47);
-            this.dupFuJian.Name = "dupFuJian";
-            this.dupFuJian.Size = new System.Drawing.Size(90, 21);
-            this.dupFuJian.TabIndex = 54;
-            this.dupFuJian.Text = "0";
-            this.dupFuJian.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lblyear.AutoSize = true;
+            this.lblyear.Location = new System.Drawing.Point(628, 62);
+            this.lblyear.Name = "lblyear";
+            this.lblyear.Size = new System.Drawing.Size(41, 12);
+            this.lblyear.TabIndex = 57;
+            this.lblyear.Text = "label1";
+            // 
+            // numericUpDownXuHao
+            // 
+            this.numericUpDownXuHao.Location = new System.Drawing.Point(1094, 70);
+            this.numericUpDownXuHao.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numericUpDownXuHao.Name = "numericUpDownXuHao";
+            this.numericUpDownXuHao.Size = new System.Drawing.Size(90, 21);
+            this.numericUpDownXuHao.TabIndex = 3;
+            this.numericUpDownXuHao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numericUpDownFuJian
+            // 
+            this.numericUpDownFuJian.Location = new System.Drawing.Point(1094, 48);
+            this.numericUpDownFuJian.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numericUpDownFuJian.Name = "numericUpDownFuJian";
+            this.numericUpDownFuJian.Size = new System.Drawing.Size(90, 21);
+            this.numericUpDownFuJian.TabIndex = 56;
+            this.numericUpDownFuJian.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cboPingZhengHao
             // 
@@ -653,6 +686,7 @@
             this.cboPingZhengZi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboPingZhengZi.DisplayMember = "Text";
             this.cboPingZhengZi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPingZhengZi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPingZhengZi.FormattingEnabled = true;
             this.cboPingZhengZi.ItemHeight = 15;
             this.cboPingZhengZi.Items.AddRange(new object[] {
@@ -700,6 +734,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(140, 21);
             this.dateTimePicker1.TabIndex = 50;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // panel5
             // 
@@ -886,479 +921,479 @@
             // 
             // gridColumnZhaiYao
             // 
-            borderColor349.Right = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
-            this.gridColumnZhaiYao.CellStyles.Default.BorderColor = borderColor349;
-            borderPattern235.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumnZhaiYao.CellStyles.Default.BorderPattern = borderPattern235;
-            thickness241.Right = 1;
-            this.gridColumnZhaiYao.CellStyles.Default.BorderThickness = thickness241;
+            borderColor1.Right = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.gridColumnZhaiYao.CellStyles.Default.BorderColor = borderColor1;
+            borderPattern1.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumnZhaiYao.CellStyles.Default.BorderPattern = borderPattern1;
+            thickness1.Right = 1;
+            this.gridColumnZhaiYao.CellStyles.Default.BorderThickness = thickness1;
             this.gridColumnZhaiYao.HeaderText = "摘要";
             this.gridColumnZhaiYao.Name = "gridColumnZhaiYao";
             this.gridColumnZhaiYao.Width = 200;
             // 
             // gridColumnSubject
             // 
-            borderColor350.Right = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
-            this.gridColumnSubject.CellStyles.Default.BorderColor = borderColor350;
-            borderPattern236.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumnSubject.CellStyles.Default.BorderPattern = borderPattern236;
-            thickness242.Right = 1;
-            this.gridColumnSubject.CellStyles.Default.BorderThickness = thickness242;
+            borderColor2.Right = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.gridColumnSubject.CellStyles.Default.BorderColor = borderColor2;
+            borderPattern2.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumnSubject.CellStyles.Default.BorderPattern = borderPattern2;
+            thickness2.Right = 1;
+            this.gridColumnSubject.CellStyles.Default.BorderThickness = thickness2;
             this.gridColumnSubject.HeaderText = "科目";
             this.gridColumnSubject.Name = "gridColumnSubject";
             this.gridColumnSubject.Width = 200;
             // 
             // gridColumn1
             // 
-            borderColor351.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn1.CellStyles.Default.BorderColor = borderColor351;
-            borderPattern237.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn1.CellStyles.Default.BorderPattern = borderPattern237;
-            thickness243.Right = 1;
-            this.gridColumn1.CellStyles.Default.BorderThickness = thickness243;
+            borderColor3.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn1.CellStyles.Default.BorderColor = borderColor3;
+            borderPattern3.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn1.CellStyles.Default.BorderPattern = borderPattern3;
+            thickness3.Right = 1;
+            this.gridColumn1.CellStyles.Default.BorderThickness = thickness3;
             this.gridColumn1.DefaultNewRowCellValue = "";
-            borderColor352.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn1.HeaderStyles.Default.BorderColor = borderColor352;
+            borderColor4.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn1.HeaderStyles.Default.BorderColor = borderColor4;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Width = 10;
             // 
             // gridColumn2
             // 
-            borderColor353.Right = System.Drawing.Color.DimGray;
-            this.gridColumn2.CellStyles.Default.BorderColor = borderColor353;
-            borderPattern238.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn2.CellStyles.Default.BorderPattern = borderPattern238;
-            thickness244.Right = 1;
-            this.gridColumn2.CellStyles.Default.BorderThickness = thickness244;
-            borderColor354.Right = System.Drawing.Color.DarkGray;
-            this.gridColumn2.HeaderStyles.Default.BorderColor = borderColor354;
+            borderColor5.Right = System.Drawing.Color.DimGray;
+            this.gridColumn2.CellStyles.Default.BorderColor = borderColor5;
+            borderPattern4.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn2.CellStyles.Default.BorderPattern = borderPattern4;
+            thickness4.Right = 1;
+            this.gridColumn2.CellStyles.Default.BorderThickness = thickness4;
+            borderColor6.Right = System.Drawing.Color.DarkGray;
+            this.gridColumn2.HeaderStyles.Default.BorderColor = borderColor6;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Width = 10;
             // 
             // gridColumn3
             // 
-            borderColor355.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn3.CellStyles.Default.BorderColor = borderColor355;
-            borderPattern239.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn3.CellStyles.Default.BorderPattern = borderPattern239;
-            thickness245.Right = 1;
-            this.gridColumn3.CellStyles.Default.BorderThickness = thickness245;
-            borderColor356.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn3.HeaderStyles.Default.BorderColor = borderColor356;
+            borderColor7.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn3.CellStyles.Default.BorderColor = borderColor7;
+            borderPattern5.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn3.CellStyles.Default.BorderPattern = borderPattern5;
+            thickness5.Right = 1;
+            this.gridColumn3.CellStyles.Default.BorderThickness = thickness5;
+            borderColor8.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn3.HeaderStyles.Default.BorderColor = borderColor8;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Width = 10;
             // 
             // gridColumn4
             // 
-            borderColor357.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn4.CellStyles.Default.BorderColor = borderColor357;
-            borderPattern240.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn4.CellStyles.Default.BorderPattern = borderPattern240;
-            thickness246.Right = 1;
-            this.gridColumn4.CellStyles.Default.BorderThickness = thickness246;
-            borderColor358.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn4.HeaderStyles.Default.BorderColor = borderColor358;
+            borderColor9.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn4.CellStyles.Default.BorderColor = borderColor9;
+            borderPattern6.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn4.CellStyles.Default.BorderPattern = borderPattern6;
+            thickness6.Right = 1;
+            this.gridColumn4.CellStyles.Default.BorderThickness = thickness6;
+            borderColor10.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn4.HeaderStyles.Default.BorderColor = borderColor10;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Width = 10;
             // 
             // gridColumn5
             // 
-            borderColor359.Right = System.Drawing.Color.DimGray;
-            this.gridColumn5.CellStyles.Default.BorderColor = borderColor359;
-            thickness247.Right = 1;
-            this.gridColumn5.CellStyles.Default.BorderThickness = thickness247;
-            borderColor360.Right = System.Drawing.Color.DarkGray;
-            this.gridColumn5.HeaderStyles.Default.BorderColor = borderColor360;
+            borderColor11.Right = System.Drawing.Color.DimGray;
+            this.gridColumn5.CellStyles.Default.BorderColor = borderColor11;
+            thickness7.Right = 1;
+            this.gridColumn5.CellStyles.Default.BorderThickness = thickness7;
+            borderColor12.Right = System.Drawing.Color.DarkGray;
+            this.gridColumn5.HeaderStyles.Default.BorderColor = borderColor12;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Width = 10;
             // 
             // gridColumn6
             // 
-            borderColor361.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn6.CellStyles.Default.BorderColor = borderColor361;
-            borderPattern241.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn6.CellStyles.Default.BorderPattern = borderPattern241;
-            thickness248.Right = 1;
-            this.gridColumn6.CellStyles.Default.BorderThickness = thickness248;
-            borderColor362.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn6.HeaderStyles.Default.BorderColor = borderColor362;
+            borderColor13.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn6.CellStyles.Default.BorderColor = borderColor13;
+            borderPattern7.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn6.CellStyles.Default.BorderPattern = borderPattern7;
+            thickness8.Right = 1;
+            this.gridColumn6.CellStyles.Default.BorderThickness = thickness8;
+            borderColor14.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn6.HeaderStyles.Default.BorderColor = borderColor14;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Width = 10;
             // 
             // gridColumn7
             // 
-            borderColor363.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn7.CellStyles.Default.BorderColor = borderColor363;
-            borderPattern242.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn7.CellStyles.Default.BorderPattern = borderPattern242;
-            thickness249.Right = 1;
-            this.gridColumn7.CellStyles.Default.BorderThickness = thickness249;
-            borderColor364.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn7.HeaderStyles.Default.BorderColor = borderColor364;
+            borderColor15.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn7.CellStyles.Default.BorderColor = borderColor15;
+            borderPattern8.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn7.CellStyles.Default.BorderPattern = borderPattern8;
+            thickness9.Right = 1;
+            this.gridColumn7.CellStyles.Default.BorderThickness = thickness9;
+            borderColor16.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn7.HeaderStyles.Default.BorderColor = borderColor16;
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Width = 10;
             // 
             // gridColumn8
             // 
-            borderColor365.Right = System.Drawing.Color.DimGray;
-            this.gridColumn8.CellStyles.Default.BorderColor = borderColor365;
-            borderPattern243.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn8.CellStyles.Default.BorderPattern = borderPattern243;
-            thickness250.Right = 1;
-            this.gridColumn8.CellStyles.Default.BorderThickness = thickness250;
-            borderColor366.Right = System.Drawing.Color.DarkGray;
-            this.gridColumn8.HeaderStyles.Default.BorderColor = borderColor366;
+            borderColor17.Right = System.Drawing.Color.DimGray;
+            this.gridColumn8.CellStyles.Default.BorderColor = borderColor17;
+            borderPattern9.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn8.CellStyles.Default.BorderPattern = borderPattern9;
+            thickness10.Right = 1;
+            this.gridColumn8.CellStyles.Default.BorderThickness = thickness10;
+            borderColor18.Right = System.Drawing.Color.DarkGray;
+            this.gridColumn8.HeaderStyles.Default.BorderColor = borderColor18;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Width = 10;
             // 
             // gridColumn9
             // 
-            borderColor367.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn9.CellStyles.Default.BorderColor = borderColor367;
-            borderPattern244.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn9.CellStyles.Default.BorderPattern = borderPattern244;
-            thickness251.Right = 1;
-            this.gridColumn9.CellStyles.Default.BorderThickness = thickness251;
-            borderColor368.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn9.HeaderStyles.Default.BorderColor = borderColor368;
+            borderColor19.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn9.CellStyles.Default.BorderColor = borderColor19;
+            borderPattern10.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn9.CellStyles.Default.BorderPattern = borderPattern10;
+            thickness11.Right = 1;
+            this.gridColumn9.CellStyles.Default.BorderThickness = thickness11;
+            borderColor20.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn9.HeaderStyles.Default.BorderColor = borderColor20;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Width = 10;
             // 
             // gridColumn10
             // 
-            borderColor369.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn10.CellStyles.Default.BorderColor = borderColor369;
-            borderPattern245.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn10.CellStyles.Default.BorderPattern = borderPattern245;
-            thickness252.Right = 1;
-            this.gridColumn10.CellStyles.Default.BorderThickness = thickness252;
-            borderColor370.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn10.HeaderStyles.Default.BorderColor = borderColor370;
+            borderColor21.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn10.CellStyles.Default.BorderColor = borderColor21;
+            borderPattern11.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn10.CellStyles.Default.BorderPattern = borderPattern11;
+            thickness12.Right = 1;
+            this.gridColumn10.CellStyles.Default.BorderThickness = thickness12;
+            borderColor22.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn10.HeaderStyles.Default.BorderColor = borderColor22;
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Width = 10;
             // 
             // gridColumn11
             // 
-            borderColor371.Right = System.Drawing.Color.DimGray;
-            this.gridColumn11.CellStyles.Default.BorderColor = borderColor371;
-            borderPattern246.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn11.CellStyles.Default.BorderPattern = borderPattern246;
-            thickness253.Right = 1;
-            this.gridColumn11.CellStyles.Default.BorderThickness = thickness253;
-            borderColor372.Right = System.Drawing.Color.DarkGray;
-            this.gridColumn11.HeaderStyles.Default.BorderColor = borderColor372;
+            borderColor23.Right = System.Drawing.Color.DimGray;
+            this.gridColumn11.CellStyles.Default.BorderColor = borderColor23;
+            borderPattern12.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn11.CellStyles.Default.BorderPattern = borderPattern12;
+            thickness13.Right = 1;
+            this.gridColumn11.CellStyles.Default.BorderThickness = thickness13;
+            borderColor24.Right = System.Drawing.Color.DarkGray;
+            this.gridColumn11.HeaderStyles.Default.BorderColor = borderColor24;
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Width = 10;
             // 
             // gridColumn12
             // 
-            borderColor373.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn12.CellStyles.Default.BorderColor = borderColor373;
-            borderPattern247.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn12.CellStyles.Default.BorderPattern = borderPattern247;
-            thickness254.Right = 1;
-            this.gridColumn12.CellStyles.Default.BorderThickness = thickness254;
-            borderColor374.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn12.HeaderStyles.Default.BorderColor = borderColor374;
+            borderColor25.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn12.CellStyles.Default.BorderColor = borderColor25;
+            borderPattern13.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn12.CellStyles.Default.BorderPattern = borderPattern13;
+            thickness14.Right = 1;
+            this.gridColumn12.CellStyles.Default.BorderThickness = thickness14;
+            borderColor26.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn12.HeaderStyles.Default.BorderColor = borderColor26;
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Width = 10;
             // 
             // gridColumn13
             // 
-            borderColor375.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn13.CellStyles.Default.BorderColor = borderColor375;
-            borderPattern248.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn13.CellStyles.Default.BorderPattern = borderPattern248;
-            thickness255.Right = 1;
-            this.gridColumn13.CellStyles.Default.BorderThickness = thickness255;
-            borderColor376.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn13.HeaderStyles.Default.BorderColor = borderColor376;
+            borderColor27.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn13.CellStyles.Default.BorderColor = borderColor27;
+            borderPattern14.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn13.CellStyles.Default.BorderPattern = borderPattern14;
+            thickness15.Right = 1;
+            this.gridColumn13.CellStyles.Default.BorderThickness = thickness15;
+            borderColor28.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn13.HeaderStyles.Default.BorderColor = borderColor28;
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Width = 10;
             // 
             // gridColumn14
             // 
-            borderColor377.Right = System.Drawing.Color.DimGray;
-            this.gridColumn14.CellStyles.Default.BorderColor = borderColor377;
-            borderPattern249.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn14.CellStyles.Default.BorderPattern = borderPattern249;
-            thickness256.Right = 1;
-            this.gridColumn14.CellStyles.Default.BorderThickness = thickness256;
-            borderColor378.Right = System.Drawing.Color.DarkGray;
-            this.gridColumn14.HeaderStyles.Default.BorderColor = borderColor378;
+            borderColor29.Right = System.Drawing.Color.DimGray;
+            this.gridColumn14.CellStyles.Default.BorderColor = borderColor29;
+            borderPattern15.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn14.CellStyles.Default.BorderPattern = borderPattern15;
+            thickness16.Right = 1;
+            this.gridColumn14.CellStyles.Default.BorderThickness = thickness16;
+            borderColor30.Right = System.Drawing.Color.DarkGray;
+            this.gridColumn14.HeaderStyles.Default.BorderColor = borderColor30;
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Width = 10;
             // 
             // gridColumn15
             // 
-            borderColor379.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn15.CellStyles.Default.BorderColor = borderColor379;
-            borderPattern250.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn15.CellStyles.Default.BorderPattern = borderPattern250;
-            thickness257.Right = 1;
-            this.gridColumn15.CellStyles.Default.BorderThickness = thickness257;
-            borderColor380.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn15.HeaderStyles.Default.BorderColor = borderColor380;
+            borderColor31.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn15.CellStyles.Default.BorderColor = borderColor31;
+            borderPattern16.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn15.CellStyles.Default.BorderPattern = borderPattern16;
+            thickness17.Right = 1;
+            this.gridColumn15.CellStyles.Default.BorderThickness = thickness17;
+            borderColor32.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn15.HeaderStyles.Default.BorderColor = borderColor32;
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Width = 10;
             // 
             // gridColumn16
             // 
-            borderColor381.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn16.CellStyles.Default.BorderColor = borderColor381;
-            borderPattern251.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn16.CellStyles.Default.BorderPattern = borderPattern251;
-            thickness258.Right = 1;
-            this.gridColumn16.CellStyles.Default.BorderThickness = thickness258;
-            borderColor382.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn16.HeaderStyles.Default.BorderColor = borderColor382;
+            borderColor33.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn16.CellStyles.Default.BorderColor = borderColor33;
+            borderPattern17.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn16.CellStyles.Default.BorderPattern = borderPattern17;
+            thickness18.Right = 1;
+            this.gridColumn16.CellStyles.Default.BorderThickness = thickness18;
+            borderColor34.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn16.HeaderStyles.Default.BorderColor = borderColor34;
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Width = 10;
             // 
             // gridColumn17
             // 
-            borderColor383.Left = System.Drawing.Color.White;
-            borderColor383.Right = System.Drawing.Color.Red;
-            this.gridColumn17.CellStyles.Default.BorderColor = borderColor383;
-            borderPattern252.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn17.CellStyles.Default.BorderPattern = borderPattern252;
-            thickness259.Right = 1;
-            this.gridColumn17.CellStyles.Default.BorderThickness = thickness259;
-            borderColor384.Right = System.Drawing.Color.Red;
-            this.gridColumn17.HeaderStyles.Default.BorderColor = borderColor384;
+            borderColor35.Left = System.Drawing.Color.White;
+            borderColor35.Right = System.Drawing.Color.Red;
+            this.gridColumn17.CellStyles.Default.BorderColor = borderColor35;
+            borderPattern18.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn17.CellStyles.Default.BorderPattern = borderPattern18;
+            thickness19.Right = 1;
+            this.gridColumn17.CellStyles.Default.BorderThickness = thickness19;
+            borderColor36.Right = System.Drawing.Color.Red;
+            this.gridColumn17.HeaderStyles.Default.BorderColor = borderColor36;
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Width = 10;
             // 
             // gridColumn18
             // 
-            borderColor385.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn18.CellStyles.Default.BorderColor = borderColor385;
-            borderPattern253.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn18.CellStyles.Default.BorderPattern = borderPattern253;
-            thickness260.Right = 1;
-            this.gridColumn18.CellStyles.Default.BorderThickness = thickness260;
-            borderColor386.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridColumn18.HeaderStyles.Default.BorderColor = borderColor386;
+            borderColor37.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn18.CellStyles.Default.BorderColor = borderColor37;
+            borderPattern19.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn18.CellStyles.Default.BorderPattern = borderPattern19;
+            thickness20.Right = 1;
+            this.gridColumn18.CellStyles.Default.BorderThickness = thickness20;
+            borderColor38.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridColumn18.HeaderStyles.Default.BorderColor = borderColor38;
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Width = 10;
             // 
             // gridColumn19
             // 
-            borderColor387.Right = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
-            this.gridColumn19.CellStyles.Default.BorderColor = borderColor387;
-            borderPattern254.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn19.CellStyles.Default.BorderPattern = borderPattern254;
-            thickness261.Right = 1;
-            this.gridColumn19.CellStyles.Default.BorderThickness = thickness261;
-            borderColor388.Right = System.Drawing.Color.DarkGray;
-            this.gridColumn19.HeaderStyles.Default.BorderColor = borderColor388;
+            borderColor39.Right = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(157)))), ((int)(((byte)(189)))));
+            this.gridColumn19.CellStyles.Default.BorderColor = borderColor39;
+            borderPattern20.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn19.CellStyles.Default.BorderPattern = borderPattern20;
+            thickness21.Right = 1;
+            this.gridColumn19.CellStyles.Default.BorderThickness = thickness21;
+            borderColor40.Right = System.Drawing.Color.DarkGray;
+            this.gridColumn19.HeaderStyles.Default.BorderColor = borderColor40;
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.Width = 10;
             // 
             // gridColumn20
             // 
-            borderColor389.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn20.CellStyles.Default.BorderColor = borderColor389;
-            borderPattern255.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn20.CellStyles.Default.BorderPattern = borderPattern255;
-            thickness262.Right = 1;
-            this.gridColumn20.CellStyles.Default.BorderThickness = thickness262;
+            borderColor41.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn20.CellStyles.Default.BorderColor = borderColor41;
+            borderPattern21.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn20.CellStyles.Default.BorderPattern = borderPattern21;
+            thickness22.Right = 1;
+            this.gridColumn20.CellStyles.Default.BorderThickness = thickness22;
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Width = 10;
             // 
             // gridColumn21
             // 
-            borderColor390.Right = System.Drawing.Color.DimGray;
-            this.gridColumn21.CellStyles.Default.BorderColor = borderColor390;
-            borderPattern256.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn21.CellStyles.Default.BorderPattern = borderPattern256;
-            thickness263.Right = 1;
-            this.gridColumn21.CellStyles.Default.BorderThickness = thickness263;
+            borderColor42.Right = System.Drawing.Color.DimGray;
+            this.gridColumn21.CellStyles.Default.BorderColor = borderColor42;
+            borderPattern22.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn21.CellStyles.Default.BorderPattern = borderPattern22;
+            thickness23.Right = 1;
+            this.gridColumn21.CellStyles.Default.BorderThickness = thickness23;
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.Width = 10;
             // 
             // gridColumn22
             // 
-            borderColor391.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn22.CellStyles.Default.BorderColor = borderColor391;
-            borderPattern257.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn22.CellStyles.Default.BorderPattern = borderPattern257;
-            thickness264.Right = 1;
-            this.gridColumn22.CellStyles.Default.BorderThickness = thickness264;
+            borderColor43.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn22.CellStyles.Default.BorderColor = borderColor43;
+            borderPattern23.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn22.CellStyles.Default.BorderPattern = borderPattern23;
+            thickness24.Right = 1;
+            this.gridColumn22.CellStyles.Default.BorderThickness = thickness24;
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.Width = 10;
             // 
             // gridColumn23
             // 
-            borderColor392.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn23.CellStyles.Default.BorderColor = borderColor392;
-            borderPattern258.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn23.CellStyles.Default.BorderPattern = borderPattern258;
-            thickness265.Right = 1;
-            this.gridColumn23.CellStyles.Default.BorderThickness = thickness265;
+            borderColor44.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn23.CellStyles.Default.BorderColor = borderColor44;
+            borderPattern24.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn23.CellStyles.Default.BorderPattern = borderPattern24;
+            thickness25.Right = 1;
+            this.gridColumn23.CellStyles.Default.BorderThickness = thickness25;
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Width = 10;
             // 
             // gridColumn24
             // 
-            borderColor393.Right = System.Drawing.Color.DimGray;
-            this.gridColumn24.CellStyles.Default.BorderColor = borderColor393;
-            borderPattern259.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn24.CellStyles.Default.BorderPattern = borderPattern259;
-            thickness266.Right = 1;
-            this.gridColumn24.CellStyles.Default.BorderThickness = thickness266;
+            borderColor45.Right = System.Drawing.Color.DimGray;
+            this.gridColumn24.CellStyles.Default.BorderColor = borderColor45;
+            borderPattern25.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn24.CellStyles.Default.BorderPattern = borderPattern25;
+            thickness26.Right = 1;
+            this.gridColumn24.CellStyles.Default.BorderThickness = thickness26;
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.Width = 10;
             // 
             // gridColumn25
             // 
-            borderColor394.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn25.CellStyles.Default.BorderColor = borderColor394;
-            borderPattern260.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn25.CellStyles.Default.BorderPattern = borderPattern260;
-            thickness267.Right = 1;
-            this.gridColumn25.CellStyles.Default.BorderThickness = thickness267;
+            borderColor46.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn25.CellStyles.Default.BorderColor = borderColor46;
+            borderPattern26.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn25.CellStyles.Default.BorderPattern = borderPattern26;
+            thickness27.Right = 1;
+            this.gridColumn25.CellStyles.Default.BorderThickness = thickness27;
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Width = 10;
             // 
             // gridColumn26
             // 
-            borderColor395.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn26.CellStyles.Default.BorderColor = borderColor395;
-            borderPattern261.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn26.CellStyles.Default.BorderPattern = borderPattern261;
-            thickness268.Right = 1;
-            this.gridColumn26.CellStyles.Default.BorderThickness = thickness268;
+            borderColor47.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn26.CellStyles.Default.BorderColor = borderColor47;
+            borderPattern27.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn26.CellStyles.Default.BorderPattern = borderPattern27;
+            thickness28.Right = 1;
+            this.gridColumn26.CellStyles.Default.BorderThickness = thickness28;
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Width = 10;
             // 
             // gridColumn27
             // 
-            borderColor396.Right = System.Drawing.Color.DimGray;
-            this.gridColumn27.CellStyles.Default.BorderColor = borderColor396;
-            borderPattern262.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn27.CellStyles.Default.BorderPattern = borderPattern262;
-            thickness269.Right = 1;
-            this.gridColumn27.CellStyles.Default.BorderThickness = thickness269;
+            borderColor48.Right = System.Drawing.Color.DimGray;
+            this.gridColumn27.CellStyles.Default.BorderColor = borderColor48;
+            borderPattern28.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn27.CellStyles.Default.BorderPattern = borderPattern28;
+            thickness29.Right = 1;
+            this.gridColumn27.CellStyles.Default.BorderThickness = thickness29;
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Width = 10;
             // 
             // gridColumn28
             // 
-            borderColor397.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn28.CellStyles.Default.BorderColor = borderColor397;
-            borderPattern263.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn28.CellStyles.Default.BorderPattern = borderPattern263;
-            thickness270.Right = 1;
-            this.gridColumn28.CellStyles.Default.BorderThickness = thickness270;
+            borderColor49.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn28.CellStyles.Default.BorderColor = borderColor49;
+            borderPattern29.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn28.CellStyles.Default.BorderPattern = borderPattern29;
+            thickness30.Right = 1;
+            this.gridColumn28.CellStyles.Default.BorderThickness = thickness30;
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.Width = 10;
             // 
             // gridColumn29
             // 
-            borderColor398.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn29.CellStyles.Default.BorderColor = borderColor398;
-            borderPattern264.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn29.CellStyles.Default.BorderPattern = borderPattern264;
-            thickness271.Right = 1;
-            this.gridColumn29.CellStyles.Default.BorderThickness = thickness271;
+            borderColor50.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn29.CellStyles.Default.BorderColor = borderColor50;
+            borderPattern30.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn29.CellStyles.Default.BorderPattern = borderPattern30;
+            thickness31.Right = 1;
+            this.gridColumn29.CellStyles.Default.BorderThickness = thickness31;
             this.gridColumn29.Name = "gridColumn29";
             this.gridColumn29.Width = 10;
             // 
             // gridColumn30
             // 
-            borderColor399.Right = System.Drawing.Color.DimGray;
-            this.gridColumn30.CellStyles.Default.BorderColor = borderColor399;
-            borderPattern265.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn30.CellStyles.Default.BorderPattern = borderPattern265;
-            thickness272.Right = 1;
-            this.gridColumn30.CellStyles.Default.BorderThickness = thickness272;
+            borderColor51.Right = System.Drawing.Color.DimGray;
+            this.gridColumn30.CellStyles.Default.BorderColor = borderColor51;
+            borderPattern31.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn30.CellStyles.Default.BorderPattern = borderPattern31;
+            thickness32.Right = 1;
+            this.gridColumn30.CellStyles.Default.BorderThickness = thickness32;
             this.gridColumn30.Name = "gridColumn30";
             this.gridColumn30.Width = 10;
             // 
             // gridColumn31
             // 
-            borderColor400.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn31.CellStyles.Default.BorderColor = borderColor400;
-            borderPattern266.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn31.CellStyles.Default.BorderPattern = borderPattern266;
-            thickness273.Right = 1;
-            this.gridColumn31.CellStyles.Default.BorderThickness = thickness273;
+            borderColor52.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn31.CellStyles.Default.BorderColor = borderColor52;
+            borderPattern32.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn31.CellStyles.Default.BorderPattern = borderPattern32;
+            thickness33.Right = 1;
+            this.gridColumn31.CellStyles.Default.BorderThickness = thickness33;
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Width = 10;
             // 
             // gridColumn32
             // 
-            borderColor401.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn32.CellStyles.Default.BorderColor = borderColor401;
-            borderPattern267.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn32.CellStyles.Default.BorderPattern = borderPattern267;
-            thickness274.Right = 1;
-            this.gridColumn32.CellStyles.Default.BorderThickness = thickness274;
+            borderColor53.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn32.CellStyles.Default.BorderColor = borderColor53;
+            borderPattern33.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn32.CellStyles.Default.BorderPattern = borderPattern33;
+            thickness34.Right = 1;
+            this.gridColumn32.CellStyles.Default.BorderThickness = thickness34;
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.Width = 10;
             // 
             // gridColumn33
             // 
-            borderColor402.Right = System.Drawing.Color.DimGray;
-            this.gridColumn33.CellStyles.Default.BorderColor = borderColor402;
-            borderPattern268.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn33.CellStyles.Default.BorderPattern = borderPattern268;
-            thickness275.Right = 1;
-            this.gridColumn33.CellStyles.Default.BorderThickness = thickness275;
+            borderColor54.Right = System.Drawing.Color.DimGray;
+            this.gridColumn33.CellStyles.Default.BorderColor = borderColor54;
+            borderPattern34.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn33.CellStyles.Default.BorderPattern = borderPattern34;
+            thickness35.Right = 1;
+            this.gridColumn33.CellStyles.Default.BorderThickness = thickness35;
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.Width = 10;
             // 
             // gridColumn34
             // 
-            borderColor403.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn34.CellStyles.Default.BorderColor = borderColor403;
-            borderPattern269.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn34.CellStyles.Default.BorderPattern = borderPattern269;
-            thickness276.Right = 1;
-            this.gridColumn34.CellStyles.Default.BorderThickness = thickness276;
+            borderColor55.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn34.CellStyles.Default.BorderColor = borderColor55;
+            borderPattern35.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn34.CellStyles.Default.BorderPattern = borderPattern35;
+            thickness36.Right = 1;
+            this.gridColumn34.CellStyles.Default.BorderThickness = thickness36;
             this.gridColumn34.Name = "gridColumn34";
             this.gridColumn34.Width = 10;
             // 
             // gridColumn35
             // 
-            borderColor404.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn35.CellStyles.Default.BorderColor = borderColor404;
-            borderPattern270.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn35.CellStyles.Default.BorderPattern = borderPattern270;
-            thickness277.Right = 1;
-            this.gridColumn35.CellStyles.Default.BorderThickness = thickness277;
+            borderColor56.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn35.CellStyles.Default.BorderColor = borderColor56;
+            borderPattern36.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn35.CellStyles.Default.BorderPattern = borderPattern36;
+            thickness37.Right = 1;
+            this.gridColumn35.CellStyles.Default.BorderThickness = thickness37;
             this.gridColumn35.Name = "gridColumn35";
             this.gridColumn35.Width = 10;
             // 
             // gridColumn36
             // 
-            borderColor405.Right = System.Drawing.Color.Red;
-            this.gridColumn36.CellStyles.Default.BorderColor = borderColor405;
-            borderPattern271.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn36.CellStyles.Default.BorderPattern = borderPattern271;
-            thickness278.Right = 1;
-            this.gridColumn36.CellStyles.Default.BorderThickness = thickness278;
+            borderColor57.Right = System.Drawing.Color.Red;
+            this.gridColumn36.CellStyles.Default.BorderColor = borderColor57;
+            borderPattern37.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn36.CellStyles.Default.BorderPattern = borderPattern37;
+            thickness38.Right = 1;
+            this.gridColumn36.CellStyles.Default.BorderThickness = thickness38;
             this.gridColumn36.Name = "gridColumn36";
             this.gridColumn36.Width = 10;
             // 
             // gridColumn37
             // 
-            borderColor406.Right = System.Drawing.Color.Aquamarine;
-            this.gridColumn37.CellStyles.Default.BorderColor = borderColor406;
-            borderPattern272.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn37.CellStyles.Default.BorderPattern = borderPattern272;
-            thickness279.Right = 1;
-            this.gridColumn37.CellStyles.Default.BorderThickness = thickness279;
+            borderColor58.Right = System.Drawing.Color.Aquamarine;
+            this.gridColumn37.CellStyles.Default.BorderColor = borderColor58;
+            borderPattern38.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn37.CellStyles.Default.BorderPattern = borderPattern38;
+            thickness39.Right = 1;
+            this.gridColumn37.CellStyles.Default.BorderThickness = thickness39;
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Width = 10;
             // 
             // gridColumn38
             // 
-            borderPattern273.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
-            this.gridColumn38.CellStyles.Default.BorderPattern = borderPattern273;
-            thickness280.Right = 1;
-            this.gridColumn38.CellStyles.Default.BorderThickness = thickness280;
+            borderPattern39.Right = DevComponents.DotNetBar.SuperGrid.Style.LinePattern.Solid;
+            this.gridColumn38.CellStyles.Default.BorderPattern = borderPattern39;
+            thickness40.Right = 1;
+            this.gridColumn38.CellStyles.Default.BorderThickness = thickness40;
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.Width = 10;
             // 
@@ -1388,6 +1423,8 @@
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownXuHao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFuJian)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
@@ -1409,14 +1446,14 @@
         protected System.Windows.Forms.ToolStripButton toolStripBtnHouDan;
         protected System.Windows.Forms.ToolStripButton toolStripBtnInsert;
         protected System.Windows.Forms.ToolStripButton toolStripBtnSave;
-        protected System.Windows.Forms.ToolStripButton toolStripBtnShengHe;
-        public System.Windows.Forms.ToolStripButton toolStripButtonXuanYuanDan;
-        protected System.Windows.Forms.ToolStripButton toolStripBtnDaYing;
-        protected System.Windows.Forms.ToolStripButton toolStripBtnDaoChu;
-        protected System.Windows.Forms.ToolStripButton toolStripButton3;
-        protected System.Windows.Forms.ToolStripButton toolStripButton1;
-        protected System.Windows.Forms.ToolStripButton toolStripButton2;
-        protected System.Windows.Forms.ToolStripButton toolStripButton4;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnHuanYuan;
+        public System.Windows.Forms.ToolStripButton toolStripButtonChaRu;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnShangChu;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnWaiBi;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnDaiMa;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnLiuLiang;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnJiSuanQi;
+        protected System.Windows.Forms.ToolStripButton toolStripBtnTiaoZhuan;
         private System.Windows.Forms.ToolStripButton toolStripBtnClose;
         protected System.Windows.Forms.Label labBotton2;
         protected System.Windows.Forms.Label labTop5;
@@ -1425,8 +1462,6 @@
         protected System.Windows.Forms.Panel panel2;
         protected System.Windows.Forms.Label labeldata;
         protected System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DomainUpDown dupXuHao;
-        private System.Windows.Forms.DomainUpDown dupFuJian;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboPingZhengHao;
         private DevComponents.Editors.ComboItem comboItem5;
         private DevComponents.Editors.ComboItem comboItem6;
@@ -1488,5 +1523,9 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn37;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn38;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.NumericUpDown numericUpDownFuJian;
+        private System.Windows.Forms.NumericUpDown numericUpDownXuHao;
+        private System.Windows.Forms.Label lblmonth;
+        private System.Windows.Forms.Label lblyear;
     }
 }
