@@ -1286,6 +1286,7 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
+                #region 入库单基本数据
                 warehouseIn.code = XYEEncoding.strCodeHex(YanZhengCode());//入库单号
                 if (cboInType.Text != null || cboInType.Text.ToString() != "")
                 {
@@ -1333,7 +1334,7 @@ namespace WSCATProject.Warehouse
                 warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
                 warehouseIn.stock = "";
-
+                #endregion
             }
             catch (Exception ex)
             {
@@ -1343,6 +1344,7 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                #region 入库单表格详细数据
                 //获得商品列表数据,准备传给base层新增数据
                 GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -1407,6 +1409,7 @@ namespace WSCATProject.Warehouse
                         wareHouseInList.Add(WarehouseIndetail);
                     }
                 }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -1439,6 +1442,7 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
+                #region 入库单基本数据
                 warehouseIn.code = XYEEncoding.strCodeHex(YanZhengCode());//入库单号
                 if (cboInType.Text != null || cboInType.Text.ToString() != "")
                 {
@@ -1486,6 +1490,7 @@ namespace WSCATProject.Warehouse
                 warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
                 warehouseIn.stock = "";
+                #endregion
             }
             catch (Exception ex)
             {
@@ -1495,6 +1500,7 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                #region 入库单表格详细数据
                 //获得商品列表数据,准备传给base层新增数据
                 GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -1558,6 +1564,7 @@ namespace WSCATProject.Warehouse
                         wareHouseInList.Add(WarehouseIndetail);
                     }
                 }
+                #endregion
             }
             catch (Exception ex)
             {

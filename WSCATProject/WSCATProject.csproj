@@ -136,6 +136,12 @@
     <Compile Include="Finance\FinanceVoucherEntryForm.Designer.cs">
       <DependentUpon>FinanceVoucherEntryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finance\FinanceVoucherManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceVoucherManagementForm.Designer.cs">
+      <DependentUpon>FinanceVoucherManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GridStateEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -346,6 +352,9 @@
     <EmbeddedResource Include="Finance\FinanceVoucherEntryForm.resx">
       <DependentUpon>FinanceVoucherEntryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceVoucherManagementForm.resx">
+      <DependentUpon>FinanceVoucherManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -538,6 +547,7 @@
     <None Include="Resources\daying.png" />
     <None Include="Resources\delete.PNG" />
     <None Include="Resources\daima.PNG" />
+    <None Include="Resources\danju.png" />
     <Content Include="Resources\deliverManager.png" />
     <Content Include="Resources\diquziliao.png" />
     <Content Include="Resources\financeBank.png" />
@@ -550,6 +560,7 @@
     <Content Include="Resources\financePay.png" />
     <Content Include="Resources\fukuan.png" />
     <None Include="Resources\fuzhai.png" />
+    <None Include="Resources\fuzhi.png" />
     <Content Include="Resources\godDownIn.png" />
     <Content Include="Resources\godDownOut.png" />
     <Content Include="Resources\goodsData.png" />
@@ -560,6 +571,7 @@
     <None Include="Resources\gouhuodan.png" />
     <Content Include="Resources\guanyu.png" />
     <None Include="Resources\hexiao.png" />
+    <None Include="Resources\guolv.png" />
     <Content Include="Resources\home.jpg" />
     <None Include="Resources\huanyuan.PNG" />
     <None Include="Resources\houdan.png" />
@@ -625,6 +637,7 @@
     <None Include="Resources\shanchu.png" />
     <None Include="Resources\shangjiantuo.png" />
     <None Include="Resources\shangjintou.png" />
+    <None Include="Resources\shan.png" />
     <Content Include="Resources\shoukuan.png" />
     <None Include="Resources\shuaxin.PNG" />
     <None Include="Resources\small.PNG" />
@@ -671,6 +684,7 @@
     <None Include="Resources\yellow.PNG" />
     <None Include="Resources\yellow大.png" />
     <None Include="Resources\ye.jpg" />
+    <None Include="Resources\xiugai.png" />
     <Content Include="Resources\yuangongyonghu.png" />
     <Content Include="Resources\zijinzhanghu.png" />
     <None Include="Resources\zuidahua1.png" />
