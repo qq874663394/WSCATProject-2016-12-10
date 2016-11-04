@@ -459,10 +459,29 @@ namespace WSCATProject.Warehouse
             List<WarehouseInventoryProfitDetail> wareHouseprofitList = new List<WarehouseInventoryProfitDetail>();
             try
             {
+                #region 盘盈单基本数据
                 warehouseprofit.code = YanZhengCode() == "" ? "" : XYEEncoding.strCodeHex(YanZhengCode());
+                if (cboInType.Text != null || cboInType.Text.ToString() != "")
+                {
+                    warehouseprofit.type = cboInType.Text == "" ? "" : XYEEncoding.strCodeHex(cboInType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("盘盈单入库类别不能为空！");
+                    cboInType.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.ToString() != "")
+                {
+                    warehouseprofit.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("盘盈员不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 warehouseprofit.date = dateTimePicker1.Value;
-                warehouseprofit.type = cboInType.Text == "" ? "" : XYEEncoding.strCodeHex(cboInType.Text);
-                warehouseprofit.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
                 warehouseprofit.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
                 warehouseprofit.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseprofit.remark = labtextboxBotton2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxBotton2.Text);
@@ -471,6 +490,7 @@ namespace WSCATProject.Warehouse
                 warehouseprofit.updatetime = DateTime.Now;
                 warehouseprofit.reserved1 = "";
                 warehouseprofit.reserved2 = "";
+                #endregion
             }
             catch (Exception ex)
             {
@@ -480,6 +500,7 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                #region 盘盈单表格详细数据
                 //获得商品列表数据,准备传给base层新增数据
                 GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -516,8 +537,10 @@ namespace WSCATProject.Warehouse
                         warehouseprofitDetail.warehouseName = _storageName;//仓库名称
                         GridRow dr = superGridControlShangPing.PrimaryGrid.Rows[0] as GridRow;
                         wareHouseprofitList.Add(warehouseprofitDetail);
+
                     }
                 }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -551,18 +574,38 @@ namespace WSCATProject.Warehouse
             List<WarehouseInventoryProfitDetail> wareHouseprofitList = new List<WarehouseInventoryProfitDetail>();
             try
             {
+                #region 盘盈单基本数据
                 warehouseprofit.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);//单据code
+                if (cboInType.Text != null || cboInType.Text.ToString() != "")
+                {
+                    warehouseprofit.type = cboInType.Text == "" ? "" : XYEEncoding.strCodeHex(cboInType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("盘盈单入库类别不能为空！");
+                    cboInType.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.ToString() != "")
+                {
+                    warehouseprofit.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("盘盈员不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 warehouseprofit.date = dateTimePicker1.Value;
-                warehouseprofit.type = cboInType.Text == "" ? "" : XYEEncoding.strCodeHex(cboInType.Text);//入库类别
-                warehouseprofit.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//盘盈员
-                warehouseprofit.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-                warehouseprofit.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-                warehouseprofit.remark = labtextboxBotton2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxBotton2.Text);//摘要
+                warehouseprofit.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
+                warehouseprofit.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
+                warehouseprofit.remark = labtextboxBotton2.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxBotton2.Text);
                 warehouseprofit.checkState = 1;//审核状态
-                warehouseprofit.isClear = 1;//是否删除
+                warehouseprofit.isClear = 1;
                 warehouseprofit.updatetime = DateTime.Now;
                 warehouseprofit.reserved1 = "";
                 warehouseprofit.reserved2 = "";
+                #endregion
             }
             catch (Exception ex)
             {
@@ -572,6 +615,7 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                #region 盘盈单表格详细数据
                 //获得商品列表数据,准备传给base层新增数据
                 GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -610,6 +654,7 @@ namespace WSCATProject.Warehouse
                         wareHouseprofitList.Add(warehouseprofitDetail);
                     }
                 }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -636,25 +681,25 @@ namespace WSCATProject.Warehouse
         private void WareHouseInventoryProfitForm_KeyDown(object sender, KeyEventArgs e)
         {
             //前单
-            if (e.KeyCode == Keys.B  )
+            if (e.KeyCode == Keys.B)
             {
                 MessageBox.Show("前单");
                 return;
             }
             //后单
-            if (e.KeyCode == Keys.A  )
+            if (e.KeyCode == Keys.A)
             {
                 MessageBox.Show("后单");
                 return;
             }
             //新增
-            if (e.KeyCode == Keys.N  )
+            if (e.KeyCode == Keys.N)
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S  )
+            if (e.KeyCode == Keys.S)
             {
                 Save();
                 return;
@@ -670,19 +715,19 @@ namespace WSCATProject.Warehouse
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P  )
+            if (e.KeyCode == Keys.P)
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T  )
+            if (e.KeyCode == Keys.T)
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X  )
+            if (e.KeyCode == Keys.X)
             {
                 this.Close();
                 this.Dispose();

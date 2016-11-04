@@ -713,7 +713,7 @@ namespace WSCATProject.Warehouse
         private void InitDataGridView()
         {
             //新增一行 用于给客户操作
-            superGridControlShangPing.PrimaryGrid.NewRow(true);  
+            superGridControlShangPing.PrimaryGrid.NewRow(true);
 
 
             //最后一行做统计行
@@ -1287,21 +1287,48 @@ namespace WSCATProject.Warehouse
             try
             {
                 warehouseIn.code = XYEEncoding.strCodeHex(YanZhengCode());//入库单号
+                if (cboInType.Text != null || cboInType.Text.ToString() != "")
+                {
+                    warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
+                }
+                else
+                {
+                    MessageBox.Show("入货类别不能为空！");
+                    cboInType.Focus();
+                    return;
+                }
+                if (labtextboxTop6.Text != null || labtextboxTop6.Text != "")
+                {
+                    warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    labtextboxTop6.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.ToString() != "")
+                {
+                    warehouseIn.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//入库员
+                }
+                else
+                {
+                    MessageBox.Show("入库员不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 warehouseIn.isClear = 1;
-                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.cboPurchaseCode.Text);//采购单号
+                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.cboPurchaseCode.Text == null ? "" : this.cboPurchaseCode.Text.ToString());//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 0;
-                warehouseIn.supplierCode = _SupplierCode;//供应商code
-                warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
-                warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
-                warehouseIn.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-                warehouseIn.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//入库员
-                warehouseIn.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-                warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//摘要
+                warehouseIn.supplierCode = _SupplierCode;//供应商code           
+                warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text == null ? "" : labtextboxTop9.Text.ToString());//采购电话
+                warehouseIn.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.ToString());//审核人
+                warehouseIn.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.ToString());//制单人
+                warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text.ToString());//摘要
                 warehouseIn.state = 0;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
-                warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
                 warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
@@ -1328,18 +1355,38 @@ namespace WSCATProject.Warehouse
 
                         i++;
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
+                        if (gr["material"].Value != null || gr["material"].Value.ToString() != "")
+                        {
+                            WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
+                        }
+                        else
+                        {
+                            MessageBox.Show("单据体表格中商品代码不能为空！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+
+                        decimal money = Convert.ToDecimal(gr["gridColumnnumber"].Value) * Convert.ToDecimal(gr["gridColumnprice"].Value);
+                        if (money == Convert.ToDecimal(gr["gridColumnmoney"].Value))
+                        {
+                            WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
+                        }
+                        else
+                        {
+                            MessageBox.Show("单据体表格中金额计算错误！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
-                        WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
+                        WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value == null ? "" : gr["gridColumntiaoxingma"].Value.ToString());//条形码
                         WarehouseIndetail.code = XYEEncoding.strCodeHex(_WareHouseInCode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
-                        WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
-                        WarehouseIndetail.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        WarehouseIndetail.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//商品名称
-                        WarehouseIndetail.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
-                        WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
-                        WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value);//数量
-                        WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value);//价格
+                        WarehouseIndetail.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value == null ? "" : gr["gridColumnmodel"].Value.ToString());//规格型号
+                        WarehouseIndetail.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value == null ? "" : gr["gridColumnname"].Value.ToString());//商品名称
+                        WarehouseIndetail.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumnunit"].Value == null ? "" : gr["gridColumnunit"].Value.ToString());//单位
+                        WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString() == "" ? 0.00 : gr["gridColumnnumber"].Value);//数量
+                        WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString() == "" ? 0.00 : gr["gridColumnprice"].Value);//价格
                         WarehouseIndetail.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value == null ?
                              "" : gr["gridColumnremark"].Value.ToString());//备注
                         WarehouseIndetail.warehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code；
@@ -1392,22 +1439,49 @@ namespace WSCATProject.Warehouse
             List<WarehouseInDetail> wareHouseInList = new List<WarehouseInDetail>();
             try
             {
-                warehouseIn.code = XYEEncoding.strCodeHex(_WareHouseInCode);//入库单号
+                warehouseIn.code = XYEEncoding.strCodeHex(YanZhengCode());//入库单号
+                if (cboInType.Text != null || cboInType.Text.ToString() != "")
+                {
+                    warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
+                }
+                else
+                {
+                    MessageBox.Show("入货类别不能为空！");
+                    cboInType.Focus();
+                    return;
+                }
+                if (labtextboxTop6.Text != null || labtextboxTop6.Text != "")
+                {
+                    warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
+                }
+                else
+                {
+                    MessageBox.Show("供应商不能为空！");
+                    labtextboxTop6.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.ToString() != "")
+                {
+                    warehouseIn.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//入库员
+                }
+                else
+                {
+                    MessageBox.Show("入库员不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 warehouseIn.isClear = 1;
-                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.cboPurchaseCode.Text);//采购单号
+                warehouseIn.purchaseCode = XYEEncoding.strCodeHex(this.cboPurchaseCode.Text == null ? "" : this.cboPurchaseCode.Text.ToString());//采购单号
                 warehouseIn.date = this.dateTimePicker1.Value;//开单日期
                 warehouseIn.checkState = 1;
-                warehouseIn.supplierCode = _SupplierCode;//供应商code
-                warehouseIn.supplierName = XYEEncoding.strCodeHex(labtextboxTop6.Text);//供应商名称
-                warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text);//采购电话
-                warehouseIn.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);//审核人
-                warehouseIn.operation = XYEEncoding.strCodeHex(ltxtbSalsMan.Text);//入库员
-                warehouseIn.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text);//制单人
-                warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text);//摘要
+                warehouseIn.supplierCode = _SupplierCode;//供应商code           
+                warehouseIn.supplierPhone = XYEEncoding.strCodeHex(labtextboxTop9.Text == null ? "" : labtextboxTop9.Text.ToString());//采购电话
+                warehouseIn.examine = XYEEncoding.strCodeHex(ltxtbShengHeMan.Text == null ? "" : ltxtbShengHeMan.Text.ToString());//审核人
+                warehouseIn.makeMan = XYEEncoding.strCodeHex(ltxtbMakeMan.Text == null ? "" : ltxtbMakeMan.Text.ToString());//制单人
+                warehouseIn.remark = XYEEncoding.strCodeHex(labtextboxBotton2.Text == null ? "" : labtextboxBotton2.Text.ToString());//摘要
                 warehouseIn.state = 0;
                 warehouseIn.reserved1 = "";
                 warehouseIn.reserved2 = "";
-                warehouseIn.type = XYEEncoding.strCodeHex(cboInType.Text);//入货类别
                 warehouseIn.updateDate = DateTime.Now;
                 warehouseIn.defaultType = XYEEncoding.strCodeHex("入库开单");
                 warehouseIn.goodsCode = "";
@@ -1432,18 +1506,38 @@ namespace WSCATProject.Warehouse
                     {
                         i++;
                         WarehouseInDetail WarehouseIndetail = new WarehouseInDetail();
+                        if (gr["material"].Value != null || gr["material"].Value.ToString() != "")
+                        {
+                            WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
+                        }
+                        else
+                        {
+                            MessageBox.Show("单据体表格中商品代码不能为空！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
+
+                        decimal money = Convert.ToDecimal(gr["gridColumnnumber"].Value) * Convert.ToDecimal(gr["gridColumnprice"].Value);
+                        if (money == Convert.ToDecimal(gr["gridColumnmoney"].Value))
+                        {
+                            WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
+                        }
+                        else
+                        {
+                            MessageBox.Show("单据体表格中金额计算错误！");
+                            superGridControlShangPing.Focus();
+                            return;
+                        }
                         WarehouseIndetail.mainCode = XYEEncoding.strCodeHex(this.textBoxOddNumbers.Text);//单据入库单号
-                        WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value.ToString());//条形码
+                        WarehouseIndetail.barcode = XYEEncoding.strCodeHex(gr["gridColumntiaoxingma"].Value == null ? "" : gr["gridColumntiaoxingma"].Value.ToString());//条形码
                         WarehouseIndetail.code = XYEEncoding.strCodeHex(_WareHouseInCode + i.ToString());//入库明细的商品入库单
                         WarehouseIndetail.date = this.dateTimePicker1.Value;
                         WarehouseIndetail.isClear = 1;
-                        WarehouseIndetail.materialDaima = XYEEncoding.strCodeHex(gr["material"].Value.ToString());//商品代码
-                        WarehouseIndetail.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value.ToString());//规格型号
-                        WarehouseIndetail.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value.ToString());//商品名称
-                        WarehouseIndetail.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumnunit"].Value.ToString());//单位
-                        WarehouseIndetail.money = Convert.ToDecimal(gr["gridColumnmoney"].Value);//金额
-                        WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value);//数量
-                        WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value);//价格
+                        WarehouseIndetail.materiaModel = XYEEncoding.strCodeHex(gr["gridColumnmodel"].Value == null ? "" : gr["gridColumnmodel"].Value.ToString());//规格型号
+                        WarehouseIndetail.materiaName = XYEEncoding.strCodeHex(gr["gridColumnname"].Value == null ? "" : gr["gridColumnname"].Value.ToString());//商品名称
+                        WarehouseIndetail.materiaUnit = XYEEncoding.strCodeHex(gr["gridColumnunit"].Value == null ? "" : gr["gridColumnunit"].Value.ToString());//单位
+                        WarehouseIndetail.number = Convert.ToDecimal(gr["gridColumnnumber"].Value.ToString() == "" ? 0.00 : gr["gridColumnnumber"].Value);//数量
+                        WarehouseIndetail.price = Convert.ToDecimal(gr["gridColumnprice"].Value.ToString() == "" ? 0.00 : gr["gridColumnprice"].Value);//价格
                         WarehouseIndetail.remark = XYEEncoding.strCodeHex(gr["gridColumnremark"].Value == null ?
                              "" : gr["gridColumnremark"].Value.ToString());//备注
                         WarehouseIndetail.warehouseCode = XYEEncoding.strCodeHex(StorageCode);//仓库code；
@@ -1490,25 +1584,25 @@ namespace WSCATProject.Warehouse
         private void WareHouseInMain_KeyDown(object sender, KeyEventArgs e)
         {
             //前单
-            if (e.KeyCode == Keys.B  )
+            if (e.KeyCode == Keys.B)
             {
                 MessageBox.Show("前单");
                 return;
             }
             //后单
-            if (e.KeyCode == Keys.A  )
+            if (e.KeyCode == Keys.A)
             {
                 MessageBox.Show("后单");
                 return;
             }
             //新增
-            if (e.KeyCode == Keys.N  )
+            if (e.KeyCode == Keys.N)
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S  )
+            if (e.KeyCode == Keys.S)
             {
                 Save();
                 return;
@@ -1524,19 +1618,19 @@ namespace WSCATProject.Warehouse
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P  )
+            if (e.KeyCode == Keys.P)
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T  )
+            if (e.KeyCode == Keys.T)
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X  )
+            if (e.KeyCode == Keys.X)
             {
                 this.Close();
                 this.Dispose();

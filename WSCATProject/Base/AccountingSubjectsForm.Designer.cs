@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonProfit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem5 = new DevComponents.DotNetBar.TabItem(this.components);
@@ -41,11 +46,7 @@
             this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem4 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.toolStripButtonProfit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonshuaixin = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtondayin = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtondaochu = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -61,6 +62,7 @@
             this.toolStripButtonshuaixin,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
+            this.toolStripButton1,
             this.toolStripButtonClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -68,12 +70,72 @@
             this.toolStrip1.TabIndex = 55;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonProfit
+            // 
+            this.toolStripButtonProfit.Image = global::WSCATProject.Properties.Resources.business;
+            this.toolStripButtonProfit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonProfit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonProfit.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtonProfit.Name = "toolStripButtonProfit";
+            this.toolStripButtonProfit.Size = new System.Drawing.Size(66, 56);
+            this.toolStripButtonProfit.Text = "查找(&F3)";
+            this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonProfit.ToolTipText = "查找";
+            // 
+            // toolStripButtonshuaixin
+            // 
+            this.toolStripButtonshuaixin.AutoSize = false;
+            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
+            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonshuaixin.Margin = new System.Windows.Forms.Padding(0, 5, 0, -2);
+            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
+            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(60, 56);
+            this.toolStripButtonshuaixin.Text = "刷新(&F5)";
+            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonshuaixin.ToolTipText = "刷新";
+            // 
+            // toolStripButtondayin
+            // 
+            this.toolStripButtondayin.Image = global::WSCATProject.Properties.Resources.tianjia;
+            this.toolStripButtondayin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtondayin.Name = "toolStripButtondayin";
+            this.toolStripButtondayin.Size = new System.Drawing.Size(62, 56);
+            this.toolStripButtondayin.Text = "新增(&N)";
+            this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtondayin.ToolTipText = "新增";
+            // 
+            // toolStripButtondaochu
+            // 
+            this.toolStripButtondaochu.Image = global::WSCATProject.Properties.Resources.盘点;
+            this.toolStripButtondaochu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.toolStripButtondaochu.Name = "toolStripButtondaochu";
+            this.toolStripButtondaochu.Size = new System.Drawing.Size(59, 56);
+            this.toolStripButtondaochu.Text = "修改(&E)";
+            this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtondaochu.ToolTipText = "修改";
+            // 
+            // toolStripButtonClose
+            // 
+            this.toolStripButtonClose.Image = global::WSCATProject.Properties.Resources.guanbi;
+            this.toolStripButtonClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonClose.Name = "toolStripButtonClose";
+            this.toolStripButtonClose.Size = new System.Drawing.Size(72, 57);
+            this.toolStripButtonClose.Text = "退出(&Esc)";
+            this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonClose.ToolTipText = "退出";
+            // 
             // tabControl1
             // 
             this.tabControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabControl1.CanReorderTabs = true;
-            this.tabControl1.Controls.Add(this.tabControlPanel5);
             this.tabControl1.Controls.Add(this.tabControlPanel1);
+            this.tabControl1.Controls.Add(this.tabControlPanel5);
             this.tabControl1.Controls.Add(this.tabControlPanel2);
             this.tabControl1.Controls.Add(this.tabControlPanel3);
             this.tabControl1.Controls.Add(this.tabControlPanel4);
@@ -127,7 +189,7 @@
             this.tabControlPanel1.Location = new System.Drawing.Point(0, 40);
             this.tabControlPanel1.Name = "tabControlPanel1";
             this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(620, 384);
+            this.tabControlPanel1.Size = new System.Drawing.Size(653, 396);
             this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.White;
             this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.White;
             this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -228,65 +290,16 @@
             this.tabItem4.Name = "tabItem4";
             this.tabItem4.Text = "4、成本";
             // 
-            // toolStripButtonProfit
+            // toolStripButton1
             // 
-            this.toolStripButtonProfit.Image = global::WSCATProject.Properties.Resources.business;
-            this.toolStripButtonProfit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonProfit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonProfit.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtonProfit.Name = "toolStripButtonProfit";
-            this.toolStripButtonProfit.Size = new System.Drawing.Size(41, 56);
-            this.toolStripButtonProfit.Text = "查看";
-            this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonProfit.ToolTipText = "查看销售订单";
-            // 
-            // toolStripButtonshuaixin
-            // 
-            this.toolStripButtonshuaixin.AutoSize = false;
-            this.toolStripButtonshuaixin.Image = global::WSCATProject.Properties.Resources.刷新;
-            this.toolStripButtonshuaixin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonshuaixin.Margin = new System.Windows.Forms.Padding(0, 5, 0, -2);
-            this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
-            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(60, 67);
-            this.toolStripButtonshuaixin.Text = "刷新(&F5)";
-            this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
-            // 
-            // toolStripButtondayin
-            // 
-            this.toolStripButtondayin.Image = global::WSCATProject.Properties.Resources.daying1;
-            this.toolStripButtondayin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtondayin.Name = "toolStripButtondayin";
-            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 56);
-            this.toolStripButtondayin.Text = "新增";
-            this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtondayin.ToolTipText = "打印(Ctrl+P)";
-            // 
-            // toolStripButtondaochu
-            // 
-            this.toolStripButtondaochu.Image = global::WSCATProject.Properties.Resources.countExc;
-            this.toolStripButtondaochu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.toolStripButtondaochu.Name = "toolStripButtondaochu";
-            this.toolStripButtondaochu.Size = new System.Drawing.Size(41, 56);
-            this.toolStripButtondaochu.Text = "修改";
-            this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
-            // 
-            // toolStripButtonClose
-            // 
-            this.toolStripButtonClose.Image = global::WSCATProject.Properties.Resources.guanbi;
-            this.toolStripButtonClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonClose.Name = "toolStripButtonClose";
-            this.toolStripButtonClose.Size = new System.Drawing.Size(41, 57);
-            this.toolStripButtonClose.Text = "删除";
-            this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
+            this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.shanchu;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(62, 57);
+            this.toolStripButton1.Text = "删除(&D)";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.ToolTipText = "删除";
             // 
             // AccountingSubjectsForm
             // 
@@ -325,5 +338,6 @@
         private DevComponents.DotNetBar.TabItem tabItem2;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
         private DevComponents.DotNetBar.TabItem tabItem1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

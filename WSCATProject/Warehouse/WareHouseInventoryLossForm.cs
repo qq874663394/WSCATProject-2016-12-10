@@ -482,18 +482,38 @@ namespace WSCATProject.Warehouse
             List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
             try
             {
-                warehouseloss.checkState = 0;
+                #region 盘亏单基本数据
                 warehouseloss.code = YanZhengCode() == "" ? "" : XYEEncoding.strCodeHex(YanZhengCode());
+                if (cboOutType.Text != null || cboOutType.Text.ToString() != "")
+                {
+                    warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("出库类别不能为空！");
+                    cboOutType.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.ToString() != "")
+                {
+                    warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("盘亏员不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 warehouseloss.date = dateTimePicker1.Value;
                 warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseloss.isClear = 1;
-                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
-                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);   
                 warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
                 warehouseloss.reserved1 = "";
                 warehouseloss.reserved2 = "";
-                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                warehouseloss.checkState =0;
                 warehouseloss.updatetime = DateTime.Now;
+                #endregion
             }
             catch (Exception ex)
             {
@@ -503,6 +523,7 @@ namespace WSCATProject.Warehouse
 
             try
             {
+                #region 盘亏单表格详细数据
                 //获得商品列表数据,准备传给base层新增数据
                 GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -540,7 +561,7 @@ namespace WSCATProject.Warehouse
                         wareHouselossList.Add(warehouselossDetail);
                     }
                 }
-
+                #endregion
             }
             catch (Exception ex)
             {
@@ -572,18 +593,39 @@ namespace WSCATProject.Warehouse
             List<WarehouseInventoryLossDetail> wareHouselossList = new List<WarehouseInventoryLossDetail>();
             try
             {
-                warehouseloss.checkState = 1;
+                #region 盘亏单基本数据
                 warehouseloss.code = textBoxOddNumbers.Text == "" ? "" : XYEEncoding.strCodeHex(textBoxOddNumbers.Text);
+                warehouseloss.code = YanZhengCode() == "" ? "" : XYEEncoding.strCodeHex(YanZhengCode());
+                if (cboOutType.Text != null || cboOutType.Text.ToString() != "")
+                {
+                    warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                }
+                else
+                {
+                    MessageBox.Show("出库类别不能为空！");
+                    cboOutType.Focus();
+                    return;
+                }
+                if (ltxtbSalsMan.Text != null || ltxtbSalsMan.Text.ToString() != "")
+                {
+                    warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
+                }
+                else
+                {
+                    MessageBox.Show("盘亏员不能为空！");
+                    ltxtbSalsMan.Focus();
+                    return;
+                }
                 warehouseloss.date = dateTimePicker1.Value;
                 warehouseloss.examine = ltxtbShengHeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbShengHeMan.Text);
                 warehouseloss.isClear = 1;
                 warehouseloss.makeMan = ltxtbMakeMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbMakeMan.Text);
-                warehouseloss.operation = ltxtbSalsMan.Text == "" ? "" : XYEEncoding.strCodeHex(ltxtbSalsMan.Text);
                 warehouseloss.remark = labtextboxTop7.Text == "" ? "" : XYEEncoding.strCodeHex(labtextboxTop7.Text);
                 warehouseloss.reserved1 = "";
                 warehouseloss.reserved2 = "";
-                warehouseloss.type = cboOutType.Text == "" ? "" : XYEEncoding.strCodeHex(cboOutType.Text);
+                warehouseloss.checkState =1;
                 warehouseloss.updatetime = DateTime.Now;
+                #endregion
             }
             catch (Exception ex)
             {
@@ -592,6 +634,7 @@ namespace WSCATProject.Warehouse
             }
             try
             {
+                #region 盘亏单表格详细数据
                 //获得商品列表数据,准备传给base层新增数据
                 GridRow g = (GridRow)superGridControlShangPing.PrimaryGrid.Rows[ClickRowIndex];
                 GridItemsCollection grs = superGridControlShangPing.PrimaryGrid.Rows;
@@ -629,6 +672,7 @@ namespace WSCATProject.Warehouse
                         wareHouselossList.Add(warehouselossDetail);
                     }
                 }
+                #endregion
             }
             catch (Exception ex)
             {
