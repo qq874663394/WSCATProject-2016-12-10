@@ -490,6 +490,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.BenCiHeXiao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.WeuFuMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 359);
             this.superGridControlShangPing.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlShangPing_CellDoubleClick);

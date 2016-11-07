@@ -913,11 +913,13 @@
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn36);
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn37);
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn38);
+            this.superGridControlPingZheng.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlPingZheng.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlPingZheng.Size = new System.Drawing.Size(818, 419);
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
+            this.superGridControlPingZheng.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.superGridControlPingZheng_KeyPress);
             // 
             // gridColumnZhaiYao
             // 
@@ -955,7 +957,7 @@
             borderColor4.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gridColumn1.HeaderStyles.Default.BorderColor = borderColor4;
             this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Width = 10;
+            this.gridColumn1.Width = 50;
             // 
             // gridColumn2
             // 
@@ -968,7 +970,7 @@
             borderColor6.Right = System.Drawing.Color.DarkGray;
             this.gridColumn2.HeaderStyles.Default.BorderColor = borderColor6;
             this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Width = 10;
+            this.gridColumn2.Width = 50;
             // 
             // gridColumn3
             // 

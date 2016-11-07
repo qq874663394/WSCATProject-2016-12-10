@@ -492,6 +492,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnstockcode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnmaterialcode);
             this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 3;
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 351);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);

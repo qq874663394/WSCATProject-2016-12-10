@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevComponents.DotNetBar.SuperGrid.Style.Background background1 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background2 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background3 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background4 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background5 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background6 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background7 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background8 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background9 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background10 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background11 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background12 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background13 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background14 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
-            DevComponents.DotNetBar.SuperGrid.Style.Background background15 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background31 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background32 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background33 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background34 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background35 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background36 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background37 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background38 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background39 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background40 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background41 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background42 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background43 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background44 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
+            DevComponents.DotNetBar.SuperGrid.Style.Background background45 = new DevComponents.DotNetBar.SuperGrid.Style.Background();
             this.cbotype = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
@@ -500,6 +500,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.stockInCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.code);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 304);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -577,6 +578,7 @@
             this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlChaiXei.PrimaryGrid.Columns.Add(this.gridColumnstockCode);
+            this.superGridControlChaiXei.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlChaiXei.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlChaiXei.Size = new System.Drawing.Size(1202, 77);
             this.superGridControlChaiXei.TabIndex = 3;
@@ -603,8 +605,8 @@
             // 
             this.gridColumnname.AllowSelection = false;
             this.gridColumnname.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background1.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnname.CellStyles.Default.Background = background1;
+            background31.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnname.CellStyles.Default.Background = background31;
             this.gridColumnname.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnname.HeaderText = "商品名称";
             this.gridColumnname.Name = "gridColumnname";
@@ -614,8 +616,8 @@
             // gridColumnmodel
             // 
             this.gridColumnmodel.AllowSelection = false;
-            background2.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnmodel.CellStyles.Default.Background = background2;
+            background32.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnmodel.CellStyles.Default.Background = background32;
             this.gridColumnmodel.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnmodel.HeaderText = "规格型号";
             this.gridColumnmodel.Name = "gridColumnmodel";
@@ -625,8 +627,8 @@
             // 
             this.gridColumnbarcode.AllowSelection = false;
             this.gridColumnbarcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background3.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnbarcode.CellStyles.Default.Background = background3;
+            background33.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnbarcode.CellStyles.Default.Background = background33;
             this.gridColumnbarcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnbarcode.HeaderText = "条形码";
             this.gridColumnbarcode.Name = "gridColumnbarcode";
@@ -636,8 +638,8 @@
             // gridColumnunit
             // 
             this.gridColumnunit.AllowSelection = false;
-            background4.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnunit.CellStyles.Default.Background = background4;
+            background34.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnunit.CellStyles.Default.Background = background34;
             this.gridColumnunit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnunit.HeaderText = "单位";
             this.gridColumnunit.Name = "gridColumnunit";
@@ -647,8 +649,8 @@
             // gridColumnnumber
             // 
             this.gridColumnnumber.AllowSelection = false;
-            background5.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnnumber.CellStyles.Default.Background = background5;
+            background35.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnnumber.CellStyles.Default.Background = background35;
             this.gridColumnnumber.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnnumber.HeaderText = "数量";
             this.gridColumnnumber.Name = "gridColumnnumber";
@@ -658,8 +660,8 @@
             // 
             this.gridColumnremark.AllowSelection = false;
             this.gridColumnremark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background6.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnremark.CellStyles.Default.Background = background6;
+            background36.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnremark.CellStyles.Default.Background = background36;
             this.gridColumnremark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.gridColumnremark.HeaderText = "备注";
             this.gridColumnremark.Name = "gridColumnremark";
@@ -667,8 +669,8 @@
             // 
             // gridColumncode
             // 
-            background7.Color1 = System.Drawing.Color.Azure;
-            this.gridColumncode.CellStyles.Default.Background = background7;
+            background37.Color1 = System.Drawing.Color.Azure;
+            this.gridColumncode.CellStyles.Default.Background = background37;
             this.gridColumncode.HeaderText = "商品code";
             this.gridColumncode.Name = "gridColumncode";
             this.gridColumncode.ReadOnly = true;
@@ -676,8 +678,8 @@
             // 
             // gridColumnstockCode
             // 
-            background8.Color1 = System.Drawing.Color.Azure;
-            this.gridColumnstockCode.CellStyles.Default.Background = background8;
+            background38.Color1 = System.Drawing.Color.Azure;
+            this.gridColumnstockCode.CellStyles.Default.Background = background38;
             this.gridColumnstockCode.HeaderText = "仓库code";
             this.gridColumnstockCode.Name = "gridColumnstockCode";
             this.gridColumnstockCode.ReadOnly = true;
@@ -695,8 +697,8 @@
             // 
             this.name.AllowSelection = false;
             this.name.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background9.Color1 = System.Drawing.Color.Azure;
-            this.name.CellStyles.Default.Background = background9;
+            background39.Color1 = System.Drawing.Color.Azure;
+            this.name.CellStyles.Default.Background = background39;
             this.name.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.name.HeaderText = "商品名称";
             this.name.Name = "name";
@@ -706,8 +708,8 @@
             // model
             // 
             this.model.AllowSelection = false;
-            background10.Color1 = System.Drawing.Color.Azure;
-            this.model.CellStyles.Default.Background = background10;
+            background40.Color1 = System.Drawing.Color.Azure;
+            this.model.CellStyles.Default.Background = background40;
             this.model.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.model.HeaderText = "规格型号";
             this.model.Name = "model";
@@ -717,8 +719,8 @@
             // 
             this.barcode.AllowSelection = false;
             this.barcode.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background11.Color1 = System.Drawing.Color.Azure;
-            this.barcode.CellStyles.Default.Background = background11;
+            background41.Color1 = System.Drawing.Color.Azure;
+            this.barcode.CellStyles.Default.Background = background41;
             this.barcode.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.barcode.HeaderText = "条形码";
             this.barcode.Name = "barcode";
@@ -735,8 +737,8 @@
             // unit
             // 
             this.unit.AllowSelection = false;
-            background12.Color1 = System.Drawing.Color.Azure;
-            this.unit.CellStyles.Default.Background = background12;
+            background42.Color1 = System.Drawing.Color.Azure;
+            this.unit.CellStyles.Default.Background = background42;
             this.unit.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.unit.HeaderText = "单位";
             this.unit.Name = "unit";
@@ -753,8 +755,8 @@
             // price
             // 
             this.price.AllowSelection = false;
-            background13.Color1 = System.Drawing.Color.Azure;
-            this.price.CellStyles.Default.Background = background13;
+            background43.Color1 = System.Drawing.Color.Azure;
+            this.price.CellStyles.Default.Background = background43;
             this.price.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.price.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.price.HeaderText = "单价";
@@ -765,8 +767,8 @@
             // money
             // 
             this.money.AllowSelection = false;
-            background14.Color1 = System.Drawing.Color.Azure;
-            this.money.CellStyles.Default.Background = background14;
+            background44.Color1 = System.Drawing.Color.Azure;
+            this.money.CellStyles.Default.Background = background44;
             this.money.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.money.EditorType = typeof(DevComponents.DotNetBar.SuperGrid.GridDoubleInputEditControl);
             this.money.HeaderText = "金额";
@@ -778,8 +780,8 @@
             // 
             this.remark.AllowSelection = false;
             this.remark.AutoSizeMode = DevComponents.DotNetBar.SuperGrid.ColumnAutoSizeMode.Fill;
-            background15.Color1 = System.Drawing.Color.Azure;
-            this.remark.CellStyles.Default.Background = background15;
+            background45.Color1 = System.Drawing.Color.Azure;
+            this.remark.CellStyles.Default.Background = background45;
             this.remark.ColumnSortMode = DevComponents.DotNetBar.SuperGrid.ColumnSortMode.None;
             this.remark.HeaderText = "备注";
             this.remark.Name = "remark";

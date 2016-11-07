@@ -497,6 +497,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialcode);
             this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 409);
             this.superGridControlShangPing.Text = "单号:";
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);

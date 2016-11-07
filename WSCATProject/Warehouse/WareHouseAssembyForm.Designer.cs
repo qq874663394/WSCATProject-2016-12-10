@@ -474,6 +474,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.price);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.money);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 304);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -578,6 +579,7 @@
             this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumnstockCode);
             this.superGridControlZuZhuang.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControlZuZhuang.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlZuZhuang.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlZuZhuang.Size = new System.Drawing.Size(1202, 77);
             this.superGridControlZuZhuang.TabIndex = 2;

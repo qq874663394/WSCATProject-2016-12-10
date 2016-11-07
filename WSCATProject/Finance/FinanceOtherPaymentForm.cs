@@ -421,6 +421,32 @@ namespace WSCATProject.Finance
         }
         #endregion
 
+        #region 改变边框颜色
+        /// <summary>
+        /// 改变边框颜色
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                                 this.panel2.ClientRectangle,
+                                 Color.FromArgb(85, 177, 238),
+                                 2,
+                                 ButtonBorderStyle.Solid,
+                                 Color.FromArgb(85, 177, 238),
+                                 1,
+                                 ButtonBorderStyle.Solid,
+                                 Color.FromArgb(85, 177, 238),
+                                 2,
+                                 ButtonBorderStyle.Solid,
+                                  Color.FromArgb(85, 177, 238),
+                                 //Color.White,
+                                 1,
+                                 ButtonBorderStyle.Solid);
+        }
+        #endregion
+
         /// <summary>
         /// 关标定位
         /// </summary>

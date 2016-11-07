@@ -170,6 +170,7 @@
             background1.Color1 = System.Drawing.Color.Azure;
             this.superGridControlShangPing.PrimaryGrid.DefaultVisualStyles.CellStyles.Default.Background = background1;
             this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 3;
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 435);
             this.superGridControlShangPing.TabIndex = 1;

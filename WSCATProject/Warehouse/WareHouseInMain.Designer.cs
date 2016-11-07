@@ -515,6 +515,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnremark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
             this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.PrimaryGrid.UseAlternateRowStyle = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 345);

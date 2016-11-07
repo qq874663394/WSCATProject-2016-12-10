@@ -511,6 +511,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.weiHeXiao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.benCiHeXiao);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.remark);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 224);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
@@ -597,6 +598,7 @@
             this.superGridControlTop.PrimaryGrid.Columns.Add(this.gridColumnWeiHeXiao);
             this.superGridControlTop.PrimaryGrid.Columns.Add(this.gridColumnBenCi);
             this.superGridControlTop.PrimaryGrid.Columns.Add(this.gridColumnRemark);
+            this.superGridControlTop.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlTop.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlTop.Size = new System.Drawing.Size(1202, 114);
             this.superGridControlTop.TabIndex = 3;

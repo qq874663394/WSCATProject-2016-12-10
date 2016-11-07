@@ -353,6 +353,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnprice);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.panyingMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.pankuiMoney);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 484);
             this.superGridControlShangPing.TabIndex = 1;
             this.superGridControlShangPing.Text = "superGridControlShangPing";

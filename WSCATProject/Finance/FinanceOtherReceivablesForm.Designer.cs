@@ -467,6 +467,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // superGridControlShangPing
             // 
@@ -480,6 +481,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnRemark);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
             this.superGridControlShangPing.PrimaryGrid.NoRowsText = "";
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(636, 369);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);

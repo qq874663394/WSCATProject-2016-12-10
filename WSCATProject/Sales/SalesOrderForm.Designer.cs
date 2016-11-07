@@ -498,6 +498,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.materialCode);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.FaHuoNumber);
             this.superGridControlShangPing.PrimaryGrid.FrozenColumnCount = 2;
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);
             this.superGridControlShangPing.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlShangPing_BeginEdit);

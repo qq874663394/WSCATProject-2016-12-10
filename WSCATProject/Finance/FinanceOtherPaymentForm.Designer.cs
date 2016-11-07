@@ -67,13 +67,13 @@
             // 
             this.textBoxOddNumbers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxOddNumbers.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxOddNumbers.Location = new System.Drawing.Point(1031, 84);
+            this.textBoxOddNumbers.Location = new System.Drawing.Point(1033, 84);
             this.textBoxOddNumbers.ReadOnly = false;
             this.textBoxOddNumbers.Size = new System.Drawing.Size(140, 14);
             // 
             // labelprie
             // 
-            this.labelprie.Location = new System.Drawing.Point(991, 6);
+            this.labelprie.Location = new System.Drawing.Point(993, 6);
             this.labelprie.Size = new System.Drawing.Size(29, 12);
             this.labelprie.Text = "单号";
             // 
@@ -103,9 +103,11 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel2.Controls.Add(this.comboBoxjiesuanfangshi);
             this.panel2.Controls.Add(this.pictureBoxtiaoxingma);
             this.panel2.Controls.Add(this.comboBoxType);
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.Controls.SetChildIndex(this.labtextboxBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labBotton2, 0);
             this.panel2.Controls.SetChildIndex(this.labTop1, 0);
@@ -354,6 +356,11 @@
             // 
             this.pictureBoxClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(177)))), ((int)(((byte)(238)))));
             // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
@@ -443,6 +450,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // superGridControlShangPing
             // 
@@ -455,6 +463,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnbeizhu);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumnid);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlShangPing.Size = new System.Drawing.Size(639, 369);
             this.superGridControlShangPing.CellValidated += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValidatedEventArgs>(this.superGridControlShangPing_CellValidated);

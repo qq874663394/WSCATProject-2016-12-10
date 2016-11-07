@@ -308,6 +308,7 @@
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.panyingMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.pankuiMoney);
             this.superGridControlShangPing.PrimaryGrid.Columns.Add(this.gridColumncode);
+            this.superGridControlShangPing.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlShangPing.PrimaryGrid.SelectionGranularity = DevComponents.DotNetBar.SuperGrid.SelectionGranularity.Row;
             this.superGridControlShangPing.Size = new System.Drawing.Size(1202, 511);
             this.superGridControlShangPing.TabIndex = 1;

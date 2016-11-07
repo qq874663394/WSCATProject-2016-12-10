@@ -201,6 +201,12 @@ namespace WSCATProject.Finance
             superGridControlPingZheng.PrimaryGrid.AddSort(superGridControlPingZheng.PrimaryGrid.Columns[0], SortDirection.Ascending);
             InitDataGridView();//调用统计行
 
+            //GridTextBoxXEditControl gdiec1 = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn1"].EditControl as GridTextBoxXEditControl;
+            // gdiec1.EditorValue = "";
+            //GridTextBoxXEditControl gdiec2 = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn2"].EditControl as GridTextBoxXEditControl;
+            //gdiec2.MaxValue = 9;
+            //gdiec2.MinValue = 0;
+
             #region  获取日期值
             DateTime date = DateTime.Parse(dateTimePicker1.Text);
             string year = date.Year.ToString();
@@ -255,5 +261,20 @@ namespace WSCATProject.Finance
         {
             FinanceVoucherEntryForm_Load(sender, e);
         }
+
+        private void superGridControlPingZheng_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((int)e.KeyChar >= 48 && (int)e.KeyChar <= 57) || e.KeyChar == 13 || e.KeyChar == 8 || e.KeyChar == 46)
+            {
+                e.Handled = true;
+            }
+
+            string a = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn1"].Name.ToString();
+            string b = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn2"].Name.ToString();
+            string c = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn3"].Name.ToString();
+            string d = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn4"].Name.ToString();
+
+        }
+
     }
 }
