@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WSCATProject.Base;
 
 namespace WSCATProject.Finance
 {
@@ -177,6 +178,11 @@ namespace WSCATProject.Finance
         }
         #endregion
 
+        /// <summary>
+        /// 加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FinanceVoucherEntryForm_Load(object sender, EventArgs e)
         {
             #region 加载时，初始化表格
@@ -259,7 +265,7 @@ namespace WSCATProject.Finance
         /// <param name="e"></param>
         private void toolStripButtonChaRu_Click(object sender, EventArgs e)
         {
-            FinanceVoucherEntryForm_Load(sender, e);
+            InitDataGridView();
         }
 
         private void superGridControlPingZheng_KeyPress(object sender, KeyPressEventArgs e)
@@ -276,5 +282,139 @@ namespace WSCATProject.Finance
 
         }
 
+        /// <summary>
+        /// 删除当前分录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnShangChu_Click(object sender, EventArgs e)
+        {
+            int rowindex = Convert.ToInt32(superGridControlPingZheng.PrimaryGrid.GridIndex);//获取行号
+            if (superGridControlPingZheng.PrimaryGrid.Rows.Count > 2)
+            {
+                superGridControlPingZheng.PrimaryGrid.Rows.RemoveAt(rowindex);
+            }
+        }
+
+        /// <summary>
+        /// 查看代码点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnDaiMa_Click(object sender, EventArgs e)
+        {
+            LookDaiMa();
+        }
+
+        /// <summary>
+        /// 查看代码函数
+        /// </summary>
+        private void LookDaiMa()
+        {
+            try
+            {
+                GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[0];
+                if (gr.Cells["gridColumnZhaiYao"].FormattedValue == null || gr.Cells["gridColumnZhaiYao"].FormattedValue == "")
+                {
+                    MessageBox.Show("请先输入摘要：");
+                    superGridControlPingZheng.Focus();
+                    return;
+                }
+                else
+                {
+                    SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
+                    GridCell gc = ge[0] as GridCell;
+                    if (gc.GridColumn.Name == "gridColumnSubject")
+                    {
+                        AccountingSubjectsForm accountSubject = new AccountingSubjectsForm();
+                        accountSubject.ShowDialog(this);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 快捷方式设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FinanceVoucherEntryForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //上一站凭证
+            if (e.KeyCode == Keys.B)
+            {
+                MessageBox.Show("上一站凭证！");
+                return;
+            }
+            //下一张凭证
+            if (e.KeyCode == Keys.A)
+            {
+                MessageBox.Show("下一张凭证！");
+                return;
+            }
+            //新增凭证
+            if (e.KeyCode == Keys.N)
+            {
+                MessageBox.Show("新增凭证！");
+                return;
+            }
+            //保存凭证
+            if (e.KeyCode == Keys.S)
+            {
+                MessageBox.Show("保存凭证！");
+                return;
+            }
+            //打印凭证
+            if (e.KeyCode == Keys.P)
+            {
+                MessageBox.Show("保存凭证！");
+                return;
+            }
+            //取消所做的更改
+            if (e.KeyCode == Keys.Z)
+            {
+                toolStripBtnHuanYuan_Click(sender, e);
+                return;
+            }
+            //插入一条分录
+            if (e.KeyCode == Keys.I)
+            {
+                InitDataGridView();
+                return;
+            }
+            //删除一条分录
+            if (e.KeyCode == Keys.D)
+            {
+                toolStripBtnShangChu_Click(sender, e);
+                return;
+            }
+            //查看代码
+            if (e.KeyCode == Keys.F7)
+            {
+                LookDaiMa();
+                return;
+            }
+            //关闭
+            if (e.KeyCode == Keys.X)
+            {
+                this.Close();
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 光标定位
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FinanceVoucherEntryForm_Activated(object sender, EventArgs e)
+        {
+            superGridControlPingZheng.Focus();
+        }
     }
 }
