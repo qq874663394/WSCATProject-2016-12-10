@@ -268,13 +268,70 @@ namespace WSCATProject.Finance
             {
                 e.Handled = true;
             }
+        }
 
-            string a = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn1"].Name.ToString();
-            string b = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn2"].Name.ToString();
-            string c = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn3"].Name.ToString();
-            string d = superGridControlPingZheng.PrimaryGrid.Columns["gridColumn4"].Name.ToString();
+        private void superGridControlPingZheng_KeyDown(object sender, KeyEventArgs e)
+        {
 
         }
 
+        private void superGridControlPingZheng_BeginEdit_1(object sender, GridEditEventArgs e)
+        {
+        }
+
+        private void superGridControlPingZheng_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void superGridControlPingZheng_Validated(object sender, EventArgs e)
+        {
+        }
+
+        private void superGridControlPingZheng_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void superGridControlPingZheng_CellInfoLeave(object sender, GridCellInfoLeaveEventArgs e)
+        {
+        }
+
+        private void superGridControlPingZheng_CellMouseDown(object sender, GridCellMouseEventArgs e)
+        {
+            //MessageBox.Show("Test");
+        }
+
+        private void superGridControlPingZheng_CellValueChanged(object sender, GridCellValueChangedEventArgs e)
+        {
+            //MessageBox.Show(e.GridCell.GridColumn.PrevVisibleColumn.Name);
+            GridColumn[] item1 = { gridColumn1, gridColumn2, gridColumn3, gridColumn4, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14};
+            int rowsIndex = (superGridControlPingZheng.GetSelectedCells()[0] as GridCell).GridRow.RowIndex;  //获取行号
+            GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[rowsIndex];   //获取
+
+            if (gr[e.GridCell.GridColumn.PrevVisibleColumn.Name].Value != null)
+            {
+                for (int i = 0; i < 14; i++)//有18列
+                {
+                    if (gr[item1[i]].Value != null)//如果下一列的值不等于null，则位移
+                    {
+                        gr[item1[i - 1]].Value = gr[item1[i]].Value;
+                    }
+                }
+            }
+            if (e.OldValue != null)
+            {
+                gr[e.GridCell.GridColumn.PrevVisibleColumn.Name].Value = e.OldValue;
+            }
+        }
+
+        private void superGridControlPingZheng_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            //MessageBox.Show("Test");
+        }
+
+        private void superGridControlPingZheng_EditorValueChanged(object sender, GridEditEventArgs e)
+        {
+
+        }
     }
 }
