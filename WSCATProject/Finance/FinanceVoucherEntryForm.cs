@@ -313,15 +313,6 @@ namespace WSCATProject.Finance
         {
             try
             {
-                GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[0];
-                if (gr.Cells["gridColumnZhaiYao"].FormattedValue == null || gr.Cells["gridColumnZhaiYao"].FormattedValue == "")
-                {
-                    MessageBox.Show("请先输入摘要：");
-                    superGridControlPingZheng.Focus();
-                    return;
-                }
-                else
-                {
                     SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
                     GridCell gc = ge[0] as GridCell;
                     if (gc.GridColumn.Name == "gridColumnSubject")
@@ -329,7 +320,6 @@ namespace WSCATProject.Finance
                         AccountingSubjectsForm accountSubject = new AccountingSubjectsForm();
                         accountSubject.ShowDialog(this);
                     }
-                }
             }
             catch (Exception)
             {
@@ -415,6 +405,19 @@ namespace WSCATProject.Finance
         private void FinanceVoucherEntryForm_Activated(object sender, EventArgs e)
         {
             superGridControlPingZheng.Focus();
+        }
+
+        private void superGridControlPingZheng_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                if (gc.GridColumn.Name == "gridColumnSubject")
+                {
+                    MessageBox.Show("科目无权使用或不存在！");
+                }
+            }
         }
     }
 }
