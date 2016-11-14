@@ -21,6 +21,10 @@ namespace WSCATProject.Finance
             InitializeComponent();
         }
 
+        private object _cellValue;
+        private int _indexRows;
+        public object _CellValue { get; set; }
+        public int _IndexRows { get; set; }
 
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -262,76 +266,62 @@ namespace WSCATProject.Finance
             FinanceVoucherEntryForm_Load(sender, e);
         }
 
-        private void superGridControlPingZheng_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (((int)e.KeyChar >= 48 && (int)e.KeyChar <= 57) || e.KeyChar == 13 || e.KeyChar == 8 || e.KeyChar == 46)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void superGridControlPingZheng_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void superGridControlPingZheng_BeginEdit_1(object sender, GridEditEventArgs e)
-        {
-        }
-
-        private void superGridControlPingZheng_KeyDown_1(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void superGridControlPingZheng_Validated(object sender, EventArgs e)
-        {
-        }
-
-        private void superGridControlPingZheng_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void superGridControlPingZheng_CellInfoLeave(object sender, GridCellInfoLeaveEventArgs e)
-        {
-        }
-
-        private void superGridControlPingZheng_CellMouseDown(object sender, GridCellMouseEventArgs e)
-        {
-            //MessageBox.Show("Test");
-        }
-
-        private void superGridControlPingZheng_CellValueChanged(object sender, GridCellValueChangedEventArgs e)
-        {
-            //MessageBox.Show(e.GridCell.GridColumn.PrevVisibleColumn.Name);
-            GridColumn[] item1 = { gridColumn1, gridColumn2, gridColumn3, gridColumn4, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14};
-            int rowsIndex = (superGridControlPingZheng.GetSelectedCells()[0] as GridCell).GridRow.RowIndex;  //获取行号
-            GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[rowsIndex];   //获取
-
-            if (gr[e.GridCell.GridColumn.PrevVisibleColumn.Name].Value != null)
-            {
-                for (int i = 0; i < 14; i++)//有18列
-                {
-                    if (gr[item1[i]].Value != null)//如果下一列的值不等于null，则位移
-                    {
-                        gr[item1[i - 1]].Value = gr[item1[i]].Value;
-                    }
-                }
-            }
-            if (e.OldValue != null)
-            {
-                gr[e.GridCell.GridColumn.PrevVisibleColumn.Name].Value = e.OldValue;
-            }
-        }
-
-        private void superGridControlPingZheng_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            //MessageBox.Show("Test");
-        }
-
         private void superGridControlPingZheng_EditorValueChanged(object sender, GridEditEventArgs e)
         {
+            _IndexRows = e.GridCell.RowIndex;
+        }
+        private void superGridControlPingZheng_GridPreviewKeyDown(object sender, GridPreviewKeyDownEventArgs e)
+        {
+            Console.WriteLine(e.KeyValue);
+            GridColumn[] item1 = { gridColumn1, gridColumn2, gridColumn3, gridColumn4, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14, gridColumn15, gridColumn16 };   
+            GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
 
+            object str = new System.Text.ASCIIEncoding().GetString(new byte[] { (byte)e.KeyValue }); //获取编辑状态下的最后一位值
+       
+            //删除
+            if (e.KeyValue==8)
+            {
+                for (int i = item1.Length - 1; i >= 0; i--)
+                {
+                    gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];
+                    if ((i-1)>=0)
+                    {
+                        gr[item1[i]].Value = gr[item1[i - 1]].Value;
+                        gr[item1[i - 1]].Value = null;
+                    }
+                }
+                return;
+            }
+            //左移长度限制
+            if (gr[item1[0]].Value != null)
+            {
+                for (int i = 0; i < item1.Length - 1; i++)
+                {
+                    gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
+                    if (gr[item1[i + 1]].Value == null)
+                    {
+                        if ((i + 1) <= item1.Length - 1)//下一条数组不能大于总长度
+                        {
+                            gr[item1[i]].Value = gr[item1[i + 1]].Value;
+                            gr[item1[i + 1]].Value = null;
+                        }
+                    }
+                }
+                MessageBox.Show("最大长度");
+                return;
+            }
+            //输入的时候左移
+            for (int i = 0;  i < item1.Length - 1; i++)
+            {
+                gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
+                if ((i + 1) <= item1.Length - 1)//下一条数组不能大于总长度
+                {
+                    gr[item1[i]].Value = gr[item1[i + 1]].Value;
+                    gr[item1[i + 1]].Value = null;
+                }
+            }
+            gr["gridColumn16"].Value = _CellValue;
+            _CellValue = str;
         }
     }
 }

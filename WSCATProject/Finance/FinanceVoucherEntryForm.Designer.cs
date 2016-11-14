@@ -280,6 +280,25 @@
             this.gridCell43 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridCell44 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridCell45 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell46 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell47 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell48 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell49 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell50 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell51 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell52 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell53 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell54 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell55 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell56 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell57 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell58 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell59 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell60 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell61 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell62 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell63 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell64 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridRow2 = new DevComponents.DotNetBar.SuperGrid.GridRow();
             this.gridCell1 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridCell2 = new DevComponents.DotNetBar.SuperGrid.GridCell();
@@ -305,6 +324,22 @@
             this.gridCell22 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridCell23 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.gridCell24 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell65 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell66 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell67 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell68 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell69 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell70 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell71 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell72 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell73 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell74 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell75 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell76 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell77 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell78 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell79 = new DevComponents.DotNetBar.SuperGrid.GridCell();
+            this.gridCell80 = new DevComponents.DotNetBar.SuperGrid.GridCell();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
@@ -964,16 +999,8 @@
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
-            this.superGridControlPingZheng.CellInfoLeave += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellInfoLeaveEventArgs>(this.superGridControlPingZheng_CellInfoLeave);
-            this.superGridControlPingZheng.CellMouseDown += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellMouseEventArgs>(this.superGridControlPingZheng_CellMouseDown);
-            this.superGridControlPingZheng.CellValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellValueChangedEventArgs>(this.superGridControlPingZheng_CellValueChanged);
-            this.superGridControlPingZheng.BeginEdit += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlPingZheng_BeginEdit_1);
             this.superGridControlPingZheng.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlPingZheng_EditorValueChanged);
-            this.superGridControlPingZheng.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.superGridControlPingZheng_PropertyChanged);
-            this.superGridControlPingZheng.TextChanged += new System.EventHandler(this.superGridControlPingZheng_TextChanged);
-            this.superGridControlPingZheng.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlPingZheng_KeyDown_1);
-            this.superGridControlPingZheng.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.superGridControlPingZheng_KeyPress);
-            this.superGridControlPingZheng.Validated += new System.EventHandler(this.superGridControlPingZheng_Validated);
+            this.superGridControlPingZheng.GridPreviewKeyDown += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridPreviewKeyDownEventArgs>(this.superGridControlPingZheng_GridPreviewKeyDown);
             // 
             // gridColumnZhaiYao
             // 
@@ -1011,7 +1038,7 @@
             borderColor4.Right = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gridColumn1.HeaderStyles.Default.BorderColor = borderColor4;
             this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Width = 50;
+            this.gridColumn1.Width = 10;
             // 
             // gridColumn2
             // 
@@ -1024,7 +1051,7 @@
             borderColor6.Right = System.Drawing.Color.DarkGray;
             this.gridColumn2.HeaderStyles.Default.BorderColor = borderColor6;
             this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Width = 50;
+            this.gridColumn2.Width = 10;
             // 
             // gridColumn3
             // 
@@ -1476,6 +1503,25 @@
             this.gridRow1.Cells.Add(this.gridCell43);
             this.gridRow1.Cells.Add(this.gridCell44);
             this.gridRow1.Cells.Add(this.gridCell45);
+            this.gridRow1.Cells.Add(this.gridCell46);
+            this.gridRow1.Cells.Add(this.gridCell47);
+            this.gridRow1.Cells.Add(this.gridCell48);
+            this.gridRow1.Cells.Add(this.gridCell49);
+            this.gridRow1.Cells.Add(this.gridCell50);
+            this.gridRow1.Cells.Add(this.gridCell51);
+            this.gridRow1.Cells.Add(this.gridCell52);
+            this.gridRow1.Cells.Add(this.gridCell53);
+            this.gridRow1.Cells.Add(this.gridCell54);
+            this.gridRow1.Cells.Add(this.gridCell55);
+            this.gridRow1.Cells.Add(this.gridCell56);
+            this.gridRow1.Cells.Add(this.gridCell57);
+            this.gridRow1.Cells.Add(this.gridCell58);
+            this.gridRow1.Cells.Add(this.gridCell59);
+            this.gridRow1.Cells.Add(this.gridCell60);
+            this.gridRow1.Cells.Add(this.gridCell61);
+            this.gridRow1.Cells.Add(this.gridCell62);
+            this.gridRow1.Cells.Add(this.gridCell63);
+            this.gridRow1.Cells.Add(this.gridCell64);
             // 
             // gridRow2
             // 
@@ -1503,6 +1549,22 @@
             this.gridRow2.Cells.Add(this.gridCell22);
             this.gridRow2.Cells.Add(this.gridCell23);
             this.gridRow2.Cells.Add(this.gridCell24);
+            this.gridRow2.Cells.Add(this.gridCell65);
+            this.gridRow2.Cells.Add(this.gridCell66);
+            this.gridRow2.Cells.Add(this.gridCell67);
+            this.gridRow2.Cells.Add(this.gridCell68);
+            this.gridRow2.Cells.Add(this.gridCell69);
+            this.gridRow2.Cells.Add(this.gridCell70);
+            this.gridRow2.Cells.Add(this.gridCell71);
+            this.gridRow2.Cells.Add(this.gridCell72);
+            this.gridRow2.Cells.Add(this.gridCell73);
+            this.gridRow2.Cells.Add(this.gridCell74);
+            this.gridRow2.Cells.Add(this.gridCell75);
+            this.gridRow2.Cells.Add(this.gridCell76);
+            this.gridRow2.Cells.Add(this.gridCell77);
+            this.gridRow2.Cells.Add(this.gridCell78);
+            this.gridRow2.Cells.Add(this.gridCell79);
+            this.gridRow2.Cells.Add(this.gridCell80);
             // 
             // FinanceVoucherEntryForm
             // 
@@ -1681,5 +1743,40 @@
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell22;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell23;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell24;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell46;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell47;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell48;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell49;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell50;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell51;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell52;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell53;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell54;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell55;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell56;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell57;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell58;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell59;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell60;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell61;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell62;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell63;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell64;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell65;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell66;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell67;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell68;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell69;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell70;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell71;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell72;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell73;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell74;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell75;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell76;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell77;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell78;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell79;
+        private DevComponents.DotNetBar.SuperGrid.GridCell gridCell80;
     }
 }
