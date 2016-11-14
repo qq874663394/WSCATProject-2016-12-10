@@ -178,6 +178,7 @@
             this.toolStripBtnHouDan = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnInsert = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnHuanYuan = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonChaRu = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnShangChu = new System.Windows.Forms.ToolStripButton();
@@ -457,6 +458,7 @@
             this.toolStripBtnHouDan,
             this.toolStripBtnInsert,
             this.toolStripBtnSave,
+            this.toolStripButton1,
             this.toolStripBtnHuanYuan,
             this.toolStripButtonChaRu,
             this.toolStripBtnShangChu,
@@ -519,6 +521,17 @@
             this.toolStripBtnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnSave.ToolTipText = "保存凭证";
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.daying1;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(60, 57);
+            this.toolStripButton1.Text = "打印(&P)";
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.ToolTipText = "打印凭证";
+            // 
             // toolStripBtnHuanYuan
             // 
             this.toolStripBtnHuanYuan.Image = global::WSCATProject.Properties.Resources.huifu;
@@ -553,6 +566,7 @@
             this.toolStripBtnShangChu.Text = "删除(&D)";
             this.toolStripBtnShangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnShangChu.ToolTipText = "删除当前分录";
+            this.toolStripBtnShangChu.Click += new System.EventHandler(this.toolStripBtnShangChu_Click);
             // 
             // toolStripBtnWaiBi
             // 
@@ -575,6 +589,7 @@
             this.toolStripBtnDaiMa.Text = "代码(&F7)";
             this.toolStripBtnDaiMa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnDaiMa.ToolTipText = "查看代码";
+            this.toolStripBtnDaiMa.Click += new System.EventHandler(this.toolStripBtnDaiMa_Click);
             // 
             // toolStripBtnLiuLiang
             // 
@@ -995,12 +1010,21 @@
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow1);
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow2);
             this.superGridControlPingZheng.PrimaryGrid.ShowInsertRow = true;
+<<<<<<< .mine
             this.superGridControlPingZheng.Size = new System.Drawing.Size(1090, 419);
+=======
+            this.superGridControlPingZheng.Size = new System.Drawing.Size(897, 419);
+>>>>>>> .theirs
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
+<<<<<<< .mine
             this.superGridControlPingZheng.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlPingZheng_EditorValueChanged);
             this.superGridControlPingZheng.GridPreviewKeyDown += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridPreviewKeyDownEventArgs>(this.superGridControlPingZheng_GridPreviewKeyDown);
+=======
+            this.superGridControlPingZheng.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlPingZheng_KeyDown);
+            this.superGridControlPingZheng.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.superGridControlPingZheng_KeyPress);
+>>>>>>> .theirs
             // 
             // gridColumnZhaiYao
             // 
@@ -1024,6 +1048,7 @@
             this.gridColumnSubject.CellStyles.Default.BorderThickness = thickness2;
             this.gridColumnSubject.HeaderText = "科目";
             this.gridColumnSubject.Name = "gridColumnSubject";
+            this.gridColumnSubject.ToolTip = "按F7查看代码";
             this.gridColumnSubject.Width = 200;
             // 
             // gridColumn1
@@ -1578,10 +1603,13 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "FinanceVoucherEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "凭证录入";
+            this.Activated += new System.EventHandler(this.FinanceVoucherEntryForm_Activated);
             this.Load += new System.EventHandler(this.FinanceVoucherEntryForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FinanceVoucherEntryForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FinanceVoucherEntryForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
@@ -1696,6 +1724,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownXuHao;
         private System.Windows.Forms.Label lblmonth;
         private System.Windows.Forms.Label lblyear;
+<<<<<<< .mine
         private DevComponents.DotNetBar.SuperGrid.GridRow gridRow1;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell25;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell26;
@@ -1778,5 +1807,89 @@
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell78;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell79;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell80;
+=======
+        protected System.Windows.Forms.ToolStripButton toolStripButton1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
     }
 }

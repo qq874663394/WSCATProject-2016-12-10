@@ -44,10 +44,10 @@ namespace WSCATProject.Base
         private void MaterialForm_Load(object sender, EventArgs e)
         {
             StartPosition = FormStartPosition.CenterParent;
-            // MaterialTypeManager mtm = new MaterialTypeManager();
-            // DataTable dt = mtm.GetList("").Tables[0];
-            // DataView dvTree = new DataView(dt);
-            // AddTree("", null, dvTree);
+            //MaterialTypeManager mtm = new MaterialTypeManager();
+            //DataTable dt = mtm.GetList("").Tables[0];
+            //DataView dvTree = new DataView(dt);
+            //AddTree("", null, dvTree);
             superGridControlMaterial.PrimaryGrid.AutoGenerateColumns = false;
             loadData();
         }

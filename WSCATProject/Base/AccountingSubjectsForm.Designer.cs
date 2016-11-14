@@ -37,19 +37,20 @@
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem5 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItemSunYi = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItemZiChan = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItemFuZhai = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItemQuanYi = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabItem4 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tabItemChengBen = new DevComponents.DotNetBar.TabItem(this.components);
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabControlPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -62,7 +63,6 @@
             this.toolStripButtonshuaixin,
             this.toolStripButtondayin,
             this.toolStripButtondaochu,
-            this.toolStripButton1,
             this.toolStripButtonClose});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -77,10 +77,10 @@
             this.toolStripButtonProfit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonProfit.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtonProfit.Name = "toolStripButtonProfit";
-            this.toolStripButtonProfit.Size = new System.Drawing.Size(66, 56);
-            this.toolStripButtonProfit.Text = "查找(&F3)";
+            this.toolStripButtonProfit.Size = new System.Drawing.Size(41, 56);
+            this.toolStripButtonProfit.Text = "查看";
             this.toolStripButtonProfit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonProfit.ToolTipText = "查找";
+            this.toolStripButtonProfit.ToolTipText = "查看销售订单";
             // 
             // toolStripButtonshuaixin
             // 
@@ -90,34 +90,34 @@
             this.toolStripButtonshuaixin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonshuaixin.Margin = new System.Windows.Forms.Padding(0, 5, 0, -2);
             this.toolStripButtonshuaixin.Name = "toolStripButtonshuaixin";
-            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(60, 56);
+            this.toolStripButtonshuaixin.Size = new System.Drawing.Size(60, 67);
             this.toolStripButtonshuaixin.Text = "刷新(&F5)";
             this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonshuaixin.ToolTipText = "刷新";
+            this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
             // 
             // toolStripButtondayin
             // 
-            this.toolStripButtondayin.Image = global::WSCATProject.Properties.Resources.tianjia;
+            this.toolStripButtondayin.Image = global::WSCATProject.Properties.Resources.daying1;
             this.toolStripButtondayin.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtondayin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtondayin.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondayin.Name = "toolStripButtondayin";
-            this.toolStripButtondayin.Size = new System.Drawing.Size(62, 56);
-            this.toolStripButtondayin.Text = "新增(&N)";
+            this.toolStripButtondayin.Size = new System.Drawing.Size(41, 56);
+            this.toolStripButtondayin.Text = "新增";
             this.toolStripButtondayin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtondayin.ToolTipText = "新增";
+            this.toolStripButtondayin.ToolTipText = "打印(Ctrl+P)";
             // 
             // toolStripButtondaochu
             // 
-            this.toolStripButtondaochu.Image = global::WSCATProject.Properties.Resources.盘点;
+            this.toolStripButtondaochu.Image = global::WSCATProject.Properties.Resources.countExc;
             this.toolStripButtondaochu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtondaochu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtondaochu.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStripButtondaochu.Name = "toolStripButtondaochu";
-            this.toolStripButtondaochu.Size = new System.Drawing.Size(59, 56);
-            this.toolStripButtondaochu.Text = "修改(&E)";
+            this.toolStripButtondaochu.Size = new System.Drawing.Size(41, 56);
+            this.toolStripButtondaochu.Text = "修改";
             this.toolStripButtondaochu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtondaochu.ToolTipText = "修改";
+            this.toolStripButtondaochu.ToolTipText = "导出Excel(Ctrl+T)";
             // 
             // toolStripButtonClose
             // 
@@ -125,19 +125,19 @@
             this.toolStripButtonClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonClose.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonClose.Name = "toolStripButtonClose";
-            this.toolStripButtonClose.Size = new System.Drawing.Size(72, 57);
-            this.toolStripButtonClose.Text = "退出(&Esc)";
+            this.toolStripButtonClose.Size = new System.Drawing.Size(41, 57);
+            this.toolStripButtonClose.Text = "删除";
             this.toolStripButtonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonClose.ToolTipText = "退出";
+            this.toolStripButtonClose.ToolTipText = "关闭(Ctrl+X)";
             // 
             // tabControl1
             // 
             this.tabControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabControl1.CanReorderTabs = true;
             this.tabControl1.Controls.Add(this.tabControlPanel1);
-            this.tabControl1.Controls.Add(this.tabControlPanel5);
-            this.tabControl1.Controls.Add(this.tabControlPanel2);
             this.tabControl1.Controls.Add(this.tabControlPanel3);
+            this.tabControl1.Controls.Add(this.tabControlPanel2);
+            this.tabControl1.Controls.Add(this.tabControlPanel5);
             this.tabControl1.Controls.Add(this.tabControlPanel4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 60);
@@ -147,11 +147,11 @@
             this.tabControl1.Size = new System.Drawing.Size(653, 436);
             this.tabControl1.TabIndex = 56;
             this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
-            this.tabControl1.Tabs.Add(this.tabItem1);
-            this.tabControl1.Tabs.Add(this.tabItem2);
-            this.tabControl1.Tabs.Add(this.tabItem3);
-            this.tabControl1.Tabs.Add(this.tabItem4);
-            this.tabControl1.Tabs.Add(this.tabItem5);
+            this.tabControl1.Tabs.Add(this.tabItemZiChan);
+            this.tabControl1.Tabs.Add(this.tabItemFuZhai);
+            this.tabControl1.Tabs.Add(this.tabItemQuanYi);
+            this.tabControl1.Tabs.Add(this.tabItemChengBen);
+            this.tabControl1.Tabs.Add(this.tabItemSunYi);
             this.tabControl1.Text = "tabControl1";
             // 
             // tabControlPanel5
@@ -170,20 +170,22 @@
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel5.Style.GradientAngle = -90;
             this.tabControlPanel5.TabIndex = 17;
-            this.tabControlPanel5.TabItem = this.tabItem5;
+            this.tabControlPanel5.TabItem = this.tabItemSunYi;
             // 
-            // tabItem5
+            // tabItemSunYi
             // 
-            this.tabItem5.AttachedControl = this.tabControlPanel5;
-            this.tabItem5.BackColor = System.Drawing.Color.White;
-            this.tabItem5.BackColor2 = System.Drawing.Color.White;
-            this.tabItem5.Image = global::WSCATProject.Properties.Resources.shouyi;
-            this.tabItem5.Name = "tabItem5";
-            this.tabItem5.Text = "5、损益";
+            this.tabItemSunYi.AttachedControl = this.tabControlPanel5;
+            this.tabItemSunYi.BackColor = System.Drawing.Color.White;
+            this.tabItemSunYi.BackColor2 = System.Drawing.Color.White;
+            this.tabItemSunYi.Image = global::WSCATProject.Properties.Resources.shouyi;
+            this.tabItemSunYi.Name = "tabItemSunYi";
+            this.tabItemSunYi.Text = "5、损益";
+            this.tabItemSunYi.Click += new System.EventHandler(this.tabItemSunYi_Click);
             // 
             // tabControlPanel1
             // 
             this.tabControlPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014;
+            this.tabControlPanel1.Controls.Add(this.treeView1);
             this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPanel1.Location = new System.Drawing.Point(0, 40);
@@ -198,16 +200,17 @@
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel1.Style.GradientAngle = -90;
             this.tabControlPanel1.TabIndex = 1;
-            this.tabControlPanel1.TabItem = this.tabItem1;
+            this.tabControlPanel1.TabItem = this.tabItemZiChan;
             // 
-            // tabItem1
+            // tabItemZiChan
             // 
-            this.tabItem1.AttachedControl = this.tabControlPanel1;
-            this.tabItem1.BackColor = System.Drawing.Color.White;
-            this.tabItem1.BackColor2 = System.Drawing.Color.White;
-            this.tabItem1.Image = global::WSCATProject.Properties.Resources.car;
-            this.tabItem1.Name = "tabItem1";
-            this.tabItem1.Text = "1、资产";
+            this.tabItemZiChan.AttachedControl = this.tabControlPanel1;
+            this.tabItemZiChan.BackColor = System.Drawing.Color.White;
+            this.tabItemZiChan.BackColor2 = System.Drawing.Color.White;
+            this.tabItemZiChan.Image = global::WSCATProject.Properties.Resources.car;
+            this.tabItemZiChan.Name = "tabItemZiChan";
+            this.tabItemZiChan.Text = "1、资产";
+            this.tabItemZiChan.Click += new System.EventHandler(this.tabItemZiChan_Click);
             // 
             // tabControlPanel2
             // 
@@ -225,16 +228,17 @@
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel2.Style.GradientAngle = -90;
             this.tabControlPanel2.TabIndex = 5;
-            this.tabControlPanel2.TabItem = this.tabItem2;
+            this.tabControlPanel2.TabItem = this.tabItemFuZhai;
             // 
-            // tabItem2
+            // tabItemFuZhai
             // 
-            this.tabItem2.AttachedControl = this.tabControlPanel2;
-            this.tabItem2.BackColor = System.Drawing.Color.White;
-            this.tabItem2.BackColor2 = System.Drawing.Color.White;
-            this.tabItem2.Image = global::WSCATProject.Properties.Resources.fuzhai;
-            this.tabItem2.Name = "tabItem2";
-            this.tabItem2.Text = "2、负债";
+            this.tabItemFuZhai.AttachedControl = this.tabControlPanel2;
+            this.tabItemFuZhai.BackColor = System.Drawing.Color.White;
+            this.tabItemFuZhai.BackColor2 = System.Drawing.Color.White;
+            this.tabItemFuZhai.Image = global::WSCATProject.Properties.Resources.fuzhai;
+            this.tabItemFuZhai.Name = "tabItemFuZhai";
+            this.tabItemFuZhai.Text = "2、负债";
+            this.tabItemFuZhai.Click += new System.EventHandler(this.tabItemFuZhai_Click);
             // 
             // tabControlPanel3
             // 
@@ -252,16 +256,17 @@
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel3.Style.GradientAngle = -90;
             this.tabControlPanel3.TabIndex = 9;
-            this.tabControlPanel3.TabItem = this.tabItem3;
+            this.tabControlPanel3.TabItem = this.tabItemQuanYi;
             // 
-            // tabItem3
+            // tabItemQuanYi
             // 
-            this.tabItem3.AttachedControl = this.tabControlPanel3;
-            this.tabItem3.BackColor = System.Drawing.Color.White;
-            this.tabItem3.BackColor2 = System.Drawing.Color.White;
-            this.tabItem3.Image = global::WSCATProject.Properties.Resources.quanyi;
-            this.tabItem3.Name = "tabItem3";
-            this.tabItem3.Text = "3、权益";
+            this.tabItemQuanYi.AttachedControl = this.tabControlPanel3;
+            this.tabItemQuanYi.BackColor = System.Drawing.Color.White;
+            this.tabItemQuanYi.BackColor2 = System.Drawing.Color.White;
+            this.tabItemQuanYi.Image = global::WSCATProject.Properties.Resources.quanyi;
+            this.tabItemQuanYi.Name = "tabItemQuanYi";
+            this.tabItemQuanYi.Text = "3、权益";
+            this.tabItemQuanYi.Click += new System.EventHandler(this.tabItemQuanYi_Click);
             // 
             // tabControlPanel4
             // 
@@ -279,27 +284,24 @@
             | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel4.Style.GradientAngle = -90;
             this.tabControlPanel4.TabIndex = 13;
-            this.tabControlPanel4.TabItem = this.tabItem4;
+            this.tabControlPanel4.TabItem = this.tabItemChengBen;
             // 
-            // tabItem4
+            // tabItemChengBen
             // 
-            this.tabItem4.AttachedControl = this.tabControlPanel4;
-            this.tabItem4.BackColor = System.Drawing.Color.White;
-            this.tabItem4.BackColor2 = System.Drawing.Color.White;
-            this.tabItem4.Image = global::WSCATProject.Properties.Resources.chengben;
-            this.tabItem4.Name = "tabItem4";
-            this.tabItem4.Text = "4、成本";
+            this.tabItemChengBen.AttachedControl = this.tabControlPanel4;
+            this.tabItemChengBen.BackColor = System.Drawing.Color.White;
+            this.tabItemChengBen.BackColor2 = System.Drawing.Color.White;
+            this.tabItemChengBen.Image = global::WSCATProject.Properties.Resources.chengben;
+            this.tabItemChengBen.Name = "tabItemChengBen";
+            this.tabItemChengBen.Text = "4、成本";
+            this.tabItemChengBen.Click += new System.EventHandler(this.tabItemChengBen_Click);
             // 
-            // toolStripButton1
+            // treeView1
             // 
-            this.toolStripButton1.Image = global::WSCATProject.Properties.Resources.shanchu;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(62, 57);
-            this.toolStripButton1.Text = "删除(&D)";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.ToolTipText = "删除";
+            this.treeView1.Location = new System.Drawing.Point(83, 53);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(121, 97);
+            this.treeView1.TabIndex = 0;
             // 
             // AccountingSubjectsForm
             // 
@@ -315,6 +317,7 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabControlPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -329,15 +332,15 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private DevComponents.DotNetBar.TabControl tabControl1;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel5;
-        private DevComponents.DotNetBar.TabItem tabItem5;
+        private DevComponents.DotNetBar.TabItem tabItemSunYi;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel4;
-        private DevComponents.DotNetBar.TabItem tabItem4;
+        private DevComponents.DotNetBar.TabItem tabItemChengBen;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel3;
-        private DevComponents.DotNetBar.TabItem tabItem3;
+        private DevComponents.DotNetBar.TabItem tabItemQuanYi;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel2;
-        private DevComponents.DotNetBar.TabItem tabItem2;
+        private DevComponents.DotNetBar.TabItem tabItemFuZhai;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
-        private DevComponents.DotNetBar.TabItem tabItem1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private DevComponents.DotNetBar.TabItem tabItemZiChan;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
