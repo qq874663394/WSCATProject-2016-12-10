@@ -1010,21 +1010,15 @@
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow1);
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow2);
             this.superGridControlPingZheng.PrimaryGrid.ShowInsertRow = true;
-<<<<<<< .mine
             this.superGridControlPingZheng.Size = new System.Drawing.Size(1090, 419);
-=======
             this.superGridControlPingZheng.Size = new System.Drawing.Size(897, 419);
->>>>>>> .theirs
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
-<<<<<<< .mine
             this.superGridControlPingZheng.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlPingZheng_EditorValueChanged);
             this.superGridControlPingZheng.GridPreviewKeyDown += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridPreviewKeyDownEventArgs>(this.superGridControlPingZheng_GridPreviewKeyDown);
-=======
             this.superGridControlPingZheng.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlPingZheng_KeyDown);
-            this.superGridControlPingZheng.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.superGridControlPingZheng_KeyPress);
->>>>>>> .theirs
+
             // 
             // gridColumnZhaiYao
             // 
@@ -1724,7 +1718,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownXuHao;
         private System.Windows.Forms.Label lblmonth;
         private System.Windows.Forms.Label lblyear;
-<<<<<<< .mine
         private DevComponents.DotNetBar.SuperGrid.GridRow gridRow1;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell25;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell26;
@@ -1807,89 +1800,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell78;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell79;
         private DevComponents.DotNetBar.SuperGrid.GridCell gridCell80;
-=======
         protected System.Windows.Forms.ToolStripButton toolStripButton1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
     }
 }
