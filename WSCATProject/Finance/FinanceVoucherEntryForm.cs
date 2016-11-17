@@ -361,6 +361,7 @@ namespace WSCATProject.Finance
             }
             if (gc.ColumnIndex >= 2 && gc.ColumnIndex <= 18)//借方左边
             {
+                #region 左删除
                 if (e.KeyCode == Keys.ProcessKey)
                 {
                     gr["gridColumn18"].SetActive();
@@ -425,9 +426,27 @@ namespace WSCATProject.Finance
                 {
                     gr["gridColumn16"].Value = _CellValue;
                 }
+                #endregion
             }
-            if (gc.ColumnIndex >= 19 && gc.ColumnIndex <= 20)//借方右边
+            else if (gc.ColumnIndex >= 19 && gc.ColumnIndex <= 20)//借方右边
             {
+                if (gr["gridColumn18"].IsActiveCell == true || gr["gridColumn19"].AllowSelection == true)//焦点在左边输入点
+                {
+                    if (str.Equals("\b"))//按键是退格键
+                    {
+                        if (gr["gridColumn19"].Value != null)
+                        {
+                            gr["gridColumn19"].Value = null;
+                            return;
+                        }
+                        else
+                        {
+                            gr["gridColumn18"].Value = null;
+                            return;                                
+                        }
+                    }
+                }
+                #region MyRegion
                 gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取双击进去后处于编辑状态的行
                 //if (gr["gridColumn18"].Value != null)
                 //{
@@ -439,15 +458,16 @@ namespace WSCATProject.Finance
                 }
                 else
                 {
-                    gr["gridColumn19"].Value = gr["gridColumn18"].Value;
-                    gr["gridColumn18"].Value = str;
+                    //gr["gridColumn19"].Value = gr["gridColumn18"].Value;
+                    gr["gridColumn19"].Value = str;
                 }
+                #endregion
             }
-            if (gc.ColumnIndex >= 21 && gc.ColumnIndex <= 37)//贷方左边
+            else if (gc.ColumnIndex >= 21 && gc.ColumnIndex <= 37)//贷方左边
             {
 
             }
-            if (gc.ColumnIndex >= 38 && gc.ColumnIndex <= 39)//贷方右边
+            else if (gc.ColumnIndex >= 38 && gc.ColumnIndex <= 39)//贷方右边
             {
 
             }
@@ -594,7 +614,7 @@ namespace WSCATProject.Finance
         private void superGridControlPingZheng_CellClick(object sender, GridCellClickEventArgs e)
         {
             //MessageBox.Show(_IndexRows.ToString());
-            
+
         }
     }
 }

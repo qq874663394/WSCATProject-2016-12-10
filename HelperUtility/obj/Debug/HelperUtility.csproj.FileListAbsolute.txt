@@ -76,3 +76,9 @@ E:\619项目\新建文件夹\HelperUtility\bin\Debug\NPOI.dll
 E:\619项目\新建文件夹\HelperUtility\obj\Debug\HelperUtility.dll
 E:\619项目\新建文件夹\HelperUtility\obj\Debug\HelperUtility.pdb
 E:\619项目\新建文件夹\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\HelperUtility\bin\Debug\HelperUtility.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\HelperUtility\bin\Debug\HelperUtility.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\HelperUtility\bin\Debug\NPOI.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\HelperUtility\obj\Debug\HelperUtility.csprojResolveAssemblyReference.cache
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\HelperUtility\obj\Debug\HelperUtility.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\HelperUtility\obj\Debug\HelperUtility.pdb
