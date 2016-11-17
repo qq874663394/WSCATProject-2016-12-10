@@ -84,6 +84,7 @@
     <Compile Include="Finance\FinancePaymentWait.cs" />
     <Compile Include="Finance\FinanceVerificationDetail.cs" />
     <Compile Include="Finance\FinanceVerificationMain.cs" />
+    <Compile Include="Finance\FinanceVoucherEntry.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\PurchaseCancel.cs" />

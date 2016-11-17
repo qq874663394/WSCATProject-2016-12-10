@@ -18,7 +18,8 @@ namespace WSCATProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AccountingSubjectsForm());
+            //Application.Run(new MainForm());
+            Application.Run(new FinanceVoucherEntryForm());
         }
     }
 }

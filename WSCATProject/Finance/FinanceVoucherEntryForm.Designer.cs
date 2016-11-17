@@ -1006,19 +1006,19 @@
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn36);
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn37);
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn38);
+            this.superGridControlPingZheng.PrimaryGrid.KeyboardEditMode = DevComponents.DotNetBar.SuperGrid.KeyboardEditMode.EditOnKeystroke;
             this.superGridControlPingZheng.PrimaryGrid.RowHeaderIndexOffset = 1;
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow1);
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow2);
             this.superGridControlPingZheng.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlPingZheng.Size = new System.Drawing.Size(1090, 419);
             this.superGridControlPingZheng.Size = new System.Drawing.Size(897, 419);
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
+            this.superGridControlPingZheng.CellClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellClickEventArgs>(this.superGridControlPingZheng_CellClick);
             this.superGridControlPingZheng.EditorValueChanged += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridEditEventArgs>(this.superGridControlPingZheng_EditorValueChanged);
             this.superGridControlPingZheng.GridPreviewKeyDown += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridPreviewKeyDownEventArgs>(this.superGridControlPingZheng_GridPreviewKeyDown);
             this.superGridControlPingZheng.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlPingZheng_KeyDown);
-
             // 
             // gridColumnZhaiYao
             // 

@@ -1378,21 +1378,20 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel8);
             this.superTabControl1.Controls.Add(this.superTabControlPanel7);
-            this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel6);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel5);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
+            this.superTabControl1.Location = new System.Drawing.Point(0, 32);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 6;
-            this.superTabControl1.Size = new System.Drawing.Size(870, 494);
+            this.superTabControl1.Size = new System.Drawing.Size(870, 462);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 2;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -1416,7 +1415,7 @@
             this.superTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel8.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel8.Name = "superTabControlPanel8";
-            this.superTabControlPanel8.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel8.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel8.TabIndex = 0;
             this.superTabControlPanel8.TabItem = this.superTabItem1;
             // 
@@ -1430,7 +1429,7 @@
             this.expandablePanel2.HideControlsWhenCollapsed = true;
             this.expandablePanel2.Location = new System.Drawing.Point(0, 239);
             this.expandablePanel2.Name = "expandablePanel2";
-            this.expandablePanel2.Size = new System.Drawing.Size(745, 142);
+            this.expandablePanel2.Size = new System.Drawing.Size(745, 110);
             this.expandablePanel2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.expandablePanel2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.expandablePanel2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1460,7 +1459,7 @@
             // 
             // 
             this.superGridControlhandl.PrimaryGrid.ShowRowHeaders = false;
-            this.superGridControlhandl.Size = new System.Drawing.Size(745, 116);
+            this.superGridControlhandl.Size = new System.Drawing.Size(745, 84);
             this.superGridControlhandl.TabIndex = 4;
             this.superGridControlhandl.Text = "superGridControl2";
             this.superGridControlhandl.CellDoubleClick += new System.EventHandler<DevComponents.DotNetBar.SuperGrid.GridCellDoubleClickEventArgs>(this.superGridControlhandl_CellDoubleClick);
@@ -1538,7 +1537,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel8.Location = new System.Drawing.Point(745, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(125, 381);
+            this.panel8.Size = new System.Drawing.Size(125, 349);
             this.panel8.TabIndex = 16;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -1596,7 +1595,7 @@
             this.panel6.Controls.Add(this.button3);
             this.panel6.Controls.Add(this.button4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 381);
+            this.panel6.Location = new System.Drawing.Point(0, 349);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(870, 87);
             this.panel6.TabIndex = 15;
@@ -1670,7 +1669,7 @@
             this.superTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel5.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel5.Name = "superTabControlPanel5";
-            this.superTabControlPanel5.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel5.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel5.TabIndex = 0;
             this.superTabControlPanel5.TabItem = this.superTabItemFin;
             // 
@@ -1681,7 +1680,7 @@
             this.financialContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.financialContorlAllPannel.Location = new System.Drawing.Point(0, 0);
             this.financialContorlAllPannel.Name = "financialContorlAllPannel";
-            this.financialContorlAllPannel.Size = new System.Drawing.Size(745, 381);
+            this.financialContorlAllPannel.Size = new System.Drawing.Size(745, 349);
             this.financialContorlAllPannel.TabIndex = 9;
             // 
             // panelcaiwu
@@ -1793,7 +1792,7 @@
             this.financialContorlBottomPannel.Controls.Add(this.btnFinanceOtherIn);
             this.financialContorlBottomPannel.Controls.Add(this.btnFinanceAccount);
             this.financialContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.financialContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
+            this.financialContorlBottomPannel.Location = new System.Drawing.Point(0, 349);
             this.financialContorlBottomPannel.Name = "financialContorlBottomPannel";
             this.financialContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.financialContorlBottomPannel.TabIndex = 8;
@@ -1870,7 +1869,7 @@
             this.financialContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.financialContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.financialContorlRightPannel.Name = "financialContorlRightPannel";
-            this.financialContorlRightPannel.Size = new System.Drawing.Size(125, 468);
+            this.financialContorlRightPannel.Size = new System.Drawing.Size(125, 436);
             this.financialContorlRightPannel.TabIndex = 7;
             this.financialContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -2019,7 +2018,7 @@
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItemRe;
             // 
@@ -2032,7 +2031,7 @@
             this.maintainControlBottomPanel.Controls.Add(this.btnMaintainToday);
             this.maintainControlBottomPanel.Controls.Add(this.btnMaintainAll);
             this.maintainControlBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.maintainControlBottomPanel.Location = new System.Drawing.Point(0, 381);
+            this.maintainControlBottomPanel.Location = new System.Drawing.Point(0, 349);
             this.maintainControlBottomPanel.Name = "maintainControlBottomPanel";
             this.maintainControlBottomPanel.Size = new System.Drawing.Size(870, 87);
             this.maintainControlBottomPanel.TabIndex = 10;
@@ -2117,7 +2116,7 @@
             this.superTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel4.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel4.Name = "superTabControlPanel4";
-            this.superTabControlPanel4.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel4.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel4.TabIndex = 0;
             this.superTabControlPanel4.TabItem = this.superTabItemStock;
             // 
@@ -2128,7 +2127,7 @@
             this.storageControlAllPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.storageControlAllPanel.Location = new System.Drawing.Point(0, 0);
             this.storageControlAllPanel.Name = "storageControlAllPanel";
-            this.storageControlAllPanel.Size = new System.Drawing.Size(745, 381);
+            this.storageControlAllPanel.Size = new System.Drawing.Size(745, 349);
             this.storageControlAllPanel.TabIndex = 17;
             // 
             // panel12
@@ -2251,7 +2250,7 @@
             this.storageContorlBottomPannel.Controls.Add(this.btnWarehomeGoodsData);
             this.storageContorlBottomPannel.Controls.Add(this.btnWarehomeData);
             this.storageContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.storageContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
+            this.storageContorlBottomPannel.Location = new System.Drawing.Point(0, 349);
             this.storageContorlBottomPannel.Name = "storageContorlBottomPannel";
             this.storageContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.storageContorlBottomPannel.TabIndex = 17;
@@ -2310,7 +2309,7 @@
             this.storageContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.storageContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.storageContorlRightPannel.Name = "storageContorlRightPannel";
-            this.storageContorlRightPannel.Size = new System.Drawing.Size(125, 468);
+            this.storageContorlRightPannel.Size = new System.Drawing.Size(125, 436);
             this.storageContorlRightPannel.TabIndex = 15;
             this.storageContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -2428,7 +2427,7 @@
             this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel3.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel3.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel3.TabIndex = 0;
             this.superTabControlPanel3.TabItem = this.superTabItemOut;
             // 
@@ -2439,7 +2438,7 @@
             this.outContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outContorlAllPannel.Location = new System.Drawing.Point(0, 0);
             this.outContorlAllPannel.Name = "outContorlAllPannel";
-            this.outContorlAllPannel.Size = new System.Drawing.Size(745, 381);
+            this.outContorlAllPannel.Size = new System.Drawing.Size(745, 349);
             this.outContorlAllPannel.TabIndex = 16;
             // 
             // panelsales
@@ -2515,7 +2514,7 @@
             this.outContorlBottomPannel.Controls.Add(this.buttonMarketBusiness);
             this.outContorlBottomPannel.Controls.Add(this.buttonMarketClient);
             this.outContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.outContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
+            this.outContorlBottomPannel.Location = new System.Drawing.Point(0, 349);
             this.outContorlBottomPannel.Name = "outContorlBottomPannel";
             this.outContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.outContorlBottomPannel.TabIndex = 16;
@@ -2585,7 +2584,7 @@
             this.outContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.outContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.outContorlRightPannel.Name = "outContorlRightPannel";
-            this.outContorlRightPannel.Size = new System.Drawing.Size(125, 468);
+            this.outContorlRightPannel.Size = new System.Drawing.Size(125, 436);
             this.outContorlRightPannel.TabIndex = 14;
             this.outContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -2681,7 +2680,7 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItemIn;
             // 
@@ -2692,7 +2691,7 @@
             this.inContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inContorlAllPannel.Location = new System.Drawing.Point(0, 0);
             this.inContorlAllPannel.Name = "inContorlAllPannel";
-            this.inContorlAllPannel.Size = new System.Drawing.Size(745, 381);
+            this.inContorlAllPannel.Size = new System.Drawing.Size(745, 349);
             this.inContorlAllPannel.TabIndex = 14;
             // 
             // panelCaiGou
@@ -2768,7 +2767,7 @@
             this.inContorlBottomPannel.Controls.Add(this.buttonInDistributo);
             this.inContorlBottomPannel.Controls.Add(this.buttonInRegion);
             this.inContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.inContorlBottomPannel.Location = new System.Drawing.Point(0, 381);
+            this.inContorlBottomPannel.Location = new System.Drawing.Point(0, 349);
             this.inContorlBottomPannel.Name = "inContorlBottomPannel";
             this.inContorlBottomPannel.Size = new System.Drawing.Size(745, 87);
             this.inContorlBottomPannel.TabIndex = 14;
@@ -2837,7 +2836,7 @@
             this.inContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.inContorlRightPannel.Location = new System.Drawing.Point(745, 0);
             this.inContorlRightPannel.Name = "inContorlRightPannel";
-            this.inContorlRightPannel.Size = new System.Drawing.Size(125, 468);
+            this.inContorlRightPannel.Size = new System.Drawing.Size(125, 436);
             this.inContorlRightPannel.TabIndex = 12;
             this.inContorlRightPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -2900,7 +2899,7 @@
             this.superTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel6.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel6.Name = "superTabControlPanel6";
-            this.superTabControlPanel6.Size = new System.Drawing.Size(870, 468);
+            this.superTabControlPanel6.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel6.TabIndex = 0;
             this.superTabControlPanel6.TabItem = this.superTabItemSta;
             // 
@@ -2915,7 +2914,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(870, 468);
+            this.panel3.Size = new System.Drawing.Size(870, 436);
             this.panel3.TabIndex = 3;
             // 
             // circularProgressItem8
@@ -2986,7 +2985,7 @@
             this.superTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel7.Location = new System.Drawing.Point(0, 26);
             this.superTabControlPanel7.Name = "superTabControlPanel7";
-            this.superTabControlPanel7.Size = new System.Drawing.Size(870, 470);
+            this.superTabControlPanel7.Size = new System.Drawing.Size(870, 436);
             this.superTabControlPanel7.TabIndex = 0;
             this.superTabControlPanel7.TabItem = this.superTabItemSys;
             // 
@@ -3004,7 +3003,7 @@
             this.systemContorlAllPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.systemContorlAllPannel.Location = new System.Drawing.Point(0, 0);
             this.systemContorlAllPannel.Name = "systemContorlAllPannel";
-            this.systemContorlAllPannel.Size = new System.Drawing.Size(745, 383);
+            this.systemContorlAllPannel.Size = new System.Drawing.Size(745, 349);
             this.systemContorlAllPannel.TabIndex = 3;
             // 
             // pictureBox21
@@ -3191,7 +3190,7 @@
             this.systemContorlRightPannel.Controls.Add(this.button6);
             this.systemContorlRightPannel.Controls.Add(this.button7);
             this.systemContorlRightPannel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.systemContorlRightPannel.Location = new System.Drawing.Point(0, 383);
+            this.systemContorlRightPannel.Location = new System.Drawing.Point(0, 349);
             this.systemContorlRightPannel.Name = "systemContorlRightPannel";
             this.systemContorlRightPannel.Size = new System.Drawing.Size(745, 87);
             this.systemContorlRightPannel.TabIndex = 2;
@@ -3243,7 +3242,7 @@
             this.systemContorlBottomPannel.Dock = System.Windows.Forms.DockStyle.Right;
             this.systemContorlBottomPannel.Location = new System.Drawing.Point(745, 0);
             this.systemContorlBottomPannel.Name = "systemContorlBottomPannel";
-            this.systemContorlBottomPannel.Size = new System.Drawing.Size(125, 470);
+            this.systemContorlBottomPannel.Size = new System.Drawing.Size(125, 436);
             this.systemContorlBottomPannel.TabIndex = 1;
             this.systemContorlBottomPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.rightPanelBorder_Paint);
             // 
@@ -3415,7 +3414,7 @@
             this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.None;
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sideBar1.ExpandedPanel = this.sideBarPanelItemSto;
+            this.sideBar1.ExpandedPanel = this.sideBarPanelItemOut;
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
             this.sideBar1.Name = "sideBar1";
             this.sideBar1.Panels.AddRange(new DevComponents.DotNetBar.BaseItem[] {
