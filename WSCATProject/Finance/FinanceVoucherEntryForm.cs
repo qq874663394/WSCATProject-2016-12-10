@@ -1,5 +1,6 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using DevComponents.DotNetBar.SuperGrid.Style;
+using HelperUtility.Encrypt;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -274,60 +275,203 @@ namespace WSCATProject.Finance
 
         private void superGridControlPingZheng_EditorValueChanged(object sender, GridEditEventArgs e)
         {
-            _IndexRows = e.GridCell.RowIndex;
+            e.EditControl.EditorValue = _CellValue;
         }
         private void superGridControlPingZheng_GridPreviewKeyDown(object sender, GridPreviewKeyDownEventArgs e)
         {
-            Console.WriteLine(e.KeyValue);
-            GridColumn[] item1 = { gridColumn1, gridColumn2, gridColumn3, gridColumn4, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14, gridColumn15, gridColumn16 };   
+            _IndexRows = superGridControlPingZheng.PrimaryGrid.ActiveRow.Index;
+            GridColumn[] item1 = { gridColumn1, gridColumn2, gridColumn3, gridColumn4, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14, gridColumn15, gridColumn16, gridColumn17 };
+            GridColumn[] item2 = { gridColumn18, gridColumn19 };
             GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
-
-            object str = new System.Text.ASCIIEncoding().GetString(new byte[] { (byte)e.KeyValue }); //获取编辑状态下的最后一位值
-       
-            //删除
-            if (e.KeyValue==8)
+            SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
+            GridCell gc = null;
+            object str = "";
+            if (ge.Count <= 0)
             {
-                for (int i = item1.Length - 1; i >= 0; i--)
-                {
-                    gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];
-                    if ((i-1)>=0)
-                    {
-                        gr[item1[i]].Value = gr[item1[i - 1]].Value;
-                        gr[item1[i - 1]].Value = null;
-                    }
-                }
                 return;
             }
-            //左移长度限制
-            if (gr[item1[0]].Value != null)
+            gc = ge[0] as GridCell;
+
+            //MessageBox.Show(gc.ColumnIndex.ToString());
+            //if (true)
+            //{
+
+            //    return;
+            //}
+            #region 验证按键
+            switch (e.KeyCode)
             {
+                case Keys.Decimal:
+                case Keys.OemPeriod:
+                case Keys.ProcessKey:
+                    str = ".";
+                    break;
+                case Keys.NumPad0:
+                case Keys.D0:
+                    str = "0";
+                    break;
+                case Keys.NumPad1:
+                case Keys.D1:
+                    str = "1";
+                    break;
+                case Keys.NumPad2:
+                case Keys.D2:
+                    str = "2";
+                    break;
+                case Keys.NumPad3:
+                case Keys.D3:
+                    str = "3";
+                    break;
+                case Keys.NumPad4:
+                case Keys.D4:
+                    str = "4";
+                    break;
+                case Keys.NumPad5:
+                case Keys.D5:
+                    str = "5";
+                    break;
+                case Keys.NumPad6:
+                case Keys.D6:
+                    str = "6";
+                    break;
+                case Keys.NumPad7:
+                case Keys.D7:
+                    str = "7";
+                    break;
+                case Keys.NumPad8:
+                case Keys.D8:
+                    str = "8";
+                    break;
+                case Keys.NumPad9:
+                case Keys.D9:
+                    str = "9";
+                    break;
+                case Keys.Back:
+                case Keys.Delete:
+                    str = "\b";
+                    break;
+                default:
+                    str = null;
+                    break;
+            }
+            #endregion
+            if (str == null)
+            {
+                return;
+            }
+            if (gc.ColumnIndex >= 2 && gc.ColumnIndex <= 18)//借方左边
+            {
+                #region 左删除
+                if (e.KeyCode == Keys.ProcessKey)
+                {
+                    gr["gridColumn18"].SetActive();
+                    gr["gridColumn18"].IsSelected = true;
+                    gr["gridColumn17"].IsSelected = false;
+                    gr["gridColumn17"].Value = _CellValue;
+                    return;
+                }
+                //左删除
+                if (gr["gridColumn17"].IsActiveCell == true || gr["gridColumn17"].AllowSelection == true)//焦点在左边输入点
+                {
+                    if (str.Equals("\b"))//按键是退格键
+                    {
+                        for (int i = item1.Length - 1; i >= 0; i--)
+                        {
+                            gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];
+                            if ((i - 1) >= 0)
+                            {
+                                if (i == item1.Length - 1)
+                                {
+                                    gr["gridColumn17"].Value = gr["gridColumn16"].Value;
+                                }
+                                gr[item1[i]].Value = gr[item1[i - 1]].Value;
+                                gr[item1[i - 1]].Value = null;
+                                _CellValue = null;
+                            }
+                        }
+                        return;
+                    }
+                }
+                //左移动
+                if (gr["gridColumn1"].Value != null)
+                {
+                    return;
+                }
                 for (int i = 0; i < item1.Length - 1; i++)
                 {
-                    gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
-                    if (gr[item1[i + 1]].Value == null)
+                    gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取双击进去后处于编辑状态的行
+                    if ((i + 1) <= item1.Length - 1)//下一条数组不能大于总长度
                     {
-                        if ((i + 1) <= item1.Length - 1)//下一条数组不能大于总长度
+                        if (gr[item1[i + 1]].Value == null)//如果等于null 可以移动
                         {
                             gr[item1[i]].Value = gr[item1[i + 1]].Value;
                             gr[item1[i + 1]].Value = null;
                         }
+                        else
+                        {
+                            if (gr[item1[i + 1]].Value.ToString() == "" || gr[item1[i + 1]].Value.ToString() == ".")//如果等于空字符串  则赋值为null
+                            {
+                                gr[item1[i]].Value = null;
+                                gr[item1[i + 1]].Value = null;
+                            }
+                            else//如果不为null也不为空字符串  就正常移动
+                            {
+                                gr[item1[i]].Value = gr[item1[i + 1]].Value;
+                                gr[item1[i + 1]].Value = null;
+                            }
+                        }
                     }
                 }
-                MessageBox.Show("最大长度");
-                return;
-            }
-            //输入的时候左移
-            for (int i = 0;  i < item1.Length - 1; i++)
-            {
-                gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
-                if ((i + 1) <= item1.Length - 1)//下一条数组不能大于总长度
+                if (_CellValue != null)//如果全局变量不等于null就赋值给源单元格前一个单元格
                 {
-                    gr[item1[i]].Value = gr[item1[i + 1]].Value;
-                    gr[item1[i + 1]].Value = null;
+                    gr["gridColumn16"].Value = _CellValue;
                 }
+                #endregion
             }
-            gr["gridColumn16"].Value = _CellValue;
-            _CellValue = str;
+            else if (gc.ColumnIndex >= 19 && gc.ColumnIndex <= 20)//借方右边
+            {
+                if (gr["gridColumn18"].IsActiveCell == true || gr["gridColumn19"].AllowSelection == true)//焦点在左边输入点
+                {
+                    if (str.Equals("\b"))//按键是退格键
+                    {
+                        if (gr["gridColumn19"].Value != null)
+                        {
+                            gr["gridColumn19"].Value = null;
+                            return;
+                        }
+                        else
+                        {
+                            gr["gridColumn18"].Value = null;
+                            return;                                
+                        }
+                    }
+                }
+                #region MyRegion
+                gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取双击进去后处于编辑状态的行
+                //if (gr["gridColumn18"].Value != null)
+                //{
+                //    gr["gridColumn19"].Value = gr["gridColumn18"].Value;
+                //}
+                if (gr["gridColumn18"].Value == null)
+                {
+                    gr["gridColumn18"].Value = str;
+                }
+                else
+                {
+                    //gr["gridColumn19"].Value = gr["gridColumn18"].Value;
+                    gr["gridColumn19"].Value = str;
+                }
+                #endregion
+            }
+            else if (gc.ColumnIndex >= 21 && gc.ColumnIndex <= 37)//贷方左边
+            {
+
+            }
+            else if (gc.ColumnIndex >= 38 && gc.ColumnIndex <= 39)//贷方右边
+            {
+
+            }
+            _CellValue = str;//将获取的字符赋值给全局变量,用于下一次输入后把上一次输入的赋值给前一个单元格
         }
         /// <summary>
         /// 删除当前分录
@@ -360,13 +504,13 @@ namespace WSCATProject.Finance
         {
             try
             {
-                    SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
-                    GridCell gc = ge[0] as GridCell;
-                    if (gc.GridColumn.Name == "gridColumnSubject")
-                    {
-                        AccountingSubjectsForm accountSubject = new AccountingSubjectsForm();
-                        accountSubject.ShowDialog(this);
-                    }
+                SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
+                GridCell gc = ge[0] as GridCell;
+                if (gc.GridColumn.Name == "gridColumnSubject")
+                {
+                    AccountingSubjectsForm accountSubject = new AccountingSubjectsForm();
+                    accountSubject.ShowDialog(this);
+                }
             }
             catch (Exception)
             {
@@ -465,6 +609,12 @@ namespace WSCATProject.Finance
                     MessageBox.Show("科目无权使用或不存在！");
                 }
             }
+        }
+
+        private void superGridControlPingZheng_CellClick(object sender, GridCellClickEventArgs e)
+        {
+            //MessageBox.Show(_IndexRows.ToString());
+
         }
     }
 }

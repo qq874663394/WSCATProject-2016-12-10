@@ -212,3 +212,21 @@ E:\619项目\新建文件夹\InterfaceLayer\bin\Debug\UpdateManagerLayer.pdb
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.dll
 E:\619项目\新建文件夹\InterfaceLayer\obj\Debug\InterfaceLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\InterfaceLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\InterfaceLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\BaseLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\HelperUtility.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\LogicLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\Model.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\NPOI.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\UpdateManagerLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\BaseLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\HelperUtility.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\LogicLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\Model.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\DevComponents.DotNetBar2.xml
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\bin\Debug\UpdateManagerLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\obj\Debug\InterfaceLayer.csprojResolveAssemblyReference.cache
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\obj\Debug\InterfaceLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\InterfaceLayer\obj\Debug\InterfaceLayer.pdb

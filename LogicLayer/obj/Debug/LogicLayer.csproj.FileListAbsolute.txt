@@ -167,3 +167,17 @@ E:\619项目\新建文件夹\LogicLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.dll
 E:\619项目\新建文件夹\LogicLayer\obj\Debug\LogicLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\LogicLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\LogicLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\BaseLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\HelperUtility.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\Model.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\UpdateManagerLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\NPOI.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\BaseLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\HelperUtility.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\UpdateManagerLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\bin\Debug\Model.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\obj\Debug\LogicLayer.csprojResolveAssemblyReference.cache
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\obj\Debug\LogicLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\LogicLayer\obj\Debug\LogicLayer.pdb

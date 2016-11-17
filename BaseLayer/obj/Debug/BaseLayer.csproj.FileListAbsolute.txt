@@ -119,3 +119,13 @@ E:\619项目\新建文件夹\BaseLayer\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache
 E:\619项目\新建文件夹\BaseLayer\obj\Debug\BaseLayer.dll
 E:\619项目\新建文件夹\BaseLayer\obj\Debug\BaseLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\BaseLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\BaseLayer.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\HelperUtility.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\Model.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\NPOI.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\HelperUtility.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\bin\Debug\Model.pdb
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\obj\Debug\BaseLayer.csprojResolveAssemblyReference.cache
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\obj\Debug\BaseLayer.dll
+D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\BaseLayer\obj\Debug\BaseLayer.pdb
