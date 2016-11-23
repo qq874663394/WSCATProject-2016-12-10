@@ -50,5 +50,27 @@ namespace InterfaceLayer.Finance
         {
             return srl.GetNewCode();
         }
+
+        /// <summary>
+        /// 新增数据
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="modelDetail"></param>
+        /// <returns></returns>
+        public object AddOrUpdateToMainOrDetail(FinanceVoucherEntryMain model,
+            List<FinanceVoucherEntryDetail> modelDetail)
+        {
+            return srl.AddOrUpdateToMainOrDetail(model,modelDetail);
+        }
+
+        /// <summary>
+        /// 判断指定数据是否存在
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool Exists(string code)
+        {
+            return srl.Exists(code);
+        }
     }
 }
