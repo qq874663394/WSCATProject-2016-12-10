@@ -275,7 +275,7 @@ namespace WSCATProject.Finance
 
         private void superGridControlPingZheng_EditorValueChanged(object sender, GridEditEventArgs e)
         {
-            e.EditControl.EditorValue = _CellValue;
+            //e.EditControl.EditorValue = _CellValue;
         }
         private void superGridControlPingZheng_GridPreviewKeyDown(object sender, GridPreviewKeyDownEventArgs e)
         {
@@ -382,6 +382,10 @@ namespace WSCATProject.Finance
                             {
                                 if (i == item1.Length - 1)
                                 {
+                                //    if (superGridControlPingZheng.EditorCell//gr["gridColumn17"].EditControl.EditorValue==null)
+                                //    {
+                                //        gr["gridColumn17"].EditControl.EditorValue = gr["gridColumn16"].Value;
+                                //    }
                                     gr["gridColumn17"].Value = gr["gridColumn16"].Value;
                                 }
                                 gr[item1[i]].Value = gr[item1[i - 1]].Value;
@@ -424,6 +428,7 @@ namespace WSCATProject.Finance
                 }
                 if (_CellValue != null)//如果全局变量不等于null就赋值给源单元格前一个单元格
                 {
+                    gr["gridColumn17"].Value = str;
                     gr["gridColumn16"].Value = _CellValue;
                 }
                 #endregion
@@ -434,16 +439,7 @@ namespace WSCATProject.Finance
                 {
                     if (str.Equals("\b"))//按键是退格键
                     {
-                        if (gr["gridColumn19"].Value != null)
-                        {
-                            gr["gridColumn19"].Value = null;
-                            return;
-                        }
-                        else
-                        {
-                            gr["gridColumn18"].Value = null;
-                            return;                                
-                        }
+
                     }
                 }
                 #region MyRegion
@@ -458,7 +454,6 @@ namespace WSCATProject.Finance
                 }
                 else
                 {
-                    //gr["gridColumn19"].Value = gr["gridColumn18"].Value;
                     gr["gridColumn19"].Value = str;
                 }
                 #endregion

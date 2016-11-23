@@ -1011,7 +1011,7 @@
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow1);
             this.superGridControlPingZheng.PrimaryGrid.Rows.Add(this.gridRow2);
             this.superGridControlPingZheng.PrimaryGrid.ShowInsertRow = true;
-            this.superGridControlPingZheng.Size = new System.Drawing.Size(897, 419);
+            this.superGridControlPingZheng.Size = new System.Drawing.Size(1055, 419);
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
@@ -1264,6 +1264,7 @@
             borderColor36.Right = System.Drawing.Color.Red;
             this.gridColumn17.HeaderStyles.Default.BorderColor = borderColor36;
             this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.ReadOnly = true;
             this.gridColumn17.Width = 10;
             // 
             // gridColumn18

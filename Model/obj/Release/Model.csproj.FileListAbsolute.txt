@@ -1,7 +1,3 @@
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Release\Model.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Release\Model.pdb
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Release\Model.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Release\Model.pdb
 E:\619项目\新建文件夹\Model\bin\Release\Model.dll
 E:\619项目\新建文件夹\Model\bin\Release\Model.pdb
 E:\619项目\新建文件夹\Model\obj\Release\Model.dll
