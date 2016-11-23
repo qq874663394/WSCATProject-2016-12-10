@@ -1,6 +1,7 @@
 ﻿using DevComponents.DotNetBar.SuperGrid;
 using DevComponents.DotNetBar.SuperGrid.Style;
 using HelperUtility.Encrypt;
+using InterfaceLayer.Finance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,8 +26,10 @@ namespace WSCATProject.Finance
 
         private object _cellValue;
         private int _indexRows;
+        private string code;
         public object _CellValue { get; set; }
         public int _IndexRows { get; set; }
+        FinanceVoucherEntryInterface fve = new FinanceVoucherEntryInterface();
 
         #region 设置窗体无边框可以拖动
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -227,6 +230,39 @@ namespace WSCATProject.Finance
             #endregion
 
             #endregion
+            #region 凭证管理修改按钮跳转
+            FinanceVoucherManagementForm financeVoucherManagementForm = new FinanceVoucherManagementForm();
+            //判断是否存在updatecode
+            if (!string.IsNullOrWhiteSpace(FinanceVoucherManagementForm.Updatecode))
+            {
+                if (FinanceVoucherManagementForm.type == 1)
+                {
+                    toolStripBtnShenHe.Visible = true;
+                }
+                else
+
+                {
+                    toolStripBtnShenHe.Visible = false;
+                }
+                FinanceVoucherManagementInterface fvmi = new FinanceVoucherManagementInterface();
+                DataTable dt = new DataTable();
+                try
+                {
+                    dt = fvmi.GetUpdateData(FinanceVoucherManagementForm.Updatecode);
+                    //文本框赋值
+                    this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][2].ToString());
+                    this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][3].ToString());
+                    this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][4].ToString());
+                    this.dateTimePicker1.Value = DateTime.Parse(dt.Rows[0][1].ToString());
+                    this.lblcode.Text = dt.Rows[0][0].ToString();
+                    InitSupergridView(dt);
+                }
+                catch
+                {
+                    //获取数据失败
+                }
+            }
+            #endregion
 
         }
 
@@ -279,7 +315,7 @@ namespace WSCATProject.Finance
         }
         private void superGridControlPingZheng_GridPreviewKeyDown(object sender, GridPreviewKeyDownEventArgs e)
         {
-            _IndexRows = superGridControlPingZheng.PrimaryGrid.ActiveRow.Index;
+            //_IndexRows = superGridControlPingZheng.PrimaryGrid.ActiveRow.Index;
             GridColumn[] item1 = { gridColumn1, gridColumn2, gridColumn3, gridColumn4, gridColumn5, gridColumn6, gridColumn7, gridColumn8, gridColumn9, gridColumn10, gridColumn11, gridColumn12, gridColumn13, gridColumn14, gridColumn15, gridColumn16, gridColumn17 };
             GridColumn[] item2 = { gridColumn18, gridColumn19 };
             GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取
@@ -442,23 +478,18 @@ namespace WSCATProject.Finance
                         else
                         {
                             gr["gridColumn18"].Value = null;
-                            return;                                
+                            return;
                         }
                     }
                 }
-                #region MyRegion
+                #region 小数输入右移
                 gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[_IndexRows];   //获取双击进去后处于编辑状态的行
-                //if (gr["gridColumn18"].Value != null)
-                //{
-                //    gr["gridColumn19"].Value = gr["gridColumn18"].Value;
-                //}
                 if (gr["gridColumn18"].Value == null)
                 {
                     gr["gridColumn18"].Value = str;
                 }
                 else
                 {
-                    //gr["gridColumn19"].Value = gr["gridColumn18"].Value;
                     gr["gridColumn19"].Value = str;
                 }
                 #endregion
@@ -527,61 +558,55 @@ namespace WSCATProject.Finance
         private void FinanceVoucherEntryForm_KeyDown(object sender, KeyEventArgs e)
         {
             //上一站凭证
-            if (e.KeyCode == Keys.B)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.B)
             {
                 MessageBox.Show("上一站凭证！");
                 return;
             }
             //下一张凭证
-            if (e.KeyCode == Keys.A)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.A)
             {
                 MessageBox.Show("下一张凭证！");
                 return;
             }
             //新增凭证
-            if (e.KeyCode == Keys.N)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.N)
             {
                 MessageBox.Show("新增凭证！");
                 return;
             }
             //保存凭证
-            if (e.KeyCode == Keys.S)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.S)
             {
                 MessageBox.Show("保存凭证！");
                 return;
             }
             //打印凭证
-            if (e.KeyCode == Keys.P)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.P)
             {
                 MessageBox.Show("保存凭证！");
                 return;
             }
-            //取消所做的更改
-            if (e.KeyCode == Keys.Z)
-            {
-                toolStripBtnHuanYuan_Click(sender, e);
-                return;
-            }
             //插入一条分录
-            if (e.KeyCode == Keys.I)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.I)
             {
                 InitDataGridView();
                 return;
             }
             //删除一条分录
-            if (e.KeyCode == Keys.D)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.D)
             {
                 toolStripBtnShangChu_Click(sender, e);
                 return;
             }
             //查看代码
-            if (e.KeyCode == Keys.F7)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.F7)
             {
                 LookDaiMa();
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X)
+            if (e.Modifiers.CompareTo(Keys.Control) == 0 && e.KeyCode == Keys.X)
             {
                 this.Close();
                 this.Dispose();
@@ -615,6 +640,172 @@ namespace WSCATProject.Finance
         {
             //MessageBox.Show(_IndexRows.ToString());
 
+        }
+        /// <summary>
+        /// supergrid数据填充
+        /// </summary>
+        /// <param name="dt"></param>
+        public void InitSupergridView(DataTable dt)
+        {
+            //清空行
+            superGridControlPingZheng.PrimaryGrid.Rows.Clear();
+            //新增统计行
+            InitDataGridView();
+            GridColumn[] item1 = { gridColumn17, gridColumn16, gridColumn15, gridColumn14, gridColumn13, gridColumn12, gridColumn11, gridColumn10, gridColumn9, gridColumn8, gridColumn7, gridColumn6, gridColumn5, gridColumn4, gridColumn3, gridColumn2, gridColumn1 };
+            GridColumn[] item2 = { gridColumn36, gridColumn35, gridColumn34, gridColumn33, gridColumn32, gridColumn31, gridColumn30, gridColumn29, gridColumn28, gridColumn27, gridColumn26, gridColumn25, gridColumn24, gridColumn23, gridColumn22, gridColumn21, gridColumn20 };
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+
+                if (i > 0)
+                {
+                    //新增行
+                    superGridControlPingZheng.PrimaryGrid.NewRow(superGridControlPingZheng.PrimaryGrid.Rows.Count);
+                }
+                GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[i];   //获取
+                gr["gridColumnZhaiYao"].Value = XYEEncoding.strHexDecode(dt.Rows[0][7].ToString());
+                gr["gridColumnSubject"].Value = XYEEncoding.strHexDecode(dt.Rows[0][8].ToString());
+                string de = dt.Rows[i][9].ToString();
+                int first1 = de.IndexOf(".", 0); //截取小数点位置的索引
+                //借方金额
+                for (int n = 0; n < first1; n++)
+                {
+                    gr[item1[n]].Value = de.Substring(first1 - n - 1, 1);
+                }
+                gr["gridColumn18"].Value = de.Substring(first1 + 1, 1);
+                gr["gridColumn19"].Value = de.Substring(first1 + 2, 1);
+                string cre = dt.Rows[i][10].ToString();
+                int first2 = cre.IndexOf(".", 0); //截取小数点位置的索引
+                //贷方金额
+                for (int n = 0; n < first2; n++)
+                {
+                    gr[item2[n]].Value = cre.Substring(first2 - n - 1, 1);
+                }
+                gr["gridColumn37"].Value = cre.Substring(first2 + 1, 1);
+                gr["gridColumn38"].Value = cre.Substring(first2 + 2, 1);
+            }
+        }
+        /// <summary>
+        /// 上一单按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnQianDan_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                //判断是否code是否存在
+                if (string.IsNullOrWhiteSpace(this.lblcode.Text))
+                {
+                    code = fve.GetNewCode();
+                    dt = fve.GetFLastDetail(code);
+                }
+                else
+                {
+                    code = this.lblcode.Text;
+                    dt = fve.GetLastDetail(code);
+                    toolStripBtnHouDan.Enabled = true;
+                }
+
+                //文本框赋值
+                this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][2].ToString());
+                this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][3].ToString());
+                this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][4].ToString());
+                this.dateTimePicker1.Value = DateTime.Parse(dt.Rows[0][1].ToString());
+                this.lblcode.Text = dt.Rows[0][0].ToString();
+                InitSupergridView(dt);
+                //判断是否到上限
+                string lcode = dt.Rows[0][0].ToString();
+                dt = fve.GetLastDetail(lcode);
+                if (dt.Rows.Count == 0)
+                {
+                    toolStripBtnQianDan.Enabled = false; //上一单没有数据
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2106-尝试点击后单数据错误" + ex.Message, "财务凭证条目单温馨提示");
+            }
+        }
+        /// <summary>
+        /// 保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 下一单按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnHouDan_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                code = this.lblcode.Text;
+                dt = fve.GetNextDetail(code);
+                //文本框赋值
+                this.ltxtbMakeMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][2].ToString());
+                this.ltxtbShengHeMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][3].ToString());
+                this.ltxtbSalsMan.Text = XYEEncoding.strHexDecode(dt.Rows[0][4].ToString());
+                this.dateTimePicker1.Value = DateTime.Parse(dt.Rows[0][1].ToString());
+                this.lblcode.Text = dt.Rows[0][0].ToString();
+                InitSupergridView(dt);
+                //判断是否到上限
+                string lcode = dt.Rows[0][0].ToString();
+                dt = fve.GetNextDetail(lcode);
+                toolStripBtnQianDan.Enabled = true;
+                if (dt.Rows.Count == 0)
+                {
+                    toolStripBtnHouDan.Enabled = false; //上一单没有数据
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("错误代码：2106-尝试点击后单数据错误" + ex.Message, "财务凭证条目单温馨提示");
+            }
+        }
+        /// <summary>
+        /// 新增凭证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripBtnInsert_Click(object sender, EventArgs e)
+        {
+            //清空现有的文本数据
+            //清空行
+            superGridControlPingZheng.PrimaryGrid.Rows.Clear();
+            //新增统计行
+            InitDataGridView();
+            this.lblcode.Text = null;
+            this.ltxtbMakeMan.Text = null;
+            this.ltxtbShengHeMan.Text = null;
+            this.ltxtbSalsMan.Text = null;
+            this.dateTimePicker1.Value = DateTime.Now;
+            //下页变成不可点击
+            this.toolStripBtnHouDan.Enabled = false;
+            //上页变成可点击
+            this.toolStripBtnQianDan.Enabled = true;
+        }
+
+        private void superGridControlPingZheng_DoubleClick(object sender, EventArgs e)
+        {
+            SelectedElementCollection ge = superGridControlPingZheng.PrimaryGrid.GetSelectedCells();
+            GridCell gc = null;
+            object str = "";
+            if (ge.Count <= 0)
+            {
+                return;
+            }
+            gc = ge[0] as GridCell;
+            if (gc.ColumnIndex == 0)
+            {
+                MessageBox.Show("123");
+            }
         }
     }
 }

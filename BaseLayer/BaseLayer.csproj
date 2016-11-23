@@ -50,6 +50,7 @@
     <Compile Include="Base\BankAccountBase.cs" />
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Base\EmpolyeeBase.cs" />
+    <Compile Include="Finance\FinanceVoucherEntryBase.cs" />
     <Compile Include="Base\MaterialBase.cs" />
     <Compile Include="Base\OrderTypeBase.cs" />
     <Compile Include="Base\ProjectCostBase.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Finance\FinancePaymentBase.cs" />
     <Compile Include="Finance\FinanceVerificationDetailBase.cs" />
     <Compile Include="Finance\FinanceVerificationMainBase.cs" />
+    <Compile Include="Finance\FinanceVoucherManagementBase.cs" />
     <Compile Include="LogBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase\FinanceCollectionBase.cs" />

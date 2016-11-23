@@ -514,10 +514,10 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5201-其他付款单初始化加载数据错误！"+ex.Message,"其他付款单温馨提示:");
+                MessageBox.Show("错误代码：5201-其他付款单初始化加载数据错误！" + ex.Message, "其他付款单温馨提示:");
                 this.Close();
             }
-            
+
         }
 
         /// <summary>
@@ -754,25 +754,25 @@ namespace WSCATProject.Finance
         private void FinanceOtherPaymentForm_KeyDown(object sender, KeyEventArgs e)
         {
             //前单
-            if (e.KeyCode == Keys.B  )
+            if (e.KeyCode == Keys.B)
             {
                 MessageBox.Show("前单");
                 return;
             }
             //后单
-            if (e.KeyCode == Keys.A  )
+            if (e.KeyCode == Keys.A)
             {
                 MessageBox.Show("后单");
                 return;
             }
             //新增
-            if (e.KeyCode == Keys.N  )
+            if (e.KeyCode == Keys.N)
             {
                 MessageBox.Show("新增");
                 return;
             }
             //保存
-            if (e.KeyCode == Keys.S  )
+            if (e.KeyCode == Keys.S)
             {
                 Save();
                 return;
@@ -788,19 +788,19 @@ namespace WSCATProject.Finance
                 return;
             }
             //打印
-            if (e.KeyCode == Keys.P  )
+            if (e.KeyCode == Keys.P)
             {
                 MessageBox.Show("打印");
                 return;
             }
             //导出Excel
-            if (e.KeyCode == Keys.T  )
+            if (e.KeyCode == Keys.T)
             {
                 MessageBox.Show("导出Excel");
                 return;
             }
             //关闭
-            if (e.KeyCode == Keys.X  )
+            if (e.KeyCode == Keys.X)
             {
                 this.Close();
                 this.Dispose();
@@ -1037,7 +1037,7 @@ namespace WSCATProject.Finance
             object financePaymentResult = financeOtherExpensesoutinter.AddOrUpdateToMainOrDetail(financeOtherExpensesOut, financeOtherExpenseOutDetailList);
             if (financePaymentResult != null)
             {
-               
+
                 pictureBoxshenghe.Parent = pictureBoxtitle;
                 InitForm();
                 MessageBox.Show("保存和审核其它付款单数据成功", "其它付款单温馨提示");
@@ -1076,7 +1076,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5217-第一个显示数据错误或数据加载错误！"+ex.Message,"其他付款单温馨提示:");
+                MessageBox.Show("错误代码：5217-第一个显示数据错误或数据加载错误！" + ex.Message, "其他付款单温馨提示:");
             }
 
         }
@@ -1121,7 +1121,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5212-逐行统计数据总数数据错误！"+ex.Message,"其他付款单温馨提示:");
+                MessageBox.Show("错误代码：5212-逐行统计数据总数数据错误！" + ex.Message, "其他付款单温馨提示:");
             }
 
         }
@@ -1181,7 +1181,7 @@ namespace WSCATProject.Finance
             }
             return _financeOtherPaymentCode;
         }
-        
+
         #region 模糊查询
         /// <summary>
         /// 供应商的模糊查询
@@ -1361,7 +1361,7 @@ namespace WSCATProject.Finance
             }
             catch (Exception ex)
             {
-                MessageBox.Show("错误代码：5216-模糊查询收款员数据失败！" + ex.Message,"其他付款单温馨提示:");
+                MessageBox.Show("错误代码：5216-模糊查询收款员数据失败！" + ex.Message, "其他付款单温馨提示:");
             }
         }
 

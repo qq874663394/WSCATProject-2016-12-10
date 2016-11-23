@@ -294,6 +294,41 @@ namespace BaseLayer
             }
         }
         /// <summary>
+        /// 执行带一个带参数的存储过程。
+        /// </summary>
+        /// <param name="SQLString">存储过程</param>
+        /// <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
+        /// <returns>影响的记录数</returns>
+        public static int ExecuteSqlPar(string proc, string code)
+        {
+            using (SqlConnection connection = Conn)
+            {
+                SqlCommand cmd = new SqlCommand(proc, connection);//调用存储过程
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter prar = new SqlParameter();//传递参数
+                cmd.Parameters.AddWithValue("@code",code);
+                cmd.Parameters.Add("@RETURN_VALUE", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;//获取存储过程的返回值
+                cmd.ExecuteNonQuery();
+                string value = cmd.Parameters["@RETURN_VALUE"].Value.ToString();//把返回值赋值给value
+                cmd.Dispose();
+                connection.Close();
+                if (value == "1")
+
+                {
+                    //删除成功
+                    return 1;
+                }
+
+                else
+
+                {
+                    //删除失败
+                    return 0;
+                }
+
+            }
+        }
+        /// <summary>
         /// 向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
         /// </summary>
         /// <param name="strSQL">SQL语句</param>
@@ -507,7 +542,7 @@ namespace BaseLayer
         /// <param name="sqlstr">对某表插入多条数据的sql</param>
         /// <param name="paraList">插入多条数据的sql的参数集合</param>
         /// <param name="isState">是否新增</param>
-        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr,List<SqlParameter[]> paraList)
+        public static object ExecuteSqlTranScalar(Hashtable SQLStringList, string sqlstr, List<SqlParameter[]> paraList)
         {
             object val1 = null;
             object val2 = null;

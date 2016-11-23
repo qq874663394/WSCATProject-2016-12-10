@@ -73,6 +73,7 @@
             this.gridColumnXuHao = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnSystemModel = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.gridColumnFirmDescrible = new DevComponents.DotNetBar.SuperGrid.GridColumn();
+            this.gridColumn1 = new DevComponents.DotNetBar.SuperGrid.GridColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
@@ -205,6 +206,7 @@
             this.toolStripBtnInsert.Text = "新增(&W)";
             this.toolStripBtnInsert.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnInsert.ToolTipText = "新增凭证";
+            this.toolStripBtnInsert.Click += new System.EventHandler(this.toolStripBtnInsert_Click);
             // 
             // toolStripBtnSave
             // 
@@ -227,6 +229,7 @@
             this.toolStripBtnHuanYuan.Text = "修改(&U)";
             this.toolStripBtnHuanYuan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnHuanYuan.ToolTipText = "修改凭证";
+            this.toolStripBtnHuanYuan.Click += new System.EventHandler(this.toolStripBtnHuanYuan_Click);
             // 
             // toolStripBtnShangChu
             // 
@@ -238,6 +241,7 @@
             this.toolStripBtnShangChu.Text = "删除(&D)";
             this.toolStripBtnShangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnShangChu.ToolTipText = "删除单张凭证";
+            this.toolStripBtnShangChu.Click += new System.EventHandler(this.toolStripBtnShangChu_Click);
             // 
             // toolStripBtnWaiBi
             // 
@@ -249,6 +253,7 @@
             this.toolStripBtnWaiBi.Text = "审核(&E)";
             this.toolStripBtnWaiBi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBtnWaiBi.ToolTipText = "审核凭证";
+            this.toolStripBtnWaiBi.Click += new System.EventHandler(this.toolStripBtnWaiBi_Click);
             // 
             // toolStripBtnDaiMa
             // 
@@ -353,13 +358,14 @@
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumnXuHao);
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumnSystemModel);
             this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumnFirmDescrible);
+            this.superGridControlPingZheng.PrimaryGrid.Columns.Add(this.gridColumn1);
             this.superGridControlPingZheng.PrimaryGrid.FrozenColumnCount = 6;
             this.superGridControlPingZheng.PrimaryGrid.SelectionGranularity = DevComponents.DotNetBar.SuperGrid.SelectionGranularity.Row;
-            this.superGridControlPingZheng.PrimaryGrid.ShowInsertRow = true;
             this.superGridControlPingZheng.Size = new System.Drawing.Size(1186, 531);
             this.superGridControlPingZheng.TabIndex = 2;
             this.superGridControlPingZheng.TabSelection = DevComponents.DotNetBar.SuperGrid.TabSelection.CellSameRow;
             this.superGridControlPingZheng.Text = "superGridControl1";
+            this.superGridControlPingZheng.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superGridControlPingZheng_KeyDown);
             // 
             // gridColumnShengHe
             // 
@@ -504,6 +510,11 @@
             this.gridColumnFirmDescrible.Name = "gridColumnFirmDescrible";
             this.gridColumnFirmDescrible.Width = 80;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Name = "gridColumnCode";
+            this.gridColumn1.Visible = false;
+            // 
             // FinanceVoucherManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -517,6 +528,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "凭证管理";
             this.Load += new System.EventHandler(this.FinanceVoucherManagementForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FinanceVoucherManagementForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FinanceVoucherManagementForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
@@ -576,5 +588,6 @@
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnSystemModel;
         private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumnFirmDescrible;
         private System.Windows.Forms.ToolTip toolTip1;
+        private DevComponents.DotNetBar.SuperGrid.GridColumn gridColumn1;
     }
 }

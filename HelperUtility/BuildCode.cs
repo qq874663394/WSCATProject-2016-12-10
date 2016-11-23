@@ -34,6 +34,5 @@ namespace HelperUtility
             code = module + "-" + userid + "-" + datetime;
             return code;
         }
-
     }
 }
