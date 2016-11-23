@@ -16,6 +16,7 @@ namespace Model.Finance
         private string _posting;
         private string _makeman;
         private int? _examinestate;
+        private int? _isclear = 1;
         /// <summary>
         /// 
         /// </summary>
@@ -72,7 +73,14 @@ namespace Model.Finance
             set { _examinestate = value; }
             get { return _examinestate; }
         }
-
+        /// <summary>
+        /// 是否删除 0为已删除1为未删除
+        /// </summary>
+        public int? isClear
+        {
+            set { _isclear = value; }
+            get { return _isclear; }
+        }
         #endregion Model
     }
 }

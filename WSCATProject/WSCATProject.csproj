@@ -503,7 +503,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Finance\XMLFile1.xml" />
     <Content Include="bin\XML\XMLSummary.xml" />
     <None Include="Resources\5.png" />
     <Content Include="Resources\add.PNG" />
