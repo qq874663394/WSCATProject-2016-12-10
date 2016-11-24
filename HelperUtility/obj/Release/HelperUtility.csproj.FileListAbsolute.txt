@@ -1,5 +1,0 @@
-E:\619项目\新建文件夹\HelperUtility\bin\Release\HelperUtility.dll
-E:\619项目\新建文件夹\HelperUtility\bin\Release\HelperUtility.pdb
-E:\619项目\新建文件夹\HelperUtility\bin\Release\NPOI.dll
-E:\619项目\新建文件夹\HelperUtility\obj\Release\HelperUtility.dll
-E:\619项目\新建文件夹\HelperUtility\obj\Release\HelperUtility.pdb

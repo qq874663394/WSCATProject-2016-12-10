@@ -1,3 +1,0 @@
-E:\619项目\新建文件夹\InterfaceLayer\obj\Release\InterfaceLayer.csprojResolveAssemblyReference.cache
-E:\619项目\新建文件夹\InterfaceLayer\obj\Release\InterfaceLayer.dll
-E:\619项目\新建文件夹\InterfaceLayer\obj\Release\InterfaceLayer.pdb

@@ -55,12 +55,12 @@ E:\619项目\新建文件夹\Model\bin\Debug\Model.pdb
 E:\619项目\新建文件夹\Model\obj\Debug\Model.dll
 E:\619项目\新建文件夹\Model\obj\Debug\Model.pdb
 E:\619项目\新建文件夹\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Debug\Model.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Debug\Model.pdb
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.dll
-D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.pdb
 D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\Model\bin\Debug\Model.dll
 D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\Model\bin\Debug\Model.pdb
 D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\Model\obj\Debug\Model.dll
 D:\用户目录\Documents\Tencent Files\1059107080\FileRecv\WSCATProject1.0\Model\obj\Debug\Model.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Debug\Model.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\bin\Debug\Model.pdb
+D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.dll
+D:\项目\2016年8月29日周一拉取的\WSCATProject\Model\obj\Debug\Model.pdb

@@ -1,4 +1,0 @@
-E:\619项目\新建文件夹\Model\bin\Release\Model.dll
-E:\619项目\新建文件夹\Model\bin\Release\Model.pdb
-E:\619项目\新建文件夹\Model\obj\Release\Model.dll
-E:\619项目\新建文件夹\Model\obj\Release\Model.pdb

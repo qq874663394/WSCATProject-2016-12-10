@@ -1,3 +1,0 @@
-E:\619项目\新建文件夹\LogicLayer\obj\Release\LogicLayer.csprojResolveAssemblyReference.cache
-E:\619项目\新建文件夹\LogicLayer\obj\Release\LogicLayer.dll
-E:\619项目\新建文件夹\LogicLayer\obj\Release\LogicLayer.pdb

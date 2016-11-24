@@ -18,18 +18,6 @@ namespace LogicLayer.Finance
         private readonly FinanceVoucherEntryBase _dal = new FinanceVoucherEntryBase();
         private readonly FinanceUpdataManager _updateDal = new FinanceUpdataManager();
         private readonly LogBase _logDal = new LogBase();
-        private Log logModel = new Log()
-        {
-            code = BuildCode.ModuleCode("log"),
-            operationCode = "操作人code",
-            operationName = "操作人名"
-            //,
-            //objective = "",
-            //operationContent = "",
-            //operationTable = "",
-            //operationTime = "",
-            //result = 0;
-        };
         /// <summary>
         /// 上一单
         /// </summary>
@@ -37,25 +25,26 @@ namespace LogicLayer.Finance
         /// <returns></returns>
         public DataTable GetLastDetail(string code)
         {
-            logModel.objective = "上一单数据查询";
-            logModel.operationContent = "";
-            logModel.operationTable = "T_FinanceVoucherEntry";
-            logModel.operationTime = DateTime.Now;
-            logModel.result = 0;
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                objective = "获取上一单数据",
+                operationContent = "查询T_FinanceVoucherEntry数据,条件:code=" + code,
+                operationTable = "T_FinanceVoucherEntry",
+                operationTime = DateTime.Now,
+                result = 0
+            };
             DataTable dt = null;
             try
             {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
                 dt = _dal.GetLastDetail(code);
-                if (dt.Rows.Count<=0)
-                {
-                    //失败
-                    throw new Exception("-3");
-                }
-                else
-                {
-                    //成功
-                    logModel.result = 1;
-                }
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
@@ -75,38 +64,34 @@ namespace LogicLayer.Finance
         /// <returns></returns>
         public DataTable GetFLastDetail(string code)
         {
-            FinanceVoucherEntryBase _dal = new FinanceVoucherEntryBase();
-            FinanceVoucherEntryMain main = new FinanceVoucherEntryMain()
+            Log logModel = new Log()
             {
-                code = BuildCode.ModuleCode("financeVoucherEntry"),
-                date = DateTime.Now,
-                examine = "审核人",
-                makeMan = "制单人",
-                posting = "过账人"
-            };
-            FinanceVoucherEntryDetail detail = new Model.Finance.FinanceVoucherEntryDetail()
-            {
-                code = BuildCode.ModuleCode("financeVoucherEntry"),
-                mainCode = main.code,
-                creditAmount = 0,
-                debitAmount = 0,
-                subject = "科目",
-                summary = "摘要"
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                objective = "获取上一单数据",
+                operationContent = "code=" + code,
+                operationTable = "T_FinanceVoucherEntry",
+                operationTime = DateTime.Now,
+                result = 0
             };
             DataTable dt = null;
             try
             {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
                 dt = _dal.GetFLastDetail(code);
-                //main.examineState = 
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                //model.result = 0;
                 throw ex;
             }
             finally
             {
-                //lb.Add(model);
+                _logDal.Add(logModel);
             }
             return dt;
         }
@@ -118,38 +103,34 @@ namespace LogicLayer.Finance
         /// <returns></returns>
         public DataTable GetNextDetail(string code)
         {
-            FinanceVoucherEntryBase _dal = new FinanceVoucherEntryBase();
-            FinanceVoucherEntryMain main = new FinanceVoucherEntryMain()
+            Log logModel = new Log()
             {
-                code = BuildCode.ModuleCode("financeVoucherEntry"),
-                date = DateTime.Now,
-                examine = "审核人",
-                makeMan = "制单人",
-                posting = "过账人"
-            };
-            FinanceVoucherEntryDetail detail = new Model.Finance.FinanceVoucherEntryDetail()
-            {
-                code = BuildCode.ModuleCode("financeVoucherEntry"),
-                mainCode = main.code,
-                creditAmount = 0,
-                debitAmount = 0,
-                subject = "科目",
-                summary = "摘要"
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                objective = "获取下一单数据",
+                operationContent = "code=" + code,
+                operationTable = "T_FinanceVoucherEntry",
+                operationTime = DateTime.Now,
+                result = 0
             };
             DataTable dt = null;
             try
             {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
                 dt = _dal.GetNextDetail(code);
-                //main.examineState = 
+                logModel.result = 1;
             }
             catch (Exception ex)
             {
-                //model.result = 0;
                 throw ex;
             }
             finally
             {
-                //lb.Add(model);
+                _logDal.Add(logModel);
             }
             return dt;
         }
@@ -160,32 +141,73 @@ namespace LogicLayer.Finance
         /// <returns></returns>
         public string GetNewCode()
         {
-            FinanceVoucherEntryBase _dal = new FinanceVoucherEntryBase();
-            return _dal.GetNewCode();
+            string code = "";
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                objective = "获取最新一条数据",
+                operationContent = "",
+                operationTable = "T_FinanceVoucherEntry",
+                operationTime = DateTime.Now,
+                result = 0
+            };
+            try
+            {
+                code = _dal.GetNewCode();
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-3");
+                }
+                else
+                {
+                    logModel.result = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _logDal.Add(logModel);
+            }
+            return code;
         }
+
         /// <summary>
         /// 新增数据
         /// </summary>
         /// <param name="model"></param>
         /// <param name="modelDetail"></param>
         /// <returns></returns>
-        public object AddToMainOrDetail(FinanceVoucherEntryMain model, List<FinanceVoucherEntryDetail> modelDetail)
+        public object AddOrUpdateToMainOrDetail(FinanceVoucherEntryMain model,
+            List<FinanceVoucherEntryDetail> modelDetail)
         {
             object result = null;
-            logModel.operationTime = DateTime.Now;
-            logModel.operationTable = "T_FinanceVoucherEntryMain/T_FinanceVoucherEntryDetail";
-            logModel.objective = "凭证录入";
-            logModel.operationContent = "操作内容";
-            logModel.result = 0;
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                operationTime = DateTime.Now,
+                operationTable = "T_FinanceVoucherEntryMain/T_FinanceVoucherEntryDetail",
+                objective = "凭证录入",
+                operationContent = "操作内容",
+                result = 0
+            };
+            result = 0;
             try
             {
-                if (_dal.Exists(model.code))
+                if (_dal.Exists(model.code))    //如果存在这个主表code   就修改
                 {
                     //存在,则修改
-                    result = _dal.AddToMainOrDetail(model, modelDetail);
+                    result = _dal.UpdateToMainOrDetail(model, modelDetail);
                     if (result == null)
                     {
                         //失败
+                        throw new Exception("-3");
                     }
                     else
                     {
@@ -201,6 +223,7 @@ namespace LogicLayer.Finance
                     if (result == null)
                     {
                         //失败
+                        throw new Exception("-3");
                     }
                     else
                     {
@@ -221,63 +244,44 @@ namespace LogicLayer.Finance
                 _logDal.Add(logModel);
             }
         }
+
         /// <summary>
-        /// 新增数据
+        /// 判断指定数据是否存在
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="modelDetail"></param>
+        /// <param name="code"></param>
         /// <returns></returns>
-        //public object AddToMainOrDetail(FinanceVoucherEntryMain model, List<FinanceVoucherEntryDetail> modelDetail)
-        //{
-        //    object result = null;
-        //    logModel.operationTime = DateTime.Now;
-        //    logModel.operationTable = "T_FinanceVoucherEntryMain/T_FinanceVoucherEntryDetail";
-        //    logModel.objective = "凭证录入";
-        //    logModel.operationContent = "操作内容";
-        //    logModel.result = 0;
-        //    try
-        //    {
-        //        if (_dal.Exists(model.code))
-        //        {
-        //            //存在,则修改
-        //            result = _dal.AddToMainOrDetail(model, modelDetail);
-        //            if (result == null)
-        //            {
-        //                //失败
-        //            }
-        //            else
-        //            {
-        //                //成功
-        //                logModel.result = 1;//操作结果
-        //                _updateDal.add(model.code, logModel.operationTable,
-        //                    modelDetail.Count + 1, "修改数据", logModel.operationTime);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            result = _dal.AddToMainOrDetail(model, modelDetail);
-        //            if (result == null)
-        //            {
-        //                //失败
-        //            }
-        //            else
-        //            {
-        //                //成功
-        //                logModel.result = 1;//操作结果
-        //                _updateDal.add(model.code, logModel.operationTable,
-        //                    modelDetail.Count + 1, "新增数据", logModel.operationTime);
-        //            }
-        //        }
-        //        return logModel.result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        _logDal.Add(logModel);
-        //    }
-        //}
+        public bool Exists(string code)
+        {
+            Log logModel = new Log()
+            {
+                code = BuildCode.ModuleCode("log"),
+                operationCode = "操作人code",
+                operationName = "操作人名",
+                objective = "获取最新一条数据",
+                operationContent = "",
+                operationTable = "T_FinanceVoucherEntry",
+                operationTime = DateTime.Now,
+                result = 0
+            };
+            bool isflag = false;
+            try
+            {
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    throw new Exception("-2");
+                }
+                isflag = _dal.Exists(code);
+                logModel.result = 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _logDal.Add(logModel);
+            }
+            return isflag;
+        }
     }
 }

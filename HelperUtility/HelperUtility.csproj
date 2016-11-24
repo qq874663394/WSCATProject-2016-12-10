@@ -51,6 +51,7 @@
     <Compile Include="Encrypt\CodingHelper.cs" />
     <Compile Include="Encrypt\XYEEncoding.cs" />
     <Compile Include="Excel\NPOIExcelHelper.cs" />
+    <Compile Include="ExceptionTIP.cs" />
     <Compile Include="ExUI\ResizablePanel.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -65,7 +65,7 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_BaseClient",
                 operationTime = DateTime.Now,
-                objective = "查询信息"
+                objective = "查询数据"
             };
             try
             {
@@ -110,8 +110,8 @@ namespace LogicLayer.Base
                 operationName = "操作人名",
                 operationTable = "T_BaseClient",
                 operationTime = DateTime.Now,
-                objective = "查询指定code的数据是否存在",
-                operationContent = "查询数据"
+                objective = "查询数据",
+                operationContent = "查询T_BaseClient表的数据是否存在,条件:code=" + code
             };
             try
             {
