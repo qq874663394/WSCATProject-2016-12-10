@@ -1,3 +1,0 @@
-E:\619项目\新建文件夹\BaseLayer\obj\Release\BaseLayer.csprojResolveAssemblyReference.cache
-E:\619项目\新建文件夹\BaseLayer\obj\Release\BaseLayer.dll
-E:\619项目\新建文件夹\BaseLayer\obj\Release\BaseLayer.pdb
