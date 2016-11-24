@@ -106,6 +106,12 @@
     <Compile Include="Finance\FinanceBankAccessForm.Designer.cs">
       <DependentUpon>FinanceBankAccessForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finance\FinanceCategoriesDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceCategoriesDialogForm.Designer.cs">
+      <DependentUpon>FinanceCategoriesDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Finance\FinanceOtherPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinanceBankAccessForm.resx">
       <DependentUpon>FinanceBankAccessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceCategoriesDialogForm.resx">
+      <DependentUpon>FinanceCategoriesDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinanceOtherPaymentForm.resx">
       <DependentUpon>FinanceOtherPaymentForm.cs</DependentUpon>
