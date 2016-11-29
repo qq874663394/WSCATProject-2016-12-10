@@ -30,15 +30,15 @@
         {
             this.tvSummary = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCDel = new System.Windows.Forms.Button();
+            this.btnCRevise = new System.Windows.Forms.Button();
+            this.btnCAdd = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSAdd = new System.Windows.Forms.Button();
+            this.btnSDel = new System.Windows.Forms.Button();
+            this.btnSRevise = new System.Windows.Forms.Button();
             this.btnYes = new System.Windows.Forms.Button();
             this.btnNo = new System.Windows.Forms.Button();
-            this.btnCAdd = new System.Windows.Forms.Button();
-            this.btnCRevise = new System.Windows.Forms.Button();
-            this.btnCDel = new System.Windows.Forms.Button();
-            this.btnSRevise = new System.Windows.Forms.Button();
-            this.btnSDel = new System.Windows.Forms.Button();
-            this.btnSAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "类别";
             // 
+            // btnCDel
+            // 
+            this.btnCDel.Location = new System.Drawing.Point(15, 78);
+            this.btnCDel.Name = "btnCDel";
+            this.btnCDel.Size = new System.Drawing.Size(75, 23);
+            this.btnCDel.TabIndex = 7;
+            this.btnCDel.Text = "删除";
+            this.btnCDel.UseVisualStyleBackColor = true;
+            // 
+            // btnCRevise
+            // 
+            this.btnCRevise.Location = new System.Drawing.Point(15, 49);
+            this.btnCRevise.Name = "btnCRevise";
+            this.btnCRevise.Size = new System.Drawing.Size(75, 23);
+            this.btnCRevise.TabIndex = 6;
+            this.btnCRevise.Text = "修改...";
+            this.btnCRevise.UseVisualStyleBackColor = true;
+            // 
+            // btnCAdd
+            // 
+            this.btnCAdd.Location = new System.Drawing.Point(15, 20);
+            this.btnCAdd.Name = "btnCAdd";
+            this.btnCAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnCAdd.TabIndex = 5;
+            this.btnCAdd.Text = "增加...";
+            this.btnCAdd.UseVisualStyleBackColor = true;
+            this.btnCAdd.Click += new System.EventHandler(this.btnCAdd_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnSAdd);
@@ -73,6 +101,33 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "摘要";
+            // 
+            // btnSAdd
+            // 
+            this.btnSAdd.Location = new System.Drawing.Point(15, 20);
+            this.btnSAdd.Name = "btnSAdd";
+            this.btnSAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnSAdd.TabIndex = 8;
+            this.btnSAdd.Text = "增加...";
+            this.btnSAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnSDel
+            // 
+            this.btnSDel.Location = new System.Drawing.Point(15, 79);
+            this.btnSDel.Name = "btnSDel";
+            this.btnSDel.Size = new System.Drawing.Size(75, 23);
+            this.btnSDel.TabIndex = 7;
+            this.btnSDel.Text = "删除";
+            this.btnSDel.UseVisualStyleBackColor = true;
+            // 
+            // btnSRevise
+            // 
+            this.btnSRevise.Location = new System.Drawing.Point(15, 50);
+            this.btnSRevise.Name = "btnSRevise";
+            this.btnSRevise.Size = new System.Drawing.Size(75, 23);
+            this.btnSRevise.TabIndex = 6;
+            this.btnSRevise.Text = "修改...";
+            this.btnSRevise.UseVisualStyleBackColor = true;
             // 
             // btnYes
             // 
@@ -92,61 +147,6 @@
             this.btnNo.Text = "取消";
             this.btnNo.UseVisualStyleBackColor = true;
             // 
-            // btnCAdd
-            // 
-            this.btnCAdd.Location = new System.Drawing.Point(15, 20);
-            this.btnCAdd.Name = "btnCAdd";
-            this.btnCAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnCAdd.TabIndex = 5;
-            this.btnCAdd.Text = "增加...";
-            this.btnCAdd.UseVisualStyleBackColor = true;
-            this.btnCAdd.Click += new System.EventHandler(this.btnCAdd_Click);
-            // 
-            // btnCRevise
-            // 
-            this.btnCRevise.Location = new System.Drawing.Point(15, 49);
-            this.btnCRevise.Name = "btnCRevise";
-            this.btnCRevise.Size = new System.Drawing.Size(75, 23);
-            this.btnCRevise.TabIndex = 6;
-            this.btnCRevise.Text = "修改...";
-            this.btnCRevise.UseVisualStyleBackColor = true;
-            // 
-            // btnCDel
-            // 
-            this.btnCDel.Location = new System.Drawing.Point(15, 78);
-            this.btnCDel.Name = "btnCDel";
-            this.btnCDel.Size = new System.Drawing.Size(75, 23);
-            this.btnCDel.TabIndex = 7;
-            this.btnCDel.Text = "删除";
-            this.btnCDel.UseVisualStyleBackColor = true;
-            // 
-            // btnSRevise
-            // 
-            this.btnSRevise.Location = new System.Drawing.Point(15, 50);
-            this.btnSRevise.Name = "btnSRevise";
-            this.btnSRevise.Size = new System.Drawing.Size(75, 23);
-            this.btnSRevise.TabIndex = 6;
-            this.btnSRevise.Text = "修改...";
-            this.btnSRevise.UseVisualStyleBackColor = true;
-            // 
-            // btnSDel
-            // 
-            this.btnSDel.Location = new System.Drawing.Point(15, 79);
-            this.btnSDel.Name = "btnSDel";
-            this.btnSDel.Size = new System.Drawing.Size(75, 23);
-            this.btnSDel.TabIndex = 7;
-            this.btnSDel.Text = "删除";
-            this.btnSDel.UseVisualStyleBackColor = true;
-            // 
-            // btnSAdd
-            // 
-            this.btnSAdd.Location = new System.Drawing.Point(15, 20);
-            this.btnSAdd.Name = "btnSAdd";
-            this.btnSAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnSAdd.TabIndex = 8;
-            this.btnSAdd.Text = "增加...";
-            this.btnSAdd.UseVisualStyleBackColor = true;
-            // 
             // FinanceSummaryLibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -160,6 +160,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FinanceSummaryLibraryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "摘要库";
             this.Load += new System.EventHandler(this.FinanceSummaryLibraryForm_Load);
             this.groupBox1.ResumeLayout(false);

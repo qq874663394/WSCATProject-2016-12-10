@@ -63,8 +63,8 @@ namespace WSCATProject.Finance
 
         private void btnCAdd_Click(object sender, EventArgs e)
         {
-            //AddSXml("阿萨德", "123","123");
-            //AddCXml("阿萨德", "123", "123");
+            FinanceCategoriesDialogForm  fcd= new FinanceCategoriesDialogForm();
+            fcd.ShowDialog();
         }
 
         /// <summary>
