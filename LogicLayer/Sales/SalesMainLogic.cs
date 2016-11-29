@@ -185,7 +185,7 @@ namespace LogicLayer.Sales
             {
                 lb.Add(model);
             }
-            return _dal.Exists(code);
+            return isflag;
         }
         public DataTable GetExamineAndPay(string clientCode)
         {

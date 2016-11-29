@@ -21,7 +21,9 @@ namespace BaseLayer.Base
         {
             string sql = "";
             DataTable dt = null;
-            sql = string.Format(@"select fvem.code,
+            try
+            {
+                sql = string.Format(@"select fvem.code,
 fvem.date,
 fvem.examine,
 fvem.posting,
@@ -36,7 +38,12 @@ fved.creditAmount
 where fvem.code=fved.mainCode and 
 fvem.code= (select top 1 code from T_FinanceVoucherEntryMain where id <
 (select id from T_FinanceVoucherEntryMain where code = '{0}') order by id desc)", entryCode);
-            dt = DbHelperSQL.Query(sql).Tables[0];
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return dt;
         }
 
@@ -49,7 +56,9 @@ fvem.code= (select top 1 code from T_FinanceVoucherEntryMain where id <
         {
             string sql = "";
             DataTable dt = null;
-            sql = string.Format(@"select fvem.code,
+            try
+            {
+                sql = string.Format(@"select fvem.code,
 fvem.date,
 fvem.examine,
 fvem.posting,
@@ -64,8 +73,13 @@ fved.creditAmount
 where fvem.code=fved.mainCode and 
 fvem.code= (select top 1 code from T_FinanceVoucherEntryMain where id =
 (select id from T_FinanceVoucherEntryMain where code = '{0}') order by id desc)", entryCode);
-            dt = DbHelperSQL.Query(sql).Tables[0];
-            return dt;
+                dt = DbHelperSQL.Query(sql).Tables[0];
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -77,7 +91,9 @@ fvem.code= (select top 1 code from T_FinanceVoucherEntryMain where id =
         {
             string sql = "";
             DataTable dt = null;
-            sql = string.Format(@"select fvem.code,
+            try
+            {
+                sql = string.Format(@"select fvem.code,
 fvem.date,
 fvem.examine,
 fvem.posting,
@@ -92,7 +108,12 @@ fved.creditAmount
 where fvem.code=fved.mainCode and 
 fvem.code= (select top 1 code from T_FinanceVoucherEntryMain where id >
 (select id from T_FinanceVoucherEntryMain where code = '{0}'))", entryCode);
-            dt = DbHelperSQL.Query(sql).Tables[0];
+                dt = DbHelperSQL.Query(sql).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             return dt;
         }
 
@@ -102,8 +123,25 @@ fvem.code= (select top 1 code from T_FinanceVoucherEntryMain where id >
         /// <returns></returns>
         public string GetNewCode()
         {
-            string sql = "select top 1 code from  T_FinanceVoucherEntryMain order by id desc";
-            return DbHelperSQL.GetSingle(sql).ToString();
+            string sql = "";
+            object result = null;
+            try
+            {
+                sql = "select top 1 code from  T_FinanceVoucherEntryMain order by id desc";
+                result = DbHelperSQL.GetSingle(sql);
+                if (result==null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return result.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         /// <summary>
         /// 新增数据

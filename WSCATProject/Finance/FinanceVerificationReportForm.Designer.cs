@@ -125,6 +125,7 @@
             this.toolStripButtonshuaixin.Text = "刷新(&F5)";
             this.toolStripButtonshuaixin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonshuaixin.ToolTipText = "刷新（F5）";
+            this.toolStripButtonshuaixin.Click += new System.EventHandler(this.toolStripButtonshuaixin_Click);
             // 
             // toolStripButtondayin
             // 

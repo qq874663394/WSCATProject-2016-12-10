@@ -464,8 +464,17 @@ namespace WSCATProject.Finance
                 //付款账户
                 if (_Click == 2 || _Click == 5)
                 {
+                    if (dataGridViewFuJia.Columns["code"] ==null)
+                    {
+                        return;
+                    }
                     _fuBankCode = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["code"].Value.ToString();//供应商code
+                    if (dataGridViewFuJia.Columns["openBank"]==null)
+                    {
+                        return;
+                    }
                     string name = dataGridViewFuJia.Rows[dataGridViewFuJia.CurrentRow.Index].Cells["openBank"].Value.ToString();//供应商名称
+
                     labtxtDanJuType.Text = name;
                     resizablePanel1.Visible = false;
                 }

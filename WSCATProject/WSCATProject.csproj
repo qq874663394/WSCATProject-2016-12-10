@@ -62,9 +62,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\dotnetbar\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.TreeGX, Version=12.5.0.2, Culture=neutral, PublicKeyToken=cfcbd7476b2389d1, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,6 +102,12 @@
     </Compile>
     <Compile Include="Base\Shelves\ShelvesListForm.Designer.cs">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinanceAccountingSubjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinanceAccountingSubjects.Designer.cs">
+      <DependentUpon>FinanceAccountingSubjects.cs</DependentUpon>
     </Compile>
     <Compile Include="Finance\FinanceBankAccessForm.cs">
       <SubType>Form</SubType>
@@ -339,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Base\Shelves\ShelvesListForm.resx">
       <DependentUpon>ShelvesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinanceAccountingSubjects.resx">
+      <DependentUpon>FinanceAccountingSubjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinanceBankAccessForm.resx">
       <DependentUpon>FinanceBankAccessForm.cs</DependentUpon>

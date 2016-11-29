@@ -90,7 +90,9 @@ namespace LogicLayer.Finance
                 {
                     _logmodel.objective = "新增银行存取信息";
                     _logmodel.operationContent = "新增银行存取信息";
-                    result = _dal.Update(model);
+                    int resultNumber = _dal.Add(model);
+                    if (resultNumber > 0)
+                        result = true;
                 }
                 _logmodel.result = 1;
             }
@@ -113,7 +115,7 @@ namespace LogicLayer.Finance
             _logmodel.operationContent = "查询数据";
             try
             {
-                _dal.Exists(code);
+                isflag=_dal.Exists(code);
                 _logmodel.result = 1;
             }
             catch (Exception ex)

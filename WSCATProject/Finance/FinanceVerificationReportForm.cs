@@ -393,6 +393,7 @@ namespace WSCATProject.Finance
 
         #endregion
 
+        #region 加载事件
         private void FinanceVerificationReportForm_Load(object sender, EventArgs e)
         {
             superGridControlShangPing.PrimaryGrid.AutoGenerateColumns = false;
@@ -461,7 +462,7 @@ namespace WSCATProject.Finance
                 Finance.FinanceVerificationForm finance = (FinanceVerificationForm)this.Owner;
                 _clientMainList = finance.ClientMainList;
                 _SupplierList = finance.SupplierList;
-                if (_clientMainList!=null)
+                if (_clientMainList != null)
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
@@ -474,7 +475,7 @@ namespace WSCATProject.Finance
                         }
                     }
                 }
-                if (_SupplierList!=null)
+                if (_SupplierList != null)
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
@@ -487,7 +488,7 @@ namespace WSCATProject.Finance
                         }
                     }
                 }
-         
+
                 if (dt.Rows.Count == 0)
                 {
                     MessageBox.Show("此供应商暂无预收源单信息！请重新选择");
@@ -520,7 +521,8 @@ namespace WSCATProject.Finance
                 }
                 superGridControlShangPing.PrimaryGrid.DataSource = dt;
             }
-        }
+        } 
+        #endregion
 
         #region 最小化、最大化、关闭的点击事件
         private void pictureBoxMax_MouseEnter(object sender, EventArgs e)
@@ -589,8 +591,9 @@ namespace WSCATProject.Finance
         }
         #endregion
 
+        #region 双击行
         /// <summary>
-        /// 双击行的时候
+        /// 双击行
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -630,6 +633,12 @@ namespace WSCATProject.Finance
             {
                 MessageBox.Show("错误代码：3202-尝试双击表格选中行失败！请检查：" + ex.Message, "销售订单序时薄温馨提示！");
             }
+        } 
+        #endregion
+
+        private void toolStripButtonshuaixin_Click(object sender, EventArgs e)
+        {
+            superGridControlShangPing.PrimaryGrid.DataSource = null;
         }
     }
 }

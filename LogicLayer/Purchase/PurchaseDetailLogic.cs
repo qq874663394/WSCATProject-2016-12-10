@@ -182,7 +182,7 @@ namespace LogicLayer.Purchase
             };
             try
             {
-                _dal.Exists(code);
+                isflag=_dal.Exists(code);
                 model.result = 1;
             }
             catch (Exception ex)
