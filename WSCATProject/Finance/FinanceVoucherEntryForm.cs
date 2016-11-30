@@ -739,8 +739,8 @@ namespace WSCATProject.Finance
                     superGridControlPingZheng.PrimaryGrid.NewRow(superGridControlPingZheng.PrimaryGrid.Rows.Count);
                 }
                 GridRow gr = (GridRow)superGridControlPingZheng.PrimaryGrid.Rows[i];   //获取
-                gr["gridColumnZhaiYao"].Value = XYEEncoding.strHexDecode(dt.Rows[0][7].ToString());
-                gr["gridColumnSubject"].Value = XYEEncoding.strHexDecode(dt.Rows[0][8].ToString());
+                gr["gridColumnZhaiYao"].Value = XYEEncoding.strHexDecode(dt.Rows[i][7].ToString());
+                gr["gridColumnSubject"].Value = XYEEncoding.strHexDecode(dt.Rows[i][8].ToString());
                 string de = dt.Rows[i][9].ToString();
                 int first1 = de.IndexOf(".", 0); //截取小数点位置的索引
                 //借方金额

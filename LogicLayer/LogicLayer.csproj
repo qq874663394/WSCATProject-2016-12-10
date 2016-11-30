@@ -51,6 +51,7 @@
     <Compile Include="Base\StorageLogic.cs" />
     <Compile Include="Base\StorageRackLogic.cs" />
     <Compile Include="Base\SupplierLogic.cs" />
+    <Compile Include="Finance\FinanceAccountingSubjectsLogic.cs" />
     <Compile Include="Finance\FinanceBankAccessLogic.cs" />
     <Compile Include="Finance\FinanceCollectionLogic.cs" />
     <Compile Include="Finance\FinanceOtherExpensesInLogic.cs" />

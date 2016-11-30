@@ -50,6 +50,7 @@
     <Compile Include="Base\BankAccountBase.cs" />
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Base\EmpolyeeBase.cs" />
+    <Compile Include="Finance\FinanceAccountingSubjectsBase.cs" />
     <Compile Include="Finance\FinanceVoucherEntryBase.cs" />
     <Compile Include="Base\MaterialBase.cs" />
     <Compile Include="Base\OrderTypeBase.cs" />

@@ -54,6 +54,7 @@
     <Compile Include="Base\StorageInterface.cs" />
     <Compile Include="Base\StorageRackInterface.cs" />
     <Compile Include="Base\SupplierInterface.cs" />
+    <Compile Include="Finance\FinanceAccountingSubjectsInterface.cs" />
     <Compile Include="Finance\FinanceBankAccessInterface.cs" />
     <Compile Include="Finance\FinanceCollectionInterface.cs" />
     <Compile Include="Finance\FinanceOtherExpensesInInterface.cs" />
